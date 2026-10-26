@@ -1,0 +1,9 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act1_Firewall/a6d577945ee96fcebd43e3fa435ffff19d4594b1e11e9f55b7ccdb3ea7da34da.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act1_Firewall/a40da67fb758fde1ddd8d2c6a0dd7938727e0499f122c8992a08aba7d9dfa45d.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act1_Firewall/03fe7be017c1d35d816c98c0e9fd35ca8b9a75d8dfcf19576b1c5177b6c97269.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act1_Firewall/6dbc8d209354bfbaa16cd1dd49f3f45b91f3599a3222a78997d197eadb590574.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act1_Firewall/63a24bb013277d9703746cc0b16fd0ef352f113634a45c4fbf3cd165cc74d288.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act1_Firewall/f0b22c63feab8e3824122225cc50d1db333be72a91c94a0113d616aeb6818d01.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act1_Firewall/dce51b4d6096ab64854248c4ff85b446fcc26437a7358b23b813c941e429e9b2.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act1_Firewall/aea9368ceaebaa7c98d6bfd79398938f6bf8290f4ef8a41bbe90533c683dd815.mp4'

@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act2_Bivalence/f4096576d4fa5f58e0b927e18d31a6527de2d27766f86cbdfd945a164863a3d5.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act2_Bivalence/929102b5e2e48346daa37e4db845e9dc8394a92cf4853b1dbdd136452f1b9ffb.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act2_Bivalence/9383a338e8ed671d6b2150b1cb4a0bf9ef4460f5fbbf08b69985a239baa72d94.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act2_Bivalence/c06c66125e2db699d3ecc1e0a4fd4f8bf532c3a6a9a38bb622dbce8b5ca577b3.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act2_Bivalence/e78aa326843e7ce5703953110a8d43135c95f96aed2e7e14534a8ea99cb52944.mp4'

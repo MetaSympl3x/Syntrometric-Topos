@@ -1,0 +1,8 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act3_Secs_111112_Prdikatrix_Dialektik/dc67ed98e943f8e1536cd82cccb8ec4a92b45885ffde08f7bbf5d5534fb93ae9.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act3_Secs_111112_Prdikatrix_Dialektik/1045e6e38ab53fbfbe89cfef214fb7b5093c1928b25f14ea463b9f7d6299aa16.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act3_Secs_111112_Prdikatrix_Dialektik/364a60100cadffc92a290d5f48a7ca46ebb67602a9940bb3339784e4c6ca2eaf.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act3_Secs_111112_Prdikatrix_Dialektik/ddb006df3173c601ac7f8a2e125ca220209e4fd9edcb9bc150bbf23f9248d617.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act3_Secs_111112_Prdikatrix_Dialektik/3ae1eb0c55780a1e1e1d4f8a8c1ce418b3230a448bae337522a310cd10f180f1.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act3_Secs_111112_Prdikatrix_Dialektik/1719bc5190022dc21f7af178c7464fa2b7fcbb3194f3ad7dc20793cd1e023b4e.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act3_Secs_111112_Prdikatrix_Dialektik/806daeaf514bd7bd49257bb4b743d1c7140a9cb3538e7839f1476cf00c826f37.mp4'
