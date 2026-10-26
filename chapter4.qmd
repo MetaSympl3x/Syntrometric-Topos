@@ -1,0 +1,508 @@
+---
+title: "Syntrometrische Maximentelezentrik"
+subtitle: "Chapter 4: Enyphansyntrizen — Non-Abelian Gauge Curvature, Holoforms & Discrete Chronometry"
+author: "Research Collective — Department of Mathematical Physics & Formal Epistemology"
+date: "August 2026"
+format:
+  revealjs:
+    theme: [dark, custom_syntrometrie.scss]
+    width: 1920
+    height: 1080
+    margin: 0.06
+    transition: fade
+    background-transition: fade
+    slide-number: c/t
+    controls: true
+    progress: true
+    hash: true
+    center: false
+    html-math-method: mathjax
+---
+
+<!-- GLOBAL MATHJAX MACROS MATCHING CHAPTER 4 OF SYNTROMETRIC-TOPOS.TEX -->
+<div style="display:none;">
+$$
+\newcommand{\Ctx}{\mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}}
+\newcommand{\Ban}{\mathbf{Ban}_{\le 1}}
+\newcommand{\FinBan}{\mathbf{FinBan}_{\le 1}}
+\newcommand{\Esyn}{\mathcal{E}_{\mathrm{syn}}}
+\newcommand{\Omegaint}{\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}}}
+\newcommand{\otpi}{\mathbin{\widehat{\otimes}_\pi}}
+\newcommand{\ad}{\operatorname{ad}}
+\newcommand{\Ad}{\operatorname{Ad}}
+\newcommand{\At}{\operatorname{At}}
+\newcommand{\Hol}{\operatorname{Hol}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\im}{\operatorname{im}}
+$$
+</div>
+
+## §4.1.1–4.1.2: *Enyphanie* ($E\nu$), *Protyposis* & The *Generative* {.smaller}
+
+<div class="stratum-badge badge-d">STRATUM D: HISTORICAL EXEGESIS (SM, PP. 62–67, EQ. 14)</div>
+
+:::: {.columns}
+::: {.column width="48%"}
+### Awakening the Colimit: *Enyphanie* ($E\nu$) & $g_E$
+* Chapters 1–3 built static colimit wiring, but a colimit diagram is kinematically frozen.
+* In §4.0 (SM, p. 62), Heim introduces **Enyphanie ($E\nu$)**: the intrinsic, structural *Möglichkeit zur Veränderung* (latent capacity for transformation), measured by the scalar **Enyphaniegrad ($g_E$)**—the syntrometric analogue of thermodynamic **free energy**.
+
+::: {.thm-box}
+**The *Protyposis* & *Generative* Blueprint ($\mathsf{G}_{\mathrm{gen}}$, SM Eq. 14):**
+$$
+\mathsf{G}_{\mathrm{gen}} \equiv \left[ \left. \begin{matrix} 4 \\ \mathrm{P}_i \\ 1 \end{matrix} \right| ,\; \left. \begin{matrix} Q \\ \{ \}_{(j)} \\ 1 \end{matrix} \right| \right]_{(A, S)} \tag{SM-14}
+$$
+Combines the 4 elementary pyramidal stores ($\mathrm{P}_i$, *Syntrixspeicher*) with $Q$ concentric combination rules (*Korporatorsimplex*) to span the 4-dimensional **Syntrixtotalität ($T0$)**.
+:::
+:::
+
+::: {.column width="52%"}
+<!-- INTERACTIVE 4D SYNTRIXGERUEST & SIMPLEX FILLING CALCULATOR -->
+<div class="interactive-panel">
+  <h4>Interactive 4-Store *Protyposis* &amp; Simplex Filling Explorer</h4>
+  <p style="font-size:0.62em; color:#aaa; margin-bottom:6px;">
+    Slide the number of concentric corporate rules $Q$ to compute the multiset simplex fillings (Props. 4.1 &amp; 4.2) alongside the $2^4 - 2 = \mathbf{14}$ proper nonempty sub-store degenerations.
+  </p>
+
+  <div class="slider-row">
+    <span style="color:#FFA500;">Corporate Rules $Q$:</span>
+    <input type="range" id="simp-q" min="1" max="15" step="1" value="6" oninput="updateSimplexCalc()">
+    <span id="simp-q-val" style="font-family:monospace; width:28px;">6</span>
+  </div>
+
+  <div id="simp-readout" class="matrix-readout" style="text-align:left; font-size:0.68em; line-height:1.45;"></div>
+</div>
+
+<div class="video-container" style="margin-top:8px;">
+  <video data-autoplay loop muted playsinline src="media/Ch4_Act1_Enyphanie_Generative.mp4" style="max-height:225px;"></video>
+  <div class="video-caption">Manim Act I: Three Scales of Enyphanie &amp; The 14 Sub-Store Tetrahedron of $T0$</div>
+</div>
+:::
+::::
+
+::: {.notes}
+Chapter 4 introduces dynamics. Static corporate colimits have no internal clock or energetic gradient. Heim's Enyphanie is the latent capacity for structural transformation, which we reconstruct via non-Abelian gauge curvature and Lie derivation flows on the slice topos of the Generative G_gen.
+:::
+
+---
+
+## §4.1.3–4.1.5: *Enyphansyntrizen*, *Holoformen* & *Syntrixfelder* {.smaller}
+
+<div class="stratum-badge badge-d">STRATUM D: DISCRETE VS. CONTINUOUS ENYPHANEN (SM EQS. 15–19)</div>
+
+:::: {.columns}
+::: {.column width="50%"}
+### Actualizing Potential on $T0$
+1. **Diskrete Enyphansyntrix (SM Eq. 15):** Finite corporate selection chain $(\llcorner_j(\;)]_1^n$ acting algorithmically on $T0$.
+2. **Kontinuierliche Enyphansyntrix (SM Eqs. 16, 17):** Driven by an infinitesimal differential generator—the **Enyphane** $\mathcal{E} \equiv (G_k, \varepsilon]_1^n$—with path-reversible inverse $\mathcal{E}^{-1} \mathcal{E} \mathbf{y}\widetilde{\mathbf{f}} \;\overline{||}\; \mathbf{y}\widetilde{\mathbf{f}}$ (SM Eq. 16a).
+
+::: {.thm-box .fragment}
+**Anatomy of an Emergent *Syntrixfeld* ($\mathfrak{F}_{\mathrm{syn}}$, SM pp. 72–74):**
+Every emergent *Gebilde* or irreducible **Holoform** generates an internal geometric universe:
+$$
+\mathfrak{F}_{\mathrm{syn}} \;\coloneqq\; \big( \mathcal{M}_{\mathrm{syn}},\; g^{\mathrm{syn}},\; \mathbf{X}_{\mathrm{kor}} \big)
+$$
+consisting of an $n$-dimensional smooth state manifold (**Syntrixraum** $\mathcal{M}_{\mathrm{syn}}$), an intrinsic metric tensor (**Syntrometrik** $g^{\mathrm{syn}}$), and an autonomous dynamical vector field (**Korporatorfeld** $\mathbf{X}_{\mathrm{kor}}$).
+:::
+:::
+
+::: {.column width="50%"}
+<div class="video-container">
+  <video data-autoplay loop muted playsinline src="media/Ch4_Act2_Discrete_Continuous_Enyphane.mp4"></video>
+  <div class="video-caption">Manim Act II: Discrete Selection Chains vs. Reversible Continuous Enyphane Flows ($\Phi_{-t}^X$)</div>
+</div>
+
+::: {.intuition-box .fragment}
+**Higher-Order Operators & Chronometry (§4.1.5):**
+* **Syntrixfunktoren ($YF$, SM Eq. 18):** Transform entire Syntrixfelder; each functorial iteration defines an indivisible quantum of operational duration—the **Zeitkorn ($\delta t_i$)**.
+* **Affinitätssyndrom ($\mathfrak{A}$, SM Eq. 19):** Bilinear coupling interface to external environments $\mathcal{B}$.
+:::
+:::
+::::
+
+---
+
+## §4.2.1: Principal Gauge Bundles & The Realization Functor $\mathfrak{G}_\nabla$ {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM A: PRINCIPAL CONNECTIONS &amp; GAUGE INVARIANCE (DEF. 4.1, CONST. 4.2, PROP. 4.4)</div>
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.thm-box}
+**Definition 4.1 & Construction 4.2: Functor $\mathfrak{G}_\nabla \colon \Ctx \to \mathbf{BunConn}_G^{\mathrm{contr}}$**
+Fix a compact Lie group $G \hookrightarrow \mathrm{O}(k)$ with Lie algebra $\mathfrak{g} \subset \mathfrak{so}(k)$ and $\Ad(G)$-invariant trace inner product $\langle X, Y \rangle_{\mathfrak{g}} \coloneqq -\frac{1}{2}\tr(XY)$. For each context $U$, set $M_U \coloneqq \operatorname{Ball}(P^U)$ and $P_U \coloneqq M_U \times G$:
+$$
+\omega_U(x)(v) \coloneqq \Theta_U\!\Big( K^U\big(\zeta^U(d_0^U) \otimes v\big) \Big) \in \mathfrak{g}, \qquad \mathbf{A}_U(x,g)(v,\xi_g) \coloneqq \Ad(g^{-1})\omega_U(x)(v) + g^{-1}dg(\xi_g)
+$$
+Every context morphism $\alpha \colon V \to U$ induces a contractive bundle morphism satisfying $h_P^* \mathbf{A}_U = \mathbf{A}_V$.
+:::
+
+::: {.carnap-box .fragment}
+**Proposition 4.4: Exact Gauge Invariance of the Curvature Norm**
+The horizontal curvature $\widetilde{F}_A = d\mathbf{A} + \frac{1}{2}[\mathbf{A}, \mathbf{A}]$ descends to $F_A \in \Omega^2(M_U, \ad P_U)$. For every vertical gauge transformation $\sigma \in \mathcal{G}(P_U) \cong \Gamma(M_U, \Ad P_U)$:
+$$
+\|F_{\sigma \cdot A}\|_{g_E, \mathfrak{g}}^2 = \frac{1}{2}g_E^{ia}g_E^{jb}\big\langle \Ad(\sigma)F_{ij},\, \Ad(\sigma)F_{ab}\big\rangle_{\mathfrak{g}} = \|F_A\|_{g_E, \mathfrak{g}}^2
+$$
+:::
+:::
+
+::: {.column width="48%"}
+<div class="video-container">
+  <video data-autoplay loop muted playsinline src="media/Ch4_Act3_4_Gauge_Wilson_Loop.mp4"></video>
+  <div class="video-caption">Manim Acts III &amp; IV (Figs. 4.1 &amp; 4.2): Adjoint Curvature Descent &amp; 3D Non-Abelian Wilson Loop Holonomy</div>
+</div>
+
+::: {.thm-box .fragment}
+**Non-Abelian Stokes Theorem (Fig. 4.2):**
+$$
+\Hol_A(\mathcal{C}) \coloneqq \mathcal{P}\exp\!\left(-\oint_{\mathcal{C}} \mathbf{A}\right) = \mathcal{P}\exp\!\left(-\iint_\Sigma F_A\right) \ne I
+$$
+:::
+:::
+::::
+
+---
+
+## §4.2.2–4.2.4: Slice Topos $T0$, Corner Flows & BRST Cohomology {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM A: SLICE EQUIVALENCE (THM. 4.6), CORNER FLOWS &amp; BRST COMPLEX (PROP. 4.9)</div>
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.thm-box}
+**Definition 4.5 & Theorem 4.6: Slice-Site Topos Equivalence for $T0$**
+The 4-store Generative blueprint $\mathsf{G}_{\mathrm{gen}}$ induces the 12-dimensional carrier $P^{U_{\mathsf{G}}} \coloneqq \bigoplus_{i=1}^4 P_i \cong (\mathbb{R}^{12}, \|\cdot\|_{\ell^1})$. Because $\Jsyn$ is subcanonical, the **Syntrixtotalität $T0$** is canonically equivalent to the slice topos:
+$$
+\mathbf{Sh}\big(\mathbf{Ctx}_{/U_{\mathsf{G}}}, J_{/U_{\mathsf{G}}}\big) \;\simeq\; \Esyn / \mathbf{y}(U_{\mathsf{G}})
+$$
+:::
+
+::: {.intuition-box .fragment}
+**Definition 4.7: Globally Complete Tangent Enyphane Flows on Corners**
+On $\mathcal{M} = (\mathbb{R}_{\ge 0})^n$, any smooth vector field $X \in \mathfrak{X}_{\mathrm{tan}}(\mathcal{M})$ with wall tangency ($X^i|_{x^i=0} = 0$) and sub-linear growth ($\|X(x)\|_2 \le C_X(1+\|x\|_2)$) generates a global 2-sided diffeomorphism group $\Phi_t^X \in \operatorname{Diff}(\mathcal{M})$ with $(\Phi_t^X)^{-1} = \Phi_{-t}^X$.
+:::
+:::
+
+::: {.column width="50%"}
+<div class="video-container">
+  <video data-autoplay loop muted playsinline src="media/Ch4_Act5_6_CornerFlow_BRST.mp4" style="max-height:255px;"></video>
+  <div class="video-caption">Manim Acts V &amp; VI (Figs. 4.3 &amp; 4.5): Boundary-Tangent Corner Flows &amp; Graded BRST Complex</div>
+</div>
+
+::: {.carnap-box .fragment}
+**Definition 4.8 & Proposition 4.9: Yang–Mills Action & Nilpotent BRST Complex**
+Critical points of $\mathcal{I}(\mathbf{A}) = \frac{1}{2}\int \|F_A\|^2\,d\operatorname{vol}$ satisfy $D_A^* F_A = 0$. The graded BRST differential:
+$$
+s_{\mathrm{BRST}}\mathbf{A} = D_A c,\quad s_{\mathrm{BRST}}c = -\tfrac{1}{2}[c,c],\quad s_{\mathrm{BRST}}\bar{c} = b,\quad s_{\mathrm{BRST}}b = 0
+$$
+satisfies $s_{\mathrm{BRST}}^2 \equiv 0$ by the graded Jacobi identity, isolating physical states as $H^0_{\mathrm{BRST}}(\mathcal{F}_{\mathrm{ext}}) = \ker s_{\mathrm{BRST}} / \im s_{\mathrm{BRST}}$.
+:::
+:::
+::::
+
+---
+
+## §4.3.1: Interaction Curvature $\Omegaint$ & Stage IV ($\mathfrak{su}(2)$) {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: RELATIVE INTERACTION CURVATURE DECOMPOSITION (THM. 4.10, FIG. 4.6)</div>
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.thm-box}
+**Theorem 4.10: Relative Interaction Curvature Decomposition**
+For a coupled connection $\mathbf{A} = A_0 + \sum_{k=1}^N a_k + a_{\mathrm{int}}$ on $P_U \to M_U$, define the constituent curvatures $\mathcal{F}_k^{(A_0)} \coloneqq \frac{1}{N}F_{A_0} + D_{A_0}a_k + \frac{1}{2}[a_k, a_k]$. Then total curvature splits identically as:
+$$
+F_A \;=\; \sum_{k=1}^N \mathcal{F}_k^{(A_0)} \;+\; \Omegaint(\mathbf{A}; \mathcal{D})
+$$
+where the **Interaction Curvature 2-Form (*Enyphanie*)** is:
+$$
+\Omegaint \;\coloneqq\; \sum_{1 \le i < j \le N} [a_i, a_j] + D_{A_0}a_{\mathrm{int}} + \sum_{k=1}^N [a_k, a_{\mathrm{int}}] + \frac{1}{2}[a_{\mathrm{int}}, a_{\mathrm{int}}]
+$$
+and the local **Enyphaniegrad Density (Def. 4.16)** is $g_E^{\mathcal{D}}(x) \coloneqq \frac{1}{2}\|\Omegaint(x)\|_{g_U, \mathfrak{g}}^2 \ge 0$.
+:::
+
+<div class="video-container" style="margin-top:8px;">
+  <video data-autoplay loop muted playsinline src="media/Ch4_Act7_Interaction_Vortex.mp4" style="max-height:215px;"></video>
+</div>
+:::
+
+::: {.column width="52%"}
+<!-- INTERACTIVE STAGE IV NON-ABELIAN SU(2) POLARIMETER LABORATORY -->
+<div class="interactive-panel">
+  <h4>Stage IV of VI Laboratory: Non-Abelian $\mathfrak{su}(2)$ Polarimeter *Enyphanie*</h4>
+  <p style="font-size:0.62em; color:#aaa; margin-bottom:6px;">
+    Two individually flat polarimeter channels $a_1 = \omega_1 T_1\,dx^1$ ($\mathcal{F}_1 = 0$) and $a_2 = \omega_2 T_2\,dx^2$ ($\mathcal{F}_2 = 0$) couple on $P_U = M_U \times G$. Adjust $\omega_1, \omega_2$ or switch $G$ to test the Abelian $\mathrm{U}(1)$ sanity check!
+  </p>
+
+  <div class="slider-row">
+    <span>Gauge Group $G$:</span>
+    <select id="su2-group" onchange="updateSU2Lab()" style="background:#1e293b; color:#FFD700; border:1px solid #FFD700; border-radius:4px; padding:3px;">
+      <option value="su2">Non-Abelian SU(2): [T₁, T₂] = T₃ ≠ 0</option>
+      <option value="u1">Abelian U(1) Sanity Check: [T₁, T₂] = 0</option>
+    </select>
+  </div>
+  <div class="slider-row">
+    <span style="color:#20B2AA;">Channel 1 ($\omega_1$):</span>
+    <input type="range" id="su2-w1" min="0" max="2.5" step="0.05" value="1.40" oninput="updateSU2Lab()">
+    <span id="su2-w1-val" style="font-family:monospace; width:36px;">1.40</span>
+    <span style="color:#FFA500;">Channel 2 ($\omega_2$):</span>
+    <input type="range" id="su2-w2" min="0" max="2.5" step="0.05" value="1.20" oninput="updateSU2Lab()">
+    <span id="su2-w2-val" style="font-family:monospace; width:36px;">1.20</span>
+  </div>
+
+  <div id="su2-readout" class="matrix-readout" style="text-align:left; font-size:0.68em; line-height:1.5;"></div>
+</div>
+:::
+::::
+
+---
+
+## §4.3.1–4.3.3: Hodge–Laplacian Splitting, Atiyah Algebroid & Bogomolny Bound {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: ELLIPTIC SPLITTING (THM. 4.11) &amp; TOPOLOGICAL STABILITY (THMS. 4.14–4.15)</div>
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.thm-box}
+**Theorem 4.11: Non-Flat 2-Way Fredholm Laplacian Splitting**
+For $\Delta_{A_0} \coloneqq D_{A_0}D_{A_0}^* + D_{A_0}^* D_{A_0}$ on compact boundaryless $M_U$, $L^2\Omega^2 = \im(\Delta_{A_0}) \oplus_{L^2} \mathcal{H}_{\Delta_{A_0}}^2$:
+$$
+\Omegaint = \Delta_{A_0}\Phi_{\mathrm{int}} + \gamma_{\mathrm{harm}} \implies \mathcal{E}_{\mathrm{int}}^{\mathcal{D}} = \frac{1}{2}\Big(\|\Delta_{A_0}\Phi_{\mathrm{int}}\|_{L^2}^2 + \|\gamma_{\mathrm{harm}}\|_{L^2}^2\Big)
+$$
+:::
+
+::: {.carnap-box .fragment}
+**Theorem 4.14 (Atiyah Algebroid) & Theorem 4.15 (Bogomolny Bound):**
+1. **Atiyah Exact Sequence:** $0 \to \ad P_U \xrightarrow{\iota} \At(P_U) \xrightarrow{d\pi_U} TM_U \to 0$. A connection $\sigma_{\mathbf{A}}$ is a splitting whose curvature $F_A$ is the exact bracket obstruction: $\iota F_A(X,Y) = [\sigma_{\mathbf{A}}X, \sigma_{\mathbf{A}}Y] - \sigma_{\mathbf{A}}[X,Y]$.
+2. **Chern–Weil Topological Stability Bound:** For instanton charge $Q_{\mathrm{top}}(\mathbf{A}) \coloneqq \frac{1}{8\pi^2}\int_{M_4}\langle F_A \wedge F_A\rangle_{\mathfrak{g}} \in \mathbb{Z}\setminus\{0\}$:
+$$
+\mathcal{I}(\mathbf{A}) \;\ge\; 4\pi^2 \big|Q_{\mathrm{top}}(\mathbf{A})\big|, \qquad \Delta_{\mathrm{emerg}}^{\mathcal{I}}(\Gamma; \mathcal{D}) \;>\; 0
+$$
+:::
+:::
+
+::: {.column width="52%"}
+<!-- INTERACTIVE HODGE-LAPLACIAN & BOGOMOLNY INSTANTON BOUND EXPLORER -->
+<div class="interactive-panel">
+  <h4>Interactive Bogomolny Instanton Bound &amp; Holoform Stability</h4>
+  <p style="font-size:0.62em; color:#aaa; margin-bottom:6px;">
+    Select topological Chern number $Q_{\mathrm{top}} \in \mathbb{Z}$ and non-self-dual fluctuation norm $\|F_A \mp *F_A\|_{L^2}$ to verify topological protection against decay to the flat vacuum ($Q_{\mathrm{top}} = 0$).
+  </p>
+
+  <div class="slider-row">
+    <span style="color:#9370DB;">Chern Charge $Q_{\mathrm{top}} \in \mathbb{Z}$:</span>
+    <input type="range" id="bog-q" min="-3" max="3" step="1" value="1" oninput="updateBogomolny()">
+    <span id="bog-q-val" style="font-family:monospace; width:28px;">+1</span>
+    <span style="color:#20B2AA;">Fluctuation $\|F_A \mp *F_A\|$:</span>
+    <input type="range" id="bog-fl" min="0" max="5" step="0.2" value="0.0" oninput="updateBogomolny()">
+    <span id="bog-fl-val" style="font-family:monospace; width:32px;">0.0</span>
+  </div>
+
+  <div id="bog-readout" class="matrix-readout" style="text-align:left; font-size:0.68em; line-height:1.45;"></div>
+</div>
+
+<div class="video-container" style="margin-top:8px;">
+  <video data-autoplay loop muted playsinline src="media/Ch4_Act8_9_Laplacian_Bogomolny.mp4" style="max-height:220px;"></video>
+</div>
+:::
+::::
+
+---
+
+## §4.3.5–4.3.8: Pushout Functor $YF$, *Zeitkorn* & $3 \times 3$ Grid $\hat{A}$ {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: CHRONOMETRY (DEF. 4.20) &amp; TAXONOMIC SINGULARITIES (THM. 4.22, FIG. 4.10)</div>
+
+:::: {.columns}
+::: {.column width="46%"}
+::: {.thm-box}
+**Definitions 4.19–4.20: Pushout Functor $YF_{\mathrm{model}}$ & *Zeitkorn* $\delta t_n$**
+Iterating the sheaf pushout endofunctor $YF_{\mathrm{model}}(\mathfrak{f}) \coloneqq B \amalg_{C_0} \mathfrak{f}^{\otimes r}$ ($\mathfrak{f}_n = (YF_{\mathrm{model}})^n \mathfrak{f}_0$) under a strictly increasing clock $\tau \colon \mathbb{N}_0 \to \mathbb{R}_{\ge 0}$ defines the **Time Granule (*Zeitkorn*)**:
+$$
+\delta t_n \;\coloneqq\; \tau(n+1) - \tau(n) > 0, \qquad t_N = \sum_{k=0}^{N-1} \delta t_k = \tau(N)
+$$
+:::
+
+::: {.firewall-box .fragment}
+**Theorem 4.22 & Definition 4.23: Grid $\hat{A} = (A_{ik})$ & Affinity $\beta^\infty$**
+* **Singular Classes ($A_{12}, A_{22}$):** Tensorial dimension compression ($\dim F(\mathcal{M}) < \dim\mathcal{M}$) and expansion ($\dim F(\mathcal{M}) > \dim\mathcal{M}$) induce topological singularities.
+* **Affinitätssyntrix ($\beta^\infty$):** Two-sided non-degenerate bilinear interface ($\ker T_\beta = \{0\} \wedge \ker S_\beta = \{0\}$).
+:::
+:::
+
+::: {.column width="54%"}
+<!-- INTERACTIVE 3x3 TAXONOMIC MATRIX A_ik & ZEITKORN STEPPER -->
+<div class="interactive-panel">
+  <h4>Interactive $3 \times 3$ Taxonomic Property Grid $\hat{A} = (A_{ik})$ (Fig. 4.10)</h4>
+  <p style="font-size:0.60em; color:#aaa; margin-bottom:6px;">
+    Click any transformation class $A_{ik}$ to inspect its categorical Action Property ($i$) vs. Effect Target ($k$) and regularity status.
+  </p>
+
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px; margin-bottom:8px;">
+    <button class="syn-btn" style="border-color:#20B2AA;" onclick="inspectAik(1,1)">A₁₁: Colim + Conf</button>
+    <button class="syn-btn" style="border-color:#DC143C; color:#ff6b81;" onclick="inspectAik(1,2)">⚠ A₁₂: Colim + Tens</button>
+    <button class="syn-btn" style="border-color:#20B2AA;" onclick="inspectAik(1,3)">A₁₃: Colim + Field</button>
+
+    <button class="syn-btn" style="border-color:#20B2AA;" onclick="inspectAik(2,1)">A₂₁: Limit + Conf</button>
+    <button class="syn-btn" style="border-color:#DC143C; color:#ff6b81;" onclick="inspectAik(2,2)">⚠ A₂₂: Limit + Tens</button>
+    <button class="syn-btn" style="border-color:#20B2AA;" onclick="inspectAik(2,3)">A₂₃: Limit + Field</button>
+
+    <button class="syn-btn" style="border-color:#4169E1; color:#82aaff;" onclick="inspectAik(3,1)">A₃₁: Isog + Conf</button>
+    <button class="syn-btn" style="border-color:#4169E1; color:#82aaff;" onclick="inspectAik(3,2)">A₃₂: Morita Tens</button>
+    <button class="syn-btn" style="border-color:#4169E1; color:#82aaff;" onclick="inspectAik(3,3)">A₃₃: Conformal</button>
+  </div>
+
+  <div id="aik-readout" class="matrix-readout" style="text-align:left; font-size:0.66em; line-height:1.45;">
+    <b>⚠ Class A₁₂ (Synthesizing Tensorial — SINGULAR):</b> Preserves finite colimits but compresses carrier bundle tensor rank: dim F(M_syn) &lt; dim M_syn (Dimension-Defect Singularity!).
+  </div>
+</div>
+
+<div class="video-container" style="margin-top:8px;">
+  <video data-autoplay loop muted playsinline src="media/Ch4_Act10_11_Zeitkorn_Grid.mp4" style="max-height:185px;"></video>
+</div>
+:::
+::::
+
+---
+
+## §4.4–4.6: Reconstruction Map $\mathcal{R}$, Sanity Checks & Synthesis {.smaller}
+
+<div class="stratum-badge badge-c">STRATUM C: CARNAPIAN EXPLICATION OF ENYPHANIE &amp; BRIDGE TO CHAPTER 5</div>
+
+:::: {.columns}
+::: {.column width="52%"}
+| Heimian Concept ($\mathbf{D}$) | Mathematical Explicatum ($\mathcal{R}$ in $\mathbf{A}/\mathbf{B}$) | Ref. |
+|:---|:---|:---:|
+| **Enyphanie ($E\nu$)** | Interaction curvature 2-form $\Omegaint \in \Omega^2(M_U, \ad P_U)$ | Thm. 4.10 |
+| **Enyphaniegrad ($g_E$)** | Gauge-invariant density $g_E^{\mathcal{D}}(x) = \frac{1}{2}\|\Omegaint\|_{g_U, \mathfrak{g}}^2$ | Def. 4.16 |
+| **Syntrixtotalität ($T0$)** | Slice topos $\mathbf{Sh}(\mathbf{Ctx}_{/U_{\mathsf{G}}}, J_{/U_{\mathsf{G}}}) \simeq \Esyn / \mathbf{y}(U_{\mathsf{G}})$ | Thm. 4.6 |
+| **Enyphane ($\mathcal{E}, \mathcal{E}^{-1}$)** | Complete corner flow $\Phi_t^X \in \operatorname{Diff}(\mathcal{M})$ ($(\Phi_t^X)^{-1} = \Phi_{-t}^X$) | Def. 4.7 |
+| **Holoform ($\mathbf{H}$)** | Section $\Gamma \in \mathsf{Match}_{\mathcal{U}}(\mathbf{P})$ with $\Delta_{\mathrm{emerg}}^{\mathcal{I}}(\Gamma; \mathcal{D}) > 0$ | Def. 4.13 |
+| **Zeitkorn ($\delta t_i$)** | Discrete clock difference $\delta t_n = \tau(n+1) - \tau(n)$ on $YF^n$ | Def. 4.20 |
+| **Matrix $\hat{A} = (A_{ik})$** | $3 \times 3$ endofunctor grid; $A_{12}, A_{22}$ dimension-defective | Thm. 4.22 |
+
+::: {.thm-box .fragment}
+**Physical & Epistemic Sanity Checks (§4.5):**
+1. **Abelian $\mathrm{U}(1)$ Limit:** $G = \mathrm{U}(1) \implies [\mathfrak{g}, \mathfrak{g}] = 0 \implies \Omegaint = da_{\mathrm{int}}$ (vanishes if $a_{\mathrm{int}} = 0$, proving non-linear interaction emergence is purely non-Abelian!).
+2. **Flat Vacuum Baseline:** $F_{A_0} = a_k = a_{\mathrm{int}} = 0 \implies \mathcal{I}(\mathbf{A}) = 0 \wedge \Delta_{\mathrm{emerg}}^{\mathcal{I}} = 0$.
+:::
+:::
+
+::: {.column width="48%"}
+<div class="video-container">
+  <video data-autoplay loop muted playsinline src="media/Ch4_Act12_Synthesis.mp4"></video>
+  <div class="video-caption">Manim Act XII (Fig. 4.11): Synthesis of Gauge Curvature, Slice Totalities &amp; Chronometry</div>
+</div>
+
+::: {.firewall-box .fragment}
+**Syntrometric Dialectical Transition to Chapter 5:**
+Single-stratum gauge dynamics and slice toposes $\Esyn/\mathbf{y}(U_{\mathsf{G}})$ cannot accommodate **infinite recursive nesting across organizational scales** without triggering set-theoretic size paradoxes. In **Chapter 5 (*Metroplextheorie*)**, we lift the framework into the **Ambient $(\infty, 1)$-Topos $\mathcal{X}_{\mathrm{syn}}$** and its **Dendroidal Complete Segal Spaces**.
+:::
+:::
+::::
+
+<!-- JAVASCRIPT FOR CHAPTER 4 INTERACTIVE LABORATORIES -->
+<script>
+function comb4(n, k) {
+  if (k < 0 || k > n) return 0;
+  if (k === 0 || k === n) return 1;
+  let r = 1;
+  for (let i = 1; i <= k; i++) r = r * (n - i + 1) / i;
+  return Math.round(r);
+}
+
+function updateSimplexCalc() {
+  let Q = parseInt(document.getElementById('simp-q').value);
+  document.getElementById('simp-q-val').innerText = Q;
+
+  let f2D = Q;
+  let f3D = comb4(Q + 1, 2); // C(Q,2) + Q
+  let f4D_mult = comb4(Q + 2, 3);
+  let f4D_heim = comb4(Q, 3) + comb4(Q, 2);
+
+  document.getElementById('simp-readout').innerHTML =
+    `<b>4-Store Degenerations (Props. 4.1 & 4.3):</b> C(4,1)=4 (1D) + C(4,2)=6 (2D) + C(4,3)=4 (3D) = <b style="color:#FFD700;">14 Proper Subcollections</b><br>` +
+    `<b>2D Plane Fillings:</b> Q = <b>${f2D}</b>  |  <b>3D Subspace Fillings:</b> C(Q+1, 2) = <b>${f3D}</b><br>` +
+    `<b>4D Interior Fillings:</b> Multiset C(Q+2, 3) = <b style="color:#20B2AA;">${f4D_mult}</b>  (Heim SM p. 65 C(Q,3)+C(Q,2) = <b>${f4D_heim}</b>)`;
+}
+
+function updateSU2Lab() {
+  let grp = document.getElementById('su2-group').value;
+  let w1 = parseFloat(document.getElementById('su2-w1').value);
+  let w2 = parseFloat(document.getElementById('su2-w2').value);
+  document.getElementById('su2-w1-val').innerText = w1.toFixed(2);
+  document.getElementById('su2-w2-val').innerText = w2.toFixed(2);
+
+  let box = document.getElementById('su2-readout');
+  if (grp === 'u1') {
+    box.style.borderLeftColor = "#4169E1";
+    box.innerHTML =
+      `<span style="color:#82aaff;"><b>★ ABELIAN U(1) SANITY CHECK (§4.5.1):</b> [T₁, T₂] = 0, a_int = 0</span><br>` +
+      `<b>Interaction Curvature:</b> Ω_int^D = [a₁, a₂] = <b>0</b>  |  <b>Enyphaniegrad Density:</b> g_E^D(x) = <b>0.000</b><br>` +
+      `<b>Holoform Emergence:</b> Δ_emerg^I = <b>0.000</b> (Linear Abelian fields cannot self-generate interaction curvature!)`;
+  } else {
+    let commMag = w1 * w2;
+    let gE = 0.125 * commMag * commMag; // (1/8) w1^2 w2^2
+    let status = (gE > 0.0001)
+      ? `<span style="color:#FFD700;"><b>SUPER-ADDITIVE HOLOFORM EMERGENCE (Δ_emerg^I > 0)!</b></span>`
+      : `<span style="color:#cbd5e1;">Uncoupled Vacuum Baseline (g_E = 0)</span>`;
+    box.style.borderLeftColor = (gE > 0.0001) ? "#FFD700" : "#708090";
+    box.innerHTML =
+      `<b>Constituent Curvatures:</b> F₁ = da₁ + ½[a₁,a₁] = <b>0</b>,  F₂ = da₂ + ½[a₂,a₂] = <b>0</b> (Individually Flat!)<br>` +
+      `<b>Emergent Commutator:</b> Ω_int^D = [a₁, a₂] = <b style="color:#20B2AA;">${commMag.toFixed(3)} · T₃ dx¹ ∧ dx²</b><br>` +
+      `<b>Enyphaniegrad Density:</b> g_E^D = ⅛ ω₁² ω₂² = <b style="color:#FFA500;">${gE.toFixed(4)}</b>  ⇒  ${status}`;
+  }
+}
+
+function updateBogomolny() {
+  let q = parseInt(document.getElementById('bog-q').value);
+  let fl = parseFloat(document.getElementById('bog-fl').value);
+  document.getElementById('bog-q-val').innerText = (q >= 0 ? '+' : '') + q;
+  document.getElementById('bog-fl-val').innerText = fl.toFixed(1);
+
+  let fourPiSq = 4.0 * Math.PI * Math.PI;
+  let bound = fourPiSq * Math.abs(q);
+  let action = bound + 0.25 * fl * fl;
+
+  let box = document.getElementById('bog-readout');
+  if (q !== 0 && fl === 0) {
+    box.style.borderLeftColor = "#FFD700";
+    box.innerHTML =
+      `<span style="color:#FFD700;"><b>★ SELF-DUAL BOGOMOLNY SATURATION (*F_A = ${q > 0 ? '+' : '-'}F_A, Q_top = ${q}):</b></span><br>` +
+      `<b>Yang–Mills Action:</b> I(A) = 4π²|Q_top| = <b>${action.toFixed(2)}</b> (Topologically locked; cannot decay to Q_top = 0!)`;
+  } else if (q !== 0) {
+    box.style.borderLeftColor = "#20B2AA";
+    box.innerHTML =
+      `<b>Topological Sector Q_top = ${q}:</b> Bogomolny Lower Bound 4π²|Q_top| = <b>${bound.toFixed(2)}</b><br>` +
+      `<b>Total Action:</b> I(A) = ¼‖F_A ∓ *F_A‖² + 4π²|Q_top| = <b style="color:#FFA500;">${action.toFixed(2)} ≥ ${bound.toFixed(2)}</b>`;
+  } else {
+    box.style.borderLeftColor = "#708090";
+    box.innerHTML =
+      `<b>Topologically Trivial Sector (Q_top = 0):</b> Lower bound = 0.00  |  Current Action I(A) = <b>${action.toFixed(2)}</b> (Can relax to flat vacuum).`;
+  }
+}
+
+function inspectAik(i, k) {
+  const data = {
+    "11": { title: "Class A₁₁ (Synthesizing Conflexive — REGULAR)", col: "#20B2AA", desc: "Preserves finite colimits; adds span pushout nodes ϕ_l while preserving Syntropodenzahl." },
+    "12": { title: "⚠ Class A₁₂ (Synthesizing Tensorial — SINGULAR)", col: "#DC143C", desc: "Preserves colimits but strictly compresses state-space tensor dimension: dim F(M_syn) < dim M_syn (Dimension-Defect Singularity!)." },
+    "13": { title: "Class A₁₃ (Synthesizing Field-Intrinsic — REGULAR)", col: "#20B2AA", desc: "Preserves finite colimits and manifold dimension; synthesizes metric tensor g^{syn} and vector field X_{kor}." },
+    "21": { title: "Class A₂₁ (Analyzing Conflexive — REGULAR)", col: "#20B2AA", desc: "Preserves finite limits (overlap pullbacks); decomposes conflexive network channels." },
+    "22": { title: "⚠ Class A₂₂ (Analyzing Tensorial — SINGULAR)", col: "#DC143C", desc: "Preserves limits but strictly inflates state-space tensor dimension: dim F(M_syn) > dim M_syn (Dimension-Inflation Singularity!)." },
+    "23": { title: "Class A₂₃ (Analyzing Field-Intrinsic — REGULAR)", col: "#20B2AA", desc: "Preserves finite limits and manifold dimension; analyzes affine connection coefficients Γ_{kl}^i." },
+    "31": { title: "Class A₃₁ (Isogonal Conflexive — UNCONDITIONALLY REGULAR)", col: "#4169E1", desc: "Categorical equivalence inducing invertible network isomorphism on pushout incidence graphs." },
+    "32": { title: "Class A₃₂ (Isogonal Tensorial — MORITA REGULAR)", col: "#4169E1", desc: "Categorical equivalence preserving bundle spectrum via Morita equivalence of endomorphism algebras." },
+    "33": { title: "Class A₃₃ (Isogonal Field-Intrinsic — CONFORMAL REGULAR)", col: "#4169E1", desc: "Conformal diffeomorphism equivalence preserving smooth manifold dimension and causal structure." }
+  };
+  let item = data[`${i}${k}`];
+  let box = document.getElementById('aik-readout');
+  box.style.borderLeftColor = item.col;
+  box.innerHTML = `<b style="color:${item.col};">${item.title}:</b><br>${item.desc}`;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  updateSimplexCalc();
+  updateSU2Lab();
+  updateBogomolny();
+});
+</script>
