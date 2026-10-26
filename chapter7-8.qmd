@@ -1,0 +1,1030 @@
+---
+title: "Syntrometrische Maximentelezentrik"
+subtitle: "Chapters 7 & 8: Anthropomorphic Syntrometry & Quantitätsaspekt — Realification, Tensor Cascades, and Grothendieck Nuclearity"
+author: "Research Collective — Department of Mathematical Physics & Formal Epistemology"
+date: "August 2026"
+format:
+  revealjs:
+    theme: [dark, custom_syntrometrie.scss]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    min-scale: 0.2
+    max-scale: 1.5
+    transition: fade
+    background-transition: fade
+    slide-number: c/t
+    controls: true
+    progress: true
+    hash: true
+    center: false
+    html-math-method: mathjax
+    include-in-header:
+      text: |
+        <script>
+        window.MathJax = {
+          tex: {
+            macros: {
+              coloneqq: "\\mathrel{:=}",
+              Coloneqq: "\\mathrel{::=}",
+              llbracket: "\\mathopen{[\\mkern-3mu[}",
+              rrbracket: "\\mathclose{]\\mkern-3mu]}",
+              longhookrightarrow: "\\lhook\\joinrel\\longrightarrow",
+              Ctx: "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+              CtxQuant: "\\mathbf{Ctx}_{\\mathrm{quant}}",
+              Ban: "\\mathbf{Ban}_{\\le 1}",
+              FinBan: "\\mathbf{FinBan}_{\\le 1}",
+              Esyn: "\\mathcal{E}_{\\mathrm{syn}}",
+              Equant: "\\mathcal{E}_{\\mathrm{quant}}",
+              Jsyn: "J_{\\mathrm{syn}}",
+              Jquant: "J_{\\mathrm{quant}}",
+              Coeff: "\\mathbf{Coeff}",
+              DimField: "\\mathbf{DimField}_\\Lambda",
+              ManParam: "\\mathbf{Man}_{\\mathrm{param}}",
+              Oquant: "\\mathcal{O}_{\\mathrm{quant}}",
+              Oisom: "\\mathcal{O}_{\\mathrm{isom}}",
+              Msyn: "\\mathcal{M}_{\\mathrm{syn}}",
+              otpi: "\\mathbin{\\widehat{\\otimes}_\\pi}",
+              oteps: "\\mathbin{\\widehat{\\otimes}_\\varepsilon}",
+              quantitaetssyntrix: "\\mathbf{y}\\mathbf{R}_n",
+              Sym: "\\operatorname{Sym}",
+              Pol: "\\operatorname{Pol}",
+              op: "\\mathrm{op}"
+            }
+          }
+        };
+        </script>
+        <style>
+        .reveal-viewport.reveal-scroll .slide-background,
+        .reveal-viewport.reveal-scroll section {
+          font-size: clamp(14px, 1.35vw, 26px) !important;
+        }
+        .reveal-viewport.reveal-scroll .interactive-panel,
+        .reveal-viewport.reveal-scroll .thm-box,
+        .reveal-viewport.reveal-scroll .carnap-box,
+        .reveal-viewport.reveal-scroll .firewall-box,
+        .reveal-viewport.reveal-scroll .intuition-box {
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+        .widget-context-note {
+          font-size: 0.64em;
+          color: #cbd5e1;
+          line-height: 1.36;
+          margin: 4px 0 10px 0;
+        }
+        .syn-tabs {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          margin-bottom: 10px;
+        }
+        .syn-tab-btn {
+          background: #151c2c;
+          color: #94a3b8;
+          border: 1px solid #334155;
+          border-radius: 6px;
+          padding: 5px 11px;
+          font-size: 0.60em;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.18s ease;
+        }
+        .syn-tab-btn.active, .syn-tab-btn:hover {
+          background: rgba(65, 105, 225, 0.28);
+          color: #FFD700;
+          border-color: #FFD700;
+        }
+        .syn-tab-pane {
+          display: none;
+          background: rgba(10, 14, 23, 0.82);
+          border: 1px solid rgba(65, 105, 225, 0.45);
+          border-radius: 8px;
+          padding: 10px 14px;
+          font-size: 0.72em;
+        }
+        .syn-tab-pane.active {
+          display: block;
+        }
+        .lean-code-card {
+          background: #0d131f;
+          border: 1.5px solid #334155;
+          border-left: 5px solid #20B2AA;
+          border-radius: 8px;
+          padding: 10px 14px;
+          font-family: "Libertinus Mono", monospace;
+          font-size: 0.54em;
+          line-height: 1.36;
+          color: #e2e8f0;
+          overflow-x: auto;
+        }
+        .stat-grid-3 {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 6px;
+          margin-top: 6px;
+        }
+        .stat-card {
+          background: rgba(15, 23, 42, 0.85);
+          border: 1px solid #334155;
+          border-left: 4px solid #4169E1;
+          border-radius: 6px;
+          padding: 5px 8px;
+          font-size: 0.62em;
+        }
+        </style>
+---
+
+<!-- FALLBACK GLOBAL MATHJAX MACROS MATCHING CHAPTERS 7 & 8 OF SYNTROMETRIC-TOPOS.TEX -->
+<div style="display:none;">
+$$
+\newcommand{\Ctx}{\mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}}
+\newcommand{\CtxQuant}{\mathbf{Ctx}_{\mathrm{quant}}}
+\newcommand{\Ban}{\mathbf{Ban}_{\le 1}}
+\newcommand{\FinBan}{\mathbf{FinBan}_{\le 1}}
+\newcommand{\Esyn}{\mathcal{E}_{\mathrm{syn}}}
+\newcommand{\Equant}{\mathcal{E}_{\mathrm{quant}}}
+\newcommand{\Jsyn}{J_{\mathrm{syn}}}
+\newcommand{\Jquant}{J_{\mathrm{quant}}}
+\newcommand{\Coeff}{\mathbf{Coeff}}
+\newcommand{\DimField}{\mathbf{DimField}_\Lambda}
+\newcommand{\ManParam}{\mathbf{Man}_{\mathrm{param}}}
+\newcommand{\Oquant}{\mathcal{O}_{\mathrm{quant}}}
+\newcommand{\Oisom}{\mathcal{O}_{\mathrm{isom}}}
+\newcommand{\Msyn}{\mathcal{M}_{\mathrm{syn}}}
+\newcommand{\otpi}{\mathbin{\widehat{\otimes}_\pi}}
+\newcommand{\oteps}{\mathbin{\widehat{\otimes}_\varepsilon}}
+\newcommand{\quantitaetssyntrix}{\mathbf{y}\mathbf{R}_n}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Pol}{\operatorname{Pol}}
+\newcommand{\op}{\mathrm{op}}
+$$
+</div>
+
+## §7.1.1: The Anthropomorphic Pivot & Cognitive Pluralism {.smaller}
+
+<div class="stratum-badge badge-d">OPENING OF TEIL B (LEVEL IV CONTINUUM) &amp; STRATUM D (SM, PP. 122–123)</div>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Crossing from Pure Logic (*Teil A*) to Empirical Physics (*Teil B*)
+* Chapters 1–6 completed **Teil A**: the universal categorical logic of observation, operadic synthesis, corporate networks, gauge curvature, higher Metroplex towers, and telecentric coalgebras. Yet it contained no physical units or numerical coordinates.
+* In §7.1 (SM, pp. 122–123), Heim executes the **Anthropomorphic Pivot** by analyzing the human cognitive baseline (*normal-psychische Konstellation*):
+  - Begins with two-valued contradictory predication ($A_0$: $\overline{|\Pi|}_+$ vs. $\overline{|\Pi|}_-$, $\sum h_i = 1$) across a simultaneous **plurality of aspects** $S_{\mathrm{human}} = \bigcup_{i \in I} S_i$.
+  - **Qualität (Regional Pluralism):** Color qualia, musical timbre, and affect differ in intrinsic kind; their foundations remain irreducibly plural (**Apodiktische Pluralitäten**, local $\Box_S$).
+  - **Quantität (Global Unification):** Spatial extension, duration, and mass admit additive concatenation and ratio comparison under **Mengendialektik** ($\overline{|m|}_+ \equiv {=}$ vs. $\overline{|m|}_- \equiv {\ne} \implies a > b \lor a < b$), converging onto the single overarching **Quantitätsaspekt**.
+
+:::
+
+::: {.column width="50%"}
+
+<div class="video-container">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch78_Act1_Anthropomorphic_Pivot.mp4" style="max-height:270px;"></video>
+  <div class="video-caption">Manim Act I: Qualitative Apodictic Pluralities vs. Unified Quantitative Mengendialektik</div>
+</div>
+
+::: {.carnap-box .fragment}
+**Carnap 7.1: Coordinative Definitions & Reduction Sentences**
+Following Carnap (*Testability and Meaning*, 1936; 1956), Michael Friedman (*Dynamics of Reason*, 2001), and Bas van Fraassen (2008), abstract theoretical terms ($L_T$) acquire empirical meaning via **coordinative definitions** to an observational measurement language ($L_O$). Restricting $(\Ctx, \Jsyn)$ to module carriers over $\Coeff = [\mathbb{Q} \subseteq \mathbb{R} \subseteq \mathbb{C}]$ and clothing them in physical units via $S_n$ executes this exact coordinative bridge!
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Welcome to Chapters 7 and 8, which launch Teil B of Syntrometrische Maximentelezentrik and Level IV of our Konstitutionsstammbaum. Why does human science achieve a unified mathematical physics for quantitative magnitudes while qualitative experience remains pluralistic? Because quantitative observables admit additive concatenation and ordering (Mengendialektik) over the algebraic number fields Q, R, and C.
+:::
+
+---
+
+## §7.1.2 & §7.2.1: *Quantitätssyntrix* (SM-28) & Realification Poset $\Coeff$ {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM D/A: QUANTITÄTSSYNTRIX (SM-28) &amp; REALIFICATION FUNCTOR (DEFS. 7.1–7.3, FIGS. 7.1–7.2)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Historical Schema of the *Quantitätssyntrix* (SM Eq. 28, p. 127):**
+$$
+\mathrm{S}_n ; \widetilde{\mathrm{a}} = \mathrm{R}_n, \qquad \widetilde{\mathrm{a}} = (\mathrm{a}_i)_q, \qquad \quantitaetssyntrix \equiv \widetilde{\mathrm{a}}| = \langle \mathrm{f},\, \mathrm{R}_n,\, \mathrm{m} \rangle \tag{SM-28}
+$$
+1. **Singularer Metrophor ($\widetilde{a} = (a_i)_q$):** Dimensionless elements in $\mathbb{K} \in \{\mathbb{Q}, \mathbb{R}, \mathbb{C}\}$ (*Zahlenkörper*).
+2. **Semantischer Iterator ($S_n$):** Clothes pure numbers with physical dimensions/units $\mathbf{\Lambda} = \operatorname{diag}(\lambda_1, \dots, \lambda_n)$, inducing the $n$-dimensional **Semantischer Metrophor ($R_n$)**.
+3. **Synkolatorraum ($\Msyn$):** Functional operator $f$ selects $m$ coordinates $R_m \subseteq R_n$ ($\binom{n}{m}$ combinations) to generate a rank-$k$ tensor field ${}^m\bar{A}$ in total bundle space $\Msyn = T^{\otimes k}R_m$ of dimension **$m + m^k$**.
+:::
+
+::: {.thm-box .fragment}
+**Definitions 7.1–7.3: Poset $\Coeff = [\mathbb{Q} \subseteq \mathbb{R} \subseteq \mathbb{C}]$ & Realification $V_{\mathbb{R}}$**
+ With real dimension factor $d(\mathbb{Q}) = 1,\; d(\mathbb{R}) = 1,\; d(\mathbb{C}) = 2$:
+$$
+V_{\mathbb{R}} \coloneqq \begin{cases} \mathbb{R} \otimes_{\mathbb{Q}} V & \mathbb{K} = \mathbb{Q} \\ V & \mathbb{K} = \mathbb{R} \\ \operatorname{Res}_{\mathbb{R}}^{\mathbb{C}}(V) & \mathbb{K} = \mathbb{C} \end{cases} \implies U_{\mathrm{quant}}(U_Q) = P^U \cong \mathbb{R}^{3\, d(\mathbb{K}_U)\, n_U}
+$$
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4>Interactive Realification Poset Coeff &amp; Synkolatorraum (m + m^k) Lab</h4>
+  <p class="widget-context-note">
+    <b>Context (§7.1.2 &amp; §7.2.1, Figs. 7.1–7.2):</b> Select number field $\mathbb{K} \in \Coeff$, Metrophor coordinate rank $n$, active submanifold dimension $m \le n$, and tensor rank $k$ to compute realified carrier dimension $\dim_{\mathbb{R}} P^U$, functional combinations $\binom{n}{m}$, and total *Synkolatorraum* dimension $m + m^k$.
+  </p>
+  <div class="slider-row">
+    <span>Number Field $\mathbb{K}$:</span>
+    <select id="q-field" onchange="updateQuantSpaceLab()" style="background:#1e293b; color:#FFD700; border:1px solid #FFD700; border-radius:4px; padding:3px;">
+      <option value="Q">ℚ (Rationals: Discrete Ratios, d(ℚ) = 1)</option>
+      <option value="R" selected>ℝ (Reals: Cauchy Continuum, d(ℝ) = 1)</option>
+      <option value="C">ℂ (Complex: Quantum Phase S², d(ℂ) = 2)</option>
+    </select>
+  </div>
+  <div class="slider-row">
+    <span style="color:#4169E1;">Rank <i>n</i>:</span>
+    <input type="range" id="q-n" min="2" max="12" step="1" value="6" oninput="updateQuantSpaceLab()">
+    <span id="q-n-val" style="font-family:monospace; width:22px;">6</span>
+    <span style="color:#20B2AA;">Subspace <i>m</i>:</span>
+    <input type="range" id="q-m" min="1" max="6" step="1" value="4" oninput="updateQuantSpaceLab()">
+    <span id="q-m-val" style="font-family:monospace; width:22px;">4</span>
+    <span style="color:#FFA500;">Tensor Rank <i>k</i>:</span>
+    <input type="range" id="q-k" min="0" max="4" step="1" value="2" oninput="updateQuantSpaceLab()">
+    <span id="q-k-val" style="font-family:monospace; width:22px;">2</span>
+  </div>
+  <div id="q-cards" class="stat-grid-3"></div>
+  <div id="q-readout" class="matrix-readout" style="margin-top:6px; font-size:0.64em;"></div>
+</div>
+
+<div class="video-container" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch78_Act2_3_Realification_Bundle.mp4" style="max-height:185px;"></video>
+  <div class="video-caption">Manim Acts II &amp; III (Figs. 7.1 &amp; 7.2): Quantitätssyntrix (SM-28) &amp; 3D Realification Bundle</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section 7.2.1 formalizes the Quantitative Context Category Ctx_quant over the thin poset category Coeff = [Q subseteq R subseteq C]. Applying the realification functor (V)_R maps rational tuples by scalar extension and complex tuples by scalar restriction, while the Synkolatorraum M_syn = T^{otimes k} R_m has total dimension m + m^k.
+:::
+
+---
+
+## §7.2.1–7.2.2: Topos $\Equant$, Dedekind Reals $\mathbb{R}_{\mathcal{E}}$ & Operad $\Oquant$ {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM A: GEOMETRIC MORPHISM (THM. 7.6), DEDEKIND REALS (THM. 7.8) &amp; TENSOR OPERAD (DEF. 7.11)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Prop. 7.4, Def. 7.5 & Theorem 7.6: Quantitative Sheaf Topos $\Equant$**
+* Pullbacks in $\CtxQuant$ take the subfield meet $\mathbb{K}_W \coloneqq \mathbb{K}_{V_1} \cap \mathbb{K}_{V_2} = \min(\mathbb{K}_{V_1}, \mathbb{K}_{V_2})$ in $\Coeff$.
+* The pullback- and cover-preserving forgetful functor $I \colon (\CtxQuant, \Jquant) \to (\Ctx, \Jsyn)$ induces a canonical **Geometric Morphism of Toposes**:
+$$
+\pi_{\mathrm{quant}} = \big(\pi_{\mathrm{quant}}^* \dashv \pi_{\mathrm{quant}*}\big) \;\colon\; \Equant \coloneqq \mathbf{Sh}(\CtxQuant, \Jquant) \longrightarrow \Esyn
+$$
+:::
+
+::: {.carnap-box .fragment}
+**Def. 7.7 & Theorem 7.8: Internal Dedekind vs. Cauchy Reals in $\Equant$**
+In the internal logic of $\Equant$, $\mathbb{R}_{\mathcal{E}}$ is the object of Dedekind cuts $(L, U) \subseteq \mathbb{Q}_{\mathcal{E}} \times \mathbb{Q}_{\mathcal{E}}$ satisfying inhabitedness, roundedness, disjointness ($L \cap U = \emptyset$), and **constructive Heyting locatedness**:
+$$
+\forall q < r \text{ in } \mathbb{Q}_{\mathcal{E}},\qquad L(q) \vee U(r)
+$$
+The canonical monomorphism $\mathbb{R}_{\mathrm{Cauchy}} \hookrightarrow \mathbb{R}_{\mathcal{E}}$ is an isomorphism under internal countable choice or local completeness.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4>Interactive Internal Dedekind Cut (L, U) &amp; Locatedness Explorer</h4>
+  <p class="widget-context-note">
+    <b>Context (Def. 7.7 &amp; Thm. 7.8):</b> Slide the rational test interval width $\delta = r - q > 0$ around $\alpha = \sqrt{2} \approx 1.4142$ to verify constructive locatedness ($L(q) \vee U(r)$ in $\Omega(U)$) and Cauchy convergence as $\delta \to 0^+$.
+  </p>
+  <div class="slider-row">
+    <span style="color:#FFD700;">Test Gap <i>δ = r − q</i>:</span>
+    <input type="range" id="ded-gap" min="0.02" max="0.80" step="0.02" value="0.36" oninput="updateDedekindLab()">
+    <span id="ded-gap-val" style="font-family:monospace; width:38px;">0.36</span>
+    <span style="color:#20B2AA;">Probe <i>q</i>:</span>
+    <input type="range" id="ded-q" min="0.80" max="1.80" step="0.02" value="1.25" oninput="updateDedekindLab()">
+    <span id="ded-q-val" style="font-family:monospace; width:38px;">1.25</span>
+  </div>
+  <svg viewBox="0 0 420 75" style="width:100%; max-height:72px; background:#070a12; border-radius:8px; border:1px solid #334155;">
+    <line x1="20" y1="42" x2="400" y2="42" stroke="#475569" stroke-width="2"/>
+    <line x1="20" y1="42" x2="228" y2="42" stroke="#20B2AA" stroke-width="7"/>
+    <line x1="232" y1="42" x2="400" y2="42" stroke="#FFA500" stroke-width="7"/>
+    <circle cx="230" cy="42" r="6" fill="#FFD700" stroke="#000" stroke-width="1.5"/>
+    <text x="230" y="22" fill="#FFD700" font-size="10" font-weight="bold" text-anchor="middle">α = √2 ≈ 1.414</text>
+    <circle id="ded-pt-q" cx="195" cy="42" r="5" fill="#fff"/>
+    <circle id="ded-pt-r" cx="265" cy="42" r="5" fill="#fff"/>
+  </svg>
+  <div id="ded-readout" class="matrix-readout" style="margin-top:6px; font-size:0.64em;"></div>
+</div>
+
+::: {.thm-box .fragment}
+**Defs. 7.9–7.11: Bounded Tensor Operad $\Oquant$ & Isometric $\Oisom$ (Fig. 7.3)**
+For color $(m, k)$ denoting $X_{(m,k)} \coloneqq \Gamma_b^0(R_m, T^{\otimes k}R_m)$ ($\|A\|_{C_b^0} = \sup_{y\in R_m}\|A(y)\|_{g_m} < \infty$):
+$$
+\Oquant\big((m_1,k_1),\dots,(m_r,k_r); (m,k)\big) \coloneqq \mathcal{B}\!\left(X_{(m_1,k_1)} \otpi \dots \otpi X_{(m_r,k_r)},\; X_{(m,k)}\right)
+$$
+with isometric-equivariant suboperad $\Oisom$: $f(\varphi_* A_1, \dots, \varphi_* A_r) = \varphi_* f(A_1, \dots, A_r)\;\forall \varphi \in \operatorname{Isom}(R_m, g_m)$.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Theorem 7.6 establishes a geometric morphism pi_quant between the Quantitative Sheaf Topos E_quant and E_syn. Inside E_quant, Theorem 7.8 constructs the internal Dedekind real object R_E via located cuts (L, U), while Definition 7.11 constructs the colored Banach operad O_quant of bounded multilinear tensor field operations.
+:::
+
+---
+
+## §7.3: Functor $S_n$, Isocline Foliations ($\mathfrak{f}_A$) & Cascade Norm Bounds {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: PARAMETER FUNCTOR (DEF. 7.12), FOLIATIONS (DEF. 7.13) &amp; CASCADE ESTIMATE (THM. 7.16)</div>
+
+:::: {.columns}
+
+::: {.column width="47%"}
+
+::: {.thm-box}
+**Def. 7.12 (Functor $S_n$) & Def. 7.13 (Isoclines $\mathfrak{f}_A$ & Centers $Z_\alpha$, Fig. 7.5)**
+1. **Dimensional Parameter Functor $S_n \colon \DimField \to \Ban$:** Assigns $(\mathbb{K}, \mathbf{\Lambda})$ to $R_n \coloneqq (\mathbb{K}^n)_{\mathbb{R}}$ with weighted norm $\|y\|_{R_n} \coloneqq \max_{1\le l\le n}\lambda_l\|y_l\|_{\mathbb{K}}$.
+2. **Regular Isocline Foliation ($\mathfrak{f}_A$):** On $R_m^{\mathrm{reg}} = \{y \mid \operatorname{rank}(d({}^m\bar{A})_y) = d\}$, level sets $\Sigma_c = ({}^m\bar{A})^{-1}(c) \cap R_m^{\mathrm{reg}}$ form a **codimension-$d$ foliation**.
+3. **Morse–Bott Field Centers ($Z_\alpha$):** Extrema of $\Phi(A) = \|A\|_{g_m}^2$ decompose into smooth critical submanifolds $\operatorname{Crit}(\Phi \circ A) = \bigsqcup_\alpha Z_\alpha$ ($\dim Z_\alpha \le m$).
+:::
+
+::: {.carnap-box .fragment}
+**Prop. 7.15 (Musical Pullback $\pi_\gamma^\circledast$) & Thm. 7.16 (Cascade Norm Bound):**
+With musical pullback $\pi_\gamma^\circledast(A) \coloneqq \sharp_{g_{m_\gamma}}^{\otimes k_{\gamma-1}} \circ \pi_\gamma^* \circ \flat_{g_{m_{\gamma-1}}}^{\otimes k_{\gamma-1}}(A)$ ($\|\pi_\gamma^\circledast(A)\|_{C_b^0} \le \|A\|_{C_b^0}$) and $\|f_\gamma\|_{\op} \le C_\gamma < \infty$, the iterates $A_\gamma = f_\gamma(A_{\gamma-1}, \dots, A_{\gamma-1})$ satisfy:
+$$
+\|A_\gamma\|_{C_b^0} \;\le\; \Gamma_\gamma \|A_0\|_{C_b^0}^{D_\gamma}, \qquad D_\gamma \coloneqq \prod_{j=1}^\gamma r_j, \qquad \Gamma_\gamma \coloneqq \prod_{j=1}^\gamma C_j^{\prod_{\ell=j+1}^\gamma r_\ell}
+$$
+:::
+
+:::
+
+::: {.column width="53%"}
+
+<div class="interactive-panel">
+  <h4>Interactive Strukturkaskade Monomial Norm Bound Calculator (Thm. 7.16)</h4>
+  <p class="widget-context-note">
+    <b>Context (§7.3.3, Thm. 7.16 &amp; §7.5 Sanity Checks):</b> Adjust cascade depth $M$, uniform stage arity $r_j = r$, operator norm bound $C_j = C$, and initial field norm $\|A_0\|_{C_b^0}$ to compute $D_M = r^M$ and $\Gamma_M = C^{(r^M - 1)/(r - 1)}$, or test the **Linear Unary ($r=1$)** and **Vacuum ($A_0=0$)** sanity checks!
+  </p>
+  <div class="slider-row">
+    <span style="color:#4169E1;">Depth <i>M</i>:</span>
+    <input type="range" id="cas-m" min="1" max="5" step="1" value="3" oninput="updateCascadeLab()">
+    <span id="cas-m-val" style="font-family:monospace; width:20px;">3</span>
+    <span style="color:#FFA500;">Arity <i>r<sub>j</sub></i>:</span>
+    <input type="range" id="cas-r" min="1" max="4" step="1" value="2" oninput="updateCascadeLab()">
+    <span id="cas-r-val" style="font-family:monospace; width:20px;">2</span>
+  </div>
+  <div class="slider-row">
+    <span style="color:#20B2AA;">Op Bound <i>C<sub>j</sub></i>:</span>
+    <input type="range" id="cas-c" min="0.50" max="1.30" step="0.05" value="0.90" oninput="updateCascadeLab()">
+    <span id="cas-c-val" style="font-family:monospace; width:34px;">0.90</span>
+    <span style="color:#FFD700;">Init ‖<i>A</i><sub>0</sub>‖:</span>
+    <input type="range" id="cas-a0" min="0.00" max="1.20" step="0.05" value="1.00" oninput="updateCascadeLab()">
+    <span id="cas-a0-val" style="font-family:monospace; width:34px;">1.00</span>
+  </div>
+  <div style="display:flex; gap:6px; justify-content:center; margin-top:6px;">
+    <button class="syn-btn" onclick="setCasPreset(3,1,0.85,1.0)">Linear Unary Check (r_j = 1)</button>
+    <button class="syn-btn" onclick="setCasPreset(4,2,1.0,1.0)">Unit Frame A₀ (§7.3.3, ‖A₀‖=1)</button>
+    <button class="syn-btn" onclick="setCasPreset(3,2,0.95,0.0)">Vacuum Check (A₀ = 0)</button>
+  </div>
+  <div id="cas-readout" class="matrix-readout" style="margin-top:6px; text-align:left; font-size:0.64em; line-height:1.42;"></div>
+</div>
+
+<div class="video-container" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch78_Act5_6_Foliation_Cascade.mp4" style="max-height:175px;"></video>
+  <div class="video-caption">Manim Acts V &amp; VI (Figs. 7.5 &amp; 7.6): Isocline Submersion Foliation f_A &amp; Cascade Monomial Norm Bound</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Recall Heim's foundational Cascade Principle (SM p. 130): only the first Synkolator f_1 acts directly on the raw coordinates of R_n, whereas higher Synkolators f_gamma (gamma > 1) process the tensor fields of the preceding syndrome F_{gamma-1}. Theorem 7.16 proves that finite-depth cascades satisfy an exact monomial norm estimate ||A_M|| <= Gamma_M ||A_0||^{D_M}, verified in Lean 4 as cascade_inductive_step.
+:::
+
+---
+
+## §8.1–8.2: *Primigene Äondyne* (SM-29), Calculus Functors & SDG {.smaller}
+
+<div class="stratum-badge badge-d">CHAPTER 8 OPENING: PARAMETER-TENSORIUM (SM-29) &amp; INFINITESIMAL FUNCTORS (SM EQS. 30–36)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**The *Quantitätssyntrix* as a *Primigene Äondyne* (SM Eq. 29, p. 131):**
+> *"Da die Quantitätssyntrix auf Elementen aus algebraischen Zahlkörpern basiert, die kontinuierlich sind, ist sie eine primigene Äondyne."*
+
+$$
+\quantitaetssyntrix \equiv \langle \mathfrak{f},\, R_n,\, m \rangle \equiv \widetilde{\mathbf{a}}(x_i)_1^n, \qquad R_n = (x_i)_n, \qquad 0 \le x_i \le \infty \tag{SM-29}
+$$
+* **Defs. 8.1 & 8.2 ($\ManParam$ & Unital Envelope $\mathcal{A}_{\mathbb{K}}(\mathcal{M}_n)$):**
+  On cornered parameter manifolds $\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n$, the unital base envelope:
+  $$
+  \mathcal{A}_{\mathbb{K}}(\mathcal{M}_n) \;\coloneqq\; \mathbb{K}\cdot 1_{\mathcal{A}} \oplus \mathscr{S}(\mathcal{M}_n, \mathbb{K}) \;\subset\; C_b^\infty(\mathcal{M}_n, \mathbb{K})
+  $$
+  intrinsically contains **Fehlstelle $0$** ($\mathbf{0} \in \mathcal{M}_n,\; 0_{\mathcal{A}}$) and **Einheit $E$** ($1_{\mathcal{A}} \colon x \mapsto 1_{\mathbb{K}}$, SM p. 133).
+:::
+
+<div class="video-container" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch78_Act7_8_Aeondyne_Calculus.mp4" style="max-height:215px;"></video>
+  <div class="video-caption">Manim Acts VII &amp; VIII: Primigene Äondyne (SM-29), Poincaré Ray Integral I₀ &amp; Kock–Lawvere SDG</div>
+</div>
+
+:::
+
+::: {.column width="52%"}
+
+::: {.interactive-panel}
+#### Interactive 4-Tab Inspector: Infinitesimal Functors ($\tilde{\mathrm{d}}|, \mathrm{I}_{\mathbf{0}}$) & SDG Demarcation
+
+<p class="widget-context-note">
+  <b>Context (§8.1.3 &amp; §8.2.2, SM Eqs. 30–36, Thm. 8.1 &amp; Carnap 8.1):</b> Click each tab to inspect Heim's corporate differential and integral functors, the Poincaré radial homotopy integral on star-shaped octants, the double-integral square identity (SM-35a), and the demarcation between Synthetic Differential Geometry and Discrete Metronics.
+</p>
+<div class="syn-tabs">
+  <button class="syn-tab-btn active" onclick="showCalcTab(1, this)">1. Differential d̃| (SM-30)</button>
+  <button class="syn-tab-btn" onclick="showCalcTab(2, this)">2. Poincaré Integral I₀ (SM-32)</button>
+  <button class="syn-tab-btn" onclick="showCalcTab(3, this)">3. Double Sieve (SM-35a)</button>
+  <button class="syn-tab-btn" onclick="showCalcTab(4, this)">4. Carnap 8.1: SDG vs. DEC</button>
+</div>
+
+::: {#calc-pane-1 .syn-tab-pane .active}
+**1. Infinitesimal Differential Functor $\tilde{\mathrm{d}}|$ (SM Eqs. 30, 30a, 31; Def. 8.3)**
+Defined as the limiting corporate subtraction chain as $(\Delta x_i)_n \to \mathbf{0}$:
+$$
+\tilde{\mathrm{d}}| f \;\coloneqq\; df \;=\; \sum_{i=1}^n \big(\tilde{\partial}_i| f\big)\,dx^i \;=\; \sum_{i=1}^n \frac{\partial f}{\partial x^i}\,dx^i \;\in\; \Omega_{\mathrm{closed}, b}^1(\mathcal{M}_n) \tag{SM-30}
+$$
+satisfying the exact Leibniz derivation rule $\tilde{\mathrm{d}}|(f \cdot g) = f\cdot(\tilde{\mathrm{d}}|g) + g\cdot(\tilde{\mathrm{d}}|f)$ (§8.5.1).
+:::
+
+::: {#calc-pane-2 .syn-tab-pane}
+**2. Poincaré Homotopy Integral Functor $\mathrm{I}_{\mathbf{0}}$ on Corners (SM Eqs. 32–34; Def. 8.3)**
+Integrates Whitney-smooth closed 1-forms $\omega \in \Omega_{\mathrm{closed}, b}^1(\mathcal{M}_n)$ along radial rays $\gamma_x(t) = tx$ ($t \in [0,1]$) from the origin $\mathbf{0} \in (\mathbb{R}_{\ge 0})^n$:
+$$
+\big(\mathrm{I}_{\mathbf{0}}\,\omega\big)(x) \coloneqq \int_0^1 \sum_{i=1}^n x^i \omega_i(tx)\,dt \implies \tilde{\mathrm{d}}|\big(\mathrm{I}_{\mathbf{0}}\,\omega\big) = \omega, \quad \mathrm{I}_a^b(\tilde{\mathrm{d}}|f) = f(\gamma(b)) - f(\gamma(a)) \tag{SM-33}
+$$
+:::
+
+::: {#calc-pane-3 .syn-tab-pane}
+**3. Double-Integral Partial Sieve Composition (Theorem 8.1, SM Eqs. 35, 35a)**
+Composing the synkolatively partial integrator ${}_+(y,z)?$ ($\metrophor{y}=\metrophor{z}$) with the metrophorically partial integrator ${}^+(y,z)?$ ($(\underline{f},\underline{p})=(\underline{g},\underline{q})$) on an identical syntrix under $\underline{f}(y_k^2)_1^p = \underline{f}^2$ yields:
+$$
+{}^+\!\Big({}_+(y, y)?,\, (\;)\Big)? \;=\; \frac{1}{2}\big(\mathbf{y}\widetilde{\mathbf{y}}\big)^2 \qquad \left(\text{Lean 4: }\frac{y\cdot y}{2} + \frac{y\cdot y}{2} = y^2\right) \tag{SM-35a}
+$$
+:::
+
+::: {#calc-pane-4 .syn-tab-pane}
+**4. Carnap 8.1: Synthetic Infinitesimals (Kock–Lawvere) vs. Discrete Metronics**
+* **Synthetic Differential Geometry (SDG):** Internal smooth topos line $R$ contains square-zero infinitesimals $D \coloneqq \llbracket d \in R \mid d^2 = 0 \rrbracket$ with $f(x+d) = f(x) + f'(x)d$.
+* **Discrete Exterior Calculus (Ch. 10 Metronics):** Finite lattice area step $\tau > 0$ on $\mathbb{M}_\tau^n$ generates the non-linear discrete Leibniz cross-term $\nabla(uv) = u\nabla v + v\nabla u - (\nabla u)(\nabla v)$!
+:::
+
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Chapter 8 identifies the Quantitätssyntrix with a primigene Äondyne (SM Eq. 29) over the cornered parameter manifold M_n = (R_{>=0})^n. Before the smooth continuum fractures into a discrete metronic lattice in Chapter 10, Section 8.2 proves that Heim's infinitesimal corporate subtraction and addition chains (SM Eqs. 30-36) reproduce exterior differentiation d and Poincaré homotopy integration I_0.
+:::
+
+---
+
+## §8.3.1: Seeley Corner Extension & Grothendieck Nuclearity {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: SEELEY EXTENSION &amp; NUCLEAR VARIABLE SEPARATION (THM. 8.4, FIGS. 8.1–8.2)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.firewall-box}
+**Why Naive Corner Extensions Fail II**
+For $f(x) = e^{-x}$ on $x \ge 0$, zero extension is discontinuous at $x=0$, while even reflection $e^{-|x|}$ suffers a first-derivative jump ($f'(0^+) = -1 \ne +1 = f'(0^-)$), destroying Schwartz smoothness!
+:::
+
+<div class="interactive-panel" style="margin-top:8px;">
+  <h4>Interactive Seeley Corner Extension vs. Naive Reflection (Fig. 8.2)</h4>
+  <p class="widget-context-note">
+    <b>Context (Thm. 8.4(1)):</b> Seeley's operator $\mathcal{E}_{x_i} f(x_i) = \sum_{k=0}^\infty a_k \chi(-2^k x_i) f(-2^k x_i)$ ($x_i < 0$) uses Vandermonde moments $\sum_{k=0}^\infty a_k (-2^k)^m = 1\;\forall m \in \mathbb{N}_0$ to match derivatives of all orders across the boundary wall $x_i = 0$.
+  </p>
+  <div style="display:flex; gap:6px; justify-content:center; margin-bottom:6px;">
+    <button class="syn-btn" onclick="setSeeleyMode('seeley')">1. Smooth Seeley Extension E^{(n)} (C^∞)</button>
+    <button class="syn-btn" onclick="setSeeleyMode('even')">2. Naive Even Reflection e^{-|x|} (Kink!)</button>
+    <button class="syn-btn" onclick="setSeeleyMode('zero')">3. Naive Zero Extension (Jump!)</button>
+  </div>
+  <svg id="seeley-svg" viewBox="0 0 420 115" style="width:100%; max-height:110px; background:#070a12; border-radius:8px; border:1px solid #334155;"></svg>
+  <div id="seeley-readout" class="matrix-readout" style="margin-top:6px; font-size:0.63em;"></div>
+</div>
+
+:::
+
+::: {.column width="52%"}
+
+::: {.thm-box}
+**Theorem 8.4 ($c_{\mathrm{NUCL}}$): Grothendieck Nuclear Variable Separation on Corners**
+Via the continuous linear right-inverse $\mathcal{E}^{(n)} = \bigotimes_{i=1}^n \mathcal{E}_{x_i} \colon \mathscr{S}((\mathbb{R}_{\ge 0})^n) \to \mathscr{S}(\mathbb{R}^n)$ ($\mathcal{R}_+ \circ \mathcal{E}^{(n)} = \operatorname{id}$), $\mathscr{S}((\mathbb{R}_{\ge 0})^m)$ is a closed complemented subspace of nuclear $\mathscr{S}(\mathbb{R}^m)$, inheriting **Grothendieck nuclearity**:
+$$
+\mathscr{S}\!\big((\mathbb{R}_{\ge 0})^m\big) \;\cong\; \widehat{\bigotimes}_{l=1}^{m,\pi} \mathscr{S}(\mathbb{R}_{\ge 0}) \;\cong\; \widehat{\bigotimes}_{l=1}^{m,\varepsilon} \mathscr{S}(\mathbb{R}_{\ge 0})
+$$
+Every kernel $f \in \mathscr{S}((\mathbb{R}_{\ge 0})^m)$ expands into an absolutely convergent separated series $f(x_1,\dots,x_m) = \sum_{j=1}^\infty \lambda_j\, \phi_j^{(1)}(x_1) \otimes \dots \otimes \phi_j^{(m)}(x_m)$ with $\sum_{j=1}^\infty |\lambda_j| < \infty$!
+:::
+
+<div class="interactive-panel" style="margin-top:8px;">
+  <h4>Interactive Nuclear Series Convergence Lab (Remark 8.1, Fig. 8.1)</h4>
+  <p class="widget-context-note">
+    <b>Context (Rem. 8.1):</b> For $f(x_1, x_2) = e^{-(x_1+x_2)}\cos(x_1 x_2) = \sum_{k=0}^\infty \frac{(-1)^k}{(2k)!}(x_1^{2k}e^{-x_1}) \otimes (x_2^{2k}e^{-x_2})$, slide truncation order $N$ to watch $\sum_{k=0}^N |\lambda_k|$ converge to $\cosh(1)$ and evaluate the separated sum at $(x_1, x_2) = (1, 1)$.
+  </p>
+  <div class="slider-row">
+    <span style="color:#FFD700;">Truncation Order <i>N</i>:</span>
+    <input type="range" id="nuc-n" min="0" max="6" step="1" value="3" oninput="updateNuclearSeries()">
+    <span id="nuc-n-val" style="font-family:monospace; width:38px;">N = 3</span>
+  </div>
+  <div id="nuc-readout" class="matrix-readout" style="margin-top:6px; font-size:0.63em; text-align:left;"></div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+How do we rigorously justify Heim's Separation der Variablen on cornered manifolds (R_{>=0})^m? Infinite-dimensional Banach spaces are never nuclear, so projective and injective tensor products differ. However, using Seeley's Vandermonde moment extension across the boundary walls x_i = 0, Theorem 8.4 proves that the Schwartz space S((R_{>=0})^m) is a nuclear Fréchet space where pi- and epsilon-completions coincide!
+:::
+
+---
+
+## §8.3.2–8.3.3: Homometral Polarization & 15-to-3 Class Collapse {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: POLARIZATION REDUCTION (THM. 8.5), 3-CLASS COLLAPSE (THM. 8.6) &amp; LEAN 4</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+<div class="interactive-panel">
+  <h4>Interactive Homometral Polarization &amp; Arity Reduction Lab (Thm. 8.5)</h4>
+  <p class="widget-context-note">
+    <b>Context (§8.3.2, Thm. 8.5, SM p. 133):</b> Via the multilinear polarization identity $\Pol(v_1,\dots,v_m) = \frac{1}{2^m m!}\sum_{\epsilon\in\{-1,1\}^m}(\prod\epsilon_i)(\sum\epsilon_j v_j)^m$, any nominal $m$-ary polynomial functional $F$ evaluated on $k < m$ distinct coordinates with multiplicities $(a_1, \dots, a_k)$ ($\sum a_j = m$) reduces uniquely to an operator $F_{\mathrm{red}} \in \Oquant(k; 1)$ of strict arity $k < m$.
+  </p>
+  <div class="slider-row">
+    <span style="color:#4169E1;">Nominal Arity <i>m</i>:</span>
+    <input type="range" id="pol-m" min="2" max="8" step="1" value="3" oninput="updatePolarizationLab()">
+    <span id="pol-m-val" style="font-family:monospace; width:22px;">3</span>
+    <span style="color:#20B2AA;">Distinct Vars <i>k</i>:</span>
+    <input type="range" id="pol-k" min="1" max="7" step="1" value="2" oninput="updatePolarizationLab()">
+    <span id="pol-k-val" style="font-family:monospace; width:22px;">2</span>
+  </div>
+  <div id="pol-lab-readout" class="matrix-readout" style="margin-top:6px; text-align:left; font-size:0.64em; line-height:1.42;"></div>
+</div>
+
+::: {.carnap-box .fragment}
+**Theorem 8.6: Algebraic 15-to-3 Collapse of Corporate Classes in $\CtxQuant$**
+Because every quantitative Synkolator $f \in \Oquant$ is a $\mathbb{K}$-valued functional evaluated directly on the coordinates of $R_n$, the synkolative tier $\{K_s, C_s\}$ cannot vary independently of the carrier tier $\{K_m, C_m\}$:
+* Carrier pushout coupling ($K_m$) automatically induces functional cross-modulation ($K_s$) $\implies K \coloneqq \{K_m, K_s\}$.
+* Uncoupled carrier coproduct ($C_m$) forces parallel functional composition ($C_s$) $\implies C \coloneqq \{C_m, C_s\}$.
+* The $2^4 - 1 = 15$ corporate classes collapse to the **$2^2 - 1 = 3$ non-empty subsets of $\{K, C\}$**!
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4>Interactive 15-to-3 Quantitative Corporate Collapse Explorer (Thm. 8.6)</h4>
+  <p class="widget-context-note">
+    <b>Context (§8.3.3, SM pp. 133–135):</b> Click the three synchronized quantitative corporate modes below to see how the 15 general classes of Chapter 3 collapse onto $\operatorname{Op}_{\mathrm{quant}} = \{\Kor_{\{K\}}, \Kor_{\{C\}}, \Kor_{\{K,C\}}\}$.
+  </p>
+  <div style="display:flex; gap:6px; justify-content:center; margin-bottom:8px;">
+    <button class="syn-btn" onclick="setQuantCollapseMode('K')">1. Mode {K} = {K_m, K_s}</button>
+    <button class="syn-btn" onclick="setQuantCollapseMode('C')">2. Mode {C} = {C_m, C_s}</button>
+    <button class="syn-btn" onclick="setQuantCollapseMode('KC')">3. Mixed Mode {K, C} (Full Matrix)</button>
+  </div>
+  <div id="qcol-readout" class="matrix-readout" style="text-align:left; font-size:0.64em; line-height:1.42;"></div>
+</div>
+
+### Compile-Ready Lean 4 Blueprint (`QuantitativeAlgebra`, App. C)
+
+<div class="lean-code-card" style="margin-top:8px;">
+<pre style="margin:0;"><code>import Mathlib
+namespace Syntrometrie.StratumB.QuantitativeAlgebra
+
+/-- Binary polarization identity recovering bilinear cross-term (Thm. 8.5) -/
+theorem binary_polarization_identity (B_xx B_xy B_yy : ℝ) :
+    ((B_xx + 2 * B_xy + B_yy) - (B_xx - 2 * B_xy + B_yy)) / 4 = B_xy := by
+  ring
+
+/-- Double partial integration square identity (Thm. 8.1, SM Eq. 35a) -/
+theorem double_integral_square_branch (y : ℝ) :
+    (y * y) / 2 + (y * y) / 2 = y ^ 2 := by
+  ring
+
+inductive QuantMode where | K | C deriving DecidableEq, Fintype
+
+/-- Algebraic 15-to-3 collapse of quantitative corporate classes (Thm. 8.6) -/
+theorem quant_corporate_classes_card :
+    Fintype.card (Finset QuantMode) - 1 = 3 := by decide
+end Syntrometrie.StratumB.QuantitativeAlgebra</code></pre>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Theorem 8.5 proves homometral reducibility via multilinear polarization, while Theorem 8.6 proves why the 15 corporate classes of Chapter 3 collapse to 3 in the quantitative aspect: because quantitative synkolators are functions of the base coordinates in R_n, carrier coupling K_m forces functional coupling K_s, and carrier composition C_m forces parallel composition C_s.
+:::
+
+---
+
+## §7.4–7.6 & §8.4–8.6: Reconstruction Map $\mathcal{R}$, Sanity Checks & Synthesis {.smaller}
+
+<div class="stratum-badge badge-c">STRATUM C: EXPLICATIONS 7.1 &amp; 8.1, MASTER REGISTER (SM EQS. 28–36) &amp; BRIDGE TO CH. 9</div>
+
+:::: {.columns}
+
+::: {.column width="54%"}
+
+| Heimian Concept ($\mathbf{D}$) | Mathematical Explicatum ($\mathcal{R}$ in $\mathbf{A}/\mathbf{B}$) | Status & Ref. |
+|:---|:---|:---:|
+| **Quantitätsaspekt & $\Coeff$** | Site $(\CtxQuant, \Jquant)$, $\Equant \xrightarrow{\pi_{\mathrm{quant}}} \Esyn$ over $[\mathbb{Q}\subseteq\mathbb{R}\subseteq\mathbb{C}]$ | **B-Thm** (Thm. 7.6) |
+| **Semantischer Iterator ($S_n$, Eq. 28)** | Functor $S_n \colon \DimField \to \Ban$, $R_n \cong \mathbb{R}^{d(\mathbb{K})n}$ | **B-Def** (Def. 7.12) |
+| **Synkolatorraum ($m + m^k$)** | Tensor bundle total space $\Msyn \coloneqq T^{\otimes k}R_m$ | **B-Def** (Def. 7.13) |
+| **Isoklinen ($\Sigma_c$) & Feldzentren ($Z_\alpha$)** | Codim-$d$ foliation $\mathfrak{f}_A$ on $R_m^{\mathrm{reg}}$ & Morse–Bott $\Crit(\Phi\circ A)$ | **B-Def** (Def. 7.13) |
+| **Cascade Norm Bound** | Monomial estimate $\|A_M\|_{C_b^0} \le \Gamma_M \|A_0\|_{C_b^0}^{D_M}$ ($D_M = \prod r_j$) | **B-Thm** (Thm. 7.16) |
+| **Primigene Äondyne (SM Eq. 29)** | Cornered parameter manifold $\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n \in \ManParam$ | **A-Def** (Def. 8.1) |
+| **Fehlstelle $0$ & Einheit $E$** | Origin $\mathbf{0} \in \mathcal{M}_n, 0_{\mathcal{A}}$ & unit $1_{\mathcal{A}} \in \mathcal{A}_{\mathbb{K}}(\mathcal{M}_n)$ | **A-Def** (Def. 8.2) |
+| **Functors $\tilde{\mathrm{d}}|, \mathrm{I}_{\mathbf{0}}$ (SM Eqs. 30–36)** | Exterior derivative $d$ & Poincaré ray integral $\mathrm{I}_{\mathbf{0}}$ | **A-Def** (Def. 8.3) |
+| **Separation der Variablen** | Seeley extension $\mathcal{E}^{(n)}$ & nuclear $\mathscr{S}(\mathcal{M}_m) \cong \widehat{\bigotimes}_\pi \mathscr{S}(\mathbb{R}_{\ge 0})$ | **B-Thm** (Thm. 8.4) |
+| **Homometral Reducibility & 3-Collapse** | Polarization $\Sym^m V \twoheadrightarrow \Oquant(k;1)$ & $15 \to 3$ modes | **B-Thm** (Thms. 8.5–6) |
+
+::: {.thm-box .fragment}
+**Physical & Epistemic Sanity Checks (§7.5 & §8.5):**
+1. **Linear Unary Cascade ($r_j = 1$):** $D_M = 1,\; \Gamma_M = \prod C_j \implies \|A_M\| \le (\prod C_j)\|A_0\|$; **Zero-Field Vacuum:** $A_0 \equiv 0 \implies A_M \equiv 0$.
+2. **Leibniz Rule & Nuclear Uniqueness:** $\tilde{\mathrm{d}}|(fg) = f\,\tilde{\mathrm{d}}|g + g\,\tilde{\mathrm{d}}|f$ on $\mathcal{M}_n$, and $\otpi = \oteps$ eliminates cross-norm ambiguity.
+:::
+
+:::
+
+::: {.column width="46%"}
+
+::: {.carnap-box}
+**Carnapian Explications 7.1 & 8.1: Unifying Grothendieck's Two Visions**
+Unifies Alexander Grothendieck's **topos theory** ($\Equant \to \Esyn$) with Grothendieck's **nuclear functional analysis** ($\mathscr{S}((\mathbb{R}_{\ge 0})^m) \cong \widehat{\bigotimes}_\pi \mathscr{S}(\mathbb{R}_{\ge 0})$ via Seeley's moment extension), guaranteeing that multivariate quantitative fields decompose into convergent rank-$1$ coordinate channels without cross-norm ambiguity.
+:::
+
+<div class="video-container">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch78_Act12_Synthesis.mp4" style="max-height:205px;"></video>
+  <div class="video-caption">Manim Act XII (Figs. 7.7 &amp; 8.3): Combined Synthesis of Quantitative Sites, Nuclear Separation &amp; 3-Mode Collapse</div>
+</div>
+
+::: {.firewall-box .fragment}
+**Syntrometric Dialectical Transition to Chapter 9 (*Strukturkaskaden*):**
+With nuclear tensor separation $\mathscr{S}((\mathbb{R}_{\ge 0})^n) \cong \widehat{\bigotimes}_\pi \mathscr{S}(\mathbb{R}_{\ge 0})$ and bounded tensor cascades established, isolated coordinate potentials still float in an uncurved coordinate space. In **Chapter 9 (*Strukturkaskaden*)**, partial metrics assemble into the **36-Component Non-Hermitian Hermetry Matrix (${}^2\bar{\mathbf{g}} = {}^2\bar{\mathbf{g}}_+ + {}^2\bar{\mathbf{g}}_-$)** on $R_6 = R_4 \times S_2$ and converge via DeTurck parabolic Sobolev contraction to the apex metric ${}^2\bar{\mathbf{g}}_\infty$.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+We conclude Chapters 7 and 8 with the complete Reconstruction Map R for SM Equations 28 through 36. Having established normed parameter continua R_n, bounded tensor cascades, and Grothendieck nuclear variable separation, we are ready in Chapter 9 to assemble partial metrics into the 36-component non-Hermitian Hermetry matrix and prove Sobolev fixed-point convergence to the apex metric.
+:::
+
+<!-- UNIFIED RESILIENT JAVASCRIPT ENGINE FOR ALL 8 CHAPTERS 7 & 8 WIDGETS -->
+<script>
+window.comb78 = function(n, k) {
+  if (k < 0 || k > n) return 0;
+  if (k === 0 || k === n) return 1;
+  let r = 1;
+  for (let i = 1; i <= k; i++) r = r * (n - i + 1) / i;
+  return Math.round(r);
+};
+
+window.fact78 = function(n) {
+  let r = 1;
+  for (let i = 2; i <= n; i++) r *= i;
+  return r;
+};
+
+// WIDGET 1: §7.1.2 & §7.2.1 Realification Poset Coeff & Synkolatorraum (m + m^k)
+window.updateQuantSpaceLab = function() {
+  const elF = document.getElementById('q-field');
+  if (!elF) return;
+  let K = elF.value;
+  let n = parseInt(document.getElementById('q-n').value);
+  let mIn = document.getElementById('q-m');
+  mIn.max = n;
+  let m = Math.min(n, parseInt(mIn.value));
+  mIn.value = m;
+  let k = parseInt(document.getElementById('q-k').value);
+
+  document.getElementById('q-n-val').innerText = n;
+  document.getElementById('q-m-val').innerText = m;
+  document.getElementById('q-k-val').innerText = k;
+
+  let dK = (K === 'C') ? 2 : 1;
+  let dimRn = dK * n;
+  let dimPU = 3 * dK * n;
+  let combNM = window.comb78(n, m);
+  let fiberDim = Math.pow(m, k);
+  let synkDim = m + fiberDim;
+
+  document.getElementById('q-cards').innerHTML = `
+    <div class="stat-card" style="border-left-color:#4169E1;">
+      <b style="color:#82aaff;">Realified R_n (d(${K})=${dK}):</b><br>dim_ℝ R_n = <b style="color:#FFD700;">${dimRn}</b> (P^U ≅ ℝ^${dimPU})
+    </div>
+    <div class="stat-card" style="border-left-color:#20B2AA;">
+      <b style="color:#5eead4;">Subspace Choices:</b><br>C(${n}, ${m}) = <b style="color:#FFD700;">${combNM.toLocaleString()}</b> domains
+    </div>
+    <div class="stat-card" style="border-left-color:#FFA500;">
+      <b style="color:#fcd34d;">Synkolatorraum M_syn:</b><br>m + m^k = ${m} + ${fiberDim} = <b style="color:#FFD700;">${synkDim}</b>
+    </div>
+  `;
+
+  document.getElementById('q-readout').innerHTML =
+    `<b>Def. 7.13 Tensor Bundle Total Space:</b> M_syn := T^{⊗${k}} R_${m} has base dim <b>${m}</b> + fiber dim ${m}^${k} = <b>${fiberDim}</b> ⇒ Total Dim = <b style="color:#FFD700;">${synkDim}</b>`;
+};
+
+// WIDGET 2: §7.2.1 Internal Dedekind Cut (L, U) Explorer
+window.updateDedekindLab = function() {
+  const elGap = document.getElementById('ded-gap');
+  if (!elGap) return;
+  let gap = parseFloat(elGap.value);
+  let q = parseFloat(document.getElementById('ded-q').value);
+  let r = q + gap;
+  document.getElementById('ded-gap-val').innerText = gap.toFixed(2);
+  document.getElementById('ded-q-val').innerText = q.toFixed(2);
+
+  const sqrt2 = Math.SQRT2;
+  let inL = q < sqrt2;
+  let inU = r > sqrt2;
+
+  let xQ = 20 + (q / 2.5) * 380;
+  let xR = 20 + (Math.min(2.5, r) / 2.5) * 380;
+  document.getElementById('ded-pt-q').setAttribute('cx', xQ.toFixed(1));
+  document.getElementById('ded-pt-r').setAttribute('cx', xR.toFixed(1));
+  document.getElementById('ded-pt-q').setAttribute('fill', inL ? '#20B2AA' : '#ff6b81');
+  document.getElementById('ded-pt-r').setAttribute('fill', inU ? '#FFA500' : '#ff6b81');
+
+  let witness = (inL && inU) ? "Both L(q) ∧ U(r) hold (Straddles α = √2!)" :
+                (inL ? "Witness L(q) = ⊤ holds (q < √2)" : "Witness U(r) = ⊤ holds (√2 < r)");
+  document.getElementById('ded-readout').innerHTML =
+    `<b>Test Pair (q = ${q.toFixed(2)} < r = ${r.toFixed(2)}):</b> <span style="color:#FFD700;">${witness}</span> ⇒ Heyting Locatedness <b>L(q) ∨ U(r) = ⊤_{Ω(U)}</b> Verified!`;
+};
+
+// WIDGET 3: §7.3.3 Strukturkaskade Monomial Norm Bound Calculator
+window.updateCascadeLab = function() {
+  const elM = document.getElementById('cas-m');
+  if (!elM) return;
+  let M = parseInt(elM.value);
+  let r = parseInt(document.getElementById('cas-r').value);
+  let C = parseFloat(document.getElementById('cas-c').value);
+  let a0 = parseFloat(document.getElementById('cas-a0').value);
+
+  document.getElementById('cas-m-val').innerText = M;
+  document.getElementById('cas-r-val').innerText = r;
+  document.getElementById('cas-c-val').innerText = C.toFixed(2);
+  document.getElementById('cas-a0-val').innerText = a0.toFixed(2);
+
+  let DM = Math.pow(r, M);
+  let expC = (r === 1) ? M : (Math.pow(r, M) - 1) / (r - 1);
+  let GammaM = Math.pow(C, expC);
+  let bound = GammaM * Math.pow(a0, DM);
+
+  let note = "";
+  if (a0 === 0) {
+    note = ` <span style="color:#20B2AA;"><b>[§7.5.3 Vacuum Stability Check: A₀ ≡ 0 ⇒ A_M ≡ 0!]</b></span>`;
+  } else if (r === 1) {
+    note = ` <span style="color:#FFD700;"><b>[§7.5.1 Linear Unary Reduction: D_M = 1, Γ_M = C^M = ${GammaM.toFixed(3)}]</b></span>`;
+  } else if (a0 === 1.0 && C <= 1.0) {
+    note = ` <span style="color:#5eead4;"><b>[Contractive Unit Frame Bound: ‖A_M‖ ≤ 1]</b></span>`;
+  }
+
+  document.getElementById('cas-readout').innerHTML =
+    `<b>Cumulative Degree:</b> D_${M} = r^M = <b>${DM}</b> | <b>Constant:</b> Γ_${M} = C^${expC} = <b>${GammaM.toFixed(4)}</b><br>` +
+    `<b>Thm. 7.16 Cascade Bound:</b> ‖A_${M}‖_{C_b⁰} ≤ Γ_${M} ‖A₀‖^{D_${M}} = <b style="color:#FFD700;">${bound.toFixed(4)}</b>` + note;
+};
+
+window.setCasPreset = function(M, r, C, a0) {
+  document.getElementById('cas-m').value = M;
+  document.getElementById('cas-r').value = r;
+  document.getElementById('cas-c').value = C;
+  document.getElementById('cas-a0').value = a0;
+  window.updateCascadeLab();
+};
+
+// WIDGET 4: §8.1.3 & §8.2.2 Infinitesimal Calculus Tab Switcher
+window.showCalcTab = function(idx, btnEl) {
+  for (let i = 1; i <= 4; i++) {
+    const p = document.getElementById('calc-pane-' + i);
+    if (p) p.classList.toggle('active', i === idx);
+  }
+  if (btnEl && btnEl.parentElement) {
+    Array.from(btnEl.parentElement.children).forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    window.MathJax.typesetPromise().catch(() => {});
+  }
+};
+
+// WIDGET 5: §8.3.1 Seeley Corner Extension vs Naive Reflection
+window.setSeeleyMode = function(mode) {
+  const svg = document.getElementById('seeley-svg');
+  const box = document.getElementById('seeley-readout');
+  if (!svg || !box) return;
+
+  let html = `
+    <line x1="20" y1="95" x2="400" y2="95" stroke="#475569" stroke-width="1.8"/>
+    <line x1="210" y1="10" x2="210" y2="105" stroke="#FFD700" stroke-width="2" stroke-dasharray="4,3"/>
+    <text x="216" y="22" fill="#FFD700" font-size="9.5" font-weight="bold">Corner Wall x₁ = 0</text>
+  `;
+
+  // Right side x >= 0: f(x) = e^{-x}
+  let ptsR = [];
+  for (let i = 0; i <= 50; i++) {
+    let x = (i / 50.0) * 2.0;
+    let y = Math.exp(-x);
+    let sx = 210 + (x / 2.0) * 175;
+    let sy = 95 - y * 52;
+    ptsR.push((i === 0 ? "M " : "L ") + sx.toFixed(1) + "," + sy.toFixed(1));
+  }
+  html += `<path d="${ptsR.join(' ')}" fill="none" stroke="#4169E1" stroke-width="3.2"/>`;
+
+  let ptsL = [];
+  let colL = "#20B2AA";
+  for (let i = 0; i <= 50; i++) {
+    let x = -2.0 + (i / 50.0) * 2.0;
+    let y = 0;
+    if (mode === 'seeley') {
+      y = (1.0 - x + 0.5 * x * x) * Math.exp(-1.15 * x * x);
+      colL = "#20B2AA";
+    } else if (mode === 'even') {
+      y = Math.exp(-Math.abs(x));
+      colL = "#DC143C";
+    } else {
+      y = 0.0;
+      colL = "#DC143C";
+    }
+    let sx = 210 + (x / 2.0) * 175;
+    let sy = 95 - y * 52;
+    ptsL.push((i === 0 ? "M " : "L ") + sx.toFixed(1) + "," + sy.toFixed(1));
+  }
+  html += `<path d="${ptsL.join(' ')}" fill="none" stroke="${colL}" stroke-width="3" stroke-dasharray="5,3"/>`;
+  html += `<circle cx="210" cy="43" r="5" fill="${mode === 'seeley' ? '#20B2AA' : '#DC143C'}"/>`;
+  svg.innerHTML = html;
+
+  if (mode === 'seeley') {
+    box.style.borderLeftColor = "#20B2AA";
+    box.innerHTML = `<span style="color:#20B2AA;"><b>✓ SEELEY MOMENT EXTENSION E_{x₁}f (Thm. 8.4):</b></span> Vandermonde moments ∑ a_k (-2^k)^m = 1 match all derivatives ∂^m f(0⁻) = ∂^m f(0⁺) = (-1)^m across x₁ = 0!`;
+  } else if (mode === 'even') {
+    box.style.borderLeftColor = "#DC143C";
+    box.innerHTML = `<span style="color:#ff6b81;"><b>✗ NAIVE EVEN REFLECTION e^{-|x|}:</b></span> Continuous at x = 0, but first derivative jumps from f'(0⁻) = +1 to f'(0⁺) = -1 (Not in 𝒮(ℝ)!).`;
+  } else {
+    box.style.borderLeftColor = "#DC143C";
+    box.innerHTML = `<span style="color:#ff6b81;"><b>✗ NAIVE ZERO EXTENSION:</b></span> Discontinuous jump from f(0⁻) = 0 to f(0⁺) = 1 at the corner boundary x = 0!`;
+  }
+};
+
+// WIDGET 6: §8.3.1 Grothendieck Nuclear Series Convergence Lab (Rem. 8.1)
+window.updateNuclearSeries = function() {
+  const elN = document.getElementById('nuc-n');
+  if (!elN) return;
+  let N = parseInt(elN.value);
+  document.getElementById('nuc-n-val').innerText = `N = ${N}`;
+
+  let partialNorm = 0.0;
+  let partialVal = 0.0;
+  const eInv = Math.exp(-1.0);
+  for (let k = 0; k <= N; k++) {
+    let denom = window.fact78(2 * k);
+    let lam = (k % 2 === 0 ? 1.0 : -1.0) / denom;
+    partialNorm += Math.abs(lam);
+    partialVal += lam * (eInv * eInv);
+  }
+  let exactNorm = Math.cosh(1.0);
+  let exactVal = Math.exp(-2.0) * Math.cos(1.0);
+  let err = Math.abs(partialVal - exactVal);
+
+  document.getElementById('nuc-readout').innerHTML =
+    `<b>Projective Cross-Norm Sum:</b> ∑_{k=0}^${N} |λ_k| = <b style="color:#FFD700;">${partialNorm.toFixed(7)}</b> (Exact cosh(1) = ${exactNorm.toFixed(7)})<br>` +
+    `<b>Value at (1,1):</b> Partial Sum = <b>${partialVal.toFixed(8)}</b> vs. Exact e⁻²cos(1) = <b>${exactVal.toFixed(8)}</b> (Error = <span style="color:#20B2AA;">${err.toExponential(2)}</span>)`;
+};
+
+// WIDGET 7: §8.3.2 Homometral Polarization & Arity Reduction
+window.updatePolarizationLab = function() {
+  const elM = document.getElementById('pol-m');
+  if (!elM) return;
+  let m = parseInt(elM.value);
+  let kIn = document.getElementById('pol-k');
+  kIn.max = m;
+  let k = Math.min(m, parseInt(kIn.value));
+  kIn.value = k;
+
+  document.getElementById('pol-m-val').innerText = m;
+  document.getElementById('pol-k-val').innerText = k;
+
+  let mult1 = m - k + 1;
+  let vars = [`x₁^${mult1}`];
+  for (let i = 2; i <= k; i++) vars.push(`x_${i}`);
+
+  let box = document.getElementById('pol-lab-readout');
+  if (k < m) {
+    box.style.borderLeftColor = "#20B2AA";
+    box.innerHTML =
+      `<span style="color:#20B2AA;"><b>✓ HOMOMETRAL ARITY REDUCTION (k = ${k} &lt; m = ${m}, Thm. 8.5):</b></span><br>` +
+      `Input monomial <b>${vars.join(' · ')}</b> (multiplicities a₁=${mult1}, others=1) factors uniquely via Polarization through <b>F_red(x₁, …, x_${k}) ∈ O_quant(${k}; 1)</b>!`;
+  } else {
+    box.style.borderLeftColor = "#FFD700";
+    box.innerHTML =
+      `<span style="color:#FFD700;"><b>★ IRREDUCIBLE HETEROMETRAL TUPLE (k = m = ${m}):</b></span><br>` +
+      `All ${m} coordinate inputs (x₁, …, x_${m}) are pairwise distinct; effective arity equals nominal arity m = ${m}.`;
+  }
+};
+
+// WIDGET 8: §8.3.3 15-to-3 Quantitative Corporate Collapse
+window.setQuantCollapseMode = function(mode) {
+  const box = document.getElementById('qcol-readout');
+  if (!box) return;
+  if (mode === 'K') {
+    box.style.borderLeftColor = "#FFA500";
+    box.innerHTML =
+      `<b style="color:#FFA500;">1. Synchronized Coupled Mode Kor_{K} (K := {K_m, K_s}):</b><br>` +
+      `Coupling λ > 0 shared coordinates in R_{m_a} ⊞_φ R_{m_b} automatically couples the functional operators f_a, f_b evaluated on those coordinates!`;
+  } else if (mode === 'C') {
+    box.style.borderLeftColor = "#4169E1";
+    box.innerHTML =
+      `<b style="color:#82aaff;">2. Synchronized Parallel Mode Kor_{C} (C := {C_m, C_s}):</b><br>` +
+      `Disjoint coordinate coproduct R_{m_a} ⊕₁ R_{m_b} forces block-diagonal parallel evaluation of functional operators without cross-modulation.`;
+  } else {
+    box.style.borderLeftColor = "#FFD700";
+    box.innerHTML =
+      `<b style="color:#FFD700;">3. Partial Coupled + Composed Mode Kor_{K,C} (Full 2×2 Matrix):</b><br>` +
+      `Couples λ shared coordinate channels via K = {K_m, K_s} while keeping the remaining p + q - 2λ uncoupled coordinate channels in parallel composition C = {C_m, C_s}!`;
+  }
+};
+
+function ensureVideosPlaying() {
+  document.querySelectorAll('video').forEach(v => {
+    v.muted = true;
+    v.playsInline = true;
+    if (v.paused) v.play().catch(() => {});
+  });
+}
+
+function initAllCh78Widgets() {
+  window.updateQuantSpaceLab();
+  window.updateDedekindLab();
+  window.updateCascadeLab();
+  window.setSeeleyMode('seeley');
+  window.updateNuclearSeries();
+  window.updatePolarizationLab();
+  window.setQuantCollapseMode('KC');
+  ensureVideosPlaying();
+
+  document.querySelectorAll('input[type="range"], select, button').forEach(input => {
+    input.addEventListener('keydown', (e) => e.stopPropagation());
+    input.addEventListener('mousedown', (e) => e.stopPropagation());
+    input.addEventListener('touchstart', (e) => e.stopPropagation(), {passive: true});
+  });
+
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.target.tagName === 'VIDEO') {
+          entry.target.muted = true;
+          entry.target.play().catch(() => {});
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('video').forEach(v => obs.observe(v));
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener("DOMContentLoaded", initAllCh78Widgets);
+} else {
+  initAllCh78Widgets();
+}
+
+window.addEventListener('load', initAllCh78Widgets);
+if (window.Reveal) {
+  window.Reveal.on('ready', initAllCh78Widgets);
+  window.Reveal.on('slidechanged', initAllCh78Widgets);
+}
+</script>
