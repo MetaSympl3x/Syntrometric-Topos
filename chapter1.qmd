@@ -201,16 +201,18 @@ $$
 Formal derivability ($\Gamma_A \vdash_{\mathcal{F}} c$) certifies internal consistency within declared axioms; it never validates a physical realization in Stratum $\mathbf{C}$ without empirical testing.
 :::
 
+::: {.fragment}
 * <span class="pill-a">Stratum A</span> **Foundational Mathematics:** $\Esyn, (\Ban, \otpi), \mathcal{O}_{\mathrm{syn}}, \mathcal{X}_{\mathrm{syn}}$
 * <span class="pill-b">Stratum B</span> **Derived Logic & Proofs:** $\mathcal{L}_{\mathrm{iMSL}}$ Sequents, $\Hol(\mathcal{U}, \mathbf{P}), d_P$
 * <span class="pill-c">Stratum C</span> **Reconstruction Map $\mathcal{R}$:** $\mathsf{HeimVocabulary} \rightsquigarrow \mathsf{MathStructures}$
 * <span class="pill-d">Stratum D</span> **Historical Exegesis:** *Syntrometrische Maximentelezentrik* (2000)
+:::
 
 :::
 
 ::: {.column width="48%"}
 
-::: {.thm-box}
+::: {.thm-box .fragment}
 **Five-Stage Formal Verification Hierarchy ($V(c)$)**
 
 * $\mathbf{S_0}$ (**Mathematical Blueprint**): Rigorous paper proofs & specifications.
@@ -230,7 +232,7 @@ Formal derivability ($\Gamma_A \vdash_{\mathcal{F}} c$) certifies internal consi
 ::::
 
 ::: {.notes}
-Welcome everyone. We open with our foundational methodological rule: the Master Epistemic Firewall. Pure mathematical theorems in Strata A and B never automatically validate physical claims in Stratum C, nor do historical heuristics in Stratum D flow upward as mathematical premises. Every claim is tracked across five provenance axes, including its formal verification stage in Lean 4.
+Welcome everyone. We begin with our foundational rule: the Master Epistemic Firewall. Pure mathematical theorems in Strata A and B never automatically validate physical claims in Stratum C, nor do historical heuristics in Stratum D flow upward as mathematical premises. Every claim is indexed across five provenance axes, including its formal verification stage in Lean 4.
 :::
 
 ---
@@ -257,7 +259,7 @@ Welcome everyone. We open with our foundational methodological rule: the Master 
 
 ::: {.column width="46%"}
 
-::: {.intuition-box}
+::: {.intuition-box .fragment}
 **The Four Dedicated Specialist Reading Paths**
 
 1. **Path 1 (Topos Logic & Epistemology):** Ch. 1, 5, 6, App. A — Site $(\Ctx, \Jsyn)$, Kripke–Joyal forcing, $\mathcal{L}_{\mathrm{iMSL}}$, $(\infty,1)$-topos $\mathcal{X}_{\mathrm{syn}}$, terminal coalgebras $(\nu\mathcal{T},\zeta)$.
@@ -266,7 +268,7 @@ Welcome everyone. We open with our foundational methodological rule: the Master 
 4. **Path 4 (Complete Systemic Synthesis):** Ch. 12–15 — Qualia holonomy, Lawvere ego fixed point, 100-equation Master Register.
 :::
 
-::: {.carnap-box}
+::: {.carnap-box .fragment}
 **Point of Origin (Level I):** How does an embodied observer construct an intersubjective science from the primordial encounter with existence (*Urerfahrung der Existenz*, SM, p. 7)?
 :::
 
@@ -289,11 +291,12 @@ This slide situates Chapter 1 at Level I of the six-tiered Konstitutionsstammbau
 ::: {.column width="50%"}
 ### Critique of *Anthropomorphe Transzendentalästhetik* (SM, p. 6)
 * Radicalizing Kant’s critical turn, Heim diagnoses classical natural philosophy's enduring category mistake: mistaking contingent human sensory thresholds for the intrinsic ontology of nature (anticipating Friedman’s **relativized constitutive *a priori***, 2001).
-* **The Crisis of *Zweideutige Logik* (SM, p. 5):** Forcing continuous, context-dependent phenomena through a binary sieve $\{0, 1\}$ tears boundary regions into apparent **Antagonismen** (wave-particle duality, the measurement problem, mind-body split).
+* **The Crisis of *Zweideutige Logik* (SM, p. 5):** Classical inquiry forces continuous, context-dependent phenomena through a rigid binary sieve $\{0, 1\}$.
+* **Result:** Projection artifacts tear boundary regions into apparent **Antagonismen** (wave-particle duality, the measurement problem, mind-body split).
 
-::: {.carnap-box}
+::: {.carnap-box .fragment}
 **Carnap 1.1: Topos Contexts as Relativized Frameworks**
-Each context $U = (D^U, P^U, C^U, K^U, z^U, \zeta^U) \in \operatorname{Obj}(\Ctx)$ acts as a local constitutive framework (Carnap 1950). Under Kripke–Joyal forcing over the Heyting algebra $\Omega(U)$:
+Each context $U = (D^U, P^U, C^U, K^U, z^U, \zeta^U) \in \operatorname{Obj}(\Ctx)$ acts as a local constitutive framework (Carnap 1950; Friedman 2001). Under Kripke–Joyal forcing over the Heyting algebra $\Omega(U)$:
 $$
 U \not\Vdash \phi \vee \neg \phi \quad \centernot\implies \quad U \Vdash \bot
 $$
@@ -309,7 +312,7 @@ Unmeasured observables neither force $\phi$ nor $\neg\phi$, dissolving bivalent 
   <div class="video-caption">Manim Act II: Continuous Context Wave vs. Binary Sieve Antinomy Spikes</div>
 </div>
 
-::: {.intuition-box}
+::: {.intuition-box .fragment}
 **The Tripartite Mathematical Reconstruction of Chapter 1**
 
 1. **Sheaf Topos Theory:** $\Esyn \coloneqq \mathbf{Sh}(\Ctx, \Jsyn)$ (Zalamea's *synthetic universe of relations* gluing Husserlian *Abschattungen*).
@@ -336,22 +339,24 @@ When a continuous contextual phenomenon is forced through a classical {0,1} siev
 ::: {.column width="47%"}
 
 ::: {.thm-box}
-**1. Die Prädikatrix ($P_n$) & Basischiffre ($z_n$)**
+**1. Die Prädikatrix ($P_n$) — Continuous Semantic Ranges**
 Replaces binary predicates $\{0,1\}$ with $n$ continuous **Prädikatbänder** ($a_q$: lower threshold, $b_q$: saturation limit, $f_q \in [a_q, b_q]$: focal evaluation):
 $$
 f_q \equiv \begin{pmatrix} a \\ f \\ b \end{pmatrix}_q, \quad P_{nn} \equiv z_n ; \begin{bmatrix} \begin{pmatrix} a \\ f \\ b \end{pmatrix}_q \end{bmatrix}_n, \quad C' = c ; C \tag{SM-1}
 $$
+Evaluated via the **prädikative Basischiffre** $z_n$: $P_{nn} \equiv z_n ; P_n$.
 :::
 
-::: {.thm-box}
-**2. Die Dialektik ($D_n$) & Basischiffre ($\zeta_n$)**
-Qualifies statements by certainty, valence, and intentional stance across $n$ **Diatropenbänder** ($\alpha_q \le d_q \le \beta_q$):
+::: {.thm-box .fragment}
+**2. Die Dialektik ($D_n$) — Subjective Nuance & Valence**
+Every statement is colored by certainty, emotional valence, and intentional stance across $n$ **Diatropenbänder** ($\alpha_q \le d_q \le \beta_q$):
 $$
 d_q \equiv \begin{pmatrix} \alpha \\ d \\ \beta \end{pmatrix}_q, \quad D_{nn} \equiv \zeta_n ; \begin{bmatrix} \begin{pmatrix} \alpha \\ d \\ \beta \end{pmatrix}_q \end{bmatrix}_n \tag{SM-2}
 $$
+Evaluated via the **dialektische Basischiffre** $\zeta_n$: $D_{nn} \equiv \zeta_n ; D_n$.
 :::
 
-::: {.intuition-box}
+::: {.intuition-box .fragment}
 **Historical Context (SM, pp. 8–9):** Classical bivalent logic is the singular limit where semantic bandwidths collapse to a point ($a_q = f_q = b_q$). The ciphers $z_n, \zeta_n$ orient the *Sinn des Intervalls*.
 :::
 
@@ -433,14 +438,14 @@ In Stratum D, we examine Heim's historical notation from pages 8 and 9 of Syntro
 1. **Chiffrenkoordination $F(\zeta_n, z_n)$:** Functional alignment correlating the evaluative priority of qualifiers ($\zeta_n$) with descriptive properties ($z_n$).
 2. **Koordinationsbänder $E_n \equiv [\chi_q]_n \equiv [(y\,\chi\,r)_q^T]_n$:** Channel coupling rules (*Prägung*) binding the $q$-th diatrope to the $q$-th predicate.
 
-::: {.thm-box}
+::: {.thm-box .fragment}
 **Complete Subjektiver Aspekt ($S$) (SM, p. 10, Eq. 1):**
 $$
 S \equiv \left\lceil D_{nn} \times K_n \times P_{nn} \right\rceil \equiv \left\lceil \zeta_n ; \begin{bmatrix} \begin{pmatrix} \alpha \\ d \\ \beta \end{pmatrix}_q \end{bmatrix}_n \times \begin{bmatrix} \begin{pmatrix} y \\ \chi \\ r \end{pmatrix}_q \end{bmatrix}_n F(\zeta_n, z_n) \times z_n ; \begin{bmatrix} \begin{pmatrix} a \\ f \\ b \end{pmatrix}_q \end{bmatrix}_n \right\rceil \tag{SM-4}
 $$
 :::
 
-::: {.intuition-box}
+::: {.intuition-box .fragment}
 **Animation Anchor Explanation (Fig. 1.2):** A qualification without a predicate is empty emotion; a predicate without a diatrope is unperceived data. The Coordination lens $K_n$ sits at the origin of the Aspect Compass, projecting dialectical weights ($D_{nn}$) onto radial descriptive channels ($P_{nn}$).
 :::
 
@@ -475,11 +480,12 @@ Neither predicates nor dialectical qualifiers carry semantic value in isolation.
 $$
 \mathfrak{A} \equiv \begin{pmatrix} \alpha ; S \\ p ; g \end{pmatrix}, \quad \operatorname{Compl}(\alpha, S) \subset \operatorname{Grp}(S) \coloneqq \bigcup_{\alpha \in \operatorname{Gen}(S)} \operatorname{Compl}(\alpha, S)
 $$
-* **Definition 1.1 (*Echt* vs. *Entartet*):** Genuine (*echt*) if $\alpha$ uses concepts beyond $S$; degenerate (*entartet*) if expressible entirely within $S$. Partial generators hold arity $n$ fixed; changing $n$ requires a total generator.
-* **Kategorien ($\mathfrak{K}$) & Syllogismen (SM, pp. 14–19):**
-  - **Episyllogismus ($k \uparrow$):** Constructive bottom-up syndrome synthesis.
-  - **Prosyllogismus ($k \downarrow$):** Analytical top-down decomposition to the unconditioned **Idee** ($\mathfrak{S}_1$) of **apodiktische Elemente** ($a_i \in \mathfrak{M} = \AP_0$).
-* **Theorem 1.5 & Prop. 1.6 (Polyquantor Apodiktizität):** Every polyquantor contains at least one absolutely apodictic baseline term $a_i \in \AP_0$ (SM, p. 21).
+* **Definition 1.1 (*Echt* vs. *Entartet*):** Genuine (*echt*) if $\alpha$ uses concepts beyond $S$; degenerate (*entartet*) if expressible entirely within $S$.
+* **Proposition 1.2 (The 7 Nonempty Aspect Subsystems):**
+  - $\binom{3}{1} = 3$ Single-Component: $\{D_{nn}\}, \{K_n\}, \{P_{nn}\}$
+  - $\binom{3}{2} = 3$ Two-Component: $\{D_{nn}, K_n\}, \{K_n, P_{nn}\}, \{D_{nn}, P_{nn}\}$
+  - $\binom{3}{3} = 1$ Total Subsystem: $\{D_{nn}, K_n, P_{nn}\}$
+* **Kategorien ($\mathfrak{K}$) & Syllogismen (SM, pp. 14–19):** **Episyllogismus ($k \uparrow$)** vs. **Prosyllogismus ($k \downarrow$)** anchored in the unconditioned **Idee** ($\mathfrak{S}_1$) of **apodiktische Elemente** ($a_i \in \mathfrak{M} = \AP_0$).
 
 :::
 
@@ -500,15 +506,17 @@ $$
   </div>
 </div>
 
-### The 4-Tier Quantor Degeneration Hierarchy (Prop. 1.4, SM Eq. 4)
-
-| Quantor Tier | Truth Degree | Metropie Modulation | SM Source Formula |
+| Quantor Tier (Prop. 1.4, SM Eq. 4) | Truth Degree | Metropie Modulation | SM Source Formula |
 |:---|:---:|:---:|:---|
 | **Continuous Polyquantor** $Q_{\mathrm{poly}}^{(B)}$ | $r > 1$ | $f_\rho \ne \operatorname{id}$ | $(\;)_\rho, \mathop{\mathsf{Q}}_{f_\rho, 1}^r(A_\rho), (\;)_\rho$ |
 | **Continuous Monoquantor** | $r = 1$ | $f_\rho \ne \operatorname{id}$ | $\beta_\rho \equiv f_\rho ; \alpha_\rho$ |
 | **Discrete Polyquantor** $Q_{\mathrm{poly}}^{(r)}$ | $r > 1$ | $f_\rho = \operatorname{id}$ | $(\;)_\rho, \mathop{\mathsf{Q}}_{\rho, 1}^r(A_\rho), (\;)_\rho$ |
 | **Monoquantor** $Q_{\mathrm{mono}}$ | $r = 1$ | $f_\rho = \operatorname{id}$ | $a, \mathsf{Q}[AS]_\gamma b$ |
 | **Universalquantor ($\mathbf{U}$)** | **All $\mathfrak{A}$** | **Global Invariant** | Right Adjoint $\forall_f$ |
+
+::: {.intuition-box .fragment}
+**Theorem 1.5 & Prop. 1.6 (Polyquantor Apodiktizität):** Every polyquantor contains at least one absolutely apodictic baseline term $a_i \in \AP_0$ (SM, p. 21).
+:::
 
 :::
 
@@ -533,8 +541,8 @@ Proposition 1.2 classifies the 2^3 - 1 = 7 nonempty aspect subsystems. Notice wh
 Why model a subjective perspective as a normed Banach space? Every laboratory works with a finite array of measurement channels ($P^U$), operates within bounded saturation thresholds ($\|T\|_{\op} \le 1$), and weighs data by confidence ($D^U$).
 :::
 
-::: {.thm-box}
-**Definition: The Symmetric Monoidal Closed Category $(\Ban, \otpi)$**
+::: {.thm-box .fragment}
+**Definition 1.6 / 1.9: The Symmetric Monoidal Closed Category $(\Ban, \otpi)$**
 
 1. **Objects:** Real Banach spaces $(X, \|\cdot\|_X)$.
 2. **Morphisms:** Linear contractions $T \colon X \to Y$ with $\|T\|_{\op} \coloneqq \sup_{\|x\|_X \le 1} \|T(x)\|_Y \le 1$.
@@ -553,7 +561,7 @@ $$
 ::: {.column width="48%"}
 
 ::: {.carnap-box}
-**Scholium: Why Complete the Projective Tensor Product?**
+**Scholium 1.6 / 1.8: Why Complete the Projective Tensor Product?**
 The projective cross-norm is the largest cross-norm satisfying $\|x \otimes y\|_\pi = \|x\|\,\|y\|$. It establishes an **isometric isomorphism** between bounded bilinear coordination maps $D^U \times P^U \to C^U$ and linear contractions:
 $$
 K^U \colon D^U \otpi P^U \longrightarrow C^U, \qquad \|K^U\|_{\op} \le 1
@@ -561,7 +569,7 @@ $$
 guaranteeing that multi-channel imprinting (*Prägung*) never amplifies signal norms beyond perceptual saturation limits.
 :::
 
-::: {.thm-box}
+::: {.thm-box .fragment}
 **Vector Envelopes, Cones & Isometric Ciphers (§1.2.2)**
 * Interval cone $\mathcal{I}(\mathbb{R}) \coloneqq \{(a, f, b) \in \mathbb{R}^3 \mid a \le f \le b\}$ with closed convex state cylinders $\mathcal{S}_P^U \subset \operatorname{Ball}(P^U)$, $\mathcal{S}_D^U \subset \operatorname{Ball}(D^U)$.
 * Isometric Ciphers:
@@ -583,14 +591,14 @@ Crossing into Stratum A, we place Heim's aspectual matrices on rigorous function
 
 ## §1.2.3: The Admissible Context Category $\Ctx$ {.smaller}
 
-<div class="stratum-badge badge-a">STRATUM A: ADMISSIBLE CONTEXTS &amp; NATURALITY OF KOORDINATION</div>
+<div class="stratum-badge badge-a">STRATUM A: DEF. 1.7 / 1.10 &amp; PROP. 1.8 / 1.11</div>
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
 ::: {.thm-box}
-**Definition: The Admissible Context Category $\Ctx$**
+**Definition 1.7 / 1.10: The Admissible Context Category $\Ctx$**
 
 * **Objects:** Tuples $U = (D^U, P^U, C^U, K^U, z^U, \zeta^U, \mathcal{S}_D^U, \mathcal{S}_P^U)$ in $\FinBan$ with $\|K^U\|_{\op} \le 1$ and $z^U \in \Isom(P^U), \zeta^U \in \Isom(D^U)$.
 * **Morphisms:** Triples of linear contractions $\alpha = (\alpha_D, \alpha_P, \alpha_C) \colon U \to V$ satisfying **Coordination Commutativity**, **Cipher Equivariance**, and **State-Space Preservation**:
@@ -600,8 +608,8 @@ $$
 with $\alpha_P(\mathcal{S}_P^U) \subseteq \mathcal{S}_P^V$ and $\alpha_D(\mathcal{S}_D^U) \subseteq \mathcal{S}_D^V$.
 :::
 
-::: {.carnap-box}
-**Proposition (Eliminating Context Creep):**
+::: {.carnap-box .fragment}
+**Proposition 1.8 / 1.11 (Eliminating Context Creep):**
 The projections $D, P, C \colon \Ctx \to \Ban$ are faithful functors, and $K \colon (D \otpi P) \Longrightarrow C$ is a **natural transformation**:
 $$
 C(\alpha) \circ K^V = K^U \circ \big(D(\alpha) \otpi P(\alpha)\big)
@@ -651,7 +659,7 @@ In Ctx_adm^sk, context transitions alpha : U -> V are contractive triples that c
 
 ## §1.2.3: Explicit Construction of Pullbacks in $\Ctx$ {.smaller}
 
-<div class="stratum-badge badge-a">STRATUM A: OVERLAP GEOMETRY &amp; CATEGORICAL FIBER PRODUCTS</div>
+<div class="stratum-badge badge-a">STRATUM A: PROPOSITION 1.9 / 1.13 (OVERLAP GEOMETRY)</div>
 
 :::: {.columns}
 
@@ -659,13 +667,13 @@ In Ctx_adm^sk, context transitions alpha : U -> V are contractive triples that c
 Given morphisms $\alpha \colon V_1 \to U$ and $\beta \colon V_2 \to U$, how do two observers compare findings on their shared overlap?
 
 ::: {.thm-box}
-**Proposition: Categorical Pullback $W \coloneqq V_1 \times_U V_2$ in $\Ctx$**
+**Proposition 1.9 / 1.13: Categorical Pullback $W \coloneqq V_1 \times_U V_2$**
 
 1. **Componentwise Fiber Products in $\Ban$ (with $\ell^\infty$ direct-sum norm):**
 $$
 F^W \coloneqq F^{V_1} \times_{F^U} F^{V_2} = \big\{ (x_1, x_2) \in F^{V_1} \oplus_\infty F^{V_2} \;\big|\; \alpha_F(x_1) = \beta_F(x_2) \big\}
 $$
-for $F \in \{D, P, C\}$. Equipping $F^{V_1} \oplus_\infty F^{V_2}$ with $\|(x_1, x_2)\|_\infty \coloneqq \max(\|x_1\|_{F^{V_1}}, \|x_2\|_{F^{V_2}})$ guarantees that canonical projections $\pi_{1F}, \pi_{2F}$ have operator norm $\le 1$.
+for $F \in \{D, P, C\}$. Using $\oplus_\infty$ guarantees that canonical projections $\pi_{1F}, \pi_{2F}$ have operator norm $\le 1$.
 
 2. **Induced Contractive Coordination $K^W \colon D^W \otpi P^W \to C^W$:**
 $$
@@ -679,13 +687,12 @@ $$
 ::: {.column width="48%"}
 
 <div class="video-container">
-  <video autoplay data-autoplay loop muted playsinline src="media/Act7_3D_Pullback.mp4" style="max-height:360px;"></video>
+  <video autoplay data-autoplay loop muted playsinline src="media/Act7_3D_Pullback.mp4" style="max-height:330px;"></video>
   <div class="video-caption">Manim Act VII (Fig. 1.4): 3D ℓ^∞ Unit Cube &amp; Pullback Equalizer Slice W = V₁ ×_U V₂</div>
 </div>
 
-::: {.intuition-box}
-**Why the $\ell^\infty$ Norm on Overlaps?**
-If we used the $\ell^1$ or $\ell^2$ norm on the direct sum, the universal map $\gamma_F(z) = (\gamma_{1F}(z), \gamma_{2F}(z))$ into the pullback would expand norms by $\sqrt{2}$ or $2$, violating contractivity in $\Ban$. Only $\oplus_\infty$ makes the categorical product and fiber product strictly contractive.
+::: {.intuition-box .fragment}
+**Next Step (§1.3–1.5):** Equipping $\CtxPos$ with contractive split-section coverings $\sigma_F$ ($\rho_F \circ \sigma_F = \operatorname{id}_{F^U}$) generates the **subcanonical Grothendieck topology $\Jsyn$** and the **Holoform Equalizer $\Hol(\mathcal{U}, \mathbf{P})$**.
 :::
 
 :::
@@ -700,7 +707,7 @@ To define a Grothendieck topology on Ctx_adm^sk, we first need pullbacks so that
 
 ## §1.3: The Subcanonical Site $(\CtxPos, \Jsyn)$ & Sheaf Topos $\Esyn$ {.smaller}
 
-<div class="stratum-badge badge-a">STRATUM A: GROTHENDIECK TOPOLOGY &amp; SUBCANONICITY</div>
+<div class="stratum-badge badge-a">STRATUM A: GROTHENDIECK TOPOLOGY (DEF. 1.10 / 1.15 &amp; THM. 1.12 / 1.17)</div>
 
 :::: {.columns}
 
@@ -711,14 +718,14 @@ To define a Grothendieck topology on Ctx_adm^sk, we first need pullbacks so that
 No single observer context captures all of reality. Yet whenever overlapping microscopes agree on their shared boundary $V_i \times_U V_j$, their local views glue into a single, coherent global invariant. Objectivity is the equalizer of compatible local perspectives.
 :::
 
-::: {.thm-box}
-**Definition & Proposition: Admissible Covering Families $\Ksyn(U)$**
+::: {.thm-box .fragment}
+**Definition 1.10 / 1.15 & Proposition 1.11 / 1.16: Admissible Covering Families $\Ksyn(U)$**
 
 On the positive-dimension subcategory $\CtxPos$ ($\dim P^U \ge 1$), a finite family $\{\rho_i \colon V_i \to U\}_{i=1}^m$ is an **admissible cover** if the joint addition map $\rho_F \colon \bigoplus_{\infty} F^{V_i} \to F^U$ admits a **linear contractive split-section**:
 $$
 \rho_F \circ \sigma_F = \operatorname{id}_{F^U}, \qquad \|\sigma_F\|_{\op} \le 1, \qquad (\sigma_C(c))_i^{(k)} \coloneqq \begin{cases} r_k^{-1} c_k & k \in I_i \\ 0 & k \notin I_i \end{cases}
 $$
-Because $0_{\mathbf{Ctx}} \notin \CtxPos$, the empty family $\emptyset \notin \Ksyn(U)$ and the minimal sieve is strictly empty: $\bot(U) = \cl_{\Jsyn}(\emptyset) = \emptyset$.
+Because $0_{\mathbf{Ctx}} \notin \CtxPos$, the empty sieve is strictly minimal: $\bot(U) = \cl_{\Jsyn}(\emptyset) = \emptyset$.
 :::
 
 :::
@@ -726,19 +733,19 @@ Because $0_{\mathbf{Ctx}} \notin \CtxPos$, the empty family $\emptyset \notin \K
 ::: {.column width="48%"}
 
 ::: {.carnap-box}
-**Theorem: Subcanonicity of the Syntrometric Site**
-The pretopology $\Ksyn$ satisfies identity, pullback-stability, and local transitivity, generating a Grothendieck topology $\Jsyn = \langle \Ksyn \rangle_{\mathrm{GT}}$ inducing the **Syntrometric Sheaf Topos**:
+**Theorem 1.12 / 1.17: Subcanonicity of the Syntrometric Site**
+The pretopology $\Ksyn$ generates a Grothendieck topology $\Jsyn = \langle \Ksyn \rangle_{\mathrm{GT}}$ inducing the **Syntrometric Sheaf Topos**:
 $$
 \Esyn \;\coloneqq\; \mathbf{Sh}\big(\Ctx, \Jsyn\big)
 $$
-Because every cover admits a contractive partition-of-unity section $\sigma_F$ ($\rho_F \circ \sigma_F = \operatorname{id}_{F^U}$), **$\Jsyn$ is subcanonical**: every representable presheaf $\mathbf{h}_X = \Hom(-, X)$ is a sheaf, and the Yoneda embedding is fully faithful:
+Because every cover admits a contractive partition-of-unity section $\sigma_F$, **$\Jsyn$ is subcanonical**: every representable presheaf $\mathbf{h}_X = \Hom(-, X)$ is a sheaf, and the Yoneda embedding is fully faithful:
 $$
 \mathbf{y} \colon \CtxPos \longhookrightarrow \Esyn
 $$
 :::
 
-::: {.thm-box}
-**Epistemic Payoff:** Local logical consistency across overlapping observers universally guarantees global structural validity without information loss.
+::: {.thm-box .fragment}
+**Epistemic Payoff:** Local logical consistency across overlapping observers universally guarantees global structural validity.
 :::
 
 :::
@@ -746,41 +753,45 @@ $$
 ::::
 
 ::: {.notes}
-Section 1.3 elevates our category of Banach contexts into a Grothendieck site. By excluding the zero-dimensional context and constructing explicit partition-of-unity split-sections in the l-infinity norm, our site is proven subcanonical: every context object embeds faithfully into the sheaf topos E_syn via the Yoneda embedding.
+Section 1.3 elevates our category of Banach contexts into a Grothendieck site. By excluding the zero-dimensional context and constructing explicit partition-of-unity split-sections in the l-infinity norm, Theorem 1.12/1.17 proves that our site is subcanonical: every context object embeds faithfully into the sheaf topos without losing structural information.
 :::
 
 ---
 
 ## §1.4: Subobject Classifier $\Omega$, Kripke–Joyal Forcing & Hyperdoctrines {.smaller}
 
-<div class="stratum-badge badge-a">STRATUM A: INTERNAL HEYTING LOGIC &amp; BECK–CHEVALLEY</div>
+<div class="stratum-badge badge-a">STRATUM A: INTERNAL CONSTRUCTIVE LOGIC (THM. 1.13 / 1.18 &amp; PROP. 1.14 / 1.19)</div>
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
 ::: {.thm-box}
-**Theorem: Complete Heyting Algebra $\Omega(U)$**
-$\Omega(U) \coloneqq \{ R \subseteq \Hom(-, U) \mid R = \cl_{\Jsyn}(R) \}$ with operations:
+**Theorem 1.13 / 1.18: Complete Heyting Algebra $\Omega(U)$**
+Truth values in $\Esyn$ generalize from $\{0,1\}$ to the sheaf $\Omega(U)$ of $\Jsyn$-closed sieves on $U$:
 $$
 \begin{aligned}
-R_1 \wedge R_2 &\coloneqq R_1 \cap R_2, \qquad \bigvee_\lambda R_\lambda \coloneqq \cl_{\Jsyn}\!\Big(\bigcup_\lambda R_\lambda\Big) \\
 R_1 \Rightarrow_J R_2 &\coloneqq \{ f \colon V \to U \mid f^*(R_1) \subseteq f^*(R_2) \} \\
 \neg_J R &\coloneqq (R \Rightarrow_J \bot) = \{ f \colon V \to U \mid f^*(R) = \emptyset \}
 \end{aligned}
 $$
+**Constructive Non-Boolean Gap:** When a channel is unmeasured in $U$, $R \vee \neg_J R \ne \top_{\Omega(U)}$, so $U \not\Vdash \phi \vee \neg\phi$ without forcing $U \Vdash \bot$.
 :::
 
-::: {.thm-box}
-**Kripke–Joyal Sheaf Forcing Semantics (Layer 1) & Hyperdoctrine**
+::: {.carnap-box .fragment}
+**Proposition 1.14 / 1.19: Slice Hyperdoctrine & Beck–Chevalley**
+Every context morphism $f \colon V \to U$ induces an adjoint triple on subobjects:
 $$
-\begin{aligned}
-U \Vdash (\phi \vee \psi) &\iff \exists S \in \Jsyn(U)\;\forall (f\colon V\to U)\in S,\; V\Vdash f^*(\phi)\text{ or }V\Vdash f^*(\psi)\\
-U \Vdash (\phi \to \psi) &\iff \forall f\colon V\to U,\; V\Vdash f^*(\phi) \implies V\Vdash f^*(\psi)\\
-U \Vdash \forall y\in Y.\,\phi &\iff \forall f\colon V\to U,\;\forall \beta\in Y(V),\; V\Vdash \phi(f^*(\vec{\alpha}),\beta)
-\end{aligned}
+\exists_f \;\dashv\; f^* \;\dashv\; \forall_f
 $$
-**Slice Hyperdoctrine Beck–Chevalley:** $\exists_f \dashv f^* \dashv \forall_f$ satisfies $\mathbf{BC}_\exists \colon g^*\exists_f \xrightarrow{\sim} \exists_{\pi_1}\pi_2^*$ and $\mathbf{BC}_\forall \colon g^*\forall_f \xrightarrow{\sim} \forall_{\pi_1}\pi_2^*$, where $\forall_f$ realizes Heim's **Universalquantor ($\mathbf{U}$)**.
+Across any pullback square $W = V_1 \times_U V_2$, the **Beck–Chevalley isomorphisms** hold:
+$$
+\mathbf{BC}_\exists \colon g^* \exists_f \xrightarrow{\;\sim\;} \exists_{\pi_1} \pi_2^*, \qquad \mathbf{BC}_\forall \colon g^* \forall_f \xrightarrow{\;\sim\;} \forall_{\pi_1} \pi_2^*
+$$
+:::
+
+::: {.intuition-box .fragment}
+**Transporting Quantoren:** The right adjoint $\forall_f$ is the exact categorical realization of Heim's **Universalquantor ($\mathbf{U}$)**—allowing invariant laws to transport safely across distinct observer frames.
 :::
 
 :::
@@ -835,24 +846,27 @@ Truth values in E_syn form a complete Heyting algebra Omega(U) of J_syn-closed s
 
 ## §1.5: Sheaf Descent, $\varepsilon$-Holoform Stability & Kochen–Specker {.smaller}
 
-<div class="stratum-badge badge-b">STRATUM B: DERIVED DESCENT THEOREMS &amp; CARNAP 1.2</div>
+<div class="stratum-badge badge-b">STRATUM B: DERIVED DESCENT THEOREMS (THMS. 1.17–1.18 / 1.22–1.24)</div>
 
 :::: {.columns}
 
 ::: {.column width="47%"}
 
 ::: {.thm-box}
-**Definition & Theorem: The Holoform Equalizer**
-For cover $\mathcal{U} = \{\rho_i \colon V_i \to U\}_{i=1}^m$ and sheaf $\mathbf{P} \in \Esyn$:
+**Definition 1.15 / 1.20 & Theorem 1.17 / 1.22: The Holoform Equalizer**
+For an admissible cover $\mathcal{U} = \{\rho_i \colon V_i \to U\}_{i=1}^m$ and sheaf $\mathbf{P} \in \Esyn$:
 $$
 \Hol(\mathcal{U}, \mathbf{P}) \;\coloneqq\; \operatorname{Eq}\!\left( \prod_{i=1}^m \mathbf{P}(V_i) \overset{d^0}{\underset{d^1}{\rightrightarrows}} \prod_{i,j=1}^m \mathbf{P}(V_i \times_U V_j) \right)
 $$
-For additive presheaves $\mathbf{A}$, the **Descent Defect** is the Čech 0-coboundary $\Def_{\mathcal{U}}(s) \coloneqq d^0(s) - d^1(s) = \delta^0(s) \in \check{C}^1(\mathcal{U}, \mathbf{A})$.
+For additive presheaves $\mathbf{A}$, the **Descent Defect** is the Čech 0-coboundary:
+$$
+\Def_{\mathcal{U}}(s) \coloneqq d^0(s) - d^1(s) = \delta^0(s) \in \check{C}^1(\mathcal{U}, \mathbf{A})
+$$
 * **Exact Amalgamation ($c_{\mathrm{SHEAF}}$):** $\Def_{\mathcal{U}}(s) = 0 \iff \exists!\,\Gamma \in \mathbf{P}(U) \cong \Hol(\mathcal{U}, \mathbf{P})$ with $\rho_i^*(\Gamma) = s_i$.
 :::
 
-::: {.carnap-box}
-**Theorem ($\varepsilon$-Holoform Stability) & Carnap 1.2:**
+::: {.carnap-box .fragment}
+**Theorem 1.18 / 1.24 ($\varepsilon$-Holoform Stability) & Carnap 1.2:**
 Under partition-of-unity amalgamation $\Gamma_\sigma = \mathcal{G}_\sigma(s) \coloneqq \sum_{i=1}^m \sigma_i^*(s_i)$:
 $$
 \|\Def_{\mathcal{U}}(s)\|_{\check{C}^1} \le \varepsilon \implies \max_{1 \le k \le m} \|\rho_k^*(\Gamma_\sigma) - s_k\|_{\mathbf{A}(V_k)} \le \varepsilon
@@ -932,30 +946,30 @@ Heim's concept of the Holoform is explicated as the equalizer of local sections 
 
 ## §1.6: Typed Mereology $\mathfrak{M}_{\mathrm{asp}}$, $t$-Norms & *Aufhebung* {.smaller}
 
-<div class="stratum-badge badge-b">STRATUM B: AXIOMATIC CEM &amp; DIALECTICAL SUBLATION</div>
+<div class="stratum-badge badge-b">STRATUM B: AXIOMATIC CEM &amp; DIALECTICAL SUBLATION (THMS. 1.22–1.24 / 1.28–1.30)</div>
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
 ::: {.thm-box}
-**Internal Heyting Mereology & Continuous $t$-Norm Strength**
+**Definition 1.19 / 1.25 & 1.20 / 1.26: Internal Heyting Mereology & $t$-Norm Strength**
 In $\mathfrak{M}_{\mathrm{asp}}(U) \coloneqq \Sub_{\Esyn}(\mathbf{y}(U) \times (\underline{\mathsf{Pred}}_U \sqcup \underline{\mathsf{Qual}}_U))$, parthood is $A \le B$ (satisfying **MSL-M1**, **MSL-M2**, and guarded fusion $\sigma\mathcal{X} = \bigvee_{A\in\mathcal{X}} A$). Qualifier $d_r$ and predicate $f_q$ coordinate iff:
 $$
 \operatorname{Strength}\big((d_r, f_q), S_{\mathrm{mod}}(x)\big) \coloneqq \chi\big( (\zeta_x)_r \sigma_{dr}(v_{dr}),\; (\mathbf{z}_x)_q \sigma_{fq}(v_{fq}) \big) > \theta_{\mathrm{coord}}(x)
 $$
 :::
 
-::: {.firewall-box}
-**Tripartite Taxonomy of Antagonismen**
+::: {.firewall-box .fragment}
+**Def. 1.22 / 1.28 & Thm. 1.23 / 1.29: Tripartite Taxonomy of Antagonismen**
 
 1. **Mereological ($\operatorname{Ant}_{\mathrm{mer}}$):** $\exists A, B \le S$ with $\operatorname{Incomp}_{\mathcal{E}}(A, B) \coloneqq \llbracket |\operatorname{ev}_P(A)-\operatorname{ev}_P(B)| > \theta_{\mathrm{tol}} \rrbracket = \top_{\Omega(W)}$.
 2. **Descent ($\operatorname{Ant}_{\mathrm{desc}}$):** Non-vanishing Čech coboundary $\Def_{\mathcal{U}}(s) \ne 0$ (while overlap $\mathbf{y}W \not\cong \mathbf{0}_{\mathcal{E}}$ remains non-zero, preserving subcanonicity).
 3. **Logical ($\operatorname{Ant}_{\mathrm{log}}$):** Internal contradiction $W \Vdash \bot$ (requires explicit translation axiom $p_{v_1} \vdash \neg p_{v_2}$).
 :::
 
-::: {.carnap-box}
-**Theorem (Reflexive Abstraction as *Aufhebung*):**
+::: {.carnap-box .fragment}
+**Theorem 1.24 / 1.30 (Reflexive Abstraction as *Aufhebung*):**
 Dialectical sublation maps $S_{\mathrm{mod}}(x) \to S'_{\mathrm{mod}}(x')$ containing $C \coloneqq \operatorname{Synthesize}(A, B) \in \Prop_1$ free of internal incompatibility.
 :::
 
@@ -1013,14 +1027,14 @@ Section 1.6 distinguishes three levels of Antagonismus: Mereological incompatibi
 
 ## §1.7: Pseudometric $d_P$, Metropie Flow & Lawvere–Tierney Closure {.smaller}
 
-<div class="stratum-badge badge-b">STRATUM B: LAYER 2 MODAL FRAMES &amp; STAGE I POLARIMETER</div>
+<div class="stratum-badge badge-b">STRATUM B: LAYER 2 MODAL FRAMES &amp; STAGE I RUNNING EXAMPLE</div>
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
 ::: {.thm-box}
-**Context Discrepancy Pseudometric $d_P$ & Metropie $g_{\mathrm{met}}$**
+**Def. 1.25 / 1.31 & Def. 1.27 / 1.33: Pseudometric $d_P$ & Metropie $g_{\mathrm{met}}$**
 $$
 d_P(U, V) \coloneqq \inf_{\alpha, \beta} \max_{F \in \{D,P,C\}} \max\!\big( \|I_{F^U} - \beta_F \alpha_F\|_{\op},\; \|I_{F^V} - \alpha_F \beta_F\|_{\op} \big)
 $$
@@ -1030,8 +1044,8 @@ g_{\mathrm{met}}(\dot{z}_1, \dot{z}_2) \coloneqq -\frac{1}{2}\operatorname{tr}\!
 $$
 :::
 
-::: {.carnap-box}
-**Lawvere–Tierney Modal Bridge & Two-Step Plus-Construction**
+::: {.carnap-box .fragment}
+**Theorems 1.29–1.30 / 1.37–1.38: Lawvere–Tierney Modal Bridge & Plus-Construction**
 On Fischer–Servi frames satisfying Metric Confluence ($A_{\mathrm{conf}}$: FS1 & FS2 on $d_P(U_1, U_2) < \epsilon_A$), $\Diamond_S \dashv \Box_S$ form an internal Galois adjunction on $\Omega$, and $j_S \coloneqq \neg_J \Box_S \neg_J \colon \Omega \to \Omega$ is a **Lawvere–Tierney topology** whose sheafification is the two-step plus-construction:
 $$
 (L_{j_S} P)(U) = \operatorname*{colim}_{S \in J_{j_S}(U)} \operatorname{Nat}(S, P), \qquad \mathbf{a}_{j_S} P = L_{j_S}(L_{j_S} P) \;\dashv\; \mathbf{i}_{j_S}
@@ -1086,7 +1100,7 @@ $$
 ::::
 
 ::: {.notes}
-How far apart are two subjective perspectives? Definition 1.31 introduces the operator discrepancy pseudometric d_P(U,V), while smooth cipher rotations z(t) in SO(n) carry the Killing-form Riemannian metric g_met—explicating Heim's Metropie. On the right, Stage I of our book-wide Running Example demonstrates a 2-channel spin-polarimeter rotating through SO(6).
+How far apart are two subjective perspectives? Definition 1.25/1.31 introduces the operator discrepancy pseudometric d_P(U,V), while smooth cipher rotations z(t) in SO(n) carry the Killing-form Riemannian metric g_met—explicating Heim's Metropie. On the right, Stage I of our book-wide Running Example demonstrates a 2-channel spin-polarimeter rotating through SO(6).
 :::
 
 ---
@@ -1110,7 +1124,7 @@ $$
 $$
 :::
 
-::: {.intuition-box}
+::: {.intuition-box .fragment}
 **Key Forcing Clauses:**
 $$
 \begin{aligned}
@@ -1234,7 +1248,7 @@ Layer 3 provides the syntactic proof engine: the intuitionistic Leveled Modal Sy
 ::: {.column width="50%"}
 
 ::: {.thm-box}
-**Theorems: Soundness & Strong Canonical Completeness**
+**Theorems 1.34, 1.37–1.38 / 1.42, 1.45–1.46: Soundness & Strong Completeness**
 By simultaneous multi-level prime theory saturation $\mathbf{\Delta} = \langle \Delta_k \subset \mathcal{L}_k \rangle_{k \in \mathbb{N}_0}$ over canonical worlds $w^c = (\Delta_k, k)$ with $(\Delta_k, k) R_{\pi_F}^c (\Delta_{k+1}, k+1)$:
 $$
 (\Delta_k, k) \models \psi \;\Longleftrightarrow\; \psi \in \Delta_k \quad \forall \psi \in \mathcal{L}_k
@@ -1245,7 +1259,7 @@ $$
 $$
 :::
 
-::: {.carnap-box}
+::: {.carnap-box .fragment}
 **Gentzen's *Hauptsatz* & Structural Metatheorems (Appendix A)**
 
 * **Cut Elimination (Thm A.5):** Every derivable sequent admits a cut-free derivation $\mathcal{D}_{\mathrm{norm}}$.
@@ -1315,7 +1329,7 @@ Section 1.9 and Appendix A establish the crown jewels of our proof theory: Sound
 | **Holoform ($\mathbf{H}$)** | Global section $\Gamma \in \Hol(\mathcal{U}, \mathbf{P})$ ($\Def_{\mathcal{U}}(s) = 0$) | **B-Thm** (§1.5) |
 | **Antagonismus** | Tripartite obstruction ($\operatorname{Ant}_{\mathrm{mer}}, \operatorname{Ant}_{\mathrm{desc}}, \operatorname{Ant}_{\mathrm{log}}$) | **B-Thm** (§1.6) |
 
-::: {.thm-box}
+::: {.thm-box .fragment}
 **Asymptotic Sanity Check (Classical Boolean Collapse):**
 When $\Ctx \to \{*\}$, $z = \zeta = \operatorname{id}$, and $a_q = f_q = b_q$, the sheaf topos collapses to $\mathbf{Sh}(\{*\}) \cong \mathbf{Set}$ and $\Omega \cong \{0, 1\} = \mathbf{2}$, recovering classical bivalent Tarskian semantics as an uncontextualized degenerate limit.
 :::
@@ -1334,7 +1348,7 @@ $\mathcal{R} \colon \mathsf{HeimVocabulary}\;(\mathbf{D}) \rightsquigarrow \math
   <div class="video-caption">Manim Act XII (Fig. 1.12): Tri-Layered Semantic &amp; Constructive Proof-Theoretic Synthesis</div>
 </div>
 
-::: {.firewall-box}
+::: {.firewall-box .fragment}
 **Syntrometric Dialectical Transition to Chapter 2:**
 $\Esyn$ restricts, tests, and glues existing observations, but has **no generative grammar** to synthesize higher-rank concepts. In **Chapter 2**, we lift sheaves in $\Esyn$ to algebras over the **completed colored Banach operad $\mathcal{O}_{\mathrm{syn}}$** and free tree monad $T_{\mathsf{P}}$.
 :::
