@@ -1,0 +1,559 @@
+---
+title: "Syntrometrische Maximentelezentrik"
+subtitle: "Chapter 6: Die televariante äonische Area — Terminal Coalgebras, Lyapunov Basins & Resynkolation"
+author: "Research Collective — Department of Mathematical Physics & Formal Epistemology"
+date: "August 2026"
+format:
+  revealjs:
+    theme: [dark, custom_syntrometrie.scss]
+    width: 1920
+    height: 1080
+    margin: 0.06
+    transition: fade
+    background-transition: fade
+    slide-number: c/t
+    controls: true
+    progress: true
+    hash: true
+    center: false
+    html-math-method: mathjax
+---
+
+<!-- GLOBAL MATHJAX MACROS MATCHING CHAPTER 6 OF SYNTROMETRIC-TOPOS.TEX -->
+<div style="display:none;">
+$$
+\newcommand{\MAR}{\mathcal{M}_{\mathfrak{AR}}}
+\newcommand{\gAR}{g_{\mathfrak{AR}}}
+\newcommand{\XAR}{X_{\mathfrak{AR}}}
+\newcommand{\Dext}{\mathcal{D}_{\mathrm{ext}}}
+\newcommand{\Coalg}{\mathbf{Coalg}}
+\newcommand{\HypMet}{\operatorname{HypMet}}
+\newcommand{\nullsyntrix}{\mathbf{ys}\widetilde{\mathbf{c}}}
+\newcommand{\grad}{\operatorname{grad}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\ind}{\operatorname{ind}}
+\newcommand{\Crit}{\operatorname{Crit}}
+\newcommand{\Hess}{\operatorname{Hess}}
+$$
+</div>
+
+## §6.1.1: *Metroplexäondyne*, *Monodromie/Polydromie* & *Area* (SM-27) {.smaller}
+
+<div class="stratum-badge badge-d">STRATUM D: HISTORICAL EXEGESIS (SM, PP. 104–108, EQ. 27)</div>
+
+:::: {.columns}
+::: {.column width="50%"}
+### Dynamical Evolution in the *Äondynentensorium*
+* Chapter 5 constructed the multi-scale $(\infty, 1)$-topos $\mathcal{X}_{\mathrm{syn}}$, but a homotopy tower remains **directionless** without a dynamical selection principle.
+* When a grade-$n$ Metroplex $\overset{\scriptscriptstyle n}{\mathbf{M}}\widetilde{\mathrm{a}}(t_1, \dots, t_Q)$ evolves across an $N$-dimensional parameter space, Heim terms it a **Metroplexäondyne** evolving in two distinct regimes:
+  1. **Monodromie:** Unique, deterministic trajectory from a given initial state.
+  2. **Polydromie:** At critical bifurcation loci (*Polydromiepunkte* $x_0$), trajectories branch into an exploratory tuft of $P_\mu > 1$ potential paths.
+
+::: {.thm-box}
+**The Recursive *Äonische Area* Formula (SM Eq. 27, p. 106):**
+$$
+AR_q \equiv AR_{(T_1)}^{(T_2)}\!\left[ (AR_{q-1})_{\gamma_{q-1}} \right]_1^{P_{q-1}} \quad \lor \quad AR_1 \equiv AR_{(T)}^{(T')}\!\left[ \overset{\scriptscriptstyle n}{\mathbf{M}}\widetilde{\mathrm{a}}(t_i)_1^Q \right] \tag{SM-27}
+$$
+An Area of order $q$ is a fiber bundle of $P_{q-1}$ sub-areas of order $q-1$ oriented between guiding boundary manifolds $(T_1, T_2)$.
+:::
+:::
+
+::: {.column width="50%"}
+<div class="video-container">
+  <video data-autoplay loop muted playsinline src="media/Ch6_Act1_Mono_Polydromie_Area.mp4"></video>
+  <div class="video-caption">Manim Act I: Monodromie vs. Polydromic Branching Tuft &amp; Recursive Area Hierarchy (SM-27)</div>
+</div>
+
+::: {.intuition-box .fragment}
+**The Central Question of Chapter 6:**
+Out of the vast combinatorial tuft of trajectories in an *äonische Area* ($\mathfrak{AR}$), what selects a coherent evolutionary path and prevents dispersion into entropic noise?
+:::
+:::
+::::
+
+::: {.notes}
+Chapter 6 completes Teil A of Heim's treatise. Having built the multi-scale Metroplex tower in Chapter 5, we now ask how a Metroplexäondyne evolves in time. Heim distinguishes deterministic Monodromie from branching Polydromie inside the recursive fiber bundle of the äonische Area (SM Eq. 27).
+:::
+
+---
+
+## §6.1.2–6.1.3: *Telezentrik*, *Televarianz* vs. *Dysvarianz* & $\Dext$ {.smaller}
+
+<div class="stratum-badge badge-d">STRATUM D: TELEZENTREN, EXTINKTIONSDISKRIMINANTE &amp; RESYNKOLATION (SM, PP. 108–116)</div>
+
+:::: {.columns}
+::: {.column width="50%"}
+### *Telezentrik* Without Retrocausality
+* Trajectories in an *äonische Area* are channeled by asymptotic attractor submanifolds of maximal coherence and minimal entropy—**Telezentren ($T_z$)**.
+* Anticipates **Karl Friston's Free-Energy Principle (2010)** and **Andy Clark's Active Inference (2016)**: self-organizing systems persist by following forward local gradients toward viable attracting sets.
+
+::: {.firewall-box .fragment}
+***Televarianz* vs. *Dysvarianz* & The *Extinktionsdiskriminante* ($\Dext$):**
+* **Televarianten ($\mathbf{W}_{\mathrm{tele}} \subset \mathcal{B}(T_z)$):** Preserve internal *telezentrische Tektonik* while dissipating entropy toward $T_z$.
+* **Dysvarianten ($\mathbf{W}_{\mathrm{dys}}$):** Diverge across the phase-space boundary—the **Extinktionsdiskriminante ($\Dext = \partial\mathcal{B}(T_z)$)**:
+  - *Functional Dysvarianz (Prop. 6.9):* Rule architecture intact, but syndrome populations become undefined (intermittent).
+  - *Structural Dysvarianz:* Internal Kombinat fractures, collapsing into the *Nullsyntrix* ($\nullsyntrix$).
+:::
+:::
+
+::: {.column width="50%"}
+<div class="video-container">
+  <video data-autoplay loop muted playsinline src="media/Ch6_Act2_3_Telezentrik_Dimensions.mp4"></video>
+  <div class="video-caption">Manim Acts II &amp; III: Televarianz vs. Dysvarianz &amp; Dimensional Taxonomy of Telezentren ($\gamma = 0\dots 3$)</div>
+</div>
+
+::: {.thm-box .fragment}
+**Dimensional Names (Prop. 6.3) & Projective Panoramas (Def. 6.5):**
+* $\gamma = 0$: *Punkttelezentrum* $\mid$ $\gamma = 1$: *Linientelezentrum* $\mid$ $\gamma = 2$: *Flächentelezentrum* $\mid$ $\gamma = 3$: *Raumtelezentrum* ($0 \le \gamma \le n-1$).
+* Open panoramas without affine attractors adjoin ideal boundary points at infinity as **projective telecentres**.
+:::
+:::
+::::
+
+---
+
+## §6.2.1: Phase Manifolds $\MAR$ & Far-Centered Collectors (Fig. 6.1) {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM A: METRIC DYNAMICAL SYSTEMS &amp; HETEROCLINIC COLLECTORS (DEFS. 6.1–6.4)</div>
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.thm-box}
+**Definitions 6.1 & 6.2: Area Phase Manifold & Basins of Attraction**
+An *äonische Area* is a complete Riemannian manifold $(\MAR, \gAR)$ equipped with a complete smooth vector field $\XAR \in \mathfrak{X}(\MAR)$ generating the flow $\Phi_t \colon \MAR \to \MAR$.
+A compact invariant submanifold $\mathcal{A} \subset \MAR$ ($\Phi_t(\mathcal{A}) = \mathcal{A}$) is a **Telecentric Attractor** with open basin:
+$$
+\mathcal{B}(\mathcal{A}) \;\coloneqq\; \left\{ x \in \MAR \;\middle|\; \lim_{t \to \infty} \dist_{\gAR}\big(\Phi_t(x), \mathcal{A}\big) = 0 \right\}
+$$
+:::
+
+::: {.carnap-box .fragment}
+**Definition 6.4: Far-Centered Collector Bifurcation Cycle (*Kollektor* $\mathfrak{Col}$)**
+1. **Polydromy Point ($x_0 \in \Dext$):** Critical saddle where $d\XAR(x_0)$ has $P_\mu > 1$ unstable directions ($W^u(x_0) \cong \mathbb{R}^{P_\mu}$).
+2. **Far-Centered Collector ($\mathcal{K}$ at distance $L > 0$):** Asymptotic attractor whose basin captures the punctured unstable tuft $W^u_{\mathrm{tele}}(x_0) \coloneqq W^u(x_0) \setminus \{x_0\} \subseteq \mathcal{B}(\mathcal{K})$:
+$$
+\lim_{t \to \infty} \dist_{\gAR}\!\Big( \Phi_t\big(W^u_{\mathrm{tele}}(x_0)\big),\; \mathcal{K} \Big) = 0
+$$
+:::
+:::
+
+::: {.column width="50%"}
+<div class="video-container">
+  <video data-autoplay loop muted playsinline src="media/Ch6_Act4_Collector_Bifurcation.mp4"></video>
+  <div class="video-caption">Manim Act IV (Fig. 6.1): Polydromic Branching Tuft $W^u(x_0)$ Reconverging into Collector $\mathcal{K}$</div>
+</div>
+
+::: {.intuition-box .fragment}
+**Telezentrik as a Mountain Basin:**
+A water droplet reaches a mountain lake by obeying local forward slopes ($-\grad\Psi$), not by receiving a retrocausal signal from the future lake.
+:::
+:::
+::::
+
+---
+
+## §6.2.2: Final Telecentric Coalgebra $(\nu\mathcal{T}, \zeta)$ & Stage V Phase-Lock {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM A: UNIVERSAL COALGEBRA (THM. 6.7), LAMBEK LEMMA (PROP. 6.8) &amp; STAGE V</div>
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.thm-box}
+**Definition 6.6, Theorem 6.7 & Proposition 6.8: Final Coalgebra $(\nu\mathcal{T}, \zeta)$**
+In $\mathbf{Diff}_{\mathrm{smooth}}$, the basepoint-preserving path endofunctor:
+$$
+\mathcal{T}_{\mathbb{R}}(M) \;\coloneqq\; \big( M \times C^\infty([0, \epsilon], M) \big)_{\operatorname{ev}_0 = \operatorname{pr}_1} \amalg \mathbf{1}
+$$
+possesses a **Final Coalgebra $(\nu\mathcal{T}, \zeta)$** where $\zeta \colon \nu\mathcal{T} \xrightarrow{\sim} \mathcal{T}(\nu\mathcal{T})$ is a **Lambek isomorphism**. For every candidate system $(S, \alpha)$, there exists a **unique telecentric homomorphism**:
+$$
+\exists!\, !_\alpha \colon S \longrightarrow \nu\mathcal{T} \quad\text{s.t.}\quad \zeta \circ !_\alpha = \mathcal{T}(!_\alpha) \circ \alpha
+$$
+:::
+
+<div class="video-container" style="margin-top:8px;">
+  <video data-autoplay loop muted playsinline src="media/Ch6_Act5_6_Coalgebra_StageV.mp4" style="max-height:225px;"></video>
+</div>
+:::
+
+::: {.column width="52%"}
+<!-- INTERACTIVE STAGE V TELECENTRIC PHASE-LOCKING LABORATORY -->
+<div class="interactive-panel">
+  <h4>Stage V of VI Laboratory: Telecentric Polarimeter Phase-Locking</h4>
+  <p style="font-size:0.62em; color:#aaa; margin-bottom:6px;">
+    Coupled polarimeters with relative phase $\theta(t) \in [-\pi/2, \pi/2]$, Lyapunov potential $\Psi(\theta) = 1 - \cos\theta$, and feedback $\dot{\theta} = -\sin\theta$ ($\dot{\Psi} = -\sin^2\theta \le -\Psi$). Slide $\theta_0$ and time $t$ to watch convergence to $\theta = 0$.
+  </p>
+
+  <div class="slider-row">
+    <span style="color:#FFA500;">Initial $\theta(0)$ (deg):</span>
+    <input type="range" id="st5-th0" min="-90" max="90" step="5" value="75" oninput="updateStage5()">
+    <span id="st5-th0-val" style="font-family:monospace; width:38px;">+75°</span>
+    <span style="color:#20B2AA;">Time $t$:</span>
+    <input type="range" id="st5-t" min="0" max="5" step="0.1" value="0.0" oninput="updateStage5()">
+    <span id="st5-t-val" style="font-family:monospace; width:34px;">0.0s</span>
+  </div>
+
+  <svg viewBox="0 0 420 140" style="width:100%; max-height:140px; background:#080b12; border-radius:8px; border:1px solid #2d3748;">
+    <circle cx="110" cy="70" r="52" fill="none" stroke="#4169E1" stroke-width="2.5"/>
+    <!-- Target theta = 0 reference vector -->
+    <line x1="110" y1="70" x2="162" y2="70" stroke="#20B2AA" stroke-width="3"/>
+    <text x="168" y="74" fill="#20B2AA" font-size="11" font-weight="bold">θ_target = 0 (T_z)</text>
+    <!-- Dynamic rotating phase vector -->
+    <line id="st5-vec" x1="110" y1="70" x2="123" y2="20" stroke="#FFD700" stroke-width="3.5"/>
+    <circle id="st5-tip" cx="123" cy="20" r="5" fill="#FFD700"/>
+    <text x="275" y="48" fill="#cbd5e1" font-size="11">Terminal Path Coalgebra νT_ℝ:</text>
+    <text id="st5-svg-eq" x="275" y="75" fill="#FFD700" font-size="12" font-weight="bold">θ(t) = 75.0°</text>
+    <text id="st5-svg-psi" x="275" y="100" fill="#5eead4" font-size="11">Ψ(t) = 0.741 ≤ e⁻ᵗ Ψ(0)</text>
+  </svg>
+
+  <div id="st5-readout" class="matrix-readout" style="font-size:0.68em;"></div>
+</div>
+:::
+::::
+
+---
+
+## §6.3.1–6.3.2: Lyapunov Landscapes & Morse–Smale Separatrices $\Dext$ {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: EXPONENTIAL STABILITY (THM. 6.10) &amp; WHITNEY SEPARATRICES (THM. 6.14, FIG. 6.3)</div>
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.thm-box}
+**Definition 6.9 & Theorem 6.10: Strict Televariant Stability**
+On compact sublevel basin $\mathcal{K}_c = \{V(x) \le c\} \subset \mathcal{B}(\mathcal{A})$, let $V(x) \coloneqq \Psi(x) - \Psi(\mathcal{A})$ satisfy **Morse–Bott quadratic coercivity** and **Polyak–Łojasiewicz dissipation**:
+$$
+V(x) \ge \frac{\mu}{2}\dist_{\gAR}(x, \mathcal{A})^2, \qquad \dot{V}(x) = \mathcal{L}_{\XAR}V(x) \le -\gamma V(x)
+$$
+By Grönwall's inequality, every orbit starting at $x_0 \in \mathcal{K}_c$ converges exponentially to the Telezentrum $\mathcal{A}$:
+$$
+V(\Phi_t(x_0)) \le V(x_0)e^{-\gamma t} \implies \dist_{\gAR}(\Phi_t(x_0), \mathcal{A}) \le \sqrt{\frac{2V(x_0)}{\mu}}\, e^{-\frac{\gamma}{2}t} \xrightarrow{t\to\infty} 0
+$$
+:::
+
+::: {.firewall-box .fragment}
+**Theorem 6.14: Morse–Smale Stratified Separatrix Boundary**
+For $\XAR = -\grad_{\gAR}\Psi$, the **Extinktionsdiskriminante** $\Dext \coloneqq \partial\mathcal{B}(\mathcal{A})$ is the Whitney-stratified union of stable manifolds of hyperbolic saddles $p_r \in \Crit(\Psi)$ of Morse index $\ind(p_r) \ge 1$:
+$$
+\Dext \;=\; \overline{\bigcup_{\ind(p_j)=1} W^s(p_j)} \;=\; \bigcup_{r \,:\, \ind(p_r)\ge 1} W^s(p_r), \qquad \dim W^s(p_j) = n - 1
+$$
+:::
+:::
+
+::: {.column width="52%"}
+<!-- INTERACTIVE DOUBLE-WELL TELECENTRIC BASIN & SEPARATRIX EXPLORER -->
+<div class="interactive-panel">
+  <h4>Interactive Double-Well Landscape $\Psi(x) = (x^2 - 1)^2$ &amp; Separatrix $\Dext$</h4>
+  <p style="font-size:0.62em; color:#aaa; margin-bottom:6px;">
+    Drag initial state $x_0 \in [-1.6, 1.6]$ across the unstable index-$1$ saddle $p_0 = 0 \in \Dext$ to observe how $\partial\mathcal{B}(T_{z,1}) = \{0\}$ partitions televariant basins $\mathcal{B}(T_{z,1}) = (-\infty, 0)$ and $\mathcal{B}(T_{z,2}) = (0, \infty)$.
+  </p>
+
+  <div class="slider-row">
+    <span style="color:#FFD700;">Initial State $x_0$:</span>
+    <input type="range" id="dw-x0" min="-1.60" max="1.60" step="0.05" value="0.55" oninput="updateDoubleWell()">
+    <span id="dw-x0-val" style="font-family:monospace; width:45px;">+0.55</span>
+  </div>
+
+  <svg viewBox="0 0 420 150" style="width:100%; max-height:150px; background:#080b12; border-radius:8px; border:1px solid #2d3748;">
+    <!-- Separatrix Line at x = 0 (cx = 210) -->
+    <line x1="210" y1="10" x2="210" y2="140" stroke="#DC143C" stroke-width="2.5" stroke-dasharray="5,4"/>
+    <text x="216" y="24" fill="#ff6b81" font-size="10" font-weight="bold">D_ext = ∂B (x=0 Saddle)</text>
+    <!-- Double Well Curve -->
+    <path id="dw-curve" d="" fill="none" stroke="#4169E1" stroke-width="3"/>
+    <!-- Attractors Tz1 (-1) and Tz2 (+1) -->
+    <circle cx="120" cy="125" r="6" fill="#20B2AA"/>
+    <text x="120" y="142" text-anchor="middle" fill="#20B2AA" font-size="10" font-weight="bold">T_{z,1} = -1</text>
+    <circle cx="300" cy="125" r="6" fill="#20B2AA"/>
+    <text x="300" y="142" text-anchor="middle" fill="#20B2AA" font-size="10" font-weight="bold">T_{z,2} = +1</text>
+    <!-- State Ball & Flow Arrow -->
+    <circle id="dw-ball" cx="259" cy="82" r="8" fill="#FFD700" stroke="#000" stroke-width="1.5"/>
+  </svg>
+
+  <div id="dw-readout" class="matrix-readout" style="font-size:0.66em;"></div>
+</div>
+
+<div class="video-container" style="margin-top:8px;">
+  <video data-autoplay loop muted playsinline src="media/Ch6_Act7_8_Lyapunov_Separatrix.mp4" style="max-height:175px;"></video>
+</div>
+:::
+::::
+
+---
+
+## §6.3.3: *Transzendente Telezentralenrelativität* (Thm. 6.19, Fig. 6.4) {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: RELATIVITY OF PURPOSE ACROSS TRANSCENDENCE STRATA C(m)</div>
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.thm-box}
+**Definition 6.15 & Theorem 6.19: *Transzendente Telezentralenrelativität***
+For each transcendence stratum $C(m)$, let $\mathcal{C}_m \coloneqq \Coalg(\mathcal{T}_m)$ have terminal Telezentrum $(\nu\mathcal{T}_m, \zeta_m)$. The **Transzendenzsynkolator** $\Gamma_m \colon \mathcal{C}_m \to \mathcal{C}_{m+1}$ admits a right adjoint forgetful functor $U_{m+1}$:
+$$
+\Gamma_m \;\dashv\; U_{m+1} \colon \Coalg(\mathcal{T}_{m+1}) \longrightarrow \Coalg(\mathcal{T}_m)
+$$
+Because left adjoints preserve colimits and initial objects—**not** terminal objects or final coalgebras—the terminal goal of stratum $C(m)$ maps to a non-terminal basal generator of $C(m+1)$:
+$$
+\boxed{\Gamma_m(\nu\mathcal{T}_m) \;\cong\; \HypMet_{m+1} \;\not\cong\; \nu\mathcal{T}_{m+1} \quad\text{in }\mathcal{C}_{m+1}}
+$$
+:::
+
+<div class="video-container" style="margin-top:8px;">
+  <video data-autoplay loop muted playsinline src="media/Ch6_Act9_Telezentralenrelativitaet.mp4" style="max-height:225px;"></video>
+</div>
+:::
+
+::: {.column width="52%"}
+<!-- INTERACTIVE TRANSCENDENCE STRATUM RELATIVITY STEPPER -->
+<div class="interactive-panel">
+  <h4>Interactive *Telezentralenrelativität* Stratum Escalator (Fig. 6.4)</h4>
+  <p style="font-size:0.62em; color:#aaa; margin-bottom:8px;">
+    Step across transcendence strata $C(0) \to C(1) \to C(2)$ to see how what functions as an absolute terminal *Haupttelezentrum* ($\nu\mathcal{T}_m$) in $C(m)$ becomes a basal *Nebentelezentrum* ($\HypMet_{m+1}$) in $C(m+1)$.
+  </p>
+
+  <div style="display:flex; gap:8px; justify-content:center; margin-bottom:10px;">
+    <button class="syn-btn" onclick="setTransStratum(0)">Stratum $C(0)$: Base Syntrix</button>
+    <button class="syn-btn" onclick="setTransStratum(1)">Lift $\Gamma_0 \to$ Stratum $C(1)$</button>
+    <button class="syn-btn" onclick="setTransStratum(2)">Lift $\Gamma_1 \to$ Stratum $C(2)$</button>
+  </div>
+
+  <div id="trans-cards" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:0.68em;"></div>
+
+  <div id="trans-readout" class="matrix-readout" style="margin-top:10px; font-size:0.68em; text-align:left;"></div>
+</div>
+:::
+::::
+
+---
+
+## §6.3.4: Morse Parity ($\mu \in 2\mathbb{N}$) & Wasserstein *Resynkolation* {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: POINCARÉ–HOPF PARITY (THM. 6.20) &amp; KRAMERS ESCAPE (THM. 6.21)</div>
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.thm-box}
+**Theorem 6.20: Morse–Poincaré–Hopf Even Parity of Secondary Telezentren**
+On an isolating region $\Omega \subset \MAR$ with Euler characteristic $\chi(\Omega) = 0$ and inward gradient flow, the Morse–Smale–Witten complex $\partial_{\mathrm{MS}} \colon CM_1(\Omega) \to CM_0(\Omega)$ satisfies:
+$$
+\sum_{k=0}^n (-1)^k c_k = \chi(\Omega) = 0 \implies c_0 = c_1 \implies \mu = c_0 + c_1 = 2c_0 \equiv 0 \pmod 2
+$$
+pairing $c_0$ point Telezentren with $c_1$ saddles via $\mu/2$ geodetic *Telezentralen*!
+:::
+
+::: {.carnap-box .fragment}
+**Theorem 6.21: Wasserstein Free-Energy Flow & Eyring–Kramers *Resynkolation***
+Under Langevin noise $dx_t = -\grad\Psi\,dt + \sqrt{2\varepsilon_{\mathrm{fluct}}}\,dW_t$, the Fokker–Planck density $\rho_t$ is the $W_2$-gradient flow of **Variational Free Energy**:
+$$
+\mathcal{F}_{\mathrm{free}}[\rho] \coloneqq \int \Psi\rho\,d\operatorname{vol}_g + \varepsilon_{\mathrm{fluct}}\int \rho\ln\rho\,d\operatorname{vol}_g, \qquad \frac{d}{dt}\mathcal{F}_{\mathrm{free}}[\rho_t] \le 0
+$$
+with mean survival time $\tau_{\mathrm{surv}} \propto \exp(\Delta E_{\mathrm{barrier}} / \varepsilon_{\mathrm{fluct}})$ before escape across $\Dext$.
+:::
+:::
+
+::: {.column width="52%"}
+<!-- INTERACTIVE WASSERSTEIN FREE ENERGY & KRAMERS RESYNKOLATION SIMULATOR -->
+<div class="interactive-panel">
+  <h4>Interactive Eyring–Kramers Survival &amp; *Resynkolation* Simulator</h4>
+  <p style="font-size:0.60em; color:#aaa; margin-bottom:6px;">
+    Adjust saddle barrier height $\Delta E_{\mathrm{barrier}} = \Psi(p^*) - \Psi(\mathcal{A})$ and noise variance $\varepsilon_{\mathrm{fluct}}$. When $\Delta E_{\mathrm{barrier}} / \varepsilon_{\mathrm{fluct}} < 2.0$, click **Trigger Resynkolation** to switch Komplexsynkolator intervals!
+  </p>
+
+  <div class="slider-row">
+    <span style="color:#20B2AA;">Barrier $\Delta E_{\mathrm{barrier}}$:</span>
+    <input type="range" id="kr-de" min="0.2" max="3.0" step="0.1" value="0.6" oninput="updateKramers()">
+    <span id="kr-de-val" style="font-family:monospace; width:34px;">0.60</span>
+    <span style="color:#DC143C;">Noise $\varepsilon_{\mathrm{fluct}}$:</span>
+    <input type="range" id="kr-eps" min="0.1" max="1.2" step="0.05" value="0.45" oninput="updateKramers()">
+    <span id="kr-eps-val" style="font-family:monospace; width:34px;">0.45</span>
+  </div>
+
+  <div style="text-align:center; margin:6px 0;">
+    <button class="syn-btn" style="border-color:#9370DB; color:#e9d5ff;" onclick="triggerResynkolation()">
+      ⚡ Trigger Resynkolation Morphism R_resyn : (O_syn, Ψ) ↦ (O'_syn, Ψ')
+    </button>
+  </div>
+
+  <div id="kr-readout" class="matrix-readout" style="text-align:left; font-size:0.66em; line-height:1.45;"></div>
+</div>
+
+<div class="video-container" style="margin-top:8px;">
+  <video data-autoplay loop muted playsinline src="media/Ch6_Act10_11_Parity_Resynkolation.mp4" style="max-height:190px;"></video>
+</div>
+:::
+::::
+
+---
+
+## §6.4–6.6: Reconstruction Map $\mathcal{R}$, Sanity Checks & Synthesis {.smaller}
+
+<div class="stratum-badge badge-c">STRATUM C: COMPLETION OF TEIL A &amp; THE ANTHROPOMORPHIC PIVOT TO CHAPTER 7</div>
+
+:::: {.columns}
+::: {.column width="52%"}
+| Heimian Concept ($\mathbf{D}$) | Mathematical Explicatum ($\mathcal{R}$ in $\mathbf{A}/\mathbf{B}$) | Ref. |
+|:---|:---|:---:|
+| **Äonische Area ($\mathfrak{AR}$)** | Riemannian phase manifold $(\MAR, \gAR, \Phi_t)$ | Def. 6.1 |
+| **Telezentrik** | Final coalgebra terminality & Lyapunov gradient flow | Def. 6.6 |
+| **Telezentrum ($T_z$)** | Final coalgebra $(\nu\mathcal{T}, \zeta)$ & attractor $\mathcal{A} \subset \MAR$ | Thm. 6.7 |
+| **Kollektor ($\mathfrak{Col}$)** | Far-centered attractor capturing tuft $W^u_{\mathrm{tele}}(x_0) \subseteq \mathcal{B}(\mathcal{K})$ | Def. 6.4 |
+| **Televariante ($\mathbf{W}_{\mathrm{tele}}$)** | Basin trajectory with exponential decay $\dot{V} \le -\gamma V$ | Thm. 6.10 |
+| **Extinktionsdiskriminante** | Morse–Smale Whitney separatrix $\Dext = \partial\mathcal{B}(\mathcal{A})$ | Thm. 6.14 |
+| **Telezentralenrelativität** | Left-adjoint non-preservation $\Gamma_m(\nu\mathcal{T}_m) \not\cong \nu\mathcal{T}_{m+1}$ | Thm. 6.19 |
+| **Resynkolation** | Kramers escape recovery switching $(\mathcal{O}_{\mathrm{syn}}, \Psi) \mapsto (\mathcal{O}'_{\mathrm{syn}}, \Psi')$ | Thm. 6.21 |
+
+::: {.thm-box .fragment}
+**Physical & Epistemic Sanity Checks (§6.5):**
+1. **Unpolarized Flat Limit ($\grad\Psi \equiv 0$):** $\XAR = 0 \implies \Phi_t = \operatorname{id}$; no finite telecenters exist ($\mathcal{A} = \emptyset$), recovering Heim's *pseudotelezentrisch* projective panorama (SM, p. 108).
+2. **Adjoint Non-Preservation:** $\Gamma_m \dashv U_{m+1}$ proves mathematically that terminal goals cannot remain absolute across transcendence levels.
+:::
+:::
+
+::: {.column width="48%"}
+<div class="video-container">
+  <video data-autoplay loop muted playsinline src="media/Ch6_Act12_Synthesis.mp4"></video>
+  <div class="video-caption">Manim Act XII (Fig. 6.5): Synthesis of Telecentric Coalgebras, Separatrices &amp; Stratum Relativity</div>
+</div>
+
+::: {.firewall-box .fragment}
+**Completion of *Teil A* & Dialectical Bridge to Chapter 7 (*Teil B*):**
+With Chapters 1–6, the universal categorical logic of *Syntrometrie* is complete. To interface this pure structural architecture with empirical measurement and physical units, **Chapter 7 (*Anthropomorphic Syntrometry*)** executes the **Anthropomorphic Pivot**—restricting the observer site to the algebraic number fields $\mathbf{Coeff} = [\mathbb{Q} \subseteq \mathbb{R} \subseteq \mathbb{C}]$ and normed parameter continua $R_n$.
+:::
+:::
+::::
+
+<!-- JAVASCRIPT FOR CHAPTER 6 INTERACTIVE LABORATORIES -->
+<script>
+function updateStage5() {
+  let deg0 = parseFloat(document.getElementById('st5-th0').value);
+  let t = parseFloat(document.getElementById('st5-t').value);
+  document.getElementById('st5-th0-val').innerText = (deg0 >= 0 ? '+' : '') + deg0 + '°';
+  document.getElementById('st5-t-val').innerText = t.toFixed(1) + 's';
+
+  let th0 = deg0 * Math.PI / 180.0;
+  // Exact solution of d(theta)/dt = -sin(theta): tan(theta(t)/2) = e^{-t} tan(theta(0)/2)
+  let th_t = 2.0 * Math.atan(Math.exp(-t) * Math.tan(th0 / 2.0));
+  let deg_t = th_t * 180.0 / Math.PI;
+  let psi0 = 1.0 - Math.cos(th0);
+  let psi_t = 1.0 - Math.cos(th_t);
+  let bound = Math.exp(-t) * psi0;
+
+  let xEnd = 110 + 52 * Math.cos(-th_t);
+  let yEnd = 70 + 52 * Math.sin(-th_t);
+  document.getElementById('st5-vec').setAttribute('x2', xEnd.toFixed(1));
+  document.getElementById('st5-vec').setAttribute('y2', yEnd.toFixed(1));
+  document.getElementById('st5-tip').setAttribute('cx', xEnd.toFixed(1));
+  document.getElementById('st5-tip').setAttribute('cy', yEnd.toFixed(1));
+
+  document.getElementById('st5-svg-eq').textContent = `θ(t) = ${deg_t >= 0 ? '+' : ''}${deg_t.toFixed(2)}°`;
+  document.getElementById('st5-svg-psi').textContent = `Ψ(θ(t)) = ${psi_t.toFixed(4)} ≤ e⁻ᵗ Ψ(0) = ${bound.toFixed(4)}`;
+
+  document.getElementById('st5-readout').innerHTML =
+    `<b>Exact Trajectory (!ₐ(θ₀)):</b> tan(θ(t)/2) = e⁻ᵗ tan(θ₀/2)  ⇒  <b>Ψ(t) = ${psi_t.toFixed(4)}</b> ` +
+    (Math.abs(deg_t) < 2.0 ? `<span style="color:#FFD700;"><b>(SYNCHRONIZED AT TELEZENTRUM θ = 0!)</b></span>` : `(Converging to T_z)`);
+}
+
+function initDoubleWellCurve() {
+  let pts = [];
+  for (let i = 0; i <= 100; i++) {
+    let x = -1.65 + (i / 100.0) * 3.30;
+    let psi = Math.pow(x * x - 1.0, 2);
+    let sx = 210 + x * 90;
+    let sy = 125 - psi * 38;
+    pts.push((i === 0 ? "M " : "L ") + sx.toFixed(1) + "," + sy.toFixed(1));
+  }
+  document.getElementById('dw-curve').setAttribute('d', pts.join(" "));
+}
+
+function updateDoubleWell() {
+  let x0 = parseFloat(document.getElementById('dw-x0').value);
+  document.getElementById('dw-x0-val').innerText = (x0 >= 0 ? '+' : '') + x0.toFixed(2);
+
+  let psi = Math.pow(x0 * x0 - 1.0, 2);
+  let grad = 4.0 * x0 * (x0 * x0 - 1.0);
+  let sx = 210 + x0 * 90;
+  let sy = 125 - psi * 38;
+
+  let ball = document.getElementById('dw-ball');
+  ball.setAttribute('cx', sx.toFixed(1));
+  ball.setAttribute('cy', sy.toFixed(1));
+
+  let box = document.getElementById('dw-readout');
+  if (Math.abs(x0) < 0.03) {
+    ball.setAttribute('fill', '#DC143C');
+    box.style.borderLeftColor = "#DC143C";
+    box.innerHTML = `<span style="color:#ff6b81;"><b>⚠ ON EXTINKTIONSDISKRIMINANTE D_ext (x₀ = 0.00, Index-1 Saddle p₀):</b></span><br>` +
+      `grad Ψ(0) = 0, Hess Ψ(0) = -4 &lt; 0. Unstable separatrix boundary between B(T_{z,1}) and B(T_{z,2})!`;
+  } else if (x0 < 0) {
+    ball.setAttribute('fill', '#20B2AA');
+    box.style.borderLeftColor = "#20B2AA";
+    box.innerHTML = `<span style="color:#20B2AA;"><b>✓ TELEVARIANT BASIN B(T_{z,1}) = (-∞, 0):</b></span> Ψ(x₀) = ${psi.toFixed(3)}, X_AR = -Ψ'(x₀) = ${(-grad).toFixed(2)}<br>` +
+      `Trajectory flows exponentially to left Telezentrum <b>T_{z,1} = -1</b>!`;
+  } else {
+    ball.setAttribute('fill', '#FFD700');
+    box.style.borderLeftColor = "#FFD700";
+    box.innerHTML = `<span style="color:#FFD700;"><b>✓ TELEVARIANT BASIN B(T_{z,2}) = (0, +∞):</b></span> Ψ(x₀) = ${psi.toFixed(3)}, X_AR = -Ψ'(x₀) = ${(-grad).toFixed(2)}<br>` +
+      `Trajectory flows exponentially to right Telezentrum <b>T_{z,2} = +1</b>!`;
+  }
+}
+
+function setTransStratum(m) {
+  let cards = document.getElementById('trans-cards');
+  let box = document.getElementById('trans-readout');
+
+  let cLeft = `
+    <div style="background:rgba(65,105,225,0.15); border:1.5px solid #4169E1; border-radius:8px; padding:10px;">
+      <b style="color:#82aaff;">Stratum C(${m}) := Coalg(T_${m})</b><hr style="border-color:#2d3748; margin:6px 0;">
+      <div style="color:#FFD700; font-weight:bold;">★ Haupttelezentrum: νT_${m}</div>
+      <div style="font-size:0.9em; color:#cbd5e1;">Absolute Terminal Coalgebra Goal of Stratum C(${m})</div>
+    </div>`;
+
+  let cRight = `
+    <div style="background:rgba(32,178,170,0.15); border:1.5px solid #20B2AA; border-radius:8px; padding:10px;">
+      <b style="color:#5eead4;">Stratum C(${m+1}) := Coalg(T_${m+1})</b><hr style="border-color:#2d3748; margin:6px 0;">
+      <div style="color:#FFA500; font-weight:bold;">↳ Nebentelezentrum: Γ_${m}(νT_${m}) ≅ HypMet_${m+1}</div>
+      <div style="color:#FFD700; font-weight:bold; margin-top:4px;">★ New Higher Goal: νT_${m+1} ≇ Γ_${m}(νT_${m})</div>
+    </div>`;
+
+  cards.innerHTML = cLeft + cRight;
+  box.innerHTML =
+    `<b>Transzendenzsynkolator Adjunction (Γ_${m} ⊣ U_${m+1}, Thm. 6.19):</b> ` +
+    `The terminal attractor <b>νT_${m}</b> of C(${m}) is demoted by left adjoint Γ_${m} into the initial generating building block <b>HypMet_${m+1}</b> on the way to <b>νT_${m+1}</b>!`;
+}
+
+function updateKramers() {
+  let de = parseFloat(document.getElementById('kr-de').value);
+  let eps = parseFloat(document.getElementById('kr-eps').value);
+  document.getElementById('kr-de-val').innerText = de.toFixed(2);
+  document.getElementById('kr-eps-val').innerText = eps.toFixed(2);
+
+  let ratio = de / eps;
+  let tauSurv = Math.exp(ratio);
+  let box = document.getElementById('kr-readout');
+
+  if (ratio < 2.0) {
+    box.style.borderLeftColor = "#DC143C";
+    box.innerHTML =
+      `<span style="color:#ff6b81;"><b>⚠ METASTABLE EXTINCTION RISK (ΔE / ε_fluct = ${ratio.toFixed(2)} &lt; 2.0):</b></span><br>` +
+      `Eyring–Kramers Survival Time τ_surv ∝ exp(ΔE/ε) = <b>${tauSurv.toFixed(1)} steps</b>. Imminent dysvariant escape across D_ext! Click <b>Trigger Resynkolation</b>!`;
+  } else {
+    box.style.borderLeftColor = "#20B2AA";
+    box.innerHTML =
+      `<span style="color:#20B2AA;"><b>✓ TELEVARIANTLY STABILIZED BASIN (ΔE / ε_fluct = ${ratio.toFixed(2)} ≥ 2.0):</b></span><br>` +
+      `Eyring–Kramers Mean Survival Time τ_surv ∝ exp(ΔE/ε) = <b style="color:#FFD700;">${tauSurv > 1000 ? tauSurv.toExponential(2) : tauSurv.toFixed(1)} steps</b> (Protected against thermal escape).`;
+  }
+}
+
+function triggerResynkolation() {
+  document.getElementById('kr-de').value = 2.6;
+  document.getElementById('kr-eps').value = 0.30;
+  updateKramers();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  updateStage5();
+  initDoubleWellCurve();
+  updateDoubleWell();
+  setTransStratum(0);
+  updateKramers();
+});
+</script>
