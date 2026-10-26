@@ -155,9 +155,35 @@ format:
         </style>
 ---
 
+<!-- FALLBACK GLOBAL MATHJAX MACROS MATCHING SYNTROMETRIC-TOPOS.TEX -->
+<div style="display:none;">
+$$
+\newcommand{\Ctx}{\mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}}
+\newcommand{\CtxPos}{\mathbf{Ctx}_{>0}^{\mathrm{sk}}}
+\newcommand{\Ban}{\mathbf{Ban}_{\le 1}}
+\newcommand{\FinBan}{\mathbf{FinBan}_{\le 1}}
+\newcommand{\Esyn}{\mathcal{E}_{\mathrm{syn}}}
+\newcommand{\Jsyn}{J_{\mathrm{syn}}}
+\newcommand{\Ksyn}{\mathcal{K}_{\mathrm{syn}}}
+\newcommand{\otpi}{\mathbin{\widehat{\otimes}_\pi}}
+\newcommand{\Hol}{\mathsf{Hol}}
+\newcommand{\Def}{\operatorname{Def}}
+\newcommand{\Isom}{\operatorname{Isom}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Sub}{\operatorname{Sub}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\IGP}{\operatorname{IGP}}
+\newcommand{\Stable}{\operatorname{Stable}}
+\newcommand{\Gen}{\operatorname{Gen}}
+\newcommand{\Prop}{\mathbf{Prop}}
+\newcommand{\AP}{\mathbf{AP}}
+$$
+</div>
+
 ## Methodological Architecture: The Epistemic Firewall {.smaller}
 
-<div class="stratum-badge badge-firewall">FRONTMATTER &amp; EPISTEMIC COLOPHON</div>
+<div class="stratum-badge badge-firewall">FRONTMATTER &amp; MASTER EPISTEMIC FIREWALL</div>
 
 :::: {.columns}
 
@@ -195,8 +221,8 @@ Formal derivability ($\Gamma_A \vdash_{\mathcal{F}} c$) certifies internal consi
 :::
 
 <div class="video-container">
-<video autoplay data-autoplay loop muted playsinline src="media/Act1_Firewall.mp4" style="max-height:290px;"></video>
-<div class="video-caption">Manim Act I (Fig. 1.1): The 4-Stratum Epistemic Firewall &amp; Illicit Upward Transfer Block</div>
+  <video autoplay data-autoplay loop muted playsinline src="media/Act1_Firewall.mp4" style="max-height:290px;"></video>
+  <div class="video-caption">Manim Act I (Fig. 1.1): The 4-Stratum Epistemic Firewall &amp; Illicit Upward Transfer Block</div>
 </div>
 
 :::
@@ -204,7 +230,7 @@ Formal derivability ($\Gamma_A \vdash_{\mathcal{F}} c$) certifies internal consi
 ::::
 
 ::: {.notes}
-We open with our foundational methodological rule: the Master Epistemic Firewall. Pure mathematical theorems in Strata A and B never automatically validate physical hypotheses in Stratum C, nor do historical heuristics in Stratum D flow upward as mathematical premises.
+Welcome everyone. We open with our foundational methodological rule: the Master Epistemic Firewall. Pure mathematical theorems in Strata A and B never automatically validate physical claims in Stratum C, nor do historical heuristics in Stratum D flow upward as mathematical premises. Every claim is tracked across five provenance axes, including its formal verification stage in Lean 4.
 :::
 
 ---
@@ -219,12 +245,12 @@ We open with our foundational methodological rule: the Master Epistemic Firewall
 ### The Six-Tiered Constitutional Tree (Carnap, *Aufbau* §§39–43)
 
 <div class="tier-stack">
-<div class="tier-bar" style="border-color:#a855f7;"><b>VI. Matter Invariants &amp; Spectral Mass (Ch. 11, App. B):</b> Self-adjoint selectors Sel Ψ = λΨ, null stability ker ⁴<b>F</b> ⇒ m = m₀ (L_p / L₁) ∏ λ_k</div>
-<div class="tier-bar" style="border-color:#ef4444;"><b>V. Discrete Quantum Spacetime (Ch. 10):</b> Metronic lattice 𝕄_τ^n := ⨁ τ_i ℤ, backward differences ∇_i, DEC cochains (Ω_d^•, d_τ)</div>
-<div class="tier-bar" style="border-color:#f97316;"><b>IV. Physical Continuum &amp; Geometry (Ch. 7–9):</b> Parameter continua R_n, nuclear Fréchet spaces 𝒮, 36-component Hermetry ²ḡ on R₆</div>
-<div class="tier-bar" style="border-color:#20B2AA;"><b>III. Intersubjective Reality &amp; Fields (Ch. 3, 4, 6):</b> Span pushouts ⊞_φ, Holoforms Hol(U, P), terminal coalgebras (ν𝒯, ζ)</div>
-<div class="tier-bar" style="border-color:#4169E1;"><b>II. Quasi-Analytic Concept Generation (Ch. 2, 5):</b> Colored operads 𝒪_syn, free tree monads T_P, Beck distributive law λ̂</div>
-<div class="tier-bar" style="border-color:#FFD700; background:rgba(255,215,0,0.10);"><b>I. Autopsychological Base (Eigenpsychische Basis) (Ch. 1 — FOCUS):</b> Contexts Ctx_adm^sk, discrepancy pseudometric d_P, sheaf topos ℰ_syn, logic ℒ_iMSL</div>
+  <div class="tier-bar" style="border-color:#a855f7;"><b>VI. Matter Invariants &amp; Spectral Mass (Ch. 11, App. B):</b> Self-adjoint selectors Sel Ψ = λΨ, null stability ker ⁴<b>F</b> ⇒ m = m₀ (L_p / L₁) ∏ λ_k</div>
+  <div class="tier-bar" style="border-color:#ef4444;"><b>V. Discrete Quantum Spacetime (Ch. 10):</b> Metronic lattice 𝕄_τ^n := ⨁ τ_i ℤ, backward differences ∇_i, DEC cochains (Ω_d^•, d_τ)</div>
+  <div class="tier-bar" style="border-color:#f97316;"><b>IV. Physical Continuum &amp; Geometry (Ch. 7–9):</b> Parameter continua R_n, nuclear Fréchet spaces 𝒮, 36-component Hermetry ²ḡ on R₆</div>
+  <div class="tier-bar" style="border-color:#20B2AA;"><b>III. Intersubjective Reality &amp; Fields (Ch. 3, 4, 6):</b> Span pushouts ⊞_φ, Holoforms Hol(U, P), terminal coalgebras (ν𝒯, ζ)</div>
+  <div class="tier-bar" style="border-color:#4169E1;"><b>II. Quasi-Analytic Concept Generation (Ch. 2, 5):</b> Colored operads 𝒪_syn, free tree monads T_P, Beck distributive law λ̂</div>
+  <div class="tier-bar" style="border-color:#FFD700; background:rgba(255,215,0,0.10);"><b>I. Autopsychological Base (Eigenpsychische Basis) (Ch. 1 — FOCUS):</b> Contexts Ctx_adm^sk, discrepancy pseudometric d_P, sheaf topos ℰ_syn, logic ℒ_iMSL</div>
 </div>
 
 :::
@@ -248,6 +274,10 @@ We open with our foundational methodological rule: the Master Epistemic Firewall
 
 ::::
 
+::: {.notes}
+This slide situates Chapter 1 at Level I of the six-tiered Konstitutionsstammbaum—the autopsychological base. Before we can speak of operadic concept generation in Level II or intersubjective physical fields in Levels III through VI, we must formalize how local subjective observation contexts are structured and glued.
+:::
+
 ---
 
 ## The Crisis of Bivalence & Reflexive Abstraction {.smaller}
@@ -259,7 +289,7 @@ We open with our foundational methodological rule: the Master Epistemic Firewall
 ::: {.column width="50%"}
 ### Critique of *Anthropomorphe Transzendentalästhetik* (SM, p. 6)
 * Radicalizing Kant’s critical turn, Heim diagnoses classical natural philosophy's enduring category mistake: mistaking contingent human sensory thresholds for the intrinsic ontology of nature (anticipating Friedman’s **relativized constitutive *a priori***, 2001).
-* **The Crisis of *Zweideutige Logik* (SM, p. 5):** Forcing continuous, context-dependent phenomena through a binary sieve $\{0, 1\}$ tears boundary regions into apparent **Antagonismen** (wave-particle duality, measurement problem, mind-body split).
+* **The Crisis of *Zweideutige Logik* (SM, p. 5):** Forcing continuous, context-dependent phenomena through a binary sieve $\{0, 1\}$ tears boundary regions into apparent **Antagonismen** (wave-particle duality, the measurement problem, mind-body split).
 
 ::: {.carnap-box}
 **Carnap 1.1: Topos Contexts as Relativized Frameworks**
@@ -275,8 +305,8 @@ Unmeasured observables neither force $\phi$ nor $\neg\phi$, dissolving bivalent 
 ::: {.column width="50%"}
 
 <div class="video-container">
-<video autoplay data-autoplay loop muted playsinline src="media/Act2_Bivalence.mp4" style="max-height:280px;"></video>
-<div class="video-caption">Manim Act II: Continuous Context Wave vs. Binary Sieve Antinomy Spikes</div>
+  <video autoplay data-autoplay loop muted playsinline src="media/Act2_Bivalence.mp4" style="max-height:280px;"></video>
+  <div class="video-caption">Manim Act II: Continuous Context Wave vs. Binary Sieve Antinomy Spikes</div>
 </div>
 
 ::: {.intuition-box}
@@ -290,6 +320,10 @@ Unmeasured observables neither force $\phi$ nor $\neg\phi$, dissolving bivalent 
 :::
 
 ::::
+
+::: {.notes}
+When a continuous contextual phenomenon is forced through a classical {0,1} sieve, transition regions shatter into artificial antinomies. By modeling each observational perspective as an object in a Grothendieck site, truth becomes a sheaf of sieves: unmeasured channels simply fail to force phi or not-phi without triggering logical explosion.
+:::
 
 ---
 
@@ -326,59 +360,63 @@ $$
 ::: {.column width="53%"}
 
 <div class="interactive-panel">
-<h4>Interactive Aspect Compass &amp; Band Explorer (SM-1 – SM-4)</h4>
-<p class="widget-context-note">
-<b>Context:</b> Drag the sliders below to vary the descriptive interval [<i>a<sub>q</sub>, b<sub>q</sub></i>], focal value <i>f<sub>q</sub></i>, and dialectical nuance [<i>α<sub>q</sub>, d<sub>q</sub>, β<sub>q</sub></i>]. Watch the live Aspect Compass on the right update its radial sector and dialectical ellipse in real time, or click <b>Boolean Collapse</b> (<i>a = f = b</i>).
-</p>
-<div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:12px; align-items:center;">
-<div>
-<label style="color:#82aaff; font-size:0.68em;"><b>Prädikatband <i>f<sub>q</sub></i> ∈ [<i>a<sub>q</sub>, b<sub>q</sub></i>]:</b> <span id="p-readout">[-1.45, 0.40, 1.55]</span></label>
-<div class="slider-row">
-<span><i>a<sub>q</sub></i>:</span> <input type="range" id="sl-a" min="-2.0" max="0.0" step="0.05" value="-1.45" oninput="updateBands()">
-<span><i>f<sub>q</sub></i>:</span> <input type="range" id="sl-f" min="-2.0" max="2.0" step="0.05" value="0.40" oninput="updateBands()">
-<span><i>b<sub>q</sub></i>:</span> <input type="range" id="sl-b" min="0.0" max="2.0" step="0.05" value="1.55" oninput="updateBands()">
-</div>
-<div class="band-track" id="p-track">
-<div class="band-fill-p" id="p-fill"></div>
-<div class="band-dot-p" id="p-dot"></div>
-</div>
-<label style="color:#5eead4; font-size:0.68em; display:block; margin-top:10px;"><b>Diatropenband <i>d<sub>q</sub></i> ∈ [<i>α<sub>q</sub>, β<sub>q</sub></i>]:</b> <span id="d-readout">[-1.25, 0.65, 1.35]</span></label>
-<div class="slider-row">
-<span><i>α<sub>q</sub></i>:</span> <input type="range" id="sl-al" min="-2.0" max="0.0" step="0.05" value="-1.25" oninput="updateBands()">
-<span><i>d<sub>q</sub></i>:</span> <input type="range" id="sl-d" min="-2.0" max="2.0" step="0.05" value="0.65" oninput="updateBands()">
-<span><i>β<sub>q</sub></i>:</span> <input type="range" id="sl-be" min="0.0" max="2.0" step="0.05" value="1.35" oninput="updateBands()">
-</div>
-<div class="band-track" id="d-track">
-<div class="band-fill-d" id="d-fill"></div>
-<div class="band-dot-d" id="d-dot"></div>
-</div>
-</div>
-<div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:6px;">
-<svg id="compass-svg" viewBox="-110 -110 220 220" width="200" height="200">
-<circle cx="0" cy="0" r="95" fill="none" stroke="#1e293b" stroke-dasharray="3,3"/>
-<circle cx="0" cy="0" r="65" fill="none" stroke="#1e293b" stroke-dasharray="3,3"/>
-<line x1="-100" y1="0" x2="100" y2="0" stroke="#334155" stroke-width="1"/>
-<line x1="0" y1="-100" x2="0" y2="100" stroke="#334155" stroke-width="1"/>
-<polygon id="svg-p-band" points="20,-12 85,-42 85,15 20,8" fill="rgba(65,105,225,0.28)" stroke="#4169E1" stroke-width="1.5"/>
-<ellipse id="svg-d-ellipse" cx="0" cy="0" rx="70" ry="44" fill="rgba(32,178,170,0.12)" stroke="#20B2AA" stroke-width="1.8"/>
-<circle id="svg-k-lens" cx="0" cy="0" r="24" fill="rgba(255,165,0,0.22)" stroke="#FFA500" stroke-width="2"/>
-<circle id="svg-p-pt" cx="55" cy="-18" r="5" fill="#FFD700" stroke="#000" stroke-width="1"/>
-<circle id="svg-d-pt" cx="-35" cy="-28" r="5" fill="#5eead4" stroke="#000" stroke-width="1"/>
-<text x="0" y="4" fill="#FFD700" font-size="9" font-weight="bold" text-anchor="middle">K_n</text>
-</svg>
-<div id="compass-caption" style="font-size:0.55em; color:#FFD700;">Bandwidth ΔP = 3.00 | ΔD = 2.60</div>
-</div>
-</div>
-<div style="margin-top:10px; display:flex; gap:8px; justify-content:center;">
-<button class="syn-btn" onclick="booleanCollapse()">Boolean Collapse (a=f=b)</button>
-<button class="syn-btn" onclick="flipCipher()">Cipher Flip (C' = c;C)</button>
-<button class="syn-btn" onclick="resetBands()">Restore Continuous Band</button>
-</div>
+  <h4>Interactive Aspect Compass &amp; Band Explorer (SM-1 – SM-4)</h4>
+  <p class="widget-context-note">
+    <b>Context:</b> Drag the sliders below to vary the descriptive interval [<i>a<sub>q</sub>, b<sub>q</sub></i>], focal value <i>f<sub>q</sub></i>, and dialectical nuance [<i>α<sub>q</sub>, d<sub>q</sub>, β<sub>q</sub></i>]. Watch the live Aspect Compass on the right update its radial sector and dialectical ellipse in real time, or click <b>Boolean Collapse</b> (<i>a = f = b</i>).
+  </p>
+  <div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:12px; align-items:center;">
+    <div>
+      <label style="color:#82aaff; font-size:0.68em;"><b>Prädikatband <i>f<sub>q</sub></i> ∈ [<i>a<sub>q</sub>, b<sub>q</sub></i>]:</b> <span id="p-readout">[-1.45, 0.40, 1.55]</span></label>
+      <div class="slider-row">
+        <span><i>a<sub>q</sub></i>:</span> <input type="range" id="sl-a" min="-2.0" max="0.0" step="0.05" value="-1.45" oninput="updateBands()">
+        <span><i>f<sub>q</sub></i>:</span> <input type="range" id="sl-f" min="-2.0" max="2.0" step="0.05" value="0.40" oninput="updateBands()">
+        <span><i>b<sub>q</sub></i>:</span> <input type="range" id="sl-b" min="0.0" max="2.0" step="0.05" value="1.55" oninput="updateBands()">
+      </div>
+      <div class="band-track" id="p-track">
+        <div class="band-fill-p" id="p-fill"></div>
+        <div class="band-dot-p" id="p-dot"></div>
+      </div>
+      <label style="color:#5eead4; font-size:0.68em; display:block; margin-top:10px;"><b>Diatropenband <i>d<sub>q</sub></i> ∈ [<i>α<sub>q</sub>, β<sub>q</sub></i>]:</b> <span id="d-readout">[-1.25, 0.65, 1.35]</span></label>
+      <div class="slider-row">
+        <span><i>α<sub>q</sub></i>:</span> <input type="range" id="sl-al" min="-2.0" max="0.0" step="0.05" value="-1.25" oninput="updateBands()">
+        <span><i>d<sub>q</sub></i>:</span> <input type="range" id="sl-d" min="-2.0" max="2.0" step="0.05" value="0.65" oninput="updateBands()">
+        <span><i>β<sub>q</sub></i>:</span> <input type="range" id="sl-be" min="0.0" max="2.0" step="0.05" value="1.35" oninput="updateBands()">
+      </div>
+      <div class="band-track" id="d-track">
+        <div class="band-fill-d" id="d-fill"></div>
+        <div class="band-dot-d" id="d-dot"></div>
+      </div>
+    </div>
+    <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:6px;">
+      <svg id="compass-svg" viewBox="-110 -110 220 220" width="200" height="200">
+        <circle cx="0" cy="0" r="95" fill="none" stroke="#1e293b" stroke-dasharray="3,3"/>
+        <circle cx="0" cy="0" r="65" fill="none" stroke="#1e293b" stroke-dasharray="3,3"/>
+        <line x1="-100" y1="0" x2="100" y2="0" stroke="#334155" stroke-width="1"/>
+        <line x1="0" y1="-100" x2="0" y2="100" stroke="#334155" stroke-width="1"/>
+        <polygon id="svg-p-band" points="20,-12 85,-42 85,15 20,8" fill="rgba(65,105,225,0.28)" stroke="#4169E1" stroke-width="1.5"/>
+        <ellipse id="svg-d-ellipse" cx="0" cy="0" rx="70" ry="44" fill="rgba(32,178,170,0.12)" stroke="#20B2AA" stroke-width="1.8"/>
+        <circle id="svg-k-lens" cx="0" cy="0" r="24" fill="rgba(255,165,0,0.22)" stroke="#FFA500" stroke-width="2"/>
+        <circle id="svg-p-pt" cx="55" cy="-18" r="5" fill="#FFD700" stroke="#000" stroke-width="1"/>
+        <circle id="svg-d-pt" cx="-35" cy="-28" r="5" fill="#5eead4" stroke="#000" stroke-width="1"/>
+        <text x="0" y="4" fill="#FFD700" font-size="9" font-weight="bold" text-anchor="middle">K_n</text>
+      </svg>
+      <div id="compass-caption" style="font-size:0.55em; color:#FFD700;">Bandwidth ΔP = 3.00 | ΔD = 2.60</div>
+    </div>
+  </div>
+  <div style="margin-top:10px; display:flex; gap:8px; justify-content:center;">
+    <button class="syn-btn" onclick="booleanCollapse()">Classical Boolean Collapse (a=f=b)</button>
+    <button class="syn-btn" onclick="flipCipher()">Cipher Orientation Flip (C' = c;C)</button>
+    <button class="syn-btn" onclick="resetBands()">Restore Continuous Band</button>
+  </div>
 </div>
 
 :::
 
 ::::
+
+::: {.notes}
+In Stratum D, we examine Heim's historical notation from pages 8 and 9 of Syntrometrische Maximentelezentrik. Instead of binary truth values, predicates are intervals [a_q, b_q] with focal value f_q, and dialectical qualifiers are intervals [alpha_q, beta_q] with focal value d_q. Using the interactive explorer on the right, you can see how classical two-valued logic emerges when we click "Classical Boolean Collapse" (a_q = f_q = b_q).
+:::
 
 ---
 
@@ -411,13 +449,17 @@ $$
 ::: {.column width="50%"}
 
 <div class="video-container">
-<video autoplay data-autoplay loop muted playsinline src="media/Act4_Aspect_Compass.mp4" style="max-height:480px;"></video>
-<div class="video-caption">Manim Act IV (Fig. 1.2): The Geometric Aspectual Matrix Compass — Interpenetration of P_nn, D_nn, and Coordination Lens K_n</div>
+  <video autoplay data-autoplay loop muted playsinline src="media/Act4_Aspect_Compass.mp4" style="max-height:480px;"></video>
+  <div class="video-caption">Manim Act IV (Fig. 1.2): The Geometric Aspectual Matrix Compass — Interpenetration of P_nn, D_nn, and Coordination Lens K_n</div>
 </div>
 
 :::
 
 ::::
+
+::: {.notes}
+Neither predicates nor dialectical qualifiers carry semantic value in isolation. Only through their coordination K_n—where each diatrope imprints (prägt) a corresponding predicate—does a complete Subjective Aspect S arise.
+:::
 
 ---
 
@@ -444,18 +486,18 @@ $$
 ::: {.column width="52%"}
 
 <div class="interactive-panel">
-<h4>Interactive Explorer: The 7 Aspect Subsystems (Prop. 1.2)</h4>
-<p class="widget-context-note">
-<b>Context (SM, pp. 12–15):</b> The three primary components (<i>D<sub>nn</sub>, K<sub>n</sub>, P<sub>nn</sub></i>) yield 2³ − 1 = 7 nonempty generator supports. Toggle the components below to test whether a generator <i>α</i> is a partial generator (which must keep predicative arity <i>n</i> fixed so no diatropes are left uncoordinated) or a total generator.
-</p>
-<div style="display:flex; gap:10px; justify-content:center; margin-bottom:8px;">
-<button id="btn-sub-d" class="subsys-toggle on" onclick="toggleSubsys('D')">Dialektik D_nn</button>
-<button id="btn-sub-k" class="subsys-toggle on" onclick="toggleSubsys('K')">Koordination K_n</button>
-<button id="btn-sub-p" class="subsys-toggle on" onclick="toggleSubsys('P')">Prädikatrix P_nn</button>
-</div>
-<div id="subsys-readout" class="matrix-readout">
-Support: {D_nn, K_n, P_nn} [Total Subsystem C(3,3)=1] ⇒ Predicative Arity n VARIABLE (Total Generator α)
-</div>
+  <h4>Interactive Explorer: The 7 Aspect Subsystems (Prop. 1.2)</h4>
+  <p class="widget-context-note">
+    <b>Context (SM, pp. 12–15):</b> The three primary components (<i>D<sub>nn</sub>, K<sub>n</sub>, P<sub>nn</sub></i>) yield 2³ − 1 = 7 nonempty generator supports. Toggle the components below to test whether a generator <i>α</i> is a partial generator (which must keep predicative arity <i>n</i> fixed so no diatropes are left uncoordinated) or a total generator.
+  </p>
+  <div style="display:flex; gap:10px; justify-content:center; margin-bottom:8px;">
+    <button id="btn-sub-d" class="subsys-toggle on" onclick="toggleSubsys('D')">Dialektik D_nn</button>
+    <button id="btn-sub-k" class="subsys-toggle on" onclick="toggleSubsys('K')">Koordination K_n</button>
+    <button id="btn-sub-p" class="subsys-toggle on" onclick="toggleSubsys('P')">Prädikatrix P_nn</button>
+  </div>
+  <div id="subsys-readout" class="matrix-readout">
+    Support: {D_nn, K_n, P_nn} [Total Subsystem C(3,3)=1] ⇒ Predicative Arity n VARIABLE (Total Generator α)
+  </div>
 </div>
 
 ### The 4-Tier Quantor Degeneration Hierarchy (Prop. 1.4, SM Eq. 4)
@@ -472,11 +514,15 @@ Support: {D_nn, K_n, P_nn} [Total Subsystem C(3,3)=1] ⇒ Predicative Arity n VA
 
 ::::
 
+::: {.notes}
+Proposition 1.2 classifies the 2^3 - 1 = 7 nonempty aspect subsystems. Notice why any partial generator must keep the arity n fixed: if P_nn changed dimension while D_nn and K_n remained static, predicates would be left uncoordinated. Only the total subsystem {D_nn, K_n, P_nn} permits changing n.
+:::
+
 ---
 
 ## §1.2.1–1.2.2: The Base Category $(\Ban, \otpi)$ {.smaller}
 
-<div class="stratum-badge badge-a">STRATUM A: PURE MATHEMATICAL FOUNDATIONS (DEF. 1.9 &amp; SCHOLIA 1.7–1.8)</div>
+<div class="stratum-badge badge-a">STRATUM A: PURE MATHEMATICAL FOUNDATIONS (DEF. 1.6 / 1.9 &amp; SCHOLIA)</div>
 
 :::: {.columns}
 
@@ -488,7 +534,7 @@ Why model a subjective perspective as a normed Banach space? Every laboratory wo
 :::
 
 ::: {.thm-box}
-**Definition 1.9: The Symmetric Monoidal Closed Category $(\Ban, \otpi)$**
+**Definition: The Symmetric Monoidal Closed Category $(\Ban, \otpi)$**
 
 1. **Objects:** Real Banach spaces $(X, \|\cdot\|_X)$.
 2. **Morphisms:** Linear contractions $T \colon X \to Y$ with $\|T\|_{\op} \coloneqq \sup_{\|x\|_X \le 1} \|T(x)\|_Y \le 1$.
@@ -507,7 +553,7 @@ $$
 ::: {.column width="48%"}
 
 ::: {.carnap-box}
-**Scholium 1.8: Why Complete the Projective Tensor Product?**
+**Scholium: Why Complete the Projective Tensor Product?**
 The projective cross-norm is the largest cross-norm satisfying $\|x \otimes y\|_\pi = \|x\|\,\|y\|$. It establishes an **isometric isomorphism** between bounded bilinear coordination maps $D^U \times P^U \to C^U$ and linear contractions:
 $$
 K^U \colon D^U \otpi P^U \longrightarrow C^U, \qquad \|K^U\|_{\op} \le 1
@@ -529,18 +575,22 @@ On primary Euclidean charts $P_n = (\mathbb{R}^{3n}, \|\cdot\|_2)$, $\Isom(P_n) 
 
 ::::
 
+::: {.notes}
+Crossing into Stratum A, we place Heim's aspectual matrices on rigorous functional-analytic foundations. Working in the symmetric monoidal closed category Ban_<=1 with the completed projective tensor product ensures that bilinear coordination maps K^U : D^U x P^U -> C^U correspond isometrically to linear contractions on D^U tensor_pi P^U.
+:::
+
 ---
 
 ## §1.2.3: The Admissible Context Category $\Ctx$ {.smaller}
 
-<div class="stratum-badge badge-a">STRATUM A: DEF. 1.10, PROP. 1.11 &amp; SCHOLIUM 1.12</div>
+<div class="stratum-badge badge-a">STRATUM A: ADMISSIBLE CONTEXTS &amp; NATURALITY OF KOORDINATION</div>
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
 ::: {.thm-box}
-**Definition 1.10: The Admissible Context Category $\Ctx$**
+**Definition: The Admissible Context Category $\Ctx$**
 
 * **Objects:** Tuples $U = (D^U, P^U, C^U, K^U, z^U, \zeta^U, \mathcal{S}_D^U, \mathcal{S}_P^U)$ in $\FinBan$ with $\|K^U\|_{\op} \le 1$ and $z^U \in \Isom(P^U), \zeta^U \in \Isom(D^U)$.
 * **Morphisms:** Triples of linear contractions $\alpha = (\alpha_D, \alpha_P, \alpha_C) \colon U \to V$ satisfying **Coordination Commutativity**, **Cipher Equivariance**, and **State-Space Preservation**:
@@ -551,7 +601,7 @@ with $\alpha_P(\mathcal{S}_P^U) \subseteq \mathcal{S}_P^V$ and $\alpha_D(\mathca
 :::
 
 ::: {.carnap-box}
-**Proposition 1.11 & Scholium 1.12 (Eliminating Context Creep):**
+**Proposition (Eliminating Context Creep):**
 The projections $D, P, C \colon \Ctx \to \Ban$ are faithful functors, and $K \colon (D \otpi P) \Longrightarrow C$ is a **natural transformation**:
 $$
 C(\alpha) \circ K^V = K^U \circ \big(D(\alpha) \otpi P(\alpha)\big)
@@ -563,106 +613,154 @@ $$
 ::: {.column width="50%"}
 
 <div class="interactive-panel">
-<h4>Interactive 2-Channel Perceptual Laboratory (P^U ≅ ℝ⁶, C^U ≅ ℝ²)</h4>
-<p class="widget-context-note">
-<b>Context (Toy Example, §1.2.3):</b> An observer tracks two property channels: Temperature (<i>f</i><sub>1</sub>) and Brightness (<i>f</i><sub>2</sub>). Adjust the dialectical confidence weights (<i>d</i><sub>1</sub>, <i>d</i><sub>2</sub> ∈ [0,1]) and focal sensor readings to verify projective tensor contractivity ‖<i>K<sup>U</sup></i>(<i>d</i> ⊗ <i>p</i>)‖<sub>∞</sub> ≤ ‖<i>d</i>‖<sub>∞</sub>‖<i>p</i>‖<sub>∞</sub> ≤ 1.
-</p>
-<div class="slider-row">
-<span style="color:#20B2AA;">Confidence <i>d</i><sub>1</sub>:</span>
-<input type="range" id="toy-d1" min="0" max="1" step="0.01" value="0.85" oninput="updateToy()">
-<span style="color:#4169E1;">Temp <i>f</i><sub>1</sub>:</span>
-<input type="range" id="toy-f1" min="-1" max="1" step="0.01" value="0.75" oninput="updateToy()">
-</div>
-<div class="slider-row" style="margin-top:8px;">
-<span style="color:#20B2AA;">Confidence <i>d</i><sub>2</sub>:</span>
-<input type="range" id="toy-d2" min="0" max="1" step="0.01" value="0.60" oninput="updateToy()">
-<span style="color:#4169E1;">Bright <i>f</i><sub>2</sub>:</span>
-<input type="range" id="toy-f2" min="-1" max="1" step="0.01" value="0.50" oninput="updateToy()">
-</div>
-<div id="toy-matrix-output" class="matrix-readout">
-K^U(d ⊗ p) = [ c₁ = 0.64 , c₂ = 0.30 ]ᵀ  |  ‖K^U(d ⊗ p)‖_∞ = 0.64 ≤ ‖d‖_∞‖p‖_∞ = 0.64 ≤ 1.00
-</div>
+  <h4>Interactive 2-Channel Perceptual Laboratory (P^U ≅ ℝ⁶, C^U ≅ ℝ²)</h4>
+  <p class="widget-context-note">
+    <b>Context (Toy Example, §1.2.3):</b> An observer tracks two property channels: Temperature (<i>f</i><sub>1</sub>) and Brightness (<i>f</i><sub>2</sub>). Adjust the dialectical confidence weights (<i>d</i><sub>1</sub>, <i>d</i><sub>2</sub> ∈ [0,1]) and focal sensor readings to verify projective tensor contractivity ‖<i>K<sup>U</sup></i>(<i>d</i> ⊗ <i>p</i>)‖<sub>∞</sub> ≤ ‖<i>d</i>‖<sub>∞</sub>‖<i>p</i>‖<sub>∞</sub> ≤ 1.
+  </p>
+  <div class="slider-row">
+    <span style="color:#20B2AA;">Confidence <i>d</i><sub>1</sub>:</span>
+    <input type="range" id="toy-d1" min="0" max="1" step="0.01" value="0.85" oninput="updateToy()">
+    <span style="color:#4169E1;">Temp <i>f</i><sub>1</sub>:</span>
+    <input type="range" id="toy-f1" min="-1" max="1" step="0.01" value="0.75" oninput="updateToy()">
+  </div>
+  <div class="slider-row" style="margin-top:8px;">
+    <span style="color:#20B2AA;">Confidence <i>d</i><sub>2</sub>:</span>
+    <input type="range" id="toy-d2" min="0" max="1" step="0.01" value="0.60" oninput="updateToy()">
+    <span style="color:#4169E1;">Bright <i>f</i><sub>2</sub>:</span>
+    <input type="range" id="toy-f2" min="-1" max="1" step="0.01" value="0.50" oninput="updateToy()">
+  </div>
+  <div id="toy-matrix-output" class="matrix-readout">
+    K^U(d ⊗ p) = [ c₁ = 0.64 , c₂ = 0.30 ]ᵀ  |  ‖K^U(d ⊗ p)‖_∞ = 0.64 ≤ ‖d‖_∞‖p‖_∞ = 0.64 ≤ 1.00
+  </div>
 </div>
 
 <div class="video-container" style="margin-top:10px;">
-<video autoplay data-autoplay loop muted playsinline src="media/Act6_Naturality_Toy.mp4" style="max-height:240px;"></video>
-<div class="video-caption">Manim Act VI (Fig. 1.3): Naturality Square of Coordination K^U &amp; Contractive Context Morphisms</div>
+  <video autoplay data-autoplay loop muted playsinline src="media/Act6_Naturality_Toy.mp4" style="max-height:240px;"></video>
+  <div class="video-caption">Manim Act VI (Fig. 1.3): Naturality Square of Coordination K^U &amp; Contractive Context Morphisms</div>
 </div>
 
 :::
 
 ::::
 
+::: {.notes}
+In Ctx_adm^sk, context transitions alpha : U -> V are contractive triples that commute with the coordination map K and respect the isometric ciphers z and zeta. Because K is a natural transformation, translating before coordinating yields the exact same result as coordinating first and then translating—eliminating "context creep."
+:::
+
 ---
 
-## §1.2.3 & §1.3: Pullbacks in $\Ctx$ & The Subcanonical Site $(\CtxPos, \Jsyn)$ {.smaller}
+## §1.2.3: Explicit Construction of Pullbacks in $\Ctx$ {.smaller}
 
-<div class="stratum-badge badge-a">STRATUM A: PROPS. 1.13, 1.16, DEF. 1.15 &amp; THM. 1.17</div>
+<div class="stratum-badge badge-a">STRATUM A: OVERLAP GEOMETRY &amp; CATEGORICAL FIBER PRODUCTS</div>
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="52%"}
+Given morphisms $\alpha \colon V_1 \to U$ and $\beta \colon V_2 \to U$, how do two observers compare findings on their shared overlap?
 
 ::: {.thm-box}
-**Proposition 1.13: Explicit Categorical Pullback $W \coloneqq V_1 \times_U V_2$**
+**Proposition: Categorical Pullback $W \coloneqq V_1 \times_U V_2$ in $\Ctx$**
 
-1. **Componentwise Fiber Products in $\Ban$ ($\ell^\infty$ direct-sum norm):**
+1. **Componentwise Fiber Products in $\Ban$ (with $\ell^\infty$ direct-sum norm):**
 $$
 F^W \coloneqq F^{V_1} \times_{F^U} F^{V_2} = \big\{ (x_1, x_2) \in F^{V_1} \oplus_\infty F^{V_2} \;\big|\; \alpha_F(x_1) = \beta_F(x_2) \big\}
 $$
-for $F \in \{D, P, C\}$, ensuring $\|\pi_{1F}\|_{\op}, \|\pi_{2F}\|_{\op} \le 1$.
-2. **Induced Coordination Contraction $K^W \colon D^W \otpi P^W \to C^W$:**
+for $F \in \{D, P, C\}$. Equipping $F^{V_1} \oplus_\infty F^{V_2}$ with $\|(x_1, x_2)\|_\infty \coloneqq \max(\|x_1\|_{F^{V_1}}, \|x_2\|_{F^{V_2}})$ guarantees that canonical projections $\pi_{1F}, \pi_{2F}$ have operator norm $\le 1$.
+
+2. **Induced Contractive Coordination $K^W \colon D^W \otpi P^W \to C^W$:**
 $$
 \|K^W(u)\|_{C^W} = \max\big(\|K_1(u)\|_{C^{V_1}}, \|K_2(u)\|_{C^{V_2}}\big) \le \max\big(\|K^{V_1}\|_{\op}, \|K^{V_2}\|_{\op}\big)\|u\| \le 1
 $$
+
+3. **Diagonal Isometric Ciphers:** $z^W(p_1, p_2) \coloneqq (z^{V_1}(p_1), z^{V_2}(p_2)) \in \Isom(P^W)$.
+:::
+:::
+
+::: {.column width="48%"}
+
+<div class="video-container">
+  <video autoplay data-autoplay loop muted playsinline src="media/Act7_3D_Pullback.mp4" style="max-height:360px;"></video>
+  <div class="video-caption">Manim Act VII (Fig. 1.4): 3D ℓ^∞ Unit Cube &amp; Pullback Equalizer Slice W = V₁ ×_U V₂</div>
+</div>
+
+::: {.intuition-box}
+**Why the $\ell^\infty$ Norm on Overlaps?**
+If we used the $\ell^1$ or $\ell^2$ norm on the direct sum, the universal map $\gamma_F(z) = (\gamma_{1F}(z), \gamma_{2F}(z))$ into the pullback would expand norms by $\sqrt{2}$ or $2$, violating contractivity in $\Ban$. Only $\oplus_\infty$ makes the categorical product and fiber product strictly contractive.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+To define a Grothendieck topology on Ctx_adm^sk, we first need pullbacks so that covering families can be restricted along arbitrary context morphisms. By equipping the direct sum with the l-infinity norm, the equalizer subspace W = V_1 x_U V_2 inherits contractive projections and diagonal isometric ciphers.
+:::
+
+---
+
+## §1.3: The Subcanonical Site $(\CtxPos, \Jsyn)$ & Sheaf Topos $\Esyn$ {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM A: GROTHENDIECK TOPOLOGY &amp; SUBCANONICITY</div>
+
+:::: {.columns}
+
+::: {.column width="52%"}
+
+::: {.intuition-box}
+**The Sheaf Topos as an Array of Microscopes**
+No single observer context captures all of reality. Yet whenever overlapping microscopes agree on their shared boundary $V_i \times_U V_j$, their local views glue into a single, coherent global invariant. Objectivity is the equalizer of compatible local perspectives.
 :::
 
 ::: {.thm-box}
-**Def. 1.15 & Prop. 1.16: Admissible Covers $\Ksyn(U)$ on $\CtxPos$**
-On $\CtxPos$ ($\dim P^U \ge 1$), $\{\rho_i \colon V_i \to U\}_{i=1}^m \in \Ksyn(U)$ if $\rho_F \colon \bigoplus_\infty F^{V_i} \to F^U$ admits a contractive partition-of-unity split-section $\sigma_F$:
+**Definition & Proposition: Admissible Covering Families $\Ksyn(U)$**
+
+On the positive-dimension subcategory $\CtxPos$ ($\dim P^U \ge 1$), a finite family $\{\rho_i \colon V_i \to U\}_{i=1}^m$ is an **admissible cover** if the joint addition map $\rho_F \colon \bigoplus_{\infty} F^{V_i} \to F^U$ admits a **linear contractive split-section**:
 $$
-\rho_F \circ \sigma_F = \operatorname{id}_{F^U}, \quad \|\sigma_F\|_{\op} \le 1, \quad (\sigma_C(c))_i^{(k)} \coloneqq \begin{cases} r_k^{-1} c_k & k \in I_i \\ 0 & k \notin I_i \end{cases}
+\rho_F \circ \sigma_F = \operatorname{id}_{F^U}, \qquad \|\sigma_F\|_{\op} \le 1, \qquad (\sigma_C(c))_i^{(k)} \coloneqq \begin{cases} r_k^{-1} c_k & k \in I_i \\ 0 & k \notin I_i \end{cases}
 $$
-Since $0_{\mathbf{Ctx}} \notin \CtxPos$, $\emptyset \notin \Ksyn(U)$ and $\bot(U) = \cl_{\Jsyn}(\emptyset) = \emptyset$.
+Because $0_{\mathbf{Ctx}} \notin \CtxPos$, the empty family $\emptyset \notin \Ksyn(U)$ and the minimal sieve is strictly empty: $\bot(U) = \cl_{\Jsyn}(\emptyset) = \emptyset$.
 :::
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="48%"}
 
 ::: {.carnap-box}
-**Theorem 1.17: Subcanonicity of the Syntrometric Site**
-The pretopology $\Ksyn$ satisfies isomorphism, pullback-stability, and transitivity, generating $\Jsyn = \langle \Ksyn \rangle_{\mathrm{GT}}$ and the **Syntrometric Sheaf Topos**:
+**Theorem: Subcanonicity of the Syntrometric Site**
+The pretopology $\Ksyn$ satisfies identity, pullback-stability, and local transitivity, generating a Grothendieck topology $\Jsyn = \langle \Ksyn \rangle_{\mathrm{GT}}$ inducing the **Syntrometric Sheaf Topos**:
 $$
 \Esyn \;\coloneqq\; \mathbf{Sh}\big(\Ctx, \Jsyn\big)
 $$
-Because $\rho_F \circ \sigma_F = \operatorname{id}_{F^U}$ forces matching morphism families to glue uniquely, **$\Jsyn$ is subcanonical**: every representable $\mathbf{h}_X = \Hom(-, X)$ is a sheaf, and the Yoneda embedding is fully faithful:
+Because every cover admits a contractive partition-of-unity section $\sigma_F$ ($\rho_F \circ \sigma_F = \operatorname{id}_{F^U}$), **$\Jsyn$ is subcanonical**: every representable presheaf $\mathbf{h}_X = \Hom(-, X)$ is a sheaf, and the Yoneda embedding is fully faithful:
 $$
 \mathbf{y} \colon \CtxPos \longhookrightarrow \Esyn
 $$
 :::
 
-<div class="video-container" style="margin-top:10px;">
-<video autoplay data-autoplay loop muted playsinline src="media/Act7_3D_Pullback.mp4" style="max-height:260px;"></video>
-<div class="video-caption">Manim Act VII (Fig. 1.4): 3D ℓ^∞ Unit Cube &amp; Pullback Overlap Equalizer Slice W = V₁ ×_U V₂</div>
-</div>
+::: {.thm-box}
+**Epistemic Payoff:** Local logical consistency across overlapping observers universally guarantees global structural validity without information loss.
+:::
 
 :::
 
 ::::
 
+::: {.notes}
+Section 1.3 elevates our category of Banach contexts into a Grothendieck site. By excluding the zero-dimensional context and constructing explicit partition-of-unity split-sections in the l-infinity norm, our site is proven subcanonical: every context object embeds faithfully into the sheaf topos E_syn via the Yoneda embedding.
+:::
+
 ---
 
 ## §1.4: Subobject Classifier $\Omega$, Kripke–Joyal Forcing & Hyperdoctrines {.smaller}
 
-<div class="stratum-badge badge-a">STRATUM A: THM. 1.18, LAYER 1 FORCING &amp; PROP. 1.19</div>
+<div class="stratum-badge badge-a">STRATUM A: INTERNAL HEYTING LOGIC &amp; BECK–CHEVALLEY</div>
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
 ::: {.thm-box}
-**Theorem 1.18: Complete Heyting Algebra $\Omega(U)$**
+**Theorem: Complete Heyting Algebra $\Omega(U)$**
 $\Omega(U) \coloneqq \{ R \subseteq \Hom(-, U) \mid R = \cl_{\Jsyn}(R) \}$ with operations:
 $$
 \begin{aligned}
@@ -674,16 +772,15 @@ $$
 :::
 
 ::: {.thm-box}
-**Kripke–Joyal Sheaf Forcing Semantics (Layer 1)**
+**Kripke–Joyal Sheaf Forcing Semantics (Layer 1) & Hyperdoctrine**
 $$
 \begin{aligned}
 U \Vdash (\phi \vee \psi) &\iff \exists S \in \Jsyn(U)\;\forall (f\colon V\to U)\in S,\; V\Vdash f^*(\phi)\text{ or }V\Vdash f^*(\psi)\\
 U \Vdash (\phi \to \psi) &\iff \forall f\colon V\to U,\; V\Vdash f^*(\phi) \implies V\Vdash f^*(\psi)\\
-U \Vdash \forall y\in Y.\,\phi &\iff \forall f\colon V\to U,\;\forall \beta\in Y(V),\; V\Vdash \phi(f^*(\vec{\alpha}),\beta)\\
-U \Vdash \exists y\in Y.\,\phi &\iff \exists S \in \Jsyn(U)\;\forall (f\colon V\to U)\in S,\;\exists \beta\in Y(V),\; V\Vdash \phi(f^*(\vec{\alpha}),\beta)
+U \Vdash \forall y\in Y.\,\phi &\iff \forall f\colon V\to U,\;\forall \beta\in Y(V),\; V\Vdash \phi(f^*(\vec{\alpha}),\beta)
 \end{aligned}
 $$
-**Proposition 1.19 (Slice Hyperdoctrine Beck–Chevalley):** $\exists_f \dashv f^* \dashv \forall_f$ satisfies $\mathbf{BC}_\exists \colon g^*\exists_f \xrightarrow{\sim} \exists_{\pi_1}\pi_2^*$ and $\mathbf{BC}_\forall \colon g^*\forall_f \xrightarrow{\sim} \forall_{\pi_1}\pi_2^*$.
+**Slice Hyperdoctrine Beck–Chevalley:** $\exists_f \dashv f^* \dashv \forall_f$ satisfies $\mathbf{BC}_\exists \colon g^*\exists_f \xrightarrow{\sim} \exists_{\pi_1}\pi_2^*$ and $\mathbf{BC}_\forall \colon g^*\forall_f \xrightarrow{\sim} \forall_{\pi_1}\pi_2^*$, where $\forall_f$ realizes Heim's **Universalquantor ($\mathbf{U}$)**.
 :::
 
 :::
@@ -691,57 +788,61 @@ $$
 ::: {.column width="50%"}
 
 <div class="interactive-panel">
-<h4>Interactive Kripke–Joyal Heyting Countermodel Explorer</h4>
-<p class="widget-context-note">
-<b>Context (§1.4 Remark):</b> Consider a root context <i>w</i> with two refined extensions <i>u</i> and <i>v</i> (<i>w ≤ u</i>, <i>w ≤ v</i>). Click any world node below to toggle where proposition <i>p</i> is verified and see why the Law of Excluded Middle fails constructively when <i>p</i> is decided only in one extension.
-</p>
-<div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:6px;">
-<svg id="kripke-svg" viewBox="0 0 360 140" width="100%" height="140">
-<line x1="180" y1="110" x2="90" y2="35" stroke="#64748b" stroke-width="2.5"/>
-<line x1="180" y1="110" x2="270" y2="35" stroke="#64748b" stroke-width="2.5"/>
-<g class="kripke-node" onclick="toggleKripkeWorld('u')">
-<circle id="kr-u" cx="90" cy="35" r="24" fill="#20B2AA" stroke="#FFD700" stroke-width="2.5"/>
-<text x="90" y="32" fill="#000" font-size="12" font-weight="bold" text-anchor="middle">u</text>
-<text id="kr-u-lbl" x="90" y="46" fill="#000" font-size="9.5" font-weight="bold" text-anchor="middle">u ⊩ p</text>
-</g>
-<g class="kripke-node" onclick="toggleKripkeWorld('v')">
-<circle id="kr-v" cx="270" cy="35" r="24" fill="#1e293b" stroke="#64748b" stroke-width="2.5"/>
-<text x="270" y="32" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">v</text>
-<text id="kr-v-lbl" x="270" y="46" fill="#94a3b8" font-size="9.5" text-anchor="middle">v ⊭ p</text>
-</g>
-<g class="kripke-node" onclick="toggleKripkeWorld('w')">
-<circle id="kr-w" cx="180" cy="110" r="24" fill="#1e293b" stroke="#FFD700" stroke-width="2.5"/>
-<text x="180" y="107" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">w</text>
-<text id="kr-w-lbl" x="180" y="121" fill="#94a3b8" font-size="9.5" text-anchor="middle">w ⊭ p</text>
-</g>
-</svg>
-</div>
-<div id="kripke-readout" class="matrix-readout" style="margin-top:6px;">
-At Root w: w ⊭ p AND w ⊭ ¬p (since u ⊩ p) ⇒ w ⊭ (p ∨ ¬p) [Non-Boolean Gap!] | Glivenko: w ⊩ ¬¬(p ∨ ¬p) = ⊤
-</div>
+  <h4>Interactive Kripke–Joyal Heyting Countermodel Explorer</h4>
+  <p class="widget-context-note">
+    <b>Context (§1.4 Remark):</b> Consider a root context <i>w</i> with two refined extensions <i>u</i> and <i>v</i> (<i>w ≤ u</i>, <i>w ≤ v</i>). Click any world node below to toggle where proposition <i>p</i> is verified and see why the Law of Excluded Middle fails constructively when <i>p</i> is decided only in one extension.
+  </p>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:6px;">
+    <svg id="kripke-svg" viewBox="0 0 360 140" width="100%" height="140">
+      <line x1="180" y1="110" x2="90" y2="35" stroke="#64748b" stroke-width="2.5"/>
+      <line x1="180" y1="110" x2="270" y2="35" stroke="#64748b" stroke-width="2.5"/>
+      <g class="kripke-node" onclick="toggleKripkeWorld('u')">
+        <circle id="kr-u" cx="90" cy="35" r="24" fill="#20B2AA" stroke="#FFD700" stroke-width="2.5"/>
+        <text x="90" y="32" fill="#000" font-size="12" font-weight="bold" text-anchor="middle">u</text>
+        <text id="kr-u-lbl" x="90" y="46" fill="#000" font-size="9.5" font-weight="bold" text-anchor="middle">u ⊩ p</text>
+      </g>
+      <g class="kripke-node" onclick="toggleKripkeWorld('v')">
+        <circle id="kr-v" cx="270" cy="35" r="24" fill="#1e293b" stroke="#64748b" stroke-width="2.5"/>
+        <text x="270" y="32" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">v</text>
+        <text id="kr-v-lbl" x="270" y="46" fill="#94a3b8" font-size="9.5" text-anchor="middle">v ⊭ p</text>
+      </g>
+      <g class="kripke-node" onclick="toggleKripkeWorld('w')">
+        <circle id="kr-w" cx="180" cy="110" r="24" fill="#1e293b" stroke="#FFD700" stroke-width="2.5"/>
+        <text x="180" y="107" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">w</text>
+        <text id="kr-w-lbl" x="180" y="121" fill="#94a3b8" font-size="9.5" text-anchor="middle">w ⊭ p</text>
+      </g>
+    </svg>
+  </div>
+  <div id="kripke-readout" class="matrix-readout" style="margin-top:6px;">
+    At Root w: w ⊭ p AND w ⊭ ¬p (since u ⊩ p) ⇒ w ⊭ (p ∨ ¬p) [Non-Boolean Gap!] | Glivenko: w ⊩ ¬¬(p ∨ ¬p) = ⊤
+  </div>
 </div>
 
 <div class="video-container" style="margin-top:8px;">
-<video autoplay data-autoplay loop muted playsinline src="media/Act8_Heyting_Hyperdoctrine.mp4" style="max-height:185px;"></video>
-<div class="video-caption">Manim Act VIII (Figs. 1.5 &amp; 1.6): Non-Boolean Sieve Gap in Ω(U) &amp; 3D Hyperdoctrine Beck–Chevalley Prism</div>
+  <video autoplay data-autoplay loop muted playsinline src="media/Act8_Heyting_Hyperdoctrine.mp4" style="max-height:185px;"></video>
+  <div class="video-caption">Manim Act VIII (Figs. 1.5 &amp; 1.6): Non-Boolean Sieve Gap in Ω(U) &amp; 3D Hyperdoctrine Beck–Chevalley Prism</div>
 </div>
 
 :::
 
 ::::
 
+::: {.notes}
+Truth values in E_syn form a complete Heyting algebra Omega(U) of J_syn-closed sieves. Try clicking the nodes u, v, and w in the Kripke-Joyal explorer: when u forces p but v does not, the coarse root context w forces neither p nor not-p, creating a constructive non-Boolean gap while still validating Glivenko's double-negation law not-not-(p or not-p).
+:::
+
 ---
 
 ## §1.5: Sheaf Descent, $\varepsilon$-Holoform Stability & Kochen–Specker {.smaller}
 
-<div class="stratum-badge badge-b">STRATUM B: DEFS. 1.20–1.23, THMS. 1.22, 1.24 &amp; CARNAP 1.2</div>
+<div class="stratum-badge badge-b">STRATUM B: DERIVED DESCENT THEOREMS &amp; CARNAP 1.2</div>
 
 :::: {.columns}
 
 ::: {.column width="47%"}
 
 ::: {.thm-box}
-**Def. 1.20, 1.21 & Theorem 1.22: The Holoform Equalizer**
+**Definition & Theorem: The Holoform Equalizer**
 For cover $\mathcal{U} = \{\rho_i \colon V_i \to U\}_{i=1}^m$ and sheaf $\mathbf{P} \in \Esyn$:
 $$
 \Hol(\mathcal{U}, \mathbf{P}) \;\coloneqq\; \operatorname{Eq}\!\left( \prod_{i=1}^m \mathbf{P}(V_i) \overset{d^0}{\underset{d^1}{\rightrightarrows}} \prod_{i,j=1}^m \mathbf{P}(V_i \times_U V_j) \right)
@@ -751,7 +852,7 @@ For additive presheaves $\mathbf{A}$, the **Descent Defect** is the Čech 0-cobo
 :::
 
 ::: {.carnap-box}
-**Theorem 1.24 ($\varepsilon$-Holoform Stability) & Carnap 1.2:**
+**Theorem ($\varepsilon$-Holoform Stability) & Carnap 1.2:**
 Under partition-of-unity amalgamation $\Gamma_\sigma = \mathcal{G}_\sigma(s) \coloneqq \sum_{i=1}^m \sigma_i^*(s_i)$:
 $$
 \|\Def_{\mathcal{U}}(s)\|_{\check{C}^1} \le \varepsilon \implies \max_{1 \le k \le m} \|\rho_k^*(\Gamma_\sigma) - s_k\|_{\mathbf{A}(V_k)} \le \varepsilon
@@ -764,77 +865,81 @@ $$
 ::: {.column width="53%"}
 
 <div class="interactive-panel">
-<h4>Interactive 3-Observer ε-Holoform &amp; Čech Cocycle Simulator</h4>
-<p class="widget-context-note">
-<b>Context (Theorems 1.22 &amp; 1.24):</b> Three local observers (<i>V</i><sub>1</sub>, <i>V</i><sub>2</sub>, <i>V</i><sub>3</sub>) measure sections <i>s</i><sub>1</sub>, <i>s</i><sub>2</sub>, <i>s</i><sub>3</sub> over pairwise overlaps <i>V<sub>ij</sub> = V<sub>i</sub> ×<sub>U</sub> V<sub>j</sub></i>. When the Čech 0-coboundary defect ‖Def<sub><i>U</i></sub>(<i>s</i>)‖<sub>Č¹</sub> = max<sub><i>i,j</i></sub> |<i>s<sub>i</sub> − s<sub>j</sub></i>| lies within tolerance <i>ε</i>, the partition-of-unity operator 𝒢<sub><i>σ</i></sub>(<i>s</i>) = ∑ <i>σ<sub>i</sub></i>*(<i>s<sub>i</sub></i>) condenses the global Holoform Γ<sub><i>σ</i></sub>.
-</p>
-<div style="display:grid; grid-template-columns: 1.18fr 0.82fr; gap:10px; align-items:center;">
-<div>
-<div class="slider-row">
-<span style="color:#4169E1;">Obs 1 (<i>s</i><sub>1</sub>):</span>
-<input type="range" id="hol-s1" min="-1.0" max="1.0" step="0.02" value="-0.40" oninput="updateHoloform()">
-<span id="hol-s1-val" style="width:42px; font-family:monospace;">-0.40</span>
-</div>
-<div class="slider-row">
-<span style="color:#20B2AA;">Obs 2 (<i>s</i><sub>2</sub>):</span>
-<input type="range" id="hol-s2" min="-1.0" max="1.0" step="0.02" value="0.56" oninput="updateHoloform()">
-<span id="hol-s2-val" style="width:42px; font-family:monospace;">+0.56</span>
-</div>
-<div class="slider-row">
-<span style="color:#FFA500;">Obs 3 (<i>s</i><sub>3</sub>):</span>
-<input type="range" id="hol-s3" min="-1.0" max="1.0" step="0.02" value="0.44" oninput="updateHoloform()">
-<span id="hol-s3-val" style="width:42px; font-family:monospace;">+0.44</span>
-</div>
-<div class="slider-row">
-<span style="color:#FFD700;">Tolerance <i>ε</i>:</span>
-<input type="range" id="hol-eps" min="0.02" max="0.30" step="0.02" value="0.10" oninput="updateHoloform()">
-<span id="hol-eps-val" style="width:42px; font-family:monospace;">0.10</span>
-</div>
-</div>
-<div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
-<svg id="hol-svg" viewBox="0 0 200 140" width="175" height="125">
-<line id="hol-e12" x1="100" y1="22" x2="35" y2="118" stroke="#DC143C" stroke-width="3"/>
-<line id="hol-e23" x1="35" y1="118" x2="165" y2="118" stroke="#DC143C" stroke-width="3"/>
-<line id="hol-e13" x1="165" y1="118" x2="100" y2="22" stroke="#DC143C" stroke-width="3"/>
-<circle id="hol-center" cx="100" cy="84" r="16" fill="rgba(220,20,60,0.2)" stroke="#DC143C" stroke-width="2"/>
-<text id="hol-center-txt" x="100" y="88" fill="#ff6b81" font-size="9" font-weight="bold" text-anchor="middle">∅</text>
-<circle cx="100" cy="22" r="13" fill="#4169E1"/><text x="100" y="26" fill="#fff" font-size="9.5" font-weight="bold" text-anchor="middle">V₁</text>
-<circle cx="35" cy="118" r="13" fill="#20B2AA"/><text x="35" y="122" fill="#000" font-size="9.5" font-weight="bold" text-anchor="middle">V₂</text>
-<circle cx="165" cy="118" r="13" fill="#FFA500"/><text x="165" y="122" fill="#000" font-size="9.5" font-weight="bold" text-anchor="middle">V₃</text>
-</svg>
-</div>
-</div>
-<div style="margin-top:6px; display:flex; gap:8px; justify-content:center;">
-<button class="syn-btn" onclick="alignHoloform()">Exact Descent (Def_U(s) = 0)</button>
-<button class="syn-btn" onclick="epsHoloform()">ε-Compatible (0.06 ≤ ε)</button>
-<button class="syn-btn" onclick="perturbHoloform()">Introduce Antagonismus</button>
-</div>
-<div id="hol-status-box" class="matrix-readout" style="margin-top:6px;">
-‖Def_U(s)‖_Č¹ = 0.96 > ε (0.10)  ⇒  ANTAGONISMUS (Čech 0-Coboundary Obstruction)
-</div>
+  <h4>Interactive 3-Observer ε-Holoform &amp; Čech Cocycle Simulator</h4>
+  <p class="widget-context-note">
+    <b>Context (§1.5):</b> Three local observers (<i>V</i><sub>1</sub>, <i>V</i><sub>2</sub>, <i>V</i><sub>3</sub>) measure sections <i>s</i><sub>1</sub>, <i>s</i><sub>2</sub>, <i>s</i><sub>3</sub> over pairwise overlaps <i>V<sub>ij</sub> = V<sub>i</sub> ×<sub>U</sub> V<sub>j</sub></i>. When the Čech 0-coboundary defect ‖Def<sub><i>U</i></sub>(<i>s</i>)‖<sub>Č¹</sub> = max<sub><i>i,j</i></sub> |<i>s<sub>i</sub> − s<sub>j</sub></i>| lies within tolerance <i>ε</i>, the partition-of-unity operator 𝒢<sub><i>σ</i></sub>(<i>s</i>) = ∑ <i>σ<sub>i</sub></i>*(<i>s<sub>i</sub></i>) condenses the global Holoform Γ<sub><i>σ</i></sub>.
+  </p>
+  <div style="display:grid; grid-template-columns: 1.18fr 0.82fr; gap:10px; align-items:center;">
+    <div>
+      <div class="slider-row">
+        <span style="color:#4169E1;">Obs 1 (<i>s</i><sub>1</sub>):</span>
+        <input type="range" id="hol-s1" min="-1.0" max="1.0" step="0.02" value="-0.40" oninput="updateHoloform()">
+        <span id="hol-s1-val" style="width:42px; font-family:monospace;">-0.40</span>
+      </div>
+      <div class="slider-row">
+        <span style="color:#20B2AA;">Obs 2 (<i>s</i><sub>2</sub>):</span>
+        <input type="range" id="hol-s2" min="-1.0" max="1.0" step="0.02" value="0.56" oninput="updateHoloform()">
+        <span id="hol-s2-val" style="width:42px; font-family:monospace;">+0.56</span>
+      </div>
+      <div class="slider-row">
+        <span style="color:#FFA500;">Obs 3 (<i>s</i><sub>3</sub>):</span>
+        <input type="range" id="hol-s3" min="-1.0" max="1.0" step="0.02" value="0.44" oninput="updateHoloform()">
+        <span id="hol-s3-val" style="width:42px; font-family:monospace;">+0.44</span>
+      </div>
+      <div class="slider-row">
+        <span style="color:#FFD700;">Tolerance <i>ε</i>:</span>
+        <input type="range" id="hol-eps" min="0.02" max="0.30" step="0.02" value="0.10" oninput="updateHoloform()">
+        <span id="hol-eps-val" style="width:42px; font-family:monospace;">0.10</span>
+      </div>
+    </div>
+    <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+      <svg id="hol-svg" viewBox="0 0 200 140" width="175" height="125">
+        <line id="hol-e12" x1="100" y1="22" x2="35" y2="118" stroke="#DC143C" stroke-width="3"/>
+        <line id="hol-e23" x1="35" y1="118" x2="165" y2="118" stroke="#DC143C" stroke-width="3"/>
+        <line id="hol-e13" x1="165" y1="118" x2="100" y2="22" stroke="#DC143C" stroke-width="3"/>
+        <circle id="hol-center" cx="100" cy="84" r="16" fill="rgba(220,20,60,0.2)" stroke="#DC143C" stroke-width="2"/>
+        <text id="hol-center-txt" x="100" y="88" fill="#ff6b81" font-size="9" font-weight="bold" text-anchor="middle">∅</text>
+        <circle cx="100" cy="22" r="13" fill="#4169E1"/><text x="100" y="26" fill="#fff" font-size="9.5" font-weight="bold" text-anchor="middle">V₁</text>
+        <circle cx="35" cy="118" r="13" fill="#20B2AA"/><text x="35" y="122" fill="#000" font-size="9.5" font-weight="bold" text-anchor="middle">V₂</text>
+        <circle cx="165" cy="118" r="13" fill="#FFA500"/><text x="165" y="122" fill="#000" font-size="9.5" font-weight="bold" text-anchor="middle">V₃</text>
+      </svg>
+    </div>
+  </div>
+  <div style="margin-top:6px; display:flex; gap:8px; justify-content:center;">
+    <button class="syn-btn" onclick="alignHoloform()">Exact Descent (Def_U(s) = 0)</button>
+    <button class="syn-btn" onclick="epsHoloform()">ε-Compatible (0.06 ≤ ε)</button>
+    <button class="syn-btn" onclick="perturbHoloform()">Introduce Antagonismus</button>
+  </div>
+  <div id="hol-status-box" class="matrix-readout" style="margin-top:6px;">
+    ‖Def_U(s)‖_Č¹ = 0.96 > ε (0.10)  ⇒  ANTAGONISMUS (Čech 0-Coboundary Obstruction)
+  </div>
 </div>
 
 <div class="video-container" style="margin-top:8px;">
-<video autoplay data-autoplay loop muted playsinline src="media/Act9_Holoform_Crystal.mp4" style="max-height:175px;"></video>
-<div class="video-caption">Manim Act IX (Fig. 1.7): Sheaf Descent &amp; Unique Invariant Holoform Section Γ ∈ Hol(U, P)</div>
+  <video autoplay data-autoplay loop muted playsinline src="media/Act9_Holoform_Crystal.mp4" style="max-height:175px;"></video>
+  <div class="video-caption">Manim Act IX (Fig. 1.7): Sheaf Descent &amp; Unique Invariant Holoform Section Γ ∈ Hol(U, P)</div>
 </div>
 
 :::
 
 ::::
 
+::: {.notes}
+Heim's concept of the Holoform is explicated as the equalizer of local sections over an admissible cover. Furthermore, because real empirical measurements always have small noise epsilon, our epsilon-Holoform Stability Theorem proves that partition-of-unity gluing produces a global state Gamma_sigma that stays within epsilon of every local observer.
+:::
+
 ---
 
 ## §1.6: Typed Mereology $\mathfrak{M}_{\mathrm{asp}}$, $t$-Norms & *Aufhebung* {.smaller}
 
-<div class="stratum-badge badge-b">STRATUM B: DEFS. 1.25, 1.26, 1.28, PROP. 1.27 &amp; THMS. 1.29–1.30</div>
+<div class="stratum-badge badge-b">STRATUM B: AXIOMATIC CEM &amp; DIALECTICAL SUBLATION</div>
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
 ::: {.thm-box}
-**Def. 1.25, 1.26 & Prop. 1.27: Internal Heyting Mereology & $t$-Norms**
+**Internal Heyting Mereology & Continuous $t$-Norm Strength**
 In $\mathfrak{M}_{\mathrm{asp}}(U) \coloneqq \Sub_{\Esyn}(\mathbf{y}(U) \times (\underline{\mathsf{Pred}}_U \sqcup \underline{\mathsf{Qual}}_U))$, parthood is $A \le B$ (satisfying **MSL-M1**, **MSL-M2**, and guarded fusion $\sigma\mathcal{X} = \bigvee_{A\in\mathcal{X}} A$). Qualifier $d_r$ and predicate $f_q$ coordinate iff:
 $$
 \operatorname{Strength}\big((d_r, f_q), S_{\mathrm{mod}}(x)\big) \coloneqq \chi\big( (\zeta_x)_r \sigma_{dr}(v_{dr}),\; (\mathbf{z}_x)_q \sigma_{fq}(v_{fq}) \big) > \theta_{\mathrm{coord}}(x)
@@ -842,7 +947,7 @@ $$
 :::
 
 ::: {.firewall-box}
-**Def. 1.28 & Thm. 1.29: Tripartite Taxonomy of Antagonismen**
+**Tripartite Taxonomy of Antagonismen**
 
 1. **Mereological ($\operatorname{Ant}_{\mathrm{mer}}$):** $\exists A, B \le S$ with $\operatorname{Incomp}_{\mathcal{E}}(A, B) \coloneqq \llbracket |\operatorname{ev}_P(A)-\operatorname{ev}_P(B)| > \theta_{\mathrm{tol}} \rrbracket = \top_{\Omega(W)}$.
 2. **Descent ($\operatorname{Ant}_{\mathrm{desc}}$):** Non-vanishing Čech coboundary $\Def_{\mathcal{U}}(s) \ne 0$ (while overlap $\mathbf{y}W \not\cong \mathbf{0}_{\mathcal{E}}$ remains non-zero, preserving subcanonicity).
@@ -850,7 +955,7 @@ $$
 :::
 
 ::: {.carnap-box}
-**Theorem 1.30 (Reflexive Abstraction as *Aufhebung*):**
+**Theorem (Reflexive Abstraction as *Aufhebung*):**
 Dialectical sublation maps $S_{\mathrm{mod}}(x) \to S'_{\mathrm{mod}}(x')$ containing $C \coloneqq \operatorname{Synthesize}(A, B) \in \Prop_1$ free of internal incompatibility.
 :::
 
@@ -859,59 +964,63 @@ Dialectical sublation maps $S_{\mathrm{mod}}(x) \to S'_{\mathrm{mod}}(x')$ conta
 ::: {.column width="50%"}
 
 <div class="interactive-panel">
-<h4>Interactive Continuous t-Norm &amp; Dialectical Aufhebung Simulator</h4>
-<p class="widget-context-note">
-<b>Context (Defs. 1.26–1.28 &amp; Thm. 1.30):</b> Select an Archimedean or Gödel <i>t</i>-norm <i>χ</i> and adjust qualifier/predicate saliences against the threshold <i>θ</i><sub>coord</sub>. When evaluative discrepancy |<i>v</i><sub>1</sub> − <i>v</i><sub>2</sub>| exceeds <i>θ</i><sub>tol</sub> = 0.30, click <b>Execute Reflexive Abstraction</b> to sublate the conflict into a higher-order syndrome <i>C</i> ∈ <b>Prop</b><sub>1</sub>.
-</p>
-<div class="slider-row">
-<span><i>t</i>-Norm <i>χ</i>:</span>
-<select id="tnorm-type" onchange="updateTNorm()" style="background:#1e293b; color:#FFD700; border:1px solid #FFD700; border-radius:4px; padding:3px;">
-<option value="product">Product t-Norm: χ(u, v) = u · v</option>
-<option value="godel">Gödel Minimum: χ(u, v) = min(u, v)</option>
-<option value="lukasiewicz">Łukasiewicz: χ(u, v) = max(0, u + v - 1)</option>
-</select>
-</div>
-<div class="slider-row">
-<span style="color:#20B2AA;">Qualifier <i>ζ<sub>r</sub>σ<sub>dr</sub></i>:</span>
-<input type="range" id="tn-u" min="0" max="1" step="0.02" value="0.82" oninput="updateTNorm()">
-<span style="color:#4169E1;">Predicate <i>z<sub>q</sub>σ<sub>fq</sub></i>:</span>
-<input type="range" id="tn-v" min="0" max="1" step="0.02" value="0.78" oninput="updateTNorm()">
-</div>
-<div class="slider-row">
-<span style="color:#FFD700;">Threshold <i>θ</i><sub>coord</sub>:</span>
-<input type="range" id="tn-th" min="0.1" max="0.9" step="0.02" value="0.55" oninput="updateTNorm()">
-<span style="color:#ff6b81;">Discrepancy |<i>v</i><sub>1</sub>−<i>v</i><sub>2</sub>|:</span>
-<input type="range" id="tn-disc" min="0.0" max="1.0" step="0.05" value="0.65" oninput="updateTNorm()">
-</div>
-<div style="margin-top:6px; display:flex; gap:10px; justify-content:center;">
-<button class="syn-btn" onclick="triggerAufhebung()">Execute Reflexive Abstraction (Aufhebung → Prop₁)</button>
-</div>
-<div id="tnorm-readout" class="matrix-readout">
-Strength χ(0.82, 0.78) = 0.64 > θ (0.55) [Rule χ-I_S Fires] | |v₁-v₂| = 0.65 > θ_tol ⇒ Ant_mer ∧ Ant_desc Active
-</div>
+  <h4>Interactive Continuous t-Norm &amp; Dialectical Aufhebung Simulator</h4>
+  <p class="widget-context-note">
+    <b>Context (§1.6):</b> Select an Archimedean or Gödel <i>t</i>-norm <i>χ</i> and adjust qualifier/predicate saliences against the threshold <i>θ</i><sub>coord</sub>. When evaluative discrepancy |<i>v</i><sub>1</sub> − <i>v</i><sub>2</sub>| exceeds <i>θ</i><sub>tol</sub> = 0.30, click <b>Execute Reflexive Abstraction</b> to sublate the conflict into a higher-order syndrome <i>C</i> ∈ <b>Prop</b><sub>1</sub>.
+  </p>
+  <div class="slider-row">
+    <span><i>t</i>-Norm <i>χ</i>:</span>
+    <select id="tnorm-type" onchange="updateTNorm()" style="background:#1e293b; color:#FFD700; border:1px solid #FFD700; border-radius:4px; padding:3px;">
+      <option value="product">Product t-Norm: χ(u, v) = u · v</option>
+      <option value="godel">Gödel Minimum: χ(u, v) = min(u, v)</option>
+      <option value="lukasiewicz">Łukasiewicz: χ(u, v) = max(0, u + v - 1)</option>
+    </select>
+  </div>
+  <div class="slider-row">
+    <span style="color:#20B2AA;">Qualifier <i>ζ<sub>r</sub>σ<sub>dr</sub></i>:</span>
+    <input type="range" id="tn-u" min="0" max="1" step="0.02" value="0.82" oninput="updateTNorm()">
+    <span style="color:#4169E1;">Predicate <i>z<sub>q</sub>σ<sub>fq</sub></i>:</span>
+    <input type="range" id="tn-v" min="0" max="1" step="0.02" value="0.78" oninput="updateTNorm()">
+  </div>
+  <div class="slider-row">
+    <span style="color:#FFD700;">Threshold <i>θ</i><sub>coord</sub>:</span>
+    <input type="range" id="tn-th" min="0.1" max="0.9" step="0.02" value="0.55" oninput="updateTNorm()">
+    <span style="color:#ff6b81;">Discrepancy |<i>v</i><sub>1</sub>−<i>v</i><sub>2</sub>|:</span>
+    <input type="range" id="tn-disc" min="0.0" max="1.0" step="0.05" value="0.65" oninput="updateTNorm()">
+  </div>
+  <div style="margin-top:6px; display:flex; gap:10px; justify-content:center;">
+    <button class="syn-btn" onclick="triggerAufhebung()">Execute Reflexive Abstraction (Aufhebung → Prop₁)</button>
+  </div>
+  <div id="tnorm-readout" class="matrix-readout">
+    Strength χ(0.82, 0.78) = 0.64 > θ (0.55) [Rule χ-I_S Fires] | |v₁-v₂| = 0.65 > θ_tol ⇒ Ant_mer ∧ Ant_desc Active
+  </div>
 </div>
 
 <div class="video-container" style="margin-top:8px;">
-<video autoplay data-autoplay loop muted playsinline src="media/Act10_Mereology_Aufhebung.mp4" style="max-height:195px;"></video>
-<div class="video-caption">Manim Act X (Fig. 1.8): Tripartite Antagonism Hierarchy &amp; Dialectical Sublation (Aufhebung) into Prop₁</div>
+  <video autoplay data-autoplay loop muted playsinline src="media/Act10_Mereology_Aufhebung.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act X (Fig. 1.8): Tripartite Antagonism Hierarchy &amp; Dialectical Sublation (Aufhebung) into Prop₁</div>
 </div>
 
 :::
 
 ::::
 
+::: {.notes}
+Section 1.6 distinguishes three levels of Antagonismus: Mereological incompatibility, Cech Descent failure, and outright Logical Contradiction. Crucially, Descent failure does not make the overlap context W equal to the zero object, preserving subcanonicity. When an incompatibility arises, Reflexive Abstraction (Aufhebung) lifts the conflict into a higher-level syndrome C in Prop_1.
+:::
+
 ---
 
 ## §1.7: Pseudometric $d_P$, Metropie Flow & Lawvere–Tierney Closure {.smaller}
 
-<div class="stratum-badge badge-b">STRATUM B: LAYER 2 FRAMES, THMS. 1.37–1.38 &amp; STAGE I POLARIMETER</div>
+<div class="stratum-badge badge-b">STRATUM B: LAYER 2 MODAL FRAMES &amp; STAGE I POLARIMETER</div>
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
 ::: {.thm-box}
-**Def. 1.31, Prop. 1.32 & Def. 1.33: Pseudometric $d_P$ & Metropie $g_{\mathrm{met}}$**
+**Context Discrepancy Pseudometric $d_P$ & Metropie $g_{\mathrm{met}}$**
 $$
 d_P(U, V) \coloneqq \inf_{\alpha, \beta} \max_{F \in \{D,P,C\}} \max\!\big( \|I_{F^U} - \beta_F \alpha_F\|_{\op},\; \|I_{F^V} - \alpha_F \beta_F\|_{\op} \big)
 $$
@@ -922,7 +1031,7 @@ $$
 :::
 
 ::: {.carnap-box}
-**Theorems 1.37 & 1.38: Lawvere–Tierney Modal Bridge & Plus-Construction**
+**Lawvere–Tierney Modal Bridge & Two-Step Plus-Construction**
 On Fischer–Servi frames satisfying Metric Confluence ($A_{\mathrm{conf}}$: FS1 & FS2 on $d_P(U_1, U_2) < \epsilon_A$), $\Diamond_S \dashv \Box_S$ form an internal Galois adjunction on $\Omega$, and $j_S \coloneqq \neg_J \Box_S \neg_J \colon \Omega \to \Omega$ is a **Lawvere–Tierney topology** whose sheafification is the two-step plus-construction:
 $$
 (L_{j_S} P)(U) = \operatorname*{colim}_{S \in J_{j_S}(U)} \operatorname{Nat}(S, P), \qquad \mathbf{a}_{j_S} P = L_{j_S}(L_{j_S} P) \;\dashv\; \mathbf{i}_{j_S}
@@ -934,60 +1043,64 @@ $$
 ::: {.column width="50%"}
 
 <div class="interactive-panel">
-<h4>Stage I of VI Running Example: Dichromatic Spin-Polarimeter</h4>
-<p class="widget-context-note">
-<b>Context (§1.7 Running Example):</b> A spin-½ beam is measured in Horizontal (<i>H</i>) and Vertical (<i>V</i>) channels with carrier <i>P<sup>U</sup> = ℝ<sub>H</sub>³ ⊕ ℝ<sub>V</sub>³ ≅ ℝ⁶</i> and cipher rotation <i>z<sup>U</sup>(θ) ∈ SO(6)</i>. Rotate <i>θ</i> to observe the geodesic Metropie arc length ℓ(<i>γ</i>) and bilinear readout <i>K(d, p) = (d<sub>H</sub>f<sub>H</sub>, d<sub>V</sub>f<sub>V</sub>)</i>.
-</p>
-<div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:10px; align-items:center;">
-<div>
-<div class="slider-row">
-<span style="color:#FFD700;">Cipher <i>θ</i>:</span>
-<input type="range" id="pol-theta" min="0" max="180" step="1" value="35" oninput="updatePolarimeter()">
-<span id="pol-theta-lbl" style="font-family:monospace; width:38px;">35°</span>
-</div>
-<div class="slider-row">
-<span style="color:#20B2AA;"><i>d<sub>H</sub></i>:</span> <input type="range" id="pol-dh" min="0" max="1" step="0.05" value="0.80" oninput="updatePolarimeter()">
-<span style="color:#4169E1;"><i>d<sub>V</sub></i>:</span> <input type="range" id="pol-dv" min="0" max="1" step="0.05" value="0.60" oninput="updatePolarimeter()">
-</div>
-</div>
-<div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
-<svg id="pol-svg" viewBox="-70 -70 140 140" width="120" height="120">
-<circle cx="0" cy="0" r="52" fill="none" stroke="#334155" stroke-dasharray="2,2"/>
-<line x1="-58" y1="0" x2="58" y2="0" stroke="#475569"/>
-<line x1="0" y1="-58" x2="0" y2="58" stroke="#475569"/>
-<line id="pol-vec" x1="0" y1="0" x2="43" y2="-30" stroke="#FFD700" stroke-width="3"/>
-<circle id="pol-tip" cx="43" cy="-30" r="4.5" fill="#20B2AA"/>
-<text x="46" y="12" fill="#82aaff" font-size="9">H</text>
-<text x="6" y="-46" fill="#5eead4" font-size="9">V</text>
-</svg>
-</div>
-</div>
-<div id="pol-readout" class="matrix-readout" style="margin-top:6px;">
-z^U(35°) ∈ SO(6) | K(d,p) = (0.66, 0.34) | ‖K‖_∞ = 0.66 ≤ ‖d‖₂‖p‖₂ = 1.00 | Geodesic ℓ(γ) = 1.06 rad
-</div>
+  <h4>Stage I of VI Running Example: Dichromatic Spin-Polarimeter</h4>
+  <p class="widget-context-note">
+    <b>Context (§1.7 Running Example):</b> A spin-½ beam is measured in Horizontal (<i>H</i>) and Vertical (<i>V</i>) channels with carrier <i>P<sup>U</sup> = ℝ<sub>H</sub>³ ⊕ ℝ<sub>V</sub>³ ≅ ℝ⁶</i> and cipher rotation <i>z<sup>U</sup>(θ) ∈ SO(6)</i>. Rotate <i>θ</i> to observe the geodesic Metropie arc length ℓ(<i>γ</i>) and bilinear readout <i>K(d, p) = (d<sub>H</sub>f<sub>H</sub>, d<sub>V</sub>f<sub>V</sub>)</i>.
+  </p>
+  <div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:10px; align-items:center;">
+    <div>
+      <div class="slider-row">
+        <span style="color:#FFD700;">Cipher <i>θ</i>:</span>
+        <input type="range" id="pol-theta" min="0" max="180" step="1" value="35" oninput="updatePolarimeter()">
+        <span id="pol-theta-lbl" style="font-family:monospace; width:38px;">35°</span>
+      </div>
+      <div class="slider-row">
+        <span style="color:#20B2AA;"><i>d<sub>H</sub></i>:</span> <input type="range" id="pol-dh" min="0" max="1" step="0.05" value="0.80" oninput="updatePolarimeter()">
+        <span style="color:#4169E1;"><i>d<sub>V</sub></i>:</span> <input type="range" id="pol-dv" min="0" max="1" step="0.05" value="0.60" oninput="updatePolarimeter()">
+      </div>
+    </div>
+    <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+      <svg id="pol-svg" viewBox="-70 -70 140 140" width="120" height="120">
+        <circle cx="0" cy="0" r="52" fill="none" stroke="#334155" stroke-dasharray="2,2"/>
+        <line x1="-58" y1="0" x2="58" y2="0" stroke="#475569"/>
+        <line x1="0" y1="-58" x2="0" y2="58" stroke="#475569"/>
+        <line id="pol-vec" x1="0" y1="0" x2="43" y2="-30" stroke="#FFD700" stroke-width="3"/>
+        <circle id="pol-tip" cx="43" cy="-30" r="4.5" fill="#20B2AA"/>
+        <text x="46" y="12" fill="#82aaff" font-size="9">H</text>
+        <text x="6" y="-46" fill="#5eead4" font-size="9">V</text>
+      </svg>
+    </div>
+  </div>
+  <div id="pol-readout" class="matrix-readout" style="margin-top:6px;">
+    z^U(35°) ∈ SO(6) | K(d,p) = (0.66, 0.34) | ‖K‖_∞ = 0.66 ≤ ‖d‖₂‖p‖₂ = 1.00 | Geodesic ℓ(γ) = 1.06 rad
+  </div>
 </div>
 
 <div class="video-container" style="margin-top:8px;">
-<video autoplay data-autoplay loop muted playsinline src="media/Act11_Metropie_Polarimeter.mp4" style="max-height:185px;"></video>
-<div class="video-caption">Manim Act XI (Figs. 1.10 &amp; 1.11): Operator Discrepancy Pseudometric d_P(U, V) &amp; Fischer–Servi Confluence</div>
+  <video autoplay data-autoplay loop muted playsinline src="media/Act11_Metropie_Polarimeter.mp4" style="max-height:185px;"></video>
+  <div class="video-caption">Manim Act XI (Figs. 1.10 &amp; 1.11): Operator Discrepancy Pseudometric d_P(U, V) &amp; Fischer–Servi Confluence</div>
 </div>
 
 :::
 
 ::::
 
+::: {.notes}
+How far apart are two subjective perspectives? Definition 1.31 introduces the operator discrepancy pseudometric d_P(U,V), while smooth cipher rotations z(t) in SO(n) carry the Killing-form Riemannian metric g_met—explicating Heim's Metropie. On the right, Stage I of our book-wide Running Example demonstrates a 2-channel spin-polarimeter rotating through SO(6).
+:::
+
 ---
 
 ## §1.8: Stratified Syntax & Sequent Calculus $\mathcal{L}_{\mathrm{iMSL}}$ {.smaller}
 
-<div class="stratum-badge badge-b">STRATUM B: LAYER 3 PROOF THEORY (DEFS. 1.39–1.41)</div>
+<div class="stratum-badge badge-b">STRATUM B: LAYER 3 PROOF THEORY &amp; INTERACTIVE RULE LEDGER</div>
 
 :::: {.columns}
 
 ::: {.column width="42%"}
 
 ::: {.thm-box}
-**Defs. 1.39 & 1.40: Stratified Language $\mathbf{WFF}_{\mathrm{iMSL}}$**
+**Stratified Language $\mathbf{WFF}_{\mathrm{iMSL}}$**
 
 * **Base ($\Gen_0$):** $\AP_S \sqcup \AP_0$, where $\AP_0 = \{a_0, \dots, a_N\}$ is the invariant **Metrophor** ($\mathfrak{M}$).
 * **Inductive ($\Gen_{j+1}$):** $\operatorname{Conj}(\phi,\psi), \operatorname{Lift}_{\Box_{\mathrm{Syn}}}(\phi), \operatorname{ParaConj}(\phi)$ with $\Prop_k = \bigcup_{j=0}^k \Gen_j$.
@@ -998,7 +1111,7 @@ $$
 :::
 
 ::: {.intuition-box}
-**Key Forcing Clauses (Def. 1.41):**
+**Key Forcing Clauses:**
 $$
 \begin{aligned}
 (U, k) \models \Stable_{j+1}(P') &\iff (U, k) \models P' \;\wedge\; \forall X \big(\IGP_{j+1}(X, P') \Rightarrow (U, k) \models \Stable_j(X)\big)\\
@@ -1015,15 +1128,15 @@ $$
 #### Interactive Ledger: Complete Sequent Calculus $\mathcal{L}_{\mathrm{iMSL}}$ ($S(x); \Gamma \vdash^k \phi$)
 
 <p class="widget-context-note">
-<b>Context (§1.8.2 &amp; App. A):</b> Click any of the 6 rule tabs below to inspect the single-succedent constructive inference rules governing structural deduction, intuitionistic connectives, aspectual coordination, Fischer–Servi modalities, hereditary stability, and dynamic functorial steps.
+  <b>Context (§1.8.2 &amp; App. A):</b> Click any of the 6 rule tabs below to inspect the single-succedent constructive inference rules governing structural deduction, intuitionistic connectives, aspectual coordination, Fischer–Servi modalities, hereditary stability, and dynamic functorial steps.
 </p>
 <div class="syn-tabs">
-<button class="syn-tab-btn active" onclick="showRuleTab(1, this)">1. Structural</button>
-<button class="syn-tab-btn" onclick="showRuleTab(2, this)">2. Intuitionistic</button>
-<button class="syn-tab-btn" onclick="showRuleTab(3, this)">3. Aspectual</button>
-<button class="syn-tab-btn" onclick="showRuleTab(4, this)">4. Fischer–Servi Modal</button>
-<button class="syn-tab-btn" onclick="showRuleTab(5, this)">5. Hereditary Stability</button>
-<button class="syn-tab-btn" onclick="showRuleTab(6, this)">6. Dynamic [π_F]</button>
+  <button class="syn-tab-btn active" onclick="showRuleTab(1, this)">1. Structural</button>
+  <button class="syn-tab-btn" onclick="showRuleTab(2, this)">2. Intuitionistic</button>
+  <button class="syn-tab-btn" onclick="showRuleTab(3, this)">3. Aspectual</button>
+  <button class="syn-tab-btn" onclick="showRuleTab(4, this)">4. Fischer–Servi Modal</button>
+  <button class="syn-tab-btn" onclick="showRuleTab(5, this)">5. Hereditary Stability</button>
+  <button class="syn-tab-btn" onclick="showRuleTab(6, this)">6. Dynamic [π_F]</button>
 </div>
 
 ::: {#rule-pane-1 .syn-tab-pane .active}
@@ -1106,23 +1219,27 @@ $$
 
 ::::
 
+::: {.notes}
+Layer 3 provides the syntactic proof engine: the intuitionistic Leveled Modal Syndromatic Logic L_iMSL. Using the 6 tabs on the right, you can inspect the complete single-succedent sequent calculus, including the Fischer-Servi modal interaction rules, Hereditary Stability rules anchored in the Metrophor AP_0, and the deterministic level-stepping modality [pi_F].
+:::
+
 ---
 
 ## §1.9: Soundness, Completeness & Lean 4 Verification {.smaller}
 
-<div class="stratum-badge badge-b">STRATUM B: THMS. 1.42–1.46, APP. A HAUPTSATZ &amp; APP. C LEAN 4</div>
+<div class="stratum-badge badge-b">STRATUM B: HENKIN COMPLETENESS, HAUPTSATZ &amp; LEAN 4 BLUEPRINT</div>
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
 ::: {.thm-box}
-**Theorems 1.42, 1.45 & 1.46: Soundness & Strong Completeness**
+**Theorems: Soundness & Strong Canonical Completeness**
 By simultaneous multi-level prime theory saturation $\mathbf{\Delta} = \langle \Delta_k \subset \mathcal{L}_k \rangle_{k \in \mathbb{N}_0}$ over canonical worlds $w^c = (\Delta_k, k)$ with $(\Delta_k, k) R_{\pi_F}^c (\Delta_{k+1}, k+1)$:
 $$
 (\Delta_k, k) \models \psi \;\Longleftrightarrow\; \psi \in \Delta_k \quad \forall \psi \in \mathcal{L}_k
 $$
-Therefore, syntactic derivability and leveled Kripke validity coincide:
+Therefore, syntactic derivability and leveled Kripke validity coincide across all strata:
 $$
 \boxed{S(x);\; \Gamma_G \vdash^k \phi \;\Longleftrightarrow\; S(x);\; \Gamma_G \models^k \phi}
 $$
@@ -1172,6 +1289,10 @@ lemma opNorm_comp_le_one {E F G : Type*}
 
 ::::
 
+::: {.notes}
+Section 1.9 and Appendix A establish the crown jewels of our proof theory: Soundness, Strong Canonical Completeness via multi-level prime theory saturation, and Gentzen's Hauptsatz (Cut-Elimination), which guarantees absolute syntactic consistency. On the right is the Mathlib-checked Lean 4 formalization of StructuredContext and operator norm contractivity.
+:::
+
 ---
 
 ## §1.10–1.11: Reconstruction Map $\mathcal{R}$ & Chapter 1 Synthesis {.smaller}
@@ -1184,15 +1305,15 @@ lemma opNorm_comp_le_one {E F G : Type*}
 
 | Heimian Concept ($\mathbf{D}$) | Mathematical Explicatum ($\mathcal{R}$ in $\mathbf{A}/\mathbf{B}$) | Status & Ref. |
 |:---|:---|:---:|
-| **Subjektiver Aspekt ($S$, Eq. 1)** | Context $U = (D, P, C, K, z, \zeta, \mathcal{S}_D, \mathcal{S}_P) \in \Ctx$ | **A-Def** (Def. 1.10) |
-| **Prädikatband $[a, f, b]_q$** | Interval cylinder $\mathcal{S}_P^U \subset \operatorname{Ball}(P^U)$ | **A-Def** (§1.2.2) |
+| **Subjektiver Aspekt ($S$, Eq. 1)** | Context $U = (D, P, C, K, z, \zeta, \mathcal{S}_D, \mathcal{S}_P) \in \Ctx$ | **A-Def** (§1.2.3) |
+| **Prädikatband $[a, f, b]_q$** | Convex interval cylinder $\mathcal{S}_P^U \subset \operatorname{Ball}(P^U)$ | **A-Def** (§1.2.2) |
 | **Basischiffren ($z_n, \zeta_n$)** | Linear isometries in $\Isom(P^U), \Isom(D^U)$ | **A-Def** (§1.2.2) |
-| **Koordination ($K_n$)** | Projective contraction $K^U \colon D^U \otpi P^U \to C^U$ | **A-Def** (Def. 1.9) |
-| **Metropie ($g$)** | Pseudometric $d_P(U,V)$ & trace tensor $g_{\mathrm{met}}$ | **B-Model** (Def. 1.31) |
+| **Koordination ($K_n$)** | Projective contraction $K^U \colon D^U \otpi P^U \to C^U$ | **A-Def** (§1.2.1) |
+| **Metropie ($g$)** | Pseudometric $d_P(U,V)$ & trace tensor $g_{\mathrm{met}}$ | **B-Model** (§1.7) |
 | **Mono-/Polyquantor (Eqs. 2–4)** | Local $U \Vdash \phi$ & product forcing $\prod_{i=1}^r V_i \Vdash \phi$ | **A-Def** (§1.4) |
-| **Universalquantor ($\mathbf{U}$)** | Right-adjoint dependent product $\forall_f$ ($f^* \dashv \forall_f$) | **A-Prop** (Prop. 1.19) |
-| **Holoform ($\mathbf{H}$)** | Global section $\Gamma \in \Hol(\mathcal{U}, \mathbf{P})$ ($\Def_{\mathcal{U}}(s) = 0$) | **B-Thm** (Thm. 1.22) |
-| **Antagonismus** | Tripartite obstruction ($\operatorname{Ant}_{\mathrm{mer}}, \operatorname{Ant}_{\mathrm{desc}}, \operatorname{Ant}_{\mathrm{log}}$) | **B-Thm** (Def. 1.28) |
+| **Universalquantor ($\mathbf{U}$)** | Right-adjoint dependent product $\forall_f$ ($f^* \dashv \forall_f$) | **A-Prop** (§1.4) |
+| **Holoform ($\mathbf{H}$)** | Global section $\Gamma \in \Hol(\mathcal{U}, \mathbf{P})$ ($\Def_{\mathcal{U}}(s) = 0$) | **B-Thm** (§1.5) |
+| **Antagonismus** | Tripartite obstruction ($\operatorname{Ant}_{\mathrm{mer}}, \operatorname{Ant}_{\mathrm{desc}}, \operatorname{Ant}_{\mathrm{log}}$) | **B-Thm** (§1.6) |
 
 ::: {.thm-box}
 **Asymptotic Sanity Check (Classical Boolean Collapse):**
@@ -1209,8 +1330,8 @@ $\mathcal{R} \colon \mathsf{HeimVocabulary}\;(\mathbf{D}) \rightsquigarrow \math
 :::
 
 <div class="video-container">
-<video autoplay data-autoplay loop muted playsinline src="media/Act12_Sequents_Synthesis.mp4" style="max-height:215px;"></video>
-<div class="video-caption">Manim Act XII (Fig. 1.12): Tri-Layered Semantic &amp; Constructive Proof-Theoretic Synthesis</div>
+  <video autoplay data-autoplay loop muted playsinline src="media/Act12_Sequents_Synthesis.mp4" style="max-height:215px;"></video>
+  <div class="video-caption">Manim Act XII (Fig. 1.12): Tri-Layered Semantic &amp; Constructive Proof-Theoretic Synthesis</div>
 </div>
 
 ::: {.firewall-box}
@@ -1221,6 +1342,10 @@ $\Esyn$ restricts, tests, and glues existing observations, but has **no generati
 :::
 
 ::::
+
+::: {.notes}
+We conclude Chapter 1 with the complete Reconstruction Map R translating Heim's Stratum D terminology into our Stratum A and B theorems, verified against the classical Boolean collapse sanity check. In Chapter 2, we equip the sheaf topos E_syn with a generative algebraic engine: the colored Banach operad O_syn and free tree monad T_P.
+:::
 
 <!-- UNIFIED RESILIENT JAVASCRIPT ENGINE FOR ALL 8 CHAPTER 1 WIDGETS -->
 <script>
@@ -1444,7 +1569,7 @@ window.updateHoloform = function() {
     if (cTxt) { cTxt.setAttribute('fill', '#FFD700'); cTxt.textContent = 'Γ_σ'; }
     box.style.borderLeftColor = "#20B2AA";
     box.style.color = "#FFD700";
-    box.innerText = `‖Def_U(s)‖_Č¹ = ${def.toFixed(2)} ≤ ε (${eps.toFixed(2)}) ⇒ HOLOFORM CONDENSED: Γ_σ = ${gamma.toFixed(2)} ∈ Hol_ε(U, A) (Thm 1.24)`;
+    box.innerText = `‖Def_U(s)‖_Č¹ = ${def.toFixed(2)} ≤ ε (${eps.toFixed(2)}) ⇒ HOLOFORM CONDENSED: Γ_σ = ${gamma.toFixed(2)} ∈ Hol_ε(U, A)`;
   } else {
     if (cNode) { cNode.setAttribute('fill', 'rgba(220,20,60,0.25)'); cNode.setAttribute('stroke', '#DC143C'); }
     if (cTxt) { cTxt.setAttribute('fill', '#ff6b81'); cTxt.textContent = '∅'; }
@@ -1508,7 +1633,7 @@ window.triggerAufhebung = function() {
   let box = document.getElementById('tnorm-readout');
   box.style.borderLeftColor = "#20B2AA";
   box.style.color = "#5eead4";
-  box.innerText = `AUFHEBUNG EXECUTED (Thm 1.30): S_mod(x) → S'_mod(x') with Synthesize(A, B) = C ∈ Prop₁ (Internal Incompatibility Resolved!)`;
+  box.innerText = `AUFHEBUNG EXECUTED: S_mod(x) → S'_mod(x') with Synthesize(A, B) = C ∈ Prop₁ (Internal Incompatibility Resolved!)`;
 };
 
 // WIDGET 7: §1.7 Polarimeter & Metropie Flow
