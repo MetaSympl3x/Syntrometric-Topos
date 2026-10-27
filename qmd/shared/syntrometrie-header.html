@@ -42,9 +42,11 @@ window.MathJax = {
 };
 </script>
 <style>
-.reveal-viewport.reveal-scroll .slide-background,
-.reveal-viewport.reveal-scroll section {
-  font-size: clamp(14px, 1.35vw, 26px) !important;
+@media (max-width: 900px) {
+  .reveal-viewport.reveal-scroll .slide-background,
+  .reveal-viewport.reveal-scroll section {
+    font-size: clamp(14px, 1.35vw, 26px) !important;
+  }
 }
 .reveal-viewport.reveal-scroll .interactive-panel,
 .reveal-viewport.reveal-scroll .thm-box,
@@ -201,6 +203,9 @@ window.togglePresentationScrollView = function() {
   }
 
   setTimeout(() => {
+    if (window.Reveal && typeof window.Reveal.layout === 'function') {
+      window.Reveal.layout();
+    }
     if (window.MathJax && window.MathJax.Hub) {
       window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
     }

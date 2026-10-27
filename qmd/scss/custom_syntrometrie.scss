@@ -759,10 +759,6 @@ $code-block-border-color:   rgba($syn-blue, 0.4);
   to   { opacity: 1; transform: translate3d(0, 0, 0);    filter: blur(0); }
 }
 
-.reveal-viewport.reveal-scroll .slide-background,
-.reveal-viewport.reveal-scroll section {
-  font-size: clamp(14px, 1.35vw, 26px) !important;
-}
 
 .reveal-viewport.reveal-scroll .reveal .fragment,
 .reveal-viewport.reveal-scroll .reveal .fragment.visible,
@@ -785,70 +781,278 @@ $code-block-border-color:   rgba($syn-blue, 0.4);
 }
 
 // ===========================================================================
-// TOP-EDGE FLUSH ALIGNMENT (Desktop & Presentation Mode)
-// Moves headers and panels up to the top of the page/Menu to eliminate dead
-// top space and prevent cropping at the bottom on desktop, while preserving
-// mobile padding and scaling untouched.
-@media (min-width: 901px) {
-// Moves headers and panels up to the top of the page/Menu to eliminate dead
-// top space and prevent cropping at the bottom, while preserving 100% of the
-// original scaling, fonts, and sizing. Overrides reveal.css padding (60px).
+// DESKTOP LAYOUT CONTROLLER (Screens > 900px)
 // ===========================================================================
-html:not(.print-pdf) .reveal .slides section,
-html:not(.print-pdf) .reveal .slides > section,
-html:not(.print-pdf) .reveal .slides > section > section,
-html:not(.print-pdf) .reveal .slides section.slide,
-html body .reveal .slides section,
-html body .reveal .slides > section,
-.reveal .slides section,
-.reveal .slides > section,
-.reveal .slides > section > section {
-  padding-top: 0 !important;
-  padding-bottom: 8px !important;
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-  top: 0 !important;
-}
+@media (min-width: 901px) {
+  // 1. TOP-EDGE FLUSH ALIGNMENT (Desktop Slide / Presentation Mode)
+  // Moves headers and panels up to eliminate dead space in 16:9 slide mode.
+  html:not(.print-pdf) .reveal:not(.reveal-scroll) .slides section,
+  html:not(.print-pdf) .reveal:not(.reveal-scroll) .slides > section,
+  html:not(.print-pdf) .reveal:not(.reveal-scroll) .slides > section > section,
+  html:not(.print-pdf) .reveal:not(.reveal-scroll) .slides section.slide,
+  html body .reveal:not(.reveal-scroll) .slides section,
+  html body .reveal:not(.reveal-scroll) .slides > section,
+  .reveal:not(.reveal-scroll) .slides section,
+  .reveal:not(.reveal-scroll) .slides > section,
+  .reveal:not(.reveal-scroll) .slides > section > section {
+    padding-top: 0 !important;
+    padding-bottom: 8px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    top: 0 !important;
+  }
 
-html:not(.print-pdf) .reveal .slides section > *:first-child,
-.reveal .slides section > *:first-child,
-.reveal .slides section > div:first-child > *:first-child {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
+  // 2. DESKTOP SCROLL MODE: 100% FULL-PAGE RESPONSIVE FILL
+  .reveal-viewport.reveal-scroll {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scroll-behavior: smooth;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: #060911 !important;
+  }
 
-html:not(.print-pdf) .reveal h2,
-html:not(.print-pdf) .reveal .slides section > h2:first-child,
-html:not(.print-pdf) .reveal .slides section > div:first-child > h2,
-.reveal .slides section > h2:first-child,
-.reveal .slides section > div:first-child > h2,
-.reveal .slides h2,
-.reveal h2 {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  margin-bottom: 8px !important;
-  padding-bottom: 4px !important;
-  border-bottom: 2px solid rgba($syn-blue, 0.55);
-  text-shadow: 0 2px 14px rgba($syn-gold, 0.18);
-}
+  .reveal-viewport.reveal-scroll .reveal,
+  .reveal-viewport.reveal-scroll .reveal .slides,
+  .reveal-viewport.reveal-scroll .slides {
+    position: static !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 100% !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+    inset: 0 !important;
+  }
 
-html:not(.print-pdf) .reveal .stratum-badge,
-.reveal .stratum-badge,
-.stratum-badge {
-  margin-top: 0 !important;
-  margin-bottom: 8px !important;
-  padding: 3px 10px !important;
-}
+  // Unroll Reveal.js scroll page wrappers to full width & natural flow
+  .reveal-viewport.reveal-scroll .scroll-page,
+  .reveal-viewport.reveal-scroll .scroll-page-sticky,
+  .reveal-viewport.reveal-scroll .scroll-page-content {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    transform: none !important;
+    overflow: visible !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    --page-scroll-padding: 0px !important;
+  }
 
-html:not(.print-pdf) .reveal .columns,
-.reveal .columns {
-  margin-top: 4px !important;
-}
+  // Each slide fills the entire viewport width and height properly
+  .reveal-viewport.reveal-scroll .slides section,
+  .reveal-viewport.reveal-scroll .slides section.slide,
+  .reveal-viewport.reveal-scroll .scroll-page section {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: calc(100vh - 48px) !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+    padding: 36px 48px 60px 48px !important;
+    margin: 0 0 36px 0 !important;
+    transform: none !important;
+    background: rgba(8, 12, 22, 0.98) !important;
+    border-bottom: 2px solid rgba(65, 105, 225, 0.38) !important;
+    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.75) !important;
+    overflow: visible !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
 
-.reveal .slides section p {
-  margin-top: 0.2em;
-  margin-bottom: 0.4em;
-}
+  // Desktop Scroll Mode Typography: Clean, proportional, readable
+  .reveal-viewport.reveal-scroll section {
+    font-size: clamp(16px, 1.12vw, 20px) !important;
+    line-height: 1.58 !important;
+  }
+
+  .reveal-viewport.reveal-scroll .slides section h1 {
+    font-size: clamp(26px, 2.1vw, 38px) !important;
+    line-height: 1.22;
+    margin-bottom: 16px;
+  }
+
+  .reveal-viewport.reveal-scroll .slides section h2 {
+    font-size: clamp(20px, 1.55vw, 28px) !important;
+    line-height: 1.25;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    padding-bottom: 5px !important;
+    border-bottom: 2px solid rgba($syn-blue, 0.55);
+    text-shadow: 0 2px 14px rgba($syn-gold, 0.18);
+  }
+
+  .reveal-viewport.reveal-scroll .slides section h3 {
+    font-size: clamp(17px, 1.28vw, 22px) !important;
+    margin-bottom: 10px;
+  }
+
+  .reveal-viewport.reveal-scroll .slides section h4 {
+    font-size: clamp(15px, 1.08vw, 19px) !important;
+    margin-bottom: 8px;
+  }
+
+  // Desktop side-by-side multi-column & grid alignment filling full width
+  .reveal-viewport.reveal-scroll .columns,
+  .reveal-viewport.reveal-scroll .slides section > div[style*="display:flex"] {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 28px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 14px !important;
+    align-items: stretch !important;
+  }
+
+  .reveal-viewport.reveal-scroll .column,
+  .reveal-viewport.reveal-scroll .columns > div {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .reveal-viewport.reveal-scroll .grid-2,
+  .reveal-viewport.reveal-scroll .video-grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 28px !important;
+    width: 100% !important;
+    margin-top: 14px !important;
+  }
+
+  .reveal-viewport.reveal-scroll .stat-grid-3 {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+    width: 100% !important;
+    margin-top: 14px !important;
+  }
+
+  .reveal-viewport.reveal-scroll .stat-grid-4 {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 16px !important;
+    width: 100% !important;
+    margin-top: 14px !important;
+  }
+
+  // Full-width theorem boxes & interactive panels in desktop scroll mode
+  .reveal-viewport.reveal-scroll .interactive-panel,
+  .reveal-viewport.reveal-scroll .thm-box,
+  .reveal-viewport.reveal-scroll .def-box,
+  .reveal-viewport.reveal-scroll .prop-box,
+  .reveal-viewport.reveal-scroll .proof-box,
+  .reveal-viewport.reveal-scroll .remark-box,
+  .reveal-viewport.reveal-scroll .carnap-box,
+  .reveal-viewport.reveal-scroll .firewall-box,
+  .reveal-viewport.reveal-scroll .intuition-box,
+  .reveal-viewport.reveal-scroll .scholium-box,
+  .reveal-viewport.reveal-scroll .vignette-box,
+  .reveal-viewport.reveal-scroll .claim-ceiling,
+  .reveal-viewport.reveal-scroll .deliverables-box,
+  .reveal-viewport.reveal-scroll .lean-code-card,
+  .reveal-viewport.reveal-scroll .lean-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 14px 0 !important;
+    padding: 16px 20px !important;
+    border-radius: 10px !important;
+  }
+
+  // Videos fill container with crystal 16:9 aspect ratio
+  .reveal-viewport.reveal-scroll video,
+  .reveal-viewport.reveal-scroll .video-card video,
+  .reveal-viewport.reveal-scroll .video-container video {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+    display: block !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .reveal-viewport.reveal-scroll .video-card,
+  .reveal-viewport.reveal-scroll .video-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px !important;
+    background: rgba(13, 19, 34, 0.9) !important;
+    border: 1px solid rgba(65, 105, 225, 0.42) !important;
+    border-radius: 12px !important;
+    margin: 14px 0 !important;
+  }
+
+  // Wide MathJax formulas horizontally scroll without breaking full-page layout
+  .reveal-viewport.reveal-scroll .MathJax_Display,
+  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    margin: 12px 0 !important;
+    text-align: center !important;
+  }
+
+  html:not(.print-pdf) .reveal .slides section > *:first-child,
+  .reveal .slides section > *:first-child,
+  .reveal .slides section > div:first-child > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  html:not(.print-pdf) .reveal h2,
+  html:not(.print-pdf) .reveal .slides section > h2:first-child,
+  html:not(.print-pdf) .reveal .slides section > div:first-child > h2,
+  .reveal .slides section > h2:first-child,
+  .reveal .slides section > div:first-child > h2,
+  .reveal .slides h2,
+  .reveal h2 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 8px !important;
+    padding-bottom: 4px !important;
+    border-bottom: 2px solid rgba($syn-blue, 0.55);
+    text-shadow: 0 2px 14px rgba($syn-gold, 0.18);
+  }
+
+  html:not(.print-pdf) .reveal .stratum-badge,
+  .reveal .stratum-badge,
+  .stratum-badge {
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+    padding: 3px 10px !important;
+  }
+
+  html:not(.print-pdf) .reveal .columns,
+  .reveal .columns {
+    margin-top: 4px !important;
+  }
+
+  .reveal .slides section p {
+    margin-top: 0.2em;
+    margin-bottom: 0.4em;
+  }
 }
 
 // 2. Narrow screens (Mobile & Tablet <= 900px): Zoom to fill, responsive stacking, touch-friendly UI.
