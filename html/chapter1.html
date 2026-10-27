@@ -36,7 +36,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="chapter1_files/libs/revealjs/dist/theme/quarto-ee18be9d7ba476ee55d8555d1190af93.css">
+  <link rel="stylesheet" href="chapter1_files/libs/revealjs/dist/theme/quarto-ab0ef55b832a3cb0a2e753ce922fce78.css">
   <link href="chapter1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="chapter1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="chapter1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -607,9 +607,9 @@
 
       }
 
-      if (typeof prepareVideos === 'function') {
+      if (typeof prepareVideosAndPanels === 'function') {
 
-        prepareVideos();
+        prepareVideosAndPanels();
 
       }
 
@@ -659,11 +659,17 @@
 
   
 
-  // Mobile & Scroll View Animation Video Controller + Scroll Mode MathJax Trigger
+  // Mobile & Scroll View Animation Controller (Videos, Interactive Panels & Cards)
 
   (function() {
 
-    function prepareVideos() {
+    let scrollObserver = null;
+
+  
+
+    function prepareVideosAndPanels() {
+
+      // 1. Prepare and configure videos
 
       const videos = document.querySelectorAll('video');
 
@@ -686,6 +692,8 @@
         v.style.cursor = 'pointer';
 
   
+
+        // Tap on touch devices to toggle play/pause
 
         if (!v.dataset.touchBound) {
 
@@ -711,6 +719,8 @@
 
   
 
+        // If video is in active slide or in scroll mode, start playback
+
         const slide = v.closest('.present, .scroll-page, section');
 
         if (slide && (slide.classList.contains('present') || document.querySelector('.reveal-viewport.reveal-scroll'))) {
@@ -723,43 +733,115 @@
 
   
 
-      if ('IntersectionObserver' in window && !window.__videoObserverInitialized) {
+      // 2. Tag panels and cards with .syn-scroll-reveal for polished scroll reveals
 
-        window.__videoObserverInitialized = true;
+      const revealTargets = document.querySelectorAll(
 
-        const observer = new IntersectionObserver((entries) => {
+        '.interactive-panel, .video-card, .video-container, .thm-box, .def-box, .prop-box, .proof-box, .carnap-box, .firewall-box, .intuition-box, .vignette-box, .scholium-box, .claim-ceiling, .lean-card, .lean-code-card'
 
-          entries.forEach(entry => {
+      );
 
-            const vid = entry.target;
+      revealTargets.forEach(el => {
 
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.15) {
+        if (!el.classList.contains('syn-scroll-reveal')) {
 
-              vid.play().catch(() => {});
+          el.classList.add('syn-scroll-reveal');
 
-            } else if (!entry.isIntersecting) {
+        }
 
-              vid.pause();
-
-            }
-
-          });
-
-        }, { threshold: [0, 0.15, 0.7] });
+      });
 
   
 
-        videos.forEach(v => observer.observe(v));
+      // 3. Setup IntersectionObserver for smooth entrance and in-view autoplay
+
+      if ('IntersectionObserver' in window) {
+
+        if (!scrollObserver) {
+
+          scrollObserver = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+              const el = entry.target;
+
+              if (entry.isIntersecting && entry.intersectionRatio >= 0.08) {
+
+                el.classList.add('syn-in-view');
+
+  
+
+                // Autoplay visible video or nested videos
+
+                if (el.tagName === 'VIDEO') {
+
+                  el.play().catch(() => {});
+
+                } else {
+
+                  const innerVids = el.querySelectorAll('video');
+
+                  innerVids.forEach(iv => iv.play().catch(() => {}));
+
+                }
+
+              } else if (!entry.isIntersecting && entry.intersectionRatio === 0) {
+
+                // Pause when completely off screen to preserve battery
+
+                if (el.tagName === 'VIDEO') {
+
+                  el.pause();
+
+                } else {
+
+                  const innerVids = el.querySelectorAll('video');
+
+                  innerVids.forEach(iv => iv.pause());
+
+                }
+
+              }
+
+            });
+
+          }, {
+
+            threshold: [0, 0.08, 0.4],
+
+            rootMargin: '30px 0px 30px 0px'
+
+          });
+
+        }
+
+  
+
+        // Observe all videos and reveal targets
+
+        videos.forEach(v => scrollObserver.observe(v));
+
+        revealTargets.forEach(rt => scrollObserver.observe(rt));
 
       }
 
     }
 
-    window.prepareVideos = prepareVideos;
+    window.prepareVideos = prepareVideosAndPanels;
+
+    window.prepareVideosAndPanels = prepareVideosAndPanels;
 
   
 
-    function unlockOnTouch() {
+    // Awaken media on first touch or scroll
+
+    let mediaUnlocked = false;
+
+    function unlockMedia() {
+
+      if (mediaUnlocked) return;
+
+      mediaUnlocked = true;
 
       document.querySelectorAll('video').forEach(v => {
 
@@ -767,21 +849,23 @@
 
         v.defaultMuted = true;
 
-        const slide = v.closest('.present, .scroll-page');
+        const rect = v.getBoundingClientRect();
 
-        if (slide) v.play().catch(() => {});
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+
+          v.play().catch(() => {});
+
+        }
 
       });
 
-      document.removeEventListener('touchstart', unlockOnTouch);
-
-      document.removeEventListener('click', unlockOnTouch);
-
     }
 
-    document.addEventListener('touchstart', unlockOnTouch, { passive: true });
+    document.addEventListener('touchstart', unlockMedia, { passive: true });
 
-    document.addEventListener('click', unlockOnTouch, { passive: true });
+    document.addEventListener('click', unlockMedia, { passive: true });
+
+    window.addEventListener('scroll', unlockMedia, { passive: true });
 
   
 
@@ -805,11 +889,11 @@
 
   
 
-        window.Reveal.on('slidechanged', () => setTimeout(prepareVideos, 80));
+        window.Reveal.on('slidechanged', () => setTimeout(prepareVideosAndPanels, 60));
 
         window.Reveal.on('ready', () => {
 
-          setTimeout(prepareVideos, 150);
+          setTimeout(prepareVideosAndPanels, 120);
 
           try {
 
@@ -831,9 +915,9 @@
 
             }
 
-            prepareVideos();
+            prepareVideosAndPanels();
 
-          }, 150);
+          }, 120);
 
           try { window.parent.postMessage({ type: 'scroll-view-state', isScrollView: true }, '*'); } catch (e) {}
 
@@ -849,9 +933,9 @@
 
             }
 
-            prepareVideos();
+            prepareVideosAndPanels();
 
-          }, 150);
+          }, 120);
 
           try { window.parent.postMessage({ type: 'scroll-view-state', isScrollView: false }, '*'); } catch (e) {}
 
@@ -867,7 +951,7 @@
 
       document.addEventListener('DOMContentLoaded', () => {
 
-        prepareVideos();
+        prepareVideosAndPanels();
 
         initRevealHooks();
 
@@ -875,7 +959,7 @@
 
     } else {
 
-      prepareVideos();
+      prepareVideosAndPanels();
 
       initRevealHooks();
 
@@ -883,7 +967,7 @@
 
     window.addEventListener('load', () => {
 
-      prepareVideos();
+      prepareVideosAndPanels();
 
       initRevealHooks();
 

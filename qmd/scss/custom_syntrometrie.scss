@@ -721,6 +721,39 @@ $code-block-border-color:   rgba($syn-blue, 0.4);
 // ===========================================================================
 // 9. MOBILE / SCROLL-VIEW RESPONSIVE LAYER & PRINT / PDF EXPORT
 // ===========================================================================
+
+// ---------------------------------------------------------------------------
+// ENHANCED MOBILE & SCROLL-VIEW ANIMATIONS
+// ---------------------------------------------------------------------------
+@keyframes synMobileFadeUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.syn-scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition: opacity 0.52s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.syn-scroll-reveal.syn-in-view {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+// Staggered transitions
+.syn-scroll-reveal:nth-child(2) { transition-delay: 0.06s; }
+.syn-scroll-reveal:nth-child(3) { transition-delay: 0.12s; }
+.syn-scroll-reveal:nth-child(4) { transition-delay: 0.18s; }
+
 @keyframes synScrollIn {
   from { opacity: 0; transform: translate3d(0, 28px, 0); filter: blur(4px); }
   to   { opacity: 1; transform: translate3d(0, 0, 0);    filter: blur(0); }
@@ -820,6 +853,15 @@ html:not(.print-pdf) .reveal .columns,
 
 // 2. Narrow screens (Mobile & Tablet <= 900px): Zoom to fill, responsive stacking, touch-friendly UI.
 @media (max-width: 900px) {
+  // Mobile slide mode: allow smooth vertical scrolling within active slide so nothing clips
+  .reveal:not(.reveal-scroll) .slides section.present {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    max-height: 100% !important;
+    box-sizing: border-box !important;
+    pointer-events: auto !important;
+  }
+
   html, body,
   .reveal-viewport,
   .reveal,
@@ -987,6 +1029,14 @@ html:not(.print-pdf) .reveal .columns,
     border-radius: 8px;
   }
 
+    // Inside interactive panels, stack control sliders & SVG graphs cleanly
+  .reveal .interactive-panel [style*="grid-template-columns"],
+  .reveal-viewport.reveal-scroll .interactive-panel [style*="grid-template-columns"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
   // Wide math & tables scroll sideways instead of overflowing the page
   .reveal .MathJax_Display,
   .reveal mjx-container[display="true"],
@@ -1030,11 +1080,42 @@ html:not(.print-pdf) .reveal .columns,
   .reveal-viewport.reveal-scroll .video-container video {
     width: 100% !important;
     max-width: 100% !important;
-    max-height: 48vh !important;
+    max-height: none !important;
     height: auto !important;
-    border-radius: 8px;
-    object-fit: contain;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px !important;
+    object-fit: cover !important;
     background: #000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+    display: block !important;
+  }
+
+  .reveal .video-card,
+  .reveal-viewport.reveal-scroll .video-card,
+  .reveal .video-container,
+  .reveal-viewport.reveal-scroll .video-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 8px !important;
+    margin: 12px 0 !important;
+    background: rgba(13, 19, 34, 0.9) !important;
+    border: 1px solid rgba(65, 105, 225, 0.42) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55) !important;
+    overflow: hidden !important;
+  }
+
+  .reveal .video-label,
+  .reveal .video-caption,
+  .reveal-viewport.reveal-scroll .video-label,
+  .reveal-viewport.reveal-scroll .video-caption {
+    font-size: 0.72em !important;
+    line-height: 1.38 !important;
+    color: #FFD700 !important;
+    text-align: center !important;
+    padding: 6px 4px 2px 4px !important;
+    font-weight: 600 !important;
   }
 
   .reveal .video-container,

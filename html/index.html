@@ -362,9 +362,15 @@
       }
 
       .action-btn {
-        padding: 4px 7px;
-        font-size: 0.68rem;
-        min-height: 28px;
+        padding: 4px 8px;
+        font-size: 0.72rem;
+        min-height: 32px;
+        border-radius: 7px;
+        touch-action: manipulation;
+        transition: transform 0.12s ease, background 0.18s ease;
+      }
+      .action-btn:active {
+        transform: scale(0.93);
       }
 
       .action-btn .btn-text {
@@ -525,7 +531,7 @@
 
   <!-- Fullscreen Chapter Deck Viewport -->
   <main class="viewport-wrapper">
-    <iframe id="chapter-frame" src="chapter1.html" allow="autoplay; fullscreen" allowfullscreen onload="updateScrollBtn(); handleWindowResize();"></iframe></iframe>
+    <iframe id="chapter-frame" src="chapter1.html" allow="autoplay; fullscreen" allowfullscreen onload="updateScrollBtn(); handleWindowResize();"></iframe>
   </main>
 
   <!-- Chapter Atlas Modal -->

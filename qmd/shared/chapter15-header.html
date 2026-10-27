@@ -236,8 +236,8 @@ window.addEventListener('message', (event) => {
         window.MathJax.Hub.Queue(["Rerender", window.MathJax.Hub]);
       } catch (e) {}
     }
-    if (typeof prepareVideos === 'function') {
-      prepareVideos();
+    if (typeof prepareVideosAndPanels === 'function') {
+      prepareVideosAndPanels();
     }
     try {
       const scale = window.Reveal && typeof window.Reveal.getScale === 'function' ? window.Reveal.getScale() : 1;
@@ -262,9 +262,12 @@ window.addEventListener('message', (event) => {
   document.addEventListener('fullscreenchange', () => setTimeout(performDynamicScaling, 60));
 })();
 
-// Mobile & Scroll View Animation Video Controller + Scroll Mode MathJax Trigger
+// Mobile & Scroll View Animation Controller (Videos, Interactive Panels & Cards)
 (function() {
-  function prepareVideos() {
+  let scrollObserver = null;
+
+  function prepareVideosAndPanels() {
+    // 1. Prepare and configure videos
     const videos = document.querySelectorAll('video');
     videos.forEach(v => {
       v.setAttribute('playsinline', '');
@@ -276,6 +279,7 @@ window.addEventListener('message', (event) => {
       v.setAttribute('preload', 'auto');
       v.style.cursor = 'pointer';
 
+      // Tap on touch devices to toggle play/pause
       if (!v.dataset.touchBound) {
         v.dataset.touchBound = 'true';
         v.addEventListener('click', (e) => {
@@ -288,42 +292,80 @@ window.addEventListener('message', (event) => {
         });
       }
 
+      // If video is in active slide or in scroll mode, start playback
       const slide = v.closest('.present, .scroll-page, section');
       if (slide && (slide.classList.contains('present') || document.querySelector('.reveal-viewport.reveal-scroll'))) {
         v.play().catch(() => {});
       }
     });
 
-    if ('IntersectionObserver' in window && !window.__videoObserverInitialized) {
-      window.__videoObserverInitialized = true;
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const vid = entry.target;
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.15) {
-            vid.play().catch(() => {});
-          } else if (!entry.isIntersecting) {
-            vid.pause();
-          }
-        });
-      }, { threshold: [0, 0.15, 0.7] });
+    // 2. Tag panels and cards with .syn-scroll-reveal for polished scroll reveals
+    const revealTargets = document.querySelectorAll(
+      '.interactive-panel, .video-card, .video-container, .thm-box, .def-box, .prop-box, .proof-box, .carnap-box, .firewall-box, .intuition-box, .vignette-box, .scholium-box, .claim-ceiling, .lean-card, .lean-code-card'
+    );
+    revealTargets.forEach(el => {
+      if (!el.classList.contains('syn-scroll-reveal')) {
+        el.classList.add('syn-scroll-reveal');
+      }
+    });
 
-      videos.forEach(v => observer.observe(v));
+    // 3. Setup IntersectionObserver for smooth entrance and in-view autoplay
+    if ('IntersectionObserver' in window) {
+      if (!scrollObserver) {
+        scrollObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const el = entry.target;
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.08) {
+              el.classList.add('syn-in-view');
+
+              // Autoplay visible video or nested videos
+              if (el.tagName === 'VIDEO') {
+                el.play().catch(() => {});
+              } else {
+                const innerVids = el.querySelectorAll('video');
+                innerVids.forEach(iv => iv.play().catch(() => {}));
+              }
+            } else if (!entry.isIntersecting && entry.intersectionRatio === 0) {
+              // Pause when completely off screen to preserve battery
+              if (el.tagName === 'VIDEO') {
+                el.pause();
+              } else {
+                const innerVids = el.querySelectorAll('video');
+                innerVids.forEach(iv => iv.pause());
+              }
+            }
+          });
+        }, {
+          threshold: [0, 0.08, 0.4],
+          rootMargin: '30px 0px 30px 0px'
+        });
+      }
+
+      // Observe all videos and reveal targets
+      videos.forEach(v => scrollObserver.observe(v));
+      revealTargets.forEach(rt => scrollObserver.observe(rt));
     }
   }
-  window.prepareVideos = prepareVideos;
+  window.prepareVideos = prepareVideosAndPanels;
+  window.prepareVideosAndPanels = prepareVideosAndPanels;
 
-  function unlockOnTouch() {
+  // Awaken media on first touch or scroll
+  let mediaUnlocked = false;
+  function unlockMedia() {
+    if (mediaUnlocked) return;
+    mediaUnlocked = true;
     document.querySelectorAll('video').forEach(v => {
       v.muted = true;
       v.defaultMuted = true;
-      const slide = v.closest('.present, .scroll-page');
-      if (slide) v.play().catch(() => {});
+      const rect = v.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        v.play().catch(() => {});
+      }
     });
-    document.removeEventListener('touchstart', unlockOnTouch);
-    document.removeEventListener('click', unlockOnTouch);
   }
-  document.addEventListener('touchstart', unlockOnTouch, { passive: true });
-  document.addEventListener('click', unlockOnTouch, { passive: true });
+  document.addEventListener('touchstart', unlockMedia, { passive: true });
+  document.addEventListener('click', unlockMedia, { passive: true });
+  window.addEventListener('scroll', unlockMedia, { passive: true });
 
   function initRevealHooks() {
     if (window.Reveal) {
@@ -335,9 +377,9 @@ window.addEventListener('message', (event) => {
         } catch (e) {}
       }
 
-      window.Reveal.on('slidechanged', () => setTimeout(prepareVideos, 80));
+      window.Reveal.on('slidechanged', () => setTimeout(prepareVideosAndPanels, 60));
       window.Reveal.on('ready', () => {
-        setTimeout(prepareVideos, 150);
+        setTimeout(prepareVideosAndPanels, 120);
         try {
           const isScroll = window.Reveal.isScrollView && window.Reveal.isScrollView();
           window.parent.postMessage({ type: 'scroll-view-state', isScrollView: isScroll }, '*');
@@ -348,8 +390,8 @@ window.addEventListener('message', (event) => {
           if (window.MathJax && window.MathJax.Hub) {
             window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
           }
-          prepareVideos();
-        }, 150);
+          prepareVideosAndPanels();
+        }, 120);
         try { window.parent.postMessage({ type: 'scroll-view-state', isScrollView: true }, '*'); } catch (e) {}
       });
       window.Reveal.on('scroll-view-deactivated', () => {
@@ -357,8 +399,8 @@ window.addEventListener('message', (event) => {
           if (window.MathJax && window.MathJax.Hub) {
             window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
           }
-          prepareVideos();
-        }, 150);
+          prepareVideosAndPanels();
+        }, 120);
         try { window.parent.postMessage({ type: 'scroll-view-state', isScrollView: false }, '*'); } catch (e) {}
       });
     }
@@ -366,15 +408,15 @@ window.addEventListener('message', (event) => {
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      prepareVideos();
+      prepareVideosAndPanels();
       initRevealHooks();
     });
   } else {
-    prepareVideos();
+    prepareVideosAndPanels();
     initRevealHooks();
   }
   window.addEventListener('load', () => {
-    prepareVideos();
+    prepareVideosAndPanels();
     initRevealHooks();
   });
 })();
