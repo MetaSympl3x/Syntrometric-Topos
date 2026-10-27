@@ -1,0 +1,1239 @@
+---
+title: "Syntrometrische Maximentelezentrik"
+subtitle: "Chapter 3: Syntrixkorporationen — Corporate Span Pushouts, Conflexivity Trees, and Mayer–Vietoris Emergence"
+author: "Research Collective — Department of Mathematical Physics & Formal Epistemology"
+date: "August 2026"
+format:
+  revealjs:
+    theme: [dark, custom_syntrometrie.scss]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    min-scale: 0.2
+    max-scale: 1.5
+    transition: fade
+    background-transition: fade
+    slide-number: c/t
+    controls: true
+    progress: true
+    hash: true
+    center: false
+    html-math-method: mathjax
+    include-in-header:
+      text: |
+        <script>
+        window.MathJax = {
+          tex: {
+            macros: {
+              coloneqq: "\\mathrel{:=}",
+              Coloneqq: "\\mathrel{::=}",
+              llbracket: "\\mathopen{[\\mkern-3mu[}",
+              rrbracket: "\\mathclose{]\\mkern-3mu]}",
+              longhookrightarrow: "\\lhook\\joinrel\\longrightarrow",
+              Ctx: "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+              Ban: "\\mathbf{Ban}_{\\le 1}",
+              FinBan: "\\mathbf{FinBan}_{\\le 1}",
+              Esyn: "\\mathcal{E}_{\\mathrm{syn}}",
+              Osyn: "\\mathcal{O}_{\\mathrm{syn}}",
+              Opyr: "\\mathcal{O}_{\\mathrm{pyr}}",
+              otpi: "\\mathbin{\\widehat{\\otimes}_\\pi}",
+              boxplusphi: "\\mathbin{\\boxplus_\\phi}",
+              syntrix: "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+              homsyntrix: "\\mathbf{x}\\widetilde{\\mathbf{a}}",
+              nullsyntrix: "\\mathbf{ys}\\widetilde{\\mathbf{c}}",
+              konflexiv: "\\mathbf{y}\\widetilde{\\mathbf{c}}",
+              Kor: "\\mathbf{Kor}",
+              DKor: "\\mathbb{K}\\mathbf{or}",
+              ConfIndex: "\\operatorname{ConfIndex}_{\\mathrm{pres}}",
+              Valfact: "\\operatorname{Val}_{\\mathrm{fact}}",
+              Im: "\\operatorname{Im}",
+              rank: "\\operatorname{rank}"
+            }
+          }
+        };
+        </script>
+        <style>
+        .reveal-viewport.reveal-scroll .slide-background,
+        .reveal-viewport.reveal-scroll section {
+          font-size: clamp(14px, 1.35vw, 26px) !important;
+        }
+        .reveal-viewport.reveal-scroll .interactive-panel,
+        .reveal-viewport.reveal-scroll .thm-box,
+        .reveal-viewport.reveal-scroll .carnap-box,
+        .reveal-viewport.reveal-scroll .firewall-box,
+        .reveal-viewport.reveal-scroll .intuition-box {
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+        .widget-context-note {
+          font-size: 0.64em;
+          color: #cbd5e1;
+          line-height: 1.36;
+          margin: 4px 0 10px 0;
+        }
+        .syn-tabs {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          margin-bottom: 10px;
+        }
+        .syn-tab-btn {
+          background: #151c2c;
+          color: #94a3b8;
+          border: 1px solid #334155;
+          border-radius: 6px;
+          padding: 5px 11px;
+          font-size: 0.60em;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.18s ease;
+        }
+        .syn-tab-btn.active, .syn-tab-btn:hover {
+          background: rgba(65, 105, 225, 0.28);
+          color: #FFD700;
+          border-color: #FFD700;
+        }
+        .syn-tab-pane {
+          display: none;
+          background: rgba(10, 14, 23, 0.82);
+          border: 1px solid rgba(65, 105, 225, 0.45);
+          border-radius: 8px;
+          padding: 10px 14px;
+          font-size: 0.72em;
+        }
+        .syn-tab-pane.active {
+          display: block;
+        }
+        .lean-code-card {
+          background: #0d131f;
+          border: 1.5px solid #334155;
+          border-left: 5px solid #20B2AA;
+          border-radius: 8px;
+          padding: 10px 14px;
+          font-family: "Libertinus Mono", monospace;
+          font-size: 0.54em;
+          line-height: 1.36;
+          color: #e2e8f0;
+          overflow-x: auto;
+        }
+        .tier-stack {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .tier-bar {
+          padding: 7px 12px;
+          border-radius: 6px;
+          font-size: 0.64em;
+          border-left: 5px solid;
+          background: rgba(255,255,255,0.04);
+        }
+        </style>
+---
+
+<!-- FALLBACK GLOBAL MATHJAX MACROS MATCHING CHAPTER 3 OF SYNTROMETRIC-TOPOS.TEX -->
+<div style="display:none;">
+$$
+\newcommand{\Ctx}{\mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}}
+\newcommand{\Ban}{\mathbf{Ban}_{\le 1}}
+\newcommand{\FinBan}{\mathbf{FinBan}_{\le 1}}
+\newcommand{\Esyn}{\mathcal{E}_{\mathrm{syn}}}
+\newcommand{\Osyn}{\mathcal{O}_{\mathrm{syn}}}
+\newcommand{\Opyr}{\mathcal{O}_{\mathrm{pyr}}}
+\newcommand{\otpi}{\mathbin{\widehat{\otimes}_\pi}}
+\newcommand{\boxplusphi}{\mathbin{\boxplus_\phi}}
+\newcommand{\syntrix}{\mathbf{y}\widetilde{\mathbf{a}}}
+\newcommand{\homsyntrix}{\mathbf{x}\widetilde{\mathbf{a}}}
+\newcommand{\nullsyntrix}{\mathbf{ys}\widetilde{\mathbf{c}}}
+\newcommand{\konflexiv}{\mathbf{y}\widetilde{\mathbf{c}}}
+\newcommand{\Kor}{\mathbf{Kor}}
+\newcommand{\DKor}{\mathbb{K}\mathbf{or}}
+\newcommand{\ConfIndex}{\operatorname{ConfIndex}_{\mathrm{pres}}}
+\newcommand{\Valfact}{\operatorname{Val}_{\mathrm{fact}}}
+\newcommand{\Im}{\operatorname{Im}}
+\newcommand{\rank}{\operatorname{rank}}
+$$
+</div>
+
+## §3.1.1–3.1.2: The Principle of Inversion & The $2 \times 2$ Korporator {.smaller}
+
+<div class="stratum-badge badge-d">LEVEL III OF KONSTITUTIONSSTAMMBAUM &amp; STRATUM D (SM, PP. 42–46, EQS. 10–11)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+### Breaking Monadic Isolation: *Prinzip der Inversion*
+* Chapter 2 proved **Spaltbarkeit**: every history-dependent homogeneous Syntrix ($\homsyntrix$) factors into a pyramidal core and an interaction fragment ($\overline{T}_{\mathrm{frag}} \circ \overline{T}_{\mathrm{pyr}}$).
+* In §3.1 (SM, p. 42), Heim invokes the **Principle of Inversion**: if complex systems can be split into elementary pyramidal syntrices, then nature must possess the exact inverse synthetic functor—the **Korporator**—binding autonomous Syntrices $S_a, S_b$ into an encompassing $S_c$.
+
+::: {.thm-box .fragment}
+**Dual-Tier Action (*Duale Wirkung*, SM Eqs. 10–11):**
+$$
+\widetilde{\mathrm{a}} \left\{ K_m \quad C_m \right\} \widetilde{\mathrm{b}},\; \overline{|CS|}_\gamma,\; \widetilde{\mathrm{c}} \quad \lor \quad (\underline{f, m}), \left\{ K_s \quad C_s \right\}, (\underline{\varphi, \mu}),\; \overline{|AS|}_\gamma,\; (\underline{G, N}) \tag{SM-10}
+$$
+$$
+\langle\langle f \widetilde{a} \rangle m \rangle \left\{ \begin{matrix} K_s & C_s \\ K_m & C_m \end{matrix} \right\} \langle\langle \varphi \widetilde{b} \rangle \mu \rangle,\; \overline{|CS_c|}_\gamma,\; \langle\langle G \widetilde{c} \rangle N \rangle \tag{SM-11}
+$$
+
+1. **Lower Tier (*Metrophorkorporation*):** Combines static carrier cores $\widetilde{a}_a$ ($p$ elements) and $\widetilde{a}_b$ ($q$ elements) via **Koppelung ($K_m$)** or **Komposition ($C_m$)**.
+2. **Upper Tier (*Synkolative Korporation*):** Combines dynamic generative modules via **Cross-Modulation ($K_s$)** or **Parallel Sum ($C_s$)** with arity $M_c = \Phi(m_a, m_b)$.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4>Interactive Metrophorkorporation Mode Explorer (SM, pp. 43–44)</h4>
+  <p class="widget-context-note">
+    <b>Context (§3.1.2 &amp; Def. 3.4):</b> Heim distinguishes three carrier combination counts for a $p$-element Metrophor $\widetilde{a}_a$ and $q$-element Metrophor $\widetilde{a}_b$ across $\lambda$ coupling nodes (*Konflektorknoten*). Adjust $p, q, \lambda$ to compare all three regimes.
+  </p>
+  <div class="slider-row">
+    <span style="color:#4169E1;">Elements <i>p</i>:</span>
+    <input type="range" id="mc-p" min="2" max="8" step="1" value="4" oninput="updateMetCorp()">
+    <span id="mc-p-val" style="font-family:monospace; width:22px;">4</span>
+    <span style="color:#20B2AA;">Elements <i>q</i>:</span>
+    <input type="range" id="mc-q" min="2" max="8" step="1" value="5" oninput="updateMetCorp()">
+    <span id="mc-q-val" style="font-family:monospace; width:22px;">5</span>
+    <span style="color:#FFA500;">Nodes <i>λ</i>:</span>
+    <input type="range" id="mc-lam" min="1" max="4" step="1" value="2" oninput="updateMetCorp()">
+    <span id="mc-lam-val" style="font-family:monospace; width:22px;">2</span>
+  </div>
+  <div id="mc-readout" class="matrix-readout" style="text-align:left; font-size:0.66em; line-height:1.45;"></div>
+</div>
+
+<div class="video-container" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act1_Inversion_Korporator.mp4" style="max-height:210px;"></video>
+  <div class="video-caption">Manim Act I: Duality of Spaltbarkeit &amp; The Dual-Tier 2 × 2 Korporator Matrix (SM-11)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Chapter 3 ascends to Level III of the Konstitutionsstammbaum: Intersubjective Reality and Corporate Networks. Invoking the Principle of Inversion, Heim introduces the 2x2 Korporator matrix (SM Eq. 11), which acts simultaneously on the static Metrophor carrier tier (K_m, C_m) and the dynamic Synkolator module tier (K_s, C_s).
+:::
+
+---
+
+## §3.1.3–3.1.4: *Eindeutigkeitssatz*, *Nullsyntrix* & Decompositions {.smaller}
+
+<div class="stratum-badge badge-d">STRATUM D: UNAMBIGUITY &amp; BASIS DECOMPOSITIONS (SM-11a, 11b, 11c)</div>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.thm-box}
+**Heim's *Eindeutigkeitssatz* (Unambiguity Theorem, SM, p. 50):**
+> *"Ein Korporator ist dann und nur dann eindeutig, wenn er mindestens eine synkolative und mindestens eine metrophorische Verknüpfungsregel enthält."*
+
+* **Totalkorporationen:** Employ strictly one rule type ($K$ or $C$) on a single active tier; generically ambiguous (*zweideutig*, SM, p. 48) because the other tier is left underdetermined.
+* **Partielle Korporationen:** Mix coupling and composition rules across both tiers.
+* **Korporatorklassen ($\kappa = 1 \dots 4$):** $\sum_{\kappa=1}^4 \binom{4}{\kappa} = 15$ non-empty classes.
+:::
+
+::: {.firewall-box .fragment}
+**The *Nullsyntrix* ($\nullsyntrix$, SM Eq. 11a, p. 51):**
+$$
+\widetilde{\mathrm{a}} \{ \} \widetilde{\mathrm{b}},\; \overline{||},\; \nullsyntrix \quad \lor \quad \nullsyntrix \equiv \langle \bar{\mathrm{f}} \widetilde{\mathrm{c}} \bar{\mathrm{m}} \rangle \tag{SM-11a}
+$$
+Possesses an empty Synkolator $\bar{f}$ ($F_\gamma = \emptyset\;\forall \gamma \ge 1$), acting as the terminal boundary object closing deductive chains and Metrophoric Cycles.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+<div class="video-container">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act2_Eindeutigkeit_Decomp.mp4" style="max-height:260px;"></video>
+  <div class="video-caption">Manim Act II: The Eindeutigkeitssatz, Nullsyntrix &amp; 4 Pyramidal Basis Gates</div>
+</div>
+
+::: {.carnap-box .fragment}
+**First & Second Decomposition Theorems (SM Eqs. 11b, 11c, pp. 53–54):**
+
+1. **First Decomposition Theorem (SM-11b):** Every homogeneous syntrix ($\homsyntrix$) decomposes via synkolative contractions $D_s$ into a sequential chain of pyramidal syntrices terminating in $\nullsyntrix$:
+$$
+\langle\langle \mathrm{f} \widetilde{\mathrm{a}} \rangle \mathrm{m} \rangle,\; \overline{||},\; \widetilde{\mathrm{a}}_1 \{ \}_1 \widetilde{\mathrm{a}}_2 \{ \}_2 \dots \{ \}_{k-1} \widetilde{\mathrm{a}}_k \{ \}_k \dots \{ \}_{L-1} \nullsyntrix \tag{SM-11b}
+$$
+2. **Second Decomposition Theorem (SM-11c):** Every pyramidal syntrix decomposes into the **4 elementary pyramidal structures**:
+$$
+\syntrix,\; \overline{||},\; \syntrix_{(1)} \{ \} \syntrix_{(2)} \{ \} \syntrix_{(3)} \{ \} \syntrix_{(4)} \tag{SM-11c}
+$$
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Section 3.1.3 establishes Heim's Eindeutigkeitssatz: a corporate operation is uniquely determined if and only if it specifies at least one metrophoric rule and at least one synkolative rule. Section 3.1.4 states the two foundational decomposition theorems: every homogeneous syntrix unravels into a chain of pyramidal syntrices terminating at the Nullsyntrix, and every pyramidal syntrix decomposes into the 4 elementary structures.
+:::
+
+---
+
+## §3.1.5 & §3.2.1–3.2.2: Category $\mathbf{Syn}$ & Zero Object $0_{\mathbf{Syn}}$ {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM A: CARRIER FUNCTOR (DEF. 3.2), CATEGORY SYN (DEF. 3.3) &amp; ZERO OBJECT (PROP. 3.2)</div>
+
+:::: {.columns}
+
+::: {.column width="52%"}
+
+::: {.thm-box}
+**Definitions 3.1–3.3: Carrier Functor $\mathfrak{R}$ & Category $\mathbf{Syn}$**
+The **Carrier Realization Functor** $\mathfrak{R} \colon \Ctx \to \FinBan$ maps $U \mapsto P^U$ and $\alpha \mapsto \alpha_P$.
+An object in $\mathbf{Syn}$ is a quadruple $\mathcal{S} \coloneqq (U, \mathbf{F}, \theta, \iota)$ where:
+
+* $\mathbf{F} = \{F_\gamma\}_{\gamma \ge 0} \in \operatorname{Obj}(\FinBan^{\mathbb{N}_0})$ is a graded sequence of finite-dimensional Banach spaces;
+* $\iota \colon F_0 \xrightarrow{\sim} P^U$ is an isometric identification of the grade-$0$ syndrome with the context carrier;
+* $\theta_{\vec{\gamma};\gamma} \colon \Osyn(\vec{\gamma};\gamma) \otpi \bigotimes F_{\gamma_i} \to F_\gamma$ are contractive operadic evaluations.
+
+Morphisms $\Phi = (h, (\Phi_\gamma)_{\gamma\ge 0}) \colon \mathcal{S}_a \to \mathcal{S}_b$ intertwine $\iota$ and $\theta$:
+$$
+\iota_b \circ \Phi_0 = h_P \circ \iota_a, \qquad \Phi_\gamma \circ \theta_{\vec{\gamma};\gamma}^a = \theta_{\vec{\gamma};\gamma}^b \circ \big(\operatorname{id}_{\mathcal{O}} \otpi \bigotimes \Phi_{\gamma_i}\big)
+$$
+:::
+
+::: {.intuition-box .fragment}
+**Proposition 3.1 (Three Structural Distributions in Conflexive Architectures):**
+Every conflexive network $\konflexiv$ (SM Eqs. 12–13a) is characterized by: (1) the lengths $k_i - 1$ of its **Syntropoden**, (2) the locations of its **Konflexionsfelder**, and (3) the synkolation branches above those fields.
+:::
+
+:::
+
+::: {.column width="48%"}
+
+<div class="video-container">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act3_Category_Syn_Zero.mp4" style="max-height:265px;"></video>
+  <div class="video-caption">Manim Act III: Commutative Intertwining in Syn &amp; Universal Zero Object 0_Syn</div>
+</div>
+
+::: {.carnap-box .fragment}
+**Proposition 3.2: The Zero Object $0_{\mathbf{Syn}}$ (*Nullsyntrix*)**
+$$
+0_{\mathbf{Syn}} \;\coloneqq\; \big(0_{\mathbf{Ctx}},\, \{0\}_{\gamma \ge 0},\, 0,\, \operatorname{id}_{\{0\}}\big)
+$$
+is both **initial and terminal** in $\mathbf{Syn}$:
+$$
+\operatorname{Hom}_{\mathbf{Syn}}(0_{\mathbf{Syn}}, \mathcal{S}) = \{!\}, \qquad \operatorname{Hom}_{\mathbf{Syn}}(\mathcal{S}, 0_{\mathbf{Syn}}) = \{!\}
+$$
+providing the exact categorical realization of Heim's *Nullsyntrix* ($\nullsyntrix$).
+:::
+
+:::
+
+::::
+
+::: {.notes}
+In Stratum A, we unite the context carriers of Chapter 1 with the colored operad algebras of Chapter 2 into the category Syn. Proposition 3.2 proves that the trivial syntrix 0_Syn is both initial and terminal in Syn, giving a rigorous universal-property definition to Heim's Nullsyntrix.
+:::
+
+---
+
+## §3.2.3: Carrier Coproducts ($C_m$) vs. Span Pushouts ($K_m$) {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM A: GEOMETRY OF KONZENTER &amp; EXZENTER (DEF. 3.4, FIGS. 3.1–3.2)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.carnap-box}
+**Carnap 3.1: Intersubjective Constitution & OSR via Span Pushouts**
+Following Carnap (*Aufbau* §§146–148) and Steven French's *Ontic Structural Realism* (2014), binding two $p$- and $q$-dimensional carriers across $\lambda$ shared channels is **not** a $(p \cdot q)$ tensor product, but a **categorical span pushout** in $\FinBan$:
+
+1. **Composition ($C_m$ — *Konzenter*):** $\ell^1$-coproduct $P_a \oplus_1 P_b$ ($\dim = p + q$).
+2. **Coupling ($K_m$ — *Exzenter*):** Given span $P_a \xleftarrow{\phi_a} R_\phi \xrightarrow{\phi_b} P_b$ with difference map $\delta_\phi(r) \coloneqq (\phi_a(r), -\phi_b(r))$:
+$$
+P_a \boxplusphi P_b \;\coloneqq\; \frac{P_a \oplus_1 P_b}{\Im(\delta_\phi)}, \qquad \dim(P_a \boxplusphi P_b) = p + q - \lambda_{\mathrm{eff}}
+$$
+where $\lambda_{\mathrm{eff}} \coloneqq \rank(\delta_\phi) = \dim R_\phi - \dim(\ker\phi_a \cap \ker\phi_b)$, equipped with quotient norm $\|[(x,y)]\|_q = \inf_{r\in R_\phi}(\|x - \phi_a(r)\|_{P_a} + \|y + \phi_b(r)\|_{P_b})$.
+:::
+
+<div class="video-container" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act4_Orbital_Pushout.mp4" style="max-height:210px;"></video>
+  <div class="video-caption">Manim Act IV (Figs. 3.1 &amp; 3.2): Orbital Conflexivity &amp; Banach Span Pushout Quotient</div>
+</div>
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4>Interactive Span Pushout P_a ⊞_φ P_b &amp; Stage III Laboratory</h4>
+  <p class="widget-context-note">
+    <b>Context (§3.2.3 &amp; Stage III Running Example):</b> Adjust carrier dimensions $p = \dim P_a$, $q = \dim P_b$, and shared knot rank $\lambda_{\mathrm{eff}} = \rank(\delta_\phi)$ to visualize the overlapping orbital Konflexionsfeld and compute the emergent coincidence module $F_1^c = \Lambda^2(P_c)$.
+  </p>
+  <div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:10px; align-items:center;">
+    <div>
+      <div class="slider-row">
+        <span style="color:#4169E1;">dim <i>P<sub>a</sub></i> (<i>p</i>):</span>
+        <input type="range" id="po-p" min="2" max="8" step="1" value="6" oninput="updatePushoutLab()">
+        <span id="po-p-val" style="font-family:monospace; width:20px;">6</span>
+        <span style="color:#20B2AA;">dim <i>P<sub>b</sub></i> (<i>q</i>):</span>
+        <input type="range" id="po-q" min="2" max="8" step="1" value="6" oninput="updatePushoutLab()">
+        <span id="po-q-val" style="font-family:monospace; width:20px;">6</span>
+      </div>
+      <div class="slider-row">
+        <span style="color:#FFA500;">Shared Rank <i>λ</i><sub>eff</sub>:</span>
+        <input type="range" id="po-lam" min="0" max="6" step="1" value="3" oninput="updatePushoutLab()">
+        <span id="po-lam-val" style="font-family:monospace; width:20px;">3</span>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:5px; margin-top:6px;">
+        <button class="syn-btn" onclick="setPoPreset(6,6,3)">Stage III Polarimeters (9 ⇒ 36)</button>
+        <button class="syn-btn" onclick="setPoPreset(3,3,1)">Toy Ex. (3+3-1=5)</button>
+        <button class="syn-btn" onclick="setPoPreset(6,6,0)">Uncoupled (λ=0)</button>
+        <button class="syn-btn" onclick="setPoPreset(6,6,6)">Full ID (λ=p=q)</button>
+      </div>
+    </div>
+    <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+      <svg id="po-svg" viewBox="0 0 210 120" width="100%" height="115">
+        <circle id="po-c1" cx="78" cy="60" r="38" fill="rgba(65,105,225,0.28)" stroke="#4169E1" stroke-width="2"/>
+        <circle id="po-c2" cx="132" cy="60" r="38" fill="rgba(32,178,170,0.28)" stroke="#20B2AA" stroke-width="2"/>
+        <circle id="po-knot" cx="105" cy="60" r="10" fill="rgba(255,215,0,0.65)" stroke="#FFA500" stroke-width="2"/>
+        <text id="po-knot-txt" x="105" y="63" fill="#000" font-size="8.5" font-weight="bold" text-anchor="middle">R_φ</text>
+      </svg>
+    </div>
+  </div>
+  <div id="po-lab-readout" class="matrix-readout" style="margin-top:6px; text-align:left; font-size:0.66em; line-height:1.42;"></div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Why does an Exzenter coupling have dimension p + q - lambda rather than p * q? Because identifying lambda shared channels between two observers is a categorical span pushout P_a boxplus_phi P_b = (P_a oplus_1 P_b) / Im(delta_phi). In Stage III of our Running Example, coupling two 6-dimensional polarimeters across a 3D shared polarization channel yields a 9D pushout whose second exterior power has dimension C(9,2) = 36—the exact carrier capacity of the Chapter 9 Hermetry matrix!
+:::
+
+---
+
+## §3.2.4 & §3.3.1: *Konflektorknoten*, Module Lifts & Determinacy {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM A/B: MODULE LIFTS (DEF. 3.5, PROP. 3.3), VALENCY (DEF. 3.6) &amp; DETERMINACY (THM. 3.4)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Def. 3.5 & Prop. 3.3: Synkolative Module Lifts ($C_s, K_s$)**
+1. **Parallel Composition Module ($C_s$):**
+$$
+\big(\mathbf{F}^{C_s}\big)_\gamma \coloneqq F_\gamma^a \oplus_1 F_\gamma^b, \qquad \theta^{C_s}(f \otimes \vec{u}) = \big(\theta^a(f \otimes \vec{x}),\, \theta^b(f \otimes \vec{y})\big)
+$$
+2. **Cross-Modulating Coupling Module ($K_s$):**
+$$
+\big(\mathbf{F}^{K_s}\big)_\gamma \coloneqq \bigoplus_{\alpha+\beta=\gamma}^{\ell^1} F_\alpha^a \otpi F_\beta^b, \qquad \theta^{K_s} \coloneqq (\theta^a \otpi \theta^b) \circ \tau_m \circ (\Delta_{\vec{\gamma};\gamma} \otpi \operatorname{id})
+$$
+or universally via the amalgamated operadic coproduct $\mathbf{F}^a \star_{\Osyn}^{R_\phi} \mathbf{F}^b \coloneqq \operatorname{Free}_{\Osyn}(P^{U_c}) / \mathcal{I}_{\mathrm{rel}}^{a,b}$.
+:::
+
+::: {.carnap-box .fragment}
+**Def. 3.7 & Theorem 3.4: 3-Level Corporate Construction Determinacy**
+* **Level I (Rule Selection):** $r \subseteq \{K_s, C_s, K_m, C_m\}$.
+* **Level II (Specification Datum):** $\Sigma_r = (r, \Sigma_m, \Sigma_s, \Phi, \Gamma, \mathsf{Comp})$.
+* **Level III (Universal Determinacy):** $\Kor_{r, \Sigma_r}(\mathcal{S}_a, \mathcal{S}_b) = \mathcal{S}_c \in \operatorname{Obj}(\mathbf{Syn})$ is **uniquely determined up to unique isometric isomorphism**.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4>Interactive Konflektorknoten φ_l &amp; Factual Valency Explorer</h4>
+  <p class="widget-context-note">
+    <b>Context (Fig. 3.3 &amp; Def. 3.6):</b> Two predicate bands $f_a \in P_a$ and $f_b \in P_b$ bind across a *Konflektorknoten* $\phi_l$ when their continuous $t$-norm compatibility $\chi(x_a, x_b) > \theta_{\mathrm{coord}}$. Also test Definition 3.6 (*Pseudovalenz* $r$ vs. *Factual Valency* $\Valfact = r - n + 1$ when $n$ arguments coincide).
+  </p>
+  <div class="slider-row">
+    <span style="color:#20B2AA;">Compatibility <i>χ</i>:</span>
+    <input type="range" id="kf-chi" min="0" max="1" step="0.02" value="0.78" oninput="updateKonflektorLab()">
+    <span style="color:#FFA500;">Threshold <i>θ</i>:</span>
+    <input type="range" id="kf-th" min="0.2" max="0.9" step="0.02" value="0.55" oninput="updateKonflektorLab()">
+  </div>
+  <div class="slider-row">
+    <span style="color:#4169E1;">Pseudovalenz <i>r</i>:</span>
+    <input type="range" id="kf-r" min="2" max="10" step="1" value="6" oninput="updateKonflektorLab()">
+    <span id="kf-r-val" style="font-family:monospace; width:20px;">6</span>
+    <span style="color:#a855f7;">Identical Inputs <i>n</i>:</span>
+    <input type="range" id="kf-n" min="1" max="10" step="1" value="3" oninput="updateKonflektorLab()">
+    <span id="kf-n-val" style="font-family:monospace; width:20px;">3</span>
+  </div>
+  <div id="kf-readout" class="matrix-readout" style="margin-top:6px; text-align:left; font-size:0.66em; line-height:1.42;"></div>
+</div>
+
+<div class="video-container" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act5_Konflektorknoten_Modules.mp4" style="max-height:190px;"></video>
+  <div class="video-caption">Manim Acts V &amp; VI (Figs. 3.3 &amp; 3.4): Micro-Anatomy of a Konflektorknoten φ_l &amp; 3-Level Determinacy</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Figure 3.3 zooms into the micro-anatomy of a single Konflektorknoten phi_l: when the continuous t-norm compatibility chi(x_a, x_b) exceeds theta_coord, the difference map delta_phi quotients the two bands into a single entangled relational unit c_l = (a_1, phi_l, b_2). Theorem 3.4 proves that supplying complete specification data Sigma_r guarantees a unique composite Syntrix algebra S_c.
+:::
+
+---
+
+## §3.3.2: 4D Tesseract of the 15 Corporate Classes {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: COMBINATORIAL PARTITION (DEF. 3.8, PROPS. 3.5–3.6, FIG. 3.5)</div>
+
+:::: {.columns}
+
+::: {.column width="47%"}
+
+::: {.thm-box}
+**Def. 3.8 & Props. 3.5–3.6: The 9 Mixed vs. 6 Pure Partition**
+Let $\mathsf{Met} \coloneqq \{K_m, C_m\}$ and $\mathsf{Synk} \coloneqq \{K_s, C_s\}$. The $2^4 - 1 = 15$ non-empty subsets $r \subseteq \{K_s, C_s, K_m, C_m\}$ partition by rank $\kappa = |r|$:
+
+| Rank $\kappa$ | $\binom{4}{\kappa}$ | **Mixed ($r\cap\mathsf{Met}\ne\emptyset \wedge r\cap\mathsf{Synk}\ne\emptyset$)** | **Pure ($r\subseteq\mathsf{Met}$ or $r\subseteq\mathsf{Synk}$)** |
+|:---:|:---:|:---:|:---:|
+| $\kappa = 4$ | $1$ | **$1$** ($\{K_s, C_s, K_m, C_m\}$) | $0$ |
+| $\kappa = 3$ | $4$ | **$4$** (All 4 Triads) | $0$ |
+| $\kappa = 2$ | $6$ | **$4$** (Cross-Tier Pairs) | **$2$** ($\{K_m,C_m\}, \{K_s,C_s\}$) |
+| $\kappa = 1$ | $4$ | $0$ | **$4$** (Singletons) |
+| **Total** | **15** | **9 Mixed (Determinate)** | **6 Pure (Underdetermined)** |
+:::
+
+<div class="video-container" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act7_Tesseract_15_Classes.mp4" style="max-height:220px;"></video>
+  <div class="video-caption">Manim Act VII (Fig. 3.5): 4D Tesseract Projection of the 15 Corporate Classes</div>
+</div>
+
+:::
+
+::: {.column width="53%"}
+
+<div class="interactive-panel">
+  <h4>Interactive 2 × 2 Korporator Matrix &amp; 4D Tesseract Inspector</h4>
+  <p class="widget-context-note">
+    <b>Context (§3.3.2 &amp; Fig. 3.5):</b> Toggle the four operational slots of $\left\{\begin{smallmatrix} K_s & C_s \\ K_m & C_m \end{smallmatrix}\right\}$ below. Watch the active vertex light up on the 4D Tesseract projection and verify whether your selection belongs to the **9 Mixed Determinate Classes** or **6 Pure Underdetermined Classes**.
+  </p>
+  <div style="display:grid; grid-template-columns: 1.08fr 0.92fr; gap:10px; align-items:center;">
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+      <button id="btn-ks" class="syn-btn" style="padding:10px 6px; background:#20B2AA; color:#000; font-weight:bold;" onclick="toggleKorRule('ks')">✓ K_s (Synk. Coup)</button>
+      <button id="btn-cs" class="syn-btn" style="padding:10px 6px;" onclick="toggleKorRule('cs')">✗ C_s (Synk. Comp)</button>
+      <button id="btn-km" class="syn-btn" style="padding:10px 6px; background:#FFA500; color:#000; font-weight:bold;" onclick="toggleKorRule('km')">✓ K_m (Met. Push)</button>
+      <button id="btn-cm" class="syn-btn" style="padding:10px 6px;" onclick="toggleKorRule('cm')">✗ C_m (Met. Coprod)</button>
+    </div>
+    <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+      <svg id="tess-svg" viewBox="0 0 200 135" width="100%" height="130"></svg>
+    </div>
+  </div>
+  <div id="kor-matrix-status" class="matrix-readout" style="margin-top:8px; text-align:left; font-size:0.66em; line-height:1.42;"></div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Because the Universal Korporator Matrix has 4 binary slots, there are 2^4 - 1 = 15 non-empty corporate classes, corresponding to the non-zero vertices of a 4D Tesseract (Figure 3.5). Toggle the 4 buttons on the right to see the active vertex move across the Tesseract and test Heim's Eindeutigkeitssatz: the 9 Mixed classes are algebraically determinate, while the 6 Pure classes leave one tier underdetermined.
+:::
+
+---
+
+## §3.3.3–3.3.4: Basis Generation & Homogeneous Decomposition {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B/C: PYRAMIDAL BASIS (PROP. 3.7) &amp; HOMOGENEOUS DECOMPOSITION (THMS. 3.8–3.10)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Assumption 3.1, Prop. 3.7 & Theorem 3.8: Corporate Decompositions**
+
+1. **Pyramidal Basis Generation (Prop. 3.7):** Under $\Opyr = \langle E_{(1)}, E_{(2)}, E_{(3)}, E_{(4)} \rangle$, every finite pyramidal syntrix algebra belongs to the corporate colimit closure:
+$$
+\mathcal{S} \in \operatorname{Colim}\!\big\langle \mathcal{S}_{(1)},\; \mathcal{S}_{(2)},\; \mathcal{S}_{(3)},\; \mathcal{S}_{(4)} \big\rangle_{\Kor}
+$$
+2. **Conditional Corporate Decomposition (Thm. 3.8, SM Eq. 11b):** Under a well-founded complexity functional $\mu \colon \operatorname{Obj}(\mathbf{Syn}_{\mathrm{hom}}) \to \mathbb{N}$ with $\mu(D_s(\mathcal{S})) < \mu(\mathcal{S})$ and $\mu(\mathcal{S}) = 0 \iff \mathcal{S} \cong 0_{\mathbf{Syn}}$, every homogeneous syntrix decomposes in $L < \infty$ steps:
+$$
+\mathcal{S} \;\cong\; \Kor_{r_{L-1}}\!\Big( \dots \Kor_{r_1}(\mathcal{S}_1, \mathcal{S}_2) \dots,\; \mathcal{S}_L \Big)
+$$
+:::
+
+::: {.carnap-box .fragment}
+**Prop. 3.9 (*Enthomogenisierende Dekomposition*) & Thm. 3.10:**
+* Contra-operative decoupling removes the shared first syndrome ($\mu = \dim F_1$) from higher homogeneous fragments, so extracted pyramidal syntrices begin at $\gamma = 2$.
+* Under purely compositive corporate operators, syndrome populations satisfy:
+$$
+n_H - \mu \;=\; \sum_{j=1}^p n_j \tag{Eq. 3.16}
+$$
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4>Interactive Homogeneous Decomposition &amp; Population Balance Lab</h4>
+  <p class="widget-context-note">
+    <b>Context (Thms. 3.8–3.10 &amp; Prop. 3.9):</b> Step the synkolative contraction operator $D_s^k$ to watch complexity $\mu(D_s^k(\mathcal{S}))$ descend monotonically to $0_{\mathbf{Syn}}$, and verify the compositive population identity $n_H - \mu = \sum_{j=1}^p n_j$.
+  </p>
+  <div class="slider-row">
+    <span style="color:#FFD700;">Contraction Step <i>k</i>:</span>
+    <input type="range" id="dec-step" min="0" max="4" step="1" value="0" oninput="updateDecompLab()">
+    <span id="dec-step-val" style="font-family:monospace; width:55px;">k = 0</span>
+  </div>
+  <div class="slider-row">
+    <span style="color:#4169E1;">Homog. Pop <i>n<sub>H</sub></i>:</span>
+    <input type="range" id="dec-nh" min="20" max="120" step="5" value="65" oninput="updateDecompLab()">
+    <span id="dec-nh-val" style="font-family:monospace; width:30px;">65</span>
+    <span style="color:#20B2AA;">Base <i>F</i><sub>1</sub> Pop <i>μ</i>:</span>
+    <input type="range" id="dec-mu" min="5" max="30" step="1" value="15" oninput="updateDecompLab()">
+    <span id="dec-mu-val" style="font-family:monospace; width:28px;">15</span>
+  </div>
+  <div id="dec-chain-cards" style="display:flex; gap:6px; justify-content:space-between; margin:8px 0;"></div>
+  <div id="dec-readout" class="matrix-readout" style="text-align:left; font-size:0.66em; line-height:1.42;"></div>
+</div>
+
+<div class="video-container" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act8_Homogeneous_Decomp.mp4" style="max-height:175px;"></video>
+  <div class="video-caption">Manim Act VIII: Well-Founded Contraction Chain D_s^k(S) → 0_Syn &amp; Compositive Population Balance</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Theorems 3.8 through 3.10 formalize Heim's First Decomposition Theorem (SM Eq. 11b). By introducing a well-founded complexity functional mu(S) in N that strictly decreases under each synkolative contraction D_s, every homogeneous syntrix is guaranteed to unravel in finitely many steps into a chain of pyramidal components terminating at the zero object 0_Syn.
+:::
+
+---
+
+## §3.3.5: Syntropod Networks, Conflexivity & 21-Branch Fan-Out {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: COLIMIT TREES (DEF. 3.12, PROP. 3.13) &amp; PSEUDOEXZENTER FAN-OUT (THM. 3.11)</div>
+
+:::: {.columns}
+
+::: {.column width="47%"}
+
+::: {.thm-box}
+**Defs. 3.10–3.12 & Prop. 3.13: Syntropod Trees & Conflexivity Index**
+* The $i$-th **Syntropode** of length $k_i - 1$ is the truncated submodule $\tau_{\le k_i - 1}(\mathcal{S}_i)$.
+* Over a decorated corporate interaction tree $G_{\mathcal{S}} = (V, E_C \sqcup E_K, \Sigma)$ on $N = |V|$ Syntropoden with $\varepsilon \coloneqq |E_K|$ Exzenter edges, deleting $E_K$ yields a Concentric Forest with:
+$$
+\ConfIndex(G_{\mathcal{S}}) \;\coloneqq\; k(V, E_C) \;=\; |E_K| + 1 \;=\; \varepsilon + 1
+$$
+and global colimit $\konflexiv \cong \varinjlim_{\mathsf{Tree}_{\Kor}(G_{\mathcal{S}})} D$.
+:::
+
+::: {.carnap-box .fragment}
+**Theorem 3.11: Pseudoexcentric Branch Fan-Out ($\frac{1}{2}N(N+1)$)**
+Connecting $N \ge 2$ disjoint Metrophor origins via a *Pseudoexzenter* (SM, pp. 57, 61) fans out into $N$ pure single-metrophor branches plus $\binom{N}{2}$ mixed pairwise branches:
+$$
+N_{\mathrm{branches}} \;=\; N + \binom{N}{2} \;=\; \mathbf{\frac{1}{2}N(N+1)}
+$$
+For $N = 6$, this yields $\frac{1}{2}(6)(7) = \mathbf{21}$ branches (matching the 21 symmetric potentials of the 36-component Hermetry matrix!).
+:::
+
+:::
+
+::: {.column width="53%"}
+
+<div class="interactive-panel">
+  <h4>Interactive 4-Syntropod Colimit Tree, Forest Surgery &amp; Fan-Out Lab</h4>
+  <p class="widget-context-note">
+    <b>Context (Fig. 3.6 &amp; Thm. 3.11):</b> Click $\Kor_1, \Kor_2, \Kor_3$ to toggle between **Exzenter ($K_m \in E_K$)** and **Konzenter ($C_m \in E_C$)**, toggle **Forest Surgery** to delete $E_K$, or slide $N$ to compute the Pseudoexzenter branch fan-out $\frac{1}{2}N(N+1)$.
+  </p>
+  <div style="display:flex; flex-wrap:wrap; gap:5px; justify-content:center; margin-bottom:6px;">
+    <button class="syn-btn" onclick="toggleTreeEdge(0)">Toggle Kor₁ (e₁)</button>
+    <button class="syn-btn" onclick="toggleTreeEdge(1)">Toggle Kor₂ (e₂)</button>
+    <button class="syn-btn" onclick="toggleTreeEdge(2)">Toggle Apex Kor₃ (e₃)</button>
+    <button class="syn-btn" style="border-color:#20B2AA; color:#5eead4;" onclick="toggleForestSurgery()">✂ Toggle Forest Surgery</button>
+  </div>
+  <svg viewBox="0 0 460 155" style="width:100%; max-height:150px; background:#070a12; border-radius:8px; border:1px solid #334155;">
+    <line id="te-1a" x1="65" y1="30" x2="135" y2="82" stroke="#FFA500" stroke-width="3"/>
+    <line id="te-1b" x1="185" y1="30" x2="135" y2="82" stroke="#FFA500" stroke-width="3"/>
+    <line id="te-2a" x1="275" y1="30" x2="335" y2="82" stroke="#4169E1" stroke-width="3"/>
+    <line id="te-2b" x1="395" y1="30" x2="335" y2="82" stroke="#4169E1" stroke-width="3"/>
+    <line id="te-3a" x1="135" y1="100" x2="230" y2="136" stroke="#FFA500" stroke-width="3.2"/>
+    <line id="te-3b" x1="335" y1="100" x2="230" y2="136" stroke="#FFA500" stroke-width="3.2"/>
+
+    <rect x="25" y="8" width="80" height="24" rx="4" fill="#1e293b" stroke="#4169E1" stroke-width="1.8"/><text x="65" y="24" text-anchor="middle" fill="#fff" font-size="10">Syntropode S₁</text>
+    <rect x="145" y="8" width="80" height="24" rx="4" fill="#1e293b" stroke="#4169E1" stroke-width="1.8"/><text x="185" y="24" text-anchor="middle" fill="#fff" font-size="10">Syntropode S₂</text>
+    <rect x="235" y="8" width="80" height="24" rx="4" fill="#1e293b" stroke="#4169E1" stroke-width="1.8"/><text x="275" y="24" text-anchor="middle" fill="#fff" font-size="10">Syntropode S₃</text>
+    <rect x="355" y="8" width="80" height="24" rx="4" fill="#1e293b" stroke="#4169E1" stroke-width="1.8"/><text x="395" y="24" text-anchor="middle" fill="#fff" font-size="10">Syntropode S₄</text>
+
+    <rect id="nd-kor1" x="75" y="72" width="120" height="26" rx="5" fill="#2d1a04" stroke="#FFA500" stroke-width="2.2"/>
+    <text id="tx-kor1" x="135" y="89" text-anchor="middle" fill="#FFA500" font-size="10" font-weight="bold">Kor₁: Exzenter (K_m)</text>
+    <rect id="nd-kor2" x="275" y="72" width="120" height="26" rx="5" fill="#0f1b3d" stroke="#4169E1" stroke-width="2.2"/>
+    <text id="tx-kor2" x="335" y="89" text-anchor="middle" fill="#82aaff" font-size="10" font-weight="bold">Kor₂: Konzenter (C_m)</text>
+    <rect id="nd-kor3" x="145" y="125" width="170" height="26" rx="5" fill="#2d1a04" stroke="#FFD700" stroke-width="2.2"/>
+    <text id="tx-kor3" x="230" y="142" text-anchor="middle" fill="#FFD700" font-size="10" font-weight="bold">Apex Kor₃: Exzenter (K_m)</text>
+  </svg>
+  <div class="slider-row" style="margin-top:6px;">
+    <span style="color:#FFD700;">Pseudoexzenter Origins <i>N</i>:</span>
+    <input type="range" id="fan-n" min="2" max="10" step="1" value="6" oninput="renderSyntropodTree()">
+    <span id="fan-n-val" style="font-family:monospace; width:24px;">6</span>
+  </div>
+  <div id="tree-readout" class="matrix-readout" style="margin-top:4px; font-size:0.65em;"></div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+In Section 3.3.5, any multi-membered conflexive network is represented as a colimit over a decorated corporate interaction tree G_S. Deleting the epsilon Exzenter edges E_K breaks the tree into epsilon + 1 Concentric Forest components—defining the Presentation Conflexivity Index. Meanwhile, Theorem 3.11 shows that a Pseudoexzenter over N = 6 origins fans out into N + C(N,2) = 21 branches.
+:::
+
+---
+
+## §3.3.6: Double Category $\DKor(\mathbf{Syn})$ & Mayer–Vietoris Emergence {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: DOUBLE CATEGORY (DEF. 3.14), MAYER–VIETORIS (THM. 3.15) &amp; LEAN 4</div>
+
+:::: {.columns}
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4>Interactive Mayer–Vietoris Homological Emergence &amp; Double Category Lab</h4>
+  <p class="widget-context-note">
+    <b>Context (§3.3.6, Def. 3.14, Thm. 3.15 &amp; Carnap 3.2):</b> Each 1-edge complex $\mathcal{S}_a$ ($de_a = v_1 - v_0$) and $\mathcal{S}_b$ ($de_b = w_1 - w_0$) has trivial homology $H_1(\mathcal{S}_a) = H_1(\mathcal{S}_b) = 0$. Slide the boundary gluing $v_i \sim w_i$ across $\mathcal{S}_\phi$ to watch the connecting homomorphism $\partial_*([e_a - e_b]) = [r_1 - r_0] \in \ker(\delta_{\phi *})$ birth an emergent global cycle!
+  </p>
+  <div class="slider-row">
+    <span style="color:#a855f7;">Boundary Gluing (<i>R<sub>φ</sub></i>):</span>
+    <input type="range" id="mv-glue" min="0" max="100" step="2" value="100" oninput="updateMayerVietoris()">
+    <span id="mv-glue-val" style="font-family:monospace; width:42px;">100%</span>
+  </div>
+  <svg viewBox="0 0 420 130" style="width:100%; max-height:125px; background:#070a12; border-radius:8px; border:1px solid #334155;">
+    <path id="mv-arc-top" d="M 90,65 Q 210,10 330,65" fill="none" stroke="#FFD700" stroke-width="4"/>
+    <path id="mv-arc-bot" d="M 90,65 Q 210,120 330,65" fill="none" stroke="#FFD700" stroke-width="4"/>
+    <circle id="mv-v0" cx="90" cy="65" r="6.5" fill="#4169E1"/>
+    <circle id="mv-v1" cx="330" cy="65" r="6.5" fill="#4169E1"/>
+    <circle id="mv-w0" cx="90" cy="65" r="6.5" fill="#20B2AA"/>
+    <circle id="mv-w1" cx="330" cy="65" r="6.5" fill="#20B2AA"/>
+    <text x="210" y="18" text-anchor="middle" fill="#82aaff" font-size="10">1-Chain e_a (H₁(S_a) = 0)</text>
+    <text x="210" y="122" text-anchor="middle" fill="#5eead4" font-size="10">1-Chain e_b (H₁(S_b) = 0)</text>
+    <text id="mv-cycle-txt" x="210" y="69" text-anchor="middle" fill="#FFD700" font-size="11" font-weight="bold" opacity="1">
+      EMERGENT CYCLE: ∂_*([e_a - e_b]) = [r₁ - r₀] ∈ ker(δ_{φ*}) ≠ 0 !
+    </text>
+  </svg>
+  <div id="mv-readout" class="matrix-readout" style="margin-top:6px; font-size:0.65em;"></div>
+</div>
+
+::: {.carnap-box .fragment}
+**Carnap 3.2: Humphreys's Fusion Emergence in Conflexion Fields (1997)**
+1. **Token Absorption:** Quotienting by $\Im(\delta_\phi)$ erases separate identity on $\lambda$ channels ($p+q \to p+q-\lambda$).
+2. **Topological Novelty:** Trivial local chains glue across $R_\phi$ into global cycles in $\Im(\partial_*) \subset H_{\gamma+1}(\mathcal{S}_c)$.
+:::
+
+:::
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Def. 3.14 & Theorem 3.15: $\DKor(\mathbf{Syn})$ & Mayer–Vietoris Sequence**
+* In $\DKor(\mathbf{Syn})$, horizontal 1-cells are corporate spans $\mathfrak{K} = (\mathcal{S}_\phi, \phi_a, \phi_b, \Sigma_r)$ composed via fiber pullbacks $R_{\phi_1} \times_{P_b} R_{\phi_2}$.
+* Every Exzenter pushout induces a short exact sequence of chain complexes $0 \to C_\bullet(\mathcal{S}_\phi) \xrightarrow{\delta_\phi} C_\bullet(\mathcal{S}_a)\oplus_1 C_\bullet(\mathcal{S}_b) \xrightarrow{\pi_{\boxplus}} C_\bullet(\mathcal{S}_c) \to 0$, yielding:
+$$
+\cdots \to H_{\gamma+1}(\mathcal{S}_a)\oplus H_{\gamma+1}(\mathcal{S}_b) \xrightarrow{\pi_*} H_{\gamma+1}(\mathcal{S}_c) \xrightarrow{\partial_*} H_\gamma(\mathcal{S}_\phi) \xrightarrow{\delta_{\phi *}} H_\gamma(\mathcal{S}_a)\oplus H_\gamma(\mathcal{S}_b) \to \cdots
+$$
+:::
+
+### Compile-Ready Lean 4 Blueprint (`StratumA.Corporations`, App. C)
+
+<div class="lean-code-card">
+<pre style="margin:0;"><code>import Mathlib
+namespace Syntrometrie.StratumA.Corporations
+
+inductive CorporateRule where
+  | Km | Cm | Ks | Cs
+  deriving DecidableEq, Repr
+
+def IsMixedSelection (r : Finset CorporateRule) : Bool :=
+  (CorporateRule.Km ∈ r || CorporateRule.Cm ∈ r) &&
+  (CorporateRule.Ks ∈ r || CorporateRule.Cs ∈ r)
+
+def pushoutCarrierDim (p q lambda_eff : ℕ) : ℕ :=
+  (p + q) - lambda_eff
+
+theorem pushoutCarrierDim_uncoupled (p q : ℕ) :
+    pushoutCarrierDim p q 0 = p + q := rfl
+
+end Syntrometrie.StratumA.Corporations</code></pre>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Theorem 3.15 and Carnap Scholium 3.2 provide a rigorous homological proof of Paul Humphreys's Fusion Emergence. Even when two Syntropoden S_a and S_b have zero 1-st homology in isolation, gluing their boundaries across a Konflektorknoten S_phi creates a non-zero kernel for delta_{phi*}, and the Mayer-Vietoris connecting homomorphism partial_* births an emergent global cycle in H_1(S_c).
+:::
+
+---
+
+## §3.4–3.6: Reconstruction Map $\mathcal{R}$, Sanity Checks & Synthesis {.smaller}
+
+<div class="stratum-badge badge-c">STRATUM C: EXPLICATION 3.1, MASTER REGISTER (SM EQS. 10–13a) &amp; BRIDGE TO CH. 4</div>
+
+:::: {.columns}
+
+::: {.column width="54%"}
+
+| Heimian Concept ($\mathbf{D}$) | Mathematical Explicatum ($\mathcal{R}$ in $\mathbf{A}/\mathbf{B}$) | Status & Ref. |
+|:---|:---|:---:|
+| **Universal Korporator (Eq. 11)** | Pairing functor $\Kor_{r, \Sigma_r} \colon \mathbf{Syn} \times \mathbf{Syn} \to \mathbf{Syn}$ | **C-Model** (Def. 3.7) |
+| **Metrophor-Komposition ($C_m$)** | Contractive $\ell^1$-coproduct $P_a \oplus_1 P_b$ ($\dim = p+q$) | **A-Def** (Def. 3.4) |
+| **Metrophor-Koppelung ($K_m$)** | Span pushout $P_a \boxplusphi P_b$ ($\dim = p+q-\lambda_{\mathrm{eff}}$) | **A-Def** (Def. 3.4) |
+| **Synkolative Rules ($C_s, K_s$, Eq. 10)** | Direct sum $F_\gamma^a \oplus_1 F_\gamma^b$ vs. tensor $\bigoplus F_\alpha^a \otpi F_\beta^b$ | **A-Prop** (Prop. 3.3) |
+| **Eindeutigkeitssatz** | Determinacy of 9 Mixed vs. 6 Pure corporate classes | **B-Prop** (Prop. 3.5) |
+| **Nullsyntrix ($\nullsyntrix$, Eq. 11a)** | Initial & terminal zero object $0_{\mathbf{Syn}} \in \mathbf{Syn}$ | **B-Prop** (Prop. 3.2) |
+| **Spaltungs-Kette (Eqs. 11b, 11c)** | Corporate chain decomposition under complexity $\mu(\mathcal{S})$ | **B-Thm** (Thm. 3.8) |
+| **Syntropode & Konflexionsfeld** | Truncation $\tau_{\le k_i-1}(\mathcal{S}_i)$ & shared pushout $P_a \boxplusphi P_b$ | **C-Model** (Def. 3.10) |
+| **Konflexivitätsgrad ($\varepsilon+1$, Eq. 13)** | Forest invariant $\ConfIndex(G_{\mathcal{S}}) = |E_K| + 1$ | **B-Def** (Def. 3.12) |
+
+::: {.thm-box .fragment}
+**Physical & Epistemic Sanity Checks (§3.5):**
+1. **Uncoupled Limit ($\lambda = 0$):** $R_\phi = \{0\} \implies P_a \boxplus_0 P_b \cong P_a \oplus_1 P_b$ ($\dim = p + q$, pure Konzenter).
+2. **Full Identification ($\lambda = p = q$):** $\phi_a = \phi_b = \operatorname{id} \implies P_a \boxplus_{\mathrm{id}} P_a \cong P_a$ ($\dim = p$, zero channel inflation).
+3. **Static Tree Topology:** Static corporate trees satisfy $\beta_1(G_{\mathcal{S}}) = (N-1) - N + 1 = 0$, guaranteeing colimit uniqueness.
+:::
+
+:::
+
+::: {.column width="46%"}
+
+::: {.carnap-box}
+**Carnapian Explication 3.1: *Syntrixkorporationen* & Korporator Matrix**
+Replaces informal bracket pairings with universal colimits in $\FinBan$ and $\operatorname{Alg}_{\Osyn}$, proving $\dim(P_a \boxplusphi P_b) = p + q - \rank(\delta_\phi)$, partitioning the 15 classes into $9$ Mixed + $6$ Pure, and deriving Mayer–Vietoris homological emergence.
+:::
+
+<div class="video-container">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act12_Synthesis.mp4" style="max-height:210px;"></video>
+  <div class="video-caption">Manim Act XII (Fig. 3.7): Three-Level Categorical Synthesis of Corporate Algebra</div>
+</div>
+
+::: {.firewall-box .fragment}
+**Syntrometric Dialectical Transition to Chapter 4:**
+While span pushouts ($P_a \boxplusphi P_b$) and corporate graphs determine geometric dimensions and conflexivity topologies, static colimits lack an **intrinsic kinetic field theory**. To derive active physical forces and spontaneous transformation from geometric friction, **Chapter 4 (*Enyphansyntrizen*)** formalizes *Enyphanie* as the **non-Abelian interaction curvature form $\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}}$** and Lie derivation flows across principal context bundles.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+We conclude Chapter 3 with the complete Reconstruction Map R for SM Equations 10 through 13a and the uncoupled and full-identification sanity checks. Because static corporate colimits lack an internal clock or energetic gradient, Chapter 4 introduces non-Abelian gauge curvature Omega_int^D and Lie derivation flows to formalize Enyphanie.
+:::
+
+<!-- UNIFIED RESILIENT JAVASCRIPT ENGINE FOR ALL 8 CHAPTER 3 WIDGETS -->
+<script>
+window.comb3 = function(n, k) {
+  if (k < 0 || k > n) return 0;
+  if (k === 0 || k === n) return 1;
+  let r = 1;
+  for (let i = 1; i <= k; i++) r = r * (n - i + 1) / i;
+  return Math.round(r);
+};
+
+// WIDGET 1: §3.1.2 Metrophorkorporation Coupling Mode Explorer
+window.updateMetCorp = function() {
+  const elP = document.getElementById('mc-p');
+  if (!elP) return;
+  let p = parseInt(elP.value);
+  let q = parseInt(document.getElementById('mc-q').value);
+  let lamIn = document.getElementById('mc-lam');
+  let maxL = Math.min(p, q);
+  lamIn.max = maxL;
+  let lam = Math.min(maxL, parseInt(lamIn.value));
+  lamIn.value = lam;
+
+  document.getElementById('mc-p-val').innerText = p;
+  document.getElementById('mc-q-val').innerText = q;
+  document.getElementById('mc-lam-val').innerText = lam;
+
+  let uncoupled = p + q;
+  let nonComb = (p + q - 2 * lam) + lam; // p + q - lam
+  let combCount = p * lam * q;
+
+  const box = document.getElementById('mc-readout');
+  if (box) {
+    box.innerHTML =
+      `<b>1. Uncoupled Composition (C_m):</b> p + q = <b style="color:#82aaff;">${uncoupled}</b> independent channels<br>` +
+      `<b>2. Non-Combinatorial Coupling (K_m Pushout, SM p. 43):</b> (p + q - 2λ) + λ = p + q - λ = <b style="color:#FFD700;">${nonComb}</b><br>` +
+      `<b>3. Combinatorial Coupling (Heim SM p. 44):</b> Z_comb = p · λ · q = <b style="color:#20B2AA;">${combCount}</b> coupled pairs`;
+  }
+};
+
+// WIDGET 2: §3.2.3 Span Pushout & Stage III Polarimeter Lab
+window.updatePushoutLab = function() {
+  const elP = document.getElementById('po-p');
+  if (!elP) return;
+  let p = parseInt(elP.value);
+  let q = parseInt(document.getElementById('po-q').value);
+  let lamInput = document.getElementById('po-lam');
+  let maxLam = Math.min(p, q);
+  lamInput.max = maxLam;
+  let lam = Math.min(maxLam, parseInt(lamInput.value));
+  lamInput.value = lam;
+
+  document.getElementById('po-p-val').innerText = p;
+  document.getElementById('po-q-val').innerText = q;
+  document.getElementById('po-lam-val').innerText = lam;
+
+  let dimCoprod = p + q;
+  let dimPushout = p + q - lam;
+  let ext2 = window.comb3(dimPushout, 2);
+
+  // Update SVG Orbital Circles
+  let frac = maxLam > 0 ? (lam / maxLam) : 0;
+  let sep = 42 * (1.0 - 0.85 * frac);
+  const c1 = document.getElementById('po-c1');
+  const c2 = document.getElementById('po-c2');
+  const knot = document.getElementById('po-knot');
+  const kTxt = document.getElementById('po-knot-txt');
+  if (c1 && c2 && knot && kTxt) {
+    c1.setAttribute('cx', (105 - sep).toFixed(1));
+    c2.setAttribute('cx', (105 + sep).toFixed(1));
+    knot.setAttribute('r', (lam === 0 ? 0 : 7 + lam * 2.2).toFixed(1));
+    kTxt.setAttribute('opacity', lam === 0 ? '0' : '1');
+  }
+
+  let note = "";
+  if (p === 6 && q === 6 && lam === 3) {
+    note = `<br><span style="color:#FFD700;">★ STAGE III POLARIMETER MATCH: dim(P_c) = 9 ⇒ dim Λ²(ℝ⁹) = C(9,2) = <b>36</b> (Exact Ch. 9 Hermetry Capacity!)</span>`;
+  } else if (lam === 0) {
+    note = `<br><span style="color:#82aaff;">★ UNCOUPLED KONZENTER LIMIT (λ = 0): P_a ⊞₀ P_b ≅ P_a ⊕₁ P_b (dim = ${dimCoprod})</span>`;
+  } else if (lam === p && p === q) {
+    note = `<br><span style="color:#20B2AA;">★ FULL IDENTIFICATION LIMIT (λ = p = q): P_a ⊞_id P_a ≅ P_a (dim = ${p}, zero channel inflation)</span>`;
+  }
+
+  document.getElementById('po-lab-readout').innerHTML =
+    `<b>Coproduct Dim (C_m):</b> p + q = ${dimCoprod}  |  <b>Span Pushout Dim (K_m):</b> p + q - λ_eff = <b style="color:#FFD700;">${dimPushout}</b><br>` +
+    `<b>Coincidence Module F₁^c = Λ²(P_c):</b> C(${dimPushout}, 2) = <b style="color:#20B2AA;">${ext2}</b>` + note;
+};
+
+window.setPoPreset = function(p, q, lam) {
+  document.getElementById('po-p').value = p;
+  document.getElementById('po-q').value = q;
+  document.getElementById('po-lam').max = Math.min(p, q);
+  document.getElementById('po-lam').value = lam;
+  window.updatePushoutLab();
+};
+
+// WIDGET 3: §3.2.4 Konflektorknoten & Factual Valency Lab
+window.updateKonflektorLab = function() {
+  const elChi = document.getElementById('kf-chi');
+  if (!elChi) return;
+  let chi = parseFloat(elChi.value);
+  let th = parseFloat(document.getElementById('kf-th').value);
+  let r = parseInt(document.getElementById('kf-r').value);
+  let nIn = document.getElementById('kf-n');
+  nIn.max = r;
+  let n = Math.min(r, parseInt(nIn.value));
+  nIn.value = n;
+
+  document.getElementById('kf-r-val').innerText = r;
+  document.getElementById('kf-n-val').innerText = n;
+
+  let valFact = r - n + 1;
+  let boundStatus = chi > th
+    ? `<span style="color:#20B2AA;"><b>✓ KONFLEKTORKNOTEN ACTIVE (χ=${chi.toFixed(2)} > θ=${th.toFixed(2)}):</b> Quotient relation δ_φ(r) = (φ_a r, -φ_b r) = 0 binds c_l = (a₁, φ_l, b₂)!</span>`
+    : `<span style="color:#ff6b81;"><b>✗ BELOW THRESHOLD (χ=${chi.toFixed(2)} ≤ θ=${th.toFixed(2)}):</b> Channels remain uncoupled in P_a ⊕₁ P_b.</span>`;
+
+  const box = document.getElementById('kf-readout');
+  if (box) {
+    box.style.borderLeftColor = chi > th ? "#20B2AA" : "#DC143C";
+    box.innerHTML = `${boundStatus}<br><b>Def. 3.6 (Pseudovalenz r = ${r} with n = ${n} identical inputs):</b> Factual Valency Val_fact = r - n + 1 = <b style="color:#FFD700;">${valFact}</b>`;
+  }
+};
+
+// WIDGET 4: §3.3.2 2x2 Korporator Matrix & 4D Tesseract SVG Inspector
+window.korState = { ks: true, cs: false, km: true, cm: false };
+
+window.toggleKorRule = function(key) {
+  window.korState[key] = !window.korState[key];
+  const labels = {
+    ks: "K_s (Synk. Coup)",
+    cs: "C_s (Synk. Comp)",
+    km: "K_m (Met. Push)",
+    cm: "C_m (Met. Coprod)"
+  };
+  let btn = document.getElementById('btn-' + key);
+  if (btn) {
+    if (window.korState[key]) {
+      btn.style.background = (key === 'ks' || key === 'cs') ? "#20B2AA" : "#FFA500";
+      btn.style.color = "#000";
+      btn.style.fontWeight = "bold";
+      btn.innerText = "✓ " + labels[key];
+    } else {
+      btn.style.background = "#1e293b";
+      btn.style.color = "#FFD700";
+      btn.style.fontWeight = "normal";
+      btn.innerText = "✗ " + labels[key];
+    }
+  }
+  window.updateKorMatrixStatus();
+};
+
+window.updateKorMatrixStatus = function() {
+  const box = document.getElementById('kor-matrix-status');
+  if (!box) return;
+  let active = [];
+  if (window.korState.ks) active.push("K_s");
+  if (window.korState.cs) active.push("C_s");
+  if (window.korState.km) active.push("K_m");
+  if (window.korState.cm) active.push("C_m");
+
+  let hasSynk = window.korState.ks || window.korState.cs;
+  let hasMet = window.korState.km || window.korState.cm;
+  let kappa = active.length;
+
+  // Render 4D Tesseract 2D Projection SVG
+  const svg = document.getElementById('tess-svg');
+  if (svg) {
+    let coords = {};
+    let htmlEdges = "", htmlNodes = "";
+    for (let b0 = 0; b0 <= 1; b0++) {
+      for (let b1 = 0; b1 <= 1; b1++) {
+        for (let b2 = 0; b2 <= 1; b2++) {
+          for (let b3 = 0; b3 <= 1; b3++) {
+            let scale = b3 === 1 ? 18 : 38;
+            let x = 100 + (2 * b0 - 1) * scale + (2 * b2 - 1) * 12;
+            let y = 68 + (2 * b1 - 1) * (scale * 0.72) - (2 * b3 - 1) * 8;
+            coords[`${b0}${b1}${b2}${b3}`] = { x, y, b0, b1, b2, b3 };
+          }
+        }
+      }
+    }
+    let keys = Object.keys(coords);
+    for (let i = 0; i < keys.length; i++) {
+      for (let j = i + 1; j < keys.length; j++) {
+        let a = coords[keys[i]], b = coords[keys[j]];
+        let diff = Math.abs(a.b0-b.b0) + Math.abs(a.b1-b.b1) + Math.abs(a.b2-b.b2) + Math.abs(a.b3-b.b3);
+        if (diff === 1) {
+          htmlEdges += `<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" stroke="#334155" stroke-width="1.2"/>`;
+        }
+      }
+    }
+    let curKey = `${window.korState.km?1:0}${window.korState.cm?1:0}${window.korState.ks?1:0}${window.korState.cs?1:0}`;
+    keys.forEach(k => {
+      let c = coords[k];
+      let m = (c.b0 === 1 || c.b1 === 1);
+      let s = (c.b2 === 1 || c.b3 === 1);
+      let col = (!m && !s) ? "#94a3b8" : (m && s ? "#20B2AA" : "#DC143C");
+      let isCur = (k === curKey);
+      let r = isCur ? 7.5 : 4.0;
+      let stroke = isCur ? "#FFD700" : "#000";
+      let sw = isCur ? 2.5 : 1.0;
+      htmlNodes += `<circle cx="${c.x.toFixed(1)}" cy="${c.y.toFixed(1)}" r="${r}" fill="${isCur ? '#FFD700' : col}" stroke="${stroke}" stroke-width="${sw}"/>`;
+    });
+    svg.innerHTML = htmlEdges + htmlNodes;
+  }
+
+  if (kappa === 0) {
+    box.style.borderLeftColor = "#708090";
+    box.innerHTML = `<span style="color:#cbd5e1;"><b>Vacuous Origin ∅ (κ = 0):</b> No corporate rules active.</span>`;
+  } else if (hasSynk && hasMet) {
+    box.style.borderLeftColor = "#20B2AA";
+    box.innerHTML = `<span style="color:#20B2AA;"><b>✓ MIXED DETERMINATE CLASS (1 of 9, Rank κ = ${kappa}):</b> r = {${active.join(", ")}}</span><br>` +
+      `Satisfies Heim's <i>Eindeutigkeitssatz</i> (r ∩ Met ≠ ∅ ∧ r ∩ Synk ≠ ∅) ⇒ Unique composite Syntrix algebra S_c ∈ Obj(Syn)!`;
+  } else {
+    box.style.borderLeftColor = "#DC143C";
+    let missing = hasMet ? "Synkolative module tier (K_s, C_s)" : "Metrophoric carrier tier (K_m, C_m)";
+    box.innerHTML = `<span style="color:#ff6b81;"><b>✗ PURE UNDERDETERMINED CLASS (1 of 6, Rank κ = ${kappa}):</b> r = {${active.join(", ")}}</span><br>` +
+      `Violates <i>Eindeutigkeitssatz</i>: leaves the ${missing} underdetermined (*zweideutig*)!`;
+  }
+};
+
+// WIDGET 5: §3.3.4 Homogeneous Decomposition & Compositive Population Balance
+window.updateDecompLab = function() {
+  const elStep = document.getElementById('dec-step');
+  if (!elStep) return;
+  let k = parseInt(elStep.value);
+  let nH = parseInt(document.getElementById('dec-nh').value);
+  let mu = parseInt(document.getElementById('dec-mu').value);
+
+  document.getElementById('dec-step-val').innerText = `k = ${k}`;
+  document.getElementById('dec-nh-val').innerText = nH;
+  document.getElementById('dec-mu-val').innerText = mu;
+
+  let remMu = Math.max(0, 4 - k);
+  let pyrSum = Math.max(0, nH - mu);
+  let p1 = Math.floor(pyrSum * 0.45), p2 = Math.floor(pyrSum * 0.35), p3 = pyrSum - p1 - p2;
+
+  let stages = [
+    { lbl: "x yã (μ=4)", active: k === 0, col: "#9370DB" },
+    { lbl: "D_s¹ (μ=3)", active: k === 1, col: "#FFA500" },
+    { lbl: "D_s² (μ=2)", active: k === 2, col: "#20B2AA" },
+    { lbl: "D_s³ (μ=1)", active: k === 3, col: "#4169E1" },
+    { lbl: "0_Syn (μ=0)", active: k === 4, col: "#DC143C" }
+  ];
+  document.getElementById('dec-chain-cards').innerHTML = stages.map(s => `
+    <div style="flex:1; text-align:center; padding:5px; border-radius:5px; font-size:0.58em; font-weight:bold;
+         background:${s.active ? s.col : '#151c2c'}; color:${s.active ? '#000' : '#94a3b8'}; border:1px solid ${s.col};">
+      ${s.lbl}
+    </div>
+  `).join("");
+
+  const box = document.getElementById('dec-readout');
+  if (box) {
+    box.style.borderLeftColor = remMu === 0 ? "#FFD700" : "#20B2AA";
+    box.innerHTML =
+      `<b>Complexity μ(D_s^${k}(S)) = ${remMu}:</b> ${remMu === 0 ? '<span style="color:#FFD700;">TERMINATED AT NULLSYNTRIX 0_Syn!</span>' : 'Contracting historical cross-talk into pyramidal components...'}<br>` +
+      `<b>Thm. 3.10 Additive Population Balance:</b> n_H - μ = ${nH} - ${mu} = <b style="color:#FFD700;">${pyrSum}</b> = ∑ n_j (${p1} + ${p2} + ${p3})`;
+  }
+};
+
+// WIDGET 6 & 7: §3.3.5 Syntropod Tree, Forest Surgery & Pseudoexzenter Fan-Out
+window.treeEdgesEx = [true, false, true];
+window.surgeryMode = false;
+
+window.toggleTreeEdge = function(idx) {
+  window.treeEdgesEx[idx] = !window.treeEdgesEx[idx];
+  window.renderSyntropodTree();
+};
+
+window.toggleForestSurgery = function() {
+  window.surgeryMode = !window.surgeryMode;
+  window.renderSyntropodTree();
+};
+
+window.renderSyntropodTree = function() {
+  const elFan = document.getElementById('fan-n');
+  if (!elFan) return;
+  let N = parseInt(elFan.value);
+  document.getElementById('fan-n-val').innerText = N;
+  let fanBranches = (N * (N + 1)) / 2;
+
+  const configs = [
+    { nd: 'nd-kor1', tx: 'tx-kor1', l1: 'te-1a', l2: 'te-1b', name: 'Kor₁' },
+    { nd: 'nd-kor2', tx: 'tx-kor2', l1: 'te-2a', l2: 'te-2b', name: 'Kor₂' },
+    { nd: 'nd-kor3', tx: 'tx-kor3', l1: 'te-3a', l2: 'te-3b', name: 'Apex Kor₃' }
+  ];
+  let eps = 0;
+  for (let i = 0; i < 3; i++) {
+    let isEx = window.treeEdgesEx[i];
+    if (isEx) eps++;
+    let c = configs[i];
+    let rect = document.getElementById(c.nd);
+    let txt = document.getElementById(c.tx);
+    let lineA = document.getElementById(c.l1);
+    let lineB = document.getElementById(c.l2);
+
+    if (isEx) {
+      rect.setAttribute('stroke', '#FFA500');
+      rect.setAttribute('fill', '#2d1a04');
+      txt.setAttribute('fill', '#FFA500');
+      txt.textContent = `${c.name}: Exzenter (K_m)`;
+      lineA.setAttribute('stroke', '#FFA500');
+      lineB.setAttribute('stroke', '#FFA500');
+      lineA.setAttribute('opacity', window.surgeryMode ? '0.12' : '1.0');
+      lineB.setAttribute('opacity', window.surgeryMode ? '0.12' : '1.0');
+    } else {
+      rect.setAttribute('stroke', '#4169E1');
+      rect.setAttribute('fill', '#0f1b3d');
+      txt.setAttribute('fill', '#82aaff');
+      txt.textContent = `${c.name}: Konzenter (C_m)`;
+      lineA.setAttribute('stroke', '#4169E1');
+      lineB.setAttribute('stroke', '#4169E1');
+      lineA.setAttribute('opacity', '1.0');
+      lineB.setAttribute('opacity', '1.0');
+    }
+  }
+  let kc = 3 - eps;
+  let confIdx = eps + 1;
+  let status = document.getElementById('tree-readout');
+  status.innerHTML =
+    `<b>Conflexivity:</b> |E_K|=ε=<b>${eps}</b>, |E_C|=<b>${kc}</b> ⇒ <b>ConfIndex_pres = ε + 1 = ${confIdx}</b>` +
+    (window.surgeryMode ? ` <span style="color:#20B2AA;">[Forest Surgery: ${confIdx} Subtrees]</span>` : '') +
+    `  |  <b>Thm. 3.11 (N=${N}):</b> ½N(N+1) = <b style="color:#FFD700;">${fanBranches} Branches</b>`;
+};
+
+// WIDGET 8: §3.3.6 Mayer-Vietoris Homological Emergence
+window.updateMayerVietoris = function() {
+  const elG = document.getElementById('mv-glue');
+  if (!elG) return;
+  let g = parseInt(elG.value);
+  document.getElementById('mv-glue-val').innerText = g + '%';
+  let t = g / 100.0;
+
+  let yTop = 35 + t * 30.0;
+  let yBot = 95 - t * 30.0;
+  document.getElementById('mv-arc-top').setAttribute('d', `M 90,${yTop} Q 210,${-10 + t*20} 330,${yTop}`);
+  document.getElementById('mv-arc-bot').setAttribute('d', `M 90,${yBot} Q 210,${140 - t*20} 330,${yBot}`);
+  document.getElementById('mv-v0').setAttribute('cy', yTop);
+  document.getElementById('mv-v1').setAttribute('cy', yTop);
+  document.getElementById('mv-w0').setAttribute('cy', yBot);
+  document.getElementById('mv-w1').setAttribute('cy', yBot);
+
+  let cycTxt = document.getElementById('mv-cycle-txt');
+  let box = document.getElementById('mv-readout');
+  if (g >= 96) {
+    cycTxt.setAttribute('opacity', '1');
+    document.getElementById('mv-arc-top').setAttribute('stroke', '#FFD700');
+    document.getElementById('mv-arc-bot').setAttribute('stroke', '#FFD700');
+    box.style.borderLeftColor = "#FFD700";
+    box.innerHTML = `<span style="color:#FFD700;"><b>✓ HOMOLOGICAL FUSION EMERGENCE (v_i = w_i):</b> H₁(S_c) ≅ ker(δ_{φ*}) ≅ ℝ[e_a - e_b] ≠ 0!</span>`;
+  } else {
+    cycTxt.setAttribute('opacity', '0');
+    document.getElementById('mv-arc-top').setAttribute('stroke', '#4169E1');
+    document.getElementById('mv-arc-bot').setAttribute('stroke', '#20B2AA');
+    box.style.borderLeftColor = "#20B2AA";
+    box.innerHTML = `Uncoupled / Partial Gluing (${g}%): Boundaries separate ⇒ H₁(S_a) = 0, H₁(S_b) = 0 (No global cycle).`;
+  }
+};
+
+function ensureVideosPlaying() {
+  document.querySelectorAll('video').forEach(v => {
+    v.muted = true;
+    v.playsInline = true;
+    if (v.paused) v.play().catch(() => {});
+  });
+}
+
+function initAllCh3Widgets() {
+  window.updateMetCorp();
+  window.updatePushoutLab();
+  window.updateKonflektorLab();
+  window.updateKorMatrixStatus();
+  window.updateDecompLab();
+  window.renderSyntropodTree();
+  window.updateMayerVietoris();
+  ensureVideosPlaying();
+
+  document.querySelectorAll('input[type="range"], select, button').forEach(input => {
+    input.addEventListener('keydown', (e) => e.stopPropagation());
+    input.addEventListener('mousedown', (e) => e.stopPropagation());
+    input.addEventListener('touchstart', (e) => e.stopPropagation(), {passive: true});
+  });
+
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.target.tagName === 'VIDEO') {
+          entry.target.muted = true;
+          entry.target.play().catch(() => {});
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('video').forEach(v => obs.observe(v));
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener("DOMContentLoaded", initAllCh3Widgets);
+} else {
+  initAllCh3Widgets();
+}
+
+window.addEventListener('load', initAllCh3Widgets);
+if (window.Reveal) {
+  window.Reveal.on('ready', initAllCh3Widgets);
+  window.Reveal.on('slidechanged', initAllCh3Widgets);
+}
+</script>

@@ -33,7 +33,8 @@ def parse_qmd_video_targets(qmd_path: Path) -> dict[int, str]:
     qmd_text = qmd_path.read_text(encoding="utf-8")
     
     # Matches <video ... src="media/Act1_Firewall.mp4"> or ![](media/Act1_Firewall.mp4)
-    pattern = re.compile(r'media/(Act(\d+)[^"\'\)\s]*)\.mp4', re.IGNORECASE)
+    # Optional chapter prefix (e.g. Ch2_) before 'Act<N>'; the class name is the full clip name.
+    pattern = re.compile(r'media/((?:\w+?_)??Act(\d+)[^"\'\)\s]*)\.mp4', re.IGNORECASE)
     matches = pattern.findall(qmd_text)
 
     mapping = {}
@@ -126,7 +127,7 @@ def build_split_script(preamble: str, acts: list, qmd_map: dict[int, str]) -> st
     output.append("\n\n")
 
     # Helper function injection for cross-act shared assets (like compass_snapshot)
-    output.append("""# =============================================================================
+    helper = ("""# =============================================================================
 # SHARED COMPASS HELPER (Ensures Act IX renders independently)
 # =============================================================================
 def build_aspect_compass_snapshot(comp_c=ORIGIN):
@@ -169,11 +170,15 @@ def build_aspect_compass_snapshot(comp_c=ORIGIN):
         f1_pt, f2_pt, d1_pt, d2_pt, link_d1, link_d2, link_f1, link_f2
     ).scale(0.48)
 \n\n""")
+    if any("compass_snapshot" in l for _, _, body in acts for l in body):
+        output.append(helper)
 
     # Render each Act into a standalone ThreeDScene class
     for act_num, title, body_lines in acts:
         # Determine class name from QMD mapping, or fallback to sanitized name
         class_name = qmd_map.get(act_num, sanitize_title_to_class_name(title, act_num))
+        if act_num not in qmd_map:
+            print(f"[!] Act {act_num}: no video in the .qmd, using fallback class name {class_name}")
         
         output.append("# " + "=" * 77)
         output.append(f"# SCENE: {class_name} (Act {act_num})")
@@ -203,6 +208,7 @@ def build_aspect_compass_snapshot(comp_c=ORIGIN):
 
 
 def main():
+    sys.stdout.reconfigure(encoding="utf-8")  # avoid cp1252 crashes on Windows consoles
     parser = argparse.ArgumentParser(description="Split monolithic Manim file into QMD-compatible scene classes.")
     parser.add_argument("--manim", type=Path, default=Path("Chapter1UltimateUpgraded.py"), help="Input monolithic Manim script")
     parser.add_argument("--qmd", type=Path, default=Path("presentation.qmd"), help="Target Reveal.js Quarto QMD file")

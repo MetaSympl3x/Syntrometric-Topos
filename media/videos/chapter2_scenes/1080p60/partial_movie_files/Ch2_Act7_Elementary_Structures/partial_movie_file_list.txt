@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act7_Elementary_Structures/60c77df8a24fd69d9deae362ba44855fcb95223c64ae2c9dc0f28aa3e143e2f1.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act7_Elementary_Structures/c6ac2fd7e9ca5aca463ae04694852dbf036fa66622c69d310f37585de47877d0.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act7_Elementary_Structures/194f981d9d00f0d4b4538f0972225d65ddbd726f6d15de26bc8c3da924b2f59c.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act7_Elementary_Structures/178f61cc6e35202f4c1e204e7b80567f6993dec86976daf0c62d588fc28d504a.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act7_Elementary_Structures/496bc2fc1571f0ac0c2876b0c7ac0b66da0229381801de60624932b8f7e8bba4.mp4'

@@ -1,0 +1,57 @@
+---
+title: "Syntrometrische Maximentelezentrik"
+subtitle: "Complete Teil A Suite (Chapters 1–6) — The Topos of Subjective Experience, Operads, Gauge Curvature, (∞,1)-Metroplexe & Telecentric Coalgebras"
+author: "Research Collective — Department of Mathematical Physics & Formal Epistemology"
+date: "August 2026"
+format:
+  revealjs:
+    theme: [dark, custom_syntrometrie.scss]
+    navigation-mode: grid
+    width: 1920
+    height: 1080
+    margin: 0.04
+    min-scale: 0.2
+    max-scale: 1.8
+    scrollable: true
+    transition: fade
+    background-transition: fade
+    slide-number: c/t
+    controls: true
+    progress: true
+    hash: true
+    center: false
+    html-math-method: mathjax
+    include-in-header: shared/all-headers.html
+    include-after-body:
+      text: |
+        <script src="shared/chapter1-widgets.js"></script>
+        <script src="shared/chapter2-widgets.js"></script>
+        <script src="shared/chapter3-widgets.js"></script>
+        <script src="shared/chapter4-widgets.js"></script>
+        <script src="shared/chapter5-widgets.js"></script>
+        <script src="shared/chapter6-widgets.js"></script>
+---
+
+# Chapter 1: The Topos of Subjective Experience {transition="zoom"}
+
+{{< include shared/includes/ch1_body.qmd >}}
+
+# Chapter 2: The Syntrix Architecture {transition="zoom"}
+
+{{< include shared/includes/ch2_body.qmd >}}
+
+# Chapter 3: Syntrixkorporationen {transition="zoom"}
+
+{{< include shared/includes/ch3_body.qmd >}}
+
+# Chapter 4: Enyphansyntrizen {transition="zoom"}
+
+{{< include shared/includes/ch4_body.qmd >}}
+
+# Chapter 5: Metroplextheorie {transition="zoom"}
+
+{{< include shared/includes/ch5_body.qmd >}}
+
+# Chapter 6: Die televariante äonische Area {transition="zoom"}
+
+{{< include shared/includes/ch6_body.qmd >}}

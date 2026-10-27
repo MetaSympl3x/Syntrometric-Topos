@@ -1,0 +1,8 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act3_Colored_Operad_Grafting/5ccc481b04240440c30e8c569b23691dbd0632d60c1f3fd69f09619e65d41be5.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act3_Colored_Operad_Grafting/ade5f544916223bc5c5ee3e96fc2c7ca88dc145a50b86312f1ffe344fefde250.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act3_Colored_Operad_Grafting/d034f402f6faec0875dae97e0e53cdc6b492543f89b36b4b6617dd4494452269.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act3_Colored_Operad_Grafting/432572ff447651e57461b3945032151224cbc2242c219bece5b83795e24aeefb.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act3_Colored_Operad_Grafting/0b4f041a8df4226c7a1a49458403d58d999308cabc325ad54e7d0f0707a19c4f.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act3_Colored_Operad_Grafting/d6bcd74a4ae267960bcf9d1e7fdf6f1772f3ef51e8fb4358ae537de02c4dff16.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act3_Colored_Operad_Grafting/a2436a38409674f81d2326116a99bbb3ee8b81a68476df9241e5ae203fe66738.mp4'
