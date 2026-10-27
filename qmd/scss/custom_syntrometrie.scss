@@ -833,7 +833,8 @@ html:not(.print-pdf) .reveal .columns,
   }
 
   /* Slide Zoom-to-Fill Canvas: Prevents 1920x1080 shrinking letterbox on mobile */
-  .reveal-viewport.reveal-scroll .reveal-viewport.reveal-scroll .reveal .slides {
+  .reveal-viewport.reveal-scroll .reveal .slides,
+  .reveal-viewport.reveal-scroll .slides {
     position: static !important;
     left: 0 !important;
     top: 0 !important;

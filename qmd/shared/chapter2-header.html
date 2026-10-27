@@ -159,8 +159,13 @@ window.MathJax = {
 }
 </style>
 <script>
-// Expose robust scroll view toggle helper for Quarto Reveal.js
+// Expose robust scroll view toggle helper for Quarto Reveal.js with debounce guard
+let toggleScrollDebounce = 0;
 window.togglePresentationScrollView = function() {
+  const now = Date.now();
+  if (now - toggleScrollDebounce < 350) return;
+  toggleScrollDebounce = now;
+
   if (!window.Reveal) return;
   const qs = window.Reveal.getPlugin ? window.Reveal.getPlugin("quarto-support") : null;
   if (qs && typeof qs.toggleScrollView === 'function') {
@@ -168,7 +173,7 @@ window.togglePresentationScrollView = function() {
   } else if (typeof window.Reveal.toggleScrollView === 'function') {
     const isScroll = typeof window.Reveal.isScrollView === 'function' && window.Reveal.isScrollView();
     if (isScroll) {
-      window.Reveal.configure({  });
+      window.Reveal.configure({ scrollActivationWidth: 0 });
       window.Reveal.toggleScrollView(false);
     } else {
       window.Reveal.configure({ scrollActivationWidth: null });
@@ -309,7 +314,9 @@ window.addEventListener('message', (event) => {
     if (window.Reveal) {
       if (typeof window.Reveal.configure === 'function') {
         try {
-          window.Reveal.configure({ mouseWheel: true });
+          window.Reveal.configure({
+            mouseWheel: true
+          });
         } catch (e) {}
       }
 

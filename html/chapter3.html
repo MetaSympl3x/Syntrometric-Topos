@@ -36,7 +36,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="chapter3_files/libs/revealjs/dist/theme/quarto-c225961c682473e469280b636d01a3d2.css">
+  <link rel="stylesheet" href="chapter3_files/libs/revealjs/dist/theme/quarto-ee18be9d7ba476ee55d8555d1190af93.css">
   <link href="chapter3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="chapter3_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="chapter3_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -435,9 +435,19 @@
 
   <script>
 
-  // Expose robust scroll view toggle helper for Quarto Reveal.js
+  // Expose robust scroll view toggle helper for Quarto Reveal.js with debounce guard
+
+  let toggleScrollDebounce = 0;
 
   window.togglePresentationScrollView = function() {
+
+    const now = Date.now();
+
+    if (now - toggleScrollDebounce < 350) return;
+
+    toggleScrollDebounce = now;
+
+  
 
     if (!window.Reveal) return;
 
@@ -453,7 +463,7 @@
 
       if (isScroll) {
 
-        window.Reveal.configure({  });
+        window.Reveal.configure({ scrollActivationWidth: 0 });
 
         window.Reveal.toggleScrollView(false);
 
@@ -735,7 +745,11 @@
 
           try {
 
-            window.Reveal.configure({ mouseWheel: true });
+            window.Reveal.configure({
+
+              mouseWheel: true
+
+            });
 
           } catch (e) {}
 

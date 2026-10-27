@@ -731,34 +731,31 @@
       if (frame && frame.contentWindow) frame.contentWindow.focus();
     }
 
-    function toggleScrollView() {
+        function toggleScrollView() {
       const frame = document.getElementById('chapter-frame');
-      if (!frame) return;
+      if (!frame || !frame.contentWindow) return;
 
-      // 1. PostMessage to iframe (always works across origins and file://)
-      if (frame.contentWindow) {
-        frame.contentWindow.postMessage({ type: 'toggle-scroll-view' }, '*');
-      }
-
-      // 2. Direct call if same-origin permits
+      let called = false;
       try {
         const win = frame.contentWindow;
-        if (win) {
-          if (typeof win.togglePresentationScrollView === 'function') {
-            win.togglePresentationScrollView();
-            setTimeout(updateScrollBtn, 80);
-            return;
-          }
-          if (win.Reveal) {
-            const qs = win.Reveal.getPlugin ? win.Reveal.getPlugin("quarto-support") : null;
-            if (qs && typeof qs.toggleScrollView === 'function') {
-              qs.toggleScrollView();
-              setTimeout(updateScrollBtn, 80);
-              return;
-            }
+        if (typeof win.togglePresentationScrollView === 'function') {
+          win.togglePresentationScrollView();
+          called = true;
+        } else if (win.Reveal) {
+          const qs = win.Reveal.getPlugin ? win.Reveal.getPlugin("quarto-support") : null;
+          if (qs && typeof qs.toggleScrollView === 'function') {
+            qs.toggleScrollView();
+            called = true;
           }
         }
-      } catch (e) {}
+      } catch (e) {
+        // Handled below if cross-origin
+      }
+
+      // ONLY use postMessage if direct same-origin call was not possible
+      if (!called) {
+        frame.contentWindow.postMessage({ type: 'toggle-scroll-view' }, '*');
+      }
 
       setTimeout(updateScrollBtn, 120);
     }
