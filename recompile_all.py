@@ -44,11 +44,13 @@ print("\n4. Syncing deliverables to root directory for GitHub Pages...")
 for f in html_dir.glob("*.html"):
     shutil.copy2(f, root / f.name)
 for d in html_dir.iterdir():
-    if d.is_dir() and (d.name.endswith("_files") or d.name == "shared"):
+    if d.is_dir() and d.name.endswith("_files"):
         dest = root / d.name
         if dest.exists():
             shutil.rmtree(dest, ignore_errors=True)
         shutil.copytree(d, dest, dirs_exist_ok=True)
+if (root / "shared").exists():
+    shutil.copytree(root / "shared", html_dir / "shared", dirs_exist_ok=True)
 print("  Synced deliverables to root successfully.")
 
 print("\n==========================================")

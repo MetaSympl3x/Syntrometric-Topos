@@ -134,3 +134,202 @@ window.MathJax = {
   box-sizing: border-box !important;
 }
 </style>
+<script>
+// Expose robust scroll view toggle helper for Quarto Reveal.js
+window.togglePresentationScrollView = function() {
+  if (!window.Reveal) return;
+  const qs = window.Reveal.getPlugin ? window.Reveal.getPlugin("quarto-support") : null;
+  if (qs && typeof qs.toggleScrollView === 'function') {
+    qs.toggleScrollView();
+  } else if (typeof window.Reveal.toggleScrollView === 'function') {
+    const isScroll = typeof window.Reveal.isScrollView === 'function' && window.Reveal.isScrollView();
+    if (isScroll) {
+      window.Reveal.configure({  });
+      window.Reveal.toggleScrollView(false);
+    } else {
+      window.Reveal.configure({ scrollActivationWidth: null });
+      window.Reveal.toggleScrollView(true);
+    }
+  } else {
+    const ev = new KeyboardEvent('keydown', { key: 'r', keyCode: 82, which: 82, bubbles: true });
+    document.dispatchEvent(ev);
+  }
+
+  setTimeout(() => {
+    if (window.MathJax && window.MathJax.Hub) {
+      window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
+    }
+  }, 100);
+
+  setTimeout(() => {
+    const isScroll = window.Reveal && typeof window.Reveal.isScrollView === 'function' ? window.Reveal.isScrollView() : false;
+    try { window.parent.postMessage({ type: 'scroll-view-state', isScrollView: isScroll }, '*'); } catch (e) {}
+  }, 150);
+};
+
+// Listen for message from parent index.html
+window.addEventListener('message', (event) => {
+  if (!event.data) return;
+  if (event.data.type === 'toggle-scroll-view') {
+    window.togglePresentationScrollView();
+  } else if (event.data.type === 'window-resize' || event.data.type === 'resize') {
+    if (window.handleDynamicScaling) window.handleDynamicScaling();
+  }
+});
+
+// Dynamic Window Scaling & Resize Controller
+(function() {
+  let resizeTimer = null;
+
+  function performDynamicScaling() {
+    if (window.Reveal) {
+      if (typeof window.Reveal.layout === 'function') {
+        window.Reveal.layout();
+      }
+    }
+    if (window.MathJax && window.MathJax.Hub) {
+      try {
+        window.MathJax.Hub.Queue(["Rerender", window.MathJax.Hub]);
+      } catch (e) {}
+    }
+    if (typeof prepareVideos === 'function') {
+      prepareVideos();
+    }
+    try {
+      const scale = window.Reveal && typeof window.Reveal.getScale === 'function' ? window.Reveal.getScale() : 1;
+      window.dispatchEvent(new CustomEvent('syntrometrie:resize', {
+        detail: {
+          width: window.innerWidth,
+          height: window.innerHeight,
+          scale: scale,
+          isScroll: window.Reveal && typeof window.Reveal.isScrollView === 'function' ? window.Reveal.isScrollView() : false
+        }
+      }));
+    } catch (e) {}
+  }
+
+  window.handleDynamicScaling = function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(performDynamicScaling, 50);
+  };
+
+  window.addEventListener('resize', window.handleDynamicScaling, { passive: true });
+  window.addEventListener('orientationchange', () => setTimeout(performDynamicScaling, 100));
+  document.addEventListener('fullscreenchange', () => setTimeout(performDynamicScaling, 60));
+})();
+
+// Mobile & Scroll View Animation Video Controller + Scroll Mode MathJax Trigger
+(function() {
+  function prepareVideos() {
+    const videos = document.querySelectorAll('video');
+    videos.forEach(v => {
+      v.setAttribute('playsinline', '');
+      v.setAttribute('webkit-playsinline', '');
+      v.setAttribute('muted', '');
+      v.muted = true;
+      v.defaultMuted = true;
+      v.setAttribute('loop', '');
+      v.setAttribute('preload', 'auto');
+      v.style.cursor = 'pointer';
+
+      if (!v.dataset.touchBound) {
+        v.dataset.touchBound = 'true';
+        v.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (v.paused) {
+            v.play().catch(() => {});
+          } else {
+            v.pause();
+          }
+        });
+      }
+
+      const slide = v.closest('.present, .scroll-page, section');
+      if (slide && (slide.classList.contains('present') || document.querySelector('.reveal-viewport.reveal-scroll'))) {
+        v.play().catch(() => {});
+      }
+    });
+
+    if ('IntersectionObserver' in window && !window.__videoObserverInitialized) {
+      window.__videoObserverInitialized = true;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const vid = entry.target;
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.15) {
+            vid.play().catch(() => {});
+          } else if (!entry.isIntersecting) {
+            vid.pause();
+          }
+        });
+      }, { threshold: [0, 0.15, 0.7] });
+
+      videos.forEach(v => observer.observe(v));
+    }
+  }
+  window.prepareVideos = prepareVideos;
+
+  function unlockOnTouch() {
+    document.querySelectorAll('video').forEach(v => {
+      v.muted = true;
+      v.defaultMuted = true;
+      const slide = v.closest('.present, .scroll-page');
+      if (slide) v.play().catch(() => {});
+    });
+    document.removeEventListener('touchstart', unlockOnTouch);
+    document.removeEventListener('click', unlockOnTouch);
+  }
+  document.addEventListener('touchstart', unlockOnTouch, { passive: true });
+  document.addEventListener('click', unlockOnTouch, { passive: true });
+
+  function initRevealHooks() {
+    if (window.Reveal) {
+      if (typeof window.Reveal.configure === 'function') {
+        try {
+          window.Reveal.configure({ mouseWheel: true });
+        } catch (e) {}
+      }
+
+      window.Reveal.on('slidechanged', () => setTimeout(prepareVideos, 80));
+      window.Reveal.on('ready', () => {
+        setTimeout(prepareVideos, 150);
+        try {
+          const isScroll = window.Reveal.isScrollView && window.Reveal.isScrollView();
+          window.parent.postMessage({ type: 'scroll-view-state', isScrollView: isScroll }, '*');
+        } catch (e) {}
+      });
+      window.Reveal.on('scroll-view-activated', () => {
+        setTimeout(() => {
+          if (window.MathJax && window.MathJax.Hub) {
+            window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
+          }
+          prepareVideos();
+        }, 150);
+        try { window.parent.postMessage({ type: 'scroll-view-state', isScrollView: true }, '*'); } catch (e) {}
+      });
+      window.Reveal.on('scroll-view-deactivated', () => {
+        setTimeout(() => {
+          if (window.MathJax && window.MathJax.Hub) {
+            window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
+          }
+          prepareVideos();
+        }, 150);
+        try { window.parent.postMessage({ type: 'scroll-view-state', isScrollView: false }, '*'); } catch (e) {}
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      prepareVideos();
+      initRevealHooks();
+    });
+  } else {
+    prepareVideos();
+    initRevealHooks();
+  }
+  window.addEventListener('load', () => {
+    prepareVideos();
+    initRevealHooks();
+  });
+})();
+</script>

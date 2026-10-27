@@ -6,24 +6,25 @@ date: "August 2026"
 format:
   revealjs:
     theme: [dark, scss/custom_syntrometrie.scss]
-    slide-number: c/t
-    navigation-mode: linear
+    width: 1920
+    height: 1080
+    margin: 0.05
+    min-scale: 0.2
+    max-scale: 1.5
     transition: fade
     background-transition: fade
-    width: 1440
-    height: 900
-    margin: 0.04
-    min-scale: 0.2
-    max-scale: 2.0
+    slide-number: c/t
+    controls: true
+    progress: true
+    hash: true
+    center: false
     mouse-wheel: true
     scrollable: true
-    mathjax: true
-    keep-md: true
+    html-math-method: mathjax
     include-in-header: shared/chapter4-header.html
     include-after-body:
       text: |
         <script src="shared/chapter4-widgets.js"></script>
-
 ---
 
 ## §4.1.1–4.1.2 Stratum D: Enyphanie, Protyposis & 4-Store Tetrahedron {transition="convex"}

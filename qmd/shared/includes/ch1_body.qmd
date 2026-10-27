@@ -281,7 +281,7 @@ Evaluated via the **dialektische Basischiffre** $\zeta_n$: $D_{nn} \equiv \zeta_
 :::
 
 <div class="video-container">
-  <video loop muted playsinline src="media/Act3_Secs_111112_Prdikatrix_Dialektik.mp4" style="max-height:190px;"></video>
+  <video autoplay data-autoplay loop muted playsinline src="media/Act3_Secs_111112_Prdikatrix_Dialektik.mp4" style="max-height:190px;"></video>
   <div class="video-caption">Manim Act III: Prädikatrix &amp; Dialektik Bands</div>
 </div>
 
@@ -445,7 +445,7 @@ $$
 | **Universalquantor ($\mathbf{U}$)** | **All $\mathfrak{A}$** | **Global Invariant** | Right Adjoint $\forall_f$ |
 
 <div class="video-container">
-  <video loop muted playsinline src="media/Act5_Secs_114116_Aspektivfelder_7.mp4" style="max-height:175px;"></video>
+  <video autoplay data-autoplay loop muted playsinline src="media/Act5_Secs_114116_Aspektivfelder_7.mp4" style="max-height:175px;"></video>
   <div class="video-caption">Manim Act V: The 7 Aspect Subsystems</div>
 </div>
 

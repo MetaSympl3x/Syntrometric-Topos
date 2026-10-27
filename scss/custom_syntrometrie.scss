@@ -202,6 +202,27 @@ $code-block-border-color:   rgba($syn-blue, 0.4);
   border-left-color: $syn-gold;
 }
 
+
+// Two-column layout grid for desktop
+.reveal .grid-2,
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: start;
+}
+
+.reveal .video-grid-2,
+.video-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 // ===========================================================================
 // 5. MANIM 3D VIDEO CONTAINERS
 // ===========================================================================
@@ -733,6 +754,10 @@ $code-block-border-color:   rgba($syn-blue, 0.4);
 // ===========================================================================
 // TOP-EDGE FLUSH ALIGNMENT (Desktop & Presentation Mode)
 // Moves headers and panels up to the top of the page/Menu to eliminate dead
+// top space and prevent cropping at the bottom on desktop, while preserving
+// mobile padding and scaling untouched.
+@media (min-width: 901px) {
+// Moves headers and panels up to the top of the page/Menu to eliminate dead
 // top space and prevent cropping at the bottom, while preserving 100% of the
 // original scaling, fonts, and sizing. Overrides reveal.css padding (60px).
 // ===========================================================================
@@ -791,6 +816,7 @@ html:not(.print-pdf) .reveal .columns,
   margin-top: 0.2em;
   margin-bottom: 0.4em;
 }
+}
 
 // 2. Narrow screens (Mobile & Tablet <= 900px): Zoom to fill, responsive stacking, touch-friendly UI.
 @media (max-width: 900px) {
@@ -807,7 +833,7 @@ html:not(.print-pdf) .reveal .columns,
   }
 
   /* Slide Zoom-to-Fill Canvas: Prevents 1920x1080 shrinking letterbox on mobile */
-  .reveal .slides {
+  .reveal-viewport.reveal-scroll .reveal-viewport.reveal-scroll .reveal .slides {
     position: static !important;
     left: 0 !important;
     top: 0 !important;
@@ -821,8 +847,6 @@ html:not(.print-pdf) .reveal .columns,
     inset: 0 !important;
   }
 
-  .reveal .slides section,
-  .reveal .slides section.slide,
   .reveal-viewport.reveal-scroll .slides section,
   .reveal-viewport.reveal-scroll .slides section.slide {
     font-size: clamp(14px, 3.8vw, 19px) !important;

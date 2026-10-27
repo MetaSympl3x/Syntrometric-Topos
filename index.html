@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Syntrometrische Maximentelezentrik — Complete Interactive Topos &amp; Manim Suite (Chapters 1–15)</title>
   <style>
     :root {
@@ -331,15 +331,134 @@
       color: var(--teal);
       font-weight: 700;
     }
-  </style>
+  
+    .brand-short { display: none; }
+
+    /* Mobile Browser Layout (Screens <= 768px) */
+    @media (max-width: 768px) {
+      .brand-long { display: none; }
+      .brand-short { display: inline; font-size: 0.88rem; font-weight: 700; color: #fff; }
+
+      .portal-header {
+        height: auto;
+        min-height: 72px;
+        flex-wrap: wrap;
+        padding: 6px 8px 4px 8px;
+        gap: 4px;
+        padding-top: max(6px, env(safe-area-inset-top));
+      }
+
+      .brand-group {
+        order: 1;
+        gap: 5px;
+        max-width: calc(100% - 210px);
+        overflow: hidden;
+      }
+
+      .portal-actions {
+        order: 2;
+        gap: 3px;
+        margin-left: auto;
+      }
+
+      .action-btn {
+        padding: 4px 7px;
+        font-size: 0.68rem;
+        min-height: 28px;
+      }
+
+      .action-btn .btn-text {
+        display: none; /* Hide labels on mobile, keep sleek touch icons */
+      }
+
+      .chapter-tabs {
+        order: 3;
+        width: 100%;
+        margin: 2px 0 0 0;
+        padding: 2px 2px;
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+      }
+
+      .ch-btn {
+        padding: 4px 8px;
+        font-size: 0.70rem;
+        border-radius: 6px;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+      }
+
+      .ch-btn span:not(.ch-num) {
+        max-width: 110px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .viewport-wrapper {
+        top: 72px;
+        width: 100%;
+        bottom: 0;
+      }
+
+      /* Mobile Zen Mode: 100% Screen Fill */
+      body.zen-mode .viewport-wrapper {
+        top: 0;
+      }
+
+      .zen-restore-btn {
+        top: max(10px, env(safe-area-inset-top));
+        right: 10px;
+        font-size: 0.68rem;
+        padding: 4px 8px;
+      }
+
+      /* Atlas Modal on Mobile */
+      .overview-modal {
+        padding: 0;
+      }
+
+      .overview-container {
+        max-height: 100vh;
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+        padding: 14px 12px;
+      }
+
+      .overview-header h2 {
+        font-size: 1rem;
+      }
+
+      .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .overview-card {
+        padding: 10px 12px;
+      }
+
+      .overview-card h3 {
+        font-size: 0.85rem;
+      }
+
+      .overview-card p {
+        font-size: 0.72rem;
+        margin: 6px 0;
+      }
+    }
+</style>
 </head>
 <body>
 
   <!-- Persistent Top Navigation Bar -->
   <header class="portal-header">
-    <div class="brand-group" onclick="toggleOverview()" title="Open Full Chapter Atlas (Shortcut: M)">
-      <span class="brand-badge">Teil A–C · Ch 1–15</span>
-      <span class="brand-title">Syntrometrische Maximentelezentrik</span>
+        <div class="brand-group" onclick="toggleOverview()" title="Open Full Chapter Atlas (Shortcut: M)">
+      <span class="brand-badge">Ch 1–15</span>
+      <span class="brand-title"><span class="brand-long">Syntrometrische Maximentelezentrik</span><span class="brand-short">Syntrometrie</span></span>
       <span class="brand-sub">— Complete Interactive Suite</span>
     </div>
 
@@ -391,14 +510,14 @@
       </button>
     </nav>
 
-    <div class="portal-actions">
-      <button class="action-btn" onclick="stepChapter(-1)" title="Previous Chapter (Alt + ←)">◀ Prev</button>
-      <button class="action-btn" onclick="stepChapter(1)" title="Next Chapter (Alt + →)">Next ▶</button>
-      <button class="action-btn" id="scroll-toggle-btn" onclick="toggleScrollView()" title="Toggle Continuous Scroll Mode (Shortcut: R)">📜 Scroll View</button>
-      <button class="action-btn" onclick="selectMegaDeck()" id="mega-btn" title="Switch to Unified 2D Grid Mega-Deck (All 15 Chapters in 1 File)">⊞ 2D Mega-Deck</button>
-      <button class="action-btn" onclick="toggleOverview()" title="Chapter Atlas Grid (Shortcut: M)">☰ Atlas</button>
-      <a id="standalone-link" class="action-btn" href="chapter1.html" target="_blank" title="Open current view in a standalone tab">↗ Standalone</a>
-      <button class="action-btn" onclick="toggleZenMode()" title="Hide top bar for fullscreen presentation">⛶ Zen</button>
+        <div class="portal-actions">
+      <button class="action-btn" onclick="stepChapter(-1)" title="Previous Chapter (Alt + ←)">◀<span class="btn-text"> Prev</span></button>
+      <button class="action-btn" onclick="stepChapter(1)" title="Next Chapter (Alt + →)"><span class="btn-text">Next </span>▶</button>
+      <button class="action-btn" id="scroll-toggle-btn" onclick="toggleScrollView()" title="Toggle Continuous Scroll Mode (Shortcut: R)">📜<span class="btn-text"> Scroll View</span></button>
+      <button class="action-btn" onclick="selectMegaDeck()" id="mega-btn" title="Switch to Unified 2D Grid Mega-Deck">⊞<span class="btn-text"> 2D Deck</span></button>
+      <button class="action-btn" onclick="toggleOverview()" title="Chapter Atlas Grid (Shortcut: M)">☰<span class="btn-text"> Atlas</span></button>
+      <a id="standalone-link" class="action-btn" href="chapter1.html" target="_blank" title="Open in new tab">↗<span class="btn-text"> Tab</span></a>
+      <button class="action-btn" onclick="toggleZenMode()" title="Toggle Zen / Fullscreen (Hide Bar)">⛶<span class="btn-text"> Zen</span></button>
     </div>
   </header>
 
@@ -406,7 +525,7 @@
 
   <!-- Fullscreen Chapter Deck Viewport -->
   <main class="viewport-wrapper">
-    <iframe id="chapter-frame" src="chapter1.html" allowfullscreen></iframe>
+    <iframe id="chapter-frame" src="chapter1.html" allow="autoplay; fullscreen" allowfullscreen onload="updateScrollBtn(); handleWindowResize();"></iframe></iframe>
   </main>
 
   <!-- Chapter Atlas Modal -->
@@ -562,24 +681,86 @@
       modal.classList.toggle('open');
     }
 
+        // Dynamic Window Scaling & Responsive Layout Controller
+    function handleWindowResize() {
+      const header = document.querySelector('.portal-header');
+      const wrapper = document.querySelector('.viewport-wrapper');
+      if (header && wrapper) {
+        if (!document.body.classList.contains('zen-mode')) {
+          const h = header.getBoundingClientRect().height;
+          wrapper.style.top = h + 'px';
+          wrapper.style.height = 'calc(100vh - ' + h + 'px)';
+          document.documentElement.style.setProperty('--portal-header-height', h + 'px');
+        } else {
+          wrapper.style.top = '0px';
+          wrapper.style.height = '100vh';
+        }
+      }
+
+      // Signal chapter iframe to dynamically re-scale
+      const frame = document.getElementById('chapter-frame');
+      if (frame && frame.contentWindow) {
+        try {
+          frame.contentWindow.postMessage({
+            type: 'window-resize',
+            width: window.innerWidth,
+            height: window.innerHeight
+          }, '*');
+          if (frame.contentWindow.Reveal && typeof frame.contentWindow.Reveal.layout === 'function') {
+            frame.contentWindow.Reveal.layout();
+          }
+        } catch (e) {}
+      }
+    }
+
+    let portalResizeTimer = null;
+    function debouncedPortalResize() {
+      handleWindowResize();
+      clearTimeout(portalResizeTimer);
+      portalResizeTimer = setTimeout(handleWindowResize, 50);
+    }
+
+    window.addEventListener('resize', debouncedPortalResize, { passive: true });
+    window.addEventListener('orientationchange', () => setTimeout(handleWindowResize, 100));
+    document.addEventListener('fullscreenchange', () => setTimeout(handleWindowResize, 60));
+
     function toggleZenMode() {
       document.body.classList.toggle('zen-mode');
+      handleWindowResize();
       const frame = document.getElementById('chapter-frame');
       if (frame && frame.contentWindow) frame.contentWindow.focus();
     }
 
     function toggleScrollView() {
       const frame = document.getElementById('chapter-frame');
+      if (!frame) return;
+
+      // 1. PostMessage to iframe (always works across origins and file://)
+      if (frame.contentWindow) {
+        frame.contentWindow.postMessage({ type: 'toggle-scroll-view' }, '*');
+      }
+
+      // 2. Direct call if same-origin permits
       try {
-        if (frame && frame.contentWindow && frame.contentWindow.Reveal) {
-          if (typeof frame.contentWindow.Reveal.toggleScrollView === 'function') {
-            frame.contentWindow.Reveal.toggleScrollView();
-            updateScrollBtn();
+        const win = frame.contentWindow;
+        if (win) {
+          if (typeof win.togglePresentationScrollView === 'function') {
+            win.togglePresentationScrollView();
+            setTimeout(updateScrollBtn, 80);
+            return;
+          }
+          if (win.Reveal) {
+            const qs = win.Reveal.getPlugin ? win.Reveal.getPlugin("quarto-support") : null;
+            if (qs && typeof qs.toggleScrollView === 'function') {
+              qs.toggleScrollView();
+              setTimeout(updateScrollBtn, 80);
+              return;
+            }
           }
         }
-      } catch (e) {
-        console.warn('Scroll view toggle error:', e);
-      }
+      } catch (e) {}
+
+      setTimeout(updateScrollBtn, 120);
     }
 
     function updateScrollBtn() {
@@ -587,24 +768,43 @@
       const btn = document.getElementById('scroll-toggle-btn');
       if (!btn) return;
       try {
-        if (frame && frame.contentWindow && frame.contentWindow.Reveal) {
-          const isScroll = frame.contentWindow.Reveal.isScrollView && frame.contentWindow.Reveal.isScrollView();
-          if (isScroll) {
-            btn.classList.add('active');
-            btn.innerHTML = '▤ Slide View';
-            btn.style.borderColor = 'var(--gold)';
-            btn.style.color = 'var(--gold)';
-            btn.style.background = 'rgba(255, 215, 0, 0.15)';
-          } else {
-            btn.classList.remove('active');
-            btn.innerHTML = '📜 Scroll View';
-            btn.style.borderColor = '';
-            btn.style.color = '';
-            btn.style.background = '';
+        const win = frame ? frame.contentWindow : null;
+        let isScroll = false;
+        if (win) {
+          if (win.document && win.document.querySelector('.reveal-viewport.reveal-scroll')) {
+            isScroll = true;
+          } else if (win.Reveal && typeof win.Reveal.isScrollView === 'function') {
+            isScroll = win.Reveal.isScrollView();
           }
         }
+        applyScrollBtnState(isScroll);
       } catch (e) {}
     }
+
+    function applyScrollBtnState(isScroll) {
+      const btn = document.getElementById('scroll-toggle-btn');
+      if (!btn) return;
+      if (isScroll) {
+        btn.classList.add('active');
+        btn.innerHTML = '▤<span class="btn-text"> Slide View</span>';
+        btn.style.borderColor = 'var(--gold)';
+        btn.style.color = 'var(--gold)';
+        btn.style.background = 'rgba(255, 215, 0, 0.15)';
+      } else {
+        btn.classList.remove('active');
+        btn.innerHTML = '📜<span class="btn-text"> Scroll View</span>';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+        btn.style.background = '';
+      }
+    }
+
+    window.addEventListener('message', (event) => {
+      if (!event.data) return;
+      if (event.data.type === 'scroll-view-state') {
+        applyScrollBtnState(event.data.isScrollView);
+      }
+    });
 
     // Parse initial hash (e.g. index.html#ch11 or index.html#all)
     function initFromHash() {
@@ -644,6 +844,7 @@
     });
 
     initFromHash();
+    handleWindowResize();
   </script>
 </body>
 </html>
