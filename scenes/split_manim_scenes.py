@@ -210,7 +210,7 @@ def build_aspect_compass_snapshot(comp_c=ORIGIN):
 def main():
     sys.stdout.reconfigure(encoding="utf-8")  # avoid cp1252 crashes on Windows consoles
     parser = argparse.ArgumentParser(description="Split monolithic Manim file into QMD-compatible scene classes.")
-    parser.add_argument("--manim", type=Path, default=Path("Chapter1UltimateUpgraded.py"), help="Input monolithic Manim script")
+    parser.add_argument("--manim", type=Path, default=Path("Chapter1_scene.py"), help="Input monolithic Manim script")
     parser.add_argument("--qmd", type=Path, default=Path("presentation.qmd"), help="Target Reveal.js Quarto QMD file")
     parser.add_argument("--output", type=Path, default=Path("chapter1_scenes.py"), help="Output split scenes Python file")
     
