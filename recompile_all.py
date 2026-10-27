@@ -9,7 +9,7 @@ results = {}
 for ch in range(1, 16):
     qmd_rel = f"qmd/chapter{ch}.qmd"
     print(f"  Rendering {qmd_rel}...")
-    r = subprocess.run(["quarto", "render", qmd_rel, "--output-dir", "."], cwd=str(root), capture_output=True, text=True, encoding="utf-8")
+    r = subprocess.run(["quarto", "render", qmd_rel, "--output-dir", str(root)], cwd=str(root), capture_output=True, text=True, encoding="utf-8")
     if r.returncode != 0:
         print(f"    ERROR rendering {qmd_rel}:", r.stderr[:300])
         results[ch] = "FAIL (render)"
@@ -24,7 +24,7 @@ print("\n2. Updating unified suite and mega-deck...")
 subprocess.run([sys.executable, "build_unified_suite.py"], cwd=str(root), check=True)
 
 print("3. Rendering qmd/syntrometrie_all.qmd...")
-r_all = subprocess.run(["quarto", "render", "qmd/syntrometrie_all.qmd", "--output-dir", "."], cwd=str(root), capture_output=True, text=True, encoding="utf-8")
+r_all = subprocess.run(["quarto", "render", "qmd/syntrometrie_all.qmd", "--output-dir", str(root)], cwd=str(root), capture_output=True, text=True, encoding="utf-8")
 if r_all.returncode == 0:
     print("  syntrometrie_all.html rendered successfully!")
 else:

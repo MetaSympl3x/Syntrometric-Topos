@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Syntrometrische Maximentelezentrik — Complete Interactive Topos &amp; Manim Suite (Chapters 1–15)</title>
   <style>
     :root {
@@ -331,6 +331,125 @@
       color: var(--teal);
       font-weight: 700;
     }
+
+    .brand-short { display: none; }
+
+    /* Mobile Browser Layout (Screens <= 768px) */
+    @media (max-width: 768px) {
+      .brand-long { display: none; }
+      .brand-short { display: inline; font-size: 0.88rem; font-weight: 700; color: #fff; }
+
+      .portal-header {
+        height: auto;
+        min-height: 72px;
+        flex-wrap: wrap;
+        padding: 6px 8px 4px 8px;
+        gap: 4px;
+        padding-top: max(6px, env(safe-area-inset-top));
+      }
+
+      .brand-group {
+        order: 1;
+        gap: 5px;
+        max-width: calc(100% - 170px);
+        overflow: hidden;
+      }
+
+      .portal-actions {
+        order: 2;
+        gap: 3px;
+        margin-left: auto;
+      }
+
+      .action-btn {
+        padding: 4px 7px;
+        font-size: 0.68rem;
+        min-height: 28px;
+      }
+
+      .action-btn .btn-text {
+        display: none; /* Hide labels on mobile, keep sleek touch icons */
+      }
+
+      .chapter-tabs {
+        order: 3;
+        width: 100%;
+        margin: 2px 0 0 0;
+        padding: 2px 2px;
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+      }
+
+      .ch-btn {
+        padding: 5px 9px;
+        font-size: 0.70rem;
+        border-radius: 6px;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+      }
+
+      .ch-btn span:not(.ch-num) {
+        max-width: 110px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .viewport-wrapper {
+        top: 72px;
+        width: 100%;
+        bottom: 0;
+      }
+
+      /* Mobile Zen Mode: 100% Screen Fill */
+      body.zen-mode .viewport-wrapper {
+        top: 0;
+      }
+
+      .zen-restore-btn {
+        top: max(10px, env(safe-area-inset-top));
+        right: 10px;
+        font-size: 0.68rem;
+        padding: 4px 8px;
+      }
+
+      /* Atlas Modal on Mobile */
+      .overview-modal {
+        padding: 0;
+      }
+
+      .overview-container {
+        max-height: 100vh;
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+        padding: 14px 12px;
+      }
+
+      .overview-header h2 {
+        font-size: 1rem;
+      }
+
+      .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .overview-card {
+        padding: 10px 12px;
+      }
+
+      .overview-card h3 {
+        font-size: 0.85rem;
+      }
+
+      .overview-card p {
+        font-size: 0.72rem;
+        margin: 6px 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -338,8 +457,8 @@
   <!-- Persistent Top Navigation Bar -->
   <header class="portal-header">
     <div class="brand-group" onclick="toggleOverview()" title="Open Full Chapter Atlas (Shortcut: M)">
-      <span class="brand-badge">Teil A–C · Ch 1–15</span>
-      <span class="brand-title">Syntrometrische Maximentelezentrik</span>
+      <span class="brand-badge">Ch 1–15</span>
+      <span class="brand-title"><span class="brand-long">Syntrometrische Maximentelezentrik</span><span class="brand-short">Syntrometrie</span></span>
       <span class="brand-sub">— Complete Interactive Suite</span>
     </div>
 
@@ -392,12 +511,12 @@
     </nav>
 
     <div class="portal-actions">
-      <button class="action-btn" onclick="stepChapter(-1)" title="Previous Chapter (Alt + ←)">◀ Prev</button>
-      <button class="action-btn" onclick="stepChapter(1)" title="Next Chapter (Alt + →)">Next ▶</button>
-      <button class="action-btn" onclick="selectMegaDeck()" id="mega-btn" title="Switch to Unified 2D Grid Mega-Deck (All 15 Chapters in 1 File)">⊞ 2D Mega-Deck</button>
-      <button class="action-btn" onclick="toggleOverview()" title="Chapter Atlas Grid (Shortcut: M)">☰ Atlas</button>
-      <a id="standalone-link" class="action-btn" href="chapter1.html" target="_blank" title="Open current view in a standalone tab">↗ Standalone</a>
-      <button class="action-btn" onclick="toggleZenMode()" title="Hide top bar for fullscreen presentation">⛶ Zen</button>
+      <button class="action-btn" onclick="stepChapter(-1)" title="Previous Chapter (Alt + ←)">◀<span class="btn-text"> Prev</span></button>
+      <button class="action-btn" onclick="stepChapter(1)" title="Next Chapter (Alt + →)"><span class="btn-text">Next </span>▶</button>
+      <button class="action-btn" onclick="selectMegaDeck()" id="mega-btn" title="Switch to Unified 2D Grid Mega-Deck">⊞<span class="btn-text"> 2D Deck</span></button>
+      <button class="action-btn" onclick="toggleOverview()" title="Chapter Atlas Grid (Shortcut: M)">☰<span class="btn-text"> Atlas</span></button>
+      <a id="standalone-link" class="action-btn" href="chapter1.html" target="_blank" title="Open in new tab">↗<span class="btn-text"> Tab</span></a>
+      <button class="action-btn" onclick="toggleZenMode()" title="Toggle Zen / Fullscreen (Hide Bar)">⛶<span class="btn-text"> Zen</span></button>
     </div>
   </header>
 

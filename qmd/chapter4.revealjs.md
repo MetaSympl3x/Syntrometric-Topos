@@ -5,7 +5,7 @@ author: "Research Collective (Department of Mathematical Physics & Formal Episte
 date: "August 2026"
 format:
   revealjs:
-    theme: [dark, custom_syntrometrie.scss]
+    theme: [dark, scss/custom_syntrometrie.scss]
     slide-number: c/t
     navigation-mode: linear
     transition: fade
