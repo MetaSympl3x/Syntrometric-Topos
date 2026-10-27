@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act8_Bisimplicial_Tectonic/bde69bc2ef45a9e679d9cf1236212d2d0b11b5a80241cfba6dd43704f2e3d470.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act8_Bisimplicial_Tectonic/c0d0c18fa88980666de7ad99bf5b1f3ac1300282983c1a7a5889d7e5447d15d1.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act8_Bisimplicial_Tectonic/212c6a5acb083f2e1a50287f75ba77b1c8260670aa790bda218b3fbc81168dcc.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act8_Bisimplicial_Tectonic/828d4f395e1983aea8de8e4559ce62c076721d6c02c06173c9f39c434a8515e6.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act8_Bisimplicial_Tectonic/0b7959dfec92730f98383d9e547d44ca9b798f3688f6936654344fd37d9873d1.mp4'

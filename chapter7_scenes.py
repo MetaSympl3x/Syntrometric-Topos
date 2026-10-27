@@ -689,7 +689,7 @@ class Ch7_Act12_Synthesis_Bridge_Ch8(ThreeDScene):
         fin7_tex = MathTex(
             r"\bullet\;\textbf{Analytical Obstruction:}\;\text{Unconstrained multilinear operations }f\in\mathcal{O}_{\text{quant}}\text{ entangle all coordinates }(y_1,\dots,y_m).\\[4pt]"
             r"\bullet\;\textbf{Functorial Ascent to Chapter 8:}\;\text{Seeley }C^\infty\text{ Extensions on }(\mathbb{R}_{\ge 0})^n,\;\text{Grothendieck Nuclearity }"
-            r"\mathscr{S}(\mathcal{M}_m)\cong\widehat{\bigotimes}_\pi\mathscr{S}(\mathbb{R}_{\ge 0})\text{ \& }15\to 3\text{ Modes!}",
+            r"\mathcal{S}(\mathcal{M}_m)\cong\widehat{\bigotimes}_\pi\mathcal{S}(\mathbb{R}_{\ge 0})\text{ \& }15\to 3\text{ Modes!}",
             font_size=15, color=HOLO_GOLD
         ).move_to(fin7_box)
 

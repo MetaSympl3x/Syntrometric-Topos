@@ -1,0 +1,8 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act1_Enyphanie_Generative/ef1846e52ed22bb27b028af4546fef9ed608487926851590fa7566419038c428.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act1_Enyphanie_Generative/37c7cf517d287c8e32f9dd9e9f59221ef96f51031ef4b5a8d9fbf6602cf5e22d.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act1_Enyphanie_Generative/83fe629754378e73816a61e26a5db7f9f2d6b62be0efae3a1d90490e466eb287.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act1_Enyphanie_Generative/3e1210e8cba5e9ae778c2c8b6d93b2c061549ad42d0782b11892f6401c4bf9d6.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act1_Enyphanie_Generative/1bcc978888fe5cfd23c1db7ceb12d08092015c2b76b8449d5f1c4619989d8437.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act1_Enyphanie_Generative/efa22b4ad75f815bcb7c82594b5c73707825436e5580e518153631b1b98471f5.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act1_Enyphanie_Generative/4879211b0fb80d9adaa446e17463d6284ead4ed0267b2ec5ca93000850e72bc8.mp4'

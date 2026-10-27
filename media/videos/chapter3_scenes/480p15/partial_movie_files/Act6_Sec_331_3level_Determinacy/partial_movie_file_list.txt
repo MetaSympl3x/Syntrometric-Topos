@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act6_Sec_331_3level_Determinacy/9eb35e171e0252540381461de834ef071cc781a21cb9bf59089dd9375759558f.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act6_Sec_331_3level_Determinacy/e6b6a0399f2d91a5f4b3cc21c9690e2a3e759e9fd1c9e09cea6e2a905deeb736.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act6_Sec_331_3level_Determinacy/b759876d028776a26f62d8f8eb3388c1f18586e424bf3455ce51b694fbba9054.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act6_Sec_331_3level_Determinacy/fa9ff99ff4bdb54eef41485e505da29ca4921853b3f11ce03e64e33d56841874.mp4'

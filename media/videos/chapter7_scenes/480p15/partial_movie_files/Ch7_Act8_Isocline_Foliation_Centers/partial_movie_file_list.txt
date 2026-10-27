@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act8_Isocline_Foliation_Centers/046e9836a5f24d9033d860ddd70df3a48518040159775707f5f16021efd6f451.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act8_Isocline_Foliation_Centers/6dbc1b72e97e5f0509cf97aa8411144cbef50e45af823ef5fe81b43aca526037.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act8_Isocline_Foliation_Centers/639c555245749cad541f3fa84b04e0e968d6f72d9e077f048ce749829f40c92f.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act8_Isocline_Foliation_Centers/c5f6f9f6ad4156432323f87ee69cacd0bf26f1d520ee7dc55365ab2014118a2a.mp4'

@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act5_Konflektorknoten_Modules/11c9638cf1dddfd9d358a39d15f4a7e1dba8c9792239e956a2e1ef4203efc0ca.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act5_Konflektorknoten_Modules/3a927c85c246b4a59146cf4ce9fc8ce4378c791575da06d8f3d6cb265392bfa7.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act5_Konflektorknoten_Modules/adcc2e42dd454fd7d76383ab00cc800a85920ddeb1516852ff171de5a089484e.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act5_Konflektorknoten_Modules/27e25688f19ae32da6c3d6037022b57dd6adabc7302f2402df676a800fc463a0.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act5_Konflektorknoten_Modules/01825ca48292432c281c3795ec644daa925a256101900ee5aa5ac3791e988206.mp4'

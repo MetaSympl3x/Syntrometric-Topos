@@ -197,7 +197,7 @@ class Ch9_Act5_Connection_Decomposition(ThreeDScene):
         hdr = Text("Act V (Sec. 9.3.1): Palatini Cross-Metric Connection Decomposition (Thm. 9.6, SM-53)", font_size=19, color=HOLO_GOLD).to_corner(UL, buff=0.25)
         eq_top = MathTex(
             r"\left\{\begin{smallmatrix}i\\kl\end{smallmatrix}\right\} = \sum_{\mu,\gamma=1}^\omega \left(\begin{Bmatrix}i\\kl\end{Bmatrix}_{(\gamma)}^{(\mu)} + \mathbf{Q}_{(\mu\gamma)m}^i \begin{Bmatrix}m\\kl\end{Bmatrix}_{(\gamma)}^{(\mu)}\right),\quad "
-            r"\mathbf{Q}_{(\mu\gamma)m}^i \coloneqq g^{is}g_{(\mu)sm} - \frac{1}{\omega}\delta_m^i",
+            r"\mathbf{Q}_{(\mu\gamma)m}^i := g^{is}g_{(\mu)sm} - \frac{1}{\omega}\delta_m^i",
             font_size=16, color=ROYAL_BLUE
         ).next_to(hdr, DOWN, buff=0.12).align_to(hdr, LEFT)
         self.add_fixed_in_frame_mobjects(hdr, eq_top)
@@ -334,7 +334,7 @@ class Ch9_Act9_Sobolev_Apex_Convergence(ThreeDScene):
 
         hdr = Text("Act IX (Sec. 9.3.2): DeTurck Parabolic Smoothing & Sobolev H^s Apex Convergence (Thm. 9.14)", font_size=19, color=HOLO_GOLD).to_corner(UL, buff=0.25)
         eq_top = MathTex(
-            r"\mathbf{\Phi}_{\text{apex}} \coloneqq e^{-\tau_M(\Delta_{\bar{g}}+c_0 I)}\circ\mathcal{T},\quad "
+            r"\mathbf{\Phi}_{\text{apex}} := e^{-\tau_M(\Delta_{\bar{g}}+c_0 I)}\circ\mathcal{T},\quad "
             r"\|\mathbf{\Phi}_{\text{apex}}(g_1) - \mathbf{\Phi}_{\text{apex}}(g_2)\|_{H^s} \le k_M\|g_1-g_2\|_{H^s}\;(k_M < 1)",
             font_size=16, color=ROYAL_BLUE
         ).next_to(hdr, DOWN, buff=0.12).align_to(hdr, LEFT)

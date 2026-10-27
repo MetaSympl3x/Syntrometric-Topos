@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act3_Metric_Bundles_Transport/6b6184b66c694ff3c3ae9be65fb0a52487b36bb5e4cbb0dd57432cbf2526c863.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act3_Metric_Bundles_Transport/2d13c7e1ffc88aa8494df7fe3e0a64abe6419ba71f62799ca6adf5337e53e7de.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act3_Metric_Bundles_Transport/6b30b65f7e5cb074ad9b97911de46560cdc29ce7f8bb2e4cc65ddaf022145653.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act3_Metric_Bundles_Transport/96625e3cfb849b6eb148d7670e6ac05590c1328faa5727f4f42ae1e91dc41fd0.mp4'

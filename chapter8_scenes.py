@@ -211,9 +211,9 @@ class Ch8_Act4_Algebraic_Constraints_Nuclear_Scholium(ThreeDScene):
         top_eq = MathTex(
             r"\{0, 1\} \subset x_l\;(\forall l), \qquad "
             r"\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n, \qquad "
-            r"\mathscr{S}(\mathcal{M}_{m_1}\times\mathcal{M}_{m_2}) \cong "
-            r"\mathscr{S}(\mathcal{M}_{m_1})\widehat{\otimes}_\pi\mathscr{S}(\mathcal{M}_{m_2}) \cong "
-            r"\mathscr{S}(\mathcal{M}_{m_1})\widehat{\otimes}_\varepsilon\mathscr{S}(\mathcal{M}_{m_2})",
+            r"\mathcal{S}(\mathcal{M}_{m_1}\times\mathcal{M}_{m_2}) \cong "
+            r"\mathcal{S}(\mathcal{M}_{m_1})\widehat{\otimes}_\pi\mathcal{S}(\mathcal{M}_{m_2}) \cong "
+            r"\mathcal{S}(\mathcal{M}_{m_1})\widehat{\otimes}_\varepsilon\mathcal{S}(\mathcal{M}_{m_2})",
             font_size=16, color=ROYAL_BLUE
         ).next_to(hdr, DOWN, buff=0.12).align_to(hdr, LEFT)
         self.add_fixed_in_frame_mobjects(hdr, top_eq)
@@ -238,7 +238,7 @@ class Ch8_Act4_Algebraic_Constraints_Nuclear_Scholium(ThreeDScene):
             r"\;\;\text{forming cornered manifolds }\mathcal{M}_n=(\mathbb{R}_{\ge 0})^n.\\[5pt]"
             r"\bullet\;\text{Grothendieck created both }\textbf{Topos Theory}\text{ (Ch. 1)}\\"
             r"\;\;\text{and }\textbf{Nuclear Locally Convex Spaces}\text{ (1955)!}\\[5pt]"
-            r"\bullet\;\text{In }\mathscr{S}(\mathcal{M}_n),\;\widehat{\otimes}_\pi = \widehat{\otimes}_\varepsilon\text{ powers variable separation!}",
+            r"\bullet\;\text{In }\mathcal{S}(\mathcal{M}_n),\;\widehat{\otimes}_\pi = \widehat{\otimes}_\varepsilon\text{ powers variable separation!}",
             font_size=15, color=HOLO_GOLD
         ).move_to(r_box)
 
@@ -259,7 +259,7 @@ class Ch8_Act5_Man_Param_Base_Ring_Envelope(ThreeDScene):
         ).to_corner(UL, buff=0.25)
         top_eq = MathTex(
             r"\|f\|_{\alpha,\beta} := \sup_{x\in\mathcal{M}_n}\left|x^\alpha\partial^\beta f(x)\right| < \infty\;\;(\text{Def 8.3}), \qquad "
-            r"\mathcal{A}_{\mathbb{K}}(\mathcal{M}_n) := \mathbb{K}\cdot 1_{\mathcal{A}} \oplus \mathscr{S}(\mathcal{M}_n,\mathbb{K}) \subset C_b^\infty(\mathcal{M}_n,\mathbb{K})\;\;(\text{Def 8.4})",
+            r"\mathcal{A}_{\mathbb{K}}(\mathcal{M}_n) := \mathbb{K}\cdot 1_{\mathcal{A}} \oplus \mathcal{S}(\mathcal{M}_n,\mathbb{K}) \subset C_b^\infty(\mathcal{M}_n,\mathbb{K})\;\;(\text{Def 8.4})",
             font_size=16, color=TEAL_BRIGHT
         ).next_to(hdr, DOWN, buff=0.12).align_to(hdr, LEFT)
         self.add_fixed_in_frame_mobjects(hdr, top_eq)
@@ -279,10 +279,10 @@ class Ch8_Act5_Man_Param_Base_Ring_Envelope(ThreeDScene):
         r_box = RoundedRectangle(width=5.8, height=3.4, corner_radius=0.14, color=ROYAL_BLUE, fill_opacity=0.08).move_to(RIGHT * 3.1 + DOWN * 0.52)
         r_tex = MathTex(
             r"\mathbf{Unital\;Algebraic\;Base\;Envelope\;(Def\;8.4):}\\[5pt]"
-            r"\mathcal{A}_{\mathbb{K}}(\mathcal{M}_n) = \mathbb{K}\cdot 1_{\mathcal{A}} \;\oplus\; \mathscr{S}(\mathcal{M}_n,\mathbb{K})\\[5pt]"
+            r"\mathcal{A}_{\mathbb{K}}(\mathcal{M}_n) = \mathbb{K}\cdot 1_{\mathcal{A}} \;\oplus\; \mathcal{S}(\mathcal{M}_n,\mathbb{K})\\[5pt]"
             r"\bullet\;\mathbf{Fehlstelle\;0:}\;\text{Origin }\mathbf{0}\in\mathcal{M}_n\text{ and zero section }0_{\mathcal{A}}\\"
             r"\bullet\;\mathbf{Einheit\;E:}\;\text{Constant unit section }1_{\mathcal{A}}(x)\equiv 1_{\mathbb{K}}\\"
-            r"\bullet\;\mathbf{Nuclear\;Ideal:}\;\mathscr{S}(\mathcal{M}_n,\mathbb{K})\text{ carries rapid-decay fields!}",
+            r"\bullet\;\mathbf{Nuclear\;Ideal:}\;\mathcal{S}(\mathcal{M}_n,\mathbb{K})\text{ carries rapid-decay fields!}",
             font_size=15, color=WHITE
         ).move_to(r_box)
 
@@ -403,7 +403,7 @@ class Ch8_Act7_Seeley_Extension_Corners_Fig82(ThreeDScene):
         q_4 = dashed_box(width=2.1, height=1.45, color=PURPLE_SYN, num_dashes=6).move_to(s_c + RIGHT * 1.05 + DOWN * 0.725)
         q_3 = dashed_box(width=2.1, height=1.45, color=ORANGE_GOLD, num_dashes=6).move_to(s_c + LEFT * 1.05 + DOWN * 0.725)
 
-        tq1 = MathTex(r"\mathcal{M}_2=(\mathbb{R}_{\ge 0})^2\\f\in\mathscr{S}(\mathcal{M}_2)", font_size=15, color=TEAL_BRIGHT).move_to(q_1)
+        tq1 = MathTex(r"\mathcal{M}_2=(\mathbb{R}_{\ge 0})^2\\f\in\mathcal{S}(\mathcal{M}_2)", font_size=15, color=TEAL_BRIGHT).move_to(q_1)
         tq2 = MathTex(r"\mathcal{E}_{x_1} f\\(x_1<0)", font_size=15, color=PURPLE_SYN).move_to(q_2)
         tq4 = MathTex(r"\mathcal{E}_{x_2} f\\(x_2<0)", font_size=15, color=PURPLE_SYN).move_to(q_4)
         tq3 = MathTex(r"(\mathcal{E}_{x_1}\otimes\mathcal{E}_{x_2})f\\(\text{Corner})", font_size=14, color=ORANGE_GOLD).move_to(q_3)
@@ -431,9 +431,9 @@ class Ch8_Act8_Grothendieck_Nuclear_Wavepacket_Fig81(ThreeDScene):
             font_size=20, color=HOLO_GOLD
         ).to_corner(UL, buff=0.25)
         nuc_top = MathTex(
-            r"\mathscr{S}\!\left((\mathbb{R}_{\ge 0})^m\right) \;\cong\; "
-            r"\widehat{\bigotimes}_{l=1}^{m,\pi} \mathscr{S}(\mathbb{R}_{\ge 0}) \;\cong\; "
-            r"\widehat{\bigotimes}_{l=1}^{m,\varepsilon} \mathscr{S}(\mathbb{R}_{\ge 0}), \qquad "
+            r"\mathcal{S}\!\left((\mathbb{R}_{\ge 0})^m\right) \;\cong\; "
+            r"\widehat{\bigotimes}_{l=1}^{m,\pi} \mathcal{S}(\mathbb{R}_{\ge 0}) \;\cong\; "
+            r"\widehat{\bigotimes}_{l=1}^{m,\varepsilon} \mathcal{S}(\mathbb{R}_{\ge 0}), \qquad "
             r"f(x_1,\dots,x_m) = \sum_{j=1}^\infty \lambda_j\,\phi_j^{(1)}(x_1)\otimes\cdots\otimes\phi_j^{(m)}(x_m)\;\;(\text{Thm 8.6})",
             font_size=15, color=ROYAL_BLUE
         ).next_to(hdr, DOWN, buff=0.12).align_to(hdr, LEFT)
@@ -453,7 +453,7 @@ class Ch8_Act8_Grothendieck_Nuclear_Wavepacket_Fig81(ThreeDScene):
         ex81_box = RoundedRectangle(width=5.8, height=3.4, corner_radius=0.14, color=HOLO_GOLD, fill_opacity=0.08).move_to(RIGHT * 3.1 + DOWN * 0.52)
         ex81_tex = MathTex(
             r"\mathbf{Toy\;Example\;(Explicit\;Nuclear\;Expansion):}\\[5pt]"
-            r"f(x_1, x_2) = e^{-(x_1+x_2)}\cos(x_1 x_2) \in \mathscr{S}((\mathbb{R}_{\ge 0})^2)\\[5pt]"
+            r"f(x_1, x_2) = e^{-(x_1+x_2)}\cos(x_1 x_2) \in \mathcal{S}((\mathbb{R}_{\ge 0})^2)\\[5pt]"
             r"= \sum_{k=0}^\infty \underbrace{\frac{(-1)^k}{(2k)!}}_{\lambda_k} "
             r"\underbrace{\left(x_1^{2k} e^{-x_1}\right)}_{\phi_k^{(1)}(x_1)} \otimes "
             r"\underbrace{\left(x_2^{2k} e^{-x_2}\right)}_{\phi_k^{(2)}(x_2)}\\[5pt]"
@@ -621,7 +621,7 @@ class Ch8_Act11_Reconstruction_Map_Sanity(ThreeDScene):
             r"\mathbf{Carnapian\;Explication\;8.1:}\\[5pt]"
             r"\bullet\;\mathbf{Explicandum\;(D):}\;\text{SM Eq. 29--36, Separation,}\\"
             r"\;\;\text{Fehlstelle 0, Einheit E, }15\to 3\text{ Collapse.}\\[5pt]"
-            r"\bullet\;\mathbf{Explicatum\;(A/B):}\;\mathbf{Man}_{\text{param}},\;\mathcal{E}^{(n)},\;\mathscr{S}(\mathcal{M}_m)\cong\widehat{\bigotimes}_\pi,\\"
+            r"\bullet\;\mathbf{Explicatum\;(A/B):}\;\mathbf{Man}_{\text{param}},\;\mathcal{E}^{(n)},\;\mathcal{S}(\mathcal{M}_m)\cong\widehat{\bigotimes}_\pi,\\"
             r"\;\;\text{Poincare }\mathrm{I}_{\mathbf{0}},\;\operatorname{Pol},\text{ and }\operatorname{Op}_{\text{quant}}\text{ (3 modes).}\\[5pt]"
             r"\bullet\;\mathbf{Fruitfulness:}\;\text{Unifies Topos Logic \& Nuclear Analysis!}",
             font_size=15, color=HOLO_GOLD
@@ -648,7 +648,7 @@ class Ch8_Act12_Chapter8_Synthesis_Bridge_Ch9(ThreeDScene):
         s8_nodes = VGroup()
         s8_specs = [
             (r"\mathbf{1.\;Parameter\;Manifold}\\\mathcal{M}_n=(\mathbb{R}_{\ge 0})^n\;(\text{SM-29})", ROYAL_BLUE, LEFT * 4.3 + UP * 1.35),
-            (r"\mathbf{2.\;Nuclear\;Separation}\\\mathscr{S}(\prod\mathcal{M}_1^{(i)})\cong\widehat{\bigotimes}_\pi\mathscr{S}(\mathcal{M}_1^{(i)})", TEAL_BRIGHT, ORIGIN + UP * 1.35),
+            (r"\mathbf{2.\;Nuclear\;Separation}\\\mathcal{S}(\prod\mathcal{M}_1^{(i)})\cong\widehat{\bigotimes}_\pi\mathcal{S}(\mathcal{M}_1^{(i)})", TEAL_BRIGHT, ORIGIN + UP * 1.35),
             (r"\mathbf{3.\;Polarization}\\\operatorname{Sym}^m(V)\twoheadrightarrow\mathcal{O}_{\text{quant}}(k;1)", ORANGE_GOLD, RIGHT * 4.3 + UP * 1.35),
             (r"\mathbf{4.\;Calculus\;Functors}\\\tilde{\mathrm{d}}|,\;\mathrm{I}_{\mathbf{0}}\;(\text{SM-30..35a})", PURPLE_SYN, LEFT * 4.3 + DOWN * 0.25),
             (r"\mathbf{5.\;Corporate\;Collapse}\\15\longrightarrow 3\text{ Modes}", TEAL_BRIGHT, ORIGIN + DOWN * 0.25),

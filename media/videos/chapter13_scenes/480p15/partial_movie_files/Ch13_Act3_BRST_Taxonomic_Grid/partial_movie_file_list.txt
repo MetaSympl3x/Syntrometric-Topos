@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act3_BRST_Taxonomic_Grid/f27e0a99932190c8c7d59b5329870b25b57b844d838c762b76cccc95d86fa6c5.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act3_BRST_Taxonomic_Grid/f3e9648010df0d6eb44152fd7992e5e1cff0c959c88c04a9d91bde03253be759.mp4'

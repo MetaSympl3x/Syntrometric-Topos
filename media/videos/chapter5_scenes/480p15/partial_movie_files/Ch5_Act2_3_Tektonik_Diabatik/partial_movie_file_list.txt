@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act2_3_Tektonik_Diabatik/a563b6f6cb425a16e6b89ae909baaacead89fcb25ba7f6f5de48792a1e05704a.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act2_3_Tektonik_Diabatik/e740e70ebc8fbcf0a616d9618928dd2009ee272babfb86ee3f31e6109ec2c006.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act2_3_Tektonik_Diabatik/dd5b37fe1e625b4bae2dad6a4d5b65b5a66464aa6cccaec5b7c0ae34fb75747b.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act2_3_Tektonik_Diabatik/f00073d9af793751612a8f2166e511d80e1871532d0f79703f93731716d50e09.mp4'

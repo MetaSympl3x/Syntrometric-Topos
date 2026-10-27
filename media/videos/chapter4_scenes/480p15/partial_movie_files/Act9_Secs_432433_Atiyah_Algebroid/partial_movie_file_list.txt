@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act9_Secs_432433_Atiyah_Algebroid/5f763241eb1860e176f95359aae04c24867a975092a5090a25807fc1e74d0193.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act9_Secs_432433_Atiyah_Algebroid/c54e70d15d15bbbe207fa1e37b9d40e064405b290c1f3af7024d771022d53e08.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act9_Secs_432433_Atiyah_Algebroid/a2c87aad0223b746c6b6c454d775a9f95b76834a1bd4a577b9ff57a34f90595f.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act9_Secs_432433_Atiyah_Algebroid/2bcced1f0bfe20d78e1c3d871076937438b7ae7148f65bcc54bf218aff49b754.mp4'

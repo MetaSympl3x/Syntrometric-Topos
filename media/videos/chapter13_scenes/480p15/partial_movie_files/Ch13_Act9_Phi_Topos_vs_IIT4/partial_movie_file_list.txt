@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act9_Phi_Topos_vs_IIT4/e8cd54f099dde8a706fc18c6b2295f6822f94ceed3a3a90d95735caa36e3f82f.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act9_Phi_Topos_vs_IIT4/10a5752e8e1d2cbb892b9c58dabaa9fe1a63477b7dbf4bf386730590612d2592.mp4'

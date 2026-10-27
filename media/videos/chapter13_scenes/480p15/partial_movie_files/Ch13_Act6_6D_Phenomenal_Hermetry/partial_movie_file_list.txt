@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act6_6D_Phenomenal_Hermetry/8bb685c7f52bedf263ff9898905c1e2bf45f30150d27bf8c79ffec651927427e.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act6_6D_Phenomenal_Hermetry/3555367cd6ab075ee5bb38ff4d5fe1ca9126dde3d0f8f1e23ed7428f986cb707.mp4'

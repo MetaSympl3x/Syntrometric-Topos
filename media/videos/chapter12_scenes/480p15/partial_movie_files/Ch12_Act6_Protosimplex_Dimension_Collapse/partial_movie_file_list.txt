@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act6_Protosimplex_Dimension_Collapse/4116ff2203e18e89a7f91ae362a216a6c8ebe72ca475af2f6a59e76e9657b9be.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act6_Protosimplex_Dimension_Collapse/30e6ebc497f2f998decda4d70b2641aed82e978fdf9cd4b893696f2eaa87e3ad.mp4'

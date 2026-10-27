@@ -1,0 +1,7 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act6_Sec_424_Yangmills_Action/c60eb5097260df9c9d8c8c137d10139eef11ed54b5f3b97dc2cf0e4c4748cf35.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act6_Sec_424_Yangmills_Action/d4c8efb0979ebd74a8c280f634fd1143fda61cb40abd5f41f088937f07f3c2d3.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act6_Sec_424_Yangmills_Action/e4d19ce56f9927fe34701c12a7d90cf5820c4a5698da711ecfa9317e3b8f4de2.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act6_Sec_424_Yangmills_Action/c36a68daab278c163367f3c7add70e9afa53efbb8ec58c2fa590af3d7aed821c.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act6_Sec_424_Yangmills_Action/64839b57026a3e81aa5fe80a7e632095c6f28b1b6fb887c9bc419db55eade5f5.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act6_Sec_424_Yangmills_Action/ed65144b508f60f79fe32c53d71a917877b92b9ab4506c20723667b2651ac82e.mp4'
