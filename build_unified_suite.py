@@ -67,6 +67,20 @@ all_header_html = (
     + "\n    }\n  }\n};\n</script>\n<style>\n"
     + "\n\n".join(styles)
     + "\n</style>\n"
+    + "<script>\n"
+    + "(function() {\n"
+    + "  function initRevealScroll() {\n"
+    + "    if (window.Reveal) {\n"
+    + "      if (typeof window.Reveal.configure === 'function') {\n"
+    + "        try { window.Reveal.configure({ mouseWheel: true, scrollActivationWidth: 900 }); } catch (e) {}\n"
+    + "      }\n"
+    + "    }\n"
+    + "  }\n"
+    + "  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initRevealScroll); }\n"
+    + "  else { initRevealScroll(); }\n"
+    + "  window.addEventListener('load', initRevealScroll);\n"
+    + "})();\n"
+    + "</script>\n"
 )
 (shared / "all-headers.html").write_text(all_header_html, encoding="utf-8")
 print(f"Wrote shared/all-headers.html with {len(macros)} MathJax macros.")

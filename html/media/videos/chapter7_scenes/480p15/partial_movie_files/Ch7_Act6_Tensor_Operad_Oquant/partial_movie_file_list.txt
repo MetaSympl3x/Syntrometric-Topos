@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act6_Tensor_Operad_Oquant/79bb4477c1d3acb9ad6af72d057b5fd431ac0343af20c52d4365ffcf3fd00b37.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act6_Tensor_Operad_Oquant/35a834013a06288f4adba645ea7aab99d8bbd9432ed8232001067f2f35d75c46.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act6_Tensor_Operad_Oquant/4641d140ed0a4bbb7478d3c65835c5b7b61026b7e649c18b8b25f952668923b5.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act6_Tensor_Operad_Oquant/d70d0e151571ae31165f04f9222fef5295cf7419c83fced22e1b29f4e09de71c.mp4'

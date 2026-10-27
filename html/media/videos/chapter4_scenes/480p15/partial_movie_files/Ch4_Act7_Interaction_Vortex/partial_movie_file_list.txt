@@ -1,0 +1,8 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act7_Interaction_Vortex/7424b2301243ada65f3b2d07d7f34c56e9672bbf4d42cb66ef5339a1f7744078.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act7_Interaction_Vortex/ab38bc03ca22150d21141708c4bf4a84a8612e80a9133eab043a875c2dd1ede6.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act7_Interaction_Vortex/5e569188140757fce68fe3075b0fd56eb5a5c7ddac135737d134d4c5bee41aff.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act7_Interaction_Vortex/2d07ba9548443b32ee49ea08dc77d2bea7174bcf21d5be49845bf6fb286cfc20.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act7_Interaction_Vortex/5503bc55b21a6b424111ecb1fe051104a872f78399678a7b26ace0efcc2e46f6.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act7_Interaction_Vortex/ce5d223f906fc6b1a237cda443c0083c30edf8deab25eca4e38c79568b7019a9.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act7_Interaction_Vortex/d784f713672ee3ec9f828ef624e1477f1741efbc73eb17c7c29569461c2a500b.mp4'

@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="chapter2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="chapter2_files/libs/quarto-html/tabby.min.js"></script>
+<script src="chapter2_files/libs/quarto-html/popper.min.js"></script>
+<script src="chapter2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="chapter2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="chapter2_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="chapter2_files/libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
+
+  <meta name="author" content="Research Collective — Department of Mathematical Physics &amp; Formal Epistemology">
+  <meta name="dcterms.date" content="2026-08-01">
+  <title>Syntrometrische Maximentelezentrik</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="chapter2_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="chapter2_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="chapter2_files/libs/revealjs/dist/theme/quarto-f4a47b46cf8f9806c46668f4070c5295.css">
+  <link href="chapter2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="chapter2_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="chapter2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="chapter2_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script>
+
+  window.MathJax = {
+
+    "HTML-CSS": {
+
+      linebreaks: { automatic: true, width: "container" }
+
+    },
+
+    CommonHTML: {
+
+      linebreaks: { automatic: true, width: "container" }
+
+    },
+
+    SVG: {
+
+      linebreaks: { automatic: true, width: "container" }
+
+    },
+
+    tex: {
+
+      macros: {
+
+        coloneqq: "\\mathrel{:=}",
+
+        Coloneqq: "\\mathrel{::=}",
+
+        llbracket: "\\mathopen{[\\mkern-3mu[}",
+
+        rrbracket: "\\mathclose{]\\mkern-3mu]}",
+
+        longhookrightarrow: "\\lhook\\joinrel\\longrightarrow",
+
+        Ctx: "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+
+        Ban: "\\mathbf{Ban}_{\\le 1}",
+
+        FinBan: "\\mathbf{FinBan}_{\\le 1}",
+
+        Esyn: "\\mathcal{E}_{\\mathrm{syn}}",
+
+        Osyn: "\\mathcal{O}_{\\mathrm{syn}}",
+
+        Opyr: "\\mathcal{O}_{\\mathrm{pyr}}",
+
+        Ofrag: "\\mathcal{O}_{\\mathrm{frag}}",
+
+        Ohom: "\\mathcal{O}_{\\mathrm{hom}}",
+
+        otpi: "\\mathbin{\\widehat{\\otimes}_\\pi}",
+
+        otBV: "\\mathbin{\\otimes_{\\mathrm{BV}}}",
+
+        syntrix: "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+
+        homsyntrix: "\\mathbf{x}\\widetilde{\\mathbf{a}}",
+
+        metrophor: "\\widetilde{\\mathbf{a}}",
+
+        synkolator: "\\mathfrak{f}",
+
+        Shift: "\\mathsf{Shift}",
+
+        BoxSyn: "\\Box_{\\mathrm{Syn}}",
+
+        Aut: "\\operatorname{Aut}",
+
+        Stab: "\\operatorname{Stab}",
+
+        Sym: "\\operatorname{Sym}",
+
+        Col: "\\mathbf{Col}",
+
+        CSL: "\\mathcal{C}_{\\mathrm{SL}}",
+
+        Cspine: "\\mathcal{C}_{\\mathrm{spine}}",
+
+        AP: "\\mathbf{AP}",
+
+        Prop: "\\mathbf{Prop}"
+
+      }
+
+    }
+
+  };
+
+  </script>
+
+  <style>
+
+  .reveal-viewport.reveal-scroll .slide-background,
+
+  .reveal-viewport.reveal-scroll section {
+
+    font-size: clamp(14px, 1.35vw, 26px) !important;
+
+  }
+
+  .reveal-viewport.reveal-scroll .interactive-panel,
+
+  .reveal-viewport.reveal-scroll .thm-box,
+
+  .reveal-viewport.reveal-scroll .carnap-box,
+
+  .reveal-viewport.reveal-scroll .firewall-box,
+
+  .reveal-viewport.reveal-scroll .intuition-box {
+
+    max-width: 100%;
+
+    box-sizing: border-box;
+
+  }
+
+  .widget-context-note {
+
+    font-size: 0.64em;
+
+    color: #cbd5e1;
+
+    line-height: 1.36;
+
+    margin: 4px 0 10px 0;
+
+  }
+
+  .syn-tabs {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-bottom: 10px;
+
+  }
+
+  .syn-tab-btn {
+
+    background: #151c2c;
+
+    color: #94a3b8;
+
+    border: 1px solid #334155;
+
+    border-radius: 6px;
+
+    padding: 5px 11px;
+
+    font-size: 0.60em;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.18s ease;
+
+  }
+
+  .syn-tab-btn.active, .syn-tab-btn:hover {
+
+    background: rgba(65, 105, 225, 0.28);
+
+    color: #FFD700;
+
+    border-color: #FFD700;
+
+  }
+
+  .syn-tab-pane {
+
+    display: none;
+
+    background: rgba(10, 14, 23, 0.82);
+
+    border: 1px solid rgba(65, 105, 225, 0.45);
+
+    border-radius: 8px;
+
+    padding: 10px 14px;
+
+    font-size: 0.72em;
+
+  }
+
+  .syn-tab-pane.active {
+
+    display: block;
+
+  }
+
+  .lean-code-card {
+
+    background: #0d131f;
+
+    border: 1.5px solid #334155;
+
+    border-left: 5px solid #20B2AA;
+
+    border-radius: 8px;
+
+    padding: 10px 14px;
+
+    font-family: "Libertinus Mono", monospace;
+
+    font-size: 0.54em;
+
+    line-height: 1.36;
+
+    color: #e2e8f0;
+
+    overflow-x: auto;
+
+  }
+
+  .stat-grid-4 {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    margin-top: 8px;
+
+  }
+
+  .stat-card {
+
+    background: rgba(15, 23, 42, 0.85);
+
+    border: 1px solid #334155;
+
+    border-left: 4px solid #4169E1;
+
+    border-radius: 6px;
+
+    padding: 6px 10px;
+
+    font-size: 0.64em;
+
+  }
+
+  
+
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+  }
+
+  </style>
+
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Syntrometrische Maximentelezentrik</h1>
+  <p class="subtitle">Chapter 2: The Syntrix Architecture — Colored Operads, Free Tree Monads, and Grothendieck Fibrations</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Research Collective — Department of Mathematical Physics &amp; Formal Epistemology
+</div>
+</div>
+</div>
+
+  <p class="date">2026-08-01</p>
+</section>
+<section id="the-quest-for-universality-the-syntrix-triad" class="slide level2 smaller scrollable" data-transition="convex">
+<h2>§2.1.1: The Quest for Universality &amp; The Syntrix Triad</h2>
+<div class="stratum-badge badge-d">
+LEVEL II OF KONSTITUTIONSSTAMMBAUM &amp; STRATUM D (SM, PP. 24–27, EQ. 5)
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<h3 id="overcoming-the-generative-deficit-of-sheaf-descent">Overcoming the Generative Deficit of Sheaf Descent</h3>
+<ul>
+<li>In Chapter 1 (Level I), the sheaf topos <span class="math inline">\(\Esyn\)</span> restricted and glued existing local observations into Holoforms <span class="math inline">\(\mathsf{Hol}(\mathcal{U}, \mathbf{P})\)</span>. Yet a sheaf is <strong>passive</strong>: it cannot raise tensor ranks or synthesize higher-order concepts.</li>
+<li>In §2.1 (SM, pp.&nbsp;24–27), Heim seeks a <strong>Universalquantor (<span class="math inline">\(\mathbf{U}\)</span>)</strong>—an invariant law valid across <em>all</em> conceivable aspect systems. Concatenating aspect-variant functors (<span class="math inline">\(\mathfrak{F}\)</span>) yields only regional Polyquantors (<span class="math inline">\(Q_{\mathrm{poly}}\)</span>).</li>
+<li>Following <strong>Ernst Cassirer (1910)</strong> (<em>Substanzbegriff und Funktionsbegriff</em>), the operands of a Universalquantor must be complete, hierarchically generated conceptual systems—<strong>Kategorien (<span class="math inline">\(\mathfrak{K}\)</span>)</strong>—unfolded by the <strong>Syntrix (<span class="math inline">\(\syntrix\)</span>)</strong>.</li>
+</ul>
+<div class="thm-box">
+<p><strong>The Syntrix Triad (SM, p.&nbsp;27, Eq. 5):</strong> <span class="math display">\[
+\syntrix \equiv \langle \synkolator,\, \metrophor,\, m \rangle \quad \lor \quad \metrophor \equiv (a_i)_n \quad \lor \quad F_1 \equiv \synkolator(a_k)_1^m \quad \lor \quad 1 \le m \le n \tag{SM-5}
+\]</span></p>
+<ol type="1">
+<li><strong>The Metrophor (<span class="math inline">\(\metrophor \equiv (a_i)_n\)</span>):</strong> Invariant apodictic base <span class="math inline">\(\AP_0\)</span> (<em>Idee</em> <span class="math inline">\(\mathfrak{S}_1\)</span>, <em>Maßträger</em>).</li>
+<li><strong>The Synkolator (<span class="math inline">\(\synkolator\)</span>):</strong> <em>Syndromkorrelationsstufeninduktor</em> driving upward synthesis (<span class="math inline">\(F_\gamma \to F_{\gamma+1}\)</span>, <strong>Episyllogismus</strong> <span class="math inline">\(k \uparrow\)</span>).</li>
+<li><strong>The Synkolationsstufe (<span class="math inline">\(m \in \mathbb{N}\)</span>):</strong> Operational arity binding <span class="math inline">\(m\)</span> inputs per generative step.</li>
+</ol>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="video-container">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Ch2_Act1_Syntrix_Triad.mp4" style="max-height:330px;"></video>
+<div class="video-caption">
+Manim Act I: Cassirer’s Substance-to-Function Shift &amp; The Syntrix Triad (SM-5)
+</div>
+</div>
+<div class="intuition-box fragment blur-in">
+<p><strong>Recursive Unfolding of the Syndrome Tower:</strong> <span class="math display">\[
+\metrophor = F_0 \xrightarrow{\;\synkolator_1\;} F_1 \xrightarrow{\;\synkolator_2\;} F_2 \xrightarrow{\;\synkolator_3\;} \cdots \xrightarrow{\;\synkolator_\gamma\;} F_\gamma
+\]</span> Every derived concept traces its semantic stability back to the unconditioned Metrophor <span class="math inline">\(\metrophor\)</span>.</p>
+</div>
+</div></div>
+<aside class="notes">
+<p>Welcome to Chapter 2, which ascends to Level II of the Syntrometric Konstitutionsstammbaum: Quasi-Analytic Concept Generation. While Chapter 1 showed how local observer perspectives glue via sheaf descent, a sheaf cannot synthesize higher-order concepts. Heim’s Syntrix triad (SM Eq. 5) acts as a functorial operand that unfolds an ascending tower of syndromes F_1, F_2, …, F_gamma from an invariant apodictic base—the Metrophor.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pyramidal-vs.-homogeneous-bandsyntrix" class="slide level2 smaller scrollable">
+<h2>§2.1.2–2.1.4: Pyramidal vs.&nbsp;Homogeneous &amp; <em>Bandsyntrix</em></h2>
+<div class="stratum-badge badge-d">
+STRATUM D: SPALTBARKEIT (SM-5a), EXISTENZBEDINGUNG (SM-6), BANDSYNTRIX (SM-7) &amp; VIGNETTE
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<h3 id="two-dependency-architectures-sm-pp.-2829">Two Dependency Architectures (SM, pp.&nbsp;28–29)</h3>
+<ul>
+<li><strong>Pyramidal Syntrix (<span class="math inline">\(y\syntrix\)</span> — <em>Diskrete Synkolation</em>):</strong> Strict level-by-level progression where <span class="math inline">\(F_{\gamma+1}\)</span> draws its <span class="math inline">\(m\)</span> inputs exclusively from <span class="math inline">\(F_\gamma\)</span>.</li>
+<li><strong>Homogeneous Syntrix (<span class="math inline">\(\homsyntrix\)</span> — <em>Kontinuierliche Synkolation</em>):</strong> Cumulative historical memory drawing inputs simultaneously from <span class="math inline">\(\metrophor\)</span> and all preceding layers <span class="math inline">\((F_1, \dots, F_\gamma)\)</span>: <span class="math display">\[
+\homsyntrix \equiv \langle\langle \synkolator,\, \metrophor \rangle m \rangle \tag{SM-5a}
+\]</span></li>
+</ul>
+<div class="vignette-box">
+<p><strong>Historical Vignette: Operads and the Language of Assembly</strong> The operadic viewpoint gives a precise modern vocabulary for the compositional patterns that Heim described informally: typed operations assemble larger structures without erasing their provenance. A pyramidal monad is a staged conveyor belt; a fragmented monad permits cross-stage reuse. A Beck distributive law is the scheduling rule that makes these two modes compose coherently.</p>
+</div>
+<div class="carnap-box fragment fade-right">
+<p><strong><em>Spaltbarkeit</em>, <em>Existenzbedingung</em> (SM-6) &amp; <em>Bandsyntrix</em> (SM-7):</strong></p>
+<ol type="1">
+<li><strong>Spaltbarkeit (SM, p.&nbsp;29):</strong> Every homogeneous Syntrix factors into a pyramidal core (<span class="math inline">\(T_{\mathrm{pyr}}\)</span>) and a residual interaction fragment (<span class="math inline">\(T_{\mathrm{frag}}\)</span>, <em>Homogenfragment</em>).</li>
+<li><strong>Existenzbedingung (SM-6) &amp; Bandsyntrix (SM-7):</strong> <span class="math display">\[
+\metrophor \equiv (a_i)_n \;\;(n \ge 1), \qquad \metrophor_{\mathrm{band}} \equiv (A_i,\, a_i,\, B_i)_n \tag{SM-6, SM-7}
+\]</span> <strong>Prop. 2.1 &amp; Thm. 2.2:</strong> Discrete syntrices are the degenerate interval case <span class="math inline">\(A_i = B_i = a_i\)</span> (<span class="math inline">\(\Delta_i = 0\)</span>).</li>
+</ol>
+</div>
+</div><div class="column" style="width:52%;">
+<div class="interactive-panel">
+<h4>
+Interactive Bandsyntrix (SM-7) &amp; Dependency Explorer
+</h4>
+<p class="widget-context-note">
+<b>Context (§2.1.2 &amp; §2.2.4):</b> Toggle between <b>Pyramidal (<span class="math inline">\(y\syntrix\)</span>)</b> and <b>Homogeneous (<span class="math inline">\(\homsyntrix\)</span>)</b> dependency graphs, and drag the bandwidth slider <span class="math inline">\(\Delta_i = B_i - A_i\)</span> to verify Proposition 2.1 &amp; Theorem 2.2 (discrete point-valued syntrices as the degenerate limit <span class="math inline">\(A_i = B_i = a_i\)</span>).
+</p>
+<div style="display:grid; grid-template-columns: 1.05fr 0.95fr; gap:10px; align-items:center;">
+<div>
+<div style="display:flex; gap:6px; margin-bottom:8px;">
+<button id="btn-arch-pyr" class="syn-btn" onclick="setArchMode('pyr')">Pyramidal (y yã)</button> <button id="btn-arch-hom" class="syn-btn" style="background:#FFD700; color:#000; font-weight:bold;" onclick="setArchMode('hom')">Homogeneous (x yã)</button>
+</div>
+<div class="slider-row">
+<span style="color:#20B2AA;">Bandwidth Δ<sub><i>i</i></sub>:</span> <input type="range" id="bs-width" min="0.0" max="1.6" step="0.05" value="0.90" oninput="updateBandsyntrix()"> <span id="bs-width-val" style="font-family:monospace; width:38px;">0.90</span>
+</div>
+<div style="display:flex; gap:6px; margin-top:6px;">
+<button class="syn-btn" onclick="collapseBandsyntrix()">Discrete Limit (A_i=B_i=a_i)</button> <button class="syn-btn" onclick="restoreBandsyntrix()">Restore Bandsyntrix</button>
+</div>
+</div>
+<div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+<svg id="arch-svg" viewbox="0 0 220 145" width="100%" height="135"> <!-- Pyramidal Edges --> <line x1="110" y1="118" x2="110" y2="78" stroke="#4169E1" stroke-width="3"></line> <line x1="110" y1="62" x2="110" y2="26" stroke="#20B2AA" stroke-width="3"></line> <!-- Homogeneous Bypass Arcs --> <path id="hom-arc-l" d="M 55,122 Q 12,70 68,20" fill="none" stroke="#DC143C" stroke-width="2.8" stroke-dasharray="4,3"></path> <path id="hom-arc-r" d="M 165,122 Q 208,70 152,20" fill="none" stroke="#DC143C" stroke-width="2.8" stroke-dasharray="4,3"></path> <!-- Band Intervals on F0 --> <rect id="bs-rect-1" x="52" y="114" width="32" height="14" rx="3" fill="rgba(32,178,170,0.45)" stroke="#20B2AA"></rect> <rect id="bs-rect-2" x="94" y="114" width="32" height="14" rx="3" fill="rgba(32,178,170,0.45)" stroke="#20B2AA"></rect> <rect id="bs-rect-3" x="136" y="114" width="32" height="14" rx="3" fill="rgba(32,178,170,0.45)" stroke="#20B2AA"></rect> <circle cx="68" cy="121" r="3" fill="#FFD700"></circle><circle cx="110" cy="121" r="3" fill="#FFD700"></circle><circle cx="152" cy="121" r="3" fill="#FFD700"></circle> <!-- F1 and F2 tiers --> <rect x="65" y="62" width="90" height="18" rx="4" fill="#1e293b" stroke="#20B2AA" stroke-width="1.8"></rect> <text x="110" y="74" fill="#5eead4" font-size="9.5" font-weight="bold" text-anchor="middle">F₁ = f(F₀^⊗m)</text> <rect x="72" y="10" width="76" height="18" rx="4" fill="#1e293b" stroke="#FFA500" stroke-width="1.8"></rect> <text x="110" y="22" fill="#FFD700" font-size="9.5" font-weight="bold" text-anchor="middle">Apex F₂</text> </svg>
+</div>
+</div>
+<div id="bs-readout" class="matrix-readout" style="margin-top:6px;">
+<pre><code>Homogeneous Syntrix x yã Active (Historical Cross-Talk T_frag) | Continuous Bandsyntrix Δ_i = 0.90 &gt; 0</code></pre>
+</div>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Ch2_Act2_Pyramidal_Bandsyntrix.mp4" style="max-height:175px;"></video>
+<div class="video-caption">
+Manim Act II: Pyramidal vs.&nbsp;Homogeneous Cross-Talk &amp; Live Bandsyntrix Compression
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Heim distinguishes two dependency architectures: Pyramidal Syntrices (where each layer depends only on the immediately preceding layer) and Homogeneous Syntrices (where higher layers draw directly from all historical layers). His central claim of Spaltbarkeit states that every Homogeneous Syntrix splits into a pyramidal core and an interaction fragment.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exegesis-of-elementary-gates-komplexsynkolatoren-äondynen" class="slide level2 smaller">
+<h2>§2.1.3–2.1.5: Exegesis of Elementary Gates, <em>Komplexsynkolatoren</em> &amp; <em>Äondynen</em></h2>
+<div class="stratum-badge badge-d">
+STRATUM D: OPERATIONAL AXES (SM, P. 28), KOMPLEXSYNKOLATOR (SM-8) &amp; ÄONDYNE (SM-9, 9a)
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="thm-box">
+<p><strong>1. Two Binary Operational Axes &amp; 4 Elementary Gates (SM, p.&nbsp;28)</strong> * <strong>Metralität (Sampling Repetition):</strong> - <em>Heterometral</em>: Inputs drawn without replacement (no element reused). - <em>Homometral</em>: Sampling with replacement across <span class="math inline">\(L\)</span> multiplicity classes <span class="math inline">\(a_j &gt; 1\)</span>. * <strong>Symmetrie (Input Permutation Invariance):</strong> - <em>Symmetrisch</em>: Commutative under <span class="math inline">\(\Sigma_m\)</span>. - <em>Asymmetrisch</em>: Sequential order of inputs is structurally significant. * <strong>Result:</strong> Yields the <strong>4 pyramidal elementary structures</strong> (<span class="math inline">\(\mathfrak{E}_1, \mathfrak{E}_2, \mathfrak{E}_3, \mathfrak{E}_4\)</span>).</p>
+</div>
+<div class="thm-box">
+<p><strong>2. <em>Synkolationsverlauf</em> &amp; <em>Komplexsynkolatoren</em> (SM, pp.&nbsp;30–35, Eq. 8)</strong> Unconstrained trajectories <span class="math inline">\(n_\gamma = \dim F_\gamma\)</span> explode combinatorially. Heim introduces <strong>Komplexsynkolatoren</strong> where <span class="math inline">\(\synkolator_\gamma\)</span> and arity <span class="math inline">\(m_\gamma\)</span> step across intervals <span class="math inline">\([\chi(\gamma-1), \chi(\gamma)]\)</span>: <span class="math display">\[
+(\underline{\synkolator},\, \underline{m}) \;\equiv\; \int_{\gamma=1}^\chi (\synkolator_\gamma,\, m_\gamma)\Big|_{\chi(\gamma-1)}^{\chi(\gamma)} \tag{SM-8}
+\]</span> enabling deliberate structural termination (<strong>Syndromabschluß</strong>) when <span class="math inline">\(m_\gamma &gt; n_{\gamma-1}\)</span>.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="thm-box">
+<p><strong>3. <em>Die Äondyne</em> &amp; <em>Metrophorischer Zirkel</em> (SM, pp.&nbsp;36–41, Eqs. 9, 9a)</strong> When applied to continuous fields, the Syntrix becomes a parameterized family (<strong>Äondyne</strong> <span class="math inline">\(\underline{\mathbf{S}}\)</span>):</p>
+<ul>
+<li><strong>Primigene Äondyne (SM Eq. 9, p.&nbsp;36):</strong> Metrophor <span class="math inline">\(\metrophor(t) = (a_i(t_{(i)j}))_n\)</span> varies continuously over an <span class="math inline">\(N\)</span>-dimensional manifold (<em>Parameter-Tensorium</em>).</li>
+<li><strong>Ganzläufige Äondyne (SM Eq. 9a, p.&nbsp;37):</strong> Both <span class="math inline">\(\metrophor(t)\)</span> and the Synkolator <span class="math inline">\(\synkolator(t')\)</span> vary continuously over a joint <span class="math inline">\((N + m_s)\)</span>-dimensional <em>Synkolationstensorium</em>.</li>
+<li><strong>Metrophorischer Zirkel (SM, pp.&nbsp;39–41):</strong> A closed loop of aspect transformations (<span class="math inline">\(B_1 \to B_2 \to \dots \to B_Z \to B_1\)</span>). If <span class="math inline">\(\metrophor\)</span> remains apodictically invariant around the cycle, the loop acts as a <strong>Selektionsprinzip</strong> bounding a regional Universalquantor.</li>
+</ul>
+</div>
+<div class="remark-box fragment fade-up">
+<p><strong>Conceptual Preamble (Marquis 2009; Yau 2016):</strong> Why colored operads? Untyped functions <span class="math inline">\(f \colon X^m \to X\)</span> would allow feeding a high-level physical field into a low-level sensory predicate, triggering self-referential paradox. <strong>Colored operads</strong> over <span class="math inline">\(\Col = \mathbb{N}_0\)</span> enforce strict level-stratified typing.</p>
+</div>
+</div></div>
+<aside class="notes">
+<p>This slide completes the historical exegesis of Section 2.1 (SM pages 28 to 41): the two binary axes of Metralitaet and Symmetrie, the symbolic integral notation SM-8 for Komplexsynkolatoren, and Primigene vs.&nbsp;Ganzlaeufige Aeondynen (SM-9 and SM-9a).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-mathsfban-enriched-colored-operad-osyn" class="slide level2 smaller scrollable">
+<h2>§2.2.1–2.2.2: The <span class="math inline">\(\mathsf{Ban}\)</span>-Enriched Colored Operad <span class="math inline">\(\Osyn\)</span></h2>
+<div class="stratum-badge badge-a">
+STRATUM A: SCHOLIUM 2.1 &amp; COMPLETED COLORED BANACH OPERADS (DEFS. 2.2–2.4, FIG. 2.1)
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="scholium-box">
+<p><strong>Scholium 2.1: Meta-Theoretic Justification — Colored Operads &amp; Tree Monads</strong></p>
+<ol type="1">
+<li><strong>Level-Stratified Typing (Colors = Levels):</strong> Inputs and outputs belong to distinct strata (<span class="math inline">\(F_\gamma \to F_{\gamma+1}\)</span>); <span class="math inline">\(\Col = \mathbb{N}_0\)</span> guarantees strict type-safety.</li>
+<li><strong>Abstract Symmetry Decoupling:</strong> Separates operational symmetries (<span class="math inline">\(\Stab(f) \subseteq \Sigma_m\)</span>) from the carrier space <span class="math inline">\(V\)</span>.</li>
+<li><strong>Monadic Tree Completion:</strong> <span class="math inline">\(T_{\mathcal{O}}\)</span> constructs the norm-complete tree space of all iterated syntrometric deductions in a single universal functor.</li>
+</ol>
+</div>
+<div class="thm-box">
+<p><strong>Defs. 2.2–2.4: <span class="math inline">\(\mathsf{Ban}\)</span>, Completed Free Operad <span class="math inline">\(\widehat{\mathbb{F}}_\pi(E)\)</span> &amp; <span class="math inline">\(\Osyn\)</span>-Algebras</strong> In <span class="math inline">\((\mathsf{Ban}, \otpi, \mathbb{R}, \mathcal{L})\)</span> and <span class="math inline">\(\Ban\)</span>, let <span class="math inline">\(E_{\mathrm{pyr}}(\gamma,\dots,\gamma; \gamma+1)\)</span> denote uniform step operations and <span class="math inline">\(E_{\mathrm{hom}}(\vec{\gamma}; \gamma+1)\)</span> (<span class="math inline">\(\max \gamma_i \le \gamma\)</span>) historical operations. For each rooted tree <span class="math inline">\(\tau \in \operatorname{Tree}(\vec{\gamma}; \gamma)\)</span>: <span class="math display">\[
+E(\tau) \coloneqq \widehat{\bigotimes}_{v \in V(\tau)}^\pi E(\operatorname{in}(v); \operatorname{out}(v)), \qquad \widehat{\mathbb{F}}_\pi(E)(\vec{\gamma}; \gamma) \coloneqq \bigoplus_{[\tau] \in \operatorname{Tree}(\vec{\gamma}; \gamma)/\sim}^{\ell^1} E(\tau)_{\Aut(\tau)}
+\]</span> where <span class="math inline">\(E(\tau)_{\Aut(\tau)} = E(\tau) / \overline{\operatorname{span}}\{u - \sigma \cdot u\}\)</span>, subject to <strong>Substitution Contraction</strong> (<span class="math inline">\(\|\circ_i\|_{\op} \le 1\)</span>) and <strong>Strict Unit Isometry</strong> (<span class="math inline">\(\|\operatorname{id}_c\|_{\Osyn(c;c)} = 1\)</span>). An <strong><span class="math inline">\(\Osyn\)</span>-Algebra</strong> on <span class="math inline">\(F = \{F_\gamma\}_{\gamma \ge 0}\)</span> assigns contractive evaluation maps <span class="math inline">\(\operatorname{ev}_{\vec{\gamma}; \gamma} \colon \Osyn(\vec{\gamma}; \gamma) \otpi (F_{\gamma_1} \otpi \dots \otpi F_{\gamma_m}) \to F_\gamma\)</span>.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="interactive-panel">
+<h4>
+Interactive Operadic Tree Grafting &amp; De-Grafting Explorer
+</h4>
+<p class="widget-context-note">
+<b>Context (Fig. 2.1 &amp; §2.2.5):</b> Compare upward operadic composition <span class="math inline">\(\gamma(f; g, \operatorname{id}) \in \Osyn(\gamma, \gamma, \gamma+1; \gamma+2)\)</span> (<em>Episyllogismus</em> <span class="math inline">\(k\uparrow\)</span>) with downward cooperadic tree de-grafting <span class="math inline">\(\Delta_{\mathrm{prosyl}}\)</span> (<em>Prosyllogismus</em> <span class="math inline">\(k\downarrow\)</span>) cutting internal edge <span class="math inline">\(e\)</span>.
+</p>
+<div style="display:flex; gap:6px; justify-content:center; margin-bottom:8px;">
+<button class="syn-btn" onclick="setOperadTreeMode('two')">1. Two-Stage Tree (g then f)</button> <button class="syn-btn" onclick="setOperadTreeMode('graft')">2. Grafted Composite γ(f; g, id)</button> <button class="syn-btn" onclick="setOperadTreeMode('cut')">3. Prosyllogistic Cut Δ_prosyl</button>
+</div>
+<div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+<svg id="operad-tree-svg" viewbox="0 0 380 130" width="100%" height="125"></svg>
+</div>
+<div id="operad-tree-readout" class="matrix-readout" style="margin-top:6px;">
+<pre><code>Two-Stage Tree: g ∈ O_syn(γ,γ; γ+1) feeds color γ+1 into slot 1 of f ∈ O_syn(γ+1,γ+1; γ+2)</code></pre>
+</div>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Ch2_Act3_Colored_Operad_Grafting.mp4" style="max-height:190px;"></video>
+<div class="video-caption">
+Manim Act III (Fig. 2.1): Type-Safe Operadic Tree Grafting γ(f; g, id) &amp; Prosyllogistic Cut
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>In Stratum A, Scholium 2.1 and Definitions 2.2 through 2.4 formalize the Synkolator as a completed colored Banach operad O_syn over the color set Col = N_0.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="operational-stabilizers-stabf-permutohedron-pi_3" class="slide level2 smaller scrollable">
+<h2>§2.2.3: Operational Stabilizers <span class="math inline">\(\Stab(f)\)</span> &amp; Permutohedron <span class="math inline">\(\Pi_3\)</span></h2>
+<div class="stratum-badge badge-a">
+STRATUM A: SYMMETRY ORBITS &amp; LAGRANGE INDEX (DEF. 2.5 / 2.6, FIG. 2.2)
+</div>
+<div class="columns">
+<div class="column" style="width:46%;">
+<div class="thm-box">
+<p><strong>Definition 2.5 / 2.6: Profile-Preserving Stabilizers &amp; Asymmetry Index</strong> For colored profile <span class="math inline">\(\vec{\gamma} = (\gamma_1, \dots, \gamma_m)\)</span>, let <span class="math inline">\(\Sigma_{\vec{\gamma}} \coloneqq \{\sigma \in \Sigma_m \mid \gamma_{\sigma^{-1}(i)} = \gamma_i\}\)</span>.</p>
+<ol type="1">
+<li><strong>Operational Stabilizer Subgroup:</strong> <span class="math display">\[
+\Stab(f) \;\coloneqq\; \{ \sigma \in \Sigma_{\vec{\gamma}} \mid \sigma \cdot f = f \}
+\]</span></li>
+<li><strong>Permutation Asymmetry Measure (Lagrange Orbit Index):</strong> <span class="math display">\[
+r_f \;\coloneqq\; [\Sigma_{\vec{\gamma}} : \Stab(f)] \;=\; \frac{|\Sigma_{\vec{\gamma}}|}{|\Stab(f)|}
+\]</span></li>
+</ol>
+<ul>
+<li><strong>Fully Symmetric Operation:</strong> <span class="math inline">\(\Stab(f) = \Sigma_{\vec{\gamma}} \iff r_f = 1\)</span>.</li>
+<li><strong>Partially Asymmetric (Fig. 2.2):</strong> <span class="math inline">\(\Stab(f) = \langle s_1 \rangle \subset \Sigma_3 \iff r_f = 6/2 = 3\)</span> cosets.</li>
+<li><strong>Completely Asymmetric:</strong> <span class="math inline">\(\Stab(f) = \{e\} \iff r_f = m!\)</span>.</li>
+</ul>
+</div>
+<div class="video-container" style="margin-top:10px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Ch2_Act4_Permutohedron.mp4" style="max-height:225px;"></video>
+<div class="video-caption">
+Manim Act IV (Fig. 2.2): Permutohedron Π₃ Coset Orbit Partition under Stab(f) = ⟨s₁⟩
+</div>
+</div>
+</div><div class="column" style="width:54%;">
+<div class="interactive-panel">
+<h4>
+Interactive Permutohedron Π₃ Coset Partition Explorer
+</h4>
+<p class="widget-context-note">
+<b>Context (§2.2.3 &amp; Fig. 2.2):</b> Select a stabilizer subgroup <span class="math inline">\(\Stab(f) \subseteq \Sigma_3\)</span> below to dynamically partition the 6 permutations of the Permutohedron <span class="math inline">\(\Pi_3\)</span> (generated by adjacent transpositions <span class="math inline">\(s_1 = (12)\)</span> and <span class="math inline">\(s_2 = (23)\)</span>) into Lagrange coset orbits <span class="math inline">\(\Sigma_3 / \Stab(f)\)</span>.
+</p>
+<div style="display:flex; gap:8px; justify-content:center; margin-bottom:10px;">
+<button class="syn-btn" onclick="setPermStab('sym')">Full Σ₃ (r_f = 1)</button> <button class="syn-btn" onclick="setPermStab('s1')">⟨s₁⟩ = {e, (12)} (r_f = 3)</button> <button class="syn-btn" onclick="setPermStab('a3')">Alternating A₃ (r_f = 2)</button> <button class="syn-btn" onclick="setPermStab('id')">Trivial {e} (r_f = 6)</button>
+</div>
+<p><svg viewbox="0 0 420 220" style="width:100%; max-height:220px; background:#070a12; border-radius:8px; border:1px solid #334155;"> <polygon points="210,24 320,72 320,152 210,200 100,152 100,72" fill="none" stroke="#4169E1" stroke-width="2.5"></polygon> <text x="272" y="40" fill="#94a3b8" font-size="11.5" font-weight="bold">s₁</text> <text x="335" y="116" fill="#94a3b8" font-size="11.5" font-weight="bold">s₂</text> <text x="272" y="190" fill="#94a3b8" font-size="11.5" font-weight="bold">s₁</text> <text x="135" y="190" fill="#94a3b8" font-size="11.5" font-weight="bold">s₂</text> <text x="72" y="116" fill="#94a3b8" font-size="11.5" font-weight="bold">s₁</text> <text x="135" y="40" fill="#94a3b8" font-size="11.5" font-weight="bold">s₂</text> <g id="p3-nodes"> <circle id="nd-0" cx="210" cy="24" r="21" fill="#20B2AA" stroke="#fff" stroke-width="2"></circle> <text x="210" y="28" text-anchor="middle" fill="#000" font-size="10.5" font-weight="bold">(1,2,3)</text></g></svg></p>
+<p><circle id="nd-1" cx="320" cy="72" r="21" fill="#20B2AA" stroke="#fff" stroke-width="2"> <text x="320" y="76" text-anchor="middle" fill="#000" font-size="10.5" font-weight="bold">(2,1,3)</text></circle></p>
+<p><circle id="nd-2" cx="320" cy="152" r="21" fill="#FFA500" stroke="#fff" stroke-width="2"> <text x="320" y="156" text-anchor="middle" fill="#000" font-size="10.5" font-weight="bold">(2,3,1)</text></circle></p>
+<p><circle id="nd-3" cx="210" cy="200" r="21" fill="#9370DB" stroke="#fff" stroke-width="2"> <text x="210" y="204" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="bold">(3,2,1)</text></circle></p>
+<p><circle id="nd-4" cx="100" cy="152" r="21" fill="#9370DB" stroke="#fff" stroke-width="2"> <text x="100" y="156" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="bold">(3,1,2)</text></circle></p>
+<p><circle id="nd-5" cx="100" cy="72" r="21" fill="#FFA500" stroke="#fff" stroke-width="2"> <text x="100" y="76" text-anchor="middle" fill="#000" font-size="10.5" font-weight="bold">(1,3,2)</text>  </circle></p>
+<div id="perm-readout" class="matrix-readout" style="margin-top:8px;">
+<pre><code>Stab(f) = ⟨s₁⟩ = {e, (12)} (|Stab(f)| = 2) ⇒ Asymmetry Index r_f = 6 / 2 = 3 Coset Orbits: [e], [s₂], [s₁s₂]</code></pre>
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>An operadic operation decouples operational symmetry from the underlying carrier space. Using the Permutohedron Pi_3 explorer on the right, you can see how quotienting Sigma_3 by the stabilizer subgroup Stab(f) = <s_1> partitions the 6 input permutations into r_f = 3 Lagrange coset orbits, formalizing Heim’s partially asymmetric synkolators.</s_1></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="free-tree-monad-t_mathsfp-barcobar-duality-proof" class="slide level2 smaller">
+<h2>§2.2.4–2.2.5: Free Tree Monad <span class="math inline">\(T_{\mathsf{P}}\)</span>, Bar–Cobar Duality &amp; Proof</h2>
+<div class="stratum-badge badge-a">
+STRATUM A: EPISYLLOGISMUS MONAD (DEF. 2.8), BAR–COBAR DUALITY (THM. 2.10) &amp; PROOF
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="thm-box">
+<strong>Definition 2.8: Completed Free Tree Monad <span class="math inline">\(T_{\mathsf{P}}\)</span> (<em>Episyllogismus</em> <span class="math inline">\(k \uparrow\)</span>)</strong> For polynomial functor <span class="math inline">\(\mathsf{P}(Y) \coloneqq \bigoplus_{m=1}^M (E(m) \otpi Y^{\otpi m})_{\Sigma_m}\)</span> on <span class="math inline">\(\Ban\)</span>, the <span class="math inline">\(\ell^1\)</span>-completed initial algebra of <span class="math inline">\(\mathsf{F}_X(Y) = X \oplus_1 \mathsf{P}(Y)\)</span> is: <span class="math display">\[
+T_{\mathsf{P}}(X) \;\cong\; X \oplus_1 \mathsf{P}(T_{\mathsf{P}}(X)) \;\cong\; \bigoplus_{[\tau] \in \mathbf{Tree}/\sim}^{\ell^1} \left( E(\tau) \otpi X^{\otpi \operatorname{Leaves}(\tau)} \right)_{\Aut(\tau)}
+\]</span>
+<div class="claim-ceiling fragment fade-up">
+<b>Claim Ceiling (<span class="math inline">\(c_{\mathrm{MONAD}}\)</span>):</b> <span class="math inline">\(T_{\mathsf{P}}\)</span> is formally specified in <span class="math inline">\(\mathbf{Ban}_{\le 1}\)</span>, with finite-depth truncation <span class="math inline">\(T_{\mathsf{P}}^{(\le K)} \colon \mathbf{FinBan}_{\le 1} \to \mathbf{FinBan}_{\le 1}\)</span> (<span class="math inline">\(\mathbf{S_{1a}}\)</span>).
+</div>
+</div>
+<div class="remark-box fragment fade-up">
+<p><strong>Toy Example (2-ary Binary Operad Tree <span class="math inline">\(\mathsf{P}(X) = X \otpi X\)</span>):</strong> Stage 0: <span class="math inline">\(T_0(X) = X\)</span> (atoms <span class="math inline">\(a_i\)</span>); Stage 1: <span class="math inline">\(T_1(X) = X \oplus (X \otpi X)\)</span> (first-order binary syndromes <span class="math inline">\(f(a_i, a_j)\)</span>); Stage 2: <span class="math inline">\(T_2(X) = X \oplus (T_1(X) \otpi T_1(X))\)</span> (nested deductions <span class="math inline">\(f(f(a_1, a_2), a_3)\)</span>).</p>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>Def. 2.9, Theorem 2.10 (Bar–Cobar Duality <span class="math inline">\(\Omega_{\mathrm{cobar}} \dashv B_{\mathrm{bar}}\)</span>) &amp; Proof:</strong> The <strong>Prosyllogistic Bar Cooperad</strong> <span class="math inline">\(B(\Osyn) \coloneqq \mathbb{F}^c(s\overline{\Osyn})\)</span> acts by <strong>tree de-grafting</strong> <span class="math inline">\(\Delta_{\mathrm{prosyl}}\)</span> (<span class="math inline">\(k\downarrow\)</span>), extracting ancestral lineage via <span class="math inline">\(\delta_{k\downarrow} \colon F_\gamma \to \bigoplus B(\Osyn)(\vec{\gamma};\gamma) \otpi \bigotimes F_{\gamma_i}\)</span>.</p>
+<p><em>Proof of Thm 2.10 &amp; Koszul Criterion Remark:</em> Morphisms <span class="math inline">\(\Omega_{\mathrm{cobar}}(\mathcal{C}) = \mathbb{F}(s^{-1}\overline{\mathcal{C}}) \to \mathcal{O}\)</span> correspond bijectively to degree-<span class="math inline">\(-1\)</span> twisting morphisms <span class="math inline">\(\alpha \in \operatorname{Tw}(\mathcal{C}, \mathcal{O})\)</span> satisfying the Maurer–Cartan equation <span class="math inline">\(\partial(\alpha) + \alpha \star \alpha = 0\)</span> in the pre-Lie convolution algebra <span class="math inline">\(\Hom_\Sigma(\mathcal{C}, \mathcal{O})\)</span>, and hence to cooperad morphisms <span class="math inline">\(\mathcal{C} \to B_{\mathrm{bar}}(\mathcal{O})\)</span> (Loday &amp; Vallette 2012). Filtering finite colored trees by vertex weight proves the counit <span class="math inline">\(\epsilon_{\mathcal{O}} \colon \Omega_{\mathrm{cobar}}(B_{\mathrm{bar}}(\Osyn)) \xrightarrow{\sim} \Osyn\)</span> is a quasi-isomorphism! <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="video-container">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Ch2_Act5_Tree_Monad_Bar_Cobar.mp4" style="max-height:330px;"></video>
+<div class="video-caption">
+Manim Act V: Iterative Tree Monad T_P(X) (k ↑) vs.&nbsp;Prosyllogistic Bar Cooperad De-Grafting (k ↓)
+</div>
+</div>
+<div class="intuition-box fragment blur-in">
+<p><strong>Conditional Koszul Criterion Remark (§2.2.5):</strong> If a quadratic operad <span class="math inline">\(\mathcal{P} = \mathcal{P}(E, R)\)</span> is separately shown to be Koszul, its quadratic dual cooperad <span class="math inline">\(\mathcal{P}^{\text{!`}}\)</span> maps quasi-isomorphically into <span class="math inline">\(B(\mathcal{P})\)</span>, and <span class="math inline">\(\Omega(\mathcal{P}^{\text{!`}}) \xrightarrow{\sim} \mathcal{P}\)</span>. (This criterion does not assert Koszulness of <span class="math inline">\(\Osyn\)</span> without a separate quadratic verification.)</p>
+</div>
+</div></div>
+<aside class="notes">
+<p>While the free tree monad T_P formalizes the upward constructive Episyllogismus, the Operadic Bar Construction B(O_syn) formalizes the downward analytical Prosyllogismus via tree de-grafting, with the full Maurer-Cartan twisting morphism proof of Theorem 2.10 shown on the left.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="leveled-category-cslmathcalb-shift-proof-thin-spine-cspine" class="slide level2 smaller scrollable">
+<h2>§2.3: Leveled Category <span class="math inline">\(\CSL(\mathcal{B})\)</span>, <span class="math inline">\(\Shift\)</span> Proof &amp; Thin Spine <span class="math inline">\(\Cspine\)</span></h2>
+<div class="stratum-badge badge-b">
+STRATUM B: LEVELED STRUCTURES (DEFS. 2.11–2.17), PROP. 2.14 PROOF &amp; LEMMA 2.16
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="thm-box">
+<p><strong>Definitions 2.11–2.13: <span class="math inline">\(\CSL(\mathcal{B})\)</span>, <span class="math inline">\(\mathfrak{f}_{\mathrm{ops}}\)</span> &amp; Level-Shift Functor <span class="math inline">\(\Shift\)</span></strong> * <strong>Objects of <span class="math inline">\(\CSL(\mathcal{B})\)</span>:</strong> Quadruples <span class="math inline">\(\mathbf{L} = (P_k, S_k, (I_j^+)_{j\ge 1}, O_k)_{k\in\mathbb{N}_0}\)</span> with <span class="math inline">\(P_0 = \mathcal{B}\)</span>, stability <span class="math inline">\(S_k \colon P_k \to \{0,1\}\)</span>, ancestral parthood <span class="math inline">\(I_k^+ \subseteq P_{k-1} \times P_k\)</span>, and Metrophor origin <span class="math inline">\(O_k \colon P_k \to \mathcal{P}(\mathcal{B})\)</span>. * <strong>Constructor Signature <span class="math inline">\(\mathfrak{f}_{\mathrm{ops}}(P)\)</span>:</strong> Free term algebra <span class="math inline">\(\{\operatorname{Conj}(X,Y), \operatorname{Lift}_{\BoxSyn}(X), \operatorname{ParaConj}(X)\}\)</span> with immediate predecessor relation <span class="math inline">\(I_{\mathrm{term}} \subset P \times \mathfrak{f}_{\mathrm{ops}}(P)\)</span>. * <strong>Level-Shift Functor <span class="math inline">\(\Shift \colon \CSL \to \CSL\)</span>:</strong> Maps <span class="math inline">\(\Shift(\mathbf{L})_k \coloneqq \mathbf{L}_{k+1}\)</span> and <span class="math inline">\((\Shift(g))_k \coloneqq g_{k+1}\)</span>.</p>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>Proposition 2.14 (Functoriality of <span class="math inline">\(\Shift\)</span>) &amp; 3-Step Proof:</strong> <span class="math inline">\(\Shift(\operatorname{id}_{\mathbf{L}}) = \operatorname{id}_{\Shift(\mathbf{L})}\)</span> and <span class="math inline">\(\Shift(h \circ g) = \Shift(h) \circ \Shift(g)\)</span>.</p>
+<p><em>Proof:</em> (1) <span class="math inline">\((\Shift(\operatorname{id}_{\mathbf{L}}))_k = (\operatorname{id}_{\mathbf{L}})_{k+1} = \operatorname{id}_{P_{k+1}}\)</span>. (2) <span class="math inline">\((\Shift(h \circ g))_k = (h \circ g)_{k+1} = h_{k+1} \circ g_{k+1} = (\Shift(h) \circ \Shift(g))_k\)</span>. (3) For <span class="math inline">\((X,Y) \in I_k^{\Shift(\mathbf{L})} = I_{k+1}^{\mathbf{L}}\)</span>, <span class="math inline">\(((g_k(X), g_{k+1}(Y))) \in I_{k+1}^{\mathbf{M}} = I_k^{\Shift(\mathbf{M})}\)</span>, preserving IGP, stability, and origin at index <span class="math inline">\(k+1\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="thm-box">
+<p><strong>Def. 2.15, Lemma 2.16 &amp; Def. 2.17: Free Syntrix <span class="math inline">\(\mathbf{L}^*\)</span> &amp; Spine <span class="math inline">\(\Cspine\)</span></strong> Inductively setting <span class="math inline">\(P_0 = \AP_0\)</span>, <span class="math inline">\(P_{k+1} = \mathfrak{f}_{\mathrm{ops}}(P_k)\)</span>, <span class="math inline">\(S_{k+1}(T) = \bigwedge_{I_{\mathrm{term}}(X,T)} S_k(X)\)</span>, and <span class="math inline">\(O_{k+1}(T) = \bigcup_{I_{\mathrm{term}}(X,T)} O_k(X)\)</span> defines the <strong>Free Syntrix <span class="math inline">\(\mathbf{L}^*\)</span></strong>.</p>
+<ul>
+<li><strong>Lemma 2.16 (Ancestral Preservation under Lift):</strong>
+<ol type="1">
+<li><span class="math inline">\(S_r(X) = 1 \implies S_{r+1}(\operatorname{Lift}_{\BoxSyn}(X)) = 1\)</span>.</li>
+<li><span class="math inline">\(O_{r+1}(\operatorname{Lift}_{\BoxSyn}(X)) = O_r(X)\)</span>.</li>
+<li><span class="math inline">\((X,Y) \in I_r^+ \implies (\operatorname{Lift}_{\BoxSyn}(X), \operatorname{Lift}_{\BoxSyn}(Y)) \in I_{r+1}^+\)</span>.</li>
+</ol></li>
+<li><strong>Thin Spine Subcategory <span class="math inline">\(\Cspine \hookrightarrow \CSL\)</span> (Fig. 2.4):</strong> Objects <span class="math inline">\(\mathbf{L}^{(k)} \coloneqq \Shift^k(\mathbf{L}^*)\)</span> with single-step modal lifts <span class="math inline">\(f_k = \operatorname{Lift}_{\BoxSyn} \colon \mathbf{L}^{(k)} \to \mathbf{L}^{(k+1)}\)</span>, isomorphic to the poset <span class="math inline">\((\mathbb{N}_0, \le)\)</span>.</li>
+</ul>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Ch2_Act6_Leveled_Category.mp4" style="max-height:195px;"></video>
+<div class="video-caption">
+Manim Act VI (Fig. 2.4): The Thin Spine Subcategory C_spine ↪ C_SL &amp; Shift Endofunctor Ladder
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Section 2.3 constructs the discrete category of leveled structures C_SL(B), proves the functoriality of the level-shift endofunctor Shift (Proposition 2.14), and isolates the thin spine subcategory C_spine of iterated modal lifts.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-4-elementary-structures-selection-proof-running-example" class="slide level2 smaller scrollable">
+<h2>§2.4.1: The 4 Elementary Structures, Selection Proof &amp; Running Example</h2>
+<div class="stratum-badge badge-b">
+STRATUM B: SELECTION REPRESENTATIONS (DEF. 2.18, THMS. 2.19–2.23, COR. 2.24 &amp; STAGE II EXAMPLE)
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="thm-box">
+<p><strong>Def. 2.18 &amp; Thm. 2.19 (Selection Dimension Theorem &amp; 4-Step Proof):</strong> On an <span class="math inline">\(n\)</span>-dimensional Banach space <span class="math inline">\(V \in \FinBan\)</span> with ordered basis <span class="math inline">\(B = \{e_1, \dots, e_n\}\)</span>:</p>
+<ol type="1">
+<li><strong><span class="math inline">\(\mathcal{S}_{(1)}\)</span> Heterometral Symmetric (<span class="math inline">\(\Sym_{\mathrm{het}}^m(V,B) \cong \Lambda^m V\)</span>):</strong> Strict chains <span class="math inline">\(1 \le i_1 &lt; \dots &lt; i_m \le n \implies \dim = \binom{n}{m}\)</span>.</li>
+<li><strong><span class="math inline">\(\mathcal{S}_{(2)}\)</span> Heterometral Asymmetric (<span class="math inline">\(V^{\underline{\otimes}m}(B)\)</span>):</strong> Pairwise distinct <span class="math inline">\(m\)</span>-permutations <span class="math inline">\(\implies \dim = \frac{n!}{(n-m)!} = m!\binom{n}{m}\)</span>.</li>
+<li><strong><span class="math inline">\(\mathcal{S}_{(3)}\)</span> Homometral Symmetric (<span class="math inline">\(\Sym^m V\)</span>):</strong> Degree-<span class="math inline">\(m\)</span> commuting monomials (stars-and-bars) <span class="math inline">\(\implies \dim = \binom{n+m-1}{m}\)</span>.</li>
+<li><strong><span class="math inline">\(\mathcal{S}_{(4)}\)</span> Homometral Asymmetric (<span class="math inline">\(V^{\otimes m}\)</span>):</strong> Unrestricted simple tensors <span class="math inline">\(\implies \dim = n^m\)</span>. <span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>Lemma 2.20, Thms. 2.21–2.23 &amp; Cor. 2.24 (Recursions &amp; <em>Äquisyndromatik</em>):</strong> * <strong>Lemma 2.20 (<span class="math inline">\(k\)</span>-Fold Asymmetric Bridge):</strong> <span class="math inline">\(n_1 = k!\binom{m}{k}\binom{n}{m} = \frac{n!}{(m-k)!(n-m)!} = \binom{n}{m-k}\frac{(n-m+k)!}{(n-m)!}\)</span>. * <strong>Thm 2.23 (Homogeneous &amp; Homometral Recursions):</strong> With <span class="math inline">\(N_\gamma = n + \sum_{j=1}^\gamma n_j\)</span> and effective class <span class="math inline">\(A \coloneqq m - \sum_{j=1}^L (a_j - 1)\)</span>, pyramidal grows as <span class="math inline">\(\binom{n_\gamma}{A}\)</span> and homogeneous as <span class="math inline">\(\binom{N_\gamma}{A}\)</span>. * <strong>Thm 2.21 (<em>Äquisyndromatik</em>):</strong> Constant <span class="math inline">\(n_\gamma = n\)</span> holds iff heterometral <span class="math inline">\(m = n-1\)</span> or homometral <span class="math inline">\(A = 1\)</span>.</p>
+</div>
+<div class="intuition-box fragment blur-in">
+<p><strong>Stage II of VI Running Example (Polarimeter Syndrome Tree):</strong> For <span class="math inline">\(F_0 = \mathbb{R}^6\)</span>, binary alternating detection yields <span class="math inline">\(F_1 = \Lambda^2 F_0\)</span> of <span class="math inline">\(\dim \binom{6}{2} = 15\)</span> (3 intra-channel + 9 cross-channel pairs), and <span class="math inline">\(F_2 = \Lambda^2 F_1\)</span> of <span class="math inline">\(\dim \binom{15}{2} = 105\)</span>. Programming arity <span class="math inline">\(m_3 = 16 &gt; 15\)</span> forces <span class="math inline">\(\Lambda^{16} F_1 = 0\)</span> (<em>Syndromabschluß</em>).</p>
+</div>
+</div><div class="column" style="width:52%;">
+<div class="interactive-panel">
+<h4>
+Interactive 4 Elementary Structures &amp; Combinatorial Bridge Lab
+</h4>
+<p class="widget-context-note">
+<b>Context (§2.4.1, Thms. 2.19–2.23):</b> Adjust carrier dimension <span class="math inline">\(n\)</span>, arity <span class="math inline">\(m\)</span>, <span class="math inline">\(k\)</span>-fold asymmetry (<span class="math inline">\(0 \le k \le m\)</span>), and homometral repetition reduction <span class="math inline">\(\sum(a_j - 1)\)</span> to compute the four selection representations (Fig. 2.5), Lemma 2.20’s asymmetric bridge, and Stage II of the Polarimeter Running Example.
+</p>
+<div class="slider-row">
+<span style="color:#4169E1;">Dim <i>n</i>:</span> <input type="range" id="sel-n" min="1" max="15" step="1" value="6" oninput="updateSelectionDims()"> <span id="sel-n-val" style="font-family:monospace; width:24px;">6</span> <span style="color:#FFA500;">Arity <i>m</i>:</span> <input type="range" id="sel-m" min="1" max="8" step="1" value="2" oninput="updateSelectionDims()"> <span id="sel-m-val" style="font-family:monospace; width:24px;">2</span>
+</div>
+<div class="slider-row">
+<span style="color:#20B2AA;">Asym <i>k</i>:</span> <input type="range" id="sel-k" min="0" max="8" step="1" value="1" oninput="updateSelectionDims()"> <span id="sel-k-val" style="font-family:monospace; width:24px;">1</span> <span style="color:#a855f7;">Rep ∑(<i>a<sub>j</sub></i>−1):</span> <input type="range" id="sel-rep" min="0" max="6" step="1" value="0" oninput="updateSelectionDims()"> <span id="sel-rep-val" style="font-family:monospace; width:24px;">0</span>
+</div>
+<div style="margin:6px 0; display:flex; gap:6px; justify-content:center;">
+<button class="syn-btn" onclick="setSelPreset(6,2,0,0)">Stage II Polarimeter (F₀=ℝ⁶ → 15)</button> <button class="syn-btn" onclick="setSelPreset(15,2,0,0)">Stage II Step 2 (F₁=ℝ¹⁵ → 105)</button> <button class="syn-btn" onclick="setSelPreset(6,5,0,0)">Äquisyndromatik (m = n-1)</button>
+</div>
+<div id="sel-bars" class="stat-grid-4">
+
+</div>
+<div id="sel-bridge-readout" class="matrix-readout" style="margin-top:6px;">
+
+</div>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Ch2_Act7_Elementary_Structures.mp4" style="max-height:175px;"></video>
+<div class="video-caption">
+Manim Act VII (Fig. 2.5): The 4 Elementary Pyramidal Selection Representations
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Section 2.4.1 translates Heim’s four elementary pyramidal structures into multilinear tensor representations on FinBan_&lt;=1, proves their dimension formulas (Theorem 2.19), and illustrates Stage II of the Polarimeter Running Example.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="komplexsynkolatoren-explosion-table-phase-trichotomy-proof" class="slide level2 smaller scrollable">
+<h2>§2.4.2–2.4.3: <em>Komplexsynkolatoren</em>, Explosion Table &amp; Phase Trichotomy Proof</h2>
+<div class="stratum-badge badge-b">
+STRATUM B: PROGRAMMABLE CLOSURE (PROP. 2.26), EXPLOSION TABLE &amp; THM. 2.27 PROOF
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="thm-box">
+<p><strong>Def. 2.25 &amp; Prop. 2.26: <em>Komplexsynkolatoren</em> &amp; <em>Syndromabschluß</em> (SM-8)</strong> Stepping arity <span class="math inline">\(m(\gamma) = \sum_{k=1}^K m_k \mathbf{1}_{I_k}(\gamma)\)</span> across interval partitions <span class="math inline">\(I_k = [\chi(k-1), \chi(k)-1]\)</span> (<span class="math inline">\(N_{\mathrm{orderings}} = \chi!\)</span>, <strong>Thm. 2.22</strong>): choosing <span class="math inline">\(m_K &gt; \dim(F_{\chi(K-1)})\)</span> forces <span class="math inline">\(\Lambda^{m_K}(F_{\chi(K-1)}) = \{0\}\)</span>, achieving deterministic <strong>Syndromabschluß</strong> (<span class="math inline">\(F_\gamma \cong \{0\}\;\forall \gamma \ge \chi(K)\)</span>).</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 21%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Stage <span class="math inline">\(\gamma\)</span></th>
+<th style="text-align: center;">Syndrome <span class="math inline">\(F_\gamma\)</span> (<span class="math inline">\(n_0=4, m=2\)</span>)</th>
+<th style="text-align: left;">Combinatorial Formula</th>
+<th style="text-align: center;">Dimension <span class="math inline">\(n_\gamma\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(1 \to 3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_1 \to F_2 \to F_3\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\binom{4}{2}=6 \to \binom{6}{2}=15 \to \binom{15}{2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(6 \to 15 \to 105\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(4 \to 5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_4 \to F_5\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\binom{105}{2} \to \binom{5460}{2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5,460 \to 14,903,130\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_6\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\binom{14903130}{2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\approx 1.11 \times 10^{14}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="proof-box fragment fade-up">
+<p><strong>Theorem 2.27 (Dynamical Phase Trichotomy of <span class="math inline">\(n_{\gamma+1} = \binom{n_\gamma}{m}\)</span>) &amp; Proof:</strong></p>
+<ol type="1">
+<li><strong>Sub-Critical (<span class="math inline">\(n_0 \le m\)</span>):</strong> <span class="math inline">\(\binom{n_0}{m} = 0\)</span> (for <span class="math inline">\(n_0 &lt; m\)</span>) or <span class="math inline">\(\binom{m}{m} = 1 \implies n_2 = 0\)</span>.</li>
+<li><strong>Critical Fixed Point (<span class="math inline">\(n_0 = m+1\)</span>):</strong> <span class="math inline">\(\binom{m+1}{m} = m+1 \implies n_\gamma = m+1\;\forall \gamma \ge 0\)</span>.</li>
+<li><strong>Super-Critical (<span class="math inline">\(n_0 \ge m+2\)</span>):</strong> Since <span class="math inline">\(\frac{1}{n}\binom{n}{m}\)</span> is strictly increasing for <span class="math inline">\(n \ge m+1\)</span>, <span class="math inline">\(\binom{n}{m} \ge \frac{m+2}{2}n &gt; n\)</span>. Bounding <span class="math inline">\(\frac{(n-m+1)^m}{m!} \le \binom{n}{m} \le \frac{n^m}{m!}\)</span> shows <span class="math inline">\(a_\gamma \coloneqq m^{-\gamma}\ln n_\gamma\)</span> satisfies <span class="math inline">\(|a_{\gamma+1} - a_\gamma| = \mathcal{O}(m^{-\gamma})\)</span>, so <span class="math inline">\((a_\gamma)\)</span> is Cauchy with limit <span class="math inline">\(\theta(n_0, m) &gt; 0\)</span>: <span class="math display">\[
+n_\gamma \;\sim\; (m!)^{\frac{1}{m-1}} \exp\!\big(\theta(n_0, m)\, m^\gamma\big) \quad (\gamma \to \infty).\;\blacksquare
+\]</span></li>
+</ol>
+</div>
+</div><div class="column" style="width:52%;">
+<div class="interactive-panel">
+<h4>
+Interactive Phase Trichotomy &amp; Trajectory SVG Plotter
+</h4>
+<p class="widget-context-note">
+<b>Context (§2.4.3, Thm. 2.27):</b> Adjust initial Metrophor diameter <span class="math inline">\(n_0\)</span> and arity <span class="math inline">\(m\)</span> to watch the trajectory <span class="math inline">\(n_{\gamma+1} = \binom{n_\gamma}{m}\)</span> switch across the unstable critical fixed point <span class="math inline">\(n_0 = m + 1\)</span>.
+</p>
+<div style="display:grid; grid-template-columns: 1.1fr 0.9fr; gap:10px; align-items:center;">
+<div>
+<div class="slider-row">
+<span style="color:#20B2AA;">Initial <i>n</i><sub>0</sub>:</span> <input type="range" id="tri-n0" min="1" max="7" step="1" value="4" oninput="updateTrichotomy()"> <span id="tri-n0-val" style="font-family:monospace; width:22px;">4</span> <span style="color:#FFA500;">Arity <i>m</i>:</span> <input type="range" id="tri-m" min="2" max="5" step="1" value="2" oninput="updateTrichotomy()"> <span id="tri-m-val" style="font-family:monospace; width:22px;">2</span>
+</div>
+<div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
+<button class="syn-btn" onclick="setTriPreset(2,2)">Sub-Critical (n₀=2, m=2)</button> <button class="syn-btn" onclick="setTriPreset(3,2)">Critical Fixed Pt (n₀=3, m=2)</button> <button class="syn-btn" onclick="setTriPreset(4,2)">Super-Critical (n₀=4, m=2)</button>
+</div>
+</div>
+<div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+<svg id="tri-svg" viewbox="0 0 210 115" width="100%" height="110"> <line x1="25" y1="95" x2="195" y2="95" stroke="#475569"></line> <line x1="25" y1="12" x2="25" y2="95" stroke="#475569"></line> <polyline id="tri-poly" points="25,65 65,50 105,20" fill="none" stroke="#FFA500" stroke-width="3"></polyline> <g id="tri-dots"></g> </svg>
+</div>
+</div>
+<div id="tri-trajectory" class="matrix-readout" style="margin-top:6px; text-align:left; line-height:1.4;">
+
+</div>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Ch2_Act8_Komplexsynkolator_Trichotomy.mp4" style="max-height:175px;"></video>
+<div class="video-caption">
+Manim Act VIII (Fig. 2.6): Piecewise-Color Filtered Komplexsynkolator &amp; Dynamical Phase Trichotomy
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>This slide includes the worked n=4, m=2 combinatorial explosion table (reaching 1.11 x 10^14 at stage 6) and the complete Cauchy-sequence proof of the Dynamical Phase Trichotomy Theorem (Theorem 2.27).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="boardmanvogt-tensor-beck-distributive-law-blt-proof" class="slide level2 smaller">
+<h2>§2.5: Boardman–Vogt Tensor, Beck Distributive Law &amp; BLT Proof</h2>
+<div class="stratum-badge badge-b">
+STRATUM B: SCHOLIA 2.28/2.33, BOARDMAN–VOGT QUOTIENT (DEF. 2.30) &amp; BECK PROOF (THM. 2.31)
+</div>
+<div class="columns">
+<div class="column" style="width:47%;">
+<div class="firewall-box fragment glow-pulse">
+<p><strong>Why Naive Free-Tree Substitution Fails I (Plotkin 2004; Klin 2013)</strong> On raw syntax trees <span class="math inline">\(\mathbb{T}_{\mathrm{pyr}}, \mathbb{T}_{\mathrm{frag}}\)</span>, pushing a multi-ary pyramidal node across a fragment node duplicates subtrees; distinct composites encode the same wiring while choosing different representatives, violating Beck’s multiplication pentagons.</p>
+</div>
+<div class="scholium-box">
+<p><strong>Scholia 2.28 &amp; 2.33: Why Beck Distributivity Governs <em>Spaltbarkeit</em></strong> Two monads <span class="math inline">\(T_1 \circ T_2\)</span> do not automatically form a monad. Quotienting by the <strong>Boardman–Vogt interchange ideal</strong> <span class="math inline">\(\mathcal{I}_{\mathrm{exchange}}\)</span> induces a natural transformation <span class="math inline">\(\widehat{\lambda} \colon \overline{T}_{\mathrm{pyr}}\overline{T}_{\mathrm{frag}} \Rightarrow \overline{T}_{\mathrm{frag}}\overline{T}_{\mathrm{pyr}}\)</span> satisfying Beck’s 4 coherence diagrams (1969).</p>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>Theorem 2.31 (Beck Distributive Law on Quotient Tree Monads) &amp; BLT Proof:</strong> Every <span class="math inline">\(t \in \overline{T}_{\mathrm{pyr}}(\overline{T}_{\mathrm{frag}} X)\)</span> is the limit of a Cauchy sequence of finite tree classes <span class="math inline">\([t_k]\)</span> under the <span class="math inline">\(\ell^1\)</span>-projective quotient norm. Because <span class="math inline">\(\lambda_X\)</span> acts on representatives by the isometric Boardman–Vogt block permutation <span class="math inline">\(\sigma_{n,m} \in \Sigma_{nm}\)</span> and contractive substitutions (<span class="math inline">\(\|\circ_i\|_{\op} \le 1\)</span>), <span class="math inline">\(\|\lambda_X([t_k])\| \le \|[t_k]\|\)</span>. By the <strong>Bounded Linear Transformation (BLT) Theorem</strong>, <span class="math inline">\(\lambda_X\)</span> extends uniquely to <span class="math inline">\(\widehat{\lambda}_X\)</span> with <span class="math inline">\(\|\widehat{\lambda}_X\|_{\op} \le 1\)</span>, and <span class="math inline">\(T_{\mathrm{hom}} \coloneqq \overline{T}_{\mathrm{frag}} \circ \overline{T}_{\mathrm{pyr}}\)</span> is a composite monad! <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div><div class="column" style="width:53%;">
+<div class="interactive-panel">
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">
+Interactive 4-Tab Inspector: <em>Spaltbarkeit</em> &amp; Beck Coherence Laws
+</h4>
+<p class="widget-context-note">
+<b>Context (§2.5, Defs. 2.29–2.34 &amp; Thm. 2.31):</b> Click each tab to inspect the Boardman–Vogt tensor operad, the recursive tree-interchange definition of <span class="math inline">\(\lambda_X\)</span>, the Multiplication Pentagon, and the two Unit Triangles.
+</p>
+<div class="syn-tabs">
+<p><button class="syn-tab-btn active" onclick="showBeckTab(1, this)">1. Boardman–Vogt ⊗_BV</button> <button class="syn-tab-btn" onclick="showBeckTab(2, this)">2. Recursive λ_X (Prop 2.32)</button> <button class="syn-tab-btn" onclick="showBeckTab(3, this)">3. Pentagon (μ_hom)</button> <button class="syn-tab-btn" onclick="showBeckTab(4, this)">4. Unit Triangles (η_hom)</button></p>
+</div>
+<div id="beck-pane-1" class="syn-tab-pane active">
+<p><strong>1. Operadic <em>Spaltbarkeit</em> via Boardman–Vogt Tensor Product (Def. 2.30)</strong> <span class="math display">\[
+\Ohom \coloneqq \Opyr \otBV \Ofrag \coloneqq \frac{\Opyr \amalg \Ofrag}{\mathcal{I}_{\mathrm{exchange}}}, \qquad f \circ (g, \dots, g) \;\sim\; \sigma_{n,m} \cdot \big( g \circ (f, \dots, f) \big)
+\]</span> By universal property, an <span class="math inline">\(\Ohom\)</span>-algebra is canonically an <span class="math inline">\(\Opyr\)</span>-algebra internal to <span class="math inline">\(\operatorname{Alg}_{\Ofrag}(\Ban)\)</span>: <span class="math display">\[
+\operatorname{Alg}_{\Ohom}(\Ban) \;\cong\; \operatorname{Alg}_{\Opyr}\!\Big( \operatorname{Alg}_{\Ofrag}(\Ban) \Big)
+\]</span></p>
+</div>
+<div id="beck-pane-2" class="syn-tab-pane">
+<p><strong>2. Recursive Presentation of the Interchange Transformation <span class="math inline">\(\lambda_X\)</span> (Prop. 2.32)</strong> * <strong>Unit Base Case:</strong> <span class="math inline">\(\lambda_X(\eta_{\mathrm{pyr}}(u)) = \overline{T}_{\mathrm{frag}}(\eta_{\mathrm{pyr}} X)(u)\)</span> for all <span class="math inline">\(u \in \overline{T}_{\mathrm{frag}} X\)</span>. * <strong>Interchange Distribution:</strong> For <span class="math inline">\(\psi \in \Opyr(n)\)</span> and <span class="math inline">\(u_1, \dots, u_n \in \overline{T}_{\mathrm{frag}} X\)</span>: <span class="math display">\[
+\lambda_X\big(\psi(u_1, \dots, u_n)\big) \;=\; \Big[ \mu_{\mathrm{frag}} \circ \overline{T}_{\mathrm{frag}}(\psi)\big(\lambda_X(u_1), \dots, \lambda_X(u_n)\big) \Big]_{\mathcal{I}_{\mathrm{exchange}}}
+\]</span> Pulls historical cross-level interactions (<span class="math inline">\(\overline{T}_{\mathrm{frag}}\)</span>) to the outer layer while keeping step-by-step deduction (<span class="math inline">\(\overline{T}_{\mathrm{pyr}}\)</span>) in the inner core!</p>
+</div>
+<div id="beck-pane-3" class="syn-tab-pane">
+<p><strong>3. Beck Multiplication Pentagon &amp; Composite Multiplication <span class="math inline">\(\mu_{\mathrm{hom}}\)</span> (Def. 2.34, Fig. 2.7A)</strong> <span class="math display">\[
+\mu_{\mathrm{hom}} \;\coloneqq\; (\mu_{\mathrm{frag}} \overline{T}_{\mathrm{pyr}}) \circ (\overline{T}_{\mathrm{frag}} \overline{T}_{\mathrm{frag}} \mu_{\mathrm{pyr}}) \circ (\overline{T}_{\mathrm{frag}} \widehat{\lambda} \overline{T}_{\mathrm{pyr}})
+\]</span> Satisfies the two Beck multiplication pentagons (<code>mult_pyr</code> and <code>mult_frag</code> in <code>Syntrometrie.StratumA.Operads.BeckDistributiveLaw</code>): <span class="math display">\[
+(\mu_{\mathrm{pyr}} \overline{T}_{\mathrm{frag}}) \Rightarrow \widehat{\lambda} \;=\; (\overline{T}_{\mathrm{pyr}}\widehat{\lambda}) \Rightarrow (\widehat{\lambda}\overline{T}_{\mathrm{pyr}}) \Rightarrow (\overline{T}_{\mathrm{frag}}\mu_{\mathrm{pyr}})
+\]</span></p>
+</div>
+<div id="beck-pane-4" class="syn-tab-pane">
+<p><strong>4. Beck Unit Triangles &amp; Composite Unit <span class="math inline">\(\eta_{\mathrm{hom}}\)</span> (Def. 2.34, Fig. 2.7B)</strong> <span class="math display">\[
+\eta_{\mathrm{hom}} \;\coloneqq\; (\eta_{\mathrm{frag}} \overline{T}_{\mathrm{pyr}}) \circ \eta_{\mathrm{pyr}} \colon \operatorname{Id}_{\Ban} \Longrightarrow \overline{T}_{\mathrm{frag}} \circ \overline{T}_{\mathrm{pyr}}
+\]</span> Satisfies both unit compatibility triangles (<code>unit_pyr</code> and <code>unit_frag</code>): <span class="math display">\[
+\widehat{\lambda} \circ (\eta_{\mathrm{pyr}} \overline{T}_{\mathrm{frag}}) = \overline{T}_{\mathrm{frag}} \eta_{\mathrm{pyr}}, \qquad \widehat{\lambda} \circ (\overline{T}_{\mathrm{pyr}} \eta_{\mathrm{frag}}) = \eta_{\mathrm{frag}} \overline{T}_{\mathrm{pyr}}
+\]</span></p>
+</div>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<div style="display:flex; gap:10px; justify-content:center;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Ch2_Act9_Crystal_Lattice.mp4" style="max-height:165px; min-width:0;"></video> <video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Ch2_Act10_Beck_Pentagon.mp4" style="max-height:165px; min-width:0;"></video>
+</div>
+<div class="video-caption">
+Manim Acts IX &amp; X (Figs. 2.3 &amp; 2.7): Syntrix Crystal Lattice &amp; Beck Coherence Diagrams
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Section 2.5 provides the exact algebraic proof of Heim’s Spaltbarkeit, including the Bounded Linear Transformation (BLT) Cauchy-extension proof of Theorem 2.31 on the left.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="syntrix-stability-boxsyn-phi-spine-reflexivity-proof-lean-4" class="slide level2 smaller scrollable">
+<h2>§2.6–2.7: Syntrix Stability (<span class="math inline">\(\BoxSyn \phi\)</span>), Spine Reflexivity Proof &amp; Lean 4</h2>
+<div class="stratum-badge badge-b">
+STRATUM B: HEREDITARY STABILITY (§2.6), THM. 2.36 NATURALITY PROOF &amp; LEAN 4
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="interactive-panel">
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">
+Interactive Ledger: <span class="math inline">\(\BoxSyn\)</span> Sequent Rules &amp; Spine Reflexivity Proof (Thm. 2.36)
+</h4>
+<p class="widget-context-note">
+<b>Context (§2.6–2.7):</b> Browse the hereditary semantics and sequent rules of <span class="math inline">\(\BoxSyn \phi\)</span> (intrinsic vertical tree grounding, distinct from horizontal aspect necessity <span class="math inline">\(\Box_S \phi\)</span>) and the complete 2-part proof of Spine Reflexivity <span class="math inline">\(\rho^{(n)}\)</span>.
+</p>
+<div class="syn-tabs">
+<p><button class="syn-tab-btn active" onclick="showStabTab(1, this)">1. Hereditary Semantics</button> <button class="syn-tab-btn" onclick="showStabTab(2, this)">2. Intro Rules (□_Syn I)</button> <button class="syn-tab-btn" onclick="showStabTab(3, this)">3. Elim Rules (□_Syn E)</button> <button class="syn-tab-btn" onclick="showStabTab(4, this)">4. Thm 2.36 Proof (ρ^(n))</button></p>
+</div>
+<div id="stab-pane-1" class="syn-tab-pane active">
+<p><strong>1. Hereditary Semantics of <span class="math inline">\(\BoxSyn \phi\)</span> &amp; Demarcation from <span class="math inline">\(\Box_S \phi\)</span> (Rem. 2.3)</strong> * <strong>Base (<span class="math inline">\(a_i \in P_0 = \AP_0\)</span>):</strong> <span class="math inline">\((U, k) \models \BoxSyn a_i \iff a_i \in \AP_0 \wedge (U, k) \models a_i\)</span>. * <strong>Inductive (<span class="math inline">\(\phi \in P_{p+1},\; p+1 \le k\)</span>):</strong> <span class="math display">\[
+(U, k) \models \BoxSyn \phi \;\Longleftrightarrow\; (U, k) \models \phi \;\wedge\; \forall X \in P_p\big((X, \phi) \in I_{p+1} \implies (U, k) \models \BoxSyn X\big)
+\]</span> * <strong>Semantic Demarcation:</strong> <span class="math inline">\(\Box_S \phi\)</span> is horizontal aspect necessity across <span class="math inline">\(R_{\Box_S}\)</span>-close contexts; <span class="math inline">\(\BoxSyn \phi\)</span> is vertical hereditary grounding in the Metrophor <span class="math inline">\(\AP_0\)</span>.</p>
+</div>
+<div id="stab-pane-2" class="syn-tab-pane">
+<p><strong>2. Syntrix-Internal Stability Introduction Rules (<span class="math inline">\(\BoxSyn\mathfrak{a}I, \BoxSyn FI\)</span>)</strong> <span class="math display">\[
+\frac{a_i \in \AP_0 \qquad S(x); \Gamma \vdash^0 a_i}{S(x); \Gamma \vdash^0 \BoxSyn a_i}\;(\BoxSyn\mathfrak{a}I)
+\]</span> <span class="math display">\[
+\frac{S(x); \Gamma \vdash^{j+1} \phi' \qquad \forall X \in P_j\,\big((X, \phi') \in I_{j+1} \to S(x); \Gamma \vdash^j \BoxSyn X\big)}{S(x); \Gamma \vdash^{j+1} \BoxSyn \phi'}\;(\BoxSyn FI)
+\]</span></p>
+</div>
+<div id="stab-pane-3" class="syn-tab-pane">
+<p><strong>3. Syntrix-Internal Stability Elimination Rules (<span class="math inline">\(\BoxSyn E_T, \BoxSyn E_{\mathrm{IGP}}\)</span>)</strong> <span class="math display">\[
+\frac{S(x); \Gamma \vdash^j \BoxSyn \phi}{S(x); \Gamma \vdash^j \phi}\;(\BoxSyn E_T) \qquad\qquad \frac{S(x); \Gamma \vdash^{j+1} \BoxSyn \phi' \qquad ((X, \phi') \in I_{j+1})}{S(x); \Gamma \vdash^j \BoxSyn X}\;(\BoxSyn E_{\mathrm{IGP}})
+\]</span></p>
+</div>
+<div id="stab-pane-4" class="syn-tab-pane">
+<p><strong>4. Def. 2.35, Theorem 2.36 (Spine Reflexivity <span class="math inline">\(\rho^{(n)}\)</span>) &amp; Full Proof (Fig. 2.8)</strong> Define <span class="math inline">\((\rho_k^{(n)})_j(X) \coloneqq \operatorname{Lift}_{\BoxSyn}^n(X)\)</span> for <span class="math inline">\(X \in P_{j+k}\)</span>.</p>
+<p><em>Proof of Naturality &amp; <span class="math inline">\((\mathbb{N}_0,+)\)</span>-Coherence:</em></p>
+<ol type="1">
+<li><strong>Naturality Square:</strong> Evaluating both paths on <span class="math inline">\(X \in P_{j+k}\)</span> in the free term algebra <span class="math inline">\(\mathfrak{f}_{\mathrm{ops}}\)</span>: <span class="math display">\[
+\begin{aligned}
+(\Shift^n(f_k) \circ \rho_k^{(n)})_j(X) &amp;= (f_{k+n})_j\big(\operatorname{Lift}_{\BoxSyn}^n(X)\big) = \operatorname{Lift}_{\BoxSyn}^{n+1}(X) \\
+(\rho_{k+1}^{(n)} \circ f_k)_j(X) &amp;= (\rho_{k+1}^{(n)})_j\big(\operatorname{Lift}_{\BoxSyn}(X)\big) = \operatorname{Lift}_{\BoxSyn}^{n+1}(X)
+\end{aligned}
+\]</span> By Lemma 2.16, stability <span class="math inline">\(S_{j+k}(X)=1\)</span> and origin <span class="math inline">\(O_{j+k}(X)\)</span> are preserved.</li>
+<li><strong>Graded Reflection Law:</strong> <span class="math inline">\((\rho_{k+n}^{(m)} \circ \rho_k^{(n)})_j(X) = \operatorname{Lift}_{\BoxSyn}^m(\operatorname{Lift}_{\BoxSyn}^n(X)) = \operatorname{Lift}_{\BoxSyn}^{n+m}(X) = (\rho_k^{(n+m)})_j(X)\)</span>. <span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+</div>
+</div>
+</div><div class="column" style="width:48%;">
+<h3 id="compile-ready-lean-4-blueprint-stratuma.operads-app.-c">Compile-Ready Lean 4 Blueprint (<code>StratumA.Operads</code>, App. C)</h3>
+<div class="lean-code-card">
+<pre style="margin:0;"><code>import Mathlib
+open CategoryTheory
+namespace Syntrometrie.StratumA.Operads
+
+class BeckDistributiveLaw {C : Type*} [Category C]
+    (T_pyr T_frag : Monad C) where
+  dist : (T_pyr.toFunctor ⋙ T_frag.toFunctor) ⟶
+         (T_frag.toFunctor ⋙ T_pyr.toFunctor)
+  unit_pyr : (myWhiskerRight T_pyr.η T_frag.toFunctor) ≫ dist =
+             myWhiskerLeft T_frag.toFunctor T_pyr.η
+  unit_frag : (myWhiskerLeft T_pyr.toFunctor T_frag.η) ≫ dist =
+              myWhiskerRight T_frag.η T_pyr.toFunctor
+  mult_pyr : (myWhiskerRight T_pyr.μ T_frag.toFunctor) ≫ dist =
+             (myWhiskerLeft T_pyr.toFunctor dist) ≫
+             (myWhiskerRight dist T_pyr.toFunctor) ≫
+             (myWhiskerLeft T_frag.toFunctor T_pyr.μ)
+
+theorem equisyndromatic_fixed_point (m : ℕ) :
+    Nat.choose (m + 1) m = m + 1 :=
+  Nat.choose_succ_self_right m</code></pre>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Ch2_Act11_Stability_Reflexivity.mp4" style="max-height:175px;"></video>
+<div class="video-caption">
+Manim Act XI (Fig. 2.8): Syntrix Stability □_Syn Rules &amp; Spine Reflexivity Naturality Square
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Sections 2.6 and 2.7 formalize hereditary apodictic grounding via the inductive modality Box_Syn and Spine Reflexivity rho^(n), including the complete term-algebra proof of Theorem 2.36 in Tab 4.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-äondyne-fibration-holonomy-circles-quasi-analysis" class="slide level2 smaller">
+<h2>§2.8: The <em>Äondyne</em> Fibration, Holonomy Circles &amp; Quasi-Analysis</h2>
+<div class="stratum-badge badge-a">
+STRATUM A/B: SCHOLIUM 2.37, GROTHENDIECK FIBRATION (THM. 2.39) &amp; QUASI-ANALYSIS (THM. 2.42)
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="scholium-box">
+<p><strong>Scholium 2.37 &amp; Def. 2.38 / Thm. 2.39: Grothendieck Fibration for <em>Äondynen</em> (Zalamea 2012)</strong> A parameterized <em>Äondyne</em> over <span class="math inline">\(U \in \Ctx\)</span> is <span class="math inline">\(\underline{\mathbf{S}} = (\metrophor, f, \vec{\gamma}, \gamma, \mathsf{Sel}_m)\)</span> with <span class="math inline">\(\metrophor \in C^0(M_U, (P^U)^n)\)</span> and <span class="math inline">\(f \in C^0(M'_U, \Osyn(\vec{\gamma}; \gamma))\)</span> satisfying <span class="math inline">\(h_P \circ \metrophor_V = \metrophor_U \circ h_M\)</span> and <span class="math inline">\(h_P \circ f_V = f_U \circ h'_M\)</span>. The Grothendieck construction: <span class="math display">\[
+\pi \colon \int_{\Ctx} \mathbf{Syn} \longrightarrow \Ctx, \qquad (U, \underline{\mathbf{S}}) \longmapsto U
+\]</span> is a <strong>Grothendieck fibration</strong> whose Cartesian lifts <span class="math inline">\(h^*(\underline{\mathbf{S}})\)</span> transport entire Syntrix hierarchies across context manifolds, while closed loops act as holonomy operators <span class="math inline">\(\operatorname{Hol}_{\mathcal{M}}(\mathcal{C})(\metrophor) \cong \metrophor\)</span>.</p>
+</div>
+<div class="thm-box">
+<p><strong>Def. 2.40 &amp; Thm. 2.41: Boundary Topology &amp; Dimension Convergence</strong> * <strong>Boundary Forms (SM, pp.&nbsp;38–39):</strong> Closed <span class="math inline">\([\alpha, \beta]\)</span>, Half-open / Radial (<em>Radialformen</em>) <span class="math inline">\([\alpha, \beta)\)</span> or <span class="math inline">\((\alpha, \beta]\)</span>, Open <span class="math inline">\((\alpha, \beta)\)</span>. * <strong>Syndrome Dimension Limit:</strong> For component parameter dimensions <span class="math inline">\(n_i\)</span> (<span class="math inline">\(N \coloneqq \sum_i n_i\)</span>) and arity <span class="math inline">\(m &gt; 1\)</span>, <span class="math inline">\(\mu(\gamma) \ge n_i\)</span> and <span class="math inline">\(\lim_{\gamma \to \infty} \mu(\gamma) = N\)</span>.</p>
+</div>
+<div class="carnap-box fragment fade-right">
+<p><strong>Theorem 2.42 (<span class="math inline">\(c_{\mathrm{QUASI}}\)</span>): Carnapian Quasi-Analysis via Tree Monads</strong> <span class="math display">\[
+\operatorname{QuasiAnalyse}(X) \;\coloneqq\; T_{\mathsf{P}}(X) \in \operatorname{Alg}_{\Osyn}(\Ban)
+\]</span> Higher concepts are coinvariant trees of operadic relations, not reified substances (French 2014; van Fraassen 2008).</p>
+</div>
+</div><div class="column" style="width:52%;">
+<div class="interactive-panel">
+<h4>
+Interactive Polycyclic Metrophorischer Zirkel &amp; Holonomy Lab
+</h4>
+<p class="widget-context-note">
+<b>Context (§2.1.5, Thm. 2.23(5) &amp; §2.8):</b> A closed loop of aspect transformations (<span class="math inline">\(B_1 \to B_2 \to \dots \to B_Z \to B_1\)</span>) acts as a holonomy selection principle (<span class="math inline">\(\operatorname{Hol}_{\mathcal{M}}(\mathcal{C})(\metrophor) \cong \metrophor\)</span>). Slide the number of independent aspect systems <span class="math inline">\(Z \ge 2\)</span> and average cycle length <span class="math inline">\(\bar{N}_j &gt; 2\)</span> to compute the mono-cyclic partial circles <span class="math inline">\(L = \binom{Z}{2}\)</span> and bounded Universalquantor truth degree (Eq. 2.22).
+</p>
+<div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:10px; align-items:center;">
+<div>
+<div class="slider-row">
+<span style="color:#4169E1;">Aspect Systems <i>Z</i>:</span> <input type="range" id="cir-z" min="2" max="10" step="1" value="4" oninput="updateMetrophoricCircle()"> <span id="cir-z-val" style="font-family:monospace; width:24px;">4</span>
+</div>
+<div class="slider-row">
+<span style="color:#20B2AA;">Cycle Steps <i>N̄<sub>j</sub></i>:</span> <input type="range" id="cir-n" min="3" max="12" step="1" value="5" oninput="updateMetrophoricCircle()"> <span id="cir-n-val" style="font-family:monospace; width:24px;">5</span>
+</div>
+<div class="slider-row">
+<span style="color:#FFD700;">Holonomy Phase <i>φ</i>:</span> <input type="range" id="cir-phi" min="0" max="360" step="5" value="120" oninput="updateMetrophoricCircle()"> <span id="cir-phi-val" style="font-family:monospace; width:36px;">120°</span>
+</div>
+</div>
+<div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+<svg id="cir-svg" viewbox="-75 -75 150 150" width="125" height="125"></svg>
+</div>
+</div>
+<div id="cir-readout" class="matrix-readout" style="margin-top:6px;">
+<pre><code>Z = 4 Aspect Systems ⇒ Partial Circles L = C(4, 2) = 6 | Bounded Universalquantor Degree ∑ N_j = 30</code></pre>
+</div>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Ch2_Act12_Aeondyne_Fibration.mp4" style="max-height:175px;"></video>
+<div class="video-caption">
+Manim Act XII (Fig. 2.9): 3D Grothendieck Fibration ∫_Ctx Syn → Ctx &amp; Metrophoric Holonomy
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>When the Metrophor and Synkolator vary continuously over parameter manifolds M_U and M’<em>U, the Grothendieck construction int</em>{Ctx} Syn -&gt; Ctx forms a Grothendieck fibration. Closed loops in the base category act as holonomy operators selecting invariant apodictic cores across L = C(Z, 2) partial circles.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="complete-23-row-reconstruction-map-mathcalr-explication-2.1" class="slide level2 smaller scrollable">
+<h2>§2.9: Complete 23-Row Reconstruction Map <span class="math inline">\(\mathcal{R}\)</span> &amp; Explication 2.1</h2>
+<div class="stratum-badge badge-c">
+STRATUM C: COMPLETE RECONSTRUCTION MAP (23 ROWS, SM EQS. 5–9a) &amp; EXPLICATION 2.1
+</div>
+<div class="columns">
+<div class="column" style="width:56%;">
+<div class="interactive-panel">
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">
+Complete 23-Row Reconstruction Map <span class="math inline">\(\mathcal{R}\)</span> (Click Tabs 1 &amp; 2)
+</h4>
+<div class="syn-tabs">
+<p><button class="syn-tab-btn active" onclick="showGenericTab('rec2', 1, 2, this)">Rows 1–12: Operads, Monads &amp; Selection</button> <button class="syn-tab-btn" onclick="showGenericTab('rec2', 2, 2, this)">Rows 13–23: Symmetry, Closure &amp; Äondynen</button></p>
+</div>
+<div id="rec2-pane-1" class="syn-tab-pane active">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Heimian Concept (<span class="math inline">\(\mathbf{D}\)</span>)</th>
+<th style="text-align: left;">Mathematical Reconstruction (<span class="math inline">\(\mathcal{R}\)</span>)</th>
+<th style="text-align: left;">Epistemic Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>1. Syntrix (<span class="math inline">\(\syntrix\)</span>, SM Eq. 5)</strong></td>
+<td style="text-align: left;">Free algebra over colored operad <span class="math inline">\(\Osyn\)</span></td>
+<td style="text-align: left;"><strong>C-Model</strong> (Def. 2.4)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>2. Metrophor (<span class="math inline">\(\metrophor\)</span>)</strong></td>
+<td style="text-align: left;">Tuple <span class="math inline">\((a_1,\dots,a_n) \in (P^U)^n\)</span> / <span class="math inline">\(C^0(M_U, (P^U)^n)\)</span></td>
+<td style="text-align: left;"><strong>C-Model</strong> (Def. 2.38)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>3. Synkolator (<span class="math inline">\(f\)</span>)</strong></td>
+<td style="text-align: left;">Multilinear operation <span class="math inline">\(f \in \Osyn(\vec{\gamma}; \gamma)\)</span></td>
+<td style="text-align: left;"><strong>C-Model</strong> (Def. 2.3)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>4. Synkolationsstufe (<span class="math inline">\(m\)</span>)</strong></td>
+<td style="text-align: left;">Operadic arity <span class="math inline">\(m \in \mathbb{N}\)</span></td>
+<td style="text-align: left;"><strong>B-Param</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>5. Level Propagation</strong></td>
+<td style="text-align: left;">Reindexing shift endofunctor <span class="math inline">\(\Shift \colon \CSL \to \CSL\)</span></td>
+<td style="text-align: left;"><strong>B-Const</strong> (Def. 2.13)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>6. Pyramidal Syntrix (<span class="math inline">\(y\syntrix\)</span>)</strong></td>
+<td style="text-align: left;">Algebra generated by free tree monad <span class="math inline">\(T_{\mathrm{pyr}}\)</span></td>
+<td style="text-align: left;"><strong>C-Model</strong> (Def. 2.8)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>7. Homogeneous Syntrix (<span class="math inline">\(\homsyntrix\)</span>)</strong></td>
+<td style="text-align: left;">Algebra generated by composite monad <span class="math inline">\(T_{\mathrm{hom}}\)</span></td>
+<td style="text-align: left;"><strong>C-Model</strong> (Def. 2.34)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>8. Spaltbarkeit (SM, p.&nbsp;29)</strong></td>
+<td style="text-align: left;">Boardman–Vogt <span class="math inline">\(\Opyr \otBV \Ofrag\)</span> &amp; Beck law <span class="math inline">\(\widehat{\lambda}\)</span></td>
+<td style="text-align: left;"><strong>B-Thm</strong> (Thm. 2.31)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>9. Heterometral Symmetric</strong></td>
+<td style="text-align: left;">Distinct symmetric model <span class="math inline">\(\mathsf{Sel}_{\mathrm{het,sym}}^{(m)}(V,B)\)</span></td>
+<td style="text-align: left;"><strong>C-Model</strong> (Def. 2.18)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>10. Heterometral Alternating</strong></td>
+<td style="text-align: left;">Exterior tensor power <span class="math inline">\(\Lambda^m(V)\)</span></td>
+<td style="text-align: left;"><strong>C-Model</strong> (Def. 2.18)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>11. Heterometral Asymmetric</strong></td>
+<td style="text-align: left;">Distinct tensor subspace <span class="math inline">\(V^{\underline{\otimes}m}(B)\)</span></td>
+<td style="text-align: left;"><strong>C-Model</strong> (Def. 2.18)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>12. Homometral Symmetric</strong></td>
+<td style="text-align: left;">Symmetric power functor <span class="math inline">\(\Sym^m(V)\)</span></td>
+<td style="text-align: left;"><strong>C-Model</strong> (Def. 2.18)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="rec2-pane-2" class="syn-tab-pane">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Heimian Concept (<span class="math inline">\(\mathbf{D}\)</span>)</th>
+<th style="text-align: left;">Mathematical Reconstruction (<span class="math inline">\(\mathcal{R}\)</span>)</th>
+<th style="text-align: left;">Epistemic Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>13. Homometral Asymmetric</strong></td>
+<td style="text-align: left;">Full unrestricted tensor power <span class="math inline">\(V^{\otimes m}\)</span></td>
+<td style="text-align: left;"><strong>C-Model</strong> (Def. 2.18)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>14. Symmetry</strong></td>
+<td style="text-align: left;">Stabilizer subgroup equality <span class="math inline">\(\Stab(f) = \Sigma_{\vec{\gamma}}\)</span></td>
+<td style="text-align: left;"><strong>A-Def</strong> (Def. 2.5)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>15. Permutation Asymmetry</strong></td>
+<td style="text-align: left;">Lagrange orbit index <span class="math inline">\(r_f = [\Sigma_{\vec{\gamma}} : \Stab(f)]\)</span></td>
+<td style="text-align: left;"><strong>A-Def</strong> (Def. 2.5)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>16. Existenzbedingung (<span class="math inline">\(n\ge 1\)</span>)</strong></td>
+<td style="text-align: left;">Carrier non-triviality <span class="math inline">\(\dim P^U \ge 1, n \ge 1\)</span></td>
+<td style="text-align: left;"><strong>C-Conv</strong> (SM Eq. 6)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>17. Bandsyntrix (SM Eq. 7)</strong></td>
+<td style="text-align: left;">Closed interval cylinder <span class="math inline">\(\mathcal{S}(P_n) \subset P_n\)</span></td>
+<td style="text-align: left;"><strong>C-Model</strong> (Prop. 2.6, Thm. 2.7)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>18. Syndrombesetzung (<span class="math inline">\(n_\gamma\)</span>)</strong></td>
+<td style="text-align: left;">Dimension of selection space (<span class="math inline">\(\Lambda^m, \Sym^m, \dots\)</span>)</td>
+<td style="text-align: left;"><strong>B-Thm</strong> (Thm. 2.19)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>19. Syndromabschluß</strong></td>
+<td style="text-align: left;">Heterometral vanishing <span class="math inline">\(m &gt; n \implies \binom{n}{m} = 0\)</span></td>
+<td style="text-align: left;"><strong>B-Cor</strong> (Cor. 2.24)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>20. Komplexsynkolator (Eq. 8)</strong></td>
+<td style="text-align: left;">Piecewise-color filtered operad algebra on <span class="math inline">\(I_k\)</span></td>
+<td style="text-align: left;"><strong>B-Def</strong> (Def. 2.25)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>21. Reflexivität (<span class="math inline">\(\rho\)</span>)</strong></td>
+<td style="text-align: left;">Natural transformation <span class="math inline">\(\rho^{(n)} \colon \operatorname{Id}_{\Cspine} \Rightarrow \Shift^n\)</span></td>
+<td style="text-align: left;"><strong>B-Thm</strong> (Thm. 2.36)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>22. Primigene Äondyne (Eq. 9)</strong></td>
+<td style="text-align: left;">Fiber object <span class="math inline">\(\underline{\mathbf{S}} \in \mathbf{Syn}(U)\)</span> in Grothendieck fibration</td>
+<td style="text-align: left;"><strong>C-Model</strong> (Def. 2.38)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>23. Ganzläufige Äondyne (Eq. 9a)</strong></td>
+<td style="text-align: left;">Fibrated object with joint <span class="math inline">\((M_U \times M'_U)\)</span> variation</td>
+<td style="text-align: left;"><strong>C-Model</strong> (Def. 2.38)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column" style="width:44%;">
+<div class="carnap-box fragment fade-right">
+<p><strong>Carnapian Explication 2.1: The Syntrix Generative Engine &amp; <em>Spaltbarkeit</em></strong></p>
+<ol type="1">
+<li><strong>Explicandum (Stratum D):</strong> Heim’s recursive, history-dependent Syntrix generator (<span class="math inline">\(\syntrix \equiv \langle \synkolator, \metrophor, m \rangle\)</span>) and his claim that every homogeneous Syntrix splits into a pyramidal core and an interaction fragment (<em>Spaltbarkeit</em>, SM, pp.&nbsp;27–29).</li>
+<li><strong>Explicatum (Stratum A/B):</strong> The completed colored Banach operad <span class="math inline">\(\Osyn\)</span>, the Boardman–Vogt tensor operad <span class="math inline">\(\Opyr \otBV \Ofrag\)</span>, and the induced Beck distributive law <span class="math inline">\(\widehat{\lambda} \colon \overline{T}_{\mathrm{pyr}}\overline{T}_{\mathrm{frag}} \Rightarrow \overline{T}_{\mathrm{frag}}\overline{T}_{\mathrm{pyr}}\)</span>.</li>
+<li><strong>Exactness &amp; Simplicity:</strong> Replaces untyped bracket notation with level-typed profiles in <span class="math inline">\((\Ban, \otpi)\)</span> and four commuting Beck coherence diagrams modulo <span class="math inline">\(\mathcal{I}_{\mathrm{exchange}}\)</span>.</li>
+<li><strong>Fruitfulness:</strong> Yields polynomial dimension theorems for the 4 elementary structures (Thm. 2.19), deterministic <em>Syndromabschluß</em> criteria (Prop. 2.26), and Cartesian transport of <em>Äondynen</em> (Thm. 2.39).</li>
+</ol>
+</div>
+</div></div>
+<aside class="notes">
+<p>This slide provides the complete 23-row Reconstruction Map R from Section 2.9 across two interactive tabs alongside the full 4-part Carnapian Explication 2.1 box.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="sanity-checks-deliverables-bridge-to-chapter-3" class="slide level2 smaller scrollable">
+<h2>§2.10–2.11: Sanity Checks, Deliverables &amp; Bridge to Chapter 3</h2>
+<div class="stratum-badge badge-c">
+CHAPTER 2 SYNTHESIS: SANITY CHECKS, DELIVERABLES, ASYMPTOTIC LIMITS &amp; BRIDGE TO CH. 3
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="deliverables-box">
+<p><strong>Chapter 2 Deliverables: The Syntrix Engine</strong></p>
+<ul>
+<li><strong>Operadic Scaffolding:</strong> <span class="math inline">\(\Osyn\)</span> and the free tree monad <span class="math inline">\(T_{\mathsf{P}}(X) \cong X \oplus_1 \mathsf{P}(T_{\mathsf{P}}(X))\)</span> generate norm-complete deductive trees in <span class="math inline">\(\Ban\)</span>, dualized by the Prosyllogistic Bar Cooperad <span class="math inline">\(B(\Osyn)\)</span> (<span class="math inline">\(\Omega_{\mathrm{cobar}} \dashv B_{\mathrm{bar}}\)</span>).</li>
+<li><strong>Algebraic <em>Spaltbarkeit</em>:</strong> The Boardman–Vogt tensor operad <span class="math inline">\(\Opyr \otBV \Ofrag\)</span> and the quotient Beck law <span class="math inline">\(\widehat{\lambda} \colon \overline{T}_{\mathrm{pyr}}\overline{T}_{\mathrm{frag}} \Rightarrow \overline{T}_{\mathrm{frag}}\overline{T}_{\mathrm{pyr}}\)</span> separate pyramidal structure from historical fragments.</li>
+<li><strong>Spine Invariance &amp; Fibration:</strong> <span class="math inline">\(\BoxSyn\)</span> and <span class="math inline">\(\rho^{(n)} \colon \operatorname{Id} \Rightarrow \Shift^n\)</span> propagate stability across deductive strata, while <span class="math inline">\(\pi \colon \int_{\Ctx} \mathbf{Syn} \to \Ctx\)</span> transports <em>Äondynen</em> across context manifolds.</li>
+</ul>
+</div>
+<div class="thm-box">
+<p><strong>Physical &amp; Epistemic Sanity Checks (§2.10):</strong></p>
+<ol type="1">
+<li><strong>Unary Reduction Sanity Check (<span class="math inline">\(m = 1\)</span>):</strong> <span class="math inline">\(\Osyn(\gamma; \gamma+1) \cong \mathcal{L}(F_\gamma, F_{\gamma+1})\)</span>, <span class="math inline">\(\mathsf{P}(X) = X\)</span>, and <span class="math inline">\(T_{\mathsf{P}}(X) \cong \bigoplus_{k=0}^\infty X\)</span> (recovering standard Markov chains and single-step deductive sequents).</li>
+<li><strong>Discrete Collapse of the Äondyne Fibration:</strong> When <span class="math inline">\(M_U \cong M'_U \cong \{*\}\)</span>, <span class="math inline">\(\int \mathbf{Syn} \to \Ctx\)</span> collapses to the discrete fiber <span class="math inline">\(\mathbf{Syn}(\{*\})\)</span>, proving static Syntrices are constant sections.</li>
+</ol>
+</div>
+</div><div class="column" style="width:52%;">
+<h3 id="chapter-2-asymptotic-limits-degeneracy-reductions">Chapter 2: Asymptotic Limits &amp; Degeneracy Reductions</h3>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Regime / Boundary Limit</th>
+<th style="text-align: left;">Mathematical Operation</th>
+<th style="text-align: left;">Physical &amp; Logical Reduction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Linear Arity Limit</strong></td>
+<td style="text-align: left;"><span class="math inline">\(m = 1 \implies \Osyn(\gamma; \gamma+1) \cong \mathcal{L}(F_\gamma, F_{\gamma+1})\)</span></td>
+<td style="text-align: left;">Polynomial functor <span class="math inline">\(\mathsf{P}(X) = X\)</span>; tree monad collapses to <span class="math inline">\(T_{\mathsf{P}}(X) \cong \bigoplus_{k=0}^\infty X\)</span> (Markov chains).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Degenerate Bandwidth Limit</strong></td>
+<td style="text-align: left;"><span class="math inline">\(A_i = B_i = a_i\)</span> (<span class="math inline">\(\Delta_i \to 0\)</span>)</td>
+<td style="text-align: left;">Continuous <em>Bandsyntrix</em> collapses to discrete point-valued Syntrix (Prop. 2.6, Thm. 2.7).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Point-Manifold Limit</strong></td>
+<td style="text-align: left;"><span class="math inline">\(M_U \cong M'_U \cong \{*\}\)</span></td>
+<td style="text-align: left;">Grothendieck fibration <span class="math inline">\(\int \mathbf{Syn} \to \Ctx\)</span> reduces to discrete fiber <span class="math inline">\(\mathbf{Syn}(\{*\})\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="chapter-2-cross-disciplinary-interpretation-matrix">Chapter 2: Cross-Disciplinary Interpretation Matrix</h3>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Categorical &amp; Topos Logic</th>
+<th style="text-align: left;">Theoretical Physics &amp; Geometry</th>
+<th style="text-align: left;">Cognitive Science &amp; Epistemology</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Col\)</span>-colored Banach operad <span class="math inline">\(\Osyn\)</span>, tree monad <span class="math inline">\(T_{\mathsf{P}}\)</span>, &amp; Bar–Cobar <span class="math inline">\(\Omega \dashv B\)</span>.</td>
+<td style="text-align: left;">Multi-particle interaction vertices with stabilizers <span class="math inline">\(\Stab(f) \subseteq \Sigma_m\)</span> &amp; holonomy loops.</td>
+<td style="text-align: left;">Hierarchical concept synthesis (<span class="math inline">\(k \uparrow\)</span>), analytical Prosyllogismus (<span class="math inline">\(k \downarrow\)</span>), &amp; Carnapian quasi-analysis.</td>
+</tr>
+</tbody>
+</table>
+<div class="firewall-box fragment glow-pulse">
+<p><strong>The Algebraic Obstruction &amp; Functorial Ascent to Chapter 3:</strong> A single Syntrix is autonomous: direct products do not encode shared channels, dimensional reduction, entanglement, or mutual feedback. In <strong>Chapter 3</strong>, we bind isolated operad algebras into corporate networks via <strong>contractive Banach span pushouts (<span class="math inline">\(P_a \boxplus_\phi P_b\)</span>)</strong> and <strong>Syntropod interaction graphs</strong>.</p>
+</div>
+</div></div>
+<aside class="notes">
+<p>We conclude Chapter 2 with the Deliverables box, both Sanity Checks, the Asymptotic Limits table, the Cross-Disciplinary Interpretation Matrix, and the transition to Chapter 3: Syntrixkorporationen.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="chapter2_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="chapter2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="chapter2_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="chapter2_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="chapter2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="chapter2_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="chapter2_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="chapter2_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="chapter2_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="chapter2_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: true,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+
+        height: 1080,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+
+        maxScale: 1.5,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    <script src="shared/chapter2-widgets.js"></script>
+    
+
+</body></html>

@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act2_Eindeutigkeit_Decomp/bf2d545f78b15b167442bd13e013eb01ca86e6153fa4431a4f6f8e5cdfed0183.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act2_Eindeutigkeit_Decomp/12dadb031aed290b1a834662abf97f9c9819b3d51bc60cdb96d594c4247a3481.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act2_Eindeutigkeit_Decomp/433278bf68a640ec9e720b3ea947bfdeb0e21da246a7cc85633c62535e98e000.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act2_Eindeutigkeit_Decomp/b19052f2f0b616c50a2ac13dbe672adb0c71cb0e1afcbff6f44f23a9d217565a.mp4'

@@ -1,0 +1,7 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act7_3D_Pullback/5a0a5abc9fba11a6ef6eb139b20afd62139863eb604ef195d50e967a12bdf3a6.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act7_3D_Pullback/e3dbf3edcebc638ddab13131e3bfefe5e58b0c84acbc6930a8d33b97e315554e.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act7_3D_Pullback/28565db6a836396606d7d5335f0a90ffd16aa894e43ab4451bee5bae9252f360.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act7_3D_Pullback/05c9123bcb7a692fc982e5f3295e107c71d5f60a4983bda708eb84b714aae80b.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act7_3D_Pullback/fe3ffe60903b436ce52be5f6bde1af8024f0ee0a8bbfd106382007244edbe191.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act7_3D_Pullback/75c0935539ca76f9c533cfbc07ccdbce08481f8fd35cd24f77eeef3c6fd0f9a5.mp4'

@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act5_Lattice_Module_Stencil/7cc390dd673a719e92178ca4379ecf016a0850ff7f539a2106c57ba0d95b42f1.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act5_Lattice_Module_Stencil/92772d6ad44280114501196a0ff1d4a1c5c9085a91b4a35c01f58d88be5bbdf5.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act5_Lattice_Module_Stencil/44a404af39db6a707dbf4960c38c41fb07f489ed6b09f90991f188597de4f5c7.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act5_Lattice_Module_Stencil/3781e8f203af820f2b7d185fae59a14db0b09a880cc610380ae6843716c08fc3.mp4'

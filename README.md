@@ -88,39 +88,35 @@ This project reconstructs Heim's treatise using modern mathematical physics, for
 
 ```
 Manim/
-├── index.html                   # Master Web Portal UI (persistent chapter bar, Atlas modal, zen mode)
-├── .nojekyll                    # Ensures GitHub Pages serves all directories without Jekyll filtering
-├── chapter1.html ... chapter15.html # Compiled standalone Reveal.js decks (web root for GitHub Pages)
-├── syntrometrie_all.html        # Compiled 231-slide continuous mega-deck
-├── chapter1_files/ ...          # Reveal.js runtime libraries and assets
-├── syntrometrie_all_files/
-├── build_unified_suite.py       # Pipeline: extracts bodies, merges 213 MathJax macros, generates mega-deck
-├── recompile_all.py             # Batch compiler for all 15 chapters and the mega-deck
+├── index.html                   # Master Web Portal entry redirector (preserves deep links & hashes)
+├── build_unified_suite.py       # Pipeline: extracts bodies, merges 210+ MathJax macros, generates mega-deck
+├── recompile_all.py             # Batch recompile all 15 chapters and mega-deck into html/
 ├── render_all_scenes.py         # Automated batch renderer for all 180 Manim animations
 ├── media_map.py                 # Cross-referencer for qmd video embeds, scene classes & media clips
-│
+├── html/                        # All compiled Reveal.js HTML presentations & assets
+│   ├── index.html               # Main interactive portal UI (persistent chapter bar, Atlas modal, zen mode)
+│   ├── chapter1.html ... chapter15.html # Compiled standalone Reveal.js decks
+│   ├── syntrometrie_all.html    # Compiled 231-slide continuous mega-deck
+│   └── chapter1_files/ ...      # Reveal.js runtime libraries and assets
 ├── qmd/                         # Quarto source documents
 │   ├── chapter1.qmd ... chapter15.qmd # Individual chapter Quarto presentations
 │   └── syntrometrie_all.qmd     # Mega-deck source document
-│
 ├── scenes/                      # Manim Python animation sources
 │   ├── chapter1_scenes.py ... chapter15_scenes.py # 180 Scene classes (12 per chapter)
 │   └── split_manim_scenes.py    # Generator / scene splitter
-│
 ├── scss/                        # Presentation stylesheets
 │   └── custom_syntrometrie.scss # Global styling, responsive formula wrapping & mobile layout
-│
 ├── media/                       # 180 rendered 60fps MP4 video animations
 │   ├── Act1_Firewall.mp4
 │   ├── Ch2_Act1_Syntrix_Triad.mp4
 │   └── ... (180 files)
-│
 ├── shared/                      # Shared assets, widget libraries, and headers
 │   ├── all-headers.html         # Unified MathJax macro registry (213 definitions) and CSS
-│   ├── chapter1-widgets.js ...  # Ch 1–15 Interactive widget libraries
-│   ├── chapter1-header.html ... # Ch 1–15 MathJax macros & local styles
+│   ├── chapter1-widgets.js      # Ch 1 Interactive logic (valuation bands, polarimeter)
+│   ├── chapter2-widgets.js      # Ch 2 Interactive logic (tree monads, colored operads)
+│   ├── ...                      # Ch 3–15 Interactive widget libraries
+│   ├── chapter1-header.html     # Ch 1 MathJax macros & local styles
 │   └── includes/                # Extracted Markdown bodies for mega-deck include
-│
 └── bak/                         # Archive backups
 ```
 
@@ -183,12 +179,12 @@ Direct chapter deep links:
 To recompile any individual chapter or the entire suite after making edits:
 
 ```bash
-# Recompile a single chapter
-quarto render qmd/chapter4.qmd --output-dir .
+# Recompile a single chapter into html/
+quarto render qmd/chapter4.qmd --output-dir html
 
 # Extract bodies, update unified headers, and rebuild the 2D mega-deck
 python build_unified_suite.py
-quarto render qmd/syntrometrie_all.qmd --output-dir .
+quarto render qmd/syntrometrie_all.qmd --output-dir html
 
 # Batch recompile all 15 chapters and the mega-deck
 python recompile_all.py

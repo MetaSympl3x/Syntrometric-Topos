@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act11_Metropie_Polarimeter/1fd050259d016225a8295fbdef6cb09e66931351b74eded7ca55c7367bb44d79.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act11_Metropie_Polarimeter/6298235a30f440ff705f7f2964e21c68bb27cc30cec17c97f0845ab4fc173ba9.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act11_Metropie_Polarimeter/a0a9639be3e7843e886298d59a9676be6349b015313bf8712da57df4667d49a7.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act11_Metropie_Polarimeter/e78ad973152349fccb5e7d9304fc5e3d1f43c0296d5fa08067453ef580ecad3f.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act11_Metropie_Polarimeter/0990a939a5b6b53568298f2031791b4a17ccbfed15576d16463764a421c3cf6f.mp4'

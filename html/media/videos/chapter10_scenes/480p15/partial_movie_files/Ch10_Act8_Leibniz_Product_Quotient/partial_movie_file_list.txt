@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act8_Leibniz_Product_Quotient/9cb1fa5574cc30ceb6bec84bfc9f5ef6532fe36606b796babd38272d4ee1d614.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act8_Leibniz_Product_Quotient/e4733cfbb66370ce1b077bbb956838fb0cea9e865af15f4dffe9c86e0ac8f3df.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act8_Leibniz_Product_Quotient/e664c5b1a4dd63b49a61638c5f4dee70bdfab8dbb8a048fb46ab514fb4988c11.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act8_Leibniz_Product_Quotient/00a5668fe557907165850feb1aa0fa4a2e0754e79151ce2a3352acbde381dbea.mp4'

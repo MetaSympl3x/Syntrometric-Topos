@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act2_Physics_Landscape_LIV/91bca1fb8fe04bc5791ab207503eeedc0d45e5ce9247a7a36def618c7dcd8273.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act2_Physics_Landscape_LIV/1245c0805c0d9fdd5f8aa7435fa944061c83a1768ab64846d7e53cc9bda915c3.mp4'

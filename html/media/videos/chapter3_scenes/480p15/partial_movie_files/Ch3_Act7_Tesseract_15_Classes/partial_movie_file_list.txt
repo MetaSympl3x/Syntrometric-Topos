@@ -1,0 +1,7 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act7_Tesseract_15_Classes/5d114434ac865318f55c101c19c636548abddd5debf0b271d0ca81d88985307b.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act7_Tesseract_15_Classes/c640c296541605fd245d9d2369cce6d72fff970cd7cc3a4aaf2d8fd7fea31099.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act7_Tesseract_15_Classes/cde2e8864316b565b31ae2768b5abfa8416b8b6f952255d2fdfaf7b154a188bf.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act7_Tesseract_15_Classes/8251e4b5d20102506303d48d5005aec5f1688f9243d57aee17e5c0d842c2f970.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act7_Tesseract_15_Classes/172871eb563d828889699ff74312790d8b8953aa494907800b769171abdbd0ed.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act7_Tesseract_15_Classes/1aa8828c3bd8169a32d9e11487909d3c2d04231d9233a065bfbdbe7b6a583e26.mp4'

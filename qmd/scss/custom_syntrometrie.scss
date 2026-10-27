@@ -1,115 +1,317 @@
 /*-- scss:defaults --*/
-$body-bg: #0b0e17;
-$body-color: #e8ecf2;
-$link-color: #20B2AA;
-$heading-color: #FFD700;
-$presentation-heading-font: "Libertinus Sans", "Helvetica Neue", sans-serif;
-$font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
+// ===========================================================================
+// 1. SYNTROMETRIC COLOR PALETTE & TYPOGRAPHY TOKENS
+// ===========================================================================
+$syn-bg-deep:     #070a12;
+$syn-bg-panel:    #0d1322;
+$syn-bg-elevated: #151e32;
 
-/*-- scss:rules --*/
-.reveal h2 {
-  border-bottom: 2px solid rgba(65, 105, 225, 0.5);
-  padding-bottom: 8px;
-  margin-bottom: 18px;
+$syn-blue:        #4169E1; // Stratum A: Foundational Math / Prädikatrix
+$syn-blue-light:  #82aaff;
+$syn-teal:        #20B2AA; // Stratum B: Derived Proofs / Dialektik
+$syn-teal-light:  #5eead4;
+$syn-orange:      #FFA500; // Stratum C: Reconstruction Map R / Koordination
+$syn-orange-light:#fcd34d;
+$syn-crimson:     #DC143C; // Epistemic Firewall / Antinomies / Singularities
+$syn-crimson-lt:  #ff6b81;
+$syn-gold:        #FFD700; // Holoform Equalizer / Universalquantor / Apex
+$syn-purple:      #9370DB; // Carnapian Explication / Higher Topos / Cohesion
+$syn-purple-lt:   #e9d5ff;
+$syn-slate:       #708090; // Stratum D: Historical Exegesis
+
+// Quarto / Reveal.js Core Overrides
+$body-bg:                   #0b0e17;
+$body-color:                #e8ecf2;
+$link-color:                $syn-teal;
+$heading-color:             $syn-gold;
+$presentation-heading-font: "Libertinus Sans", "Inter", "Helvetica Neue", sans-serif;
+$font-family-sans-serif:    "Libertinus Sans", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+$font-family-monospace:     "Libertinus Mono", "JetBrains Mono", "Fira Code", monospace;
+$code-block-bg:             #0a0f1c;
+$code-block-border-color:   rgba($syn-blue, 0.4);
+
+/*-- scss:mixins --*/
+@mixin syn-callout($accent-color, $bg-alpha: 0.11, $border-left-width: 5px) {
+  background: linear-gradient(
+    135deg,
+    rgba($accent-color, $bg-alpha) 0%,
+    rgba(13, 19, 34, 0.82) 100%
+  );
+  border: 1px solid rgba($accent-color, 0.32);
+  border-left: $border-left-width solid $accent-color;
+  border-radius: 9px;
+  padding: 9px 14px;
+  margin: 6px 0;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.32),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
-/* Epistemic Stratum Badges */
+@mixin syn-badge($color, $text-color) {
+  background: rgba($color, 0.20);
+  border: 1.5px solid $color;
+  color: $text-color;
+  box-shadow: 0 0 12px rgba($color, 0.22);
+}
+
+/*-- scss:rules --*/
+// ===========================================================================
+// 2. GLOBAL SLIDE TYPOGRAPHY, HEADINGS, TABLES & BLOCKQUOTES
+// ===========================================================================
+.reveal {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  letter-spacing: -0.01em;
+}
+
+.reveal h2 {
+  border-bottom: 2px solid rgba($syn-blue, 0.55);
+  padding-top: 0;
+  padding-bottom: 7px;
+  margin-top: 0;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 14px rgba($syn-gold, 0.18);
+}
+
+.reveal h3 {
+  color: $syn-blue-light;
+  font-size: 1.05em;
+  margin-bottom: 8px;
+}
+
+.reveal blockquote {
+  background: rgba($syn-slate, 0.12);
+  border-left: 4px solid $syn-gold;
+  border-radius: 6px;
+  padding: 8px 16px;
+  margin: 10px 0;
+  font-style: italic;
+  color: #cbd5e1;
+  width: 96%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+// Booktabs-style Tables for Master Register & Reconstructions
+.reveal table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0;
+  font-size: 0.72em;
+  background: rgba(10, 14, 24, 0.65);
+  border-top: 2px solid $syn-blue;
+  border-bottom: 2px solid $syn-blue;
+  border-radius: 6px;
+  overflow: hidden;
+
+  thead th {
+    background: rgba($syn-blue, 0.22);
+    color: $syn-gold;
+    font-weight: 700;
+    border-bottom: 1.5px solid rgba($syn-blue, 0.6);
+    padding: 7px 10px;
+    text-align: left;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: rgba($syn-blue, 0.12);
+    }
+  }
+
+  td {
+    padding: 6px 10px;
+    vertical-align: middle;
+  }
+}
+
+// ===========================================================================
+// 3. EPISTEMIC STRATUM BADGES & INLINE PILLS
+// ===========================================================================
 .stratum-badge {
   display: inline-block;
-  font-size: 0.55em;
+  font-size: 0.54em;
   font-weight: 800;
   letter-spacing: 1.5px;
   padding: 4px 12px;
   border-radius: 5px;
-  margin-bottom: 14px;
+  margin-top: 0;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
-.badge-firewall { background: rgba(220, 20, 60, 0.22); border: 1.5px solid #DC143C; color: #ff6b81; }
-.badge-a        { background: rgba(65, 105, 225, 0.22); border: 1.5px solid #4169E1; color: #82aaff; }
-.badge-d        { background: rgba(112, 128, 144, 0.25); border: 1.5px solid #708090; color: #cbd5e1; }
-.badge-b { background: rgba(32, 178, 170, 0.22); border: 1.5px solid #20B2AA; color: #5eead4; }
-.badge-c { background: rgba(255, 165, 0, 0.22); border: 1.5px solid #FFA500; color: #fcd34d; }
-.pill-a { background: #4169E1; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
-.pill-b { background: #20B2AA; color: black; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
-.pill-c { background: #FFA500; color: black; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
-.pill-d { background: #708090; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
 
-/* Theorem, Firewall, Carnap & Intuition Boxes */
-.firewall-box {
-  background: rgba(220, 20, 60, 0.10);
-  border-left: 5px solid #DC143C;
-  border-radius: 8px;
-  padding: 14px 18px;
-  margin: 12px 0;
+.badge-firewall { @include syn-badge($syn-crimson, $syn-crimson-lt); }
+.badge-a        { @include syn-badge($syn-blue,    $syn-blue-light); }
+.badge-b        { @include syn-badge($syn-teal,    $syn-teal-light); }
+.badge-c        { @include syn-badge($syn-orange,  $syn-orange-light); }
+.badge-d        { @include syn-badge($syn-slate,   #cbd5e1); }
+
+.pill-a, .pill-b, .pill-c, .pill-d {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.88em;
+  margin-right: 4px;
+}
+.pill-a { background: $syn-blue;   color: #fff; }
+.pill-b { background: $syn-teal;   color: #000; }
+.pill-c { background: $syn-orange; color: #000; }
+.pill-d { background: $syn-slate;  color: #fff; }
+
+// ===========================================================================
+// 4. MATHEMATICAL ENVIRONMENTS (MATCHING TCOLORBOX IN SYNTROMETRIC-TOPOS.TEX)
+// ===========================================================================
+.firewall-box     { @include syn-callout($syn-crimson, 0.12, 5px); }
+.thm-box,
+.def-box,
+.prop-box         { @include syn-callout($syn-blue,    0.11, 5px); }
+.carnap-box       { @include syn-callout($syn-purple,  0.13, 5px); }
+.intuition-box    { @include syn-callout($syn-teal,    0.11, 5px); }
+.scholium-box     { @include syn-callout(#60a5fa,      0.13, 5px); }
+.vignette-box     { @include syn-callout($syn-orange,  0.11, 5px); }
+.remark-box       { @include syn-callout(#94a3b8,      0.09, 4px); }
+
+.proof-box {
+  @include syn-callout($syn-gold, 0.07, 4px);
+  font-size: 0.88em;
 }
 
-.thm-box {
-  background: rgba(65, 105, 225, 0.10);
-  border-left: 5px solid #4169E1;
-  border-radius: 8px;
-  padding: 12px 18px;
-  margin: 12px 0;
+.claim-ceiling {
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid $syn-blue;
+  border-left: 4px solid $syn-gold;
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin: 6px 0;
+  font-size: 0.82em;
+  color: #e2e8f0;
 }
 
-.carnap-box {
-  background: rgba(147, 112, 219, 0.12);
-  border-left: 5px solid #9370DB;
-  border-radius: 8px;
-  padding: 12px 18px;
-  margin: 12px 0;
+.deliverables-box {
+  @include syn-callout($syn-teal, 0.13, 6px);
+  border-left-color: $syn-gold;
 }
 
-.intuition-box {
-  background: rgba(32, 178, 170, 0.10);
-  border-left: 5px solid #20B2AA;
-  border-radius: 8px;
-  padding: 12px 18px;
-  margin: 12px 0;
-}
-
-/* Manim Video Framing */
+// ===========================================================================
+// 5. MANIM 3D VIDEO CONTAINERS
+// ===========================================================================
 .video-container {
-  background: #05070b;
-  border: 1.5px solid rgba(65, 105, 225, 0.45);
+  background: $syn-bg-deep;
+  border: 1.5px solid rgba($syn-blue, 0.48);
   border-radius: 12px;
-  padding: 8px;
-  box-shadow: 0 0 25px rgba(65, 105, 225, 0.25);
+  padding: 5px; margin: 6px 0; margin: 6px 0;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55),
+              0 0 22px rgba($syn-blue, 0.22);
   text-align: center;
-}
-.video-container video {
-  width: 100%;
-  max-height: 520px;
-  border-radius: 8px;
-}
-.video-caption {
-  font-size: 0.6em;
-  color: #FFD700;
-  margin-top: 6px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    border-color: rgba($syn-gold, 0.65);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.65),
+                0 0 25px rgba($syn-gold, 0.22);
+  }
+
+  video {
+    width: 100%;
+    max-height: 520px;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+    background: #000;
+  }
 }
 
-/* Interactive HTML/JS Control Panels */
+.video-caption {
+  font-size: 0.58em;
+  color: $syn-gold;
+  margin-top: 6px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+// ===========================================================================
+// 6. INTERACTIVE HTML/JS/SVG LABORATORIES, TABS, SLIDERS & LEAN CARDS
+// ===========================================================================
 .interactive-panel {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1.5px solid rgba(255, 165, 0, 0.5);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.045) 0%,
+    rgba(10, 14, 24, 0.85) 100%
+  );
+  border: 1.5px solid rgba($syn-orange, 0.52);
   border-radius: 12px;
-  padding: 16px 20px;
+  padding: 10px 14px; margin: 6px 0; margin: 6px 0;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  h4 {
+    color: $syn-orange;
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 0.86em;
+    letter-spacing: 0.01em;
+  }
 }
-.interactive-panel h4 {
-  color: #FFA500;
-  margin-top: 0;
-  margin-bottom: 6px;
+
+.widget-context-note {
+  font-size: 0.63em;
+  color: #cbd5e1;
+  line-height: 1.36;
+  margin: 4px 0 10px 0;
 }
+
+// Custom Range Sliders (WebKit & Firefox)
 .slider-row {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.72em;
+  font-size: 0.70em;
   margin: 6px 0;
+
+  input[type="range"] {
+    flex: 1;
+    accent-color: $syn-gold;
+    height: 6px;
+    background: #1e293b;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: $syn-gold;
+      border: 2px solid #000;
+      box-shadow: 0 0 8px rgba($syn-gold, 0.65);
+      cursor: pointer;
+    }
+
+    &::-moz-range-thumb {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: $syn-gold;
+      border: 2px solid #000;
+      box-shadow: 0 0 8px rgba($syn-gold, 0.65);
+      cursor: pointer;
+    }
+  }
 }
-.slider-row input[type=range] {
-  flex: 1;
-  accent-color: #FFD700;
-}
+
+// Continuous Predicate & Diatrope Band Tracks (Chapter 1)
 .band-track {
   position: relative;
   height: 22px;
@@ -117,28 +319,34 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
   border-radius: 11px;
   margin-top: 8px;
   border: 1px solid #3b4560;
+  overflow: hidden;
 }
+
 .band-fill-p {
   position: absolute;
   height: 100%;
-  background: rgba(65, 105, 225, 0.65);
+  background: linear-gradient(90deg, rgba($syn-blue, 0.45), rgba($syn-blue, 0.8));
   border-radius: 11px;
 }
+
 .band-dot-p {
   position: absolute;
   top: -3px;
   width: 14px;
   height: 28px;
-  background: #FFD700;
+  background: $syn-gold;
   border-radius: 4px;
   transform: translateX(-50%);
+  box-shadow: 0 0 8px rgba($syn-gold, 0.8);
 }
+
 .band-fill-d {
   position: absolute;
   height: 100%;
-  background: rgba(32, 178, 170, 0.65);
+  background: linear-gradient(90deg, rgba($syn-teal, 0.45), rgba($syn-teal, 0.8));
   border-radius: 11px;
 }
+
 .band-dot-d {
   position: absolute;
   top: -3px;
@@ -147,94 +355,177 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
   background: #ffffff;
   border-radius: 4px;
   transform: translateX(-50%);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
+
+// Interactive Buttons & Subsystem Toggles
 .syn-btn {
   background: #1e293b;
-  color: #FFD700;
-  border: 1px solid #FFD700;
+  color: $syn-gold;
+  border: 1px solid rgba($syn-gold, 0.75);
   border-radius: 6px;
-  padding: 6px 14px;
-  font-size: 0.65em;
+  padding: 5px 13px;
+  font-size: 0.63em;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.18s ease;
+
+  &:hover, &:focus-visible {
+    background: $syn-gold;
+    color: #000;
+    box-shadow: 0 0 12px rgba($syn-gold, 0.45);
+    outline: none;
+  }
 }
-.syn-btn:hover {
-  background: #FFD700;
-  color: #000;
+
+.subsys-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #1e293b;
+  border: 1.5px solid #475569;
+  color: #e2e8f0;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.66em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+
+  &.on {
+    background: rgba($syn-teal, 0.25);
+    border-color: $syn-teal;
+    color: $syn-gold;
+    box-shadow: 0 0 10px rgba($syn-teal, 0.28);
+  }
 }
+
+.kripke-node {
+  cursor: pointer;
+  transition: filter 0.18s ease;
+  &:hover {
+    filter: drop-shadow(0 0 8px rgba($syn-gold, 0.65));
+  }
+}
+
+// Tabbed Rule / Proof / Coherence Explorers
+.syn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.syn-tab-btn {
+  background: #151c2c;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 0.60em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+
+  &.active, &:hover {
+    background: rgba($syn-blue, 0.28);
+    color: $syn-gold;
+    border-color: $syn-gold;
+  }
+}
+
+.syn-tab-pane {
+  display: none;
+  background: rgba(10, 14, 23, 0.85);
+  border: 1px solid rgba($syn-blue, 0.45);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.72em;
+
+  &.active {
+    display: block;
+  }
+}
+
+// Readout Consoles, Stat Cards, Konstitutionsstammbaum Tiers & Lean 4 Cards
 .matrix-readout {
-  margin-top: 12px;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.6);
-  border-left: 4px solid #20B2AA;
-  font-family: monospace;
-  font-size: 0.75em;
-  color: #FFD700;
+  margin-top: 10px;
+  padding: 9px 12px;
+  background: rgba(5, 8, 15, 0.82);
+  border: 1px solid rgba($syn-teal, 0.28);
+  border-left: 4px solid $syn-teal;
+  border-radius: 6px;
+  font-family: $font-family-monospace;
+  font-size: 0.72em;
+  color: $syn-gold;
   text-align: center;
 }
 
-/* Additional Topos.tex Environments: Proof, Scholium, Remark, History Vignette, Claim Ceiling, Deliverables */
-.proof-box {
-  background: rgba(15, 23, 42, 0.78);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  border-left: 4px solid #FFD700;
+.lean-code-card,
+.lean-card {
+  background: #0d131f;
+  border: 1.5px solid #334155;
+  border-left: 5px solid $syn-teal;
   border-radius: 8px;
-  padding: 10px 16px;
-  margin: 10px 0;
-  font-size: 0.88em;
-}
-
-.scholium-box {
-  background: rgba(65, 105, 225, 0.14);
-  border: 1px solid rgba(65, 105, 225, 0.45);
-  border-left: 5px solid #60a5fa;
-  border-radius: 8px;
-  padding: 11px 16px;
-  margin: 10px 0;
-}
-
-.remark-box {
-  background: rgba(148, 163, 184, 0.08);
-  border-left: 4px solid #94a3b8;
-  border-radius: 8px;
-  padding: 10px 16px;
-  margin: 10px 0;
-}
-
-.vignette-box {
-  background: rgba(255, 165, 0, 0.10);
-  border: 1px solid rgba(255, 165, 0, 0.4);
-  border-left: 5px solid #FFA500;
-  border-radius: 8px;
-  padding: 11px 16px;
-  margin: 10px 0;
-}
-
-.claim-ceiling {
-  background: rgba(15, 23, 42, 0.92);
-  border: 1px solid #4169E1;
-  border-left: 4px solid #FFD700;
-  border-radius: 6px;
-  padding: 7px 13px;
-  margin: 8px 0;
-  font-size: 0.82em;
+  padding: 10px 14px;
+  font-family: $font-family-monospace;
+  font-size: 0.54em;
+  line-height: 1.36;
   color: #e2e8f0;
+  overflow-x: auto;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.45);
 }
 
-.deliverables-box {
-  background: rgba(32, 178, 170, 0.12);
-  border: 1.5px solid #20B2AA;
-  border-left: 6px solid #FFD700;
-  border-radius: 8px;
-  padding: 12px 18px;
-  margin: 10px 0;
+.tier-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-// Sophisticated Slide & Fragment Animations
+.tier-bar {
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: 0.64em;
+  border-left: 5px solid;
+  background: rgba(255, 255, 255, 0.04);
+  transition: transform 0.18s ease, background 0.18s ease;
+
+  &:hover {
+    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.075);
+  }
+}
+
+.stat-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.stat-grid-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.stat-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid #334155;
+  border-left: 4px solid $syn-blue;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.63em;
+}
+
+// ===========================================================================
+// 7. SOPHISTICATED SLIDE & FRAGMENT ANIMATIONS
+// ===========================================================================
 @keyframes synGlowPulse {
-  0%   { box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
-  45%  { box-shadow: 0 0 22px rgba(255, 215, 0, 0.45), inset 0 0 10px rgba(65, 105, 225, 0.25); }
-  100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.18); }
+  0%   { box-shadow: 0 0 0px rgba($syn-gold, 0); }
+  45%  { box-shadow: 0 0 22px rgba($syn-gold, 0.45), inset 0 0 10px rgba($syn-blue, 0.25); }
+  100% { box-shadow: 0 0 10px rgba($syn-gold, 0.18); }
 }
 
 .reveal .fragment {
@@ -246,55 +537,35 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     transform: translate3d(0, 18px, 0);
     opacity: 0;
     visibility: hidden;
-    &.visible {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-      visibility: visible;
-    }
+    &.visible { transform: translate3d(0, 0, 0); opacity: 1; visibility: visible; }
   }
 
   &.fade-down {
     transform: translate3d(0, -18px, 0);
     opacity: 0;
     visibility: hidden;
-    &.visible {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-      visibility: visible;
-    }
+    &.visible { transform: translate3d(0, 0, 0); opacity: 1; visibility: visible; }
   }
 
   &.fade-right {
     transform: translate3d(-24px, 0, 0);
     opacity: 0;
     visibility: hidden;
-    &.visible {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-      visibility: visible;
-    }
+    &.visible { transform: translate3d(0, 0, 0); opacity: 1; visibility: visible; }
   }
 
   &.fade-left {
     transform: translate3d(24px, 0, 0);
     opacity: 0;
     visibility: hidden;
-    &.visible {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-      visibility: visible;
-    }
+    &.visible { transform: translate3d(0, 0, 0); opacity: 1; visibility: visible; }
   }
 
   &.zoom-in {
     transform: scale(0.92);
     opacity: 0;
     visibility: hidden;
-    &.visible {
-      transform: scale(1);
-      opacity: 1;
-      visibility: visible;
-    }
+    &.visible { transform: scale(1); opacity: 1; visibility: visible; }
   }
 
   &.blur-in {
@@ -302,12 +573,7 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     transform: translate3d(0, 10px, 0);
     opacity: 0;
     visibility: hidden;
-    &.visible {
-      filter: blur(0px);
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-      visibility: visible;
-    }
+    &.visible { filter: blur(0px); transform: translate3d(0, 0, 0); opacity: 1; visibility: visible; }
   }
 
   &.glow-pulse {
@@ -324,10 +590,8 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
 }
 
 // ===========================================================================
-// FORMULA WRAPPING & PANEL OVERFLOW CONTAINMENT (Desktop & Mobile)
+// 8. FORMULA WRAPPING & PANEL OVERFLOW CONTAINMENT (Desktop & Mobile)
 // ===========================================================================
-
-// 1. Containment for columns and panels (min-width: 0 is essential for Flex/Grid items)
 .reveal .column,
 .reveal .columns > div,
 .reveal .grid-2 > div,
@@ -345,6 +609,7 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
 .reveal .vignette-box,
 .reveal .claim-ceiling,
 .reveal .deliverables-box,
+.reveal .lean-code-card,
 .reveal .lean-card,
 .reveal .syn-tab-pane,
 .reveal .tab-pane,
@@ -355,7 +620,6 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
   box-sizing: border-box !important;
 }
 
-// 2. Display math blocks (MathJax 2 .MathJax_Display, Pandoc span.math.display, MathJax 3 mjx-container)
 .reveal .math.display,
 .reveal .MathJax_Display,
 .reveal mjx-container[display="true"] {
@@ -366,21 +630,19 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
   overflow-x: auto !important;
   overflow-y: hidden !important;
   text-align: center !important;
-  margin: 0.35em 0 !important;
-  padding: 4px 6px 6px 6px !important;
+  margin: 0.2em 0 !important;
+  padding: 2px 4px !important;
   scrollbar-width: thin;
-  scrollbar-color: rgba(65, 105, 225, 0.45) rgba(15, 23, 42, 0.3);
+  scrollbar-color: rgba($syn-blue, 0.45) rgba(15, 23, 42, 0.3);
   -webkit-overflow-scrolling: touch;
 }
 
-// 3. Keep MathJax inner math boxes from exceeding their parent wrapper
 .reveal .MathJax_Display > .MathJax,
 .reveal .MathJax_Display span.MathJax,
 .reveal mjx-container[display="true"] > mjx-math {
   max-width: 100% !important;
 }
 
-// 4. Custom scrollbars for wide formulas that need horizontal panning
 .reveal .math.display::-webkit-scrollbar,
 .reveal .MathJax_Display::-webkit-scrollbar,
 .reveal mjx-container[display="true"]::-webkit-scrollbar,
@@ -388,6 +650,7 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
 .reveal .matrix-readout::-webkit-scrollbar {
   height: 5px;
 }
+
 .reveal .math.display::-webkit-scrollbar-track,
 .reveal .MathJax_Display::-webkit-scrollbar-track,
 .reveal mjx-container[display="true"]::-webkit-scrollbar-track,
@@ -396,23 +659,20 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
   background: rgba(15, 23, 42, 0.5);
   border-radius: 4px;
 }
+
 .reveal .math.display::-webkit-scrollbar-thumb,
 .reveal .MathJax_Display::-webkit-scrollbar-thumb,
 .reveal mjx-container[display="true"]::-webkit-scrollbar-thumb,
 .reveal .formula-highlight::-webkit-scrollbar-thumb,
 .reveal .matrix-readout::-webkit-scrollbar-thumb {
-  background: rgba(65, 105, 225, 0.65);
+  background: rgba($syn-blue, 0.65);
   border-radius: 4px;
-}
-.reveal .math.display::-webkit-scrollbar-thumb:hover,
-.reveal .MathJax_Display::-webkit-scrollbar-thumb:hover,
-.reveal mjx-container[display="true"]::-webkit-scrollbar-thumb:hover,
-.reveal .formula-highlight::-webkit-scrollbar-thumb:hover,
-.reveal .matrix-readout::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 215, 0, 0.85);
+
+  &:hover {
+    background: rgba($syn-gold, 0.85);
+  }
 }
 
-// 5. Inline formulas wrapping & soft breaks
 .reveal span.math.inline {
   max-width: 100%;
   display: inline-block;
@@ -420,19 +680,15 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
   overflow-y: hidden;
   vertical-align: -0.22em;
   scrollbar-width: none;
-}
-.reveal span.math.inline::-webkit-scrollbar {
-  display: none;
-}
-.reveal span.math.inline .MathJax {
-  white-space: normal !important;
+
+  &::-webkit-scrollbar { display: none; }
+  .MathJax { white-space: normal !important; }
 }
 
-// 6. Formula readout boxes (e.g. in interactive panels)
 .formula-highlight {
   background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(65, 105, 225, 0.35);
-  border-left: 3px solid #FFD700;
+  border: 1px solid rgba($syn-blue, 0.35);
+  border-left: 3px solid $syn-gold;
   border-radius: 6px;
   max-width: 100% !important;
   box-sizing: border-box !important;
@@ -442,14 +698,18 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
 }
 
 // ===========================================================================
-// MOBILE / SCROLL-VIEW RESPONSIVE LAYER (desktop slide mode is unaffected)
+// 9. MOBILE / SCROLL-VIEW RESPONSIVE LAYER & PRINT / PDF EXPORT
 // ===========================================================================
 @keyframes synScrollIn {
   from { opacity: 0; transform: translate3d(0, 28px, 0); filter: blur(4px); }
   to   { opacity: 1; transform: translate3d(0, 0, 0);    filter: blur(0); }
 }
 
-// 1. Scroll view (any width): fragments are never hidden; they animate on scroll.
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll section {
+  font-size: clamp(14px, 1.35vw, 26px) !important;
+}
+
 .reveal-viewport.reveal-scroll .reveal .fragment,
 .reveal-viewport.reveal-scroll .reveal .fragment.visible,
 .reveal-viewport.reveal-scroll .reveal .fragment[class*="fade-"],
@@ -468,6 +728,68 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     animation-timeline: view();
     animation-range: entry 0% entry 55%;
   }
+}
+
+// ===========================================================================
+// TOP-EDGE FLUSH ALIGNMENT (Desktop & Presentation Mode)
+// Moves headers and panels up to the top of the page/Menu to eliminate dead
+// top space and prevent cropping at the bottom, while preserving 100% of the
+// original scaling, fonts, and sizing. Overrides reveal.css padding (60px).
+// ===========================================================================
+html:not(.print-pdf) .reveal .slides section,
+html:not(.print-pdf) .reveal .slides > section,
+html:not(.print-pdf) .reveal .slides > section > section,
+html:not(.print-pdf) .reveal .slides section.slide,
+html body .reveal .slides section,
+html body .reveal .slides > section,
+.reveal .slides section,
+.reveal .slides > section,
+.reveal .slides > section > section {
+  padding-top: 0 !important;
+  padding-bottom: 8px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  top: 0 !important;
+}
+
+html:not(.print-pdf) .reveal .slides section > *:first-child,
+.reveal .slides section > *:first-child,
+.reveal .slides section > div:first-child > *:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+html:not(.print-pdf) .reveal h2,
+html:not(.print-pdf) .reveal .slides section > h2:first-child,
+html:not(.print-pdf) .reveal .slides section > div:first-child > h2,
+.reveal .slides section > h2:first-child,
+.reveal .slides section > div:first-child > h2,
+.reveal .slides h2,
+.reveal h2 {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-bottom: 8px !important;
+  padding-bottom: 4px !important;
+  border-bottom: 2px solid rgba($syn-blue, 0.55);
+  text-shadow: 0 2px 14px rgba($syn-gold, 0.18);
+}
+
+html:not(.print-pdf) .reveal .stratum-badge,
+.reveal .stratum-badge,
+.stratum-badge {
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+  padding: 3px 10px !important;
+}
+
+html:not(.print-pdf) .reveal .columns,
+.reveal .columns {
+  margin-top: 4px !important;
+}
+
+.reveal .slides section p {
+  margin-top: 0.2em;
+  margin-bottom: 0.4em;
 }
 
 // 2. Narrow screens (Mobile & Tablet <= 900px): Zoom to fill, responsive stacking, touch-friendly UI.
@@ -519,10 +841,31 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     transform: none !important;
   }
 
-  .reveal .slides section h1 { font-size: 1.55em !important; line-height: 1.25; margin-bottom: 12px; }
-  .reveal .slides section h2 { font-size: 1.28em !important; line-height: 1.25; margin-bottom: 12px; }
-  .reveal .slides section h3 { font-size: 1.12em !important; margin-bottom: 8px; }
-  .reveal .slides section h4 { font-size: 1.02em !important; margin-bottom: 6px; }
+  .reveal .slides section h1,
+  .reveal-viewport.reveal-scroll .slides section h1 {
+    font-size: 1.55em !important;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .reveal .slides section h2,
+  .reveal-viewport.reveal-scroll .slides section h2 {
+    font-size: 1.28em !important;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .reveal .slides section h3,
+  .reveal-viewport.reveal-scroll .slides section h3 {
+    font-size: 1.12em !important;
+    margin-bottom: 8px;
+  }
+
+  .reveal .slides section h4,
+  .reveal-viewport.reveal-scroll .slides section h4 {
+    font-size: 1.02em !important;
+    margin-bottom: 6px;
+  }
 
   // Stack every multi-column construct into a clean vertical flow
   .reveal .columns,
@@ -533,6 +876,7 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     gap: 14px !important;
     width: 100% !important;
   }
+
   .reveal .column,
   .reveal .columns > div,
   .reveal-viewport.reveal-scroll .column,
@@ -543,6 +887,7 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     min-width: 0 !important;
     box-sizing: border-box !important;
   }
+
   .reveal .grid-2,
   .reveal .video-grid-2,
   .reveal .stat-grid-3,
@@ -558,6 +903,7 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     gap: 12px !important;
     width: 100% !important;
   }
+
   .reveal .stat-grid-3,
   .reveal .stat-grid-4,
   .reveal-viewport.reveal-scroll .stat-grid-3,
@@ -568,12 +914,15 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
   // Undo tiny inline font sizes on boxes
   .reveal .slides section [style*="font-size"],
   .reveal-viewport.reveal-scroll .slides section [style*="font-size"] {
-    font-size: max(0.95em, 14px) !important;
+    font-size: max(1em, 15px) !important;
   }
-  .reveal .slides section svg text,
-  .reveal-viewport.reveal-scroll .slides section svg text { font-size: revert; }
 
-  // Boxes & panels fill full width
+  .reveal .slides section svg text,
+  .reveal-viewport.reveal-scroll .slides section svg text {
+    font-size: revert;
+  }
+
+  // Mathematical boxes & interactive panels expand to full width
   .reveal .interactive-panel,
   .reveal .def-box,
   .reveal .thm-box,
@@ -586,6 +935,8 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
   .reveal .scholium-box,
   .reveal .vignette-box,
   .reveal .claim-ceiling,
+  .reveal .deliverables-box,
+  .reveal .lean-code-card,
   .reveal .lean-card,
   .reveal-viewport.reveal-scroll .interactive-panel,
   .reveal-viewport.reveal-scroll .def-box,
@@ -599,6 +950,8 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
   .reveal-viewport.reveal-scroll .scholium-box,
   .reveal-viewport.reveal-scroll .vignette-box,
   .reveal-viewport.reveal-scroll .claim-ceiling,
+  .reveal-viewport.reveal-scroll .deliverables-box,
+  .reveal-viewport.reveal-scroll .lean-code-card,
   .reveal-viewport.reveal-scroll .lean-card {
     width: 100% !important;
     max-width: 100% !important;
@@ -621,6 +974,7 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     -webkit-overflow-scrolling: touch;
     padding: 4px 0 !important;
   }
+
   .reveal table,
   .reveal-viewport.reveal-scroll table {
     display: block !important;
@@ -630,6 +984,7 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     font-size: 0.82em !important;
     -webkit-overflow-scrolling: touch;
   }
+
   .reveal pre,
   .reveal pre code,
   .reveal-viewport.reveal-scroll pre,
@@ -656,14 +1011,16 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     object-fit: contain;
     background: #000;
   }
+
   .reveal .video-container,
   .reveal-viewport.reveal-scroll .video-container {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
-    padding: 6px !important;
+    padding: 5px; margin: 6px 0; margin: 6px 0;
     margin: 10px 0 !important;
   }
+
   .reveal svg,
   .reveal-viewport.reveal-scroll svg {
     max-width: 100% !important;
@@ -680,6 +1037,7 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     gap: 6px !important;
     margin-bottom: 8px !important;
   }
+
   .reveal .syn-tab-btn,
   .reveal .tab-btn,
   .reveal .syn-btn,
@@ -694,11 +1052,13 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     border-radius: 6px !important;
     touch-action: manipulation;
   }
+
   .reveal input[type="range"],
   .reveal-viewport.reveal-scroll input[type="range"] {
     width: 100% !important;
     min-height: 38px !important;
   }
+
   .reveal .slider-row,
   .reveal-viewport.reveal-scroll .slider-row {
     flex-wrap: wrap !important;
@@ -717,6 +1077,7 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     line-height: 1.3 !important;
     white-space: normal !important;
   }
+
   .reveal .slide-number,
   .reveal-viewport.reveal-scroll .slide-number {
     font-size: 11px !important;
@@ -727,9 +1088,22 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     padding: 2px 6px;
     border-radius: 4px;
   }
+
   .reveal .controls,
   .reveal-viewport.reveal-scroll .controls {
     bottom: 8px !important;
     right: 8px !important;
+  }
+}
+
+// Accessibility & Print / PDF Export Resilience
+@media (prefers-reduced-motion: reduce), print {
+  .reveal .fragment {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    filter: none !important;
   }
 }

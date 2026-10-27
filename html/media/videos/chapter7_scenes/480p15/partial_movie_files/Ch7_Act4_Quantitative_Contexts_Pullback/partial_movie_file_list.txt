@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act4_Quantitative_Contexts_Pullback/62230b48cf5d60f2da8fd42b9c9d45796eac63b976ba242713c0a26d2b87710e.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act4_Quantitative_Contexts_Pullback/1cbc3a71afdbd6f455e88ee685352be408fbd8dd53672c3dc58be9c8510c996f.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act4_Quantitative_Contexts_Pullback/609b732c8a0f28fe79e927da29d4533170efc1c3ff4acc77470c684e153c41ea.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act4_Quantitative_Contexts_Pullback/2ef76afa062b36903447a8461add5183c754f6fd57d80661bd570b2eb9680f7b.mp4'

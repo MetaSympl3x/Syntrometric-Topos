@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act7_Cluster_VI_Metric_Cascades/eeaacaed7758be872141925c217d76714ce8625cd3bd5d5e82af7e171828198b.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act7_Cluster_VI_Metric_Cascades/e43989a0cce613c5b0bbc53d5684c178e57216c1f73a57cbbd6c3bd538d72232.mp4'

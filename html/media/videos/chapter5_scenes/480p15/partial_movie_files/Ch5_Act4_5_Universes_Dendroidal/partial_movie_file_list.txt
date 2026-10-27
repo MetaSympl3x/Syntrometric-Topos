@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act4_5_Universes_Dendroidal/83d01a4d5db574e7ca30330d1e49ff6b1c16a2016eec85188547fa4bf40b5b46.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act4_5_Universes_Dendroidal/d754ee6ef5e122a6343251aa8977b07cfd74e8bdbb0592b0c28c9e26856c4a65.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act4_5_Universes_Dendroidal/fe8b5f503a4515561d99b075c517bd60486d9b8962bd3f6c36ab324d4e8a1269.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act4_5_Universes_Dendroidal/272886f4ebbc5a33fee357c06a5113f410043ef771fff6d80a7fc88603aa69ad.mp4'

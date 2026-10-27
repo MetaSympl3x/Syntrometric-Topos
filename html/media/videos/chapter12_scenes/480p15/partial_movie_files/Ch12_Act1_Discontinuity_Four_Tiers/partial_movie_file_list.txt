@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act1_Discontinuity_Four_Tiers/1ff1eab77f8aa6f563a27862fbe8c1e08f2e30d1c35412a3e7e9ebaf1eff9cf6.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act1_Discontinuity_Four_Tiers/9ffd07472c273dbb01e266c6e34c0c5cb039f7e56709773fe0ce708137b529d0.mp4'

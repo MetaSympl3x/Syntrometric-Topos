@@ -18,6 +18,8 @@ format:
     progress: true
     hash: true
     center: false
+    mouse-wheel: true
+    scrollable: true
     html-math-method: mathjax
     include-in-header: shared/chapter14-header.html
     include-after-body:

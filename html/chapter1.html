@@ -1,0 +1,2546 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="chapter1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="chapter1_files/libs/quarto-html/tabby.min.js"></script>
+<script src="chapter1_files/libs/quarto-html/popper.min.js"></script>
+<script src="chapter1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="chapter1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="chapter1_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="chapter1_files/libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
+
+  <meta name="author" content="Research Collective — Department of Mathematical Physics &amp; Formal Epistemology">
+  <meta name="dcterms.date" content="2026-08-01">
+  <title>Syntrometrische Maximentelezentrik</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="chapter1_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="chapter1_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="chapter1_files/libs/revealjs/dist/theme/quarto-f4a47b46cf8f9806c46668f4070c5295.css">
+  <link href="chapter1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="chapter1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="chapter1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="chapter1_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script>
+
+  window.MathJax = {
+
+    "HTML-CSS": {
+
+      linebreaks: { automatic: true, width: "container" }
+
+    },
+
+    CommonHTML: {
+
+      linebreaks: { automatic: true, width: "container" }
+
+    },
+
+    SVG: {
+
+      linebreaks: { automatic: true, width: "container" }
+
+    },
+
+    tex: {
+
+      macros: {
+
+        coloneqq: "\\mathrel{:=}",
+
+        Coloneqq: "\\mathrel{::=}",
+
+        centernot: ["\\not#1", 1],
+
+        llbracket: "\\mathopen{[\\mkern-3mu[}",
+
+        rrbracket: "\\mathclose{]\\mkern-3mu]}",
+
+        longhookrightarrow: "\\lhook\\joinrel\\longrightarrow",
+
+        Ctx: "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+
+        CtxPos: "\\mathbf{Ctx}_{>0}^{\\mathrm{sk}}",
+
+        Ban: "\\mathbf{Ban}_{\\le 1}",
+
+        FinBan: "\\mathbf{FinBan}_{\\le 1}",
+
+        Esyn: "\\mathcal{E}_{\\mathrm{syn}}",
+
+        Jsyn: "J_{\\mathrm{syn}}",
+
+        Ksyn: "\\mathcal{K}_{\\mathrm{syn}}",
+
+        otpi: "\\mathbin{\\widehat{\\otimes}_\\pi}",
+
+        Hol: "\\mathsf{Hol}",
+
+        Def: "\\operatorname{Def}",
+
+        Isom: "\\operatorname{Isom}",
+
+        Hom: "\\operatorname{Hom}",
+
+        Sub: "\\operatorname{Sub}",
+
+        op: "\\mathrm{op}",
+
+        cl: "\\operatorname{cl}",
+
+        IGP: "\\operatorname{IGP}",
+
+        Stable: "\\operatorname{Stable}",
+
+        Gen: "\\operatorname{Gen}",
+
+        Prop: "\\mathbf{Prop}",
+
+        AP: "\\mathbf{AP}"
+
+      }
+
+    }
+
+  };
+
+  </script>
+
+  <style>
+
+  .reveal-viewport.reveal-scroll .slide-background,
+
+  .reveal-viewport.reveal-scroll section {
+
+    font-size: clamp(14px, 1.35vw, 26px) !important;
+
+  }
+
+  .reveal-viewport.reveal-scroll .interactive-panel,
+
+  .reveal-viewport.reveal-scroll .thm-box,
+
+  .reveal-viewport.reveal-scroll .carnap-box,
+
+  .reveal-viewport.reveal-scroll .firewall-box,
+
+  .reveal-viewport.reveal-scroll .intuition-box {
+
+    max-width: 100%;
+
+    box-sizing: border-box;
+
+  }
+
+  .widget-context-note {
+
+    font-size: 0.64em;
+
+    color: #cbd5e1;
+
+    line-height: 1.36;
+
+    margin: 4px 0 10px 0;
+
+  }
+
+  .syn-tabs {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-bottom: 10px;
+
+  }
+
+  .syn-tab-btn {
+
+    background: #151c2c;
+
+    color: #94a3b8;
+
+    border: 1px solid #334155;
+
+    border-radius: 6px;
+
+    padding: 5px 11px;
+
+    font-size: 0.60em;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.18s ease;
+
+  }
+
+  .syn-tab-btn.active, .syn-tab-btn:hover {
+
+    background: rgba(65, 105, 225, 0.28);
+
+    color: #FFD700;
+
+    border-color: #FFD700;
+
+  }
+
+  .syn-tab-pane {
+
+    display: none;
+
+    background: rgba(10, 14, 23, 0.82);
+
+    border: 1px solid rgba(65, 105, 225, 0.45);
+
+    border-radius: 8px;
+
+    padding: 10px 14px;
+
+    font-size: 0.72em;
+
+  }
+
+  .syn-tab-pane.active {
+
+    display: block;
+
+  }
+
+  .subsys-toggle {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    background: #1e293b;
+
+    border: 1.5px solid #475569;
+
+    color: #e2e8f0;
+
+    padding: 6px 14px;
+
+    border-radius: 6px;
+
+    font-size: 0.68em;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+  }
+
+  .subsys-toggle.on {
+
+    background: rgba(32, 178, 170, 0.25);
+
+    border-color: #20B2AA;
+
+    color: #FFD700;
+
+  }
+
+  .kripke-node {
+
+    cursor: pointer;
+
+  }
+
+  .lean-code-card {
+
+    background: #0d131f;
+
+    border: 1.5px solid #334155;
+
+    border-left: 5px solid #20B2AA;
+
+    border-radius: 8px;
+
+    padding: 12px 16px;
+
+    font-family: "Libertinus Mono", monospace;
+
+    font-size: 0.56em;
+
+    line-height: 1.38;
+
+    color: #e2e8f0;
+
+    overflow-x: auto;
+
+  }
+
+  .tier-stack {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+  }
+
+  .tier-bar {
+
+    padding: 7px 12px;
+
+    border-radius: 6px;
+
+    font-size: 0.64em;
+
+    border-left: 5px solid;
+
+    background: rgba(255,255,255,0.04);
+
+  }
+
+  
+
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+  }
+
+  </style>
+
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Syntrometrische Maximentelezentrik</h1>
+  <p class="subtitle">Chapter 1: The Topos of Subjective Experience — Categorical Contexts, Sheaf Semantics, and Leveled Modal Logics</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Research Collective — Department of Mathematical Physics &amp; Formal Epistemology
+</div>
+</div>
+</div>
+
+  <p class="date">2026-08-01</p>
+</section>
+<section id="methodological-architecture-the-epistemic-firewall" class="slide level2 smaller" data-transition="convex">
+<h2>Methodological Architecture: The Epistemic Firewall</h2>
+<div class="stratum-badge badge-firewall">
+FRONTMATTER &amp; MASTER EPISTEMIC FIREWALL (MSC 2020: 18F20, 18M60, 03B45, 53C07)
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<p>Grounded in Rudolf Carnap’s <em>Wissenschaftslogik</em> and <em>Der logische Aufbau der Welt</em> (1928–1966), every statement in the treatise is indexed by a <strong>quint-axial claim-provenance tuple</strong>: <span class="math display">\[
+\mathsf{ClaimType}(c) \coloneqq \big( S(c),\; T(c),\; R(c),\; V(c),\; E_p(c) \big) \in \mathsf{AdmissibleClaims}
+\]</span></p>
+<div class="firewall-box fragment glow-pulse">
+<p><strong>The Master Epistemic Firewall Non-Transfer Principle</strong> <span class="math display">\[
+\boxed{\mathbf{A}\text{-Mathematical Validity} \;\not\Rightarrow_{\text{arch}}\; \mathbf{C}\text{-Physical Hypothesis} \;\not\Rightarrow_{\text{arch}}\; \mathbf{E}\text{-Empirical Confirmation}}
+\]</span> Formal derivability (<span class="math inline">\(\Gamma_A \vdash_{\mathcal{F}} c\)</span>) certifies internal consistency within declared axioms; it never validates a physical realization in Stratum <span class="math inline">\(\mathbf{C}\)</span> without empirical testing.</p>
+</div>
+<ul>
+<li><span class="pill-a">Stratum A</span> <strong>Foundational Mathematics:</strong> <span class="math inline">\(\Esyn, (\Ban, \otpi), \mathcal{O}_{\mathrm{syn}}, \mathcal{X}_{\mathrm{syn}}\)</span></li>
+<li><span class="pill-b">Stratum B</span> <strong>Derived Logic &amp; Proofs:</strong> <span class="math inline">\(\mathcal{L}_{\mathrm{iMSL}}\)</span> Sequents, <span class="math inline">\(\Hol(\mathcal{U}, \mathbf{P}), d_P\)</span></li>
+<li><span class="pill-c">Stratum C</span> <strong>Reconstruction Map <span class="math inline">\(\mathcal{R}\)</span>:</strong> <span class="math inline">\(\mathsf{HeimVocabulary} \rightsquigarrow \mathsf{MathStructures}\)</span></li>
+<li><span class="pill-d">Stratum D</span> <strong>Historical Exegesis:</strong> <em>Syntrometrische Maximentelezentrik</em> (2000)</li>
+</ul>
+</div><div class="column" style="width:48%;">
+<div class="interactive-panel">
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">
+Interactive Quint-Axial Provenance Inspector (<span class="math inline">\(S, T, R, V, E_p\)</span>)
+</h4>
+<div class="syn-tabs">
+<p><button class="syn-tab-btn active" onclick="showGenericTab('fw', 1, 3, this)">1. Verification V(c)</button> <button class="syn-tab-btn" onclick="showGenericTab('fw', 2, 3, this)">2. Claim Type T(c) &amp; Role R(c)</button> <button class="syn-tab-btn" onclick="showGenericTab('fw', 3, 3, this)">3. Evidential Basis E_p(c)</button></p>
+</div>
+<div id="fw-pane-1" class="syn-tab-pane active">
+<ul>
+<li><span class="math inline">\(\mathbf{S_0}\)</span> (<strong>Mathematical Blueprint</strong>): Rigorous paper proofs &amp; complete categorical specifications.</li>
+<li><span class="math inline">\(\mathbf{S_{1a}}\)</span> (<strong>Elaborated Lean 4 Signatures</strong>): Type-checked declarations &amp; interfaces.</li>
+<li><span class="math inline">\(\mathbf{S_{1b}}\)</span> (<strong>Formal Scaffold</strong>): Structured proof obligations with demarcated boundaries.</li>
+<li><span class="math inline">\(\mathbf{S_2}\)</span> (<strong>Kernel-Checked Core</strong>): Verified in Mathlib without custom axioms.</li>
+<li><span class="math inline">\(\mathbf{S_3}\)</span> (<strong>Independent Semantic Validation</strong>): Model-theoretic soundness audited.</li>
+</ul>
+</div>
+<div id="fw-pane-2" class="syn-tab-pane">
+<ul>
+<li><strong>Claim Nature <span class="math inline">\(T(c) \in \{\mathbf{M}, \mathbf{R}, \mathbf{H}, \mathbf{E}\}\)</span>:</strong>
+<ul>
+<li><span class="math inline">\(\mathbf{M}\)</span> (Mathematical Definition/Theorem), <span class="math inline">\(\mathbf{R}\)</span> (Interpretive Reconstruction), <span class="math inline">\(\mathbf{H}\)</span> (Physical Model Hypothesis), <span class="math inline">\(\mathbf{E}\)</span> (Historical Exegesis).</li>
+</ul></li>
+<li><strong>Logical Role <span class="math inline">\(R(c)\)</span>:</strong> Axiom, Convention, Hypothesis, Derivation, or Conjecture.</li>
+</ul>
+</div>
+<div id="fw-pane-3" class="syn-tab-pane">
+<ul>
+<li><span class="math inline">\(\mathbf{E_0}(\mathsf{Mode})\)</span>: Unverified (<span class="math inline">\(\mathsf{Spec}\)</span> = Speculative, <span class="math inline">\(\mathsf{Open}\)</span> = Open Problem).</li>
+<li><span class="math inline">\(\mathbf{E_1}(\mathsf{Mode})\)</span>: Calibrated/Fitted (<span class="math inline">\(\mathsf{Calib}\)</span> = Anchor, <span class="math inline">\(\mathsf{Fit}\)</span> = Phenomenological).</li>
+<li><span class="math inline">\(\mathbf{E_2}(\mathsf{Mode})\)</span>: Postdiction (<span class="math inline">\(\mathsf{Post}\)</span> = Out-of-Sample, <span class="math inline">\(\mathsf{ Toy}\)</span> = Toy Model).</li>
+<li><span class="math inline">\(\mathbf{E_3}(\mathsf{Mode})\)</span>: Formal Verification (<span class="math inline">\(\mathsf{Math}\)</span> = Paper Proof, <span class="math inline">\(\mathsf{Lean}\)</span> = Kernel-Checked).</li>
+<li><span class="math inline">\(\mathbf{E_4}(\mathsf{Mode})\)</span>: Empirical Confirmation (<span class="math inline">\(\mathsf{Pred}\)</span> = Novel Prediction, <span class="math inline">\(\mathsf{Repl}\)</span> = Replicated).</li>
+</ul>
+</div>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Act1_Firewall.mp4" style="max-height:245px;"></video>
+<div class="video-caption">
+Manim Act I (Fig. 1.1): The 4-Stratum Epistemic Firewall &amp; Illicit Upward Transfer Block
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Welcome everyone. We begin with our foundational rule: the Master Epistemic Firewall. Pure mathematical theorems in Strata A and B never automatically validate physical claims in Stratum C, nor do historical heuristics in Stratum D flow upward as mathematical premises. Every claim is indexed across five provenance axes, including its formal verification stage in Lean 4.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="epigraphs-master-nomenclature-architecture" class="slide level2 smaller">
+<h2>Epigraphs &amp; Master Nomenclature Architecture</h2>
+<div class="stratum-badge badge-a">
+FRONTMATTER: EPIGRAPHS &amp; MASTER SYMBOL ARCHITECTURE (GROUPS I–III)
+</div>
+<div class="columns">
+<div class="column" style="width:42%;">
+<div class="vignette-box">
+<p><strong>Epigraph I — Burkhard Heim (SM, 2000, p.&nbsp;5)</strong> <em>“Da eine solche universelle Strukturbeschreibung aber niemals im Rahmen einer zweideutigen Logik möglich sein kann, muß zunächst versucht werden, den Begriff der Struktur überhaupt in einer mehrwertigen und aspektbezogenen Form zu fassen…”</em></p>
+<p>(“Since such a universal description of structure can never be possible within the framework of an ambiguous two-valued logic, an attempt must first be made to grasp the concept of structure itself in a many-valued and aspect-related form…”)</p>
+</div>
+<div class="scholium-box fragment blur-in">
+<p><strong>Epigraph II — Topos Philosophy (Mac Lane &amp; Moerdijk, 1992)</strong> <em>“A Grothendieck topos is a generalized universe of sets in which every mathematical object is inherently dynamic, varying continuously across contexts of observation, and governed by an internal constructive logic where truth is a geometric invariant of local agreement.”</em></p>
+</div>
+</div><div class="column" style="width:58%;">
+<div class="interactive-panel">
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">
+Master Nomenclature &amp; Symbol Architecture (Groups I–III)
+</h4>
+<div class="syn-tabs">
+<p><button class="syn-tab-btn active" onclick="showGenericTab('nom', 1, 3, this)">Group I: Categories &amp; Topoi</button> <button class="syn-tab-btn" onclick="showGenericTab('nom', 2, 3, this)">Group II: Operads &amp; Monads</button> <button class="syn-tab-btn" onclick="showGenericTab('nom', 3, 3, this)">Group III: Logic, Geometry &amp; Physics</button></p>
+</div>
+<div id="nom-pane-1" class="syn-tab-pane active">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Symbol</th>
+<th style="text-align: left;">Mathematical Object / Space</th>
+<th style="text-align: left;">Primary Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Ban, \FinBan\)</span></td>
+<td style="text-align: left;">Contractive Banach spaces &amp; linear contractions (<span class="math inline">\(\|T\|_{\op} \le 1\)</span>)</td>
+<td style="text-align: left;">Ch. 1, Def. 1.6 / 1.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(X \otpi Y\)</span></td>
+<td style="text-align: left;">Completed projective tensor product of Banach spaces</td>
+<td style="text-align: left;">Ch. 1, Def. 1.6 / 1.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Ctx, \CtxPos\)</span></td>
+<td style="text-align: left;">Skeletal category of admissible observation contexts (<span class="math inline">\(\dim P^U \ge 1\)</span>)</td>
+<td style="text-align: left;">Ch. 1, Def. 1.7, 1.10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(U = (D^U, P^U, C^U, K^U, z^U, \zeta^U)\)</span></td>
+<td style="text-align: left;">Admissible context tuple with bilinear <span class="math inline">\(K^U\)</span> and isometric ciphers</td>
+<td style="text-align: left;">Ch. 1, Def. 1.7 / 1.10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Ksyn, \Jsyn\)</span></td>
+<td style="text-align: left;">Split-epimorphic pretopology &amp; generated Grothendieck topology</td>
+<td style="text-align: left;">Ch. 1, Def. 1.10 / 1.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Esyn = \mathbf{Sh}(\Ctx, \Jsyn)\)</span></td>
+<td style="text-align: left;">Syntrometric Sheaf Topos (1-topos of invariant sheaves)</td>
+<td style="text-align: left;">Ch. 1, Thm. 1.12 / 1.17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Omega, \Sub_{\Esyn}(E)\)</span></td>
+<td style="text-align: left;">Subobject classifier (<span class="math inline">\(\Jsyn\)</span>-closed sieves) &amp; complete Heyting lattice</td>
+<td style="text-align: left;">Ch. 1, Thm. 1.13 / 1.18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Hol(\mathcal{U}, \mathbf{P}), \Def_{\mathcal{U}}(s)\)</span></td>
+<td style="text-align: left;">Holoform equalizer of compatible sections &amp; Čech 0-coboundary defect</td>
+<td style="text-align: left;">Ch. 1, Def. 1.15 / 1.20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="nom-pane-2" class="syn-tab-pane">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Symbol</th>
+<th style="text-align: left;">Mathematical Object / Space</th>
+<th style="text-align: left;">Primary Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\mathcal{O}_{\mathrm{syn}}, \mathcal{O}_{\mathrm{pyr}}, \mathcal{O}_{\mathrm{frag}}, \mathcal{O}_{\mathrm{hom}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathsf{Ban}\)</span>-enriched colored operads over level set <span class="math inline">\(\mathbf{Col} = \mathbb{N}_0\)</span></td>
+<td style="text-align: left;">Ch. 2, Def. 2.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(T_{\mathsf{P}}, T_{\mathrm{pyr}}, T_{\mathrm{frag}}, T_{\mathrm{hom}}\)</span></td>
+<td style="text-align: left;">Completed free tree monads &amp; Boardman–Vogt quotient monads</td>
+<td style="text-align: left;">Ch. 2, Def. 2.7, 2.28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\widehat{\lambda} \colon \overline{T}_{\mathrm{pyr}}\overline{T}_{\mathrm{frag}} \Rightarrow \overline{T}_{\mathrm{frag}}\overline{T}_{\mathrm{pyr}}\)</span></td>
+<td style="text-align: left;">Contractive Beck distributive law governing <em>Spaltbarkeit</em></td>
+<td style="text-align: left;">Ch. 2, Thm. 2.29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\mathcal{C}_{\mathrm{SL}}, \mathcal{C}_{\mathrm{spine}}, \mathsf{Shift}\)</span></td>
+<td style="text-align: left;">Category of leveled structures, spine subcategory, &amp; shift endofunctor</td>
+<td style="text-align: left;">Ch. 2, Def. 2.10–2.16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(P_a \boxplus_\phi P_b\)</span></td>
+<td style="text-align: left;">Contractive Banach span pushout (<em>Konflexionsfeld</em>, dim <span class="math inline">\(p+q-\lambda\)</span>)</td>
+<td style="text-align: left;">Ch. 3, Thm. 3.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Delta_{\mathrm{disc}}(K)\)</span></td>
+<td style="text-align: left;">Normalized Cayley–Menger / Gramian extinction determinant</td>
+<td style="text-align: left;">Ch. 3, Def. 3.16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\mathcal{X}_{\mathrm{syn}} = L_{\mathrm{CSS}}\mathbf{Sh}_\infty(\Ctx)\)</span></td>
+<td style="text-align: left;">Syntrometric <span class="math inline">\((\infty, 1)\)</span>-Topos &amp; Postnikov truncation <span class="math inline">\(\tau_{\le k}\)</span></td>
+<td style="text-align: left;">Ch. 5, Def. 5.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="nom-pane-3" class="syn-tab-pane">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Symbol</th>
+<th style="text-align: left;">Mathematical Object / Space</th>
+<th style="text-align: left;">Primary Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\mathcal{L}_{\mathrm{iMSL}}, S(x); \Gamma \vdash^k \phi\)</span></td>
+<td style="text-align: left;">Intuitionistic Leveled Modal Syndromatic Logic &amp; sequent judgement</td>
+<td style="text-align: left;">Ch. 1, Sec. 1.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Box_S, \Diamond_S, \Box_{\mathrm{Syn}}, \Stable_k, [\pi_F]\)</span></td>
+<td style="text-align: left;">Fischer–Servi aspect modalities, internal/hereditary stability, dynamic step</td>
+<td style="text-align: left;">Ch. 1–2, Sec. 1.8, 2.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\((\nu\mathcal{T}, \zeta), \mathfrak{T}_z\)</span></td>
+<td style="text-align: left;">Terminal coalgebra (Semantic Telezentrum) &amp; Lawvere fixed point</td>
+<td style="text-align: left;">Ch. 6, Thm. 6.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\mathcal{M}_{\mathrm{syn}}, g^{\mathrm{syn}}, \mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}}\)</span></td>
+<td style="text-align: left;">Syntrix field manifold, pullback metric, &amp; non-Abelian gauge curvature</td>
+<td style="text-align: left;">Ch. 4, 8, Def. 4.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\({}^2\bar{\mathbf{g}}, {}^3\mathbf{\Gamma}^\alpha_{\beta\gamma}, {}^4\mathbf{F}\)</span></td>
+<td style="text-align: left;">36-component polymetric tensor on <span class="math inline">\(R_6\)</span>, Kondensor, &amp; Strukturkompressor</td>
+<td style="text-align: left;">Ch. 9–11, Def. 9.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\mathbb{M}_\tau^n, \nabla_i, (\Omega_d^\bullet, d_\tau, \Delta_\tau)\)</span></td>
+<td style="text-align: left;">Metronic lattice (<span class="math inline">\(\tau \sim L_{\mathrm{Pl}}^2\)</span>), backward difference, &amp; DEC Hodge complex</td>
+<td style="text-align: left;">Ch. 10, Def. 10.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>This slide presents the two foundational epigraphs of the treatise—Heim’s call for a many-valued, aspect-related structural logic and Mac Lane &amp; Moerdijk’s characterization of a Grothendieck topos—alongside the complete Master Nomenclature &amp; Symbol Architecture across Groups I, II, and III.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-syntrometric-konstitutionsstammbaum-reading-paths" class="slide level2 smaller scrollable">
+<h2>The Syntrometric <em>Konstitutionsstammbaum</em> &amp; Reading Paths</h2>
+<div class="stratum-badge badge-a">
+PREFACE &amp; CONSTITUTIONAL ASCENSION
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<h3 id="the-six-tiered-constitutional-tree-carnap-aufbau-3943">The Six-Tiered Constitutional Tree (Carnap, <em>Aufbau</em> §§39–43)</h3>
+<div class="tier-stack">
+<div class="tier-bar" style="border-color:#a855f7;">
+<b>VI. Matter Invariants &amp; Spectral Mass (Ch. 11, App. B):</b> Self-adjoint selectors Sel Ψ = λΨ, null stability ker ⁴<b>F</b> ⇒ m = m₀ (L_p / L₁) ∏ λ_k
+</div>
+<div class="tier-bar" style="border-color:#ef4444;">
+<b>V. Discrete Quantum Spacetime (Ch. 10):</b> Metronic lattice 𝕄_τ^n := ⨁ τ_i ℤ, backward differences ∇_i, DEC cochains (Ω_d^•, d_τ)
+</div>
+<div class="tier-bar" style="border-color:#f97316;">
+<b>IV. Physical Continuum &amp; Geometry (Ch. 7–9):</b> Parameter continua R_n, nuclear Fréchet spaces 𝒮, 36-component Hermetry ²ḡ on R₆
+</div>
+<div class="tier-bar" style="border-color:#20B2AA;">
+<b>III. Intersubjective Reality &amp; Fields (Ch. 3, 4, 6):</b> Span pushouts ⊞_φ, Holoforms Hol(U, P), terminal coalgebras (ν𝒯, ζ)
+</div>
+<div class="tier-bar" style="border-color:#4169E1;">
+<b>II. Quasi-Analytic Concept Generation (Ch. 2, 5):</b> Colored operads 𝒪_syn, free tree monads T_P, Beck distributive law λ̂
+</div>
+<div class="tier-bar" style="border-color:#FFD700; background:rgba(255,215,0,0.10);">
+<b>I. Autopsychological Base (Eigenpsychische Basis) (Ch. 1 — FOCUS):</b> Contexts Ctx_adm^sk, discrepancy pseudometric d_P, sheaf topos ℰ_syn, logic ℒ_iMSL
+</div>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="intuition-box fragment blur-in">
+<p><strong>The Four Dedicated Specialist Reading Paths</strong></p>
+<ol type="1">
+<li><strong>Path 1 (Topos Logic &amp; Epistemology):</strong> Ch. 1, 5, 6, App. A — Site <span class="math inline">\((\Ctx, \Jsyn)\)</span>, Kripke–Joyal forcing, <span class="math inline">\(\mathcal{L}_{\mathrm{iMSL}}\)</span>, <span class="math inline">\((\infty,1)\)</span>-topos <span class="math inline">\(\mathcal{X}_{\mathrm{syn}}\)</span>, terminal coalgebras <span class="math inline">\((\nu\mathcal{T},\zeta)\)</span>.</li>
+<li><strong>Path 2 (Higher Algebra &amp; Operads):</strong> Ch. 2, 3, 5, 7, 8, App. C — Banach operads <span class="math inline">\(\mathcal{O}_{\mathrm{syn}}\)</span>, Boardman–Vogt tensor <span class="math inline">\(\otimes_{\mathrm{BV}}\)</span>, Beck law <span class="math inline">\(\widehat{\lambda}\)</span>, Lean 4 blueprint.</li>
+<li><strong>Path 3 (Gauge Geometry &amp; Physics):</strong> Ch. 4, 9, 10, 11, App. B — Curvature <span class="math inline">\(\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}}\)</span>, 36-component Hermetry <span class="math inline">\({}^2\bar{\mathbf{g}}\)</span>, DEC lattices <span class="math inline">\(\mathbb{M}_\tau^n\)</span>.</li>
+<li><strong>Path 4 (Complete Systemic Synthesis):</strong> Ch. 12–15 — Qualia holonomy, Lawvere ego fixed point, 100-equation Master Register.</li>
+</ol>
+</div>
+<div class="carnap-box fragment fade-right">
+<p><strong>Point of Origin (Level I):</strong> How does an embodied observer construct an intersubjective science from the primordial encounter with existence (<em>Urerfahrung der Existenz</em>, SM, p.&nbsp;7)?</p>
+</div>
+</div></div>
+<aside class="notes">
+<p>This slide situates Chapter 1 at Level I of the six-tiered Konstitutionsstammbaum—the autopsychological base. Before we can speak of operadic concept generation in Level II or intersubjective physical fields in Levels III through VI, we must formalize how local subjective observation contexts are structured and glued.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-crisis-of-bivalence-historical-vignette-carnap-1.1" class="slide level2 smaller scrollable">
+<h2>The Crisis of Bivalence, Historical Vignette &amp; Carnap 1.1</h2>
+<div class="stratum-badge badge-a">
+CHAPTER 1 INTRODUCTION, HISTORICAL VIGNETTE &amp; CARNAP 1.1
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<h3 id="critique-of-anthropomorphe-transzendentalästhetik-sm-p.-6">Critique of <em>Anthropomorphe Transzendentalästhetik</em> (SM, p.&nbsp;6)</h3>
+<ul>
+<li>Radicalizing Kant’s critical turn, Heim diagnoses classical natural philosophy’s enduring category mistake: mistaking contingent human sensory thresholds for the intrinsic ontology of nature (anticipating Friedman’s <strong>relativized constitutive <em>a priori</em></strong>, 2001).</li>
+<li><strong>The Crisis of <em>Zweideutige Logik</em> (SM, p.&nbsp;5):</strong> Classical inquiry forces continuous, context-dependent phenomena through a rigid binary sieve <span class="math inline">\(\{0, 1\}\)</span>, tearing boundary regions into <strong>Antagonismen</strong> (wave-particle duality, mind-body split).</li>
+</ul>
+<div class="vignette-box">
+<p><strong>Historical Vignette: The Laboratory of the Mind — Burkhard Heim’s Solitary Path</strong> Severely injured in a 1944 laboratory explosion that left him blind, handless, and nearly deaf, Burkhard Heim (1925–2001) developed an extraordinary Acoustic-Spatial Memory. His posthumous <em>Syntrometrische Maximentelezentrik</em> (2000) sought to replace bivalent logic with a multi-tiered relational calculus—which we reconstruct using modern category theory, sheaf topoi, and colored operads under the strict governance of the Epistemic Firewall.</p>
+</div>
+<div class="carnap-box fragment fade-right">
+<p><strong>Carnap 1.1: Topos Contexts as Relativized Frameworks</strong> Each context <span class="math inline">\(U = (D^U, P^U, C^U, K^U, z^U, \zeta^U) \in \operatorname{Obj}(\Ctx)\)</span> acts as a local constitutive framework (Carnap 1950; Friedman 2001). Under Kripke–Joyal forcing over the Heyting algebra <span class="math inline">\(\Omega(U)\)</span>: <span class="math display">\[
+U \not\Vdash \phi \vee \neg \phi \quad \centernot\implies \quad U \Vdash \bot
+\]</span> Unmeasured observables neither force <span class="math inline">\(\phi\)</span> nor <span class="math inline">\(\neg\phi\)</span>, dissolving bivalent antinomies without contradiction.</p>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="video-container">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Act2_Bivalence.mp4" style="max-height:270px;"></video>
+<div class="video-caption">
+Manim Act II: Continuous Context Wave vs.&nbsp;Binary Sieve Antinomy Spikes
+</div>
+</div>
+<div class="intuition-box fragment blur-in">
+<p><strong>The Tripartite Mathematical Reconstruction of Chapter 1</strong></p>
+<ol type="1">
+<li><strong>Sheaf Topos Theory:</strong> <span class="math inline">\(\Esyn \coloneqq \mathbf{Sh}(\Ctx, \Jsyn)\)</span> (Zalamea’s <em>synthetic universe of relations</em> gluing Husserlian <em>Abschattungen</em>).</li>
+<li><strong>Typed Extensional Mereology:</strong> <span class="math inline">\(\mathfrak{M}_{\mathrm{asp}}(U)\)</span> with continuous <span class="math inline">\(t\)</span>-norm <span class="math inline">\(\chi\)</span> and Piagetian <strong>reflexive abstraction</strong> (<em>Aufhebung</em>).</li>
+<li><strong>Fischer–Servi Modal Logic (<span class="math inline">\(\mathcal{L}_{\mathrm{iMSL}}\)</span>):</strong> <span class="math inline">\(S(x); \Gamma \vdash^k \phi\)</span> with hereditary stability <span class="math inline">\(\Stable_k\)</span> and deterministic steps <span class="math inline">\([\pi_F]\)</span>.</li>
+</ol>
+</div>
+</div></div>
+<aside class="notes">
+<p>When a continuous contextual phenomenon is forced through a classical {0,1} sieve, transition regions shatter into artificial antinomies. By modeling each observational perspective as an object in a Grothendieck site, truth becomes a sheaf of sieves: unmeasured channels simply fail to force phi or not-phi without triggering logical explosion.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="prädikatrix-p_n-dialektik-d_n" class="slide level2 smaller">
+<h2>§1.1.1–1.1.2: Prädikatrix (<span class="math inline">\(P_n\)</span>) &amp; Dialektik (<span class="math inline">\(D_n\)</span>)</h2>
+<div class="stratum-badge badge-d">
+STRATUM D: HISTORICAL EXEGESIS (SM, PP. 8–9, EQS. SM-1 &amp; SM-2)
+</div>
+<div class="columns">
+<div class="column" style="width:47%;">
+<div class="thm-box">
+<p><strong>1. Die Prädikatrix (<span class="math inline">\(P_n\)</span>) — Continuous Semantic Ranges</strong> Replaces binary predicates <span class="math inline">\(\{0,1\}\)</span> with <span class="math inline">\(n\)</span> continuous <strong>Prädikatbänder</strong> (<span class="math inline">\(a_q\)</span>: lower threshold, <span class="math inline">\(b_q\)</span>: saturation limit, <span class="math inline">\(f_q \in [a_q, b_q]\)</span>: focal evaluation): <span class="math display">\[
+f_q \equiv \begin{pmatrix} a \\ f \\ b \end{pmatrix}_q, \quad P_{nn} \equiv z_n ; \begin{bmatrix} \begin{pmatrix} a \\ f \\ b \end{pmatrix}_q \end{bmatrix}_n, \quad C' = c ; C \tag{SM-1}
+\]</span> Evaluated via the <strong>prädikative Basischiffre</strong> <span class="math inline">\(z_n\)</span>: <span class="math inline">\(P_{nn} \equiv z_n ; P_n\)</span>.</p>
+</div>
+<div class="thm-box">
+<p><strong>2. Die Dialektik (<span class="math inline">\(D_n\)</span>) — Subjective Nuance &amp; Valence</strong> Every statement is colored by certainty, emotional valence, and intentional stance across <span class="math inline">\(n\)</span> <strong>Diatropenbänder</strong> (<span class="math inline">\(\alpha_q \le d_q \le \beta_q\)</span>): <span class="math display">\[
+d_q \equiv \begin{pmatrix} \alpha \\ d \\ \beta \end{pmatrix}_q, \quad D_{nn} \equiv \zeta_n ; \begin{bmatrix} \begin{pmatrix} \alpha \\ d \\ \beta \end{pmatrix}_q \end{bmatrix}_n \tag{SM-2}
+\]</span> Evaluated via the <strong>dialektische Basischiffre</strong> <span class="math inline">\(\zeta_n\)</span>: <span class="math inline">\(D_{nn} \equiv \zeta_n ; D_n\)</span>.</p>
+</div>
+<div class="video-container">
+<video loop="" muted="" playsinline="" src="media/Act3_Secs_111112_Prdikatrix_Dialektik.mp4" style="max-height:190px;"></video>
+<div class="video-caption">
+Manim Act III: Prädikatrix &amp; Dialektik Bands
+</div>
+</div>
+<div class="intuition-box fragment blur-in">
+<p><strong>Historical Context (SM, pp.&nbsp;8–9):</strong> Classical bivalent logic is the singular limit where semantic bandwidths collapse to a point (<span class="math inline">\(a_q = f_q = b_q\)</span>). The ciphers <span class="math inline">\(z_n, \zeta_n\)</span> orient the <em>Sinn des Intervalls</em>.</p>
+</div>
+</div><div class="column" style="width:53%;">
+<div class="interactive-panel">
+<h4>
+Interactive Aspect Compass &amp; Band Explorer (SM-1 – SM-4)
+</h4>
+<p class="widget-context-note">
+<b>Context:</b> Drag the sliders below to vary the descriptive interval [<i>a<sub>q</sub>, b<sub>q</sub></i>], focal value <i>f<sub>q</sub></i>, and dialectical nuance [<i>α<sub>q</sub>, d<sub>q</sub>, β<sub>q</sub></i>]. Watch the live Aspect Compass on the right update its radial sector and dialectical ellipse in real time, or click <b>Boolean Collapse</b> (<i>a = f = b</i>).
+</p>
+<div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:12px; align-items:center;">
+<div>
+<label style="color:#82aaff; font-size:0.68em;"><b>Prädikatband <i>f<sub>q</sub></i> ∈ [<i>a<sub>q</sub>, b<sub>q</sub></i>]:</b> <span id="p-readout">[-1.45, 0.40, 1.55]</span></label>
+<div class="slider-row">
+<span><i>a<sub>q</sub></i>:</span> <input type="range" id="sl-a" min="-2.0" max="0.0" step="0.05" value="-1.45" oninput="updateBands()"> <span><i>f<sub>q</sub></i>:</span> <input type="range" id="sl-f" min="-2.0" max="2.0" step="0.05" value="0.40" oninput="updateBands()"> <span><i>b<sub>q</sub></i>:</span> <input type="range" id="sl-b" min="0.0" max="2.0" step="0.05" value="1.55" oninput="updateBands()">
+</div>
+<div id="p-track" class="band-track">
+<div id="p-fill" class="band-fill-p">
+
+</div>
+<div id="p-dot" class="band-dot-p">
+
+</div>
+</div>
+<label style="color:#5eead4; font-size:0.68em; display:block; margin-top:10px;"><b>Diatropenband <i>d<sub>q</sub></i> ∈ [<i>α<sub>q</sub>, β<sub>q</sub></i>]:</b> <span id="d-readout">[-1.25, 0.65, 1.35]</span></label>
+<div class="slider-row">
+<span><i>α<sub>q</sub></i>:</span> <input type="range" id="sl-al" min="-2.0" max="0.0" step="0.05" value="-1.25" oninput="updateBands()"> <span><i>d<sub>q</sub></i>:</span> <input type="range" id="sl-d" min="-2.0" max="2.0" step="0.05" value="0.65" oninput="updateBands()"> <span><i>β<sub>q</sub></i>:</span> <input type="range" id="sl-be" min="0.0" max="2.0" step="0.05" value="1.35" oninput="updateBands()">
+</div>
+<div id="d-track" class="band-track">
+<div id="d-fill" class="band-fill-d">
+
+</div>
+<div id="d-dot" class="band-dot-d">
+
+</div>
+</div>
+</div>
+<div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:6px;">
+<svg id="compass-svg" viewbox="-110 -110 220 220" width="200" height="200"> <circle cx="0" cy="0" r="95" fill="none" stroke="#1e293b" stroke-dasharray="3,3"></circle> <circle cx="0" cy="0" r="65" fill="none" stroke="#1e293b" stroke-dasharray="3,3"></circle> <line x1="-100" y1="0" x2="100" y2="0" stroke="#334155" stroke-width="1"></line> <line x1="0" y1="-100" x2="0" y2="100" stroke="#334155" stroke-width="1"></line> <polygon id="svg-p-band" points="20,-12 85,-42 85,15 20,8" fill="rgba(65,105,225,0.28)" stroke="#4169E1" stroke-width="1.5"></polygon> <ellipse id="svg-d-ellipse" cx="0" cy="0" rx="70" ry="44" fill="rgba(32,178,170,0.12)" stroke="#20B2AA" stroke-width="1.8"></ellipse> <circle id="svg-k-lens" cx="0" cy="0" r="24" fill="rgba(255,165,0,0.22)" stroke="#FFA500" stroke-width="2"></circle> <circle id="svg-p-pt" cx="55" cy="-18" r="5" fill="#FFD700" stroke="#000" stroke-width="1"></circle> <circle id="svg-d-pt" cx="-35" cy="-28" r="5" fill="#5eead4" stroke="#000" stroke-width="1"></circle> <text x="0" y="4" fill="#FFD700" font-size="9" font-weight="bold" text-anchor="middle">K_n</text> </svg>
+<div id="compass-caption" style="font-size:0.55em; color:#FFD700;">
+Bandwidth ΔP = 3.00 | ΔD = 2.60
+</div>
+</div>
+</div>
+<div style="margin-top:10px; display:flex; gap:8px; justify-content:center;">
+<button class="syn-btn" onclick="booleanCollapse()">Classical Boolean Collapse (a=f=b)</button> <button class="syn-btn" onclick="flipCipher()">Cipher Orientation Flip (C’ = c;C)</button> <button class="syn-btn" onclick="resetBands()">Restore Continuous Band</button>
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>In Stratum D, we examine Heim’s historical notation from pages 8 and 9 of Syntrometrische Maximentelezentrik. Instead of binary truth values, predicates are intervals [a_q, b_q] with focal value f_q, and dialectical qualifiers are intervals [alpha_q, beta_q] with focal value d_q. Using the interactive explorer on the right, you can see how classical two-valued logic emerges when we click “Classical Boolean Collapse” (a_q = f_q = b_q).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="die-koordination-k_n-the-aspect-compass" class="slide level2 smaller scrollable">
+<h2>§1.1.3: Die Koordination (<span class="math inline">\(K_n\)</span>) &amp; The Aspect Compass</h2>
+<div class="stratum-badge badge-d">
+STRATUM D: COMPLETE ASPECT SCHEMA (SM-3, SM-4 / SM EQ. 1)
+</div>
+<blockquote>
+<p><em>“Weder die Diatropen noch die Prädikate besitzen für sich allein Aussagewert, sondern müssen derart koordiniert werden, daß jedes Diatrop ein Prädikat prägt.”</em> (SM, p.&nbsp;10)</p>
+</blockquote>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="two-tier-synthesis-of-k_n-equiv-e_n-fzeta_n-z_n-sm-3">Two-Tier Synthesis of <span class="math inline">\(K_n \equiv E_n F(\zeta_n, z_n)\)</span> (SM-3)</h3>
+<ol type="1">
+<li><strong>Chiffrenkoordination <span class="math inline">\(F(\zeta_n, z_n)\)</span>:</strong> Functional alignment correlating the evaluative priority of qualifiers (<span class="math inline">\(\zeta_n\)</span>) with descriptive properties (<span class="math inline">\(z_n\)</span>).</li>
+<li><strong>Koordinationsbänder <span class="math inline">\(E_n \equiv [\chi_q]_n \equiv [(y\,\chi\,r)_q^T]_n\)</span>:</strong> Channel coupling rules (<em>Prägung</em>) binding the <span class="math inline">\(q\)</span>-th diatrope to the <span class="math inline">\(q\)</span>-th predicate.</li>
+</ol>
+<div class="thm-box">
+<p><strong>Complete Subjektiver Aspekt (<span class="math inline">\(S\)</span>) (SM, p.&nbsp;10, Eq. 1):</strong> <span class="math display">\[
+S \equiv \left\lceil D_{nn} \times K_n \times P_{nn} \right\rceil \equiv \left\lceil \zeta_n ; \begin{bmatrix} \begin{pmatrix} \alpha \\ d \\ \beta \end{pmatrix}_q \end{bmatrix}_n \times \begin{bmatrix} \begin{pmatrix} y \\ \chi \\ r \end{pmatrix}_q \end{bmatrix}_n F(\zeta_n, z_n) \times z_n ; \begin{bmatrix} \begin{pmatrix} a \\ f \\ b \end{pmatrix}_q \end{bmatrix}_n \right\rceil \tag{SM-4}
+\]</span></p>
+</div>
+<div class="intuition-box fragment blur-in">
+<p><strong>Animation Anchor Explanation (Fig. 1.2):</strong> A qualification without a predicate is empty emotion; a predicate without a diatrope is unperceived data. The Coordination lens <span class="math inline">\(K_n\)</span> sits at the origin of the Aspect Compass, projecting dialectical weights (<span class="math inline">\(D_{nn}\)</span>) onto radial descriptive channels (<span class="math inline">\(P_{nn}\)</span>).</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="video-container">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Act4_Aspect_Compass.mp4" style="max-height:480px;"></video>
+<div class="video-caption">
+Manim Act IV (Fig. 1.2): The Geometric Aspectual Matrix Compass — Interpenetration of P_nn, D_nn, and Coordination Lens K_n
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Neither predicates nor dialectical qualifiers carry semantic value in isolation. Only through their coordination K_n—where each diatrope imprints (prägt) a corresponding predicate—does a complete Subjective Aspect S arise.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="aspektivfelder-7-subsystems-quantor-hierarchy" class="slide level2 smaller">
+<h2>§1.1.4–1.1.6: Aspektivfelder, 7 Subsystems &amp; Quantor Hierarchy</h2>
+<div class="stratum-badge badge-d">
+STRATUM D: DEFS. 1.1, 1.3, PROPS. 1.2, 1.4, 1.6 &amp; THM. 1.5
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<h3 id="aspektivsysteme-mathfraka-metropie-g-kategorien-mathfrakk">Aspektivsysteme (<span class="math inline">\(\mathfrak{A}\)</span>), Metropie (<span class="math inline">\(g\)</span>) &amp; Kategorien (<span class="math inline">\(\mathfrak{K}\)</span>)</h3>
+<ul>
+<li><strong>Aspektivfeld:</strong> Systemgenerator <span class="math inline">\(\alpha\)</span> unfolds <span class="math inline">\(S_0\)</span> into <span class="math inline">\(p^m\)</span> aspects with intrinsic distance tensor <strong>Metropie (<span class="math inline">\(g\)</span>)</strong>: <span class="math display">\[
+\mathfrak{A} \equiv \begin{pmatrix} \alpha ; S \\ p ; g \end{pmatrix}, \quad \operatorname{Compl}(\alpha, S) \subset \operatorname{Grp}(S) \coloneqq \bigcup_{\alpha \in \operatorname{Gen}(S)} \operatorname{Compl}(\alpha, S)
+\]</span></li>
+<li><strong>Definition 1.1 (<em>Echt</em> vs.&nbsp;<em>Entartet</em>):</strong> Genuine (<em>echt</em>) if <span class="math inline">\(\alpha\)</span> uses concepts beyond <span class="math inline">\(S\)</span>; degenerate (<em>entartet</em>) if expressible entirely within <span class="math inline">\(S\)</span>.</li>
+<li><strong>Proposition 1.2 (The 7 Nonempty Aspect Subsystems):</strong>
+<ul>
+<li><span class="math inline">\(\binom{3}{1} = 3\)</span> Single-Component: <span class="math inline">\(\{D_{nn}\}, \{K_n\}, \{P_{nn}\}\)</span></li>
+<li><span class="math inline">\(\binom{3}{2} = 3\)</span> Two-Component: <span class="math inline">\(\{D_{nn}, K_n\}, \{K_n, P_{nn}\}, \{D_{nn}, P_{nn}\}\)</span></li>
+<li><span class="math inline">\(\binom{3}{3} = 1\)</span> Total Subsystem: <span class="math inline">\(\{D_{nn}, K_n, P_{nn}\}\)</span></li>
+</ul></li>
+<li><strong>Kategorien (<span class="math inline">\(\mathfrak{K}\)</span>) &amp; Syllogismen (SM, pp.&nbsp;14–19):</strong> <strong>Episyllogismus (<span class="math inline">\(k \uparrow\)</span>)</strong> vs.&nbsp;<strong>Prosyllogismus (<span class="math inline">\(k \downarrow\)</span>)</strong> anchored in the unconditioned <strong>Idee</strong> (<span class="math inline">\(\mathfrak{S}_1\)</span>) of <strong>apodiktische Elemente</strong> (<span class="math inline">\(a_i \in \mathfrak{M} = \AP_0\)</span>).</li>
+<li><strong>Definition 1.3 &amp; Theorem 1.5 / Prop. 1.6:</strong> A Quantor correlates functors across aspect systems (<span class="math inline">\(b \equiv \mathbf{F};a\)</span>). Every polyquantor contains at least one absolutely apodictic baseline term <span class="math inline">\(a_i \in \AP_0\)</span> (SM, p.&nbsp;21).</li>
+</ul>
+</div><div class="column" style="width:52%;">
+<div class="interactive-panel">
+<h4>
+Interactive Explorer: The 7 Aspect Subsystems (Prop. 1.2)
+</h4>
+<p class="widget-context-note">
+<b>Context (SM, pp.&nbsp;12–15):</b> The three primary components (<i>D<sub>nn</sub>, K<sub>n</sub>, P<sub>nn</sub></i>) yield 2³ − 1 = 7 nonempty generator supports. Toggle the components below to test whether a generator <i>α</i> is a partial generator (which must keep predicative arity <i>n</i> fixed so no diatropes are left uncoordinated) or a total generator.
+</p>
+<div style="display:flex; gap:10px; justify-content:center; margin-bottom:8px;">
+<button id="btn-sub-d" class="subsys-toggle on" onclick="toggleSubsys('D')">Dialektik D_nn</button> <button id="btn-sub-k" class="subsys-toggle on" onclick="toggleSubsys('K')">Koordination K_n</button> <button id="btn-sub-p" class="subsys-toggle on" onclick="toggleSubsys('P')">Prädikatrix P_nn</button>
+</div>
+<div id="subsys-readout" class="matrix-readout">
+<pre><code>Support: {D_nn, K_n, P_nn} [Total Subsystem C(3,3)=1] ⇒ Predicative Arity n VARIABLE (Total Generator α)</code></pre>
+</div>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 27%">
+<col style="width: 27%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantor Tier (Prop. 1.4, SM Eq. 4)</th>
+<th style="text-align: center;">Truth Degree</th>
+<th style="text-align: center;">Metropie Modulation</th>
+<th style="text-align: left;">SM Source Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Continuous Polyquantor</strong> <span class="math inline">\(Q_{\mathrm{poly}}^{(B)}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(r &gt; 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_\rho \ne \operatorname{id}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\((\;)_\rho, \mathop{\mathsf{Q}}_{f_\rho, 1}^r(A_\rho), (\;)_\rho\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Continuous Monoquantor</strong></td>
+<td style="text-align: center;"><span class="math inline">\(r = 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_\rho \ne \operatorname{id}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_\rho \equiv f_\rho ; \alpha_\rho\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Discrete Polyquantor</strong> <span class="math inline">\(Q_{\mathrm{poly}}^{(r)}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(r &gt; 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_\rho = \operatorname{id}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\((\;)_\rho, \mathop{\mathsf{Q}}_{\rho, 1}^r(A_\rho), (\;)_\rho\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Monoquantor</strong> <span class="math inline">\(Q_{\mathrm{mono}}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(r = 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_\rho = \operatorname{id}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(a, \mathsf{Q}[AS]_\gamma b\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Universalquantor (<span class="math inline">\(\mathbf{U}\)</span>)</strong></td>
+<td style="text-align: center;"><strong>All <span class="math inline">\(\mathfrak{A}\)</span></strong></td>
+<td style="text-align: center;"><strong>Global Invariant</strong></td>
+<td style="text-align: left;">Right Adjoint <span class="math inline">\(\forall_f\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="video-container">
+<video loop="" muted="" playsinline="" src="media/Act5_Secs_114116_Aspektivfelder_7.mp4" style="max-height:175px;"></video>
+<div class="video-caption">
+Manim Act V: The 7 Aspect Subsystems
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Proposition 1.2 classifies the 2^3 - 1 = 7 nonempty aspect subsystems. Notice why any partial generator must keep the arity n fixed: if P_nn changed dimension while D_nn and K_n remained static, predicates would be left uncoordinated. Only the total subsystem {D_nn, K_n, P_nn} permits changing n.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-base-category-ban-otpi-scholia" class="slide level2 smaller scrollable">
+<h2>§1.2.1–1.2.2: The Base Category <span class="math inline">\((\Ban, \otpi)\)</span> &amp; Scholia</h2>
+<div class="stratum-badge badge-a">
+STRATUM A: PURE MATHEMATICAL FOUNDATIONS (DEF. 1.6 / 1.9 &amp; SCHOLIA 1.7–1.8)
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="intuition-box fragment blur-in">
+<p><strong>Intuitive Guide: A Context as a Local Scientific Laboratory</strong> Why model a subjective perspective as a normed Banach space? Every laboratory works with a finite array of measurement channels (<span class="math inline">\(P^U\)</span>), operates within bounded saturation thresholds (<span class="math inline">\(\|T\|_{\op} \le 1\)</span>), and weighs data by confidence (<span class="math inline">\(D^U\)</span>).</p>
+</div>
+<div class="thm-box">
+<p><strong>Definition 1.6 / 1.9: The Symmetric Monoidal Closed Category <span class="math inline">\((\Ban, \otpi)\)</span></strong></p>
+<ol type="1">
+<li><strong>Objects &amp; Contractions:</strong> Real Banach spaces <span class="math inline">\((X, \|\cdot\|_X)\)</span> with linear contractions <span class="math inline">\(T \colon X \to Y\)</span> (<span class="math inline">\(\|T\|_{\op} \le 1\)</span>).</li>
+<li><strong>Completed Projective Tensor Product (<span class="math inline">\(X \otpi Y\)</span>):</strong> Completion of <span class="math inline">\(X \otimes_{\mathrm{alg}} Y\)</span> under the projective cross-norm (Ryan 2002): <span class="math display">\[
+\|u\|_{X \otpi Y} \coloneqq \inf \left\{ \sum_{i=1}^\infty \|x_i\|_X \|y_i\|_Y \;\middle|\; u = \sum_{i=1}^\infty x_i \otimes y_i,\; \sum_{i=1}^\infty \|x_i\|_X \|y_i\|_Y &lt; \infty \right\}
+\]</span></li>
+<li><strong>Internal Hom Adjunction on Unit Balls:</strong> <span class="math display">\[
+\Hom_{\Ban}(X \otpi Y, Z) \cong \Hom_{\Ban}\big(X, \mathcal{L}(Y, Z)\big)
+\]</span></li>
+</ol>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="scholium-box fragment blur-in">
+<p><strong>Scholium 1.7: Model Contexts in <span class="math inline">\(\Ban\)</span> &amp; Smallness of <span class="math inline">\(\Ctx\)</span></strong></p>
+<ol type="1">
+<li><strong>Perceptual Saturation:</strong> Contractions (<span class="math inline">\(\|T\|_{\op} \le 1\)</span>) prevent sensory channels from diverging to infinity under iterative feedback.</li>
+<li><strong>Continuous Band Geometry:</strong> Normed vector spaces support convex interval cones <span class="math inline">\(\mathcal{I}(\mathbb{R}) = \{(a,f,b) \in \mathbb{R}^3 \mid a \le f \le b\}\)</span> and closed state cylinders <span class="math inline">\(\mathcal{S}_P^U \subset \operatorname{Ball}(P^U)\)</span>, <span class="math inline">\(\mathcal{S}_D^U \subset \operatorname{Ball}(D^U)\)</span>.</li>
+<li><strong>Strict Smallness:</strong> Restricting objects to a chosen skeleton of <span class="math inline">\(\FinBan\)</span> (specifically <span class="math inline">\((\mathbb{R}^n, \|\cdot\|_p)\)</span> for <span class="math inline">\(n \in \mathbb{N}_0\)</span>) guarantees <span class="math inline">\(\Ctx\)</span> is <strong>strictly small</strong>, ensuring well-defined Grothendieck sheaf topoi without set-theoretic universe bloat.</li>
+</ol>
+</div>
+<div class="scholium-box fragment blur-in">
+<p><strong>Scholium 1.8: Why Complete the Projective Tensor Product?</strong> The projective cross-norm establishes an <strong>isometric isomorphism</strong> between bounded bilinear coordination maps <span class="math inline">\(D^U \times P^U \to C^U\)</span> and linear contractions <span class="math inline">\(K^U \colon D^U \otpi P^U \to C^U\)</span> (<span class="math inline">\(\|K^U\|_{\op} \le 1\)</span>), while ensuring <span class="math inline">\((\Ban, \otpi)\)</span> is closed under infinite convergent tree series in Chapter 2. On Euclidean charts <span class="math inline">\(P_n = (\mathbb{R}^{3n}, \|\cdot\|_2)\)</span>, <span class="math inline">\(\Isom(P_n) = \mathrm{O}(3n)\)</span>.</p>
+</div>
+</div></div>
+<aside class="notes">
+<p>Crossing into Stratum A, we place Heim’s aspectual matrices on rigorous functional-analytic foundations. Both Scholia 1.7 and 1.8 explain why we work in a skeleton of finite-dimensional contractive Banach spaces with the completed projective tensor product.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-admissible-context-category-ctx-naturality-proof" class="slide level2 smaller scrollable">
+<h2>§1.2.3: The Admissible Context Category <span class="math inline">\(\Ctx\)</span> &amp; Naturality Proof</h2>
+<div class="stratum-badge badge-a">
+STRATUM A: DEF. 1.7 / 1.10, PROP. 1.8 / 1.11 &amp; COMPLETE PROOF
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="thm-box">
+<p><strong>Definition 1.7 / 1.10: The Admissible Context Category <span class="math inline">\(\Ctx\)</span></strong></p>
+<ul>
+<li><strong>Objects:</strong> Tuples <span class="math inline">\(U = (D^U, P^U, C^U, K^U, z^U, \zeta^U, \mathcal{S}_D^U, \mathcal{S}_P^U)\)</span> in <span class="math inline">\(\FinBan\)</span> with <span class="math inline">\(\|K^U\|_{\op} \le 1\)</span> and <span class="math inline">\(z^U \in \Isom(P^U), \zeta^U \in \Isom(D^U)\)</span>.</li>
+<li><strong>Morphisms:</strong> Triples of linear contractions <span class="math inline">\(\alpha = (\alpha_D, \alpha_P, \alpha_C) \colon U \to V\)</span> satisfying <strong>Coordination Commutativity</strong>, <strong>Cipher Equivariance</strong>, and <strong>State-Space Preservation</strong>: <span class="math display">\[
+\alpha_C \circ K^U = K^V \circ (\alpha_D \otpi \alpha_P), \quad \alpha_P \circ z^U = z^V \circ \alpha_P, \quad \alpha_D \circ \zeta^U = \zeta^V \circ \alpha_D
+\]</span> with <span class="math inline">\(\alpha_P(\mathcal{S}_P^U) \subseteq \mathcal{S}_P^V\)</span> and <span class="math inline">\(\alpha_D(\mathcal{S}_D^U) \subseteq \mathcal{S}_D^V\)</span>.</li>
+</ul>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>Proposition 1.8 / 1.11 &amp; Proof (Eliminating “Context Creep”):</strong> The assignments <span class="math inline">\(D, P, C \colon \Ctx \to \Ban\)</span> are faithful functors, and <span class="math inline">\(K \colon (D \otpi P) \Longrightarrow C\)</span> is a <strong>natural transformation</strong>.</p>
+<p><em>Proof:</em></p>
+<ol type="1">
+<li><strong>Functoriality:</strong> For composable <span class="math inline">\(\alpha \colon U \to V\)</span> and <span class="math inline">\(\beta \colon V \to W\)</span>, componentwise operator norm submultiplicativity yields <span class="math inline">\(\|(\beta \circ \alpha)_F\|_{\op} = \|\beta_F \circ \alpha_F\|_{\op} \le \|\beta_F\|_{\op}\|\alpha_F\|_{\op} \le 1\)</span>, and <span class="math inline">\(\operatorname{id}_U = (\operatorname{id}_{D^U}, \operatorname{id}_{P^U}, \operatorname{id}_{C^U})\)</span> preserves identities.</li>
+<li><strong>Naturality:</strong> By the morphism axiom <span class="math inline">\(\alpha_C \circ K^U = K^V \circ (\alpha_D \otpi \alpha_P)\)</span>, <span class="math inline">\(C(\alpha) \circ K^U = K^V \circ (D(\alpha) \otpi P(\alpha))\)</span> holds strictly for every <span class="math inline">\(\alpha \colon U \to V\)</span>. <span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="interactive-panel">
+<h4>
+Interactive 2-Channel Perceptual Laboratory (P^U ≅ ℝ⁶, C^U ≅ ℝ²)
+</h4>
+<p class="widget-context-note">
+<b>Context (Toy Example, §1.2.3):</b> An observer tracks two property channels: Temperature (<i>f</i><sub>1</sub>) and Brightness (<i>f</i><sub>2</sub>). Adjust the dialectical confidence weights (<i>d</i><sub>1</sub>, <i>d</i><sub>2</sub> ∈ [0,1]) and focal sensor readings to verify projective tensor contractivity ‖<i>K<sup>U</sup></i>(<i>d</i> ⊗ <i>p</i>)‖<sub>∞</sub> ≤ ‖<i>d</i>‖<sub>∞</sub>‖<i>p</i>‖<sub>∞</sub> ≤ 1.
+</p>
+<div class="slider-row">
+<span style="color:#20B2AA;">Confidence <i>d</i><sub>1</sub>:</span> <input type="range" id="toy-d1" min="0" max="1" step="0.01" value="0.85" oninput="updateToy()"> <span style="color:#4169E1;">Temp <i>f</i><sub>1</sub>:</span> <input type="range" id="toy-f1" min="-1" max="1" step="0.01" value="0.75" oninput="updateToy()">
+</div>
+<div class="slider-row" style="margin-top:8px;">
+<span style="color:#20B2AA;">Confidence <i>d</i><sub>2</sub>:</span> <input type="range" id="toy-d2" min="0" max="1" step="0.01" value="0.60" oninput="updateToy()"> <span style="color:#4169E1;">Bright <i>f</i><sub>2</sub>:</span> <input type="range" id="toy-f2" min="-1" max="1" step="0.01" value="0.50" oninput="updateToy()">
+</div>
+<div id="toy-matrix-output" class="matrix-readout">
+<pre><code>K^U(d ⊗ p) = [ c₁ = 0.64 , c₂ = 0.30 ]ᵀ  |  ‖K^U(d ⊗ p)‖_∞ = 0.64 ≤ ‖d‖_∞‖p‖_∞ = 0.64 ≤ 1.00</code></pre>
+</div>
+</div>
+<div class="video-container" style="margin-top:10px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Act6_Naturality_Toy.mp4" style="max-height:240px;"></video>
+<div class="video-caption">
+Manim Act VI (Fig. 1.3): Naturality Square of Coordination K^U &amp; Contractive Context Morphisms
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>In Ctx_adm^sk, context transitions alpha : U -&gt; V are contractive triples that commute with the coordination map K and respect the isometric ciphers z and zeta. Because K is a natural transformation, translating before coordinating yields the exact same result as coordinating first and then translating—eliminating “context creep.”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="explicit-pullbacks-in-ctx-universal-property-proof" class="slide level2 smaller scrollable">
+<h2>§1.2.3: Explicit Pullbacks in <span class="math inline">\(\Ctx\)</span> &amp; Universal Property Proof</h2>
+<div class="stratum-badge badge-a">
+STRATUM A: PROPOSITION 1.9 / 1.13 &amp; 3-STEP UNIVERSAL PROPERTY PROOF
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<p>Given morphisms <span class="math inline">\(\alpha \colon V_1 \to U\)</span> and <span class="math inline">\(\beta \colon V_2 \to U\)</span>, how do two observers compare findings on their shared overlap?</p>
+<div class="thm-box">
+<p><strong>Proposition 1.9 / 1.13: Categorical Pullback <span class="math inline">\(W \coloneqq V_1 \times_U V_2\)</span></strong></p>
+<ol type="1">
+<li><strong>Componentwise Fiber Products in <span class="math inline">\(\Ban\)</span> (with <span class="math inline">\(\ell^\infty\)</span> direct-sum norm):</strong> <span class="math display">\[
+F^W \coloneqq F^{V_1} \times_{F^U} F^{V_2} = \big\{ (x_1, x_2) \in F^{V_1} \oplus_\infty F^{V_2} \;\big|\; \alpha_F(x_1) = \beta_F(x_2) \big\}
+\]</span> for <span class="math inline">\(F \in \{D, P, C\}\)</span> with <span class="math inline">\(\| (x_1, x_2) \|_{F^W} = \max(\|x_1\|_{F^{V_1}}, \|x_2\|_{F^{V_2}})\)</span>, so canonical projections <span class="math inline">\(\pi_{1F}, \pi_{2F}\)</span> satisfy <span class="math inline">\(\|\pi_{iF}\|_{\op} \le 1\)</span>.</li>
+<li><strong>Induced Contractive Coordination <span class="math inline">\(K^W \colon D^W \otpi P^W \to C^W\)</span>:</strong> <span class="math display">\[
+K^W(u) \coloneqq \big(K^{V_1}(\pi_{1D}\otpi\pi_{1P})(u),\; K^{V_2}(\pi_{2D}\otpi\pi_{2P})(u)\big), \quad \|K^W\|_{\op} \le 1
+\]</span></li>
+<li><strong>Diagonal Isometric Ciphers:</strong> <span class="math inline">\(z^W(p_1, p_2) \coloneqq (z^{V_1}(p_1), z^{V_2}(p_2)) \in \Isom(P^W)\)</span>.</li>
+</ol>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>Proof of Pullback Universal Property (3-Step Strategy):</strong></p>
+<ol type="1">
+<li><strong>Well-Definedness of <span class="math inline">\(K^W\)</span>:</strong> For <span class="math inline">\(u \in D^W \otpi P^W\)</span>, naturality of <span class="math inline">\(K\)</span> yields <span class="math inline">\(\alpha_C(K_1(u)) = K^U(\alpha_D\pi_{1D}\otpi\alpha_P\pi_{1P})(u) = K^U(\beta_D\pi_{2D}\otpi\beta_P\pi_{2P})(u) = \beta_C(K_2(u))\)</span>, so <span class="math inline">\(K^W(u) \in C^W\)</span>.</li>
+<li><strong>Cipher Equivariance:</strong> <span class="math inline">\(\alpha_P(z^{V_1}(p_1)) = z^U(\alpha_P(p_1)) = z^U(\beta_P(p_2)) = \beta_P(z^{V_2}(p_2))\)</span>, so <span class="math inline">\(z^W\)</span> preserves <span class="math inline">\(P^W\)</span> isometrically.</li>
+<li><strong>Universal Property:</strong> For any test object <span class="math inline">\(Y \in \Ctx\)</span> with <span class="math inline">\(\gamma_1 \colon Y \to V_1, \gamma_2 \colon Y \to V_2\)</span> satisfying <span class="math inline">\(\alpha \circ \gamma_1 = \beta \circ \gamma_2\)</span>, the unique mediating map <span class="math inline">\(\eta_F(y) \coloneqq (\gamma_{1F}(y), \gamma_{2F}(y))\)</span> satisfies <span class="math inline">\(\|\eta_F(y)\|_{F^W} = \max(\|\gamma_{1F}(y)\|, \|\gamma_{2F}(y)\|) \le \|y\|_{F^Y}\)</span>, so <span class="math inline">\(\|\eta_F\|_{\op} \le 1\)</span>. <span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="video-container">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Act7_3D_Pullback.mp4" style="max-height:330px;"></video>
+<div class="video-caption">
+Manim Act VII (Fig. 1.4): 3D ℓ^∞ Unit Cube &amp; Pullback Equalizer Slice W = V₁ ×_U V₂
+</div>
+</div>
+<div class="intuition-box fragment blur-in">
+<p><strong>Why the <span class="math inline">\(\ell^\infty\)</span> Norm is Essential:</strong> If we used the <span class="math inline">\(\ell^1\)</span> or <span class="math inline">\(\ell^2\)</span> direct-sum norm on <span class="math inline">\(F^{V_1} \oplus F^{V_2}\)</span>, the diagonal mediating map <span class="math inline">\(\eta_F(y) = (\gamma_{1F}(y), \gamma_{2F}(y))\)</span> could have norm <span class="math inline">\(\sqrt{2}\)</span> or <span class="math inline">\(2\)</span>, violating contractivity in <span class="math inline">\(\Ban\)</span>! Only <span class="math inline">\(\oplus_\infty\)</span> makes <span class="math inline">\(\times_U\)</span> the exact categorical pullback in <span class="math inline">\(\Ban\)</span>.</p>
+</div>
+</div></div>
+<aside class="notes">
+<p>To define a Grothendieck topology on Ctx_adm^sk, we first need pullbacks so that covering families can be restricted along arbitrary context morphisms. The 3-step proof shows why the l-infinity direct sum norm is mandatory for the universal mediating morphism eta to remain a contraction.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-subcanonical-site-ctxpos-jsyn-sheaf-topos-esyn" class="slide level2 smaller scrollable">
+<h2>§1.3: The Subcanonical Site <span class="math inline">\((\CtxPos, \Jsyn)\)</span> &amp; Sheaf Topos <span class="math inline">\(\Esyn\)</span></h2>
+<div class="stratum-badge badge-a">
+STRATUM A: GROTHENDIECK TOPOLOGY (DEF. 1.10 / 1.15, THM. 1.12 / 1.17 &amp; SCHOLIUM 1.14)
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="scholium-box fragment blur-in">
+<p><strong>Scholium 1.14: The Topos as a Synthetic Universe of Relations (Zalamea 2012)</strong></p>
+<ol type="1">
+<li><strong>Contextual Truth (<span class="math inline">\(\Omega\)</span>):</strong> Replaces absolute bivalence <span class="math inline">\(\{0,1\}\)</span> with the Heyting algebra <span class="math inline">\(\Omega(U)\)</span> of <span class="math inline">\(\Jsyn\)</span>-closed sieves, matching Heim’s <em>Sinn des Intervalls</em>.</li>
+<li><strong>Phenomenological Gluing:</strong> Formalizes Husserl’s synthesis of adumbrations (<em>Abschattungen</em>): local aspect profiles coalesce into an objective <strong>Holoform</strong> if and only if they satisfy the sheaf descent condition on overlaps <span class="math inline">\(V_i \times_U V_j\)</span>.</li>
+<li><strong>Internal Constructive Mathematics:</strong> By the Mitchell–Bénabou language, any proof in <span class="math inline">\(\mathcal{L}_{\mathrm{iMSL}}\)</span> automatically compiles into a geometric invariant of <span class="math inline">\(\Esyn\)</span>.</li>
+</ol>
+</div>
+<div class="thm-box">
+<p><strong>Def. 1.10 / 1.15 &amp; Prop. 1.11 / 1.16: Admissible Covers <span class="math inline">\(\Ksyn(U)\)</span></strong> On <span class="math inline">\(\CtxPos\)</span> (<span class="math inline">\(\dim P^U \ge 1\)</span>), a finite family <span class="math inline">\(\{\rho_i \colon V_i \to U\}_{i=1}^m\)</span> is an <strong>admissible cover</strong> if the joint addition map <span class="math inline">\(\rho_F \colon \bigoplus_{\infty} F^{V_i} \to F^U\)</span> admits a <strong>linear contractive split-section</strong> <span class="math inline">\(\sigma_F\)</span> (<span class="math inline">\(\rho_F \circ \sigma_F = \operatorname{id}_{F^U}, \|\sigma_F\|_{\op} \le 1\)</span>): <span class="math display">\[
+(\sigma_C(c))_i^{(k)} \coloneqq \begin{cases} r_k^{-1} c_k &amp; k \in I_i \\ 0 &amp; k \notin I_i \end{cases}, \qquad \bot(U) = \cl_{\Jsyn}(\emptyset) = \emptyset
+\]</span></p>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="carnap-box fragment fade-right">
+<p><strong>Theorem 1.12 / 1.17: Subcanonicity of the Syntrometric Site</strong> The pretopology <span class="math inline">\(\Ksyn\)</span> generates a Grothendieck topology <span class="math inline">\(\Jsyn = \langle \Ksyn \rangle_{\mathrm{GT}}\)</span> inducing the <strong>Syntrometric Sheaf Topos</strong>: <span class="math display">\[
+\Esyn \;\coloneqq\; \mathbf{Sh}\big(\Ctx, \Jsyn\big), \qquad \mathbf{y} \colon \CtxPos \longhookrightarrow \Esyn
+\]</span> Every representable presheaf <span class="math inline">\(\mathbf{h}_X = \Hom(-, X)\)</span> is a sheaf (<span class="math inline">\(\Jsyn\)</span> is <strong>subcanonical</strong>).</p>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>Proof of Theorem 1.12 / 1.17 &amp; Subcanonicity Status Remark:</strong> Let <span class="math inline">\(\{\rho_i \colon V_i \to U\}_{i=1}^m \in \Ksyn(U)\)</span> with contractive split-section <span class="math inline">\(\sigma_F = (\sigma_{1F}, \dots, \sigma_{mF})\)</span> satisfying <span class="math inline">\(\sum_{i=1}^m \rho_{iF} \circ \sigma_{iF} = \operatorname{id}_{F^U}\)</span>. Given compatible morphisms <span class="math inline">\(f_i \in \mathbf{h}_X(V_i) = \Hom(V_i, X)\)</span> agreeing on all pullbacks <span class="math inline">\(V_i \times_U V_j\)</span>, define the global amalgamated morphism <span class="math inline">\(f \colon U \to X\)</span> componentwise by: <span class="math display">\[
+f_F \;\coloneqq\; \sum_{i=1}^m f_{iF} \circ \sigma_{iF}
+\]</span> Because <span class="math inline">\(\rho_F\)</span> is a split epimorphism in <span class="math inline">\(\Ban\)</span>, it is the coequalizer of its kernel pair <span class="math inline">\(V_i \times_U V_j \rightrightarrows \bigoplus_\infty V_i\)</span>. Thus <span class="math inline">\(f\)</span> is the unique contractive morphism satisfying <span class="math inline">\(f \circ \rho_i = f_i\)</span>, proving <span class="math inline">\(\mathbf{h}_X\)</span> is a sheaf! <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div></div>
+<aside class="notes">
+<p>Section 1.3 elevates our category of Banach contexts into a Grothendieck site. Note the explicit proof of Theorem 1.12/1.17: because every cover in K_syn admits a contractive split-section sigma_F, the addition map rho_F is a split epimorphism and therefore the coequalizer of its kernel pair, making every representable presheaf a sheaf.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="subobject-classifier-omega-heyting-proof-hyperdoctrines" class="slide level2 smaller scrollable">
+<h2>§1.4: Subobject Classifier <span class="math inline">\(\Omega\)</span>, Heyting Proof &amp; Hyperdoctrines</h2>
+<div class="stratum-badge badge-a">
+STRATUM A: INTERNAL CONSTRUCTIVE LOGIC (THM. 1.13 / 1.18, PROOF &amp; PROP. 1.14 / 1.19)
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="thm-box">
+<p><strong>Theorem 1.13 / 1.18: Complete Heyting Algebra <span class="math inline">\(\Omega(U)\)</span> &amp; Proof</strong> Truth values in <span class="math inline">\(\Esyn\)</span> form the sheaf <span class="math inline">\(\Omega(U)\)</span> of <span class="math inline">\(\Jsyn\)</span>-closed sieves on <span class="math inline">\(U\)</span>: <span class="math display">\[
+R_1 \Rightarrow_J R_2 \coloneqq \{ f \colon V \to U \mid f^*(R_1) \subseteq f^*(R_2) \}, \qquad \neg_J R \coloneqq (R \Rightarrow_J \bot)
+\]</span></p>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>3-Step Proof of Theorem 1.13 / 1.18:</strong></p>
+<ol type="1">
+<li><strong>Sieve Property:</strong> If <span class="math inline">\(f \in (R_1 \Rightarrow_J R_2)\)</span> and <span class="math inline">\(g \colon W \to V\)</span>, functoriality <span class="math inline">\((f \circ g)^*(R_i) = g^*(f^*(R_i))\)</span> implies <span class="math inline">\((f \circ g)^*(R_1) \subseteq (f \circ g)^*(R_2)\)</span>.</li>
+<li><strong><span class="math inline">\(\Jsyn\)</span>-Closure:</strong> If <span class="math inline">\(\{h_i \colon W_i \to V\} \in \Jsyn(V)\)</span> lies in <span class="math inline">\(f^*(R_1 \Rightarrow_J R_2)\)</span> and <span class="math inline">\(k \in f^*(R_1)\)</span>, pulling back the cover along <span class="math inline">\(k\)</span> puts the cover in <span class="math inline">\(k^*(f^*(R_2))\)</span>. Since <span class="math inline">\(R_2\)</span> is <span class="math inline">\(\Jsyn\)</span>-closed, <span class="math inline">\(k \in f^*(R_2)\)</span>, so <span class="math inline">\(f \in (R_1 \Rightarrow_J R_2)\)</span>.</li>
+<li><strong>Heyting Adjunction:</strong> <span class="math inline">\(R_0 \subseteq (R_1 \Rightarrow_J R_2) \iff \forall f \in R_0,\, f^*(R_1) \subseteq f^*(R_2) \iff R_0 \cap R_1 \subseteq R_2\)</span>. <span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+</div>
+<div class="carnap-box fragment fade-right">
+<p><strong>Proposition 1.14 / 1.19: Slice Hyperdoctrine &amp; Beck–Chevalley</strong> Every <span class="math inline">\(f \colon V \to U\)</span> induces <span class="math inline">\(\exists_f \dashv f^* \dashv \forall_f\)</span> satisfying the <strong>Beck–Chevalley isomorphisms</strong> across pullback squares (<span class="math inline">\(W = V_1 \times_U V_2\)</span>): <span class="math display">\[
+\mathbf{BC}_\exists \colon g^* \exists_f \xrightarrow{\;\sim\;} \exists_{\pi_1} \pi_2^*, \qquad \mathbf{BC}_\forall \colon g^* \forall_f \xrightarrow{\;\sim\;} \forall_{\pi_1} \pi_2^*
+\]</span> where the right adjoint <span class="math inline">\(\forall_f\)</span> realizes Heim’s <strong>Universalquantor (<span class="math inline">\(\mathbf{U}\)</span>)</strong>.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="interactive-panel">
+<h4>
+Interactive Kripke–Joyal Heyting Countermodel Explorer
+</h4>
+<p class="widget-context-note">
+<b>Context (§1.4 Remark):</b> Consider a root context <i>w</i> with two refined extensions <i>u</i> and <i>v</i> (<i>w ≤ u</i>, <i>w ≤ v</i>). Click any world node below to toggle where proposition <i>p</i> is verified and see why the Law of Excluded Middle fails constructively when <i>p</i> is decided only in one extension.
+</p>
+<div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:6px;">
+<svg id="kripke-svg" viewbox="0 0 360 140" width="100%" height="135"> <line x1="180" y1="110" x2="90" y2="35" stroke="#64748b" stroke-width="2.5"></line> <line x1="180" y1="110" x2="270" y2="35" stroke="#64748b" stroke-width="2.5"></line> <g class="kripke-node" onclick="toggleKripkeWorld('u')"> <circle id="kr-u" cx="90" cy="35" r="24" fill="#20B2AA" stroke="#FFD700" stroke-width="2.5"></circle> <text x="90" y="32" fill="#000" font-size="12" font-weight="bold" text-anchor="middle">u</text> <text id="kr-u-lbl" x="90" y="46" fill="#000" font-size="9.5" font-weight="bold" text-anchor="middle">u ⊩ p</text> </g> <g class="kripke-node" onclick="toggleKripkeWorld('v')"> <circle id="kr-v" cx="270" cy="35" r="24" fill="#1e293b" stroke="#64748b" stroke-width="2.5"></circle> <text x="270" y="32" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">v</text> <text id="kr-v-lbl" x="270" y="46" fill="#94a3b8" font-size="9.5" text-anchor="middle">v ⊭ p</text> </g> <g class="kripke-node" onclick="toggleKripkeWorld('w')"> <circle id="kr-w" cx="180" cy="110" r="24" fill="#1e293b" stroke="#FFD700" stroke-width="2.5"></circle> <text x="180" y="107" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">w</text> <text id="kr-w-lbl" x="180" y="121" fill="#94a3b8" font-size="9.5" text-anchor="middle">w ⊭ p</text> </g> </svg>
+</div>
+<div id="kripke-readout" class="matrix-readout" style="margin-top:6px;">
+<pre><code>At Root w: w ⊭ p AND w ⊭ ¬p (since u ⊩ p) ⇒ w ⊭ (p ∨ ¬p) [Non-Boolean Gap!] | Glivenko: w ⊩ ¬¬(p ∨ ¬p) = ⊤</code></pre>
+</div>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Act8_Heyting_Hyperdoctrine.mp4" style="max-height:175px;"></video>
+<div class="video-caption">
+Manim Act VIII (Figs. 1.5 &amp; 1.6): Non-Boolean Sieve Gap in Ω(U) &amp; 3D Hyperdoctrine Beck–Chevalley Prism
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Truth values in E_syn form a complete Heyting algebra Omega(U) of J_syn-closed sieves. The 3-step proof on the left verifies sieve closure, J_syn-closure, and the Heyting adjunction.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="complete-kripkejoyal-forcing-tri-layer-architecture" class="slide level2 smaller scrollable">
+<h2>§1.4–1.7: Complete Kripke–Joyal Forcing &amp; Tri-Layer Architecture</h2>
+<div class="stratum-badge badge-a">
+STRATUM A &amp; B: 7-CLAUSE KRIPKE–JOYAL SEMANTICS &amp; 3-LAYER DECOUPLING
+</div>
+<div class="columns">
+<div class="column" style="width:54%;">
+<div class="thm-box">
+<p><strong>Complete 7-Clause Layer 1 Kripke–Joyal Forcing Semantics in <span class="math inline">\(\Esyn\)</span> (§1.4)</strong> For any context <span class="math inline">\(U \in \operatorname{Obj}(\Ctx)\)</span> and generalized element <span class="math inline">\(\alpha \colon \mathbf{y}U \to X\)</span>:</p>
+<ol type="1">
+<li><strong>Equality (<span class="math inline">\(\alpha_1 =_X \alpha_2\)</span>):</strong> <span class="math inline">\(U \Vdash \alpha_1 =_X \alpha_2 \iff \alpha_1 = \alpha_2\)</span> in <span class="math inline">\(X(U)\)</span>.</li>
+<li><strong>Conjunction (<span class="math inline">\(\phi \wedge \psi\)</span>):</strong> <span class="math inline">\(U \Vdash \phi(\alpha) \wedge \psi(\alpha) \iff U \Vdash \phi(\alpha)\)</span> and <span class="math inline">\(U \Vdash \psi(\alpha)\)</span>.</li>
+<li><strong>Disjunction (<span class="math inline">\(\phi \vee \psi\)</span>):</strong> <span class="math inline">\(U \Vdash \phi(\alpha) \vee \psi(\alpha) \iff \exists \{\rho_i \colon V_i \to U\}_{i=1}^m \in \Jsyn(U)\)</span> such that <span class="math inline">\(\forall i\)</span>, either <span class="math inline">\(V_i \Vdash \phi(\alpha \circ \rho_i)\)</span> or <span class="math inline">\(V_i \Vdash \psi(\alpha \circ \rho_i)\)</span> (<strong>local covering witness</strong>).</li>
+<li><strong>Implication (<span class="math inline">\(\phi \to \psi\)</span>):</strong> <span class="math inline">\(U \Vdash \phi(\alpha) \to \psi(\alpha) \iff \forall f \colon V \to U\)</span>, <span class="math inline">\(V \Vdash \phi(\alpha \circ f) \implies V \Vdash \psi(\alpha \circ f)\)</span>.</li>
+<li><strong>Negation (<span class="math inline">\(\neg\phi\)</span>):</strong> <span class="math inline">\(U \Vdash \neg\phi(\alpha) \iff \forall f \colon V \to U\)</span>, <span class="math inline">\(V \not\Vdash \phi(\alpha \circ f)\)</span> (<span class="math inline">\(f^*(\llbracket\phi\rrbracket) = \emptyset\)</span>).</li>
+<li><strong>Universal (<span class="math inline">\(\forall y \in Y.\,\phi\)</span>):</strong> <span class="math inline">\(U \Vdash \forall y \in Y.\,\phi(\alpha, y) \iff \forall f \colon V \to U,\; \forall \beta \in Y(V)\)</span>, <span class="math inline">\(V \Vdash \phi(\alpha \circ f, \beta)\)</span>.</li>
+<li><strong>Existential (<span class="math inline">\(\exists y \in Y.\,\phi\)</span>):</strong> <span class="math inline">\(U \Vdash \exists y \in Y.\,\phi(\alpha, y) \iff \exists \{\rho_i \colon V_i \to U\} \in \Jsyn(U)\)</span> and local witnesses <span class="math inline">\(\beta_i \in Y(V_i)\)</span> such that <span class="math inline">\(V_i \Vdash \phi(\alpha \circ \rho_i, \beta_i)\)</span> for all <span class="math inline">\(i\)</span>.</li>
+</ol>
+</div>
+</div><div class="column" style="width:46%;">
+<div class="scholium-box fragment blur-in">
+<p><strong>Architectural Separation: The 3-Layer Semantic Decoupling (§1.7)</strong> To prevent category mistakes between sheaf geometry and modal proof theory, the treatise enforces a strict <strong>Three-Layer Architecture</strong>:</p>
+<ol type="1">
+<li><strong>Layer 1 (Topos &amp; Sheaf Layer — Stratum A):</strong> The site <span class="math inline">\((\Ctx, \Jsyn)\)</span> and sheaf topos <span class="math inline">\(\Esyn = \mathbf{Sh}(\Ctx, \Jsyn)\)</span> govern continuous context projections, Kripke–Joyal forcing <span class="math inline">\(\Vdash\)</span>, and Holoform descent <span class="math inline">\(\Hol(\mathcal{U}, \mathbf{P})\)</span>.</li>
+<li><strong>Layer 2 (Relational Kripke Frame Layer — Stratum B):</strong> Extracts a discrete/metric Kripke frame <span class="math inline">\(\mathfrak{F}_{\mathrm{cand}} = (W, \preceq, R_{\Box_S}, \{R_{\pi_F}\})\)</span> from <span class="math inline">\(\Ctx\)</span> via the operator discrepancy pseudometric <span class="math inline">\(d_P(U,V) &lt; \epsilon_A\)</span>.</li>
+<li><strong>Layer 3 (Proof-Theoretic Sequent Layer — Stratum B):</strong> The stratified single-succedent sequent calculus <span class="math inline">\(\mathcal{L}_{\mathrm{iMSL}}\)</span> (<span class="math inline">\(S(x); \Gamma \vdash^k \phi\)</span>) is sound and strongly complete with respect to Layer 2, and embeds into Layer 1 via the Lawvere–Tierney topology <span class="math inline">\(j_S = \neg_J \Box_S \neg_J\)</span>.</li>
+</ol>
+</div>
+</div></div>
+<aside class="notes">
+<p>This slide provides the complete 7-clause Kripke-Joyal forcing semantics—showing how disjunction and existential quantification require local covering witnesses in J_syn(U)—and explains the three-layer semantic decoupling between Layer 1 (Sheaf Topos), Layer 2 (Fischer-Servi Metric Frame), and Layer 3 (Sequent Calculus).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="sheaf-descent-varepsilon-holoform-proof-kochenspecker" class="slide level2 smaller">
+<h2>§1.5: Sheaf Descent, <span class="math inline">\(\varepsilon\)</span>-Holoform Proof &amp; Kochen–Specker</h2>
+<div class="stratum-badge badge-b">
+STRATUM B: DERIVED DESCENT THEOREMS (THMS. 1.17–1.18 / 1.22–1.24, PROOFS &amp; CARNAP 1.2)
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="thm-box">
+<strong>Def. 1.15 / 1.20 &amp; Thm. 1.17 / 1.22: Holoform Equalizer &amp; Čech Defect</strong> <span class="math display">\[
+\Hol(\mathcal{U}, \mathbf{P}) \coloneqq \operatorname{Eq}\!\left( \prod_{i=1}^m \mathbf{P}(V_i) \overset{d^0}{\underset{d^1}{\rightrightarrows}} \prod_{i,j=1}^m \mathbf{P}(V_i \times_U V_j) \right), \quad \Def_{\mathcal{U}}(s) \coloneqq d^0(s) - d^1(s) = \delta^0(s)
+\]</span>
+<div class="claim-ceiling fragment fade-up">
+<b>Claim Ceiling (<span class="math inline">\(c_{\mathrm{SHEAF}}\)</span> / <span class="math inline">\(c_{\mathrm{EPS-HOL}}\)</span>):</b> Exact &amp; <span class="math inline">\(\varepsilon\)</span>-Holoform descent are verified in <span class="math inline">\(\mathbf{Ban}_{\le 1}\)</span> (<span class="math inline">\(\mathbf{S_{1a}}\)</span>); <span class="math inline">\(\Def_{\mathcal{U}}(s)\)</span> measures 0-cochain failure to be a 0-cocycle (<span class="math inline">\(\ker \delta^0\)</span>), distinct from higher cohomology <span class="math inline">\(\check{H}^1(\mathcal{U}, \mathbf{A})\)</span>.
+</div>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>Theorem 1.18 / 1.24 (<span class="math inline">\(\varepsilon\)</span>-Holoform Stability) &amp; Proof:</strong> For <span class="math inline">\(\Gamma_\sigma = \mathcal{G}_\sigma(s) \coloneqq \sum_{i=1}^m \sigma_i^*(s_i)\)</span>, <span class="math inline">\(\|\Def_{\mathcal{U}}(s)\|_{\check{C}^1} \le \varepsilon \implies \max_k \|\rho_k^*(\Gamma_\sigma) - s_k\|_{\mathbf{A}(V_k)} \le \varepsilon\)</span>.</p>
+<p><em>Proof:</em> Since <span class="math inline">\(\sum_{i=1}^m \rho_i \circ \sigma_i = \operatorname{id}_U\)</span>, <span class="math inline">\(\sum_i \rho_k^* \sigma_i^*(s_k) = s_k\)</span>. By partition-of-unity contractivity: <span class="math display">\[
+\|\rho_k^*(\Gamma_\sigma) - s_k\| = \left\|\sum_{i=1}^m \rho_k^*\sigma_i^*(s_i) - s_k\right\| \le \max_{1 \le i \le m} \|s_i|_{V_{ki}} - s_k|_{V_{ki}}\|_{\mathbf{A}(V_{ki})} = \|\Def_{\mathcal{U}}(s)\|_{\check{C}^1} \le \varepsilon.\;\blacksquare
+\]</span></p>
+</div>
+<div class="carnap-box fragment fade-right">
+<p><strong>Carnap 1.2 (Husserlian Horizons &amp; Kochen–Specker):</strong> In the Bohr topos over <span class="math inline">\(\mathcal{V}(\mathcal{H})\)</span>, Kochen–Specker (<span class="math inline">\(\Gamma(\mathbf{1}, \underline{\Sigma}) = \emptyset\)</span>) is a non-vanishing Čech obstruction (<span class="math inline">\(\Def_{\mathcal{U}} \ne 0\)</span>), <strong>not</strong> <span class="math inline">\(U \Vdash \bot\)</span>.</p>
+</div>
+</div><div class="column" style="width:52%;">
+<div class="interactive-panel">
+<h4>
+Interactive 3-Observer ε-Holoform &amp; Čech Cocycle Simulator
+</h4>
+<p class="widget-context-note">
+<b>Context (§1.5):</b> Three local observers (<i>V</i><sub>1</sub>, <i>V</i><sub>2</sub>, <i>V</i><sub>3</sub>) measure sections <i>s</i><sub>1</sub>, <i>s</i><sub>2</sub>, <i>s</i><sub>3</sub> over pairwise overlaps <i>V<sub>ij</sub> = V<sub>i</sub> ×<sub>U</sub> V<sub>j</sub></i>. When the Čech 0-coboundary defect ‖Def<sub><i>U</i></sub>(<i>s</i>)‖<sub>Č¹</sub> = max<sub><i>i,j</i></sub> |<i>s<sub>i</sub> − s<sub>j</sub></i>| lies within tolerance <i>ε</i>, the partition-of-unity operator 𝒢<sub><i>σ</i></sub>(<i>s</i>) = ∑ <i>σ<sub>i</sub></i>*(<i>s<sub>i</sub></i>) condenses the global Holoform Γ<sub><i>σ</i></sub>.
+</p>
+<div style="display:grid; grid-template-columns: 1.18fr 0.82fr; gap:10px; align-items:center;">
+<div>
+<div class="slider-row">
+<span style="color:#4169E1;">Obs 1 (<i>s</i><sub>1</sub>):</span> <input type="range" id="hol-s1" min="-1.0" max="1.0" step="0.02" value="-0.40" oninput="updateHoloform()"> <span id="hol-s1-val" style="width:42px; font-family:monospace;">-0.40</span>
+</div>
+<div class="slider-row">
+<span style="color:#20B2AA;">Obs 2 (<i>s</i><sub>2</sub>):</span> <input type="range" id="hol-s2" min="-1.0" max="1.0" step="0.02" value="0.56" oninput="updateHoloform()"> <span id="hol-s2-val" style="width:42px; font-family:monospace;">+0.56</span>
+</div>
+<div class="slider-row">
+<span style="color:#FFA500;">Obs 3 (<i>s</i><sub>3</sub>):</span> <input type="range" id="hol-s3" min="-1.0" max="1.0" step="0.02" value="0.44" oninput="updateHoloform()"> <span id="hol-s3-val" style="width:42px; font-family:monospace;">+0.44</span>
+</div>
+<div class="slider-row">
+<span style="color:#FFD700;">Tolerance <i>ε</i>:</span> <input type="range" id="hol-eps" min="0.02" max="0.30" step="0.02" value="0.10" oninput="updateHoloform()"> <span id="hol-eps-val" style="width:42px; font-family:monospace;">0.10</span>
+</div>
+</div>
+<div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+<svg id="hol-svg" viewbox="0 0 200 140" width="175" height="125"> <line id="hol-e12" x1="100" y1="22" x2="35" y2="118" stroke="#DC143C" stroke-width="3"></line> <line id="hol-e23" x1="35" y1="118" x2="165" y2="118" stroke="#DC143C" stroke-width="3"></line> <line id="hol-e13" x1="165" y1="118" x2="100" y2="22" stroke="#DC143C" stroke-width="3"></line> <circle id="hol-center" cx="100" cy="84" r="16" fill="rgba(220,20,60,0.2)" stroke="#DC143C" stroke-width="2"></circle> <text id="hol-center-txt" x="100" y="88" fill="#ff6b81" font-size="9" font-weight="bold" text-anchor="middle">∅</text> <circle cx="100" cy="22" r="13" fill="#4169E1"></circle><text x="100" y="26" fill="#fff" font-size="9.5" font-weight="bold" text-anchor="middle">V₁</text> <circle cx="35" cy="118" r="13" fill="#20B2AA"></circle><text x="35" y="122" fill="#000" font-size="9.5" font-weight="bold" text-anchor="middle">V₂</text> <circle cx="165" cy="118" r="13" fill="#FFA500"></circle><text x="165" y="122" fill="#000" font-size="9.5" font-weight="bold" text-anchor="middle">V₃</text> </svg>
+</div>
+</div>
+<div style="margin-top:6px; display:flex; gap:8px; justify-content:center;">
+<button class="syn-btn" onclick="alignHoloform()">Exact Descent (Def_U(s) = 0)</button> <button class="syn-btn" onclick="epsHoloform()">ε-Compatible (0.06 ≤ ε)</button> <button class="syn-btn" onclick="perturbHoloform()">Introduce Antagonismus</button>
+</div>
+<div id="hol-status-box" class="matrix-readout" style="margin-top:6px;">
+<pre><code>‖Def_U(s)‖_Č¹ = 0.96 &gt; ε (0.10)  ⇒  ANTAGONISMUS (Čech 0-Coboundary Obstruction)</code></pre>
+</div>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Act9_Holoform_Crystal.mp4" style="max-height:170px;"></video>
+<div class="video-caption">
+Manim Act IX (Fig. 1.7): Sheaf Descent &amp; Unique Invariant Holoform Section Γ ∈ Hol(U, P)
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Heim’s concept of the Holoform is explicated as the equalizer of local sections over an admissible cover. Notice the explicit proof of Theorem 1.18/1.24 on the left, which uses partition-of-unity contractivity in the l-infinity norm.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="typed-mereology-mathfrakm_mathrmasp-separation-proof-aufhebung" class="slide level2 smaller scrollable">
+<h2>§1.6: Typed Mereology <span class="math inline">\(\mathfrak{M}_{\mathrm{asp}}\)</span>, Separation Proof &amp; <em>Aufhebung</em></h2>
+<div class="stratum-badge badge-b">
+STRATUM B: AXIOMATIC CEM, THM. 1.23 / 1.29 PROOF &amp; DIALECTICAL SUBLATION (THM. 1.24 / 1.30)
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="thm-box">
+<p><strong>Def. 1.19–1.22 / 1.25–1.28: Heyting Mereology &amp; Tripartite Antagonismen</strong> In <span class="math inline">\(\mathfrak{M}_{\mathrm{asp}}(U) \coloneqq \Sub_{\Esyn}(\mathbf{y}(U) \times (\underline{\mathsf{Pred}}_U \sqcup \underline{\mathsf{Qual}}_U))\)</span>, parthood <span class="math inline">\(A \le B\)</span> satisfies <strong>MSL-M1</strong> (Partial Order), <strong>MSL-M2</strong> (Proper Part <span class="math inline">\(A \ll B\)</span>), and guarded fusion <span class="math inline">\(\sigma\mathcal{X} = \bigvee_{A\in\mathcal{X}} A\)</span>. Coordination fires when <span class="math inline">\(\operatorname{Strength} = \chi((\zeta_x)_r\sigma_{dr}, (\mathbf{z}_x)_q\sigma_{fq}) &gt; \theta_{\mathrm{coord}}(x)\)</span>.</p>
+<ol type="1">
+<li><strong>Mereological (<span class="math inline">\(\operatorname{Ant}_{\mathrm{mer}}\)</span>):</strong> <span class="math inline">\(\operatorname{Incomp}_{\mathcal{E}}(A, B) \coloneqq \llbracket |\operatorname{ev}_P(A)-\operatorname{ev}_P(B)| &gt; \theta_{\mathrm{tol}} \rrbracket = \top_{\Omega(W)}\)</span>.</li>
+<li><strong>Descent (<span class="math inline">\(\operatorname{Ant}_{\mathrm{desc}}\)</span>):</strong> <span class="math inline">\(\Def_{\mathcal{U}}(s) \ne 0\)</span> (<span class="math inline">\(\Hol(\mathcal{U}, \mathbf{P}) = \emptyset\)</span>), while <span class="math inline">\(\mathbf{y}W \not\cong \mathbf{0}_{\mathcal{E}}\)</span>.</li>
+<li><strong>Logical (<span class="math inline">\(\operatorname{Ant}_{\mathrm{log}}\)</span>):</strong> <span class="math inline">\(W \Vdash \bot\)</span> (requires explicit translation axiom <span class="math inline">\(p_{v_1} \vdash \neg p_{v_2}\)</span>).</li>
+</ol>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>Theorem 1.23 / 1.29 &amp; 3-Step Separation Proof:</strong> For local sections with <span class="math inline">\(|v_1 - v_2| &gt; \theta_{\mathrm{tol}}\)</span>:</p>
+<ol type="1">
+<li>By definition of <span class="math inline">\(\operatorname{Incomp}_{\mathcal{E}}\)</span>, <span class="math inline">\(|v_1 - v_2| &gt; \theta_{\mathrm{tol}} \implies W \Vdash \operatorname{Incomp}_{\mathcal{E}}(A|_{W}, B|_{W})\)</span>, establishing <span class="math inline">\(\operatorname{Ant}_{\mathrm{mer}}\)</span>.</li>
+<li>Because <span class="math inline">\(s_1|_{W} = v_1 \ne v_2 = s_2|_{W}\)</span> on <span class="math inline">\(W = V_1 \times_U V_2\)</span>, <span class="math inline">\(\Def_{\mathcal{U}}(s)_{12} = v_1 - v_2 \ne 0\)</span>, establishing <span class="math inline">\(\operatorname{Ant}_{\mathrm{desc}}\)</span> without collapsing <span class="math inline">\(\mathbf{y}W\)</span> to <span class="math inline">\(\mathbf{0}_{\mathcal{E}}\)</span> (preserving subcanonicity!).</li>
+<li>Under the cross-channel incompatibility axiom <span class="math inline">\(p_{v_1} \wedge p_{v_2} \vdash \bot\)</span>, pulling back both sections forces <span class="math inline">\(W \Vdash p_{v_1} \wedge p_{v_2} \implies W \Vdash \bot\)</span> (<span class="math inline">\(\operatorname{Ant}_{\mathrm{log}}\)</span>).</li>
+</ol>
+<ul>
+<li><strong>Thm 1.24 / 1.30 (<em>Aufhebung</em>):</strong> Sublates <span class="math inline">\((A,B)\)</span> into <span class="math inline">\(C \coloneqq \operatorname{Synthesize}(A,B) \in \Prop_1\)</span>. <span class="math inline">\(\blacksquare\)</span></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="interactive-panel">
+<h4>
+Interactive Continuous t-Norm &amp; Dialectical Aufhebung Simulator
+</h4>
+<p class="widget-context-note">
+<b>Context (§1.6):</b> Select an Archimedean or Gödel <i>t</i>-norm <i>χ</i> and adjust qualifier/predicate saliences against the threshold <i>θ</i><sub>coord</sub>. When evaluative discrepancy |<i>v</i><sub>1</sub> − <i>v</i><sub>2</sub>| exceeds <i>θ</i><sub>tol</sub> = 0.30, click <b>Execute Reflexive Abstraction</b> to sublate the conflict into a higher-order syndrome <i>C</i> ∈ <b>Prop</b><sub>1</sub>.
+</p>
+<div class="slider-row">
+<span><i>t</i>-Norm <i>χ</i>:</span> <select id="tnorm-type" onchange="updateTNorm()" style="background:#1e293b; color:#FFD700; border:1px solid #FFD700; border-radius:4px; padding:3px;"> <option value="product">Product t-Norm: χ(u, v) = u · v</option> <option value="godel">Gödel Minimum: χ(u, v) = min(u, v)</option> <option value="lukasiewicz">Łukasiewicz: χ(u, v) = max(0, u + v - 1)</option> </select>
+</div>
+<div class="slider-row">
+<span style="color:#20B2AA;">Qualifier <i>ζ<sub>r</sub>σ<sub>dr</sub></i>:</span> <input type="range" id="tn-u" min="0" max="1" step="0.02" value="0.82" oninput="updateTNorm()"> <span style="color:#4169E1;">Predicate <i>z<sub>q</sub>σ<sub>fq</sub></i>:</span> <input type="range" id="tn-v" min="0" max="1" step="0.02" value="0.78" oninput="updateTNorm()">
+</div>
+<div class="slider-row">
+<span style="color:#FFD700;">Threshold <i>θ</i><sub>coord</sub>:</span> <input type="range" id="tn-th" min="0.1" max="0.9" step="0.02" value="0.55" oninput="updateTNorm()"> <span style="color:#ff6b81;">Discrepancy |<i>v</i><sub>1</sub>−<i>v</i><sub>2</sub>|:</span> <input type="range" id="tn-disc" min="0.0" max="1.0" step="0.05" value="0.65" oninput="updateTNorm()">
+</div>
+<div style="margin-top:6px; display:flex; gap:10px; justify-content:center;">
+<button class="syn-btn" onclick="triggerAufhebung()">Execute Reflexive Abstraction (Aufhebung → Prop₁)</button>
+</div>
+<div id="tnorm-readout" class="matrix-readout">
+<pre><code>Strength χ(0.82, 0.78) = 0.64 &gt; θ (0.55) [Rule χ-I_S Fires] | |v₁-v₂| = 0.65 &gt; θ_tol ⇒ Ant_mer ∧ Ant_desc Active</code></pre>
+</div>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Act10_Mereology_Aufhebung.mp4" style="max-height:190px;"></video>
+<div class="video-caption">
+Manim Act X (Fig. 1.8): Tripartite Antagonism Hierarchy &amp; Dialectical Sublation (Aufhebung) into Prop₁
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Section 1.6 distinguishes three levels of Antagonismus: Mereological incompatibility, Cech Descent failure, and outright Logical Contradiction, with the full 3-step proof of Theorem 1.23/1.29 shown on the left.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pseudometric-d_p-metropie-flow-triangle-inequality-proof" class="slide level2 smaller scrollable">
+<h2>§1.7: Pseudometric <span class="math inline">\(d_P\)</span>, Metropie Flow &amp; Triangle Inequality Proof</h2>
+<div class="stratum-badge badge-b">
+STRATUM B: LAYER 2 METRIC FRAMES, PROP. 1.26 / 1.32 PROOF &amp; STAGE I RUNNING EXAMPLE
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="thm-box">
+<p><strong>Def. 1.25 / 1.31, Prop. 1.26 / 1.32 &amp; Def. 1.27 / 1.33: <span class="math inline">\(d_P\)</span> &amp; Metropie <span class="math inline">\(g_{\mathrm{met}}\)</span></strong> <span class="math display">\[
+d_P(U, V) \coloneqq \inf_{\alpha, \beta} \max_{F \in \{D,P,C\}} \max\!\big( \|I_{F^U} - \beta_F \alpha_F\|_{\op},\; \|I_{F^V} - \alpha_F \beta_F\|_{\op} \big) \in [0, \infty]
+\]</span> Along smooth cipher paths <span class="math inline">\(\gamma(t) = z(t) \in \mathrm{SO}(n)\)</span>, the <strong>Infinitesimal Metropie Tensor</strong> is: <span class="math display">\[
+g_{\mathrm{met}}(\dot{z}_1, \dot{z}_2) \coloneqq -\frac{1}{2}\operatorname{tr}\!\big((z^{-1}\dot{z}_1)(z^{-1}\dot{z}_2)\big) \ge 0, \quad d_{\mathbf{Ctx}}(U,V) \le \inf_\gamma \int_0^1 \sqrt{g_{\mathrm{met}}(\dot{\gamma},\dot{\gamma})}\,dt
+\]</span></p>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>Proof of Proposition 1.26 / 1.32 (<span class="math inline">\(d_P\)</span> Extended Pseudometric Axioms):</strong></p>
+<ol type="1">
+<li><strong>Non-Negativity &amp; Reflexivity:</strong> <span class="math inline">\(d_P(U,V) \ge 0\)</span>; choosing <span class="math inline">\(\alpha = \beta = \operatorname{id}_U\)</span> gives <span class="math inline">\(d_P(U,U) = 0\)</span>.</li>
+<li><strong>Symmetry:</strong> Interchanging <span class="math inline">\((\alpha, \beta) \leftrightarrow (\beta, \alpha)\)</span> leaves the <span class="math inline">\(\max\)</span> invariant: <span class="math inline">\(d_P(U,V) = d_P(V,U)\)</span>.</li>
+<li><strong>Triangle Inequality (<span class="math inline">\(d_P(U,W) \le d_P(U,V) + d_P(V,W)\)</span>):</strong> Given <span class="math inline">\(\alpha_1 \colon U \rightleftarrows V : \beta_1\)</span> and <span class="math inline">\(\alpha_2 \colon V \rightleftarrows W : \beta_2\)</span>, set <span class="math inline">\(\alpha = \alpha_2 \alpha_1\)</span> and <span class="math inline">\(\beta = \beta_1 \beta_2\)</span>. Since <span class="math inline">\(\|\beta_{1F}\|_{\op} \le 1\)</span> and <span class="math inline">\(\|\alpha_{1F}\|_{\op} \le 1\)</span>, submultiplicativity yields: <span class="math display">\[
+\|I_{F^U} - \beta_{1F}\beta_{2F}\alpha_{2F}\alpha_{1F}\|_{\op} \le \|I_{F^U} - \beta_{1F}\alpha_{1F}\|_{\op} + \|\beta_{1F}(I_{F^V} - \beta_{2F}\alpha_{2F})\alpha_{1F}\|_{\op} \le d_P(U,V) + d_P(V,W)
+\]</span> Taking the infimum over admissible pairs proves the triangle inequality! <span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="interactive-panel">
+<h4>
+Stage I of VI Running Example: Dichromatic Spin-Polarimeter
+</h4>
+<p class="widget-context-note">
+<b>Context (§1.7 Running Example):</b> A spin-½ beam is measured in Horizontal (<i>H</i>) and Vertical (<i>V</i>) channels with carrier <i>P<sup>U</sup> = ℝ<sub>H</sub>³ ⊕ ℝ<sub>V</sub>³ ≅ ℝ⁶</i> and cipher rotation <i>z<sup>U</sup>(θ) ∈ SO(6)</i>. Rotate <i>θ</i> to observe the geodesic Metropie arc length ℓ(<i>γ</i>) and bilinear readout <i>K(d, p) = (d<sub>H</sub>f<sub>H</sub>, d<sub>V</sub>f<sub>V</sub>)</i>.
+</p>
+<div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:10px; align-items:center;">
+<div>
+<div class="slider-row">
+<span style="color:#FFD700;">Cipher <i>θ</i>:</span> <input type="range" id="pol-theta" min="0" max="180" step="1" value="35" oninput="updatePolarimeter()"> <span id="pol-theta-lbl" style="font-family:monospace; width:38px;">35°</span>
+</div>
+<div class="slider-row">
+<span style="color:#20B2AA;"><i>d<sub>H</sub></i>:</span> <input type="range" id="pol-dh" min="0" max="1" step="0.05" value="0.80" oninput="updatePolarimeter()"> <span style="color:#4169E1;"><i>d<sub>V</sub></i>:</span> <input type="range" id="pol-dv" min="0" max="1" step="0.05" value="0.60" oninput="updatePolarimeter()">
+</div>
+</div>
+<div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+<svg id="pol-svg" viewbox="-70 -70 140 140" width="120" height="120"> <circle cx="0" cy="0" r="52" fill="none" stroke="#334155" stroke-dasharray="2,2"></circle> <line x1="-58" y1="0" x2="58" y2="0" stroke="#475569"></line> <line x1="0" y1="-58" x2="0" y2="58" stroke="#475569"></line> <line id="pol-vec" x1="0" y1="0" x2="43" y2="-30" stroke="#FFD700" stroke-width="3"></line> <circle id="pol-tip" cx="43" cy="-30" r="4.5" fill="#20B2AA"></circle> <text x="46" y="12" fill="#82aaff" font-size="9">H</text> <text x="6" y="-46" fill="#5eead4" font-size="9">V</text> </svg>
+</div>
+</div>
+<div id="pol-readout" class="matrix-readout" style="margin-top:6px;">
+<pre><code>z^U(35°) ∈ SO(6) | K(d,p) = (0.66, 0.34) | ‖K‖_∞ = 0.66 ≤ ‖d‖₂‖p‖₂ = 1.00 | Geodesic ℓ(γ) = 1.06 rad</code></pre>
+</div>
+</div>
+<div class="video-container" style="margin-top:8px;">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Act11_Metropie_Polarimeter.mp4" style="max-height:185px;"></video>
+<div class="video-caption">
+Manim Act XI (Figs. 1.10 &amp; 1.11): Operator Discrepancy Pseudometric d_P(U, V) &amp; Fischer–Servi Confluence
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>How far apart are two subjective perspectives? Definition 1.25/1.31 introduces the operator discrepancy pseudometric d_P(U,V), with its full triangle-inequality proof via operator-norm submultiplicativity shown on the left.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="fischerservi-ktb-frame-lawveretierney-proofs" class="slide level2 smaller scrollable">
+<h2>§1.7: Fischer–Servi KTB Frame &amp; Lawvere–Tierney Proofs</h2>
+<div class="stratum-badge badge-b">
+STRATUM B: FISCHER–SERVI FRAME (DEF. 1.28 / 1.34) &amp; LAWVERE–TIERNEY PROOFS (THMS. 1.29–1.30)
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="thm-box">
+<p><strong>Def. 1.28 / 1.34: Restricted Fischer–Servi-Compatible KTB Frame <span class="math inline">\(\mathfrak{F}_{\mathrm{cand}}\)</span></strong> A tuple <span class="math inline">\(\mathfrak{F}_{\mathrm{cand}} = (W, \preceq, R_{\Box_S}, \{R_{\pi_F}\}, \nu)\)</span> where <span class="math inline">\(W = \operatorname{Obj}(\Ctx) \times \mathbb{N}_0\)</span>:</p>
+<ol type="1">
+<li><strong>Intuitionistic Partial Order (<span class="math inline">\(\preceq\)</span>):</strong> <span class="math inline">\((U_1, k_1) \preceq (U_2, k_2) \iff k_1 = k_2\)</span> and <span class="math inline">\(\exists \iota \colon U_1 \hookrightarrow U_2\)</span> in <span class="math inline">\(\Ctx\)</span> with <span class="math inline">\(\iota_P(\mathcal{S}_P^{U_1}) \subseteq \mathcal{S}_P^{U_2}\)</span>.</li>
+<li><strong>Symmetric Aspect Accessibility (<span class="math inline">\(R_{\Box_S}\)</span>):</strong> <span class="math inline">\((U_1, k_1)\,R_{\Box_S}\,(U_2, k_2) \iff k_1 = k_2\)</span> and <span class="math inline">\(d_P(U_1, U_2) &lt; \epsilon_A\)</span> (reflexive and symmetric, supporting <strong>KTB / Brouwerian</strong> axioms).</li>
+<li><strong>Metric Confluence (<span class="math inline">\(A_{\mathrm{conf}}\)</span> — FS1 &amp; FS2):</strong>
+<ul>
+<li><strong>FS1 (Forwards):</strong> If <span class="math inline">\(w \preceq v\)</span> and <span class="math inline">\(w\,R_{\Box_S}\,u\)</span>, <span class="math inline">\(\exists u' \in W\)</span> with <span class="math inline">\(u \preceq u'\)</span> and <span class="math inline">\(v\,R_{\Box_S}\,u'\)</span>.</li>
+<li><strong>FS2 (Backwards):</strong> If <span class="math inline">\(u\,R_{\Box_S}\,v \preceq v'\)</span>, <span class="math inline">\(\exists u' \in W\)</span> with <span class="math inline">\(u \preceq u'\)</span> and <span class="math inline">\(u'\,R_{\Box_S}\,v'\)</span>.</li>
+</ul></li>
+<li><strong>Deterministic Step (<span class="math inline">\(R_{\pi_F}\)</span>):</strong> <span class="math inline">\((U, k)\,R_{\pi_F}\,(U', k') \iff k' = k+1\)</span> and <span class="math inline">\(U' = F(U)\)</span>.</li>
+</ol>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>Prop. 1.28 / 1.36 (Valuation Persistence) &amp; Proof:</strong> For <span class="math inline">\(p \in \AP_S\)</span>, <span class="math inline">\((U_1, k) \preceq (U_2, k)\)</span> and <span class="math inline">\((U_1, k) \in \nu(p) \implies (U_2, k) \in \nu(p)\)</span>. <em>Proof:</em> By definition of <span class="math inline">\(\preceq\)</span>, <span class="math inline">\(\iota_P(\mathcal{S}_P^{U_1}) \subseteq \mathcal{S}_P^{U_2}\)</span>, so <span class="math inline">\(\mathcal{S}_P^{U_1} \subseteq \llbracket p \rrbracket_{U_1} = \iota_P^{-1}(\llbracket p \rrbracket_{U_2}) \implies (U_2, k) \in \nu(p)\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="proof-box fragment fade-up">
+<p><strong>Theorem 1.29 / 1.37 (Lawvere–Tierney Modal Bridge) &amp; Proof:</strong> On any Fischer–Servi frame satisfying <span class="math inline">\(A_{\mathrm{conf}}\)</span>, <span class="math inline">\(\Diamond_S \dashv \Box_S\)</span> is an internal Galois adjunction on <span class="math inline">\(\Omega\)</span>, and <span class="math inline">\(j_S \coloneqq \neg_J \Box_S \neg_J \colon \Omega \to \Omega\)</span> is a <strong>Lawvere–Tierney topology</strong>:</p>
+<ol type="1">
+<li><span class="math inline">\(j_S(\top) = \neg_J \Box_S(\bot) = \top\)</span> (by reflexivity of <span class="math inline">\(R_{\Box_S}\)</span>).</li>
+<li><span class="math inline">\(j_S(j_S(\phi)) = j_S(\phi)\)</span> (by <span class="math inline">\(\neg_J\neg_J\neg_J = \neg_J\)</span> and <span class="math inline">\(B\)</span>-symmetry <span class="math inline">\(\Diamond_S \Box_S \phi \to \phi\)</span>).</li>
+<li><span class="math inline">\(j_S(\phi \wedge \psi) = j_S(\phi) \wedge j_S(\psi)\)</span> (since <span class="math inline">\(\Box_S\)</span> commutes with <span class="math inline">\(\wedge\)</span> and <span class="math inline">\(\neg_J(\alpha \vee \beta) = \neg_J\alpha \wedge \neg_J\beta\)</span>). <span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+</div>
+<div class="proof-box fragment fade-up">
+<p><strong>Theorem 1.30 / 1.38 (<span class="math inline">\(j_S\)</span>-Sheafification Plus-Construction) &amp; Proof:</strong> For any presheaf <span class="math inline">\(P \in \widehat{\Ctx}\)</span>, define Grothendieck’s plus-functor: <span class="math display">\[
+(L_{j_S} P)(U) \;\coloneqq\; \operatorname*{colim}_{S \in J_{j_S}(U)} \operatorname{Nat}(S, P), \qquad \mathbf{a}_{j_S} P \;\coloneqq\; L_{j_S}(L_{j_S} P)
+\]</span> <em>Proof:</em> Because filtered colimits of <span class="math inline">\(j_S\)</span>-dense sieves commute with finite limits in <span class="math inline">\(\widehat{\Ctx}\)</span>, one application of <span class="math inline">\(L_{j_S}\)</span> turns any presheaf into a <span class="math inline">\(j_S\)</span>-separated presheaf, and the second application <span class="math inline">\(L_{j_S}(L_{j_S} P)\)</span> forces unique amalgamation of matching families, yielding the exact left-exact left adjoint <span class="math inline">\(\mathbf{a}_{j_S} \dashv \mathbf{i}_{j_S} \colon \mathbf{Sh}_{j_S}(\Esyn) \hookrightarrow \Esyn\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</div></div>
+<aside class="notes">
+<p>This slide presents the complete definition of the Restricted Fischer-Servi KTB frame (including FS1 and FS2 confluence diagrams) alongside the proofs of Valuation Persistence, the Lawvere-Tierney Modal Bridge, and the two-step Plus-Construction sheafification functor.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="stratified-syntax-13-forcing-clauses-sequent-calculus-mathcall_mathrmimsl" class="slide level2 smaller scrollable">
+<h2>§1.8: Stratified Syntax, 13 Forcing Clauses &amp; Sequent Calculus <span class="math inline">\(\mathcal{L}_{\mathrm{iMSL}}\)</span></h2>
+<div class="stratum-badge badge-b">
+STRATUM B: LAYER 3 PROOF THEORY, DEF. 1.32 / 1.40 (13 CLAUSES) &amp; COMPLETE SEQUENT RULES
+</div>
+<div class="columns">
+<div class="column" style="width:42%;">
+<div class="interactive-panel">
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">
+Stratified Syntax &amp; All 13 Intuitionistic Truth Clauses (Def. 1.32 / 1.40)
+</h4>
+<div class="syn-tabs">
+<p><button class="syn-tab-btn active" onclick="showGenericTab('sem', 1, 3, this)">1. Stratified WFF</button> <button class="syn-tab-btn" onclick="showGenericTab('sem', 2, 3, this)">2. Clauses 1–7 (Prop/Modal)</button> <button class="syn-tab-btn" onclick="showGenericTab('sem', 3, 3, this)">3. Clauses 8–13 (Stab/Dyn)</button></p>
+</div>
+<div id="sem-pane-1" class="syn-tab-pane active">
+<ul>
+<li><strong>Base (<span class="math inline">\(\Gen_0\)</span>):</strong> <span class="math inline">\(\AP_S \sqcup \AP_0\)</span>, where <span class="math inline">\(\AP_0 = \{a_0, \dots, a_N\}\)</span> is the invariant <strong>Metrophor</strong> (<span class="math inline">\(\mathfrak{M}\)</span>).</li>
+<li><strong>Inductive (<span class="math inline">\(\Gen_{j+1}\)</span>):</strong> <span class="math inline">\(\operatorname{Conj}(\phi,\psi), \operatorname{Lift}_{\Box_{\mathrm{Syn}}}(\phi), \operatorname{ParaConj}(\phi)\)</span> with <span class="math inline">\(\Prop_k = \bigcup_{j=0}^k \Gen_j\)</span>.</li>
+<li><strong>Assertion Level <span class="math inline">\(\mathcal{L}_k\)</span>:</strong> <span class="math display">\[
+\phi, \psi \Coloneqq P \mid \bot \mid \phi \wedge \psi \mid \phi \vee \psi \mid \phi \to \psi \mid \Stable_k(P) \mid \Box_{\mathrm{Syn}} P \mid \Box_S \phi \mid \Diamond_S \phi \mid [\pi_F]\phi \mid \langle\pi_F\rangle\phi
+\]</span></li>
+</ul>
+</div>
+<div id="sem-pane-2" class="syn-tab-pane">
+<ol type="1">
+<li><span class="math inline">\((U,k) \models p \iff (U,k) \in \nu(p)\)</span> (<span class="math inline">\(p \in \AP_S\)</span>).</li>
+<li><span class="math inline">\((U,k) \models a_i \iff a_i \in \AP_0\)</span> (apodictic truth).</li>
+<li><span class="math inline">\((U,k) \not\models \bot\)</span>.</li>
+<li><span class="math inline">\((U,k) \models \phi \wedge \psi \iff (U,k) \models \phi\)</span> and <span class="math inline">\((U,k) \models \psi\)</span>.</li>
+<li><span class="math inline">\((U,k) \models \phi \vee \psi \iff (U,k) \models \phi\)</span> or <span class="math inline">\((U,k) \models \psi\)</span>.</li>
+<li><span class="math inline">\((U,k) \models \phi \to \psi \iff \forall (U',k) \succeq (U,k),\; (U',k) \models \phi \implies (U',k) \models \psi\)</span>.</li>
+<li><strong>Bi-Relational <span class="math inline">\(\Box_S, \Diamond_S\)</span>:</strong>
+<ul>
+<li><span class="math inline">\((U,k) \models \Box_S\phi \iff \forall U' \succeq U,\; \forall V\,(U' R_{\Box_S} V \implies (V,k) \models \phi)\)</span>.</li>
+<li><span class="math inline">\((U,k) \models \Diamond_S\phi \iff \exists V\,(U R_{\Box_S} V \wedge (V,k) \models \phi)\)</span>.</li>
+</ul></li>
+</ol>
+</div>
+<div id="sem-pane-3" class="syn-tab-pane">
+<ol start="8" type="1">
+<li><span class="math inline">\((U,k) \models \operatorname{Coord}((d_r,v_{dr}),(f_q,v_{fq})) \iff \operatorname{Strength} &gt; \theta_{\mathrm{coord}}(U)\)</span>.</li>
+<li><span class="math inline">\((U,k) \models \Stable_0(a_i) \iff a_i \in \AP_0\)</span> and <span class="math inline">\((U,k) \models a_i\)</span>.</li>
+<li><span class="math inline">\((U,k) \models \Stable_{j+1}(P') \iff (U,k) \models P' \wedge \forall X\,(\IGP_{j+1}(X,P') \Rightarrow (U,k) \models \Stable_j(X))\)</span>.</li>
+<li><span class="math inline">\((U,k) \models \Box_{\mathrm{Syn}} P \iff (U,k) \models \Stable_j(P)\)</span> (<span class="math inline">\(P \in \Gen_j\)</span>).</li>
+<li><span class="math inline">\((U,k) \models [\pi_F]\theta \iff \forall (U',k') \succeq (U,k),\; \forall W\,((U',k')R_{\pi_F}W \Rightarrow W \models \theta)\)</span>.</li>
+<li><span class="math inline">\((U,k) \models \langle\pi_F\rangle\theta \iff (F(U), k+1) \models \theta\)</span> (deterministic collapse <span class="math inline">\([\pi_F]\theta \leftrightarrow \langle\pi_F\rangle\theta\)</span>).</li>
+</ol>
+</div>
+</div>
+</div><div class="column" style="width:58%;">
+<div class="interactive-panel">
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">
+Interactive Ledger: Complete Sequent Calculus <span class="math inline">\(\mathcal{L}_{\mathrm{iMSL}}\)</span> (<span class="math inline">\(S(x); \Gamma \vdash^k \phi\)</span>)
+</h4>
+<p class="widget-context-note">
+<b>Context (§1.8.2 &amp; App. A):</b> Click any of the 6 rule tabs below to inspect all 25 single-succedent constructive inference rules from <code></code> in <code>Topos.tex</code>.
+</p>
+<div class="syn-tabs">
+<p><button class="syn-tab-btn active" onclick="showRuleTab(1, this)">1. Structural</button> <button class="syn-tab-btn" onclick="showRuleTab(2, this)">2. Intuitionistic</button> <button class="syn-tab-btn" onclick="showRuleTab(3, this)">3. Aspectual</button> <button class="syn-tab-btn" onclick="showRuleTab(4, this)">4. Fischer–Servi Modal</button> <button class="syn-tab-btn" onclick="showRuleTab(5, this)">5. Hereditary Stability</button> <button class="syn-tab-btn" onclick="showRuleTab(6, this)">6. Dynamic [π_F]</button></p>
+</div>
+<div id="rule-pane-1" class="syn-tab-pane active">
+<p><strong>1. Structural Rules (<span class="math inline">\(\text{Ax}, \text{W}, \text{C}, \text{Cut}\)</span>)</strong> <span class="math display">\[
+\frac{}{S(x);\Gamma,\phi\vdash^k\phi}\,(\text{Ax})\qquad
+\frac{S(x);\Gamma\vdash^k\phi}{S(x);\Gamma,\psi\vdash^k\phi}\,(\text{W})\qquad
+\frac{S(x);\Gamma,\psi,\psi\vdash^k\phi}{S(x);\Gamma,\psi\vdash^k\phi}\,(\text{C})
+\]</span> <span class="math display">\[
+\frac{S(x);\Gamma\vdash^k\psi\qquad S(x);\Delta,\psi\vdash^k\phi}{S(x);\Gamma,\Delta\vdash^k\phi}\,(\text{Cut — Admissible via Hauptsatz, Thm A.5})
+\]</span></p>
+</div>
+<div id="rule-pane-2" class="syn-tab-pane">
+<p><strong>2. Intuitionistic Single-Succedent Propositional Rules (incl.&nbsp;<span class="math inline">\(\bot L\)</span>)</strong> <span class="math display">\[
+\frac{}{S(x);\Gamma,\bot\vdash^k\phi}\,(\bot L)\qquad
+\frac{S(x);\Gamma\vdash^k\phi\quad S(x);\Gamma\vdash^k\psi}{S(x);\Gamma\vdash^k\phi\wedge\psi}\,(\wedge R)\qquad
+\frac{S(x);\Gamma,\phi,\psi\vdash^k\chi}{S(x);\Gamma,\phi\wedge\psi\vdash^k\chi}\,(\wedge L)
+\]</span> <span class="math display">\[
+\frac{S(x);\Gamma\vdash^k\phi_i}{S(x);\Gamma\vdash^k\phi_1\vee\phi_2}\,(\vee R_i)\quad
+\frac{S(x);\Gamma,\phi\vdash^k\chi\quad S(x);\Gamma,\psi\vdash^k\chi}{S(x);\Gamma,\phi\vee\psi\vdash^k\chi}\,(\vee L)\quad
+\frac{S(x);\Gamma,\phi\vdash^k\psi}{S(x);\Gamma\vdash^k\phi\to\psi}\,(\to R)\quad
+\frac{S(x);\Gamma\vdash^k\phi\quad S(x);\Delta,\psi\vdash^k\chi}{S(x);\Gamma,\Delta,\phi\to\psi\vdash^k\chi}\,(\to L)
+\]</span></p>
+</div>
+<div id="rule-pane-3" class="syn-tab-pane">
+<p><strong>3. Aspectual Interface with <span class="math inline">\(S_{\mathrm{mod}}(x)\)</span></strong> <span class="math display">\[
+\frac{(S_{\mathrm{mod}}(x),k)\models p\quad(p\in\AP_S)}{S(x);\Gamma\vdash^k p}\,(\text{Fact-S}_A)
+\]</span> <span class="math display">\[
+\frac{S(x);\Gamma\vdash^k(d_r,v_{dr})\quad S(x);\Delta\vdash^k(f_q,v_{fq})\quad [\operatorname{Strength}&gt;\theta_{\mathrm{coord}}(x)]}{S(x);\Gamma,\Delta\vdash^k\operatorname{Coord}((d_r,v_{dr}),(f_q,v_{fq}))}\,(\chi\text{-I}_S)
+\]</span></p>
+</div>
+<div id="rule-pane-4" class="syn-tab-pane">
+<p><strong>4. Fischer–Servi Bi-Relational Modal Rules (<span class="math inline">\(\Box_S, \Diamond_S\)</span>)</strong> <span class="math display">\[
+\frac{S(x);\Gamma\vdash^k\phi}{S(x);\Box_S\Gamma\vdash^k\Box_S\phi}\,(\Box_S K)\qquad
+\frac{S(x);\Box_S\Gamma,\phi\vdash^k\Diamond_S\psi}{S(x);\Box_S\Gamma,\Diamond_S\phi\vdash^k\Diamond_S\psi}\,(\Diamond_S K)\qquad
+\frac{S(x);\Box_S\Gamma\vdash^k\phi\to\psi}{S(x);\Diamond_S\Gamma\vdash^k\Diamond_S\phi\to\Diamond_S\psi}\,(\text{FS-Int})
+\]</span> <span class="math display">\[
+\frac{S(x);\Gamma,\phi\vdash^k\chi}{S(x);\Gamma,\Box_S\phi\vdash^k\chi}\,(\Box_S\text{-Ref})\qquad
+\frac{S(x);\Gamma\vdash^k\phi}{S(x);\Gamma\vdash^k\Diamond_S\phi}\,(\Diamond_S\text{-Ref})\qquad
+\frac{S(x);\Gamma\vdash^k\Box_S\psi}{S(x);\Diamond_S(\bigwedge\Gamma)\vdash^k\psi}\,(B_{\Diamond\text{-Adj}})
+\]</span></p>
+</div>
+<div id="rule-pane-5" class="syn-tab-pane">
+<p><strong>5. Hereditary Stability Rules (<span class="math inline">\(\Stable_k\)</span>)</strong> <span class="math display">\[
+\frac{a_i\in\AP_0\quad S(x);\Gamma\vdash^0 a_i}{S(x);\Gamma\vdash^0\Stable_0(a_i)}\,(\operatorname{Stab}_0R)\qquad
+\frac{P'\in\Gen_{j+1}\quad S(x);\Gamma\vdash^{j+1}P'\quad (S(x);\Gamma|_{\le j}\vdash^j\Stable_j(X))_{\IGP_{j+1}(X,P')}}{S(x);\Gamma\vdash^{j+1}\Stable_{j+1}(P')}\,(\operatorname{Stab}_{j+1}R)
+\]</span> <span class="math display">\[
+\frac{S(x);\Gamma,P'\vdash^{j+1}\chi}{S(x);\Gamma,\Stable_{j+1}(P')\vdash^{j+1}\chi}\,(\operatorname{Stab}L_1)\qquad
+\frac{S(x);\Gamma|_{\le j},\Stable_j(X)\vdash^j\chi\quad (\IGP_{j+1}(X,P'))}{S(x);\Gamma,\Stable_{j+1}(P')\vdash^{j+1}\iota_{j,j+1}(\chi)}\,(\operatorname{Stab}L_2)
+\]</span></p>
+</div>
+<div id="rule-pane-6" class="syn-tab-pane">
+<p><strong>6. Deterministic Dynamic Modality Rules (<span class="math inline">\([\pi_F], \langle\pi_F\rangle, K_{\pi_F}, \text{MP}_{\pi_F}, \Box_{\mathrm{Syn}}\)</span> Lift)</strong> <span class="math display">\[
+\frac{S(x);\Gamma\vdash^k\bigwedge_{i=1}^m\phi_i\quad (\psi=F_{\mathrm{ops}}(\vec\phi)\in\Prop_{k+1})}{S(x);\Gamma\vdash^k\langle\pi_F\rangle\psi}\,(\langle\pi_F\rangle FI)\qquad
+\frac{S(x);\Gamma\vdash^k[\pi_F]\phi}{S(x);\Gamma\vdash^k\langle\pi_F\rangle\phi}\,([\pi_F]\leftrightarrow\langle\pi_F\rangle)\qquad
+\frac{S(x);\Gamma\vdash^k[\pi_F](\phi\to\psi)}{S(x);\Gamma\vdash^k[\pi_F]\phi\to[\pi_F]\psi}\,(K_{\pi_F})
+\]</span> <span class="math display">\[
+\frac{S(x);\Gamma\vdash^k[\pi_F](\phi\to\psi)\quad S(x);\Delta\vdash^k[\pi_F]\phi}{S(x);\Gamma,\Delta\vdash^k[\pi_F]\psi}\,(\text{MP}_{\pi_F})\qquad
+\frac{S(x);\Gamma\vdash^k\Box_{\mathrm{Syn}}P}{S(x);\Gamma\vdash^k[\pi_F]\Box_{\mathrm{Syn}}P}\,([\pi_F]\Box_{\mathrm{Syn}})\qquad
+\frac{S(x);[\pi_F]\Gamma\vdash^k[\pi_F]\theta}{k+1;\Gamma\vdash\theta}\,([\pi_F]\text{-Step/Unstep})
+\]</span></p>
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Layer 3 provides the syntactic proof engine: the intuitionistic Leveled Modal Syndromatic Logic L_iMSL. Both the 13 exact truth conditions and all 25 inference rules (including bot-L, K_{pi_F}, MP_{pi_F}, and [pi_F]Box_Syn) are now accessible via interactive tabs.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="soundness-henkin-completeness-proofs-lean-4" class="slide level2 smaller scrollable">
+<h2>§1.9: Soundness, Henkin Completeness Proofs &amp; Lean 4</h2>
+<div class="stratum-badge badge-b">
+STRATUM B: PROOFS OF THMS. 1.34–1.38 / 1.42–1.46, HAUPTSATZ &amp; LEAN 4 BLUEPRINT
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="interactive-panel">
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">
+Interactive Metatheory Proofs: Soundness, Prime Extension &amp; 5-Step Truth Lemma
+</h4>
+<div class="syn-tabs">
+<p><button class="syn-tab-btn active" onclick="showGenericTab('meta', 1, 4, this)">1. Soundness (Thm 1.34)</button> <button class="syn-tab-btn" onclick="showGenericTab('meta', 2, 4, this)">2. Prime Ext. (Lem 1.36)</button> <button class="syn-tab-btn" onclick="showGenericTab('meta', 3, 4, this)">3. Canonical Frame (Thm 1.38)</button> <button class="syn-tab-btn" onclick="showGenericTab('meta', 4, 4, this)">4. Truth Lemma &amp; Hauptsatz</button></p>
+</div>
+<div id="meta-pane-1" class="syn-tab-pane active">
+<p><strong>Theorem 1.34 / 1.42 (Soundness of <span class="math inline">\(\mathcal{L}_{\mathrm{iMSL}}\)</span>) &amp; 4-Step Inductive Proof:</strong> If <span class="math inline">\(S(x); \Gamma_G \vdash^k \phi\)</span>, then <span class="math inline">\(S(x); \Gamma_G \models^k \phi\)</span> in every admissible candidate model <span class="math inline">\(\mathcal{M}_{\mathrm{cand}}\)</span>.</p>
+<p><em>Proof by induction on derivation height <span class="math inline">\(h(\mathcal{D})\)</span>:</em></p>
+<ol type="1">
+<li><strong>Propositional &amp; Structural Rules:</strong> Validated by intuitionistic persistence of <span class="math inline">\(\preceq\)</span> (Prop. 1.28) and the Heyting algebra structure of upsets in <span class="math inline">\((W_k, \preceq)\)</span>.</li>
+<li><strong>Fischer–Servi Modal Rules (<span class="math inline">\(\Box_S K, \Diamond_S K, \text{FS-Int}, B_{\Diamond\text{-Adj}}\)</span>):</strong> Validated by the bi-relational confluence diagrams <strong>FS1</strong> and <strong>FS2</strong> (<span class="math inline">\(A_{\mathrm{conf}}\)</span>) and symmetry of <span class="math inline">\(R_{\Box_S}\)</span> (<span class="math inline">\(d_P(U,V) = d_P(V,U)\)</span>).</li>
+<li><strong>Hereditary Stability Rules (<span class="math inline">\(\operatorname{Stab}_0R, \operatorname{Stab}_{j+1}R, \operatorname{Stab}L_{1,2}\)</span>):</strong> Validated by inductive grounding on <span class="math inline">\(\AP_0\)</span> and the downward <span class="math inline">\(\IGP_{j+1}\)</span> recursion of Clause 10.</li>
+<li><strong>Dynamic Step Rules (<span class="math inline">\([\pi_F]\text{-Step/Unstep}, K_{\pi_F}\)</span>):</strong> Validated by the functional determinism of <span class="math inline">\(R_{\pi_F}\)</span> (<span class="math inline">\(U' = F(U)\)</span>). <span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+</div>
+<div id="meta-pane-2" class="syn-tab-pane">
+<p><strong>Def. 1.35, Lemma 1.36 (Prime Extension) &amp; Thm. 1.37 (Simultaneous Saturation):</strong> A level-<span class="math inline">\(k\)</span> theory <span class="math inline">\(\Delta_k \subset \mathcal{L}_k\)</span> is <strong>prime</strong> if it is deductively closed (<span class="math inline">\(\Delta_k \vdash^k \psi \implies \psi \in \Delta_k\)</span>), consistent (<span class="math inline">\(\bot \notin \Delta_k\)</span>), and satisfies the disjunction property (<span class="math inline">\(\phi_1 \vee \phi_2 \in \Delta_k \implies \phi_1 \in \Delta_k \text{ or } \phi_2 \in \Delta_k\)</span>).</p>
+<p><em>Proof of Lemma 1.36 &amp; Thm. 1.37:</em> If <span class="math inline">\(\Gamma \nvdash^k \chi\)</span>, enumerate <span class="math inline">\(\mathcal{L}_k = \{\psi_0, \psi_1, \dots\}\)</span>, set <span class="math inline">\(\Delta^{(0)} = \Gamma\)</span>, and define: <span class="math display">\[
+\Delta^{(n+1)} \;\coloneqq\; \begin{cases} \Delta^{(n)} \cup \{\psi_n\} &amp; \text{if } \Delta^{(n)} \cup \{\psi_n\} \nvdash^k \chi \\ \Delta^{(n)} &amp; \text{otherwise} \end{cases}
+\]</span> If <span class="math inline">\(\phi_1 \vee \phi_2 \in \Delta_k = \bigcup_n \Delta^{(n)}\)</span> but <span class="math inline">\(\phi_1, \phi_2 \notin \Delta_k\)</span>, then <span class="math inline">\(\Delta_k, \phi_1 \vdash^k \chi\)</span> and <span class="math inline">\(\Delta_k, \phi_2 \vdash^k \chi\)</span>, so <span class="math inline">\((\vee L)\)</span> yields <span class="math inline">\(\Delta_k \vdash^k \chi\)</span>, a contradiction! Applying the unstepping map <span class="math inline">\(\pi_F^{-1}(\Delta_{k+1}) = \{\theta \mid [\pi_F]\theta \in \Delta_k\}\)</span> simultaneously saturates the entire sequence <span class="math inline">\(\mathbf{\Delta} = \langle \Delta_k \rangle_{k \in \mathbb{N}_0}\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+<div id="meta-pane-3" class="syn-tab-pane">
+<p><strong>Theorem 1.38 / 1.46 (Strong Canonical Completeness): Canonical Frame Construction</strong> Define the <strong>Canonical Model</strong> <span class="math inline">\(\mathcal{M}^c = (W^c, \preceq^c, R_{\Box_S}^c, \{R_{\pi_F}^c\}, \nu^c)\)</span> by:</p>
+<ul>
+<li><strong>Worlds <span class="math inline">\(W^c\)</span>:</strong> Pairs <span class="math inline">\(w^c = (\Delta_k, k)\)</span> where <span class="math inline">\(\Delta_k \subset \mathcal{L}_k\)</span> is a prime <span class="math inline">\(\mathcal{L}_{\mathrm{iMSL}}\)</span>-saturated theory.</li>
+<li><strong>Intuitionistic Order <span class="math inline">\(\preceq^c\)</span>:</strong> <span class="math inline">\((\Delta_k, k) \preceq^c (\Delta'_k, k) \iff \Delta_k \subseteq \Delta'_k\)</span>.</li>
+<li><strong>Modal Relation <span class="math inline">\(R_{\Box_S}^c\)</span>:</strong> <span class="math inline">\((\Delta_k, k)\,R_{\Box_S}^c\,(\Theta_k, k) \iff \Box_S^{-1}(\Delta_k) \subseteq \Theta_k \;\wedge\; \Theta_k \subseteq \Diamond_S^{-1}(\Delta_k)\)</span> (which satisfies FS1 &amp; FS2 by rule <span class="math inline">\(\text{FS-Int}\)</span> and symmetry by <span class="math inline">\(B_{\Diamond\text{-Adj}}\)</span>!).</li>
+<li><strong>Dynamic Step <span class="math inline">\(R_{\pi_F}^c\)</span>:</strong> <span class="math inline">\((\Delta_k, k)\,R_{\pi_F}^c\,(\Delta_{k+1}, k+1) \iff \forall \theta \in \mathcal{L}_{k+1},\; ([\pi_F]\theta \in \Delta_k \iff \theta \in \Delta_{k+1})\)</span>.</li>
+</ul>
+</div>
+<div id="meta-pane-4" class="syn-tab-pane">
+<p><strong>Inductive Truth Lemma (<span class="math inline">\((\Delta_k, k) \models^c \psi \iff \psi \in \Delta_k\)</span>) &amp; Gentzen’s <em>Hauptsatz</em>:</strong></p>
+<ul>
+<li><strong>Implication (<span class="math inline">\(\phi_1 \to \phi_2 \notin \Delta_k\)</span>):</strong> By <span class="math inline">\((\to R)\)</span>, <span class="math inline">\(\Delta_k \cup \{\phi_1\} \nvdash^k \phi_2\)</span>; Prime Extension (Lem 1.36) yields <span class="math inline">\(\Delta'_k \supseteq \Delta_k \cup \{\phi_1\}\)</span> with <span class="math inline">\(\phi_2 \notin \Delta'_k\)</span>.</li>
+<li><strong>Modal (<span class="math inline">\(\Box_S\psi \notin \Delta_k\)</span> / <span class="math inline">\(\Diamond_S\psi \in \Delta_k\)</span>):</strong> By <span class="math inline">\((\Box_S K)\)</span> and <span class="math inline">\((\Diamond_S K)\)</span>, <span class="math inline">\(\Box_S^{-1}(\Delta_k) \cup \{\psi\}\)</span> is consistent with <span class="math inline">\(\chi = \bigvee\{\alpha \mid \Diamond_S\alpha \notin \Delta_k\}\)</span> (Simpson’s Constructive Dual Extension), producing a prime <span class="math inline">\(R_{\Box_S}^c\)</span>-successor <span class="math inline">\(\Theta_k\)</span>.</li>
+<li><strong>Stability &amp; <span class="math inline">\([\pi_F]\)</span>:</strong> Follow by <span class="math inline">\((\operatorname{Stab}_{j+1}R/\operatorname{Stab}L_{1,2})\)</span> and <span class="math inline">\(([\pi_F]\text{-Step/Unstep})\)</span>. Thus <span class="math inline">\(S(x);\Gamma_G \vdash^k \phi \iff S(x);\Gamma_G \models^k \phi\)</span>! <span class="math inline">\(\blacksquare\)</span></li>
+<li><strong>Appendix A <em>Hauptsatz</em>:</strong> Cut Elimination (Thm A.5), Subformula Property (Thm A.6), Absolute Syntactic Consistency <span class="math inline">\(S(x);\emptyset \nvdash^k \bot\)</span> (Cor A.7), and Disjunction Property (Thm A.8).</li>
+</ul>
+</div>
+</div>
+</div><div class="column" style="width:48%;">
+<h3 id="compile-ready-lean-4-blueprint-stratuma.topos-app.-c">Compile-Ready Lean 4 Blueprint (<code>StratumA.Topos</code>, App. C)</h3>
+<div class="lean-code-card">
+<pre style="margin:0;"><code>import Mathlib
+open CategoryTheory
+namespace Syntrometrie.StratumA.Topos
+
+structure StructuredContext where
+  D : Type
+  P : Type
+  C : Type
+  [instD : NormedAddCommGroup D] [instDSpace : NormedSpace ℝ D] [instDFin : FiniteDimensional ℝ D]
+  [instP : NormedAddCommGroup P] [instPSpace : NormedSpace ℝ P] [instPFin : FiniteDimensional ℝ P]
+  [instC : NormedAddCommGroup C] [instCSpace : NormedSpace ℝ C] [instCFin : FiniteDimensional ℝ C]
+  K : D →L[ℝ] (P →L[ℝ] C)
+  K_contractive : ‖K‖ ≤ 1
+  z : P ≃ₗᵢ[ℝ] P
+  zeta : D ≃ₗᵢ[ℝ] D
+
+lemma opNorm_comp_le_one {E F G : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℝ E] [NormedAddCommGroup F] [NormedSpace ℝ F]
+    [NormedAddCommGroup G] [NormedSpace ℝ G]
+    (f : E →L[ℝ] F) (g : F →L[ℝ] G) (hf : ‖f‖ ≤ 1) (hg : ‖g‖ ≤ 1) :
+    ‖g.comp f‖ ≤ 1 := by
+  calc ‖g.comp f‖ ≤ ‖g‖ * ‖f‖ := ContinuousLinearMap.opNorm_comp_le g f
+    _ ≤ 1 * 1 := mul_le_mul hg hf (norm_nonneg f) zero_le_one
+    _ = 1 := mul_one 1</code></pre>
+</div>
+</div></div>
+<aside class="notes">
+<p>Section 1.9 and Appendix A establish the crown jewels of our proof theory: Soundness, Prime Extension, Simultaneous Saturation, and the full 5-step Henkin Canonical Completeness and Truth Lemma proof (including Simpson’s Constructive Dual Extension for Diamond_S).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="complete-15-row-reconstruction-map-mathcalr-sanity-checks" class="slide level2 smaller scrollable">
+<h2>§1.10: Complete 15-Row Reconstruction Map <span class="math inline">\(\mathcal{R}\)</span> &amp; Sanity Checks</h2>
+<div class="stratum-badge badge-c">
+STRATUM C: COMPLETE RECONSTRUCTION MAP (15 ROWS), CARNAP 1.3 &amp; SANITY CHECKS
+</div>
+<div class="columns">
+<div class="column" style="width:58%;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Heimian Concept (<span class="math inline">\(\mathbf{D}\)</span>)</th>
+<th style="text-align: left;">Mathematical Explicatum (<span class="math inline">\(\mathcal{R}\)</span> in <span class="math inline">\(\mathbf{A}/\mathbf{B}\)</span>)</th>
+<th style="text-align: left;">Epistemic Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Subjektiver Aspekt (<span class="math inline">\(S\)</span>, Eq. 1)</strong></td>
+<td style="text-align: left;">Context tuple <span class="math inline">\(U = (D^U, P^U, C^U, K^U, z^U, \zeta^U) \in \Ctx\)</span></td>
+<td style="text-align: left;"><strong>Stratum C: Model</strong> (Def. 1.7)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Prädikatband <span class="math inline">\([a_q, f_q, b_q]\)</span></strong></td>
+<td style="text-align: left;">Closed convex interval cylinder <span class="math inline">\(\mathcal{S}_P^U \subset \operatorname{Ball}(P^U)\)</span></td>
+<td style="text-align: left;"><strong>Stratum C: Model</strong> (§1.2.2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Diatropenband <span class="math inline">\([\alpha_q, d_q, \beta_q]\)</span></strong></td>
+<td style="text-align: left;">Closed convex dialectical cylinder <span class="math inline">\(\mathcal{S}_D^U \subset \operatorname{Ball}(D^U)\)</span></td>
+<td style="text-align: left;"><strong>Stratum C: Model</strong> (§1.2.2)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Basischiffren (<span class="math inline">\(z_n, \zeta_n\)</span>)</strong></td>
+<td style="text-align: left;">Linear isometries <span class="math inline">\(z^U \in \Isom(P^U), \zeta^U \in \Isom(D^U)\)</span></td>
+<td style="text-align: left;"><strong>Stratum A: Def.</strong> (§1.2.2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Koordination (<span class="math inline">\(K_n\)</span>, Eq. SM-3)</strong></td>
+<td style="text-align: left;">Projective tensor contraction <span class="math inline">\(K^U \colon D^U \otpi P^U \to C^U\)</span></td>
+<td style="text-align: left;"><strong>Stratum A: Def.</strong> (Def. 1.6)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Aspektivfeld (<span class="math inline">\(\mathfrak{A}\)</span>)</strong></td>
+<td style="text-align: left;">Admissible context subcategory / sieve in <span class="math inline">\((\CtxPos, \Jsyn)\)</span></td>
+<td style="text-align: left;"><strong>Stratum C: Model</strong> (§1.3)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>7 Aspekt-Teilsysteme</strong></td>
+<td style="text-align: left;"><span class="math inline">\(2^3 - 1 = 7\)</span> nonempty generator supports on <span class="math inline">\(\{D, K, P\}\)</span></td>
+<td style="text-align: left;"><strong>Stratum B: Prop.</strong> (Prop. 1.2)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Metropie (<span class="math inline">\(g\)</span>)</strong></td>
+<td style="text-align: left;">Operator pseudometric <span class="math inline">\(d_P(U,V)\)</span> &amp; trace tensor <span class="math inline">\(g_{\mathrm{met}}\)</span></td>
+<td style="text-align: left;"><strong>Stratum B: Model</strong> (Def. 1.25, 1.27)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Kategorie (<span class="math inline">\(\mathfrak{K}\)</span>) &amp; Idee (<span class="math inline">\(\mathfrak{S}_1\)</span>)</strong></td>
+<td style="text-align: left;">Stratified hierarchy <span class="math inline">\(\Prop_k\)</span> anchored in Metrophor <span class="math inline">\(\AP_0\)</span></td>
+<td style="text-align: left;"><strong>Stratum B: Def.</strong> (§1.8.1)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Epi- / Prosyllogismus (<span class="math inline">\(k\uparrow, k\downarrow\)</span>)</strong></td>
+<td style="text-align: left;">Dynamic step <span class="math inline">\([\pi_F]\)</span> &amp; hereditary <span class="math inline">\(\IGP_k\)</span> decomposition</td>
+<td style="text-align: left;"><strong>Stratum B: Rules</strong> (§1.8.2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Monoquantor (<span class="math inline">\(Q_{\mathrm{mono}}\)</span>, Eq. 2)</strong></td>
+<td style="text-align: left;">Local Kripke–Joyal forcing <span class="math inline">\(U \Vdash \phi\)</span> in <span class="math inline">\(\Omega(U)\)</span></td>
+<td style="text-align: left;"><strong>Stratum A: Def.</strong> (§1.4)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Polyquantor (<span class="math inline">\(Q_{\mathrm{poly}}\)</span>, Eqs. 3–4)</strong></td>
+<td style="text-align: left;">Multi-aspect product forcing <span class="math inline">\(\prod_{i=1}^r V_i \Vdash \phi\)</span></td>
+<td style="text-align: left;"><strong>Stratum B: Prop.</strong> (Prop. 1.4)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Universalquantor (<span class="math inline">\(\mathbf{U}\)</span>)</strong></td>
+<td style="text-align: left;">Right-adjoint dependent product <span class="math inline">\(\forall_f\)</span> (<span class="math inline">\(f^* \dashv \forall_f\)</span>)</td>
+<td style="text-align: left;"><strong>Stratum A: Prop.</strong> (Prop. 1.14)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Holoform (<span class="math inline">\(\mathbf{H}\)</span>)</strong></td>
+<td style="text-align: left;">Global equalizer section <span class="math inline">\(\Gamma \in \Hol(\mathcal{U}, \mathbf{P})\)</span> (<span class="math inline">\(\Def_{\mathcal{U}}(s) = 0\)</span>)</td>
+<td style="text-align: left;"><strong>Stratum B: Thm.</strong> (Thm. 1.17, 1.18)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Antagonismus &amp; <em>Aufhebung</em></strong></td>
+<td style="text-align: left;">Tripartite obstruction (<span class="math inline">\(\operatorname{Ant}_{\mathrm{mer/desc/log}}\)</span>) &amp; sublation to <span class="math inline">\(\Prop_1\)</span></td>
+<td style="text-align: left;"><strong>Stratum B: Thm.</strong> (Thm. 1.23, 1.24)</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:42%;">
+<div class="carnap-box fragment fade-right">
+<p><strong>Carnap 1.3: <span class="math inline">\(\mathcal{R}\)</span> as Scientific Representation (van Fraassen 2008)</strong> <span class="math inline">\(\mathcal{R} \colon \mathsf{HeimVocabulary}\;(\mathbf{D}) \rightsquigarrow \mathsf{MathStructures}\;(\mathbf{A}, \mathbf{B})\)</span> satisfies Carnap’s four explication criteria (<strong>Similarity</strong>, <strong>Exactness</strong>, <strong>Fruitfulness</strong>, <strong>Simplicity</strong>) while strictly respecting the Epistemic Firewall.</p>
+</div>
+<div class="thm-box">
+<p><strong>Both Physical &amp; Epistemic Sanity Checks (§1.10):</strong></p>
+<ol type="1">
+<li><strong>Classical Boolean Collapse Check:</strong> When <span class="math inline">\(\Ctx \to \{*\}\)</span>, <span class="math inline">\(z = \zeta = \operatorname{id}\)</span>, and <span class="math inline">\(a_q = f_q = b_q\)</span>, the sheaf topos collapses to <span class="math inline">\(\mathbf{Sh}(\{*\}) \cong \mathbf{Set}\)</span> and <span class="math inline">\(\Omega \cong \{0, 1\} = \mathbf{2}\)</span>, recovering classical bivalent Tarskian semantics as an uncontextualized degenerate limit.</li>
+<li><strong>Descent Consistency Check (<span class="math inline">\(\varepsilon \to 0\)</span>):</strong> As measurement noise <span class="math inline">\(\varepsilon \to 0\)</span> in Theorem 1.18, the <span class="math inline">\(\varepsilon\)</span>-Holoform set <span class="math inline">\(\Hol_\varepsilon(\mathcal{U}, \mathbf{A})\)</span> converges monotonically to the exact sheaf equalizer <span class="math inline">\(\Hol(\mathcal{U}, \mathbf{A}) \cong \mathbf{A}(U)\)</span> (<span class="math inline">\(\Def_{\mathcal{U}}(s) = 0\)</span>).</li>
+</ol>
+</div>
+</div></div>
+<aside class="notes">
+<p>This slide presents the complete 15-row Reconstruction Map R from Section 1.10 alongside Carnap Scholium 1.3 and both Physical and Epistemic Sanity Checks (Classical Boolean Collapse and Descent Consistency Check as epsilon goes to 0).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="deliverables-asymptotic-limits-cross-disciplinary-matrix" class="slide level2 smaller">
+<h2>§1.11: Deliverables, Asymptotic Limits &amp; Cross-Disciplinary Matrix</h2>
+<div class="stratum-badge badge-c">
+CHAPTER 1 SYNTHESIS: DELIVERABLES, DEGENERACY REDUCTIONS &amp; BRIDGE TO CHAPTER 2
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="deliverables-box">
+<p><strong>Chapter 1 Deliverables: The Topos of Subjective Experience</strong></p>
+<ul>
+<li><strong>Contractive Context Site:</strong> Small skeletal category <span class="math inline">\((\CtxPos, \Jsyn)\)</span> in <span class="math inline">\((\Ban, \otpi)\)</span> with explicit <span class="math inline">\(\ell^\infty\)</span>-pullbacks <span class="math inline">\(V_1 \times_U V_2\)</span> and subcanonical sheaf topos <span class="math inline">\(\Esyn = \mathbf{Sh}(\Ctx, \Jsyn)\)</span>.</li>
+<li><strong>Quantitative Holoform Descent:</strong> Exact equalizer <span class="math inline">\(\Hol(\mathcal{U}, \mathbf{P})\)</span> and <span class="math inline">\(\varepsilon\)</span>-Holoform partition-of-unity stability <span class="math inline">\(\|\rho_k^*(\Gamma_\sigma) - s_k\| \le \varepsilon\)</span> (<span class="math inline">\(c_{\mathrm{EPS-HOL}}\)</span>).</li>
+<li><strong>Complete Leveled Modal Logic:</strong> Sound, strongly complete, and cut-free intuitionistic sequent calculus <span class="math inline">\(\mathcal{L}_{\mathrm{iMSL}}\)</span> (<span class="math inline">\(S(x);\Gamma \vdash^k \phi \iff S(x);\Gamma \models^k \phi\)</span>).</li>
+</ul>
+</div>
+<div class="video-container">
+<video autoplay="" data-autoplay="" loop="" muted="" playsinline="" src="media/Act12_Sequents_Synthesis.mp4" style="max-height:205px;"></video>
+<div class="video-caption">
+Manim Act XII (Fig. 1.12): Tri-Layered Semantic &amp; Constructive Proof-Theoretic Synthesis
+</div>
+</div>
+</div><div class="column" style="width:52%;">
+<h3 id="asymptotic-limits-degeneracy-reductions">Asymptotic Limits &amp; Degeneracy Reductions</h3>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Regime / Boundary Limit</th>
+<th style="text-align: left;">Mathematical Operation</th>
+<th style="text-align: left;">Physical &amp; Logical Reduction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Zero-Bandwidth Limit</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\Delta P_q = b_q - a_q \to 0\)</span>, <span class="math inline">\(\Delta D_q \to 0\)</span>, <span class="math inline">\(\Ctx \to \{*\}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\Esyn = \mathbf{Sh}(\{*\}) \cong \mathbf{Set}\)</span>, <span class="math inline">\(\Omega \cong \{0,1\}\)</span> (Classical Boolean logic).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Noise-Free Gluing Limit</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\varepsilon \to 0\)</span> in <span class="math inline">\(\|\Def_{\mathcal{U}}(s)\|_{\check{C}^1} \le \varepsilon\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\Hol_\varepsilon(\mathcal{U}, \mathbf{A}) \to \Hol(\mathcal{U}, \mathbf{A}) \cong \mathbf{A}(U)\)</span> (Exact sheaf descent).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Isometric Frame Limit</strong></td>
+<td style="text-align: left;"><span class="math inline">\(d_P(U, V) \to 0\)</span> (<span class="math inline">\(\beta_F\alpha_F = \operatorname{id}\)</span>)</td>
+<td style="text-align: left;"><span class="math inline">\(R_{\Box_S}\)</span> becomes an equivalence relation (<span class="math inline">\(\mathrm{S5}\)</span> modal necessity).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cross-disciplinary-interpretation-matrix">Cross-Disciplinary Interpretation Matrix</h3>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Categorical &amp; Topos Logic</th>
+<th style="text-align: left;">Theoretical Physics &amp; Geometry</th>
+<th style="text-align: left;">Cognitive Science &amp; Epistemology</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Subcanonical site <span class="math inline">\((\CtxPos, \Jsyn)\)</span> &amp; Heyting classifier <span class="math inline">\(\Omega(U)\)</span>.</td>
+<td style="text-align: left;">Local measurement frames <span class="math inline">\(\mathcal{V}(\mathcal{H})\)</span> &amp; Kochen–Specker Čech obstructions.</td>
+<td style="text-align: left;">Husserlian <em>Abschattungen</em>, Carnapian frameworks, &amp; Piagetian <em>Aufhebung</em>.</td>
+</tr>
+</tbody>
+</table>
+<div class="firewall-box fragment glow-pulse">
+<p><strong>Dialectical Transition to Chapter 2:</strong> <span class="math inline">\(\Esyn\)</span> restricts and glues existing observations, but has <strong>no generative grammar</strong> to synthesize higher-rank concepts. In <strong>Chapter 2</strong>, we lift sheaves in <span class="math inline">\(\Esyn\)</span> to algebras over the <strong>completed colored Banach operad <span class="math inline">\(\mathcal{O}_{\mathrm{syn}}\)</span></strong> and free tree monad <span class="math inline">\(T_{\mathsf{P}}\)</span>.</p>
+</div>
+</div></div>
+<aside class="notes">
+<p>We conclude Chapter 1 with the Chapter 1 Deliverables box, the Asymptotic Limits &amp; Degeneracy Reductions table, the Cross-Disciplinary Interpretation Matrix, and the dialectical bridge to Chapter 2.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="chapter1_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="chapter1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="chapter1_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="chapter1_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: true,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+
+        height: 1080,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+
+        maxScale: 1.5,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    <script src="shared/chapter1-widgets.js"></script>
+    
+
+</body></html>

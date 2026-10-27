@@ -36,7 +36,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="chapter15_files/libs/revealjs/dist/theme/quarto-9b2acd54812068811eb1e073fddb388b.css">
+  <link rel="stylesheet" href="chapter15_files/libs/revealjs/dist/theme/quarto-f4a47b46cf8f9806c46668f4070c5295.css">
   <link href="chapter15_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="chapter15_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="chapter15_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -52,6 +52,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -862,7 +863,7 @@ Manim Act V (§15.5–15.7): Commutative Continuum Limits (R₁₂ → R₆ → 
           display:block!important;
       }</style></aside>
 </section>
-<section id="appendix-a-a.1a.2-stratified-syntax-sequent-calculus-of-limsl" class="slide level2 smaller" data-transition="slide">
+<section id="appendix-a-a.1a.2-stratified-syntax-sequent-calculus-of-limsl" class="slide level2 smaller scrollable" data-transition="slide">
 <h2>Appendix A (§A.1–A.2): Stratified Syntax &amp; Sequent Calculus of <span class="math inline">\(\LiMSL\)</span></h2>
 <div class="stratum-badge badge-b">
 APPENDIX A (§A.1–A.2): CONSTRUCTIVE PROOF THEORY, GRAMMAR (DEF. A.1), RANK METRIC (DEF. A.2) &amp; SEQUENT CALCULUS
@@ -1647,7 +1648,7 @@ Manim Act XII (App. D §D.1–D.2, Fig. 47): Interval Newton–Krawczyk Contract
         defaultTiming: null,
 
         // Enable slide navigation via mouse wheel
-        mouseWheel: false,
+        mouseWheel: true,
 
         // The display mode that will be used to show slides
         display: 'block',

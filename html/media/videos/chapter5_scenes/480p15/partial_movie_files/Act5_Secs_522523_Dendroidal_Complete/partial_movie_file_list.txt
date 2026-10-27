@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act5_Secs_522523_Dendroidal_Complete/031dd377df1d8f60a5c3df62973489afaa2f2f1f8f21219fa145b336c482e305.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act5_Secs_522523_Dendroidal_Complete/74b6e8481639d52cd1f4d5ef4482a2d77a7cad08ef5c5f3a145b85142c3eb0f7.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act5_Secs_522523_Dendroidal_Complete/c62e61ba4f8eaf488328ea23c02aa33f22f9072dddbc847ce9e735f6570f0b5f.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act5_Secs_522523_Dendroidal_Complete/9da1570de4fe7b4df2e5d51f87368d499f475313c137327f4c1e3aff7e5917c1.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act5_Secs_522523_Dendroidal_Complete/60a2dad3712203296a3a317a926697734694b5308ac87a3963be1e867c56d2e4.mp4'

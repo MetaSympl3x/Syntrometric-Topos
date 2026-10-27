@@ -36,7 +36,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="syntrometrie_all_files/libs/revealjs/dist/theme/quarto-9b2acd54812068811eb1e073fddb388b.css">
+  <link rel="stylesheet" href="syntrometrie_all_files/libs/revealjs/dist/theme/quarto-f4a47b46cf8f9806c46668f4070c5295.css">
   <link href="syntrometrie_all_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="syntrometrie_all_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="syntrometrie_all_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -4002,6 +4002,34 @@
   }
 
   </style>
+
+  <script>
+
+  (function() {
+
+    function initRevealScroll() {
+
+      if (window.Reveal) {
+
+        if (typeof window.Reveal.configure === 'function') {
+
+          try { window.Reveal.configure({ mouseWheel: true, scrollActivationWidth: 900 }); } catch (e) {}
+
+        }
+
+      }
+
+    }
+
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initRevealScroll); }
+
+    else { initRevealScroll(); }
+
+    window.addEventListener('load', initRevealScroll);
+
+  })();
+
+  </script>
 
 </head>
 <body class="quarto-dark">
