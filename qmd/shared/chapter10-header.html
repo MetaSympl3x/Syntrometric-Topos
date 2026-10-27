@@ -347,7 +347,7 @@ window.addEventListener('message', (event) => {
         } catch (e) {}
       }
 
-      window.Reveal.on('slidechanged', () => setTimeout(prepareVideosAndPanels, 60));
+      window.Reveal.on('slidechanged', (e) => { if (e && e.currentSlide) e.currentSlide.scrollTop = 0; setTimeout(prepareVideosAndPanels, 60); });
       window.Reveal.on('ready', () => {
         setTimeout(prepareVideosAndPanels, 120);
         try {

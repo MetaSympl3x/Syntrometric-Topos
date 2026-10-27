@@ -36,7 +36,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="chapter3_files/libs/revealjs/dist/theme/quarto-f01986ae67ab8f74e3153fc6e8fc0b5a.css">
+  <link rel="stylesheet" href="chapter3_files/libs/revealjs/dist/theme/quarto-7bab24c20a79a37d3149f553c52a0157.css">
   <link href="chapter3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="chapter3_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="chapter3_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -851,7 +851,7 @@
 
   
 
-        window.Reveal.on('slidechanged', () => setTimeout(prepareVideosAndPanels, 60));
+        window.Reveal.on('slidechanged', (e) => { if (e && e.currentSlide) e.currentSlide.scrollTop = 0; setTimeout(prepareVideosAndPanels, 60); });
 
         window.Reveal.on('ready', () => {
 
