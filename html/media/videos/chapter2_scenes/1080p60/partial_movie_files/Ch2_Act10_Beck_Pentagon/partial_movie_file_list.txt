@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act10_Beck_Pentagon/59e0dbc10295aa3ac645edc4e3c078cbec3e5cd53f01bc782338168da5bc36a7.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act10_Beck_Pentagon/75645181913c0ce52c342389769224badee0f0a19c1c7be63a5d7c46b7683b3a.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act10_Beck_Pentagon/3787088058868197cbe792fd329a44a17ff22d96aafe8f67630e7695ab842534.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act10_Beck_Pentagon/f78cae5ee04aafc1469dbc180c158c813e540a028d280d6d79c399ea0f4f7d1d.mp4'

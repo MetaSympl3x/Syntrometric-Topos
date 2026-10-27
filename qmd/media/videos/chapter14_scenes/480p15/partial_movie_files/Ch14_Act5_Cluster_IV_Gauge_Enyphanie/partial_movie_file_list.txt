@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act5_Cluster_IV_Gauge_Enyphanie/4e91e207e85da2154976e138a3805326316dcd96ef1d17820bd13e3ffc6e29a7.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act5_Cluster_IV_Gauge_Enyphanie/78260bb92968ade70f59086cf7cf10ee5f3c2e0b2fb9af71b5a578145ba2d587.mp4'

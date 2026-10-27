@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter11_scenes/480p15/partial_movie_files/Ch11_Act2_Hyperstrukturen_Spin_Rotor/085e4b6f3d53fe3e9f03122c65cb7a4022364958968df4dea42317419d20abed.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter11_scenes/480p15/partial_movie_files/Ch11_Act2_Hyperstrukturen_Spin_Rotor/1eacfa0969c71964d037578b88c92e210c60e10f20d36c830dc05d73e12e47a3.mp4'

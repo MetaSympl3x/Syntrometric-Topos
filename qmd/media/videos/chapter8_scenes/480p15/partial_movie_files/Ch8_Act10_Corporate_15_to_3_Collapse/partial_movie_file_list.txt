@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act10_Corporate_15_to_3_Collapse/96cd1eaf079cee9965b9e9035750557c2559914127a583f6ce395b699122de3b.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act10_Corporate_15_to_3_Collapse/b4d8ba7c01f357f4d3aad48c0354758faf7b256abd9a1036c7cb97a338258f71.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act10_Corporate_15_to_3_Collapse/f34f58ab6c4d3e0b60e54687ff99ab64b54af6c924a74501a2256d6d126091aa.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act10_Corporate_15_to_3_Collapse/7a771ccbedc68675d2607f8ba55f2f1dd62f64c67f65139cf1cea9a951195fed.mp4'

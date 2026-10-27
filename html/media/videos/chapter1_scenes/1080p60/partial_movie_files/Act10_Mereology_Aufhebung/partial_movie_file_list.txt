@@ -1,0 +1,10 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act10_Mereology_Aufhebung/fac74eaa8572a25b5c11facc0dca9bcb6a3bb74cf70bd08e5adeff1b28e8648a.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act10_Mereology_Aufhebung/1fbf09d48a6be5f98df5fb46b3b469fbc878f190b79033dca34b549502b1c627.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act10_Mereology_Aufhebung/c3da39c4b73c98a47de9251ccac5ecc8e3d94342ffcfa727e824f1c1bcdb5917.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act10_Mereology_Aufhebung/6d4bf23c387c9b54480697b8b6101813d8a9df17ca3d93757516e8a432c3def6.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act10_Mereology_Aufhebung/70c39d79b8c1b1921e4ba6bd025c23b9a4cdfda5e5261c1b9df7acd83a50074f.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act10_Mereology_Aufhebung/52006a8ab3822f0205d46268ce68f26e026a4e7dd34a347710908faeab025acc.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act10_Mereology_Aufhebung/92b841fc3468ee6a29ee8866aa9b40db58ad616220b3e686bb4ecba8d3a900fd.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act10_Mereology_Aufhebung/69aa27f456909b20a8aaaed89e1d2b1ebee5ae6d5d28c069066f0af5cfc5a40c.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act10_Mereology_Aufhebung/980d1661824dcab13e14954ec82904683b622b3327c566ed74075ce315fe2c1c.mp4'

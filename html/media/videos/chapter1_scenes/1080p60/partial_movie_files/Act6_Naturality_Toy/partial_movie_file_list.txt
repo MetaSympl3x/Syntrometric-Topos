@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act6_Naturality_Toy/a78282aec11f9efd3c0e9aee4a60e35ece846bc5ea87dbcefbeb03615427156a.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act6_Naturality_Toy/e25913fc75be39780b79cf5c1af55ffd892fa18ffc64a2de6fbd776bd2827525.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act6_Naturality_Toy/e2bf20292282597314d908392fd61749641efab9a0c9809268117882028fa500.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act6_Naturality_Toy/d0dceb1d083b5516a8c466ebd7ba56db5dc91dc36938f7d076448ab52566c0f1.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act6_Naturality_Toy/9d17d225795d05fa948e8bb6f9032bff30ad54a3512c39620665ec517dbed2fe.mp4'

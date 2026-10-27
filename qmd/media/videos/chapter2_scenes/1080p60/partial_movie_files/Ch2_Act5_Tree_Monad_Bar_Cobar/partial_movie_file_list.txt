@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act5_Tree_Monad_Bar_Cobar/50f70b53f011cf27a08342218a30a0bd618d8e085e1c12c1a22cf7af2906c781.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act5_Tree_Monad_Bar_Cobar/0d89199b9a2713a373fb2041f75f5666c4849f0079d403851dbd0189b92c5910.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act5_Tree_Monad_Bar_Cobar/85186827eda0e53f6ca9a9dff56a8a02b5aafcdb4e96b43ec7d1b4356ee2be9e.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act5_Tree_Monad_Bar_Cobar/f2382699858a6bddf2ddd149037a52a5d763a72673613145ad3412a496c784ea.mp4'

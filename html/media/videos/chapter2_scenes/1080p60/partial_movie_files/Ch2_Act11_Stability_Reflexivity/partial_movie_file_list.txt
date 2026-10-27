@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act11_Stability_Reflexivity/4f6ee277424247588da20d01952fb285b865dbbb3261d8ecf9a33fb4388f05dd.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act11_Stability_Reflexivity/0631e8b77f4f5bac2c6c4943f668cd03495926cff5e7b6a21041580bebe2188f.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act11_Stability_Reflexivity/1f55d63d0930e0d5695be85c46b8fd534530e4b719e9309012f9eb890b3a0cc9.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act11_Stability_Reflexivity/385682aba32aa44b9b8a9c6647e9c0900ef25497657480e49aeb9169957f5182.mp4'

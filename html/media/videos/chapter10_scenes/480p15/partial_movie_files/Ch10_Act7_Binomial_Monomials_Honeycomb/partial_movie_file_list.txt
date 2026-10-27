@@ -1,0 +1,4 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act7_Binomial_Monomials_Honeycomb/ce72b281fe292d050f30095c0aa6d097b47d0b0c792d0e5872b96a3ae5565088.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act7_Binomial_Monomials_Honeycomb/3858f60a23cb86d5a9747e3b8d6c679f5b8ff191d7ba7fee7165b84e22fa8a7c.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act7_Binomial_Monomials_Honeycomb/872bde6e1f117a8c96383cef18ad4c5f7837f6b34bf833879839063bf24a77a2.mp4'

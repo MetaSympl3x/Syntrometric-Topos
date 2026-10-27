@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act9_Musical_Pullback_Cascade/605b623f54f0c7399036345aa7f19b7d80c54e39734c86c4b37dcecd3bf13e19.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act9_Musical_Pullback_Cascade/189272f248664de15c61e23dd2665d68af260065cbf449133f4aff2043771bdd.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act9_Musical_Pullback_Cascade/db9d40a6531537cb23d4dac98fe1064c8ee1cee3a4beb03122f7f0565ca5ea60.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act9_Musical_Pullback_Cascade/7dc9cf8ebd279560a686b9bb7c0c29ee750ee8f43e0141c05d71ead7fd5fb8e3.mp4'

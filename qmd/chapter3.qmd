@@ -1,0 +1,874 @@
+---
+title: "Chapter 3: Syntrixkorporationen"
+subtitle: "Syntrometrische Maximentelezentrik — Interactive Topos & Manim Showcase"
+author: "Research Collective (Department of Mathematical Physics & Formal Epistemology)"
+date: "August 2026"
+format:
+  revealjs:
+    theme: [dark, scss/custom_syntrometrie.scss]
+    slide-number: c/t
+    navigation-mode: linear
+    transition: fade
+    background-transition: fade
+    width: 1440
+    height: 900
+    margin: 0.04
+    min-scale: 0.2
+    max-scale: 2.0
+    scrollable: true
+    mathjax: true
+    include-in-header: shared/chapter3-header.html
+    include-after-body:
+      text: |
+        <script src="shared/chapter3-widgets.js"></script>
+---
+
+## §3.1.1–3.1.2 Stratum D: Inversion Principle & Syntrixkorporationen {transition="convex"}
+
+<div style="margin-bottom:6px;">
+<span class="tag-d">STRATUM D: HEIMIAN EXEGESIS (SM pp. 42–48)</span>
+<span class="tag-c">STRATUM C: CATEGORICAL WIREMODEL</span>
+<span class="s-badge">S₀ BLUEPRINT → S₂ VERIFIED</span>
+</div>
+
+<div class="vignette-box">
+<div class="vignette-title">Historical Vignette: The Categorical Turn in Physics</div>
+Introduced by Samuel Eilenberg and Saunders Mac Lane in 1945 to formalize algebraic topology, category theory shifted mathematics from the internal elements of sets to the structural morphisms between objects. In the late 20th and early 21st centuries, John Baez, James Dolan, Samson Abramsky, and Bob Coecke pioneered <i>categorical quantum mechanics</i> and compositional network theory, modeling physical couplings via symmetric monoidal categories, spans, and pushouts. Reconstructing Heim's <i>Syntrixkorporationen</i> as universal colimits over decorated interaction trees situates his 1982 network calculus directly within modern compositional physics.
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="intuition-box" style="margin-bottom:6px;">
+<div class="intuition-title">Intuition: Combining Two Instruments — Parallel Wiring vs. Shared Channels</div>
+When two laboratory instruments are placed side by side without a cable between them, their readout channels simply add ($p+q$, a <b>coproduct $C_m$</b>). When they are phase-locked across $\lambda$ shared calibration channels, the shared wires are identified rather than counted twice, leaving $p+q-\lambda$ independent channels (a <b>span pushout $K_m$</b>).
+</div>
+
+<div class="quote-box" style="margin-bottom:6px;">
+<b>Das Prinzip der Inversion (SM, p. 42):</b> <i>"Wenn es möglich ist, eine homogene Syntrix in mehrere pyramidale Syntrizen zu zerlegen, dann muß es nach dem Prinzip der Inversion auch möglich sein, mehrere pyramidale Syntrizen mit eigenständigen Metrophoren zu einer aus diesen bestehenden Gesamtsyntrix zusammenzufassen."</i><br>
+<span style="color:#94a3b8; font-size:0.9em;">[<b>Translation:</b> "If it is possible to decompose a homogeneous syntrix into several pyramidal syntrices, then by the Principle of Inversion it must also be possible to combine several pyramidal syntrices with independent metrophors into a composite total syntrix."]</span>
+</div>
+
+<div class="def-box" style="font-size:0.62em;">
+<div class="box-title">Heim's Two-Tier Corporate Architecture (SM pp. 42–48)</div>
+<ul>
+<li><b>1. Metrophorkorporation (Carrier Tier $C_m, K_m$):</b> Combining base metrophors $\widetilde{\mathbf{a}}$ ($p$ elements) and $\widetilde{\mathbf{b}}$ ($q$ elements) via $\lambda \le \min(p,q)$ shared coupling elements $\phi_l \in R_\phi$:
+  <ul>
+  <li><i>Uncoupled Composition ($C_m$):</i> $p + q$ independent channels.</li>
+  <li><i>Non-Combinatorial Coupling ($K_m$, SM p. 43):</i> $(p + q - 2\lambda) + \lambda = \mathbf{p + q - \lambda}$.</li>
+  <li><i>Combinatorial Coupling (SM p. 44):</i> $Z_{\mathrm{comb}} = \mathbf{p \cdot \lambda \cdot q}$ coupled triples $(a_i, \phi_l, b_k)$.</li>
+  </ul>
+</li>
+<li><b>2. Synkolative Korporation (Module Tier $C_s, K_s$):</b> Block-diagonal parallel accumulation ($C_s$) vs. cross-term operadic coupling ($K_s$).</li>
+</ul>
+</div>
+
+</div>
+<div>
+
+<div class="interactive-panel" style="margin-bottom:6px;">
+<div class="panel-title">Interactive Metrophorkorporation Coupling Explorer (SM pp. 43–44)</div>
+<div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:0.65em; margin-bottom:4px;">
+<span style="color:#4169E1;">Carrier $p$:</span>
+<input type="range" id="mc-p" min="1" max="12" step="1" value="6" oninput="updateMetCorp()" style="width:75px;">
+<span id="mc-p-val" style="font-family:monospace; color:#FFD700;">6</span>
+<span style="color:#20B2AA;">Carrier $q$:</span>
+<input type="range" id="mc-q" min="1" max="12" step="1" value="6" oninput="updateMetCorp()" style="width:75px;">
+<span id="mc-q-val" style="font-family:monospace; color:#FFD700;">6</span>
+<span style="color:#FFA500;">Shared $\lambda$:</span>
+<input type="range" id="mc-lam" min="0" max="6" step="1" value="3" oninput="updateMetCorp()" style="width:75px;">
+<span id="mc-lam-val" style="font-family:monospace; color:#FFD700;">3</span>
+</div>
+<div id="mc-readout" class="formula-highlight" style="font-size:0.62em; text-align:left; padding:5px 8px;"></div>
+</div>
+
+<div class="video-grid-2">
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act1_Inversion_Korporator.mp4" style="max-height:175px; min-width:0;"></video>
+<div class="video-label">Act I: Principle of Inversion (Spaltbarkeit ⇄ Korporation)</div>
+</div>
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act2_Eindeutigkeit_Decomp.mp4" style="max-height:175px; min-width:0;"></video>
+<div class="video-label">Act II: Eindeutigkeitssatz & Corporate Decomposition</div>
+</div>
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.1.3–3.1.4 Corporate Bracket Schemata, Eindeutigkeitssatz & Conflexion
+
+<div style="margin-bottom:6px;">
+<span class="tag-d">STRATUM D: SYMBOLIC RECONSTRUCTION (SM-10 TO SM-13)</span>
+<span class="tag-b">PROPOSITION 3.1: TRIPARTITE SYNTROPOD DISTRIBUTION</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="def-box" style="margin-bottom:6px; font-size:0.62em;">
+<div class="box-title">Symbolic Reconstruction of Corporate Bracket Schemata (SM pp. 49–55)</div>
+<ul>
+<li><b>Universal Korporator Matrix (SM-10):</b>
+$$\mathbf{Kor} \;\equiv\; r \;=\; \begin{Bmatrix} K_s & C_s \\ K_m & C_m \end{Bmatrix} \qquad (\text{Upper row: Synkolative; Lower row: Metrophoric})$$
+</li>
+<li><b>Corporate Pairing Expression (SM-10a):</b> $\left(\mathbf{y}\widetilde{\mathbf{a}}\,\mathbf{Kor}\,\mathbf{z}\widetilde{\mathbf{b}}\right)\underline{m}_{ab} = \mathbf{x}\widetilde{\mathbf{c}}\underline{m}_c$.</li>
+<li><b>Nullsyntrix Neutrality Law (SM-11, SM-11a):</b>
+$$\mathbf{ys}\widetilde{\mathbf{c}}\underline{n} \;\equiv\; 0, \qquad \left(\mathbf{y}\widetilde{\mathbf{a}}\,\mathbf{Kor}\,\mathbf{ys}\widetilde{\mathbf{c}}\right)\underline{m}_a \;=\; \mathbf{y}\widetilde{\mathbf{a}}\underline{m}_a$$
+</li>
+<li><b>Iterated Decomposition Chain (SM-11b):</b>
+$$\mathbf{x}\widetilde{\mathbf{a}}\underline{m} \;=\; \Bigl(\bigl((\mathbf{y}_1\widetilde{\mathbf{a}}_1\,\mathbf{Kor}_1\,\mathbf{y}_2\widetilde{\mathbf{a}}_2)\,\mathbf{Kor}_2\,\mathbf{y}_3\widetilde{\mathbf{a}}_3\bigr)\,\dots\,\mathbf{Kor}_{L-1}\,\mathbf{y}_L\widetilde{\mathbf{a}}_L\Bigr)\underline{m}$$
+</li>
+</ul>
+</div>
+
+<div class="quote-box" style="margin-bottom:6px;">
+<b>Der Eindeutigkeitssatz (SM, p. 50):</b> <i>"Soll eine Syntrixkorporation eindeutig sein, dann darf der Korporator niemals allein aus einer Horizontalreihe der Matrix (10) bestehen... Eine Korporation ist also immer dann eindeutig, wenn die synkolativen und metrophorischen Korporationen gemischt auftreten."</i><br>
+<span style="color:#94a3b8; font-size:0.9em;">[<b>Translation:</b> "For a syntrix corporation to be unambiguous, the korporator may never consist solely of a single horizontal row of Matrix (10)... A corporation is therefore always unambiguous whenever synkolative and metrophoric corporations occur in mixed combination."]</span>
+</div>
+
+<div class="remark-box fragment blur-in" style="font-size:0.6em;">
+<div class="remark-title">Archival & Textual Notes on SM Eqs. (11b) and (13) (Klemenz Edition)</div>
+<ul>
+<li><b>Note on Eq. (11b):</b> In Heim's original manuscript (SM, p. 52), the decomposition chain displays between numbered equations (11a) and (12) without an explicit marginal number; we assign <b>(SM-11b)</b> to preserve sequential cross-referencing.</li>
+<li><b>Note on Eq. (13):</b> In SM p. 61, immediately following the Total-Konflexivsyntrix equation (SM-13), the original manuscript contains an incomplete German sentence fragment (<i>"Wenn von den $z_e$ Exzentern..."</i>), noted by editor Olaf Klemenz (p. 61, fn. 1).</li>
+</ul>
+</div>
+
+</div>
+<div>
+
+<div class="def-box" style="margin-bottom:6px; font-size:0.62em;">
+<div class="box-title">Conflexion Topology: Konzenter, Exzenter & Syntropoden (SM pp. 56–61)</div>
+<ul>
+<li><b>Konzenter ($K_m = 0, C_m \ne 0$):</b> Concentric corporate pairing where carriers remain disjoint ($P_a \oplus_1 P_b$), modeling stratified parallel generation.</li>
+<li><b>Exzenter ($K_m \ne 0$):</b> Excentric corporate pairing across active <i>Konflektorknoten</i> $\phi_l \in R_\phi$, generating a shared <b>Konflexionsfeld</b> $\mathbf{y}\widetilde{\mathbf{c}}$ (SM-12, SM-12a).</li>
+<li><b>Syntropode:</b> Each truncated incoming syntrix branch feeding into a corporate network node; total count is the <i>Syntropodenzahl</i> $z$.</li>
+<li><b>Conflexivity Degree (SM-12b):</b> A chain with $\varepsilon$ active Exzenter couplings is $(\varepsilon + 1)$-fold conflexive (<i>$(\varepsilon+1)$-gliedrig konflexiv</i>).</li>
+<li><b>Total-Konflexivsyntrix (SM-13):</b> Higher-order corporate network whose Syntropoden are themselves composite Conflexivsyntrizen.</li>
+</ul>
+</div>
+
+<div class="prop-box" style="font-size:0.62em;">
+<div class="box-title">Proposition 3.1: Tripartite Syntropod Distribution (SM p. 60)</div>
+Let a composite corporate network consist of $z$ total Syntropoden partitioned across $z_c$ Concentric sub-systems ($x_k$ Syntropoden each), $z_p$ Pseudoexcentric sub-systems ($y_i$ Syntropoden each), and $z_e$ Excentric sub-systems ($u_j$ Syntropoden each). Then the structural conservation law holds:
+$$z \;=\; z_c + z_p + z_e, \qquad \sum_{k=1}^{z_c} x_k \;+\; \sum_{i=1}^{z_p} y_i \;+\; \sum_{j=1}^{z_e} u_j \;=\; z.$$
+In the special case of uniform sub-system multiplicity ($x_k = x, y_i = y, u_j = u$), this reduces to $z_c x + z_p y + z_e u = z$.
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.2.1–3.2.2 Stratum A: Categories $\mathbf{FinBan}_{\le 1}^{\mathbb{N}_0}$, $\mathbf{Syn}$ & Zero Object $0_{\mathbf{Syn}}$
+
+<div style="margin-bottom:6px;">
+<span class="tag-a">STRATUM A: BANACH & OPERADIC FOUNDATIONS</span>
+<span class="tag-c">PROPOSITION 3.2: ZERO OBJECT PROOF</span>
+<span class="s-badge">S₂ KERNEL-CHECKED</span>
+</div>
+
+<div class="scholium-box" style="margin-bottom:8px;">
+<div class="scholium-title">Scholium: Meta-Theoretic Justification — Span Pushouts and $\ell^1$-Coproducts</div>
+Why formalize Metrophorkorporation via categorical colimits in $\mathbf{FinBan}_{\le 1}$ rather than naive set-theoretic unions $A \cup B$? Set unions fail to track linear superpositions, norm contractivity, or partial linear combinations of shared calibration channels. In $\mathbf{FinBan}_{\le 1}$, the $\ell^1$-coproduct $P_a \oplus_1 P_b$ and the span pushout $P_a \boxplus_\phi P_b = (P_a \oplus_1 P_b)/\overline{\operatorname{Im}(\delta_\phi)}$ satisfy exact universal properties, preserve contractive operator bounds ($\|\theta\|_{\mathrm{op}} \le 1$), and allow arbitrary linear coupling maps $\phi_a, \phi_b$ via the Rank-Nullity Theorem.
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="def-box" style="margin-bottom:6px; font-size:0.61em;">
+<div class="box-title">Definitions 3.1–3.3: $\mathbf{FinBan}_{\le 1}^{\mathbb{N}_0}$, Carrier Functor $\mathfrak{R}$ & Category $\mathbf{Syn}$</div>
+<ul>
+<li><b>Def. 3.1 ($\mathbf{FinBan}_{\le 1}^{\mathbb{N}_0}$):</b> Category of $\mathbb{N}_0$-graded finite-dimensional real Banach spaces $\mathbf{F} = \{F_\gamma\}_{\gamma \in \mathbb{N}_0}$ with levelwise contractive linear maps ($\|\phi_\gamma\|_{\mathrm{op}} \le 1$).</li>
+<li><b>Def. 3.2 (Carrier Realization Functor $\mathfrak{R}$):</b> Contravariant functor $\mathfrak{R} \colon (\mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}})^{\mathrm{op}} \to \mathbf{FinBan}_{\le 1}$ sending $U \mapsto (P^U, \|\cdot\|_1)$ and context refinement $\rho \colon V \to U$ to contractive restriction $\mathfrak{R}(\rho) = \rho^* \colon P^U \to P^V$.</li>
+<li><b>Def. 3.3 (Category $\mathbf{Syn}$):</b> An object $\mathcal{S} = (U, \mathbf{F}, \theta, \iota) \in \operatorname{Obj}(\mathbf{Syn})$ consists of context $U \in \mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}$, graded module $\mathbf{F} \in \mathbf{FinBan}_{\le 1}^{\mathbb{N}_0}$, contractive $\mathcal{O}_{\mathrm{syn}}$-algebra evaluation $\theta$, and isometric carrier anchor $\iota \colon F_0 \xrightarrow{\sim} \mathfrak{R}(U)$. A morphism $\Phi = (\rho, \{\phi_\gamma\}) \colon \mathcal{S}_a \to \mathcal{S}_b$ intertwines $\theta$ and $\iota$.</li>
+</ul>
+</div>
+
+<div class="prop-box" style="margin-bottom:6px; font-size:0.61em;">
+<div class="box-title">Proposition 3.2: Zero Object $0_{\mathbf{Syn}}$ Realizing Nullsyntrix ($\mathbf{ys}\widetilde{\mathbf{c}}$)</div>
+Let $U_\emptyset \in \mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}$ be the terminal empty-parameter context with $\mathfrak{R}(U_\emptyset) = \{0\}$. Then $0_{\mathbf{Syn}} \coloneqq (U_\emptyset, \{0\}_{\gamma \ge 0}, 0, \operatorname{id}_0)$ is a strict <b>zero object</b> (both initial and terminal) in $\mathbf{Syn}$, satisfying $\mathbf{Kor}_{\{C_m, C_s\}}(\mathcal{S}, 0_{\mathbf{Syn}}) \cong \mathcal{S}$.
+</div>
+
+<div class="proof-box fragment fade-up" style="font-size:0.59em;">
+<div class="proof-title">Proof of Proposition 3.2 (Initiality and Terminality of $0_{\mathbf{Syn}}$)</div>
+<ol>
+<li><b>Step 1 (Initiality):</b> For any $\mathcal{S} = (U, \mathbf{F}, \theta, \iota) \in \mathbf{Syn}$, there is a unique terminal context morphism $!_U \colon U \to U_\emptyset$ in $\mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}$ (contravariantly inducing $0 \to \mathfrak{R}(U)$) and unique zero linear maps $0_\gamma \colon \{0\} \to F_\gamma$ for each $\gamma \ge 0$, which trivially commute with $\theta$ and $\iota$.</li>
+<li><b>Step 2 (Terminality):</b> Conversely, the unique zero maps $F_\gamma \to \{0\}$ are contractive ($\|0\|_{\mathrm{op}} = 0 \le 1$) and intertwine the zero evaluation map on $0_{\mathbf{Syn}}$. Thus $\operatorname{Hom}_{\mathbf{Syn}}(0_{\mathbf{Syn}}, \mathcal{S}) \cong \{*\} \cong \operatorname{Hom}_{\mathbf{Syn}}(\mathcal{S}, 0_{\mathbf{Syn}})$. Furthermore, $F_\gamma \oplus_1 \{0\} \cong F_\gamma$ isometrically at every grade $\gamma$. $\blacksquare$</li>
+</ol>
+</div>
+
+</div>
+<div>
+
+<div class="video-grid-2" style="margin-bottom:6px;">
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act3_Category_Syn_Zero.mp4" style="max-height:165px; min-width:0;"></video>
+<div class="video-label">Act III: Category Syn & Nullsyntrix 0_Syn Identity</div>
+</div>
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act5_Konflektorknoten_Modules.mp4" style="max-height:165px; min-width:0;"></video>
+<div class="video-label">Act V: Konflektorknoten & Graded Module Lifts (C_s, K_s)</div>
+</div>
+</div>
+
+<div class="lean-card fragment fade-left">
+<div class="lean-header">
+<span>Lean 4 — Category Syn & Zero Object (S₂ Verified)</span>
+<span class="s-badge">Mathlib4</span>
+</div>
+<pre><code>structure SyntrixAlgebra (O : ColoredOperad ℕ) where
+  ctx     : AdmissibleContext
+  F       : ℕ → FinBanach
+  theta   : OperadAction O F
+  anchor  : F 0 ≃ₗᵢ[ℝ] CarrierSpace ctx
+
+def NullSyntrix (O : ColoredOperad ℕ) : SyntrixAlgebra O where
+  ctx    := EmptyContext
+  F      := fun _ => ZeroFinBanach
+  theta  := ZeroOperadAction O
+  anchor := LinearIsometryEquiv.refl ℝ ZeroFinBanach
+
+theorem nullSyntrix_coprod_id (S : SyntrixAlgebra O) :
+    Nonempty (KorCoprod S (NullSyntrix O) ≅ S) := by
+  exact ⟨korCoprodZeroIso S⟩</code></pre>
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.2.3 Stratum A: Metrophoric Carrier Pushouts & Rank-Nullity Theorem {transition="convex"}
+
+<div style="margin-bottom:6px;">
+<span class="tag-a">STRATUM A: UNIVERSAL COLIMITS IN FinBan≤1</span>
+<span class="tag-b">THEOREM 3.4: EXACT PUSHOUT DIMENSION SUBTRACTION</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="def-box" style="margin-bottom:6px; font-size:0.61em;">
+<div class="box-title">Definition 3.4: Metrophoric Carrier Operations ($C_m$ and $K_m$)</div>
+Let $P_a \cong \mathbb{R}^p$ and $P_b \cong \mathbb{R}^q$ be carrier spaces in $\mathbf{FinBan}_{\le 1}$.
+<ol>
+<li><b>Metrophor Composition ($C_m$ — $\ell^1$-Coproduct):</b> $P_a \oplus_1 P_b$ with norm $\|(x, y)\|_1 \coloneqq \|x\|_{P_a} + \|y\|_{P_b}$ and dimension $\dim(P_a \oplus_1 P_b) = p + q$.</li>
+<li><b>Metrophor Coupling ($K_m$ — Coupled Span Pushout):</b> Given a shared parameter space $R_\phi \cong \mathbb{R}^\lambda$ and contractive linear maps $P_a \xleftarrow{\phi_a} R_\phi \xrightarrow{\phi_b} P_b$, define the difference map $\delta_\phi \colon R_\phi \to P_a \oplus_1 P_b$ by $\delta_\phi(r) \coloneqq (\phi_a(r), -\phi_b(r))$. The pushout is the quotient Banach space:
+$$P_a \boxplus_\phi P_b \;\coloneqq\; \frac{P_a \oplus_1 P_b}{\operatorname{Im}(\delta_\phi)}, \qquad \|[x, y]\|_{\boxplus} \coloneqq \inf_{r \in R_\phi}\!\left(\|x + \phi_a(r)\|_{P_a} + \|y - \phi_b(r)\|_{P_b}\right).$$
+</li>
+<li><b>Combinatorial Coupling Count (SM p. 44):</b> $Z_{\mathrm{comb}} = p \cdot \lambda \cdot q$.</li>
+</ol>
+</div>
+
+<div class="thm-box" style="margin-bottom:6px; font-size:0.61em;">
+<div class="box-title">Theorem 3.4: Exact Pushout Sequence & Dimension Subtraction Formula</div>
+Let $\lambda_{\mathrm{eff}} \coloneqq \operatorname{rank}(\delta_\phi) = \dim R_\phi - \dim(\ker \phi_a \cap \ker \phi_b)$. There is a canonical short exact sequence in $\mathbf{FinBan}_{\le 1}$:
+$$0 \longlongrightarrow \frac{R_\phi}{\ker(\delta_\phi)} \xlongrightarrow{\;\bar{\delta}_\phi\;} P_a \oplus_1 P_b \xlongrightarrow{\;\pi_{\boxplus}\;} P_a \boxplus_\phi P_b \longlongrightarrow 0$$
+Consequently, $\dim(P_a \boxplus_\phi P_b) = p + q - \lambda_{\mathrm{eff}}$. When $\phi_a, \phi_b$ are jointly injective ($\ker \phi_a \cap \ker \phi_b = \{0\}$), $\lambda_{\mathrm{eff}} = \lambda$ and $\dim(P_a \boxplus_\phi P_b) = \mathbf{p + q - \lambda}$.
+</div>
+
+<div class="proof-box fragment fade-up" style="font-size:0.58em;">
+<div class="proof-title">Proof of Theorem 3.4 (Rank-Nullity & Quotient Norm Completeness)</div>
+<ol>
+<li><b>Step 1 (Closed Subspace):</b> Since $P_a \oplus_1 P_b$ is finite-dimensional, $\operatorname{Im}(\delta_\phi)$ is automatically closed, so the quotient seminorm $\|\cdot\|_{\boxplus}$ is a complete norm and $\pi_{\boxplus}$ has operator norm $\le 1$.</li>
+<li><b>Step 2 (Kernel Identification):</b> For $r \in R_\phi$, $\delta_\phi(r) = (\phi_a(r), -\phi_b(r)) = (0,0) \iff \phi_a(r) = 0$ and $\phi_b(r) = 0$, so $\ker(\delta_\phi) = \ker \phi_a \cap \ker \phi_b$.</li>
+<li><b>Step 3 (Rank-Nullity):</b> Applying Rank-Nullity to $\pi_{\boxplus}$ yields $\dim(P_a \boxplus_\phi P_b) = \dim(P_a \oplus_1 P_b) - \dim\operatorname{Im}(\delta_\phi) = p + q - \operatorname{rank}(\delta_\phi) = p + q - \lambda_{\mathrm{eff}}$. $\blacksquare$</li>
+</ol>
+</div>
+
+</div>
+<div>
+
+<div class="interactive-panel" style="margin-bottom:6px;">
+<div class="panel-title">Interactive Span Pushout & Stage III Polarimeter Lab (§3.2.3)</div>
+<div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-size:0.62em; margin-bottom:4px;">
+<span style="color:#4169E1;">$p$:</span>
+<input type="range" id="po-p" min="1" max="12" step="1" value="6" oninput="updatePushoutLab()" style="width:65px;">
+<span id="po-p-val" style="font-family:monospace; color:#FFD700;">6</span>
+<span style="color:#20B2AA;">$q$:</span>
+<input type="range" id="po-q" min="1" max="12" step="1" value="6" oninput="updatePushoutLab()" style="width:65px;">
+<span id="po-q-val" style="font-family:monospace; color:#FFD700;">6</span>
+<span style="color:#FFA500;">$\lambda_{\mathrm{eff}}$:</span>
+<input type="range" id="po-lam" min="0" max="6" step="1" value="3" oninput="updatePushoutLab()" style="width:65px;">
+<span id="po-lam-val" style="font-family:monospace; color:#FFD700;">3</span>
+<button class="syn-btn" onclick="setPoPreset(6,6,3)" style="font-size:0.85em; padding:2px 6px;">Stage III Polarimeter (6,6,3 → 9)</button>
+<button class="syn-btn" onclick="setPoPreset(3,3,1)" style="font-size:0.85em; padding:2px 6px;">Toy Perceptual (3,3,1 → 5)</button>
+<button class="syn-btn" onclick="setPoPreset(6,6,0)" style="font-size:0.85em; padding:2px 6px;">Konzenter (λ=0)</button>
+</div>
+<svg width="100%" height="95" viewBox="0 0 210 95" style="background:#080c14; border:1px solid #1e293b; border-radius:6px; margin-bottom:4px;">
+<circle id="po-c1" cx="84" cy="48" r="32" fill="rgba(65,105,225,0.22)" stroke="#4169E1" stroke-width="2"/>
+<circle id="po-c2" cx="126" cy="48" r="32" fill="rgba(32,178,170,0.22)" stroke="#20B2AA" stroke-width="2"/>
+<circle id="po-knot" cx="105" cy="48" r="13.6" fill="rgba(255,215,0,0.35)" stroke="#FFD700" stroke-width="2"/>
+<text x="58" y="22" fill="#82aaff" font-size="8" font-weight="bold">P_a (ℝ^p)</text>
+<text x="132" y="22" fill="#5eead4" font-size="8" font-weight="bold">P_b (ℝ^q)</text>
+<text id="po-knot-txt" x="105" y="51" fill="#FFD700" font-size="7.5" font-weight="bold" text-anchor="middle">R_φ</text>
+</svg>
+<div id="po-lab-readout" class="formula-highlight" style="font-size:0.6em; text-align:left; padding:5px 8px;"></div>
+</div>
+
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act4_Orbital_Pushout.mp4" style="max-height:175px; min-width:0;"></video>
+<div class="video-label">Act IV: Orbital Span Pushout P_a ⊞_φ P_b & Quotient Geometry</div>
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.2.3 Epistemic Scholia, Carnap 3.1 & Stage III Polarimeter Example
+
+<div style="margin-bottom:6px;">
+<span class="tag-a">SCHOLIUM & REMARKS: PUSHOUT GEOMETRY</span>
+<span class="tag-c">CARNAP 3.1 & UNIFIED RUNNING EXAMPLE (STAGE III)</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="scholium-box" style="margin-bottom:6px;">
+<div class="scholium-title">Scholium: The Linear Geometry of Carrier Pushouts</div>
+Geometrically, the quotient norm $\|[x, y]\|_{\boxplus} = \inf_{r \in R_\phi}(\|x + \phi_a(r)\|_1 + \|y - \phi_b(r)\|_1)$ projects the $\ell^1$ octahedron (cross-polytope) of $P_a \oplus_1 P_b$ along the coupling subspace $\operatorname{Im}(\delta_\phi)$. Any excitation $\phi_a(r)$ injected into $P_a$ is norm-equivalent to $+\phi_b(r)$ in $P_b$, realizing action-reaction transfer across the Konflektorknoten without energy creation.
+</div>
+
+<div class="remark-box fragment blur-in" style="margin-bottom:6px;">
+<div class="remark-title">Remark: Visualizing Corporate Carrier Pushouts (Zalamea 2012)</div>
+In Fernando Zalamea's <i>Synthetic Philosophy of Contemporary Mathematics</i> (2012), sheaf and colimit gluings mediate between local fragments and global synthesis. Here, the span $P_a \xleftarrow{\phi_a} R_\phi \xrightarrow{\phi_b} P_b$ acts as the articulatory hinge: when $R_\phi = \{0\}$, the systems sit side by side in extrinsic juxtaposition ($C_m$); when $R_\phi \ne \{0\}$, they fuse along an intrinsic boundary ($K_m$).
+</div>
+
+<div class="remark-box fragment blur-in">
+<div class="remark-title">Remark: Toy Example — Two 3-Channel Perceptual Carriers with 1 Shared Parameter</div>
+Let $P_a = \mathbb{R}^3$ carry visual channels $(R, G, I_a)$ and $P_b = \mathbb{R}^3$ carry auditory channels $(L, R_{\mathrm{aud}}, I_b)$, where $I_a, I_b$ measure stimulus intensity. Uncoupled composition ($C_m$) has dimension $3 + 3 = 6$. Locking the intensity channels via $R_\phi = \mathbb{R}$ ($\phi_a(r) = (0,0,r)$, $\phi_b(r) = (0,0,r)$) quotients out $(0,0,r,0,0,-r)$, reducing the pushout carrier $P_a \boxplus_\phi P_b$ to dimension $3 + 3 - 1 = \mathbf{5}$ with shared cross-modal intensity $I_{\mathrm{shared}} = [I_a] = [I_b]$.
+</div>
+
+</div>
+<div>
+
+<div class="carnap-box fragment fade-right" style="margin-bottom:6px; font-size:0.61em;">
+<div class="carnap-title">Carnap 3.1: Intersubjective Constitution & OSR via Span Pushouts</div>
+In Rudolf Carnap's <i>Der logische Aufbau der Welt</i> (1928, §§146–148), intersubjective world-constitution requires correlating private epistemic streams $S(x_a)$ and $S(x_b)$ across structural overlap invariants. Coupled with Steven French's <b>Ontic Structural Realism (OSR)</b> (<i>The Structure of the World</i>, 2014), the span pushout $P_a \boxplus_\phi P_b$ demonstrates how relational structure takes priority over isolated objects: the shared Konflektorknoten $R_\phi$ constitutes the intersubjective bridge.
+<div style="margin-top:5px; padding:4px 8px; background:rgba(220,20,60,0.12); border-left:3px solid #DC143C; border-radius:4px;">
+<b style="color:#ff6b81;">Epistemic Firewall Non-Transfer Law:</b>
+$$\text{Categorical Colimit Wiring } (\varinjlim D \text{ in } \mathbf{FinBan}_{\le 1}) \;\not\Longrightarrow_{\mathrm{arch}}\; \text{Physical Bound-State Formation}$$
+A span pushout establishes <i>kinematic channel identification</i> ($\mathbf{A/B}$); physical binding energy requires dynamical gauge curvature ($\mathbf{C}$, Chapter 4).
+</div>
+</div>
+
+<div class="thm-box" style="border-left-color:#20B2AA; font-size:0.61em;">
+<div class="box-title" style="color:#20B2AA;">Unified Running Example (Stage III of VI): Exzenter Coupling of Two Polarimeters</div>
+Consider two Dichromatic Spin-Polarimeters $\mathcal{S}_a, \mathcal{S}_b$ ($p = \dim P_a = 6$, $q = \dim P_b = 6$) observing an entangled bipartite state, where the vertical polarization channel $\mathbb{R}^3_V \subset P_a$ is phase-locked to the horizontal channel $\mathbb{R}^3_H \subset P_b$ via a 3-dimensional Konflektorknoten $R_\phi = \mathbb{R}^3$ ($\lambda_{\mathrm{eff}} = \operatorname{rank}(\delta_\phi) = 3$):
+$$P_c \;=\; P_a \boxplus_\phi P_b \;=\; \frac{\mathbb{R}^6_a \oplus_1 \mathbb{R}^6_b}{\operatorname{Im}(\delta_\phi)} \;\cong\; \mathbb{R}^{6 + 6 - 3} \;=\; \mathbf{\mathbb{R}^9}.$$
+<ul>
+<li><b>Conflexivity Index:</b> $|V| = 2$ Syntropoden, $|E_K| = \varepsilon = 1 \implies \operatorname{ConfIndex}_{\mathrm{pres}}(G_{\mathcal{S}}) = \varepsilon + 1 = \mathbf{2}$ (<i>2-gliedrig konflexiv</i>).</li>
+<li><b>Coincidence Module Capacity:</b> Under $K_s$, the first-level exterior coincidence module $F_1^c = \Lambda^2(\mathbb{R}^9)$ has dimension $\binom{9}{2} = \mathbf{36}$ — the exact 36-component carrier capacity required for the Hermetry matrix of Chapter 9!</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.2.4 Stratum A: Synkolative Module Operations ($C_s, K_s$) & Operadic Lifts {transition="convex"}
+
+<div style="margin-bottom:6px;">
+<span class="tag-a">DEFINITIONS 3.5–3.6: GRADED MODULE LIFTS & FACTUAL VALENCY</span>
+<span class="tag-b">PROPOSITION 3.7: OPERADIC ALGEBRA LIFTS & PROOF</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="def-box" style="margin-bottom:6px; font-size:0.6em;">
+<div class="box-title">Definition 3.5: Decoupled Carrier Synthesis & Graded Module Operations</div>
+Let $\mathcal{S}_a = (U_a, \mathbf{F}^a, \theta^a, \iota_a)$ and $\mathcal{S}_b = (U_b, \mathbf{F}^b, \theta^b, \iota_b)$ be Syntrix algebras.
+<ol>
+<li><b>Konflektorknoten Binding Criterion:</b> Given a bilinear affinity form $\chi \colon P_a \times P_b \to \mathbb{R}$ and binding threshold $\theta_{\mathrm{bind}} > 0$, a generator $r_l \in R_\phi$ forms an active Konflektorknoten $c_l = (a_1, \phi_l, b_2)$ iff $\chi(\phi_a(r_l), \phi_b(r_l)) > \theta_{\mathrm{bind}}$.</li>
+<li><b>Synkolative Composition ($C_s$ — Direct-Sum Module):</b> At each grade $\gamma \ge 1$, $F_\gamma^{C_s} \coloneqq F_\gamma^a \oplus_1 F_\gamma^b$ with $\|(x_\gamma, y_\gamma)\|_1 = \|x_\gamma\|_{F_\gamma^a} + \|y_\gamma\|_{F_\gamma^b}$.</li>
+<li><b>Synkolative Coupling ($K_s$ — Graded Projective Tensor Module):</b> Given contractive bilinear coupling operators $f_{K_s}^{\alpha,\beta} \colon F_\alpha^a \widehat{\otimes}_\pi F_\beta^b \to W_{\alpha+\beta}$, define:
+$$F_\gamma^{K_s} \;\coloneqq\; \bigoplus_{\substack{\alpha + \beta = \gamma \\ \alpha, \beta \ge 1}}^{\ell^1} F_\alpha^a \widehat{\otimes}_\pi F_\beta^b \qquad \text{(or its image under } f_{K_s}^{\alpha,\beta}\text{)}.$$
+</li>
+<li><b>Combined Module ($\{C_s, K_s\}$):</b> $\mathbf{F}^{\{C_s, K_s\}} \coloneqq \mathbf{F}^{C_s} \oplus_1 \mathbf{F}^{K_s}$.</li>
+</ol>
+</div>
+
+<div class="def-box" style="font-size:0.6em;">
+<div class="box-title">Definition 3.6: Factual Valency vs. Pseudovalency (SM p. 75)</div>
+If an $r$-ary Syntrixfunktor receives an input tuple with $n$ identical arguments ($1 < n \le r$), $r$ is its nominal <b>Pseudovalenz</b> and its reduced <b>factual valency</b> is $\operatorname{Val}_{\mathrm{fact}} \coloneqq \mathbf{r - n + 1}$, counting effective arity after identifying the repeated block.
+</div>
+
+</div>
+<div>
+
+<div class="prop-box" style="margin-bottom:6px; font-size:0.6em;">
+<div class="box-title">Proposition 3.7: Operadic Algebra Lifts for $C_s$ and $K_s$</div>
+Let $\mathbf{F}^a, \mathbf{F}^b$ be contractive $\mathcal{O}_{\mathrm{syn}}$-algebras with evaluations $\theta^a, \theta^b$.
+<ol>
+<li><b>Block-Diagonal Lift ($C_s$):</b> $\mathbf{F}^{C_s} = \{F_\gamma^a \oplus_1 F_\gamma^b\}$ inherits a contractive $\mathcal{O}_{\mathrm{syn}}$-algebra structure on $u_i = (x_i, y_i)$ by $\theta_{\vec{\gamma};\gamma}^{C_s}(f \otimes u_1 \otimes \dots \otimes u_m) \coloneqq (\theta^a(f \otimes \vec{x}), \theta^b(f \otimes \vec{y}))$, vanishing on mixed cross-terms.</li>
+<li><b>Tensor Diagonal Lift ($K_s$):</b> Equipped with a contractive, coassociative colored operadic diagonal $\Delta_{\vec{\gamma};\gamma} \colon \mathcal{O}_{\mathrm{syn}}(\vec{\gamma};\gamma) \to \bigoplus^{\ell^1} \mathcal{O}_{\mathrm{syn}}(\vec{\alpha};\alpha) \widehat{\otimes}_\pi \mathcal{O}_{\mathrm{syn}}(\vec{\beta};\beta)$, $\mathbf{F}^{K_s} = \mathbf{F}^a \widehat{\otimes}_\pi \mathbf{F}^b$ inherits a contractive $\mathcal{O}_{\mathrm{syn}}$-algebra structure:
+$$\theta_{\vec{\gamma};\gamma}^{K_s} \;\coloneqq\; (\theta^a \widehat{\otimes}_\pi \theta^b) \circ \tau_m \circ (\Delta_{\vec{\gamma};\gamma} \widehat{\otimes}_\pi \operatorname{id}).$$
+</li>
+</ol>
+</div>
+
+<div class="proof-box fragment fade-up" style="margin-bottom:6px; font-size:0.57em;">
+<div class="proof-title">Proof of Proposition 3.7 (Contractivity & Operadic Associativity)</div>
+<ol>
+<li><b>Step 1 ($\ell^1$ Block-Diagonal Bound):</b> For $u_i = (x_i, y_i)$, $\|\theta^{C_s}(f \otimes \vec{u})\|_1 \le \|f\|\prod_{i=1}^m \|x_i\| + \|f\|\prod_{i=1}^m \|y_i\| \le \|f\|\prod_{i=1}^m (\|x_i\| + \|y_i\|) = \|f\|\prod_{i=1}^m \|u_i\|_1$. Associativity holds componentwise since cross-terms vanish.</li>
+<li><b>Step 2 (Projective Cross-Norm & Coassociativity):</b> On $\mathbf{F}^a \widehat{\otimes}_\pi \mathbf{F}^b$, $\|u \widehat{\otimes}_\pi v\|_\pi = \|u\|\|v\|$. Since $\|\Delta\|_{\mathrm{op}} \le 1$, $\|\tau_m\|_{\mathrm{op}} = 1$, and $\|\theta^a\|_{\mathrm{op}}, \|\theta^b\|_{\mathrm{op}} \le 1$, $\theta^{K_s}$ is a linear contraction. Operadic associativity follows from coassociativity of $\Delta$ (Yau 2016). $\blacksquare$</li>
+</ol>
+</div>
+
+<div class="interactive-panel">
+<div class="panel-title">Interactive Konflektorknoten Binding & Factual Valency Lab</div>
+<div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-size:0.6em; margin-bottom:4px;">
+<span style="color:#20B2AA;">Affinity $\chi$:</span>
+<input type="range" id="kf-chi" min="0" max="1" step="0.05" value="0.75" oninput="updateKonflektorLab()" style="width:65px;">
+<span style="color:#FFA500;">Threshold $\theta$:</span>
+<input type="range" id="kf-th" min="0" max="1" step="0.05" value="0.50" oninput="updateKonflektorLab()" style="width:65px;">
+<span style="color:#4169E1;">Pseudovalenz $r$:</span>
+<input type="range" id="kf-r" min="2" max="10" step="1" value="6" oninput="updateKonflektorLab()" style="width:60px;">
+<span id="kf-r-val" style="font-family:monospace; color:#FFD700;">6</span>
+<span style="color:#a855f7;">Identical $n$:</span>
+<input type="range" id="kf-n" min="1" max="6" step="1" value="3" oninput="updateKonflektorLab()" style="width:60px;">
+<span id="kf-n-val" style="font-family:monospace; color:#FFD700;">3</span>
+</div>
+<div id="kf-readout" class="formula-highlight" style="font-size:0.59em; text-align:left; padding:4px 8px;"></div>
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.3.1–3.3.2 Stratum B: Determinacy Theorem & The 15 Corporate Classes
+
+<div style="margin-bottom:6px;">
+<span class="tag-b">THEOREM 3.9: EINDEUTIGKEITSSATZ PROOF</span>
+<span class="tag-b">PROPOSITIONS 3.11–3.12: 4D TESSERACT PARTITION (9 MIXED vs. 6 PURE)</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="def-box" style="margin-bottom:5px; font-size:0.59em;">
+<div class="box-title">Definition 3.8 & Theorem 3.9: Corporate Specification $\Sigma_r$ & Determinacy</div>
+A <b>Corporate Specification Datum</b> $\Sigma_r = (r, \Sigma_m, \Sigma_s, \Phi, \Gamma, \mathsf{Comp})$ consists of a rule subset $r \subseteq \mathsf{Met} \sqcup \mathsf{Synk}$ ($\mathsf{Met} = \{K_m, C_m\}$, $\mathsf{Synk} = \{K_s, C_s\}$), span data $\Sigma_m = (R_\phi, \phi_a, \phi_b)$, module lift data $\Sigma_s = (\Phi, \theta^c)$, context boundary $\Gamma = (U_c, \iota_c)$, and compatibility $\mathsf{Comp}$.
+<ul>
+<li><b>Thm. 3.9(1) Carrier Uniqueness:</b> $F_0^c$ is uniquely determined up to unique isometric isomorphism in $\mathbf{FinBan}_{\le 1}$ by the universal property of $P_a \oplus_1 P_b$ ($C_m$) or $P_a \boxplus_\phi P_b$ ($K_m$).</li>
+<li><b>Thm. 3.9(2) Algebra Determinacy:</b> $\mathbf{Kor}_{r,\Sigma_r}(\mathcal{S}_a, \mathcal{S}_b) = \mathcal{S}_c = (U_c, \mathbf{F}_c, \theta_c, \iota_c) \in \mathbf{Syn}$ is uniquely determined up to specified isomorphism iff $r$ is <b>Mixed</b> ($r \cap \mathsf{Met} \ne \emptyset \;\wedge\; r \cap \mathsf{Synk} \ne \emptyset$).</li>
+</ul>
+</div>
+
+<div class="proof-box fragment fade-up" style="margin-bottom:5px; font-size:0.57em;">
+<div class="proof-title">Proofs of Theorem 3.9, Proposition 3.11 & Proposition 3.12</div>
+<ul>
+<li><b>Proof of Thm. 3.9:</b> Universal colimits in $\mathbf{FinBan}_{\le 1}$ fix $F_0^c$ up to unique isometric isomorphism. Under $\Sigma_r$, Prop. 3.7 fixes $\mathbf{F}_c$ and $\theta_c$; any two colimit realizations induce a unique commuting isomorphism in $\mathbf{Syn}$.</li>
+<li><b>Proof of Prop. 3.11 (15-Class Partition):</b> Of the $2^4 - 1 = 15$ non-empty subsets $r$: for $\kappa=4$, $\binom{4}{4}=1$ Mixed; for $\kappa=3$, $\binom{4}{3}=4$ Mixed (by Pigeonhole Principle across 2-element strata); for $\kappa=2$, $\binom{4}{2}=6$ splits into $2$ Pure ($\{K_m,C_m\}, \{K_s,C_s\}$) and $6-2=4$ Mixed cross-pairs; for $\kappa=1$, all $\binom{4}{1}=4$ singletons are Pure. Total: $1+4+4+0 = \mathbf{9\text{ Mixed}}$ and $0+0+2+4 = \mathbf{6\text{ Pure}}$. $\blacksquare$</li>
+</ul>
+</div>
+
+<table class="syn-table" style="font-size:0.55em;">
+<thead>
+<tr><th>Rank $\kappa = |r|$</th><th>Total $\binom{4}{\kappa}$</th><th>Mixed (Determinate)</th><th>Pure (Underdetermined)</th><th>Rule Content</th></tr>
+</thead>
+<tbody>
+<tr><td>$\kappa = 4$</td><td>1</td><td><b>1</b></td><td>0</td><td>Full Matrix $\{K_s, C_s, K_m, C_m\}$</td></tr>
+<tr><td>$\kappa = 3$</td><td>4</td><td><b>4</b></td><td>0</td><td>4 Triads (2 Met + 1 Synk or 1 Met + 2 Synk)</td></tr>
+<tr><td>$\kappa = 2$</td><td>6</td><td><b>4</b></td><td><b>2</b></td><td>4 Cross-Pairs (Mixed) / 2 Row Pairs ($\{K_m,C_m\}, \{K_s,C_s\}$)</td></tr>
+<tr><td>$\kappa = 1$</td><td>4</td><td>0</td><td><b>4</b></td><td>4 Singletons ($\{K_m\}, \{C_m\}, \{K_s\}, \{C_s\}$)</td></tr>
+<tr style="border-top:2px solid #FFD700;"><td><b>Total</b></td><td><b>15</b></td><td><b style="color:#20B2AA;">9 Mixed</b></td><td><b style="color:#ff6b81;">6 Pure</b></td><td><b>Exact Validation of Heim's Eindeutigkeitssatz</b></td></tr>
+</tbody>
+</table>
+
+</div>
+<div>
+
+<div class="interactive-panel" style="margin-bottom:6px;">
+<div class="panel-title">Interactive 2×2 Korporator Matrix & 4D Tesseract Lattice Inspector</div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:5px;">
+<button id="btn-ks" class="syn-btn" onclick="toggleKorRule('ks')" style="background:#20B2AA; color:#000; font-weight:bold; font-size:0.65em;">✓ K_s (Synk. Coup)</button>
+<button id="btn-cs" class="syn-btn" onclick="toggleKorRule('cs')" style="background:#1e293b; color:#FFD700; font-size:0.65em;">✗ C_s (Synk. Comp)</button>
+<button id="btn-km" class="syn-btn" onclick="toggleKorRule('km')" style="background:#FFA500; color:#000; font-weight:bold; font-size:0.65em;">✓ K_m (Met. Push)</button>
+<button id="btn-cm" class="syn-btn" onclick="toggleKorRule('cm')" style="background:#1e293b; color:#FFD700; font-size:0.65em;">✗ C_m (Met. Coprod)</button>
+</div>
+<svg id="tess-svg" width="100%" height="125" viewBox="0 0 200 135" style="background:#080c14; border:1px solid #1e293b; border-radius:6px; margin-bottom:4px;"></svg>
+<div id="kor-matrix-status" class="formula-highlight" style="font-size:0.59em; text-align:left; padding:4px 8px;"></div>
+</div>
+
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act7_Tesseract_15_Classes.mp4" style="max-height:170px; min-width:0;"></video>
+<div class="video-label">Act VII: 4D Tesseract Projection of the 15 Corporate Classes</div>
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.3.3–3.3.4 Elementary Structures & Homogeneous Decomposition
+
+<div style="margin-bottom:6px;">
+<span class="tag-c">HYPOTHESES 3.14 & 3.16: PYRAMIDAL BASIS & COMPLEXITY μ</span>
+<span class="tag-b">THEOREMS 3.17 & 3.19: CORPORATE CHAIN & POPULATION BALANCE</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="def-box" style="margin-bottom:5px; font-size:0.59em;">
+<div class="box-title">Def. 3.13, Assumption 3.14 & Prop. 3.15: The Four Elementary Structures</div>
+Imported from Ch. 2 on carrier $V \cong \mathbb{R}^n$ with basis $B$:
+<ol>
+<li>$\mathcal{S}_{(1)}$ (<b>Heterometral Symmetric</b>): $\mathsf{Sel}_{\mathrm{het,sym}}^{(m)}(V,B)$, $\dim = \binom{n}{m}$.</li>
+<li>$\mathcal{S}_{(2)}$ (<b>Heterometral Asymmetric</b>): $V^{\underline{\otimes} m}(B)$, $\dim = \frac{n!}{(n-m)!}$.</li>
+<li>$\mathcal{S}_{(3)}$ (<b>Homometral Symmetric</b>): $\operatorname{Sym}^m(V)$, $\dim = \binom{n+m-1}{m}$.</li>
+<li>$\mathcal{S}_{(4)}$ (<b>Homometral Asymmetric</b>): $V^{\otimes m}$, $\dim = n^m$.</li>
+</ol>
+<b>Assumption 3.14 & Prop. 3.15 (Stratum C):</b> Under $\mathcal{O}_{\mathrm{pyr}} = \langle E_{(1)}, E_{(2)}, E_{(3)}, E_{(4)} \rangle$, every finite pyramidal syntrix $\mathcal{S} \in \mathbf{Syn}_{\mathrm{pyr}}$ lies in $\operatorname{Colim}\langle \mathcal{S}_{(1)}, \mathcal{S}_{(2)}, \mathcal{S}_{(3)}, \mathcal{S}_{(4)} \rangle_{\mathbf{Kor}}$.
+</div>
+
+<div class="thm-box" style="margin-bottom:5px; font-size:0.59em;">
+<div class="box-title">Assumption 3.16, Thm. 3.17, Prop. 3.18 & Thm. 3.19: Homogeneous Spaltbarkeit</div>
+<ul>
+<li><b>Assumption 3.16 (Complexity Functional $\mu$):</b> Well-founded $\mu \colon \operatorname{Obj}(\mathbf{Syn}_{\mathrm{hom}}) \to \mathbb{N}$ such that synkolative contraction $D_s$ satisfies $\mu(D_s(\mathcal{S})) < \mu(\mathcal{S})$ for $\mathcal{S} \not\cong 0_{\mathbf{Syn}}$, $\mu(\mathcal{S}) = 0 \iff \mathcal{S} \cong 0_{\mathbf{Syn}}$, and $\mathcal{S} \cong \mathbf{Kor}_{r_k,\Sigma_k}(D_s(\mathcal{S}), \mathcal{P}_k)$ with $\mathcal{P}_k \in \mathbf{Syn}_{\mathrm{pyr}}$.</li>
+<li><b>Thm. 3.17 (Conditional Corporate Decomposition):</b> Every $\mathcal{S} \in \mathbf{Syn}_{\mathrm{hom}}$ decomposes in $L \le \mu(\mathcal{S})$ steps into an iterated pyramidal corporate chain:
+$$\mathcal{S} \;\cong\; \mathbf{Kor}_{r_{L-1}}\!\Bigl(\dots\mathbf{Kor}_{r_2}\!\bigl(\mathbf{Kor}_{r_1}(\mathcal{S}_1, \mathcal{S}_2), \mathcal{S}_3\bigr)\dots, \mathcal{S}_L\Bigr), \quad \mathcal{S}_k \in \mathbf{Syn}_{\mathrm{pyr}}.$$
+</li>
+<li><b>Prop. 3.18 & Thm. 3.19 (Enthomogenisierende Dekomposition & Additive Population Balance, SM pp. 53–54):</b> Removing the shared first-syndrome population $\mu$ from a homogeneous level-$n$ syndrome of population $n_H$ assembled from $p$ pyramidal syntrices under purely compositive operators yields:
+$$n_H - \mu \;=\; \sum_{j=1}^p n_j \qquad (\text{with residual pyramidal population starting at } \gamma = 2).$$
+</li>
+</ul>
+</div>
+
+<div class="proof-box fragment fade-up" style="font-size:0.57em;">
+<div class="proof-title">Proof of Theorem 3.17 (Well-Founded Induction on $\mu(\mathcal{S}) \in \mathbb{N}$)</div>
+Since $\mu(D_s(\mathcal{S})) < \mu(\mathcal{S})$ strictly decreases in $\mathbb{N}$ on non-zero objects, any sequence of contractions $D_s^k(\mathcal{S})$ terminates in finitely many steps $L$ at $\mu(\mathcal{S}_0) = 0 \iff \mathcal{S}_0 \cong 0_{\mathbf{Syn}}$. Inverting each contraction step via local corporate reconstruction $\mathcal{S}^{(k)} \cong \mathbf{Kor}_{r_k}(\mathcal{S}^{(k-1)}, \mathcal{P}_k)$ and applying $0_{\mathbf{Syn}}$ neutrality (Prop. 3.2) yields the finite corporate chain. $\blacksquare$
+</div>
+
+</div>
+<div>
+
+<div class="interactive-panel" style="margin-bottom:6px;">
+<div class="panel-title">Interactive Homogeneous Decomposition & Population Balance Lab</div>
+<div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-size:0.6em; margin-bottom:4px;">
+<span style="color:#a855f7;">Contraction Step $D_s^k$:</span>
+<input type="range" id="dec-step" min="0" max="4" step="1" value="0" oninput="updateDecompLab()" style="width:65px;">
+<span id="dec-step-val" style="font-family:monospace; color:#FFD700;">k = 0</span>
+<span style="color:#4169E1;">Homog. $n_H$:</span>
+<input type="range" id="dec-nh" min="20" max="120" step="5" value="65" oninput="updateDecompLab()" style="width:65px;">
+<span id="dec-nh-val" style="font-family:monospace; color:#FFD700;">65</span>
+<span style="color:#FFA500;">1st Synd. $\mu$:</span>
+<input type="range" id="dec-mu" min="5" max="40" step="5" value="15" oninput="updateDecompLab()" style="width:65px;">
+<span id="dec-mu-val" style="font-family:monospace; color:#FFD700;">15</span>
+</div>
+<div id="dec-chain-cards" style="display:flex; gap:4px; margin-bottom:4px;"></div>
+<div id="dec-readout" class="formula-highlight" style="font-size:0.59em; text-align:left; padding:4px 8px;"></div>
+</div>
+
+<div class="video-grid-2">
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Act6_Sec_331_3level_Determinacy.mp4" style="max-height:165px; min-width:0;"></video>
+<div class="video-label">Act VI: 3-Level Determinacy Architecture (§3.3.1)</div>
+</div>
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act8_Homogeneous_Decomp.mp4" style="max-height:165px; min-width:0;"></video>
+<div class="video-label">Act VIII: Iterated Corporate Chain Decomposition</div>
+</div>
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.3.5 Syntropod Architectonics, Conflexivity Trees & Pseudoexzenter Fan-Out
+
+<div style="margin-bottom:6px;">
+<span class="tag-b">DEFINITIONS 3.20–3.23: SYNTROPODEN & CONFINDEX (ε + 1)</span>
+<span class="tag-b">THEOREM 3.22: PSEUDOEXZENTER FAN-OUT ½N(N+1)</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="def-box" style="margin-bottom:5px; font-size:0.59em;">
+<div class="box-title">Definitions 3.20–3.21 & 3.23: Syntropoden, Interaction Trees & Conflexivity Index</div>
+<ul>
+<li><b>Def. 3.20 (Graded Truncation Functor $\tau_{\le k}$):</b> For the truncated suboperad $\mathcal{O}_{\le k} \hookrightarrow \mathcal{O}_{\mathrm{syn}}$, $\tau_{\le k}(\mathcal{S}) \coloneqq (U, (F_0, \dots, F_k, \{0\}, \dots), \theta|_{\le k}, \iota)$. The $i$-th <b>Syntropode</b> of length $k_i - 1$ is $\operatorname{Syntropode}_{k_i-1}(\mathcal{S}_i) \coloneqq \tau_{\le k_i-1}(\mathcal{S}_i)$.</li>
+<li><b>Def. 3.21 (Decorated Corporate Interaction Tree):</b> A finite directed tree $G_{\mathcal{S}} = (V, E_C \sqcup E_K, \Sigma)$ on $N = |V|$ Syntropod vertices with $|E_C| + |E_K| = N - 1$, where $E_C$ are Konzenter edges ($K_m=0, C_m \ne 0$) and $E_K$ are Exzenter edges ($K_m \ne 0$).</li>
+<li><b>Def. 3.23 (Presentation Conflexivity Index):</b> Let $\varepsilon \coloneqq |E_K|$. Deleting the $\varepsilon$ Exzenter edges splits the tree $G_{\mathcal{S}}$ into a Concentric Forest $(V, E_C)$ of $k(V, E_C)$ connected components:
+$$\operatorname{ConfIndex}_{\mathrm{pres}}(G_{\mathcal{S}}) \;\coloneqq\; k(V, E_C) \;=\; |E_K| + 1 \;=\; \mathbf{\varepsilon + 1} \qquad (\text{$(\varepsilon+1)$-gliedrig konflexiv}).$$
+</li>
+</ul>
+</div>
+
+<div class="thm-box" style="margin-bottom:5px; font-size:0.59em;">
+<div class="box-title">Theorem 3.22 & Proposition 3.24: Pseudoexzenter Fan-Out & Tree Colimit</div>
+<ul>
+<li><b>Thm. 3.22 (Pseudoexcentric Branch Fan-Out, SM pp. 57, 61):</b> A corporate chain connecting $N \ge 2$ distinct syntrices via a Pseudoexzenter fans out into $N$ pure single-metrophor branches and $\binom{N}{2}$ mixed pairwise branches:
+$$N_{\mathrm{branches}} \;=\; N + \binom{N}{2} \;=\; \mathbf{\frac{1}{2}N(N+1)}.$$
+For $N=2$, $N_{\mathrm{branches}} = 3$; for $N=6$, $N_{\mathrm{branches}} = \frac{1}{2}(6)(7) = \mathbf{21}$ (matching the 21 symmetric potentials of the 36-component Hermetry matrix).</li>
+<li><b>Prop. 3.24 (Tree Colimit Presentation):</b> Because $G_{\mathcal{S}}$ is a finite DAG and $\mathbf{Ban}_{\le 1}$ has all finite coproducts and pushouts, $\mathbf{y}\widetilde{\mathbf{c}} \cong \varinjlim_{\mathsf{Tree}_{\mathbf{Kor}}(G_{\mathcal{S}})} D$ exists unconditionally in $\mathbf{Syn}$.</li>
+</ul>
+</div>
+
+<div class="remark-box fragment blur-in" style="font-size:0.58em;">
+<div class="remark-title">Remark: Worked Example — Conflexivity Index on a 3-Syntropod Network</div>
+For $N=3$ Syntropoden linked by $\mathbf{Kor}_1 \in E_K$ (Exzenter between $\mathcal{S}_1, \mathcal{S}_2$) and $\mathbf{Kor}_2 \in E_C$ (Konzenter between $\mathcal{S}_{12}, \mathcal{S}_3$), we have $\varepsilon = |E_K| = 1$ and $\operatorname{ConfIndex}_{\mathrm{pres}}(G_{\mathcal{S}}) = 1 + 1 = \mathbf{2}$ (<i>2-gliedrig konflexiv</i>).
+</div>
+
+</div>
+<div>
+
+<div class="interactive-panel" style="margin-bottom:6px;">
+<div class="panel-title">Interactive Syntropod Tree, Forest Surgery & Pseudoexzenter Lab</div>
+<div style="display:flex; align-items:center; gap:5px; flex-wrap:wrap; font-size:0.59em; margin-bottom:4px;">
+<button class="syn-btn" onclick="toggleTreeEdge(0)" style="padding:2px 6px;">Toggle Kor₁</button>
+<button class="syn-btn" onclick="toggleTreeEdge(1)" style="padding:2px 6px;">Toggle Kor₂</button>
+<button class="syn-btn" onclick="toggleTreeEdge(2)" style="padding:2px 6px;">Toggle Apex Kor₃</button>
+<button class="syn-btn" onclick="toggleForestSurgery()" style="padding:2px 6px; border-color:#20B2AA;">✂ Forest Surgery (Delete E_K)</button>
+<span style="color:#FFD700;">Fan-Out $N$:</span>
+<input type="range" id="fan-n" min="2" max="12" step="1" value="6" oninput="renderSyntropodTree()" style="width:55px;">
+<span id="fan-n-val" style="font-family:monospace; color:#FFD700;">6</span>
+</div>
+<svg width="100%" height="115" viewBox="0 0 360 115" style="background:#080c14; border:1px solid #1e293b; border-radius:6px; margin-bottom:4px;">
+<line id="te-1a" x1="55" y1="22" x2="105" y2="55" stroke="#FFA500" stroke-width="2"/>
+<line id="te-1b" x1="145" y1="22" x2="105" y2="55" stroke="#FFA500" stroke-width="2"/>
+<line id="te-2a" x1="215" y1="22" x2="260" y2="55" stroke="#4169E1" stroke-width="2"/>
+<line id="te-2b" x1="305" y1="22" x2="260" y2="55" stroke="#4169E1" stroke-width="2"/>
+<line id="te-3a" x1="105" y1="65" x2="180" y2="95" stroke="#FFA500" stroke-width="2.2"/>
+<line id="te-3b" x1="260" y1="65" x2="180" y2="95" stroke="#FFA500" stroke-width="2.2"/>
+<rect x="28" y="8" width="54" height="16" rx="3" fill="#1e293b" stroke="#94a3b8"/><text x="55" y="19" fill="#e2e8f0" font-size="8" text-anchor="middle">S₁ (τ_{≤k₁-1})</text>
+<rect x="118" y="8" width="54" height="16" rx="3" fill="#1e293b" stroke="#94a3b8"/><text x="145" y="19" fill="#e2e8f0" font-size="8" text-anchor="middle">S₂ (τ_{≤k₂-1})</text>
+<rect x="188" y="8" width="54" height="16" rx="3" fill="#1e293b" stroke="#94a3b8"/><text x="215" y="19" fill="#e2e8f0" font-size="8" text-anchor="middle">S₃ (τ_{≤k₃-1})</text>
+<rect x="278" y="8" width="54" height="16" rx="3" fill="#1e293b" stroke="#94a3b8"/><text x="305" y="19" fill="#e2e8f0" font-size="8" text-anchor="middle">S₄ (τ_{≤k₄-1})</text>
+<rect id="nd-kor1" x="62" y="48" width="86" height="18" rx="4" fill="#2d1a04" stroke="#FFA500" stroke-width="1.5"/>
+<text id="tx-kor1" x="105" y="60" fill="#FFA500" font-size="8" font-weight="bold" text-anchor="middle">Kor₁: Exzenter (K_m)</text>
+<rect id="nd-kor2" x="217" y="48" width="86" height="18" rx="4" fill="#0f1b3d" stroke="#4169E1" stroke-width="1.5"/>
+<text id="tx-kor2" x="260" y="60" fill="#82aaff" font-size="8" font-weight="bold" text-anchor="middle">Kor₂: Konzenter (C_m)</text>
+<rect id="nd-kor3" x="125" y="88" width="110" height="20" rx="4" fill="#2d1a04" stroke="#FFA500" stroke-width="1.8"/>
+<text id="tx-kor3" x="180" y="101" fill="#FFA500" font-size="8.5" font-weight="bold" text-anchor="middle">Apex Kor₃: Exzenter (K_m)</text>
+</svg>
+<div id="tree-readout" class="formula-highlight" style="font-size:0.58em; text-align:left; padding:4px 8px;"></div>
+</div>
+
+<div class="video-grid-2">
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Act9_Sec_335_4syntropod_Colimit.mp4" style="max-height:150px; min-width:0;"></video>
+<div class="video-label">Act IX: 4-Syntropod Colimit Network (§3.3.5)</div>
+</div>
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Act10_Sec_335_Pseudoexzenter_21branch.mp4" style="max-height:150px; min-width:0;"></video>
+<div class="video-label">Act X: Pseudoexzenter 21-Branch Fan-Out & ConfIndex = ε + 1</div>
+</div>
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.3.6 Double Category $\mathbb{K}\mathbf{or}(\mathbf{Syn})$ & Mayer–Vietoris Emergence
+
+<div style="margin-bottom:6px;">
+<span class="tag-a">DEFINITION 3.25: DOUBLE CATEGORY 𝕂or(Syn)</span>
+<span class="tag-b">THEOREM 3.26: MAYER–VIETORIS LONG EXACT SEQUENCE & CARNAP 3.2</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="def-box" style="margin-bottom:5px; font-size:0.59em;">
+<div class="box-title">Definition 3.25: Symmetric Monoidal Double Category $\mathbb{K}\mathbf{or}(\mathbf{Syn})$</div>
+<ul>
+<li><b>0-Cells (Objects):</b> Syntrix algebras $\mathcal{S}_a = (U_a, \mathbf{F}^a, \theta^a, \iota_a) \in \operatorname{Obj}(\mathbf{Syn})$.</li>
+<li><b>Vertical 1-Morphisms:</b> Contractive Syntrix algebra homomorphisms $\Phi \colon \mathcal{S}_a \to \mathcal{S}'_a$.</li>
+<li><b>Horizontal 1-Morphisms (Corporate Spans):</b> Tuples $\mathfrak{K} = (\mathcal{S}_\phi, \phi_a, \phi_b, \Sigma_r) \colon \mathcal{S}_a \nrightarrow \mathcal{S}_b$ with carrier span $P_a \xleftarrow{\phi_a} R_\phi \xrightarrow{\phi_b} P_b$, composed horizontally via fiber-product pullback $R_{\phi_1} \times_{P_b} R_{\phi_2}$ in $\mathbf{FinBan}_{\le 1}$.</li>
+<li><b>2-Cells & Monoidal Product:</b> Commutative squares intertwining pushouts $P_a \boxplus_\phi P_b$, with Konzenter $\ell^1$-coproduct $\oplus_1$ as symmetric monoidal product.</li>
+</ul>
+</div>
+
+<div class="thm-box" style="margin-bottom:5px; font-size:0.59em;">
+<div class="box-title">Theorem 3.26: Syntrometric Mayer–Vietoris Long Exact Sequence</div>
+Let $\mathcal{S}_c = \mathbf{Kor}_{\{K_m, C_s\}}(\mathcal{S}_a, \mathcal{S}_b)$ be an Exzenter pushout of differential graded Syntrix chain complexes amalgamated along a non-degenerate Konflektorknoten subcomplex $C_\bullet(\mathcal{S}_\phi)$ ($\ker \phi_a \cap \ker \phi_b = \{0\}$). The short exact sequence $0 \to C_\bullet(\mathcal{S}_\phi) \xrightarrow{\delta_\phi} C_\bullet(\mathcal{S}_a) \oplus_1 C_\bullet(\mathcal{S}_b) \xrightarrow{\pi_{\boxplus}} C_\bullet(\mathcal{S}_c) \to 0$ induces:
+$$\cdots \longrightarrow H_{\gamma+1}(\mathcal{S}_a) \oplus H_{\gamma+1}(\mathcal{S}_b) \xlongrightarrow{\;\pi_*\;} H_{\gamma+1}(\mathcal{S}_c) \xlongrightarrow{\;\partial_*\;} H_\gamma(\mathcal{S}_\phi) \xlongrightarrow{\;\delta_{\phi *}\;} H_\gamma(\mathcal{S}_a) \oplus H_\gamma(\mathcal{S}_b) \longrightarrow \cdots$$
+<b>Homological Emergence Criterion:</b> Whenever $\ker(\delta_{\phi *}) \ne \{0\}$, $\partial_* \ne 0$ generates <b>emergent homology classes</b> $[z] \in H_{\gamma+1}(\mathcal{S}_c) \setminus \operatorname{Im}(\pi_*)$ absent from $\mathcal{S}_a$ and $\mathcal{S}_b$ in isolation.
+</div>
+
+<div class="proof-box fragment fade-up" style="margin-bottom:5px; font-size:0.56em;">
+<div class="proof-title">Proof of Theorem 3.26 & Remark: A Two-Edge Pushout Creates a Cycle</div>
+<b>Proof:</b> Theorem 3.4 gives levelwise exactness at every grade $\gamma$. Since $\phi_a, \phi_b$ commute with $d$, the Snake Lemma yields the long exact homology sequence with connecting map $\partial_*([z]) = [\delta_\phi^{-1}(d_a x \oplus (-d_b y))]$ and $\operatorname{Im}(\partial_*) = \ker(\delta_{\phi *}) \cong H_{\gamma+1}(\mathcal{S}_c)/\operatorname{Im}(\pi_*)$. $\blacksquare$<br>
+<b>Remark (Two-Edge Cycle):</b> Let $C_1^a = \mathbb{R}e_a$, $C_0^a = \mathbb{R}v_0 \oplus \mathbb{R}v_1$ ($de_a = v_1 - v_0$) and $C_1^b = \mathbb{R}e_b$, $C_0^b = \mathbb{R}w_0 \oplus \mathbb{R}w_1$ ($de_b = w_1 - w_0$). Each isolated complex is contractible ($H_1 = 0$). Identifying $v_i \sim w_i$ across $R_\phi = \mathbb{R}r_0 \oplus \mathbb{R}r_1$ creates the cycle $e_a - e_b \in H_1(\mathcal{S}_c) \cong \mathbb{R}$ mapping via $\partial_*$ to $[r_1 - r_0] \in \ker(\delta_{\phi *}) \subset H_0(\mathcal{S}_\phi)$!
+</div>
+
+</div>
+<div>
+
+<div class="interactive-panel" style="margin-bottom:6px;">
+<div class="panel-title">Interactive Mayer–Vietoris Homological Cycle Synthesizer (§3.3.6)</div>
+<div style="display:flex; align-items:center; gap:8px; font-size:0.62em; margin-bottom:4px;">
+<span style="color:#FFD700;">Konflektorknoten Gluing ($v_i \sim w_i$):</span>
+<input type="range" id="mv-glue" min="0" max="100" step="2" value="100" oninput="updateMayerVietoris()" style="width:140px;">
+<span id="mv-glue-val" style="font-family:monospace; color:#FFD700;">100%</span>
+</div>
+<svg width="100%" height="95" viewBox="0 0 420 130" style="background:#080c14; border:1px solid #1e293b; border-radius:6px; margin-bottom:4px;">
+<path id="mv-arc-top" d="M 90,65 Q 210,10 330,65" fill="none" stroke="#FFD700" stroke-width="3"/>
+<path id="mv-arc-bot" d="M 90,65 Q 210,120 330,65" fill="none" stroke="#FFD700" stroke-width="3"/>
+<circle id="mv-v0" cx="90" cy="65" r="7" fill="#4169E1" stroke="#fff" stroke-width="1.5"/>
+<circle id="mv-v1" cx="330" cy="65" r="7" fill="#4169E1" stroke="#fff" stroke-width="1.5"/>
+<circle id="mv-w0" cx="90" cy="65" r="5" fill="#20B2AA"/>
+<circle id="mv-w1" cx="330" cy="65" r="5" fill="#20B2AA"/>
+<text x="210" y="25" fill="#82aaff" font-size="11" font-weight="bold" text-anchor="middle">Edge e_a ∈ C₁(S_a)</text>
+<text x="210" y="115" fill="#5eead4" font-size="11" font-weight="bold" text-anchor="middle">Edge e_b ∈ C₁(S_b)</text>
+<text id="mv-cycle-txt" x="210" y="70" fill="#FFD700" font-size="11.5" font-weight="bold" text-anchor="middle">Emergent Cycle [e_a − e_b] ∈ H₁(S_c) ≅ ℝ</text>
+</svg>
+<div id="mv-readout" class="formula-highlight" style="font-size:0.59em; text-align:left; padding:4px 8px;"></div>
+</div>
+
+<div class="carnap-box fragment fade-right" style="margin-bottom:6px; font-size:0.59em;">
+<div class="carnap-title">Carnap 3.2: Humphreys's Fusion Emergence & OSR in Conflexion Fields</div>
+In Paul Humphreys's <i>How Properties Emerge</i> (1997), <b>Fusion Emergence</b> occurs when basal tokens $x_a \in P_a, y_b \in P_b$ fuse ($x_a \boxplus_\phi y_b$) so that separate constituent tokens cease to exist independently and generate novel causal powers. Theorem 3.26 makes this exact via: (1) <b>Token Absorption</b> ($p+q \to p+q-\lambda$ via $\operatorname{Im}(\delta_\phi)$) and (2) <b>Topological Novelty</b> ($\operatorname{Im}(\partial_*) \subset H_{\gamma+1}(\mathcal{S}_c)$).
+</div>
+
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Act11_Sec_336_Double_Category.mp4" style="max-height:130px; min-width:0;"></video>
+<div class="video-label">Act XI: Double Category 𝕂or(Syn) & Mayer–Vietoris Cycle Emergence</div>
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.4 Complete Reconstruction Map $\mathcal{R}$ & Carnapian Explication 3.1
+
+<div style="margin-bottom:6px;">
+<span class="tag-c">STRATUM C: COMPLETE 17-ROW RECONSTRUCTION MAP ℛ (§3.4)</span>
+<span class="tag-a">CARNAPIAN EXPLICATION 3.1</span>
+</div>
+
+<div class="interactive-panel" style="margin-bottom:8px;">
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+<div class="panel-title" style="margin:0;">Complete 17-Row Formal Heimian Reconstruction Map $\mathcal{R} \colon \mathsf{HeimVocabulary} \rightsquigarrow \mathsf{MathematicalStructures}$</div>
+<div class="tab-bar" style="margin:0;">
+<button class="tab-btn active" onclick="showGenericTab('ch3-rmap-tab', 1, 2, this)">Rows 1–9 (Matrix, Operations & Determinacy)</button>
+<button class="tab-btn" onclick="showGenericTab('ch3-rmap-tab', 2, 2, this)">Rows 10–17 (Spaltbarkeit, Trees & Conflexion)</button>
+</div>
+</div>
+
+<div id="ch3-rmap-tab-1" class="tab-pane active">
+<table class="syn-table" style="font-size:0.56em;">
+<thead>
+<tr><th>#</th><th>Heimian Concept ($\mathbf{D}$)</th><th>Mathematical Reconstruction ($\mathcal{R}$)</th><th>Epistemic Status</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><b>Syntrixkorporation</b></td><td>Corporate pairing functor $\mathbf{Kor}_{r,\Sigma} \colon \mathbf{Syn} \times \mathbf{Syn} \to \mathbf{Syn}$</td><td><span class="tag-c">Stratum C: Model (Def 3.8)</span></td></tr>
+<tr><td>2</td><td><b>Universal Korporator Matrix</b></td><td>Rule matrix $r = \begin{bmatrix} K_s & C_s \\ K_m & C_m \end{bmatrix}$ indexing $\mathbf{Kor}_{r,\Sigma}$</td><td><span class="tag-c">Stratum C: Model (Def 3.8)</span></td></tr>
+<tr><td>3</td><td><b>Metrophor-Komposition ($C_m$)</b></td><td>Categorical Contractive $\ell^1$-Coproduct $P_a \oplus_1 P_b$ in $\mathbf{FinBan}_{\le 1}$</td><td><span class="tag-a">Stratum A: Def (Def 3.4)</span></td></tr>
+<tr><td>4</td><td><b>Metrophor-Koppelung ($K_m$)</b></td><td>Coupled Span Pushout $P_a \boxplus_\phi P_b \cong P_a \sqcup_{R_\phi} P_b$</td><td><span class="tag-a">Stratum A: Def (Def 3.4)</span></td></tr>
+<tr><td>5</td><td><b>Synkolative Komposition ($C_s$)</b></td><td>Direct sum module $F_k^a \oplus_1 F_k^b$ with lifted algebra $\theta^{C_s}$</td><td><span class="tag-a">Stratum A: Def (Def 3.5)</span></td></tr>
+<tr><td>6</td><td><b>Synkolative Koppelung ($K_s$)</b></td><td>Graded tensor module with normalized coupling operator $f_{K_s}$</td><td><span class="tag-a">Stratum A: Def (Def 3.5)</span></td></tr>
+<tr><td>7</td><td><b>Eindeutigkeitssatz</b></td><td>Construction Determinacy under admissible data $\Sigma_r$</td><td><span class="tag-b">Stratum B: Thm (Thm 3.9)</span></td></tr>
+<tr><td>8</td><td><b>Korporatorklassen ($\kappa$)</b></td><td>Combinatorial partition $\sum_{\kappa=1}^4 \binom{4}{\kappa} = 15$ ($9$ Mixed / $6$ Pure)</td><td><span class="tag-b">Stratum B: Thm (Prop 3.11)</span></td></tr>
+<tr><td>9</td><td><b>Nullsyntrix ($\mathbf{ys}\widetilde{\mathbf{c}}$)</b></td><td>Zero object $0_{\mathbf{Syn}} \in \mathbf{Syn}$</td><td><span class="tag-c">Stratum C: Model (Prop 3.2)</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div id="ch3-rmap-tab-2" class="tab-pane">
+<table class="syn-table" style="font-size:0.56em;">
+<thead>
+<tr><th>#</th><th>Heimian Concept ($\mathbf{D}$)</th><th>Mathematical Reconstruction ($\mathcal{R}$)</th><th>Epistemic Status</th></tr>
+</thead>
+<tbody>
+<tr><td>10</td><td><b>Spaltungs-Kette (Eq. 11b)</b></td><td>Conditional corporate chain decomposition under complexity $\mu$</td><td><span class="tag-b">Stratum B: Thm (Thm 3.17)</span></td></tr>
+<tr><td>11</td><td><b>4 Elementarstrukturen</b></td><td>Four representation functors $\mathsf{Sel}_{\varepsilon,\rho}^{(m)}(V)$ generating $\mathbf{Syn}_{\mathrm{pyr}}$</td><td><span class="tag-c">Stratum C: Hyp (Hyp 3.14)</span></td></tr>
+<tr><td>12</td><td><b>Konzenter</b></td><td>Functorial $\ell^1$-coproduct $C_m$ modeling stratified generation</td><td><span class="tag-c">Stratum C: Model (Def 3.4)</span></td></tr>
+<tr><td>13</td><td><b>Exzenter</b></td><td>Functorial coupled pushout $K_m$ modeling Conflexionsfelder</td><td><span class="tag-c">Stratum C: Model (Def 3.4)</span></td></tr>
+<tr><td>14</td><td><b>Konflexionsfeld</b></td><td>Shared pushout interaction space $(P_a \boxplus_\phi P_b)$ in network</td><td><span class="tag-c">Stratum C: Model (Def 3.4)</span></td></tr>
+<tr><td>15</td><td><b>Syntropode</b></td><td>Truncated graded submodule $\tau_{\le k_i-1}(\mathcal{S}_i)$</td><td><span class="tag-c">Stratum C: Model (Def 3.20)</span></td></tr>
+<tr><td>16</td><td><b>Konflexivitätsgrad ($\varepsilon+1$)</b></td><td>Presentation invariant $\operatorname{ConfIndex}_{\mathrm{pres}}(G_{\mathcal{S}}) = |E_K| + 1$</td><td><span class="tag-b">Stratum B: Const (Def 3.23)</span></td></tr>
+<tr><td>17</td><td><b>Total-Konflexivsyntrix</b></td><td>Higher corporate pairing whose internal arguments are composite networks</td><td><span class="tag-c">Stratum C: Model (SM-13)</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="carnap-box fragment fade-right" style="font-size:0.6em;">
+<div class="carnap-title">Carnapian Explication 3.1: Syntrixkorporationen and the Universal Korporator Matrix</div>
+<ol>
+<li><b>1. Explicandum (Stratum D):</b> Heim's $2 \times 2$ Universal Korporator Matrix $\left\{\begin{smallmatrix} K_s & C_s \\ K_m & C_m \end{smallmatrix}\right\}$, the <i>Eindeutigkeitssatz</i> (unambiguity theorem), the 15 corporate classes, and Concentric (<i>Konzenter</i>) vs. Excentric (<i>Exzenter</i>) networks (SM, pp. 42–61).</li>
+<li><b>2. Explicatum (Stratum A/B):</b> The corporate pairing functor $\mathbf{Kor}_{r,\Sigma_r}$ on $\mathbf{Syn}$, combining carriers via $\ell^1$-coproducts $P_a \oplus_1 P_b$ ($C_m$) or span pushouts $P_a \boxplus_\phi P_b$ ($K_m$), and graded modules via block-diagonal direct sums ($C_s$) or projective tensor products ($K_s$).</li>
+<li><b>3. Exactness & Simplicity:</b> Replaces informal bracket pairings with universal colimits in $\mathbf{FinBan}_{\le 1}$ and $\operatorname{Alg}_{\mathcal{O}_{\mathrm{syn}}}$, proving $\dim(P_a \boxplus_\phi P_b) = p + q - \operatorname{rank}(\delta_\phi)$ via Rank-Nullity.</li>
+<li><b>4. Fruitfulness:</b> Partitions the $2^4 - 1 = 15$ corporate classes into $9$ determinate Mixed classes and $6$ underdetermined Pure classes (Prop. 3.11), and realizes multi-syntropod networks as colimits over decorated interaction trees $G_{\mathcal{S}}$ with conflexivity index $\varepsilon + 1$.</li>
+</ol>
+</div>
+
+---
+
+## §3.5–3.6 Sanity Checks, Chapter 3 Synthesis & Bridge to Chapter 4 {transition="zoom"}
+
+<div style="margin-bottom:6px;">
+<span class="tag-a">§3.5 PHYSICAL & EPISTEMIC SANITY CHECKS</span>
+<span class="tag-b">§3.6 DELIVERABLES, ASYMPTOTIC LIMITS & DIALECTICAL BRIDGE</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="thm-box" style="margin-bottom:6px; font-size:0.59em;">
+<div class="box-title">§3.5 Physical & Epistemic Sanity Checks (3 Exact Reductions)</div>
+<ol>
+<li><b>1. Uncoupled Limit Consistency ($\lambda = 0$):</b> When $R_\phi = \{0\}$, $\delta_\phi \equiv 0$ and the pushout collapses to the coproduct:
+$$P_a \boxplus_0 P_b \;\cong\; \frac{P_a \oplus_1 P_b}{\{0\}} \;\cong\; P_a \oplus_1 P_b \implies \dim(P_a \boxplus_0 P_b) = p + q$$
+recovering pure Konzenter aggregation as an exact uncoupled limit.</li>
+<li><b>2. Full Identification Limit ($\lambda = p = q$):</b> When $P_a \cong P_b \cong R_\phi$ with $\phi_a = \phi_b = \operatorname{id}$, $\operatorname{Im}(\delta_\phi) = \Delta^- = \{(x,-x)\}$ and:
+$$P_a \boxplus_{\mathrm{id}} P_a \;\cong\; \frac{P_a \oplus_1 P_a}{\Delta^-} \;\cong\; P_a \implies \dim = p$$
+proving that coupling identical observers collapses to identity without channel inflation.</li>
+<li><b>3. Static Tree Topology vs. Dynamic Holonomy Loops:</b> Any static corporate carrier tree of $N$ Syntropoden has $\beta_1(G_{\mathcal{S}}) = (N-1) - N + 1 = 0$, guaranteeing a unique colimit. Non-trivial holonomy ($\beta_1 \ge 1$) arises dynamically when parameterized Äondynen traverse closed Metrophoric Cycles in $\int_{\mathbf{Ctx}} \mathbf{Syn}$.</li>
+</ol>
+</div>
+
+<div class="deliverables-box fragment zoom-in" style="margin-bottom:6px; font-size:0.59em;">
+<div class="deliverables-title">Chapter 3 Deliverables: Corporate Networks</div>
+<ul>
+<li><b>Three-tier corporate algebra:</b> Carriers ($C_m, K_m$), modules ($C_s, K_s$), and operad algebras are separated into typed synthesis levels.</li>
+<li><b>Construction determinacy:</b> Specification data $\Sigma_r$ uniquely determine composite algebras and partition the 15 corporate classes into 9 Mixed and 6 Pure classes.</li>
+<li><b>Topological conflexivity:</b> Entangled networks are presented as colimits over decorated interaction trees with presentation index $\varepsilon + 1$ and Mayer–Vietoris homology $H_{\gamma+1}(\mathcal{S}_c)$.</li>
+</ul>
+</div>
+
+</div>
+<div>
+
+<table class="syn-table" style="font-size:0.55em; margin-bottom:6px;">
+<thead>
+<tr><th colspan="3" style="text-align:center; color:#FFD700;">Chapter 3: Asymptotic Limits & Cross-Disciplinary Matrix</th></tr>
+<tr><th>Regime / Domain</th><th>Mathematical Operation</th><th>Physical / Epistemic Interpretation</th></tr>
+</thead>
+<tbody>
+<tr><td><b>Uncoupled Limit ($\lambda=0$)</b></td><td>$R_\phi = \{0\} \implies \delta_\phi \equiv 0$</td><td>Pushout collapses to coproduct $P_a \oplus_1 P_b$ ($\dim = p+q$, Konzenter).</td></tr>
+<tr><td><b>Categorical & Topos Logic</b></td><td>Span pushouts $P_a \boxplus_\phi P_b$ & DAG colimits $\varinjlim G_{\mathcal{S}}$</td><td>Universal multi-object amalgamation in $\mathbf{FinBan}_{\le 1}$ and $\mathbb{K}\mathbf{or}(\mathbf{Syn})$.</td></tr>
+<tr><td><b>Physics & Geometry</b></td><td>Coupled carrier dimension $p+q-\lambda$ & $\frac{1}{2}N(N+1)$ fan-out</td><td>Bound-state channel identification ($6+6-3=9 \implies 36$ Hermetry capacity).</td></tr>
+<tr><td><b>Cognitive Science & OSR</b></td><td>Humphreys's Fusion Emergence & Carnapian overlap</td><td>Cross-modal perceptual binding ($3+3-1=5$) & intersubjective constitution.</td></tr>
+</tbody>
+</table>
+
+<div class="video-card" style="margin-bottom:6px;">
+<video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act12_Synthesis.mp4" style="max-height:155px; min-width:0;"></video>
+<div class="video-label">Act XII: Chapter 3 Grand Synthesis — Three-Level Corporate Architecture</div>
+</div>
+
+<div class="remark-box fragment blur-in" style="border-left-color:#FFD700; font-size:0.58em;">
+<div class="remark-title" style="color:#FFD700;">Syntrometric Dialectical Transition to Chapter 4 (Enyphansyntrizen)</div>
+<b>The Dynamical Obstruction:</b> Corporate colimits ($P_a \boxplus_\phi P_b$) provide static wiring, but lack an intrinsic kinetic field theory, parameter flow, or differential connection measuring interaction friction.<br>
+<b>The Functorial Ascent:</b> Chapter 4 formalizes <i>Enyphanie</i> ($E\nu$) as the non-Abelian interaction curvature 2-form $\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}} \in \Omega^2(M_U, \operatorname{ad} P_U)$ and drives continuous evolution by Lie derivation flows across principal context bundles.
+</div>
+
+</div>
+</div>

@@ -1,0 +1,4 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act3_Infinitesimal_Functors_SM30_35/87a4f507eb5a38d87d1f57b3365c23b588df60eea9e23b1044689f117cf16e44.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act3_Infinitesimal_Functors_SM30_35/32b72e41e923cc6d1e500313bbfd19e2e5da9af307a41d2549bdf609a0bdbc16.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act3_Infinitesimal_Functors_SM30_35/4e81d20935da0e7ba3160225d67d8b1280f6efea37013f314c6312af2da9be67.mp4'

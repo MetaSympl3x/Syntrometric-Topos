@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter11_scenes/480p15/partial_movie_files/Ch11_Act8_63_Channel_Hyperlattice/b1e1ba5904ebdad14a31a2ebc17bdde22a3e03af7a3eab29a2693811ecdf499d.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter11_scenes/480p15/partial_movie_files/Ch11_Act8_63_Channel_Hyperlattice/bf4488874e0d0006bc0280a742658688c99466eaae706a22de561c34274c087c.mp4'

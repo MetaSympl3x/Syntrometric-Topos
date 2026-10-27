@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act7_Palatini_Conservation/9fc841cc7b49d7925390007e7a24e538dd6c2a69bdc7776fb478fdb326f30f75.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act7_Palatini_Conservation/bd5040cbe14ce57d7fcaf322d0e1ca8d3c84cde728284128e5530c6858f0c2a9.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act7_Palatini_Conservation/265bfbf67b737cfa1327b7eb813fd3f5d113805281f0b54a944cff9ac8b58b58.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act7_Palatini_Conservation/b55c4d101c6d462b609810f9dbbf5822e91ff7b9c8ed90534726725c038dec5e.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act7_Palatini_Conservation/55ea242fd3c6b1d2c552fa243102891429c8ab4ae825cb508023ec7d87cc201f.mp4'

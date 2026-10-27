@@ -1,0 +1,9 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act9_Holoform_Crystal/9a96efb289d60c1a5ec052e6035675559fdfb5c6315c65d02fc5f69d342623ea.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act9_Holoform_Crystal/721b970d7bc2554aae158a66cadef8169b53a66fe7dfa76edf3acc8578f8ddd7.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act9_Holoform_Crystal/2b52ef08c71b28f0fdde70d1b368054f0a668348ffaedb61a43a8806eec5d256.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act9_Holoform_Crystal/acb6b253b3c7ecfab1fdd865fcabb3db0f5c1d5833ed36c3968ca6a0cf568ace.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act9_Holoform_Crystal/93cc53f5ae20fbd5f331a2f2b25f2a0c0c63487cb5d35030a750d86fe0fd99df.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act9_Holoform_Crystal/69880d1d0e972b21d4255b11b7046343dbf001a469cce23dc6ee764db2cacaf8.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act9_Holoform_Crystal/37b58e9cc3a19c8b63935a7e13e343df6d9189379c632bb037078b2e77c196a1.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act9_Holoform_Crystal/d86ced20baf95a907180a79491a652abcad4763f13cecea9ae017be6a126d832.mp4'

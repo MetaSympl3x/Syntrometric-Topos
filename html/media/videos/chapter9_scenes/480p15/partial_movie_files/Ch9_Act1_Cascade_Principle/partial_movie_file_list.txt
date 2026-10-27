@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act1_Cascade_Principle/a2ab5416e5bc4e4db8c7c8a620bf599bf4485917cbeb51e68885ab827178f98f.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act1_Cascade_Principle/c871675e1251f25a3fb3e4db02535f3b45ef1482be4f15f2e5711e3a980139d9.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act1_Cascade_Principle/1c5ffbeea52a7ef8a5e1412bc5e53751f5fd8a43e76e2d99c017b5aaa59b04a2.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act1_Cascade_Principle/7be37b211768b6e462f298f826bde2de6074e67dcfc5eaa15841e3a2cc7f8a93.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act1_Cascade_Principle/5c5a2f1d26200148ff68c952fc4ad4da349ec595fe79d221db18cfe95ca8fc38.mp4'

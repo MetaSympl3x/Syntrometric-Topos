@@ -12,12 +12,12 @@ media.mkdir(exist_ok=True)
 
 def get_missing_scenes():
     targets = []
-    for ch in range(3, 16):
-        qmd = root / f"chapter{ch}.qmd"
+    for ch in range(1, 16):
+        qmd = root / "qmd" / f"chapter{ch}.qmd"
         if not qmd.exists():
             continue
         vids = sorted(set(re.findall(r'media/([\w\-]+)\.mp4', qmd.read_text(encoding='utf-8'))))
-        scenes_file = root / f"chapter{ch}_scenes.py"
+        scenes_file = root / "scenes" / f"chapter{ch}_scenes.py"
         if not scenes_file.exists():
             continue
         classes = set(re.findall(r'^class\s+(\w+)\s*\(', scenes_file.read_text(encoding='utf-8'), re.M))
@@ -33,11 +33,12 @@ def get_missing_scenes():
     return targets
 
 def render_scene(ch, file_name, scene_name):
-    print(f"\n>>> [Ch {ch}] Rendering {scene_name} from {file_name}...", flush=True)
+    print(f"\n>>> [Ch {ch}] Rendering {scene_name} from scenes/{file_name}...", flush=True)
     cmd = [
         sys.executable, "-m", "manim",
         "-ql",
-        file_name,
+        "--media_dir", str(media),
+        str(root / "scenes" / file_name),
         scene_name
     ]
     res = subprocess.run(cmd, cwd=str(root), capture_output=True, text=True, encoding="utf-8")

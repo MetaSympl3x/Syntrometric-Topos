@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act1_Master_Axiomatic_DAG/73ea576725aada2edf22e7d6f20d70d08dee6256775d4085db153de12a345b5f.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act1_Master_Axiomatic_DAG/d8b4566d4485317815f821bc5ee22d4abdaef83eb6bf7e59c68df8f2dce2f490.mp4'

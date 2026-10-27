@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act11_Reconstruction_Sanity/7917eb835a4a7e2bcc664f717b14a018238b5ed66c1f17c82b6ed6ae1800bc1d.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act11_Reconstruction_Sanity/bce01c74b279627f437c4caa5ded17dcebd4bfc0eb043aea4a02d73a5a38d8bd.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act11_Reconstruction_Sanity/ccae9f707076c146f71afe2421644501a1ccd3d5171f89de6ad636a8076a9a34.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act11_Reconstruction_Sanity/ad39f0f4cd3d6297877e4c291ae790ece605ae55cac503e6fa22adfccc5aaa44.mp4'

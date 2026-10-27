@@ -27,7 +27,7 @@ chapters_meta = [
 
 # 1. Extract bodies of each chapterN.qmd (after YAML frontmatter) into shared/includes/chN_body.qmd
 for ch in range(1, 16):
-    p = root / f"chapter{ch}.qmd"
+    p = root / "qmd" / f"chapter{ch}.qmd"
     txt = p.read_text(encoding="utf-8")
     m = re.match(r"^---\r?\n.*?\r?\n---\r?\n", txt, flags=re.DOTALL)
     body = txt[m.end():] if m else txt
@@ -92,7 +92,7 @@ author: "Research Collective — Department of Mathematical Physics & Formal Epi
 date: "August 2026"
 format:
   revealjs:
-    theme: [dark, custom_syntrometrie.scss]
+    theme: [dark, scss/custom_syntrometrie.scss]
     navigation-mode: grid
     width: 1440
     height: 900
@@ -116,6 +116,6 @@ format:
 
 """ + "\n".join(sections)
 
-(root / "syntrometrie_all.qmd").write_text(mega_qmd, encoding="utf-8")
+(root / "qmd" / "syntrometrie_all.qmd").write_text(mega_qmd, encoding="utf-8")
 print("Wrote syntrometrie_all.qmd for all 15 chapters.")
 

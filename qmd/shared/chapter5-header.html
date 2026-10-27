@@ -1,0 +1,156 @@
+<script>
+window.MathJax = {
+  "HTML-CSS": {
+    linebreaks: { automatic: true, width: "container" }
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "container" }
+  },
+  SVG: {
+    linebreaks: { automatic: true, width: "container" }
+  },
+  tex: {
+    macros: {
+      coloneqq: "\\mathrel{:=}",
+      Coloneqq: "\\mathrel{::=}",
+      llbracket: "\\mathopen{[\\mkern-3mu[}",
+      rrbracket: "\\mathclose{]\\mkern-3mu]}",
+      longhookrightarrow: "\\lhook\\joinrel\\longrightarrow",
+      Ctx: "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+      Ban: "\\mathbf{Ban}_{\\le 1}",
+      FinBan: "\\mathbf{FinBan}_{\\le 1}",
+      Esyn: "\\mathcal{E}_{\\mathrm{syn}}",
+      Xsyn: "\\mathcal{X}_{\\mathrm{syn}}",
+      Jsyn: "J_{\\mathrm{syn}}",
+      Osyn: "\\mathcal{O}_{\\mathrm{syn}}",
+      On: "\\mathcal{O}_n",
+      Met: "\\operatorname{Met}",
+      Alg: "\\operatorname{Alg}",
+      dCSeg: "\\operatorname{dCSeg}",
+      CSeg: "\\operatorname{CSeg}",
+      Tect: "\\operatorname{Tect}",
+      HypMet: "\\operatorname{HypMet}",
+      Free: "\\operatorname{Free}",
+      Map: "\\operatorname{Map}",
+      Disc: "\\operatorname{Disc}",
+      Codisc: "\\operatorname{Codisc}",
+      RBan: "\\mathfrak{R}_{\\mathrm{Ban}}",
+      SynEN: "\\operatorname{SynEN}",
+      AbsEN: "\\operatorname{AbsEN}",
+      colim: "\\operatorname*{colim}"
+    }
+  }
+};
+</script>
+<style>
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll section {
+  font-size: clamp(14px, 1.35vw, 26px) !important;
+}
+.reveal-viewport.reveal-scroll .interactive-panel,
+.reveal-viewport.reveal-scroll .thm-box,
+.reveal-viewport.reveal-scroll .carnap-box,
+.reveal-viewport.reveal-scroll .firewall-box,
+.reveal-viewport.reveal-scroll .intuition-box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.widget-context-note {
+  font-size: 0.64em;
+  color: #cbd5e1;
+  line-height: 1.36;
+  margin: 4px 0 10px 0;
+}
+.syn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.syn-tab-btn {
+  background: #151c2c;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 0.60em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.syn-tab-btn.active, .syn-tab-btn:hover {
+  background: rgba(65, 105, 225, 0.28);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+.syn-tab-pane {
+  display: none;
+  background: rgba(10, 14, 23, 0.82);
+  border: 1px solid rgba(65, 105, 225, 0.45);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.72em;
+}
+.syn-tab-pane.active {
+  display: block;
+}
+.lean-code-card {
+  background: #0d131f;
+  border: 1.5px solid #334155;
+  border-left: 5px solid #20B2AA;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 0.54em;
+  line-height: 1.36;
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+.tier-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tier-bar {
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: 0.64em;
+  border-left: 5px solid;
+  background: rgba(255,255,255,0.04);
+}
+
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+</style>

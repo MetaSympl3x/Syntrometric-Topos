@@ -1,0 +1,985 @@
+---
+title: "Syntrometrische Maximentelezentrik"
+subtitle: "Chapter 10: Metronische Elementaroperationen — Discrete Lattice Modules, Finite-Difference Algebras, and Discrete Exterior Calculus"
+author: "Research Collective — Department of Mathematical Physics & Formal Epistemology"
+date: "August 2026"
+format:
+  revealjs:
+    theme: [dark, scss/custom_syntrometrie.scss]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    min-scale: 0.2
+    max-scale: 1.5
+    transition: fade
+    background-transition: fade
+    slide-number: c/t
+    controls: true
+    progress: true
+    hash: true
+    center: false
+    html-math-method: mathjax
+    include-in-header: shared/chapter10-header.html
+    include-after-body:
+      text: |
+        <script src="shared/chapter10-widgets.js"></script>
+---
+
+## §10.1.1: Die *Televarianzbedingung* & Das *Metron* ($\tau$) (SM-63) {.smaller transition="convex"}
+
+<div class="stratum-badge badge-d">STRATUM D: HISTORICAL EXEGESIS OF THE METRONIC CALCULUS (SM, PP. 206–211, EQ. 63) &amp; THEOREM 10.1</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.intuition-box}
+**Intuition: The Metronic Lattice as a High-Resolution Digital Screen**
+Continuous derivatives can be approximated by backward pixel differences on a lattice. A nonzero cell scale supplies a resolution limit, replacing uncontrolled continuum compression with explicit discrete data.
+:::
+
+* **The Singularity Crisis of Chapter 9:** When metric gradients become critically steep ($\|\nabla {}^2\bar{\mathbf{g}}\| \ge \tau^{-1/2}$), Christoffel connection coefficients diverge, geodesics terminate, and smooth spacetime suffers a gravitational singularity.
+* **Heim's Resolution (SM §8.1, pp. 206–211):** At Planck-scale curvature, the physical continuum fractures into a singularity-free cellular lattice governed by the **Televarianzbedingung** (SM Eq. 63, p. 206):
+$$
+x_i = N_i \alpha_i \quad \text{with} \quad \alpha_i \coloneqq \chi_i \sqrt[p]{\tau} \quad (N_i \in \mathbb{Z}) \tag{SM-63}
+$$
+* **The Metron ($\tau > 0$):** Indivisible quantum of geometric area ($\tau = \frac{\sqrt{3}}{4}\ell_P^2 \approx 1.13115 \times 10^{-70}\,\text{m}^2$), integer **Metronenziffer** $N_i \in \mathbb{Z}$, directional selector $\chi_i$, and **Metronenfunktionen** $\phi(n)$ on the **Metronische Gitter** ($\mathbb{M}_\tau^n$). Eliminating $\Delta x \to 0$ removes UV infinities identically.
+
+::: {.thm-box .fragment .fade-right}
+**Theorem 10.1 (Spin-Oriented Boundary Surface Count for a Metron Cell, SM p. 267):**
+For an elementary Metron cell in an active $p$-dimensional subspace $R_p$, Heim counts two spin orientations for each coordinate 2-plane. Thus the number of spin-oriented boundary 2-surfaces is:
+$$
+N_{\mathrm{surfaces}}(p) = 2\binom{p}{2} = p(p-1).
+$$
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Televarianzbedingung (SM-63) &amp; Spin Surface Lab (Thm. 10.1)</h4>
+  <p class="widget-context-note">
+  <b>Context (§10.1.1):</b> Adjust active subspace dimension $p \in \{1,\dots,6\}$, Metronenziffer $N_i \in \mathbb{Z}$, and selector $\chi_i$ to inspect quantized coordinates $x_i = N_i \chi_i \tau^{1/p}$ and spin-oriented boundary 2-surfaces $N_{\mathrm{surfaces}}(p) = p(p-1)$.
+  </p>
+  <div style="display:grid; grid-template-columns: 1.12fr 0.88fr; gap:10px; align-items:center;">
+  <div>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Subspace <i>p</i>:</span>
+  <input type="range" id="ch10-mc-p" min="1" max="6" step="1" value="3" oninput="ch10_updateMetronCell()">
+  <span id="ch10-mc-p-val" style="font-family:monospace; width:28px;">R_3</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#FFD700;">Index <i>N<sub>i</sub></i>:</span>
+  <input type="range" id="ch10-mc-ni" min="-5" max="5" step="1" value="2" oninput="ch10_updateMetronCell()">
+  <span id="ch10-mc-ni-val" style="font-family:monospace; width:28px;">+2</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#20B2AA;">Selector <i>χ<sub>i</sub></i>:</span>
+  <input type="range" id="ch10-mc-chi" min="0.5" max="2.0" step="0.25" value="1.0" oninput="ch10_updateMetronCell()">
+  <span id="ch10-mc-chi-val" style="font-family:monospace; width:34px;">1.00</span>
+  </div>
+  </div>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+  <svg id="ch10-mc-svg" viewBox="0 0 230 120" width="100%" height="115"></svg>
+  </div>
+  </div>
+  <div id="ch10-mc-readout" class="matrix-readout" style="margin-top:6px; font-size:0.62em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act1_Televarianz_Metron.mp4" style="max-height:190px;"></video>
+  <div class="video-caption">Manim Act I: Continuum Singularity Fracture into the Metronic Lattice M_τ^n &amp; Spin-Oriented Surfaces (SM-63, Thm. 10.1)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 1 introduces §10.1.1 (SM pp. 206–211): how the gravitational singularity crisis of Chapter 9 is resolved by the Televarianzbedingung (SM-63) quantizing coordinates in multiples of the Metron $\tau = \frac{\sqrt{3}}{4}\ell_P^2$, together with Theorem 10.1 counting $N_{\mathrm{surfaces}}(p) = p(p-1)$ spin-oriented boundary 2-surfaces.
+:::
+
+---
+
+## §10.1.2: *Metrondifferentiale* ($F\phi \equiv \nabla\phi$) & *Extremwerttheorie* {.smaller auto-animate="true"}
+
+<div class="stratum-badge badge-d">STRATUM D: FIRST &amp; HIGHER METRONDIFFERENTIALS, LEIBNIZ PRODUCT &amp; DISCRETE EXTREMA (SM, PP. 211–218, EQS. 67–68b)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**First and Higher Metrondifferentials (SM Eqs. 67–68, pp. 213–215):**
+* Because $\Delta x \to 0$ is physically forbidden, Heim replaces differential quotients with the backward **Metrondifferential** ($F\phi \equiv \nabla\phi$):
+$$
+F\phi(n) \equiv \nabla\phi(n) \coloneqq \phi(n) - \phi(n-1) \tag{SM-67}
+$$
+measuring change realized upon reaching state $n$ from its immediate historical predecessor $n-1$ (preserving causal arrow determinism).
+* Iterating $F$ yields the $k$-th binomial expansion:
+$$
+F^k\phi(n) = \sum_{\gamma=0}^k (-1)^\gamma \binom{k}{\gamma} \phi(n - \gamma) \tag{SM-68}
+$$
+:::
+
+::: {.firewall-box .fragment .fade-up}
+**Discrete Product Cross-Term (SM-68a) & *Metronische Extremwerttheorie* (SM-68b):**
+* **Product Difference (SM-68a, p. 216):** Features a non-linear discreteness signature $-Fu(n)Fv(n)$ scaling as $(\Delta x)^2 \to 0$ in the continuum limit:
+$$
+F(u(n)v(n)) = u(n)Fv(n) + v(n-1)Fu(n) = u(n)Fv(n) + v(n)Fu(n) - Fu(n)Fv(n) \tag{SM-68a}
+$$
+* **Discrete Extrema & Inflection Nodes (*Wendepunkte*, SM-68b, p. 217):** Node $n=e$ is a discrete extremum if $F\phi(e) = 0$ (or changes sign): **maximum** if $F^2\phi(e) < 0$, **minimum** if $F^2\phi(e) > 0$, and **inflection node** $w$ if:
+$$
+\nabla^2\phi(w)\cdot\nabla^2\phi(w+1) < 0 \;\lor\; \big(\nabla^2\phi(w) = 0 \;\wedge\; \nabla^2\phi(w-1)\cdot\nabla^2\phi(w+1) < 0\big)
+$$
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Discrete Osculating Curvature &amp; Extremwert Explorer (Fig. 10.1)</h4>
+  <p class="widget-context-note">
+  <b>Context (Fig. 10.1, SM-68b):</b> Slide lattice node index $n \in \{1,\dots,11\}$ to inspect local concavity ($\nabla^2\phi &lt; 0$, peak $n=4$), convexity ($\nabla^2\phi &gt; 0$, trough $n=9$), and the curvature-inversion inflection node $w=6$ ($\nabla^2\phi(6)\cdot\nabla^2\phi(7) &lt; 0$).
+  </p>
+  <div class="slider-row">
+  <span style="color:#FFD700;">Lattice Node Index <i>n</i>:</span>
+  <input type="range" id="ch10-osc-n" min="1" max="11" step="1" value="6" oninput="ch10_updateOsculatingLab()">
+  <span id="ch10-osc-n-val" style="font-family:monospace; width:48px;">n = 6</span>
+  </div>
+  <svg id="ch10-osc-svg" viewBox="0 0 420 126" style="width:100%; max-height:118px; background:#070a12; border-radius:8px; border:1px solid #334155;"></svg>
+  <div id="ch10-osc-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act2_Metrondifferential_Curvature.mp4" style="max-height:185px;"></video>
+  <div class="video-caption">Manim Act II (Fig. 10.1): Backward Difference Stencil ∇φ, Osculating Circles &amp; Inflection Node w=6 (SM-67–68b)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 2 covers §10.1.2 (SM pp. 211–218): the first backward difference (SM-67), higher binomial differences (SM-68), the discrete Leibniz product rule with cross-term (SM-68a), and discrete extremum/inflection theory (SM-68b, Figure 10.1).
+:::
+
+---
+
+## §10.1.3: Das *Metronintegral* ($\mathcal{S}\phi$) & *Hauptsatz der Metronik* {.smaller transition="zoom"}
+
+<div class="stratum-badge badge-d">STRATUM D: INDEFINITE/DEFINITE METRONINTEGRAL, DOMAIN-SPLITTING &amp; SUMMATION BY PARTS (SM, PP. 217–220, EQS. 67a–71)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**The Metronintegral ($S\phi \equiv \mathcal{S}\phi$, SM §8.1.3, pp. 217–220):**
+1. **Indefinite Metronintegral (SM Eq. 70, p. 219):** Primitive sequence $\Phi(n)$ satisfying $F\Phi(n) = \phi(n)$ with unit lattice step $Fn = 1$:
+$$
+\Phi(n) = \mathcal{S}\phi(n)\,Fn + C \iff \mathcal{S}\phi(n)\,Fn = \Phi(n) - C \tag{SM-70}
+$$
+**Boundary-Index Forms (SM p. 219):**
+$$
+\mathcal{S}_a^n \phi(\gamma)\,\Delta\gamma = \Phi(n)-\Phi(a-1), \quad \mathcal{S}_n^b \phi(\gamma)\,\Delta\gamma = \Phi(b)-\Phi(n-1), \quad \mathcal{S}_{n+1}^b \phi(\gamma)\,\Delta\gamma = \Phi(b)-\Phi(n)
+$$
+Varying the lower endpoint gives $\nabla_n \mathcal{S}_{n+1}^b \phi(\gamma)\,\Delta\gamma = -\nabla\Phi(n) = -\phi(n)$.
+2. **Definite Metronintegral (SM Eq. 67a, p. 214):** Telescoping over $[n_1, n_2]$:
+$$
+J(n_1, n_2) \coloneqq \sum_{n=n_1}^{n_2} \phi(n) \equiv \mathcal{S}_{n_1}^{n_2} \phi(n)\,\Delta n = \Phi(n_2) - \Phi(n_1 - 1) \tag{SM-67a}
+$$
+:::
+
+::: {.remark-box .fragment .fade-up}
+**Domain-Splitting Laws (SM Eq. 69, p. 218) & Summation by Parts (SM Eq. 71):**
+$$
+\mathcal{S}_{n_1}^\gamma \phi + \mathcal{S}_{\gamma+1}^{n_2} \phi = \mathcal{S}_{n_1}^{n_2} \phi, \qquad \mathcal{S}_{n_1}^{n_1+1}\phi = 0, \qquad \mathcal{S}_{n_1}^{n_1}\phi\,\Delta n = \Phi(n_1)
+$$
+$$
+\mathcal{S}_{n_1}^{n_2}\phi + \mathcal{S}_{n_2}^{n_1}\phi = \mathcal{S}_{n_1}^{n_1}\phi + \mathcal{S}_{n_2}^{n_2}\phi \tag{SM-69}
+$$
+* **Discrete Summation by Parts (SM Eq. 71):** Inverting the discrete product rule yields:
+$$
+\mathcal{S}(u\nabla v)(n) \coloneqq \sum_{j=-\infty}^n u(j)\nabla v(j) = u(n)v(n) - \lim_{j\to-\infty} u(j)v(j) - \mathcal{S}\big((E^{-1}v)\nabla u\big)(n) \tag{SM-71}
+$$
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Telescoping Staircase &amp; Domain-Splitting Lab (SM-67a, SM-69)</h4>
+  <p class="widget-context-note">
+  <b>Context (§10.1.3 &amp; Fig. 10.5):</b> Choose bounds $n_1 &lt; n_2$ and intermediate split index $\gamma \in [n_1, n_2-1]$ for $\phi(n) = 2n-1$ ($\Phi(n) = n^2$) to verify interior riser cancellation and $\mathcal{S}_{n_1}^\gamma\phi + \mathcal{S}_{\gamma+1}^{n_2}\phi = \Phi(n_2) - \Phi(n_1-1)$.
+  </p>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Lower <i>n</i><sub>1</sub>:</span>
+  <input type="range" id="ch10-st-n1" min="1" max="4" step="1" value="1" oninput="ch10_updateStaircaseLab()">
+  <span id="ch10-st-n1-val" style="font-family:monospace; width:20px;">1</span>
+  <span style="color:#FFA500;">Split <i>γ</i>:</span>
+  <input type="range" id="ch10-st-gam" min="1" max="5" step="1" value="3" oninput="ch10_updateStaircaseLab()">
+  <span id="ch10-st-gam-val" style="font-family:monospace; width:20px;">3</span>
+  <span style="color:#20B2AA;">Upper <i>n</i><sub>2</sub>:</span>
+  <input type="range" id="ch10-st-n2" min="3" max="7" step="1" value="5" oninput="ch10_updateStaircaseLab()">
+  <span id="ch10-st-n2-val" style="font-family:monospace; width:20px;">5</span>
+  </div>
+  <svg id="ch10-st-svg" viewBox="0 0 420 126" style="width:100%; max-height:115px; background:#070a12; border-radius:8px; border:1px solid #334155;"></svg>
+  <div id="ch10-st-readout" class="matrix-readout" style="margin-top:6px; font-size:0.62em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act3_Metronintegral_Staircase.mp4" style="max-height:185px;"></video>
+  <div class="video-caption">Manim Act III (Fig. 10.5): Telescoping Staircase Cancellation S_{n_1}^{n_2} φ = Φ(n_2) − Φ(n_1−1) &amp; Summation by Parts (SM-67a–71)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 3 presents §10.1.3 (SM pp. 217–220): the indefinite and definite Metronintegral (SM-70, SM-67a), the three boundary-index identities on p. 219, the domain-splitting laws (SM-69), and discrete summation by parts (SM-71).
+:::
+
+---
+
+## §10.1.4: Partielle/Totale Differentiale, Transzendente Funktionen & Wronskian {.smaller}
+
+<div class="stratum-badge badge-d">STRATUM D: MULTI-VARIABLE DIFFERENCES, EULER HOMOGENEITY, TRANSCENDENTAL DIFFS &amp; WRONSKIAN (SM, PP. 220–252, EQS. 73–82, THM. 10.2)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Multi-Variable Partial & Total Metrondifferentials (SM §8.1.4, pp. 220–231):**
+1. **Partial Difference Operator (SM Eq. 73, p. 221) & *Vertauschbarkeitssatz* (SM Eq. 73a):**
+$$
+F_k\phi(n_1,\dots,n_L) \coloneqq \phi(n_1,\dots,n_k,\dots,n_L) - \phi(n_1,\dots,n_k-1,\dots,n_L), \qquad F_k F_l\phi = F_l F_k\phi \tag{SM-73/73a}
+$$
+2. **Total Metrondifferential (SM Eq. 74, p. 222):**
+$$
+\nabla_{\mathrm{tot}}\phi(\mathbf{n}) \coloneqq \sum_{i=1}^L \nabla_i\phi(\mathbf{n}), \qquad \nabla_i n_k = \delta_{ik} \tag{SM-74}
+$$
+3. **Nearest-Neighbor Lattice Theorem (SM Eq. 74a, p. 226):**
+$$
+L\phi(\mathbf{n}) - \nabla_{\mathrm{tot}}\phi(\mathbf{n}) = \sum_{i=1}^L \phi(\mathbf{n} - \mathbf{e}_i) \iff \frac{1}{L}\sum_{i=1}^L \phi(\mathbf{n}-\mathbf{e}_i) = \phi(\mathbf{n}) - \frac{1}{L}\nabla_{\mathrm{tot}}\phi(\mathbf{n}) \tag{SM-74a}
+$$
+4. **Discrete Euler Homogeneity Identity (SM Eq. 77, p. 231):** For degree $h$ and $n=\pm 1$:
+$$
+\pm \sum_{i=1}^L n_i\nabla_i\phi(\mathbf{n}) = (-1)^{h+1}\phi(\mathbf{n})\sum_{\gamma=0}^{h-1}\binom{h}{\gamma}(\mp 1)^\gamma \quad (n=\pm 1) \tag{SM-77}
+$$
+Upper signs ($n=+1, x=-1$) yield RHS $\phi(\mathbf{n})$; lower signs ($n=-1, x=+1$) yield $(-1)^{h+1}(2^h-1)\phi(\mathbf{n})$.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+::: {.interactive-panel}
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">4-Tab Inspector: Transcendental Differences (SM-81) &amp; Discrete Wronskian (Thm. 10.2)</h4>
+
+<div class="syn-tabs">
+  <button class="syn-tab-btn active" onclick="showGenericTab('ch10-sm-pane', 1, 4, this)">1. Exp/Log &amp; Euler (SM-81)</button>
+  <button class="syn-tab-btn" onclick="showGenericTab('ch10-sm-pane', 2, 4, this)">2. Trig &amp; Hyp Diffs</button>
+  <button class="syn-tab-btn" onclick="showGenericTab('ch10-sm-pane', 3, 4, this)">3. Inverse Trig D_u</button>
+  <button class="syn-tab-btn" onclick="showGenericTab('ch10-sm-pane', 4, 4, this)">4. Discrete Wronskian (Thm 10.2)</button>
+</div>
+
+::: {#ch10-sm-pane-1 .syn-tab-pane .active}
+**1. Logarithmic, Exponential & Euler Identities (SM Eqs. 81–81a, pp. 246–249):**
+$$
+\phi\,\nabla_\phi \ln\phi = \nabla\phi, \qquad \nabla_\phi e^\phi = e^\phi\,\nabla\phi \tag{SM-81}
+$$
+$$
+e^{\mathrm{i}\phi} = \cos\phi + \mathrm{i}\sin\phi \tag{SM-81a}
+$$
+:::
+
+::: {#ch10-sm-pane-2 .syn-tab-pane}
+**2. Trigonometric & Hyperbolic Finite Differences (SM pp. 246–249):**
+$$
+\nabla_\phi\cos\phi = -\sin\phi\,\nabla\phi, \quad \nabla_\phi\sin\phi = \cos\phi\,\nabla\phi, \quad \nabla_\phi\cosh\phi = \sinh\phi\,\nabla\phi, \quad \nabla_\phi\sinh\phi = \cosh\phi\,\nabla\phi
+$$
+$$
+\nabla_\phi\tan\phi = \nabla\phi\big(\cos^2\phi + \tfrac{1}{2}\sin(2\phi)\nabla\phi\big)^{-1}, \qquad \nabla_\phi\cot\phi = -\nabla\phi\big(\sin^2\phi - \tfrac{1}{2}\sin(2\phi)\nabla\phi\big)^{-1}
+$$
+$$
+\nabla_\phi\tanh\phi = \nabla\phi\big(\cosh^2\phi - \tfrac{1}{2}\sinh(2\phi)\nabla\phi\big)^{-1}, \qquad \nabla_\phi\coth\phi = -\nabla\phi\big(\sinh^2\phi - \tfrac{1}{2}\sinh(2\phi)\nabla\phi\big)^{-1}
+$$
+:::
+
+::: {#ch10-sm-pane-3 .syn-tab-pane}
+**3. Inverse Trigonometric Selector Derivatives ($u=\phi$, $D_u \coloneqq \nabla_u/\nabla u$, SM pp. 246–249):**
+$$
+D_u\arccos u = -(1-u^2)^{-1/2}, \qquad D_u\arcsin u = (1-u^2)^{-1/2}
+$$
+$$
+D_u\arctan u = \frac{1 + u\nabla\phi}{1 + u^2}, \qquad D_u\operatorname{arccot} u = -\frac{1 - u\nabla\phi}{1 + u^2}
+$$
+:::
+
+::: {#ch10-sm-pane-4 .syn-tab-pane}
+**4. Theorem 10.2 (Discrete Wronskian Determinant & Fundamental Systems, SM Eq. 82, p. 252):**
+For an $N$-th order linear metronic selector difference equation:
+$$
+Cy(\mathbf{n}) \coloneqq \sum_{\gamma=0}^N p_\gamma(\mathbf{n})\nabla^\gamma y(\mathbf{n}) = Q(\mathbf{n}) \tag{SM-82}
+$$
+a set of $N$ solutions $y_1(\mathbf{n}),\dots,y_N(\mathbf{n})$ forms a fundamental basis iff the **discrete Wronskian determinant** never vanishes:
+$$
+D(\mathbf{n}) \coloneqq \det\!\left[\nabla^{\gamma-1} y_k(\mathbf{n})\right]_{N\times N} \ne 0 \quad \forall \mathbf{n} \in \mathbb{M}_\tau^1.
+$$
+:::
+
+:::
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act4_Partial_Euler_Wronskian.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act IV: Commuting Partial Shifts F_k F_l = F_l F_k, Euler Homogeneity (SM-77) &amp; Discrete Wronskian D(n) ≠ 0 (SM-82, Thm. 10.2)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 4 covers §10.1.4 (SM pp. 220–252): partial differences (SM-73), the Vertauschbarkeitssatz (SM-73a), total differential (SM-74), Nearest-Neighbor Lattice Theorem (SM-74a), discrete Euler homogeneity (SM-77), transcendental/trig/hyperbolic/inverse-trig selector differences (SM-81, SM-81a), and Theorem 10.2 on the discrete Wronskian determinant (SM-82).
+:::
+
+---
+
+## §10.1.5 & §10.2: Selektoren ($C_k$), Gitter-Moduln $\mathbb{M}_\tau^n$ & Shift-Algebren {.smaller transition="convex"}
+
+<div class="stratum-badge badge-a">STRATUM D/A: SELECTORS &amp; VECTOR CALCULUS (SM EQS. 78–80), SCHOLIUM 10.3 &amp; METRONIC LATTICE MANIFOLD (DEF. 10.4, FIG. 10.2)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.remark-box}
+**§10.1.5 Selectors ($C_k$), Vector Operator $\bar{\delta}$ (SM-78–80) & Conceptual Bridge:**
+* Oriented grid unit vectors $\bar{\mathbf{e}}_i$ define $\bar{\delta} \coloneqq \sum_{i=1}^n \bar{\mathbf{e}}_i\nabla_i$ (SM Eqs. 78–80, pp. 223–235):
+$$
+\bar{\delta}\phi = \operatorname{GRAD}_n\phi, \quad \operatorname{sp}(\bar{\delta}\mathbf{A}) = \operatorname{DIV}_n\mathbf{A}, \quad \bar{\delta}\wedge\mathbf{A} = \operatorname{ROT}_n\mathbf{A} \in \Omega_d^2(\mathbb{M}_\tau^n) \tag{SM-79b}
+$$
+* **Conceptual Bridge:** Like zooming in on a digital image until smooth curves resolve into pixels of area $\tau$, **Discrete Exterior Calculus (DEC)** replaces derivatives with causal backward differences while preserving exact global topological conservation laws ($\operatorname{ROT}_n\operatorname{GRAD}_n \equiv \mathbf{0}$, $\operatorname{DIV}_n\operatorname{ROT}_n \equiv 0$).
+:::
+
+::: {.scholium-box .fragment .fade-up}
+**Scholium 10.3 (Meta-Theoretic Justification: Discrete Lattice Modules):**
+Why formalize Metronic Calculus via $\nabla_i = I - E_i^{-1}$ on $\ell^\infty(\mathbb{M}_\tau^n)$?
+1. **Causal Directionality:** $\nabla\phi(n) = \phi(n) - \phi(n-1)$ measures change from historical predecessor $n-1$ to $n$.
+2. **Algebraic Telescoping:** $\nabla(\mathcal{S}\phi)(n) = \phi(n)$ without fractional boundary residuals.
+3. **DEC Topological Nilpotency:** Cochain complexes $(\Omega_d^\bullet(\mathbb{M}_\tau^n), d_\tau)$ guarantee $d_\tau^2 \equiv 0$.
+:::
+
+::: {.thm-box .fragment .fade-right}
+**Definition 10.4 (The Metronic Lattice Manifold $\mathbb{M}_\tau^n$ and Shift Operators, Fig. 10.2):**
+1. **Metronic Lattice Manifold:** Isotropic uniform cubical mesh $\mathbb{M}_\tau^n \coloneqq \bigoplus_{i=1}^n \sqrt{\tau}\,\mathbb{Z} = \{\sum_{i=1}^n n_i\sqrt{\tau}\,e_i \mid n_i \in \mathbb{Z}\} \subset \mathbb{R}^n$ with Banach algebra $(\ell^\infty(\mathbb{M}_\tau^n), \|\cdot\|_\infty)$.
+2. **Lattice Shift Operators:** Isometric automorphisms $(E_i\phi)(\mathbf{n}) \coloneqq \phi(\mathbf{n}+e_i)$ and backward shifts $E_i^{-1}$.
+3. **Backward Difference Operator:** $\nabla_i \coloneqq I - E_i^{-1} \in \mathcal{B}(\ell^\infty(\mathbb{M}_\tau^n))$ with norm bound $\|\nabla_i\|_{\mathrm{op}} \le \|I\|_{\mathrm{op}} + \|E_i^{-1}\|_{\mathrm{op}} = 2$.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive 2D Metronic Stencil &amp; Nearest-Neighbor Explorer (Def. 10.4, Fig. 10.2)</h4>
+  <p class="widget-context-note">
+  <b>Context (Def. 10.4 &amp; SM-74a):</b> Move primary node $\mathbf{n} = (n_1, n_2)$ across $\mathbb{M}_\tau^2$ to inspect backward shifts $E_1^{-1}\mathbf{n}, E_2^{-1}\mathbf{n}$, difference vectors $\nabla_1, \nabla_2$, and verify the Nearest-Neighbor Identity $2\phi(\mathbf{n}) - \nabla_{\mathrm{tot}}\phi(\mathbf{n}) = \phi(n_1-1,n_2) + \phi(n_1,n_2-1)$.
+  </p>
+  <div style="display:grid; grid-template-columns: 1.05fr 0.95fr; gap:10px; align-items:center;">
+  <div>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Coord <i>n</i><sub>1</sub>:</span>
+  <input type="range" id="ch10-sn-n1" min="1" max="4" step="1" value="2" oninput="ch10_updateStencilLab()">
+  <span id="ch10-sn-n1-val" style="font-family:monospace; width:22px;">2</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#20B2AA;">Coord <i>n</i><sub>2</sub>:</span>
+  <input type="range" id="ch10-sn-n2" min="1" max="3" step="1" value="2" oninput="ch10_updateStencilLab()">
+  <span id="ch10-sn-n2-val" style="font-family:monospace; width:22px;">2</span>
+  </div>
+  <div style="font-size:0.60em; color:#94a3b8; margin-top:4px;">
+  Operator Norm: $\|\nabla_i\|_{\mathrm{op}} \le 2$ on $\ell^\infty(\mathbb{M}_\tau^n)$
+  </div>
+  </div>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+  <svg id="ch10-sn-svg" viewBox="0 0 230 118" width="100%" height="112"></svg>
+  </div>
+  </div>
+  <div id="ch10-sn-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act5_Lattice_Module_Stencil.mp4" style="max-height:185px;"></video>
+  <div class="video-caption">Manim Act V (Fig. 10.2): 2D Metronic Stencil ∇_i = I − E_i⁻¹ on M_τ^n &amp; Nearest-Neighbor Identity (Def. 10.4, SM-74a)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 5 transitions from §10.1.5 (selectors and vector operator $\bar{\delta}$, SM-79b) and the Conceptual Bridge Remark to Stratum A (§10.2): Scholium 10.3 and Definition 10.4 defining $\mathbb{M}_\tau^n$, isometric shift automorphisms $E_i$, and bounded backward differences $\nabla_i = I - E_i^{-1}$ (Figure 10.2).
+:::
+
+---
+
+## §10.2: Discrete Exterior Calculus (DEC) & Diskreter Hodge-Stern $*_\tau$ {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM A: PRIMAL-DUAL ORIENTATION (DEF. 10.5), DEC COCHAINS &amp; HODGE LAPLACIAN (DEF. 10.6, FIG. 10.3) &amp; LEAN 4 PROOF</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Definition 10.5 (Primal-Dual Orientation and Discrete Hodge Stars):**
+Let $K$ be a regular cubical cell complex on $\mathbb{M}_\tau^n$ and $K^*$ its circumcentric Voronoi dual complex. Primal $k$-cells $\sigma_k$ and dual $(n-k)$-cells $\sigma_{n-k}^*$ satisfy $\operatorname{or}(\sigma_k)\wedge\operatorname{or}(\sigma_{n-k}^*) = (-1)^s\operatorname{or}(\mathbb{M}_\tau^n)$ ($s=0$ Riemannian, $s=1$ Lorentzian). The **Discrete Hodge Stars** $*_K \colon \Omega_d^k(K) \to \Omega_d^{n-k}(K^*)$ and $*_{K^*} \colon \Omega_d^{n-k}(K^*) \to \Omega_d^k(K)$ are:
+$$
+(*_K\omega)(\sigma_{n-k}^*) \coloneqq \frac{|\sigma_{n-k}^*|}{|\sigma_k|}\omega(\sigma_k), \qquad (*_{K^*}\theta)(\sigma_k) \coloneqq (-1)^{k(n-k)+s}\frac{|\sigma_k|}{|\sigma_{n-k}^*|}\theta(\sigma_{n-k}^*)
+$$
+satisfying exact involution duality: $*_{K^*}\circ *_K = (-1)^{k(n-k)+s}\operatorname{id}_{\Omega_d^k(K)}$.
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Definition 10.6 (Discrete Exterior Calculus on Metronic Lattices, Fig. 10.3):**
+1. **Discrete $k$-Cochains:** $\Omega_d^k(K) \coloneqq \operatorname{Hom}(C_k(K), \mathbb{R})$.
+2. **Cubical Coboundary $d_K \colon \Omega_d^k(K) \to \Omega_d^{k+1}(K)$:**
+$$
+(d_K\omega)(\square_{k+1}) \coloneqq \sum_{i=1}^{k+1}(-1)^i\big(\omega(\operatorname{Face}_i^+\square_{k+1}) - \omega(\operatorname{Face}_i^-\square_{k+1})\big), \quad d_K \circ d_K \equiv 0.
+$$
+3. **Discrete Codifferential:** $\delta_\tau \coloneqq (-1)^{n(k-1)+1+s}*_{K^*} d_{K^*} *_K$, satisfying $\delta_\tau \circ \delta_\tau \equiv 0$.
+4. **Spatial Positive-Definite Hodge Laplacian:** On a 3D Cauchy slice $\Sigma_\tau \cong \mathbb{M}_\tau^3$ ($s=0$), $\Delta_\tau\phi \coloneqq \delta_\tau d_\tau\phi \ge 0$ is strictly positive semi-definite.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive DEC Primal-Dual Cell &amp; Hodge Star $*_\tau$ Calculator (Defs. 10.5–10.6)</h4>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Dim <i>n</i>:</span>
+  <input type="range" id="ch10-hd-n" min="2" max="4" step="1" value="3" oninput="ch10_updateHodgeLab()">
+  <span id="ch10-hd-n-val" style="font-family:monospace; width:38px;">n = 3</span>
+  <span style="color:#20B2AA;">Degree <i>k</i>:</span>
+  <input type="range" id="ch10-hd-k" min="0" max="3" step="1" value="2" oninput="ch10_updateHodgeLab()">
+  <span id="ch10-hd-k-val" style="font-family:monospace; width:38px;">k = 2</span>
+  <span style="color:#FFA500;">Sig <i>s</i>:</span>
+  <input type="range" id="ch10-hd-s" min="0" max="1" step="1" value="0" oninput="ch10_updateHodgeLab()">
+  <span id="ch10-hd-s-val" style="font-family:monospace; width:68px;">s=0 (Riem)</span>
+  </div>
+  <div id="ch10-hd-readout" class="matrix-readout" style="margin-top:4px; font-size:0.60em; line-height:1.35;"></div>
+</div>
+
+<div class="lean-code-card fragment fade-left" style="margin-top:6px;">
+<pre style="margin:0; font-size:0.68em;"><code>namespace Syntrometrie.DEC_Proof -- Kernel-Checked S₂ Proof (Appendix C)
+structure Grid2 where (x : ℤ) (y : ℤ) deriving DecidableEq
+def shiftX (p : Grid2) : Grid2 := ⟨p.x - 1, p.y⟩
+def shiftY (p : Grid2) : Grid2 := ⟨p.x, p.y - 1⟩
+def Form0 := Grid2 → ℝ
+structure Form1 where (dx : Grid2 → ℝ) (dy : Grid2 → ℝ)
+def Form2 := Grid2 → ℝ
+def d0 (f : Form0) : Form1 := ⟨fun p => f p - f (shiftX p), fun p => f p - f (shiftY p)⟩
+def d1 (A : Form1) : Form2 := fun p => (A.dy p - A.dy (shiftX p)) - (A.dx p - A.dx (shiftY p))
+
+theorem dec_coboundary_nilpotent (f : Form0) : d1 (d0 f) = (fun _ => 0) := by
+  funext p; dsimp [d1, d0, shiftX, shiftY]; ring
+end Syntrometrie.DEC_Proof</code></pre>
+</div>
+
+<div class="video-container fragment fade-up" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act6_DEC_Hodge_Duality.mp4" style="max-height:155px;"></video>
+  <div class="video-caption">Manim Act VI (Fig. 10.3): 3D DEC Cubical Complex K, Voronoi Dual K*, Coboundary d_τ² ≡ 0 &amp; Hodge Star *_τ</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 6 presents Definitions 10.5 and 10.6 (Figure 10.3): primal-dual orientation conventions, the circumcentric Voronoi dual discrete Hodge star $*_\tau$, the cubical coboundary $d_K$ and codifferential $\delta_\tau$, positive semi-definiteness of the spatial 0-form Hodge Laplacian, and the kernel-checked Lean 4 proof `dec_coboundary_nilpotent`.
+:::
+
+---
+
+## §10.3: Höhere Differenzen (SM-68), Monome & Stirling-Interpolation {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATUM B: HIGHER DIFFERENCE BINOMIAL EXPANSION (THM. 10.7), POWER MONOMIALS (THM. 10.8), STIRLING &amp; HONEYCOMB (FIG. 10.4)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Theorem 10.7 & Proof (Higher Difference Binomial Expansion, SM Eq. 68):**
+For any $k \in \mathbb{N}$, the $k$-th iterated backward difference $\nabla_i^k = (I - E_i^{-1})^k$ satisfies:
+$$
+\nabla_i^k\phi(\mathbf{n}) = \sum_{\gamma=0}^k (-1)^\gamma \binom{k}{\gamma} E_i^{-\gamma}\phi(\mathbf{n}) = \sum_{\gamma=0}^k (-1)^\gamma \binom{k}{\gamma}\phi(n_1,\dots,n_i-\gamma,\dots,n_n) \tag{SM-68}
+$$
+**Proof:** Express $\nabla_i = I - E_i^{-1}$ in the Banach algebra $\mathcal{B}(\ell^\infty(\mathbb{M}_\tau^n))$. Since $I$ and $E_i^{-1}$ commute ($I \circ E_i^{-1} = E_i^{-1} \circ I$), the binomial theorem applies directly term-by-term. $\blacksquare$
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Theorem 10.8 (Metronic Difference of Power Monomials, SM pp. 222–223):**
+For integers $k, \gamma \ge 0$, the unit-step $k$-th backward difference of $n^\gamma$ ($0^0 = 1$) is:
+$$
+\nabla^k n^\gamma = \sum_{\ell=0}^k (-1)^\ell\binom{k}{\ell}(n-\ell)^\gamma = \begin{cases} \text{a polynomial of degree }\gamma - k, & k < \gamma, \\ \gamma!, & k = \gamma, \\ 0, & k > \gamma. \end{cases}
+$$
+:::
+
+::: {.remark-box .fragment .blur-in}
+**Remark (Stirling Expansion & Newton Interpolation) + Fig. 10.4 Honeycomb:**
+With Stirling numbers of the second kind $\left\{\begin{smallmatrix}\gamma\\j\end{smallmatrix}\right\}$, $\nabla^k n^\gamma = \sum_{j=k}^\gamma \left\{\begin{smallmatrix}\gamma\\j\end{smallmatrix}\right\} j^{\underline{k}}(n-k)^{\underline{j-k}}$ and $(\nabla^k n^\gamma)_{n=0} = (-1)^{\gamma-k}k!\left\{\begin{smallmatrix}\gamma\\k\end{smallmatrix}\right\}$, yielding Newton's exact finite interpolation $f(n) = \sum_{k=0}^n \binom{n}{k}(\nabla^k f)(k)$ for $n \ge 0$. **Fig. 10.4:** Triangular area quantum $\tau = \frac{\sqrt{3}}{4}\ell_P^2$, discrete curl $\hat{s} \coloneqq \operatorname{ROT}_N\widehat{\Phi}$, spin eigenvalue $(\hat{s};\mathbf{n})_{\mathbf{n}=1} = \hat{\tau}$, and non-singular bound $r_{\min} \ge \sqrt{\tau}$.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Power Monomial $\nabla^k n^\gamma$ &amp; Stirling Explorer (Thms. 10.7–10.8)</h4>
+  <p class="widget-context-note">
+  <b>Context (Thm. 10.8):</b> Adjust difference order $k$, monomial exponent $\gamma$, and lattice node $n$ to verify polynomial reduction ($k &lt; \gamma$), constant factorial $\nabla^\gamma n^\gamma \equiv \gamma!$ ($k = \gamma$), and annihilation $\nabla^k n^\gamma \equiv 0$ ($k &gt; \gamma$).
+  </p>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Diff Order <i>k</i>:</span>
+  <input type="range" id="ch10-mn-k" min="0" max="5" step="1" value="3" oninput="ch10_updateMonomialLab()">
+  <span id="ch10-mn-k-val" style="font-family:monospace; width:38px;">k = 3</span>
+  <span style="color:#FFA500;">Power <i>γ</i>:</span>
+  <input type="range" id="ch10-mn-gam" min="0" max="5" step="1" value="3" oninput="ch10_updateMonomialLab()">
+  <span id="ch10-mn-gam-val" style="font-family:monospace; width:38px;">γ = 3</span>
+  <span style="color:#20B2AA;">Node <i>n</i>:</span>
+  <input type="range" id="ch10-mn-n" min="0" max="8" step="1" value="4" oninput="ch10_updateMonomialLab()">
+  <span id="ch10-mn-n-val" style="font-family:monospace; width:38px;">n = 4</span>
+  </div>
+  <div id="ch10-mn-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em;"></div>
+</div>
+
+<div class="lean-code-card fragment fade-left" style="margin-top:6px;">
+<pre style="margin:0; font-size:0.68em;"><code>namespace Syntrometrie.StratumB.PartAExpansions -- Kernel-Checked S₂ (Appendix C)
+/-- Backward difference of the second falling factorial &amp; Stirling cubic decomposition -/
+theorem falling_factorial_two_diff (n : ℤ) : (n + 1) * n - n * (n - 1) = 2 * n := by ring
+theorem stirling_cubic_decomposition (n : ℤ) :
+    n ^ 3 = n * (n - 1) * (n - 2) + 3 * (n * (n - 1)) + n := by ring
+end Syntrometrie.StratumB.PartAExpansions</code></pre>
+</div>
+
+<div class="video-container fragment fade-up" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act7_Binomial_Monomials_Honeycomb.mp4" style="max-height:165px;"></video>
+  <div class="video-caption">Manim Act VII (Fig. 10.4): Binomial Stencil Expansion, Power Monomials ∇^k n^γ &amp; Metronic Honeycomb Vortex ŝ</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 7 covers Stratum B Theorems 10.7 and 10.8, the Stirling/Newton interpolation Remark, the Lean 4 proofs of falling factorial differences and Stirling cubic decomposition, and Figure 10.4 (the Metronic honeycomb geometry with spin rotor $\hat{s}$).
+:::
+
+---
+
+## §10.3: Diskrete Leibniz-Produkt-/Quotientenregeln & Pseudokettenregel {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: SCHOLIUM 10.9, PSEUDOCHAIN RULE (PROP. 10.10, THM. 10.11, SM-75) &amp; DISCRETE LEIBNIZ PROOF (THM. 10.12, SM-68a)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.scholium-box}
+**Scholium 10.9 (The Discrete Leibniz Cross-Term):**
+Backward differences obey $\nabla(uv) = u\nabla v + v\nabla u - (\nabla u)(\nabla v)$. The final term records the finite lattice step and vanishes in the continuum limit, making the discrete product law transparent.
+:::
+
+::: {.thm-box .fragment .fade-right}
+**Proposition 10.10 & Theorem 10.11 (Metronic Coordinate Transformation & Pseudochain Rule, SM Eq. 75, p. 227):**
+For a lattice function represented through intermediate variables $\psi_1,\dots,\psi_\Lambda$, Heim writes the total metronic difference as:
+$$
+\nabla\Phi = \sum_{k=1}^\Lambda \Phi_{(\psi_k)}\nabla\psi_k, \qquad \Phi_{(\psi_k)} \coloneqq \frac{\nabla_{(\psi_k)}\Phi}{\nabla\psi_k} \tag{SM-75}
+$$
+Because these are finite increments, the quotient $\Phi_{(\psi_k)}$ is direction-dependent and must be evaluated using the stated lattice difference convention; it is not automatically the classical infinitesimal chain rule.
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Theorem 10.12 (Discrete Leibniz Product and Quotient Rules, SM Eq. 68a):**
+For any lattice sequences $u, v \in \ell^\infty(\mathbb{M}_\tau^n)$, $\nabla_i = I - E_i^{-1}$ satisfies:
+$$
+\nabla_i(uv) = (\nabla_i u)v + (E_i^{-1}u)(\nabla_i v) = (\nabla_i u)v + u(\nabla_i v) - (\nabla_i u)(\nabla_i v) \tag{SM-68a}
+$$
+$$
+\nabla_i(uv^{-1}) = (\nabla_i u)v^{-1} - (E_i^{-1}u)v^{-1}(\nabla_i v)(E_i^{-1}v)^{-1} \quad (v(\mathbf{n}) \ne 0\;\forall\mathbf{n})
+$$
+Strict left-to-right ordering is mandatory when $u, v$ are non-commutative spin-rotor matrix fields ($\hat{s}$).
+:::
+
+:::
+
+::: {.column width="52%"}
+
+::: {.proof-box}
+**Proof of Theorem 10.12 (4-Step Non-Commutative Derivation):**
+1. Expand $\nabla_i(uv)(\mathbf{n}) = u(\mathbf{n})v(\mathbf{n}) - u(\mathbf{n}-e_i)v(\mathbf{n}-e_i)$.
+2. Add and subtract $u(\mathbf{n}-e_i)v(\mathbf{n})$ (or $u(\mathbf{n})v(\mathbf{n}-e_i)$):
+   $\nabla_i(uv) = (\nabla_i u)v + (E_i^{-1}u)(\nabla_i v) = u(\nabla_i v) + (E_i^{-1}v)(\nabla_i u)$.
+3. Substitute $E_i^{-1}u = u - \nabla_i u$ to obtain $(\nabla_i u)v + u(\nabla_i v) - (\nabla_i u)(\nabla_i v)$.
+4. For $v^{-1}$, $\nabla_i(v^{-1}) = v^{-1} - (E_i^{-1}v)^{-1} = -v^{-1}(\nabla_i v)(E_i^{-1}v)^{-1}$. Applying the product rule to $u\cdot v^{-1}$ yields the exact non-commutative quotient rule. $\blacksquare$
+:::
+
+<div class="interactive-panel" style="margin-top:6px;">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Discrete Leibniz Cross-Term &amp; Scaling Lab (Thm. 10.12)</h4>
+  <div class="slider-row">
+  <span style="color:#FFD700;">Step <i>τ</i>:</span>
+  <input type="range" id="ch10-lb-tau" min="0.02" max="1.00" step="0.02" value="0.30" oninput="ch10_updateLeibnizLab()">
+  <span id="ch10-lb-tau-val" style="font-family:monospace; width:38px;">0.30</span>
+  <span style="color:#20B2AA;">Point <i>x</i>:</span>
+  <input type="range" id="ch10-lb-x" min="0.5" max="3.0" step="0.1" value="1.5" oninput="ch10_updateLeibnizLab()">
+  <span id="ch10-lb-x-val" style="font-family:monospace; width:34px;">1.5</span>
+  </div>
+  <div id="ch10-lb-readout" class="matrix-readout" style="margin-top:4px; font-size:0.60em; line-height:1.35;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act8_Leibniz_Product_Quotient.mp4" style="max-height:155px;"></video>
+  <div class="video-caption">Manim Act VIII: Area-Rectangle Decomposition of ∇(uv) = u∇v + v∇u − (∇u)(∇v) &amp; Quotient Rule (Thm. 10.12)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 8 covers Scholium 10.9, Proposition 10.10, Theorem 10.11 (the finite-increment pseudochain rule SM-75), and Theorem 10.12 with its complete 4-step proof for the discrete Leibniz product and non-commutative quotient rules (SM-68a).
+:::
+
+---
+
+## §10.3: Hauptsatz der Diskreten Analysis & Kontinuumslimit ($\tau \to 0^+$) {.smaller transition="zoom"}
+
+<div class="stratum-badge badge-b">STRATUM B: DISCRETE SUMMATION (DEF. 10.13), FUNDAMENTAL THEOREM (THM. 10.14) &amp; CONTINUUM LIMIT PROOF (THM. 10.15)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Definition 10.13 (The Discrete Summation Operator $\mathcal{S}$) & Theorem 10.14 (Fundamental Theorem of Discrete Calculus):**
+* **Def. 10.13:** Anchored indefinite sum $(\mathcal{S}_{n_0}\phi)(n) \coloneqq \sum_{j=n_0}^n \phi(j)$ on $\ell^\infty(\mathbb{Z})$, $(\mathcal{S}_{-\infty}\phi)(n) \coloneqq \sum_{j=-\infty}^n \phi(j)$ on $\ell^1(\mathbb{Z})$, and definite sum $\mathcal{S}_{n_1}^{n_2}\phi \coloneqq \sum_{j=n_1}^{n_2}\phi(j)$.
+* **Thm. 10.14:** Let $\phi \in \ell^1(\mathbb{Z})$ and $\Phi \in \ell^\infty(\mathbb{Z})$ satisfy $\nabla\Phi = \phi$. Then:
+  1. $\nabla(\mathcal{S}\phi)(n) = \phi(n)$ and $\mathcal{S}(\nabla\Phi)(n) = \Phi(n) - \lim_{j\to-\infty}\Phi(j)$.
+  2. Telescoping definite sum:
+$$
+\mathcal{S}_{n_1}^{n_2}\phi = \sum_{j=n_1}^{n_2}\big(\Phi(j) - \Phi(j-1)\big) = \Phi(n_2) - \Phi(n_1 - 1) \tag{SM-67a}
+$$
+**Proof:** $\nabla(\mathcal{S}\phi)(n) = \sum_{j=-\infty}^n \phi(j) - \sum_{j=-\infty}^{n-1}\phi(j) = \phi(n)$; telescoping is immediate. $\blacksquare$
+:::
+
+::: {.remark-box .fragment .fade-up}
+**Worked Example (1D Power Difference & Telescoping Sum) + Lean 4 Proof:**
+For $\Phi(n) = n^2$ on $\mathbb{M}_\tau^1 = \mathbb{Z}$, $\phi(n) = \nabla(n^2) = n^2 - (n-1)^2 = 2n - 1$. Summing from $n=1$ to $N$ gives $\mathcal{S}_1^N(2n-1) = 2\frac{N(N+1)}{2} - N = N^2 = \Phi(N) - \Phi(0)$.
+:::
+
+<div class="lean-code-card fragment fade-right" style="margin-top:6px;">
+<pre style="margin:0; font-size:0.68em;"><code>namespace Syntrometrie.StratumA.DEC_Telescoping -- Kernel-Checked S₂ (Appendix C)
+theorem discrete_telescoping_sum (Phi : ℕ → ℝ) (n1 n2 : ℕ) (h : n1 ≤ n2) :
+    (Finset.Icc n1 n2).sum (fun j => Phi (j + 1) - Phi j) = Phi (n2 + 1) - Phi n1 := by
+  exact Finset.sum_Icc_sub h Phi
+end Syntrometrie.StratumA.DEC_Telescoping</code></pre>
+</div>
+
+:::
+
+::: {.column width="52%"}
+
+::: {.thm-box}
+**Theorem 10.15 (Continuum Correspondence Limit Theorem):**
+Let $f \in C^2(\mathbb{R})$ with bounded second derivative, and sample $\phi_\tau(n) \coloneqq f(n\tau)$ on $\mathbb{M}_\tau^1 = \tau\mathbb{Z}$.
+1. **Derivative Convergence:** For any fixed $x = n\tau \in \mathbb{R}$:
+$$
+\lim_{\tau\to 0^+} \frac{(\nabla\phi_\tau)(n)}{\tau} = \lim_{\tau\to 0^+} \frac{f(x) - f(x-\tau)}{\tau} = f'(x), \qquad \left|\frac{\nabla\phi_\tau(n)}{\tau} - f'(x)\right| \le \frac{\tau}{2}\|f''\|_\infty.
+$$
+2. **Integral Convergence:** For $[a, b]$ with $a = n_1\tau, b = n_2\tau$:
+$$
+\lim_{\tau\to 0^+} \tau\sum_{j=n_1}^{n_2} \phi_\tau(j) = \int_a^b f(x)\,dx.
+$$
+:::
+
+::: {.proof-box .fragment .fade-up}
+**Proof of Theorem 10.15 (Taylor Integral Remainder Bound):**
+By Taylor's theorem with integral remainder, $f(x-\tau) = f(x) - \tau f'(x) + \int_{x-\tau}^x (t - x + \tau)f''(t)\,dt$. Dividing by $\tau$ yields $\left|\frac{f(x)-f(x-\tau)}{\tau} - f'(x)\right| = \frac{1}{\tau}\left|\int_{x-\tau}^x (t-x+\tau)f''(t)\,dt\right| \le \frac{\tau}{2}\|f''\|_\infty \to 0$ as $\tau \to 0^+$. Part (2) is the convergence of Riemann sums to the Riemann integral. $\blacksquare$
+:::
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act9_Fundamental_Theorem_Continuum.mp4" style="max-height:175px;"></video>
+  <div class="video-caption">Manim Act IX: Continuum Correspondence Limit τ → 0⁺ Converging Discrete Differences &amp; Sums to Smooth Calculus (Thms. 10.14–10.15)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 9 covers Definition 10.13, Theorem 10.14 (Fundamental Theorem of Discrete Calculus) with the worked $n^2$ example and Lean 4 `discrete_telescoping_sum` proof, and Theorem 10.15 (Continuum Correspondence Limit Theorem) with its Taylor integral-remainder proof.
+:::
+
+---
+
+## §10.3: Metronischer Vektorkalkül & Diskreter Satz von Gauß–Stokes {.smaller}
+
+<div class="stratum-badge badge-b">STRATUM B: DISCRETE VECTOR OPERATORS (DEF. 10.16) &amp; DEC NULL IDENTITIES / GAUSS FLUX THEOREM (THM. 10.17, SM-79b–80, FIG. 10.6)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Definition 10.16 (Discrete Vector Calculus & Laplacians on $\mathbb{M}_\tau^n$):**
+With orthonormal lattice basis $\{\bar{\mathbf{e}}_1,\dots,\bar{\mathbf{e}}_n\}$ on $\mathbb{M}_\tau^n = \bigoplus_{i=1}^n \tau_i\mathbb{Z}$:
+1. **Metronic Gradient (DEC $d_\tau$):** $\operatorname{GRAD}_n\phi \coloneqq \sum_{i=1}^n \bar{\mathbf{e}}_i \frac{\nabla_i\phi}{\tau_i}$.
+2. **Metronic Divergence (DEC $\delta_\tau$):** $\operatorname{DIV}_n\mathbf{A}(\mathbf{n}) \coloneqq \sum_{i=1}^n \frac{\nabla_i A_i(\mathbf{n})}{\tau_i}$.
+3. **Metronic Rotor / Curl (SM Eq. 79b):**
+$$
+\operatorname{ROT}_n\mathbf{A}(\mathbf{n}) \coloneqq \sum_{1\le i < j \le n} \bar{\mathbf{e}}_{ij}\left(\frac{\nabla_i A_j(\mathbf{n}) - \nabla_j A_i(\mathbf{n})}{\sqrt{\tau}}\right) \in \Omega_d^2(\mathbb{M}_\tau^n) \tag{SM-79b}
+$$
+4. **Finite-Difference vs. DEC Laplacian:** $\Delta_{\mathrm{diff}}\phi(\mathbf{n}) \coloneqq \sum_{i=1}^n \frac{\phi(\mathbf{n}+e_i)-2\phi(\mathbf{n})+\phi(\mathbf{n}-e_i)}{\tau_i^2}$ satisfies $\Delta_{\mathrm{DEC}}\phi \coloneqq \delta_\tau d_\tau\phi = -\Delta_{\mathrm{diff}}\phi \ge 0$.
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Theorem 10.17 & Proof (DEC Null Identities & Metronic Divergence Theorem, Fig. 10.6):**
+1. **Exact Null Identities ($\forall n \ge 2$, SM Eq. 79c):**
+$$
+d_\tau(d_\tau\phi) \equiv 0 \in \Omega_d^2(\mathbb{M}_\tau^n), \qquad \delta_\tau(\delta_\tau\Omega) \equiv 0 \in \Omega_d^{n-2}(\mathbb{M}_\tau^n) \tag{SM-79c}
+$$
+recovering $\operatorname{ROT}_3(\operatorname{GRAD}_3\phi) \equiv \mathbf{0}$ and $\operatorname{DIV}_3(\operatorname{ROT}_3\mathbf{A}) \equiv 0$ via $\nabla_i\nabla_j = \nabla_j\nabla_i$ (SM-73a).
+2. **Metronic Gauss Divergence Theorem (SM Eq. 80):** Over $\Omega = \prod_{i=1}^n [a_i, b_i]\cap\mathbb{Z}^n$:
+$$
+\sum_{\mathbf{n}\in\Omega}(\operatorname{DIV}_n\mathbf{A})(\mathbf{n}) = \sum_{i=1}^n \frac{1}{\tau_i}\left(\sum_{\substack{\mathbf{n}\in\Omega \\ n_i = b_i}} A_i(\mathbf{n}) - \sum_{\substack{\mathbf{n}\in\Omega \\ n_i = a_i - 1}} A_i(\mathbf{n})\right) \tag{SM-80}
+$$
+**Proof:** Mixed differences cancel by commutativity $\nabla_i\nabla_j = \nabla_j\nabla_i$; summing $\nabla_i A_i$ along each coordinate line telescopes interior fluxes to the upper ($b_i$) and offset lower ($a_i-1$) boundary facets. $\blacksquare$
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Discrete Gauss Divergence Flux Conservation Lab (Thm. 10.17, SM-80)</h4>
+  <p class="widget-context-note">
+  <b>Context (Thm. 10.17, Fig. 10.6):</b> Adjust lattice box dimensions $[1, b_1]\times[1, b_2]$ for vector field $\mathbf{A}(n_1,n_2) = (n_1^2 n_2, n_1 n_2^2)$ to verify that the interior volume divergence sum equals the net normal flux across the boundary facets.
+  </p>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Box Extent <i>b</i><sub>1</sub>:</span>
+  <input type="range" id="ch10-gs-b1" min="2" max="6" step="1" value="4" oninput="ch10_updateGaussBoxLab()">
+  <span id="ch10-gs-b1-val" style="font-family:monospace; width:48px;">[1, 4]</span>
+  <span style="color:#20B2AA;">Box Extent <i>b</i><sub>2</sub>:</span>
+  <input type="range" id="ch10-gs-b2" min="2" max="6" step="1" value="3" oninput="ch10_updateGaussBoxLab()">
+  <span id="ch10-gs-b2-val" style="font-family:monospace; width:48px;">[1, 3]</span>
+  </div>
+  <div id="ch10-gs-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em; line-height:1.38;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act10_Vector_Calculus_Gauss_Stokes.mp4" style="max-height:205px;"></video>
+  <div class="video-caption">Manim Act X (Fig. 10.6): 3D Discrete Gauss Flux Cancellation Across Interior Cells Leaving Exact 6-Facet Boundary Flux (SM-80)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 10 presents Definition 10.16 (GRAD, DIV, ROT, and DEC vs. finite-difference Laplacians) and Theorem 10.17 with its proof of the exact DEC null identities (SM-79c) and the Metronic Gauss Divergence Theorem (SM-80, Figure 10.6).
+:::
+
+---
+
+## §10.3: Cubical FEEC, Whitney–de Rham Isomorphie & UV-Cutoff $\Lambda_{\mathrm{UV}}$ {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATUM B: CUBICAL FEEC (THM. 10.18), DE RHAM ISOMORPHISM (THM. 10.19, DEF. 10.20) &amp; UV DISPERSION PROOF (THM. 10.21)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Theorem 10.18 (Cubical Finite Element Exterior Calculus (FEEC) Convergence):**
+On a uniform cubical mesh $\mathbb{M}_\tau^n \subset \mathbb{R}^n$ with trimmed-polynomial subcomplex $\mathcal{W}_\tau^k(K) \coloneqq \mathcal{P}_{1,\dots,1}^-\Omega^k(K)$ (Arnold et al. 2006; Boffi et al. 2013), smoothed commuting projections $\Pi_\tau^k \colon L^2\Omega^k \to \mathcal{W}_\tau^k(K)$ satisfy:
+$$
+d \circ \Pi_\tau^k = \Pi_\tau^{k+1} \circ d, \qquad \|\Pi_\tau^k\alpha\|_{L^2} \le C_{\mathrm{proj}}\|\alpha\|_{L^2}, \qquad \|\Pi_\tau^k\alpha - \alpha\|_{L^2} \le C_{\mathrm{approx}}\,\tau^s\|\alpha\|_{H^s} \quad (0 < s \le 1).
+$$
+* **Claim Ceiling ($c_{\mathrm{FEEC}}$):** *The cubical FEEC construction is a valid mathematical approximation theorem in $L^2$; it does not by itself prove that physical spacetime is discrete.*
+:::
+
+::: {.thm-box .fragment .fade-right}
+**Theorem 10.19 (Metronic Cubical de Rham Cohomology Isomorphism) & Definition 10.20 ($R_\tau, W_\tau$):**
+The **de Rham Integration Map** $(R_\tau\omega)(\sigma_k) \coloneqq \int_{\sigma_k}\omega$ and **Whitney Interpolation Map** $(W_\tau c)(\mathbf{x}) \coloneqq k!\sum c([v_{i_0},\dots,v_{i_k}])\sum_{j=0}^k (-1)^j \mu_{i_j} d\mu_{i_0}\wedge\dots\wedge\widehat{d\mu_{i_j}}\wedge\dots\wedge d\mu_{i_k}$ satisfy:
+$$
+d \circ W_\tau = W_\tau \circ d_\tau, \quad R_\tau \circ W_\tau = \operatorname{id}_{\Omega_d^k(K)} \implies H^k\big(\Omega_d^\bullet(K), d_\tau\big) \cong H_{\mathrm{dR}}^k(|\Omega|) \cong H_{\mathrm{sing}}^k(|\Omega|; \mathbb{R}).
+$$
+This isomorphism is **metric-independent**, preserving topological quantum numbers (Chern/magnetic flux charges) exactly on the lattice.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+::: {.thm-box}
+**Theorem 10.21 & Proof (Metronic Lattice Momentum Dispersion and UV Cutoff):**
+1. **Fourier Diagonalization:** $\mathcal{F}(\nabla_i\phi)(\mathbf{k}) = (1 - e^{-\mathrm{i}k_i\tau_i})\widehat{\phi}(\mathbf{k})$ and $\mathcal{F}(\nabla_i^*\phi) = (e^{\mathrm{i}k_i\tau_i}-1)\widehat{\phi}$.
+2. **Positive DEC 0-Laplacian Dispersion ($\Delta_\tau = \sum_i \tau_i^{-2}\nabla_i^*\nabla_i$):**
+$$
+\lambda(\mathbf{k}) = \sum_{i=1}^n \frac{1}{\tau_i^2}(2 - 2\cos(k_i\tau_i)) = \sum_{i=1}^n \frac{4}{\tau_i^2}\sin^2\!\left(\frac{k_i\tau_i}{2}\right) \ge 0.
+$$
+3. **UV Cutoff & Torus Spectral Gap:** On $\mathbb{Z}^4$, $\sigma(\Delta_\tau) = [0, 16/\tau^2]$, giving ultraviolet scale $\Lambda_{\mathrm{UV}} = 4/\sqrt{\tau}$; on a periodic $N$-torus, $\Delta E_{\min} = \frac{4}{\tau_1^2}\sin^2(\pi/N) > 0$ (whereas an intrinsic mass gap requires a mass term in $V_{\mathrm{gauge}}$ or compact holonomy). $\blacksquare$
+:::
+
+<div class="interactive-panel" style="margin-top:6px;">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Brillouin Dispersion $\lambda(k) = \frac{4}{\tau^2}\sin^2(k\tau/2)$ &amp; UV Cutoff Lab</h4>
+  <div class="slider-row">
+  <span style="color:#20B2AA;">Step <i>τ</i>:</span>
+  <input type="range" id="ch10-uv-tau" min="0.25" max="1.50" step="0.05" value="0.50" oninput="ch10_updateDispersionLab()">
+  <span id="ch10-uv-tau-val" style="font-family:monospace; width:36px;">0.50</span>
+  <span style="color:#FFA500;">Torus <i>N</i>:</span>
+  <input type="range" id="ch10-uv-n" min="4" max="32" step="2" value="8" oninput="ch10_updateDispersionLab()">
+  <span id="ch10-uv-n-val" style="font-family:monospace; width:44px;">N = 8</span>
+  </div>
+  <svg id="ch10-uv-svg" viewBox="0 0 420 112" style="width:100%; max-height:102px; background:#070a12; border-radius:8px; border:1px solid #334155;"></svg>
+  <div id="ch10-uv-readout" class="matrix-readout" style="margin-top:4px; font-size:0.59em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act11_FEEC_Whitney_Dispersion.mp4" style="max-height:140px;"></video>
+  <div class="video-caption">Manim Act XI: Whitney–de Rham Commuting Cochain Maps (W_τ, R_τ) &amp; Brillouin Zone UV Cutoff Λ_UV = 4/√τ (Thms. 10.18–10.21)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 11 covers Theorem 10.18 (Cubical FEEC convergence and Claim Ceiling $c_{\mathrm{FEEC}}$), Theorem 10.19 and Definition 10.20 (Whitney interpolation $W_\tau$ and de Rham integration $R_\tau$ inducing metric-independent cohomology isomorphism), and Theorem 10.21 with its Fourier proof of the sine-squared Brillouin dispersion and UV cutoff $\Lambda_{\mathrm{UV}} = 4/\sqrt{\tau}$.
+:::
+
+---
+
+## §10.4–10.5: Rekonstruktionsabbildung $\mathcal{R}$, Sanity Checks & Carnap 10.1 {.smaller}
+
+<div class="stratum-badge badge-c">STRATUM C: COMPLETE 13-ROW RECONSTRUCTION MAP R, PHYSICAL SANITY CHECKS (§10.5) &amp; CARNAPIAN EXPLICATION 10.1</div>
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+| Heimian Concept ($\mathbf{D}$) | Mathematical Reconstruction ($\mathcal{R}$) | Epistemic Status |
+|:---|:---|:---:|
+| **Metron ($\tau$)** | Fundamental lattice spacing parameter $\tau > 0$ | **Stratum C: Model** (Def. 10.4) |
+| **Metronische Gitter** | Discrete subgroup manifold $\mathbb{M}_\tau^n \coloneqq \bigoplus \tau_i\mathbb{Z} \subset \mathbb{R}^n$ | **Stratum A: Def** (Def. 10.4) |
+| **Metronenfunktion ($\phi(n)$)** | Sequence function $\phi \in \ell^\infty(\mathbb{M}_\tau^n)$ | **Stratum A: Def** (Def. 10.4) |
+| **Metrondifferential ($F\phi \equiv \bar{\delta}\phi$)** | Backward finite difference $\nabla\phi(n) = \phi(n) - \phi(n-1)$ | **Stratum A: Def** (Def. 10.4) |
+| **Höhere Differentiale ($F^k\phi$)** | Iterated difference operator $\nabla^k = (I - E^{-1})^k$ | **Stratum B: Thm** (Thm. 10.7) |
+| **Produktregel ($F(uv)$)** | Discrete Leibniz rule $\nabla(uv) = u\nabla v + (E^{-1}v)\nabla u$ | **Stratum B: Thm** (Thm. 10.12) |
+| **Metronintegral ($\mathrm{S}\phi$)** | Indefinite/definite summation operator $\mathcal{S}\phi$ | **Stratum A: Def** (Def. 10.13) |
+| **Hauptsatz der Metronik** | Fundamental theorem $\nabla \circ \mathcal{S} = \operatorname{id}$ | **Stratum B: Thm** (Thm. 10.14) |
+| **Partielles Differential ($F_k$)** | Partial difference operator $\nabla_k \coloneqq I - E_k^{-1}$ | **Stratum A: Def** (Def. 10.4) |
+| **Totales Differential ($F$)** | Total lattice difference $\nabla_{\mathrm{tot}} \coloneqq \sum_{i=1}^n \nabla_i$ | **Stratum B: Constr** (SM-74) |
+| **Vektorkalkül ($\mathrm{GRAD},\mathrm{DIV}$)** | Discrete vector operators $\operatorname{GRAD}_n, \operatorname{DIV}_n, \operatorname{ROT}_n$ | **Stratum B: Constr** (Def. 10.16) |
+| **Integralsätze (SM Eq. 80)** | Discrete Gauss–Stokes divergence/flux theorems | **Stratum B: Thm** (Thm. 10.17) |
+| **Korrespondenzprinzip** | Asymptotic continuum limit $\lim_{\tau\to 0}\frac{\nabla\phi}{\tau} = f'(x)$ | **Stratum B: Thm** (Thm. 10.15) |
+
+:::
+
+::: {.column width="45%"}
+
+::: {.thm-box .fragment .fade-left}
+**Physical & Epistemic Sanity Checks (§10.5):**
+1. **Asymptotic Continuum Derivative Limit:** By Thm. 10.15, for any $f \in C^2(\mathbb{R})$, $\lim_{\tau\to 0^+}\frac{\nabla\phi_\tau(n)}{\tau} = f'(x)$ with uniform error bound $\le \frac{\tau}{2}\|f''\|_\infty$, confirming exact convergence to Newtonian/Leibnizian calculus.
+2. **Summation by Parts Conservation:** Over a closed periodic lattice $\mathbb{Z}/N\mathbb{Z}$:
+$$
+\sum_{n=1}^N \nabla(uv)(n) = \sum_{n=1}^N \big(u(n)\nabla v(n) + v(n-1)\nabla u(n)\big) = 0
+$$
+recovering exact energy and charge conservation on closed discrete manifolds.
+3. **Discrete Exterior Derivative Nilpotency:** $d_\tau \circ d_\tau \equiv 0$ identically on all discrete forms, excluding unphysical magnetic monopoles and topological anomalies on the lattice.
+:::
+
+::: {.carnap-box .fragment .blur-in}
+**Carnapian Explication 10.1: *Metronische Elementaroperationen* as DEC**
+1. **Explicandum ($\mathbf{D}$):** Coordinate quantization $\tau \approx 10^{-70}\,\text{m}^2$ (*Televarianzbedingung*, SM-63), backward differences ($F\phi \equiv \nabla\phi$, SM-67), discrete product cross-terms (SM-68a), discrete integration ($\mathcal{S}\phi$, SM-70), and vector calculus ($\operatorname{GRAD}_n, \operatorname{DIV}_n, \operatorname{ROT}_n$, SM-78–80).
+2. **Explicatum ($\mathbf{A}/\mathbf{B}$):** DEC cochain complex $(\Omega_d^\bullet(\mathbb{M}_\tau^n), d_\tau)$, backward difference $\nabla_i = I - E_i^{-1}$ on $\ell^\infty(\mathbb{M}_\tau^n)$, FEEC projection $\Pi_\tau^k$, and circumcentric dual Hodge star $*_\tau$.
+3. **Exactness & Simplicity:** Strict nilpotency $d_\tau^2 \equiv 0$, $\delta_\tau^2 \equiv 0$, Fundamental Theorem $\nabla \circ \mathcal{S} = \operatorname{id}$, and de Rham isomorphism $H^k(\Omega_d^\bullet) \cong H_{\mathrm{dR}}^k$.
+4. **Fruitfulness:** Intrinsic UV cutoff $\Lambda_{\mathrm{UV}} = 4/\sqrt{\tau}$ (Thm. 10.21), exact Gauss–Stokes flux conservation (Thm. 10.17), and uniform convergence as $\tau \to 0$ (Thm. 10.15).
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Slide 12 summarizes Stratum C (§10.4–10.5): the 13-row formal Reconstruction Map $\mathcal{R}$, the three Physical & Epistemic Sanity Checks, and Carnapian Explication 10.1 translating Heim's Metronic Calculus into Discrete Exterior Calculus.
+:::
+
+---
+
+## §10.6: Kapitel 10 Synthese, Stage VI Polarimeter & Brücke zu Kapitel 11 {.smaller transition="zoom"}
+
+<div class="stratum-badge badge-c">CHAPTER 10 DELIVERABLES, STAGE VI UNIFIED RUNNING EXAMPLE, ASYMPTOTIC MATRIX &amp; ASCENT TO CHAPTER 11</div>
+
+:::: {.columns}
+
+::: {.column width="52%"}
+
+::: {.deliverables-box .fragment .zoom-in}
+**Chapter 10 Deliverables: Metronic Calculus on $\mathbb{M}_\tau^n$ (Fig. 10.7)**
+* **Singularity-Free Lattice:** $\mathbb{M}_\tau^n = \bigoplus_i \tau_i\mathbb{Z}$ provides an intrinsic geometric ultraviolet cutoff $\Lambda_{\mathrm{UV}} = 4/\sqrt{\tau}$ eliminating point singularities.
+* **Difference Algebra:** Backward differences $\nabla_i = I - E_i^{-1}$ and sums $\mathcal{S}$ satisfy $\nabla \circ \mathcal{S} = \operatorname{id}$, binomial expansions, and exact non-commutative product/quotient rules with discrete cross-terms.
+* **DEC Invariance:** The cochain complex $(\Omega_d^\bullet(\mathbb{M}_\tau^n), d_\tau)$ satisfies $d_\tau^2 = 0$, $H^k(\Omega_d^\bullet) \cong H_{\mathrm{dR}}^k$, discrete Gauss–Stokes identities, and smooth convergence as $\tau \to 0^+$.
+:::
+
+<h3 style="color:#5eead4; font-size:0.84em; margin:8px 0 4px 0;">Asymptotic Limits &amp; Cross-Disciplinary Interpretation Matrix</h3>
+
+| Regime / Discipline | Mathematical Operation / Structure | Physical, Logical & Cognitive Reduction |
+|:---|:---|:---|
+| **Asymptotic Continuum Limit** | $\tau \to 0^+$ on $\mathbb{M}_\tau^n$ | Scaled backward difference $\frac{\nabla\phi}{\tau} \to f'(x)$ uniformly with error $\mathcal{O}(\tau\|f''\|_\infty)$; $-(\nabla u)(\nabla v)$ cross-term vanishes. |
+| **Categorical & Topos Logic** | DEC cochain complexes $(\Omega_d^\bullet, d_\tau)$ with $d_\tau^2 \equiv 0$ | Exact Whitney–de Rham cochain equivalence $H^k(\Omega_d^\bullet) \cong H_{\mathrm{dR}}^k(|\Omega|)$. |
+| **Theoretical Physics & Geometry** | Metronic lattices $\mathbb{M}_\tau^n \coloneqq \bigoplus \tau_i\mathbb{Z}$ | Intrinsic UV cutoff $\Lambda_{\mathrm{UV}} = 4/\sqrt{\tau}$ and exact Gauss–Stokes lattice flux conservation. |
+| **Cognitive Science & Epistemology** | Finite-difference operators $\nabla_i = I - E_i^{-1}$ | Finite-difference temporal cognition and pulsatile sensory updating. |
+
+:::
+
+::: {.column width="48%"}
+
+::: {.intuition-box}
+**Unified Running Example (Stage VI of VI): Metronization of the Spin Polarimeter**
+At the transition to the discrete regime, sample the coupled polarimeter's channel potentials on $\mathbb{M}_\tau^2$. The de Rham map $R_\tau$ sends each 1-form to link integrals:
+$$
+\widehat{\Phi}_i(\mathbf{n}) = \int_{\mathbf{n}}^{\mathbf{n}+\mathbf{e}_i} A.
+$$
+The discrete exterior derivative $d_\tau\widehat{\Phi}$ records circulation around each plaquette—a lattice counterpart of the $SU(2)$ interaction curvature from Stage IV—while the discrete Laplacian $\Delta_\tau$ has bounded spectrum $[0, 8/\tau^2]$, supplying an ultraviolet cutoff and completing the six-stage progression from measurement context to discrete dynamics!
+:::
+
+<div class="video-container" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act12_Synthesis_StageVI.mp4" style="max-height:170px;"></video>
+  <div class="video-caption">Manim Act XII (Fig. 10.7): Chapter 10 Synthesis Flowchart, Stage VI Polarimeter Plaquette Circulation &amp; Bridge to Ch. 11</div>
+</div>
+
+::: {.firewall-box .fragment .glow-pulse}
+**The Condensation Obstruction: The Physical Vacuum of the Lattice**
+DEC supplies stable kinematics on $\mathbb{M}_\tau^n$, but no localized particles, quantized rest masses, electric charges, spin eigenvalues, or selector mechanism for resonant configurations.
+
+**The Functorial Ascent to Chapter 11 (*Geometric Selector Matter Theory*):**
+To populate the metronic lattice with localized, quantized matter, **Chapter 11** applies spectral theory to self-adjoint geometric selectors on $R_{12}$, deriving the invariant elementary particle mass spectrum.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Slide 13 concludes Chapter 10 with the synthesis flowchart (Figure 10.7), Deliverables, Stage VI of the Unified Running Example (Metronization of the Spin Polarimeter on $\mathbb{M}_\tau^2$), the Asymptotic Limits and Cross-Disciplinary Matrix tables, and the dialectical bridge to Chapter 11 (Geometric Selector Matter Theory).
+:::

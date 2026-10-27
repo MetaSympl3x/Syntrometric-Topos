@@ -1,0 +1,11 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act8_Heyting_Hyperdoctrine/0272ff87a854f3da1fb286a8b9c482efc445afa2f85c4b4dc31c309110d4d5ed.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act8_Heyting_Hyperdoctrine/231c4e98aa191d92c91bde6ce748fd590596a81e141766ca21511a6a8ea97ecf.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act8_Heyting_Hyperdoctrine/23a3a1678fbbffced634e12ec68c29e3786ac564cafe9614122e50565ff0c205.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act8_Heyting_Hyperdoctrine/30af0bd24c2470e9b2c50017222aa7d5333afad35e87ef587494efb1100c1494.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act8_Heyting_Hyperdoctrine/9e4fb1bc05aa617b01188ceacb4b9fe6ac97cc98ae8d25488b076274a5dc8382.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act8_Heyting_Hyperdoctrine/dde87af2ea82c9375e1d4f60ff368e16f1199a1bec01b2097b499ec6884b0262.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act8_Heyting_Hyperdoctrine/df93792b43e2953daacbddbb31da24b735b4f38849254d9bd789d057463c7099.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act8_Heyting_Hyperdoctrine/f4f663b3996ef867e9d76b423d2a1bf08c007e412d3d1d1796e199d123101b20.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act8_Heyting_Hyperdoctrine/1a54f2e85b777c1fa0fdc7668c35ae6b65733661b90d621dd1cc3fdcbeeac3b1.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act8_Heyting_Hyperdoctrine/6f91f8edeb2723fba32c251a11912d87ab157df6f78a086d4f909e0792518a51.mp4'

@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act10_11_Parity_Resynkolation/f2c0958b374c2efa18fe7818a183a1931929a1540bed159dfa7b873c1be030bf.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act10_11_Parity_Resynkolation/c89ee058b85953b16d32a678bacad4aca5a095777bee441156ca65d89a26dacd.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act10_11_Parity_Resynkolation/ce73d1fde336bb6f916aa1e7dbd268b6ab11c8261da6d3d63657d789828e5336.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act10_11_Parity_Resynkolation/4995f776425a3d49dd092f69985fa3491bcb3a9ffd898c1d1bbce32bb5225212.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act10_11_Parity_Resynkolation/9d095581a1e9f571281b0812ab4abcbd6b630beb6e696ea5f544decee5613c84.mp4'

@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act12_Aeondyne_Fibration/b9fc3483c7bb56d3eb8fcfc9225846f44508f66ebb5d3063240a559a4361f5c9.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act12_Aeondyne_Fibration/6d31f93f149cefd477fe5a6603d49bf8c4f369a535e4698b0c0a5ad84bd604be.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act12_Aeondyne_Fibration/4f87c200ce2ed2ddaa91a6b1cabfbe9c22c41bc99396e7fc86d01dd7a207d6e7.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act12_Aeondyne_Fibration/7d1bdf6d65861c189f3d60d11ff40f943c5146983bbd1b207d37e8d498e26494.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act12_Aeondyne_Fibration/fc7116be56f548d4e7f44084f61aeb4a0341ba3afdf67289f5371f8e7b1e874a.mp4'

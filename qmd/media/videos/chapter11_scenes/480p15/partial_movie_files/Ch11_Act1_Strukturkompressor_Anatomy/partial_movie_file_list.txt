@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter11_scenes/480p15/partial_movie_files/Ch11_Act1_Strukturkompressor_Anatomy/3aefe5f4d68bb2f980cf6dee0ccb9254ee7a5753321438d2c2df11ef7a8c69d3.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter11_scenes/480p15/partial_movie_files/Ch11_Act1_Strukturkompressor_Anatomy/d36642218879ee81513859402b800441a5f0fbb04e9671e6406aad60c66c5f35.mp4'

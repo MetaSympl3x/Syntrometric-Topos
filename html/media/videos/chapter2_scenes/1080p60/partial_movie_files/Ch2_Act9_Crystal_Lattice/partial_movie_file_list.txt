@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act9_Crystal_Lattice/49122e1585c260a6a828f43ca797ad9d146f5f753b079341f16293aaf8b0aab4.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act9_Crystal_Lattice/65d7610f117baa603f0cc3e1e22d46cee04e21be3f5ce69df4ccaa9f030d489c.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act9_Crystal_Lattice/62d7ad9125cd54cd5b47b6d3e24354af4d2a209aeac0ad2a4d7888c5e79abc8e.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act9_Crystal_Lattice/fb0e393efb835d303cf06244f7d2cc6cf072ccf2545a225f73e90077c136d9b1.mp4'
+file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act9_Crystal_Lattice/478cb9b3d2979ee42b598ce343f308cb1ff2695e71237f332f1f37f9598f3a9c.mp4'

@@ -1,0 +1,4 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act10_Vector_Calculus_Gauss_Stokes/efc48353405301adb3a4609fd58db89dd8c58433580121c0261233250ee456ae.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act10_Vector_Calculus_Gauss_Stokes/f2d23472bde1e1c790687fee5406ec3e564915fd4a24ea576f5f09eecb1821f6.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act10_Vector_Calculus_Gauss_Stokes/d58fce7b39395f76eac792ceecfbce315f71a0ac0da6dd4c9a3134110975fdc5.mp4'

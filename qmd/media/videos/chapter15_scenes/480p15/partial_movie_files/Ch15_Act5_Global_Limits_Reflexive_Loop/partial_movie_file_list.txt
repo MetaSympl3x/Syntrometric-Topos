@@ -1,0 +1,3 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act5_Global_Limits_Reflexive_Loop/48d058b127df81b0f7a0978c023af01e6b81e68a273c31ca9cbfef543643b15c.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act5_Global_Limits_Reflexive_Loop/ad26133ba3ca3bb19185c76098945a814e4a506177af01fa026ec690090ca9bb.mp4'

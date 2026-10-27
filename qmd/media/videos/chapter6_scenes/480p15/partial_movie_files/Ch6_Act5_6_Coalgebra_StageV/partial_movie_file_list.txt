@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act5_6_Coalgebra_StageV/024898a1f4fc4d0d70510fcd44e90bc621f3bbb65f979b3ef75e5091f760df0a.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act5_6_Coalgebra_StageV/61153c713fb82354ad4bf31a26fec1fcd7688e21f77ce1201edc0d6d0abb8962.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act5_6_Coalgebra_StageV/3b269423efed1618c888bdc058956ea24d99cb9a5ffb850b60445c31c4882398.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act5_6_Coalgebra_StageV/380377cb0091f0135df0dbcf5ba242414edcfc70d36d53ed2f04d1b0a76374e7.mp4'

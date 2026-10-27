@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act12_Synthesis_Bridge_Ch8/ce8acbfea691a4833ec50333204a3c9567c553a0856e196d6042f1f44750f9e3.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act12_Synthesis_Bridge_Ch8/8189b1e8fa17c7a85430370f80fb1b84d1d6a977aa90d86592f2d9b2b45d6e8b.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act12_Synthesis_Bridge_Ch8/37d01cca2f5ad6ee394ca332b2ee8a62b21cea240debd7d0c0add8779b26e0d0.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act12_Synthesis_Bridge_Ch8/ce07790112caa5e6e34cb688dd3758fe507c82f088fee5bde1cb590b28a3ee4b.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act12_Synthesis_Bridge_Ch8/a81132483de5058ee8f9ccbfcf4050570197196a6844ee3c3f2416347e936f7e.mp4'

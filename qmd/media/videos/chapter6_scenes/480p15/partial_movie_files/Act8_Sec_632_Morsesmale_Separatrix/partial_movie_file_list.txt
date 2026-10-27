@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act8_Sec_632_Morsesmale_Separatrix/eba304ba42f613fe6d068861d5fda70a802e42f1155f3188c21a2cc6ad2cc111.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act8_Sec_632_Morsesmale_Separatrix/9247117f55428a6075e31f9a9d8e85c803fe823c42206d31908d84ac52845537.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act8_Sec_632_Morsesmale_Separatrix/66ffc3bd8c313dda59d4beccd8b59ff3940a6be1dd491659753f6fa10b658740.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act8_Sec_632_Morsesmale_Separatrix/79c86a6fa3897bdb462b4bd9d0f435e7d20613165b84c95ec499e0d86b2fd591.mp4'

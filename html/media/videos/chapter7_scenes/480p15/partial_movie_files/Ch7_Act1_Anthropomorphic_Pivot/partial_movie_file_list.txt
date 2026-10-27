@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act1_Anthropomorphic_Pivot/18979c8c8a513a0a4326368599582ac464a2c6172eb097b410d7fe747a355d05.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act1_Anthropomorphic_Pivot/4a4f3d863adc570c03faac1001ce2cbc2c96a3629a4573b7784c75e4bf7f3e4c.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act1_Anthropomorphic_Pivot/2a55c2ab2e99453915044d929954f426e4b0c3496534942c089959d8de236e2e.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act1_Anthropomorphic_Pivot/266f17b3f71e216e115523e1021cb84551c3475432bfe6cc1421653efa89ff85.mp4'

@@ -1,0 +1,6 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act2_Metrondifferential_Curvature/2063346374127dc24898835396b535fd7a603cd0e7320971b195e0b2f1fdeeb6.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act2_Metrondifferential_Curvature/564d8bcd7a0438363d29d63dab1b9bc6ed02233ae30b4349e1f3c77295e52a5b.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act2_Metrondifferential_Curvature/ea86754e442af65cb89934d94749ae2a871e05f0ccc5267a0f02924c62bb93a2.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act2_Metrondifferential_Curvature/689915384811c15bfb344a9dc605775d5baa4ca0f480e8157387815993ea9656.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act2_Metrondifferential_Curvature/e8bb8de6753c044b2adc9c0f5bb9ad6b40947a6db32a95d989bd3ff612645635.mp4'

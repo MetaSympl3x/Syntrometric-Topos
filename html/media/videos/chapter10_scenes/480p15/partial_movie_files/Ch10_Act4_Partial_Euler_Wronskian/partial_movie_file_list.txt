@@ -1,0 +1,4 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act4_Partial_Euler_Wronskian/9941d4f63474ed78b46fba5728609e55dc3e3a04d87488101dabd13e343acdcd.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act4_Partial_Euler_Wronskian/aae71b7e8538ee95ee68a651536de1d2e9b077c3b387f2d0e403eb0e55981e91.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act4_Partial_Euler_Wronskian/28e0812584c90f6bb1c32f649f34e52437b13ea0cf4e649e56d0c6812dedca86.mp4'

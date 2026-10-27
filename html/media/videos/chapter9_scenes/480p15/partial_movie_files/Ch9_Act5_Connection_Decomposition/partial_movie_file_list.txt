@@ -1,0 +1,5 @@
+# This file records the segment order used by Manim.
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act5_Connection_Decomposition/9cc267d651b3951b14d3d3b2c99bc47218f30dc0e8832c2529d98a5ec54dadcd.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act5_Connection_Decomposition/a1f16ad4e0028ed3f97316e8f028f7fc0e69b25b39845f7b8085a7b924d074d2.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act5_Connection_Decomposition/ec1efc97d94bc7deeb4a940ace70fc8c391e3b95704de8abb3e5992eb7af666e.mp4'
+file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act5_Connection_Decomposition/e3a77e8fe185767276b84aed090666018a1caeab4dcda628bedd656470526603.mp4'
