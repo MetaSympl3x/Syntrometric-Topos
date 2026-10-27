@@ -9,7 +9,7 @@
 
 <div class="vignette-box">
 <div class="vignette-title">Historical Vignette: Pascual Jordan and Unified Field Symmetries</div>
-In the post-war German physics community where Burkhard Heim developed his early unified field concepts, Pascual Jordan (1902–1980)—co-founder of matrix mechanics and quantum field theory—championed projective relativity, variable gravitational constants, and non-associative algebras (<i>Jordan algebras</i>) as geometric foundations for quantum physics. While Heim's 1982 <i>Enyphanie</i> ($E\nu$) was phrased in idiosyncratic qualitative vocabulary as a "latent capacity for spontaneous transformation," modern Yang–Mills gauge theory (1954) and non-Abelian principal fiber bundles provide the exact mathematical realization Jordan's generation sought: interaction curvature $\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}} = \sum_{i<j}[a_i, a_j]$ emerging from non-commuting local symmetries.
+In the post-war German physics community where Burkhard Heim developed his early unified field concepts, Pascual Jordan (1902–1980)—co-founder of matrix mechanics and quantum field theory—championed projective relativity, variable gravitational constants, and non-associative algebras (<i>Jordan algebras</i>) as geometric foundations for quantum physics. While Heim's 1982 <i>Enyphanie</i> ($E\nu$) was phrased in idiosyncratic qualitative vocabulary as a "latent capacity for spontaneous transformation," modern Yang–Mills gauge theory (1954) and non-Abelian principal fiber bundles provide the exact mathematical realization Jordan's generation sought: interaction curvature $\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}} = \sum_{i < j}[a_i, a_j]$ emerging from non-commuting local symmetries.
 </div>
 
 <div class="grid-2">
@@ -70,6 +70,7 @@ In the post-war German physics community where Burkhard Heim developed his early
 </div>
 </div>
 
+---
 
 ## §4.1.3–4.1.4 Symbolic Reconstruction (SM-14 to SM-19), Holoformen & Bridge
 
@@ -117,6 +118,7 @@ In Heim's original manuscript (SM, p. 77), immediately after the discussion of S
 </div>
 </div>
 
+---
 
 ## §4.2.1 Stratum A: Principal Bundles $\mathbf{BunConn}_G^{\mathrm{contr}}$ & Gauge Invariance
 
@@ -171,12 +173,12 @@ $$\|F_{\sigma \cdot A}\|_{g_U, \mathfrak{g}}(x) \;=\; \|F_A\|_{g_U, \mathfrak{g}
 <span id="wil-sig-val" style="font-family:monospace; color:#FFD700;">45°</span>
 </div>
 <svg width="100%" height="100" viewBox="0 0 200 105" style="background:#080c14; border:1px solid #1e293b; border-radius:6px; margin-bottom:4px;">
-<ellipse cx="100" cy="88" rx="55" ry="10" fill="rgba(65,105,225,0.15)" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="3,2"/>
-<line x1="45" y1="12" x2="45" y2="95" stroke="#64748b" stroke-width="1.5"/>
-<path id="wil-lift" d="M 45,88 Q 155,75 155,52.8 Q 155,35.2 45,63.5" fill="none" stroke="#20B2AA" stroke-width="2.5"/>
-<line id="wil-gap" x1="45" y1="88" x2="45" y2="63.5" stroke="#FFD700" stroke-width="3"/>
-<circle cx="45" cy="88" r="4" fill="#4169E1"/>
-<circle id="wil-end" cx="45" cy="63.5" r="4.5" fill="#FFD700"/>
+<ellipse cx="100" cy="88" rx="55" ry="10" fill="rgba(65,105,225,0.15)" stroke="#4169E1" stroke-width="1.5" stroke-dasharray="3,2"></ellipse>
+<line x1="45" y1="12" x2="45" y2="95" stroke="#64748b" stroke-width="1.5"></line>
+<path id="wil-lift" d="M 45,88 Q 155,75 155,52.8 Q 155,35.2 45,63.5" fill="none" stroke="#20B2AA" stroke-width="2.5"></path>
+<line id="wil-gap" x1="45" y1="88" x2="45" y2="63.5" stroke="#FFD700" stroke-width="3"></line>
+<circle cx="45" cy="88" r="4" fill="#4169E1"></circle>
+<circle id="wil-end" cx="45" cy="63.5" r="4.5" fill="#FFD700"></circle>
 <text x="108" y="20" fill="#FFD700" font-size="8.5" font-weight="bold">Hol_A(γ) = 𝒫 exp(-∮ A)</text>
 </svg>
 <div id="wil-readout" class="formula-highlight" style="font-size:0.59em; text-align:left; padding:4px 8px;"></div>
@@ -196,6 +198,7 @@ $$\|F_{\sigma \cdot A}\|_{g_U, \mathfrak{g}}(x) \;=\; \|F_A\|_{g_U, \mathfrak{g}
 </div>
 </div>
 
+---
 
 ## §4.2.2–4.2.3 Slice-Site Topos Equivalence & Complete Corner Flows
 
@@ -246,10 +249,10 @@ On a parameter manifold with corners $\mathcal{M} = (\mathbb{R}_{\ge 0})^n$, an 
 <button class="syn-btn" onclick="setFlowTime(0.8)" style="padding:2px 6px;">Forward ℰ (t = +0.8)</button>
 </div>
 <svg width="100%" height="105" viewBox="0 0 180 105" style="background:#080c14; border:1px solid #1e293b; border-radius:6px; margin-bottom:4px;">
-<line x1="22" y1="10" x2="22" y2="95" stroke="#DC143C" stroke-width="2.5"/>
-<line x1="22" y1="95" x2="168" y2="95" stroke="#DC143C" stroke-width="2.5"/>
-<path d="M 33,15 Q 45,75 155,88" fill="none" stroke="#4169E1" stroke-width="2" stroke-dasharray="3,2"/>
-<circle id="fl-dot" cx="60" cy="69" r="5.5" fill="#FFD700" stroke="#000" stroke-width="1.5"/>
+<line x1="22" y1="10" x2="22" y2="95" stroke="#DC143C" stroke-width="2.5"></line>
+<line x1="22" y1="95" x2="168" y2="95" stroke="#DC143C" stroke-width="2.5"></line>
+<path d="M 33,15 Q 45,75 155,88" fill="none" stroke="#4169E1" stroke-width="2" stroke-dasharray="3,2"></path>
+<circle id="fl-dot" cx="60" cy="69" r="5.5" fill="#FFD700" stroke="#000" stroke-width="1.5"></circle>
 <text x="28" y="20" fill="#ff6b81" font-size="7.5" font-weight="bold">Corner Wall x¹=0 (X¹=0)</text>
 <text x="95" y="91" fill="#ff6b81" font-size="7.5" font-weight="bold">Corner Wall x²=0 (X²=0)</text>
 </svg>
@@ -264,37 +267,35 @@ On a parameter manifold with corners $\mathcal{M} = (\mathbb{R}_{\ge 0})^n$, an 
 </div>
 </div>
 
+---
 
 ## §4.2.4 Yang–Mills Action Functional & Graded BRST Cohomology
 
 <div style="margin-bottom:6px;">
 <span class="tag-a">DEFINITION 4.10: YANG–MILLS EQUATION D_A* F_A = 0</span>
-<span class="tag-a">PROPOSITION 4.11: GRADED BRST COHOMOLOGY & CLAIM CEILING c_BRST</span>
+<span class="tag-a">PROPOSITION 4.11: GRADED BRST COHOMOLOGY &amp; CLAIM CEILING c_BRST</span>
 </div>
 
 <div class="grid-2">
 <div>
 
 <div class="def-box" style="margin-bottom:6px; font-size:0.6em;">
-<div class="box-title">Definition 4.10: Yang–Mills Action & Pseudo-Riemannian Adjoint $D_A^*$</div>
-On an $n$-dimensional manifold $(M_U, g_U)$ with metric signature index $s$ (e.g. $s=0$ Riemannian, $s=1$ Lorentzian $R_4$):
-<ol>
-<li><b>Yang–Mills Action Functional:</b>
-$$\mathcal{I}(\mathbf{A}) \;\coloneqq\; \frac{1}{2}\int_{M_U} \langle F_A \wedge *F_A \rangle_{\operatorname{ad}P_U} \;=\; \frac{1}{2}\int_{M_U} \|F_A\|_{g_U,\mathfrak{g}}^2 \, d\operatorname{vol}_{g_U}.$$
-</li>
-<li><b>Stationary Critical Point Equation:</b> Using $\left.\frac{d}{dt}F_{A+ta}\right|_{t=0} = D_A a$ and the formal $L^2$-adjoint on $k$-forms $D_A^* = (-1)^{n(k-1)+1+s} * D_A *$, $\delta\mathcal{I}_{\mathbf{A}}(a) = \int_{M_U}\langle a, D_A^* F_A \rangle\,d\operatorname{vol}_{g_U} = 0 \iff \mathbf{D_A^* F_A = 0}$.</li>
-</ol>
+<div class="box-title">Definition 4.10: Yang–Mills Action &amp; Pseudo-Riemannian Adjoint $D_A^*$</div>
+On an $n$-dimensional manifold $(M_U, g_U)$ with metric signature index $s$ (e.g. $s=0$ Riemannian, $s=1$ Lorentzian $R_4$):<br>
+<b>1. Yang–Mills Action Functional:</b><br>
+$$\mathcal{I}(\mathbf{A}) \;\coloneqq\; \frac{1}{2}\int_{M_U} \langle F_A \wedge *F_A \rangle_{\operatorname{ad}P_U} \;=\; \frac{1}{2}\int_{M_U} \|F_A\|_{g_U,\mathfrak{g}}^2 \, d\operatorname{vol}_{g_U}.$$<br>
+<b>2. Stationary Critical Point Equation:</b><br>
+Using formal $L^2$-adjoint $D_A^* = (-1)^{n(k-1)+1+s} * D_A *$, $\delta\mathcal{I}_{\mathbf{A}}(a) = 0 \iff \mathbf{D_A^* F_A = 0}$.
 </div>
 
 <div class="prop-box" style="margin-bottom:6px; font-size:0.59em;">
-<div class="box-title">Proposition 4.11: Graded BRST Differential & $H^0_{\mathrm{BRST}}$ Cohomology</div>
-On the extended graded configuration algebra $\mathcal{F}_{\mathrm{ext}} = \bigoplus_{g \in \mathbb{Z}} \mathcal{F}^g$ with ghost numbers $\operatorname{gh}(\mathbf{A})=0$, $\operatorname{gh}(c)=+1$ (ghost), $\operatorname{gh}(\bar{c})=-1$ (anti-ghost), $\operatorname{gh}(b)=0$ (Nakanishi–Lautrup multiplier) and total parity $|X| = \deg_\Omega(X) + \operatorname{gh}(X) \pmod 2$, define:
-$$s_{\mathrm{BRST}}\mathbf{A} = D_A c, \qquad s_{\mathrm{BRST}}c = -\tfrac{1}{2}[c,c], \qquad s_{\mathrm{BRST}}\bar{c} = b, \qquad s_{\mathrm{BRST}}b = 0.$$
-Then $s_{\mathrm{BRST}}^2 \equiv 0$ identically, and gauge-invariant observables form the ghost-number-zero cohomology:
-$$H^0_{\mathrm{BRST}}(\mathcal{F}_{\mathrm{ext}}) \;=\; \frac{\ker\bigl(s_{\mathrm{BRST}} \colon \mathcal{F}^0 \to \mathcal{F}^1\bigr)}{\operatorname{im}\bigl(s_{\mathrm{BRST}} \colon \mathcal{F}^{-1} \to \mathcal{F}^0\bigr)}.$$
+<div class="box-title">Proposition 4.11: Graded BRST Differential &amp; $H^0_{\mathrm{BRST}}$ Cohomology</div>
+On extended graded configuration algebra $\mathcal{F}_{\mathrm{ext}} = \bigoplus_{g \in \mathbb{Z}} \mathcal{F}^g$ with ghost numbers $\operatorname{gh}(\mathbf{A})=0$, $\operatorname{gh}(c)=+1$, $\operatorname{gh}(\bar{c})=-1$, $\operatorname{gh}(b)=0$:<br>
+$$s_{\mathrm{BRST}}\mathbf{A} = D_A c, \qquad s_{\mathrm{BRST}}c = -\tfrac{1}{2}[c,c], \qquad s_{\mathrm{BRST}}\bar{c} = b, \qquad s_{\mathrm{BRST}}b = 0.$$<br>
+Then $s_{\mathrm{BRST}}^2 \equiv 0$ identically, and gauge-invariant observables form the ghost-number-zero cohomology $H^0_{\mathrm{BRST}}(\mathcal{F}_{\mathrm{ext}})$.
 </div>
 
-<div class="claim-ceiling fragment glow-pulse">
+<div class="claim-ceiling fragment glow-pulse" style="font-size:0.58em; padding:4px 8px; margin-top:4px;">
 <b>Claim Ceiling ($c_{\mathrm{BRST}}$):</b> $s_{\mathrm{BRST}}^2 = 0$ is an exact algebraic identity in Stratum $\mathbf{A}$; physical Hilbert-space unitarity of quantized ${}^2\bar{\mathbf{g}}$ gauge fields remains an open physical hypothesis $[\mathbf{P}]$.
 </div>
 
@@ -302,12 +303,12 @@ $$H^0_{\mathrm{BRST}}(\mathcal{F}_{\mathrm{ext}}) \;=\; \frac{\ker\bigl(s_{\math
 <div>
 
 <div class="interactive-panel" style="margin-bottom:6px;">
-<div class="panel-title">Interactive 4-Tab Yang–Mills & BRST Nilpotency Proof Inspector</div>
+<div class="panel-title">Interactive 4-Tab Yang–Mills &amp; BRST Nilpotency Proof Inspector</div>
 <div class="tab-bar">
-<button class="tab-btn active" onclick="showBRSTTab(1, this)">1. Ghost Complex</button>
-<button class="tab-btn" onclick="showBRSTTab(2, this)">2. Proof s²c = 0</button>
-<button class="tab-btn" onclick="showBRSTTab(3, this)">3. Proof s²A = 0</button>
-<button class="tab-btn" onclick="showBRSTTab(4, this)">4. Physical H⁰_BRST</button>
+<button class="tab-btn active" onclick="showBRSTTab(1, this)">Tab 1: Ghost Complex</button>
+<button class="tab-btn" onclick="showBRSTTab(2, this)">Tab 2: Proof s²c = 0</button>
+<button class="tab-btn" onclick="showBRSTTab(3, this)">Tab 3: Proof s²A = 0</button>
+<button class="tab-btn" onclick="showBRSTTab(4, this)">Tab 4: Physical H⁰_BRST</button>
 </div>
 <div id="brst-pane-1" class="tab-pane active" style="font-size:0.62em;">
 $$\mathcal{F}^{-1}\;(\bar{c}) \xlongrightarrow{s_{\mathrm{BRST}}\bar{c} = b} \mathcal{F}^0\;(\mathbf{A}, b) \xlongrightarrow{s_{\mathrm{BRST}}\mathbf{A} = D_A c} \mathcal{F}^1\;(c) \xlongrightarrow{s_{\mathrm{BRST}}c = -\frac{1}{2}[c,c]} \mathcal{F}^2\;([c,c])$$
@@ -320,21 +321,20 @@ since for any odd element $|c|=1$, the graded Jacobi identity gives $3[[c,c],c] 
 </div>
 <div id="brst-pane-3" class="tab-pane" style="font-size:0.62em;">
 <b>Nilpotency on Connection $\mathbf{A}$ (Graded Leibniz + Jacobi):</b>
-$$s_{\mathrm{BRST}}^2 \mathbf{A} \;=\; d(s_{\mathrm{BRST}}c) + [s_{\mathrm{BRST}}\mathbf{A}, c] - [\mathbf{A}, s_{\mathrm{BRST}}c] \;=\; -\tfrac{1}{2}d[c,c] + [dc + [\mathbf{A},c], c] + \tfrac{1}{2}[\mathbf{A}, [c,c]]$$
-$$=\; [[\mathbf{A}, c], c] + \tfrac{1}{2}[\mathbf{A}, [c,c]] \;\equiv\; 0, \qquad\text{and}\qquad s_{\mathrm{BRST}}^2\bar{c} = s_{\mathrm{BRST}}b = 0. \quad\blacksquare$$
+$$s_{\mathrm{BRST}}^2 \mathbf{A} \;=\; d(s_{\mathrm{BRST}}c) + [s_{\mathrm{BRST}}\mathbf{A}, c] - [\mathbf{A}, s_{\mathrm{BRST}}c] \;=\; -\tfrac{1}{2}d[c,c] + [dc + [\mathbf{A},c], c] + \tfrac{1}{2}[\mathbf{A}, [c,c]] \;\equiv\; 0$$
 </div>
 <div id="brst-pane-4" class="tab-pane" style="font-size:0.62em;">
 <b>Cohomological Extraction of Gauge-Invariant States:</b><br>
-Closed states $\Psi \in \ker(s_{\mathrm{BRST}}|_{\mathcal{F}^0})$ are gauge-invariant ($D_A c$-annihilated), while exact states $\operatorname{im}(s_{\mathrm{BRST}}|_{\mathcal{F}^{-1}})$ are pure gauge/longitudinal artifacts. Their quotient $H^0_{\mathrm{BRST}}(\mathcal{F}_{\mathrm{ext}})$ isolates physical gauge degrees of freedom.
+Closed states $\Psi \in \ker(s_{\mathrm{BRST}}|_{\mathcal{F}^0})$ are gauge-invariant, while exact states $\operatorname{im}(s_{\mathrm{BRST}}|_{\mathcal{F}^{-1}})$ are pure gauge artifacts.
 </div>
 </div>
 
 <div class="lean-card fragment fade-left">
 <div class="lean-header">
-<span>Lean 4 — Graded BRST Differential & Curvature Norm (S₂ Verified)</span>
+<span>Lean 4 — Graded BRST Differential &amp; Curvature Norm (S₂ Verified)</span>
 <span class="s-badge">Mathlib4</span>
 </div>
-<pre><code>structure BRSTComplex (g : Type*) [LieRing g] [LieAlgebra ℝ g] where
+<pre style="margin:0;"><code class="language-lean">structure BRSTComplex (g : Type*) [LieRing g] [LieAlgebra ℝ g] where
   A      : g
   c      : g
   c_bar  : g
@@ -349,6 +349,7 @@ theorem brst_nilpotent_ghost (c : g)
 </div>
 </div>
 
+---
 
 ## §4.3.1 Stratum B1: Relative Interaction Curvature Decomposition Theorem {transition="convex"}
 
@@ -414,6 +415,7 @@ $$\frac{1}{2}[a,a] \;=\; \frac{1}{2}\sum_{k=1}^N [a_k, a_k] + \sum_{1 \le i < j 
 </div>
 </div>
 
+---
 
 ## §4.3.1 & §4.3.4 Worked $\mathfrak{su}(2)$ Example, Stage IV Polarimeter & $g_E^{\mathcal{D}}$
 
@@ -470,11 +472,11 @@ Endow the coupled polarimeter base $M_U = \mathbb{R}^2_{(x_1,x_2)}$ with $P_U = 
 <span id="su2-w2-val" style="font-family:monospace; color:#FFD700;">1.50</span>
 </div>
 <svg width="100%" height="135" viewBox="0 0 240 135" style="background:#080c14; border:1px solid #1e293b; border-radius:6px; margin-bottom:6px;">
-<line x1="30" y1="68" x2="210" y2="68" stroke="#4169E1" stroke-width="2" stroke-dasharray="4,2"/>
-<line x1="120" y1="12" x2="120" y2="124" stroke="#20B2AA" stroke-width="2" stroke-dasharray="4,2"/>
-<circle id="su2-r3" cx="120" cy="68" r="42" fill="none" stroke="#FFA500" stroke-width="1.5" opacity="0.5"/>
-<circle id="su2-r2" cx="120" cy="68" r="28" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.75"/>
-<circle id="su2-r1" cx="120" cy="68" r="14" fill="rgba(220,20,60,0.35)" stroke="#DC143C" stroke-width="2.5"/>
+<line x1="30" y1="68" x2="210" y2="68" stroke="#4169E1" stroke-width="2" stroke-dasharray="4,2"></line>
+<line x1="120" y1="12" x2="120" y2="124" stroke="#20B2AA" stroke-width="2" stroke-dasharray="4,2"></line>
+<circle id="su2-r3" cx="120" cy="68" r="42" fill="none" stroke="#FFA500" stroke-width="1.5" opacity="0.5"></circle>
+<circle id="su2-r2" cx="120" cy="68" r="28" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.75"></circle>
+<circle id="su2-r1" cx="120" cy="68" r="14" fill="rgba(220,20,60,0.35)" stroke="#DC143C" stroke-width="2.5"></circle>
 <text x="168" y="62" fill="#82aaff" font-size="8.5" font-weight="bold">a₁ = ω₁ T₁ dx¹</text>
 <text x="125" y="24" fill="#5eead4" font-size="8.5" font-weight="bold">a₂ = ω₂ T₂ dx²</text>
 <text x="120" y="128" fill="#FFD700" font-size="8.5" font-weight="bold" text-anchor="middle">Vortex Ω_int^𝒟 = ω₁ω₂ T₃ dx¹∧dx²</text>
@@ -485,6 +487,7 @@ Endow the coupled polarimeter base $M_U = \mathbb{R}^2_{(x_1,x_2)}$ with $P_U = 
 </div>
 </div>
 
+---
 
 ## §4.3.1–4.3.3 Hodge–Laplacian Splitting, Atiyah Algebroid & Bogomolny Bound
 
@@ -560,6 +563,7 @@ with saturation iff $*F_A = \pm F_A$. By Chern–Weil homotopy invariance, a Hol
 </div>
 </div>
 
+---
 
 ## §4.3.4–4.3.5 Syntrixfeld Triple $\mathfrak{F}_{\mathrm{syn}}$, $YF_{\mathrm{model}}$ & Discrete Chronometry
 
@@ -631,6 +635,7 @@ $$\delta t_n \;\coloneqq\; \tau(n+1) - \tau(n) > 0, \qquad t_N \;\coloneqq\; \su
 </div>
 </div>
 
+---
 
 ## §4.3.6–4.3.7 $3\times 3$ Taxonomic Grid $\hat{A} = (A_{ik})$, Singularity & Affinity $\beta^\infty$
 
@@ -698,6 +703,7 @@ ensuring zero-loss information transduction between internal states and external
 </div>
 </div>
 
+---
 
 ## §4.4 Complete Reconstruction Map $\mathcal{R}$ & Carnapian Explication 4.1
 
@@ -762,10 +768,11 @@ ensuring zero-loss information transduction between internal states and external
 <li><b>1. Explicandum (Stratum D):</b> Heim's intuitive concepts of <i>Enyphanie</i> ($E\nu$, intrinsic latent capacity for transformation), scalar <i>Enyphaniegrad</i> ($g_E$, compared to free energy), and emergent <i>Holoformen</i> ($\mathbf{H}$, SM pp. 62–74).</li>
 <li><b>2. Explicatum (Stratum A/B):</b> The non-Abelian interaction curvature 2-form residual $\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}} = F_A - \sum_{k=1}^N \mathcal{F}_k^{(A_0)} \in \Omega^2(M_U, \operatorname{ad}P_U)$, the gauge-invariant energy density $g_E^{\mathcal{D}}(x) = \frac{1}{2}\|\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}}(x)\|_{g_U,\mathfrak{g}}^2$, and the background-normalized Yang–Mills emergence functional $\Delta_{\mathrm{emerg}}^{\mathcal{I}} > 0$.</li>
 <li><b>3. Exactness & Simplicity:</b> Grounded in principal $G$-bundles with $\operatorname{Ad}(G)$-invariant trace metrics (Prop. 4.4) and Fredholm $L^2$-orthogonal Hodge–Laplacian splitting $\operatorname{im}(\Delta_{A_0}) \oplus_{L^2} \ker(\Delta_{A_0})$ (Thm. 4.13).</li>
-<li><b>4. Fruitfulness:</b> In harmony with Steven French's Ontic Structural Realism (2014) and Bas van Fraassen's structural representation (2008), this explication eliminates vitalist substances: interactive potential vanishes in the Abelian uncoupled limit ($G = \mathrm{U}(1), a_{\mathrm{int}}=0 \implies \mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}} = 0$) and emerges strictly from non-commuting Lie brackets $\sum_{i<j}[a_i, a_j]$.</li>
+<li><b>4. Fruitfulness:</b> In harmony with Steven French's Ontic Structural Realism (2014) and Bas van Fraassen's structural representation (2008), this explication eliminates vitalist substances: interactive potential vanishes in the Abelian uncoupled limit ($G = \mathrm{U}(1), a_{\mathrm{int}}=0 \implies \mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}} = 0$) and emerges strictly from non-commuting Lie brackets $\sum_{i < j}[a_i, a_j]$.</li>
 </ol>
 </div>
 
+---
 
 ## §4.5–4.6 Sanity Checks, Chapter 4 Synthesis & Bridge to Chapter 5 {transition="zoom"}
 

@@ -2,113 +2,216 @@
 window.MathJax = {
   tex: {
     macros: {
-      coloneqq: "\\mathrel{:=}",
-      Coloneqq: "\\mathrel{::=}",
-      centernot: ["\\not#1", 1],
-      llbracket: "\\mathopen{[\\mkern-3mu[}",
-      rrbracket: "\\mathclose{]\\mkern-3mu]}",
-      longhookrightarrow: "\\lhook\\joinrel\\longrightarrow",
-      Ctx: "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
-      CtxPos: "\\mathbf{Ctx}_{>0}^{\\mathrm{sk}}",
-      Ban: "\\mathbf{Ban}_{\\le 1}",
-      FinBan: "\\mathbf{FinBan}_{\\le 1}",
-      Esyn: "\\mathcal{E}_{\\mathrm{syn}}",
-      Jsyn: "J_{\\mathrm{syn}}",
-      Ksyn: "\\mathcal{K}_{\\mathrm{syn}}",
-      otpi: "\\mathbin{\\widehat{\\otimes}_\\pi}",
-      Hol: "\\operatorname{Hol}",
-      Def: "\\operatorname{Def}",
-      Isom: "\\operatorname{Isom}",
-      Hom: "\\operatorname{Hom}",
-      Sub: "\\operatorname{Sub}",
-      op: "\\mathrm{op}",
-      cl: "\\operatorname{cl}",
-      IGP: "\\operatorname{IGP}",
-      Stable: "\\operatorname{Stable}",
-      Gen: "\\operatorname{Gen}",
-      Prop: "\\mathbf{Prop}",
       AP: "\\mathbf{AP}",
-      color: #e2e8f0;,
-      margin: 4px 0 10px 0;,
-      display: block;,
-      gap: 6px;,
-      background: #0d131f;,
-      border: 1.5px solid #334155;,
-      padding: 10px 14px;,
-      cursor: pointer;,
-      transition: all 0.18s ease;,
-      Osyn: "\\mathcal{O}_{\\mathrm{syn}}",
-      Opyr: "\\mathcal{O}_{\\mathrm{pyr}}",
+      AbsEN: "\\operatorname{AbsEN}",
+      Ad: "\\operatorname{Ad}",
+      Ahat: "\\widehat{A}",
+      Alg: "\\operatorname{Alg}",
+      At: "\\operatorname{At}",
+      Aut: "\\operatorname{Aut}",
+      Ban: "\\mathbf{Ban}_{\\le 1}",
+      Bil: "\\operatorname{Bil}",
+      BoxS: "\\Box_S",
+      BoxSyn: "\\Box_{\\mathrm{Syn}}",
+      BunConn: "\\mathbf{BunConn}_G^{\\mathrm{contr}}",
+      CSL: "\\mathcal{C}_{\\mathrm{SL}}",
+      CSeg: "\\operatorname{CSeg}",
+      Coalg: "\\mathbf{Coalg}",
+      Codisc: "\\operatorname{Codisc}",
+      Coeff: "\\mathbf{Coeff}",
+      Col: "\\mathbf{Col}",
+      Coloneqq: "\\mathrel{::=}",
+      ConfIndex: "\\operatorname{ConfIndex}_{\\mathrm{pres}}",
+      Conn: "\\operatorname{Conn}",
+      Crit: "\\operatorname{Crit}",
+      Cspine: "\\mathcal{C}_{\\mathrm{spine}}",
+      Ctx: "\\mathbf{Ctx}",
+      CtxPos: "\\mathbf{Ctx}_{>0}^{\\mathrm{sk}}",
+      Ctxadm: "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+      Ctxquant: "\\mathbf{Ctx}_{\\mathrm{quant}}",
+      DIV: "\\operatorname{DIV}",
+      DKor: "\\mathbb{K}\\mathbf{or}",
+      Def: "\\operatorname{Def}",
+      Dext: "\\mathcal{D}_{\\mathrm{ext}}",
+      DiaS: "\\Diamond_S",
+      DimField: "\\mathbf{DimField}_{\\Lambda}",
+      Disc: "\\operatorname{Disc}",
+      Div: "\\operatorname{Div}",
+      Dom: "\\operatorname{Dom}",
+      End: "\\operatorname{End}",
+      Equant: "\\mathcal{E}_{\\mathrm{quant}}",
+      Esyn: "\\mathcal{E}_{\\mathrm{syn}}",
+      Face: "\\operatorname{Face}",
+      Fext: "\\mathcal{F}_{\\mathrm{ext}}",
+      Ffree: "\\mathcal{F}_{\\mathrm{free}}",
+      FinBan: "\\mathbf{FinBan}",
+      Free: "\\operatorname{Free}",
+      Fsyn: "\\mathfrak{F}_{\\mathrm{syn}}",
+      GRAD: "\\operatorname{GRAD}",
+      Gen: "\\operatorname{Gen}",
+      Ggen: "\\mathsf{G}_{\\mathrm{gen}}",
+      Gnabla: "\\mathfrak{G}_\\nabla",
+      Hess: "\\operatorname{Hess}",
+      Hol: "\\operatorname{Hol}",
+      Hom: "\\operatorname{Hom}",
+      HypMet: "\\operatorname{HypMet}",
+      IGP: "\\operatorname{IGP}",
+      Im: "\\operatorname{Im}",
+      Ind: "\\operatorname{Index}",
+      Isom: "\\operatorname{Isom}",
+      Izero: "\\mathrm{I}_{\\mathbf{0}}",
+      Jproof: "J_{\\mathrm{proof}}",
+      Jquant: "J_{\\mathrm{quant}}",
+      Jsyn: "J_{\\mathrm{syn}}",
+      Kor: "\\mathbf{Kor}",
+      Ksyn: "K_{\\mathrm{syn}}",
+      LiMSL: "\\mathcal{L}_{\\mathrm{iMSL}}",
+      MAR: "\\mathcal{M}_{\\mathfrak{AR}}",
+      Manparam: "\\mathbf{Man}_{\\mathrm{param}}",
+      Map: "\\operatorname{Map}",
+      Match: "\\mathsf{Match}_{\\mathcal{U}}",
+      Met: "\\operatorname{Met}",
+      Msyn: "\\mathcal{M}_{\\mathrm{syn}}",
+      Mtau: "\\mathbb{M}_{\\tau}",
+      Obj: "\\operatorname{Obj}",
       Ofrag: "\\mathcal{O}_{\\mathrm{frag}}",
       Ohom: "\\mathcal{O}_{\\mathrm{hom}}",
-      otBV: "\\mathbin{\\otimes_{\\mathrm{BV}}}",
-      syntrix: "\\mathbf{y}\\widetilde{\\mathbf{a}}",
-      homsyntrix: "\\mathbf{x}\\widetilde{\\mathbf{a}}",
-      metrophor: "\\widetilde{\\mathbf{a}}",
-      synkolator: "\\mathfrak{f}",
-      Shift: "\\mathsf{Shift}",
-      BoxSyn: "\\Box_{\\mathrm{Syn}}",
-      Aut: "\\operatorname{Aut}",
-      Stab: "\\operatorname{Stab}",
-      Sym: "\\operatorname{Sym}",
-      Col: "\\mathbf{Col}",
-      CSL: "\\mathcal{C}_{\\mathrm{SL}}",
-      Cspine: "\\mathcal{C}_{\\mathrm{spine}}",
-      boxplusphi: "\\mathbin{\\boxplus_\\phi}",
-      nullsyntrix: "\\mathbf{ys}\\widetilde{\\mathbf{c}}",
-      konflexiv: "\\mathbf{y}\\widetilde{\\mathbf{c}}",
-      Kor: "\\mathbf{Kor}",
-      DKor: "\\mathbb{K}\\mathbf{or}",
-      ConfIndex: "\\operatorname{ConfIndex}_{\\mathrm{pres}}",
-      Valfact: "\\operatorname{Val}_{\\mathrm{fact}}",
-      Im: "\\operatorname{Im}",
-      rank: "\\operatorname{rank}",
-      Omegaint: "\\mathbf{\\Omega}_{\\mathrm{int}}^{\\mathcal{D}}",
-      Gnabla: "\\mathfrak{G}_\\nabla",
-      BunConn: "\\mathbf{BunConn}_G^{\\mathrm{contr}}",
-      UG: "U_{\\mathsf{G}}",
-      Ggen: "\\mathsf{G}_{\\mathrm{gen}}",
-      Fsyn: "\\mathfrak{F}_{\\mathrm{syn}}",
-      Msyn: "\\mathcal{M}_{\\mathrm{syn}}",
-      gsyn: "g^{\\mathrm{syn}}",
-      Xkor: "\\mathbf{X}_{\\mathrm{kor}}",
-      YF: "YF_{\\mathrm{model}}",
-      Match: "\\mathsf{Match}_{\\mathcal{U}}",
-      Fext: "\\mathcal{F}_{\\mathrm{ext}}",
-      sBRST: "s_{\\mathrm{BRST}}",
-      ad: "\\operatorname{ad}",
-      Ad: "\\operatorname{Ad}",
-      At: "\\operatorname{At}",
-      tr: "\\operatorname{tr}",
-      im: "\\operatorname{im}",
-      Xsyn: "\\mathcal{X}_{\\mathrm{syn}}",
+      Oisom: "\\mathcal{O}_{\\mathrm{isom}}",
+      Omegaint: "\\mathbf{\\Omega}_{\\mathrm{int}}",
       On: "\\mathcal{O}_n",
-      Met: "\\operatorname{Met}",
-      Alg: "\\operatorname{Alg}",
-      dCSeg: "\\operatorname{dCSeg}",
-      CSeg: "\\operatorname{CSeg}",
-      Tect: "\\operatorname{Tect}",
-      HypMet: "\\operatorname{HypMet}",
-      Free: "\\operatorname{Free}",
-      Map: "\\operatorname{Map}",
-      Disc: "\\operatorname{Disc}",
-      Codisc: "\\operatorname{Codisc}",
+      Opyr: "\\mathcal{O}_{\\mathrm{pyr}}",
+      Oquant: "\\mathcal{O}_{\\mathrm{quant}}",
+      Osyn: "\\mathcal{O}_{\\mathrm{syn}}",
+      Pol: "\\operatorname{Pol}",
+      Prop: "\\mathbf{Prop}",
       RBan: "\\mathfrak{R}_{\\mathrm{Ban}}",
-      SynEN: "\\operatorname{SynEN}",
-      AbsEN: "\\operatorname{AbsEN}",
-      colim: "\\operatorname*{colim}",
-      MAR: "\\mathcal{M}_{\\mathfrak{AR}}",
-      gAR: "g_{\\mathfrak{AR}}",
-      XAR: "X_{\\mathfrak{AR}}",
-      Dext: "\\mathcal{D}_{\\mathrm{ext}}",
-      Coalg: "\\mathbf{Coalg}",
-      Ffree: "\\mathcal{F}_{\\mathrm{free}}",
+      ROT: "\\operatorname{ROT}",
+      Rbar: "{}^2\\bar{\\mathbf{R}}",
       Rresyn: "\\mathcal{R}_{\\mathrm{resyn}}",
-      grad: "\\operatorname{grad}",
+      Sel: "\\operatorname{Sel}",
+      Sh: "\\mathbf{Sh}",
+      Shift: "\\mathsf{Shift}",
+      Spec: "\\operatorname{Spec}",
+      Ssum: "\\mathcal{S}",
+      Stab: "\\operatorname{Stab}",
+      Stable: "\\operatorname{Stable}",
+      Sub: "\\operatorname{Sub}",
+      Sym: "\\operatorname{Sym}",
+      SynCat: "\\mathbf{Syn}(\\mathcal{L}_{\\mathrm{iMSL}})",
+      SynEN: "\\operatorname{SynEN}",
+      Synquant: "\\mathbf{Syn}_{\\mathrm{quant}}",
+      Tect: "\\operatorname{Tect}",
+      UG: "U_{\\mathsf{G}}",
+      Valfact: "\\operatorname{Val}_{\\mathrm{fact}}",
+      WFFiMSL: "\\mathbf{WFF}_{\\mathrm{iMSL}}",
+      XAR: "X_{\\mathfrak{AR}}",
+      Xkor: "\\mathbf{X}_{\\mathrm{kor}}",
+      Xsyn: "\\mathcal{X}_{\\mathrm{syn}}",
+      YF: "YF_{\\mathrm{model}}",
+      ad: "\\operatorname{ad}",
+      aeondynechaptereight: "\\widetilde{\\mathbf{a}}(x_i)_1^n",
+      background: rgba(65, 105, 225, 0.25);,
+      border: 1.5px solid #334155;,
+      boxplusphi: "\\mathbin{\\boxplus_\\phi}",
+      centernot: "\\not",
+      ch: "\\operatorname{ch}",
+      cl: "\\operatorname{cl}",
+      colim: "\\operatorname*{colim}",
+      coloneqq: "\\mathrel{:=}",
+      color: #e2e8f0;,
+      cursor: pointer;,
+      dCSeg: "\\operatorname{dCSeg}",
+      deg: "\\operatorname{deg}",
+      diam: "\\operatorname{diam}",
+      display: block;,
       dist: "\\operatorname{dist}",
+      divg: "\\operatorname{div}_{\\bar{g}}",
+      dtilde: "\\tilde{\\mathrm{d}}|",
+      elementarstruktur: "\\mathbf{y}\\widetilde{\\mathbf{a}}_{(j)}",
+      ev: "\\operatorname{ev}",
+      filter: brightness(1.25);,
+      fundamentalkondensor: "\\operatorname{Sel}",
+      funktionaloperator: "\\mathfrak{f}",
+      gAR: "g_{\\mathfrak{AR}}",
+      gap: 5px;,
+      gbar: "{}^2\\bar{\\mathbf{g}}",
+      gbarinf: "{}^2\\bar{\\mathbf{g}}_\\infty",
+      gbarminus: "{}^2\\bar{\\mathbf{g}}_-",
+      gbarplus: "{}^2\\bar{\\mathbf{g}}_+",
+      grad: "\\operatorname{grad}",
+      gsyn: "g^{\\mathrm{syn}}",
+      holoform: "\\text{Holoform}",
+      homogenesyntrix: ["\\mathsf{H}\\!\\left(#1\\right)", 1],
+      homsyntrix: "\\mathbf{x}\\widetilde{\\mathbf{a}}",
+      hypermetrophor: ["\\mathbf{w}\\widetilde{#1}", 1],
+      id: "\\operatorname{id}",
+      im: "\\operatorname{im}",
       ind: "\\operatorname{ind}",
-      Crit: "\\operatorname{Crit}",
-      Hess: "\\operatorname{Hess}"
+      infinitesimalchainoperatorI: "\\mathop{\\mathrm{I}}",
+      kaskadenstufe: "\\alpha",
+      kompositionsfeld: "{}^2\\bar{\\mathbf{g}}",
+      konflexiv: "\\mathbf{y}\\widetilde{\\mathbf{c}}",
+      konflexivsyntrix: "\\mathbf{y}\\widetilde{\\mathbf{c}}",
+      koppelungstensor: "\\mathbf{Q}",
+      korporatorkette: "\\mathord{\\llcorner}",
+      korrelationstensor: "\\mathbf{f}",
+      llbracket: "\\mathopen{[\\mkern-3mu[}",
+      longhookrightarrow: "\\lhook\\joinrel\\longrightarrow",
+      longlongrightarrow: "\\longrightarrow",
+      lvl: "\\operatorname{lvl}",
+      margin: 4px 0;,
+      metrischesieboperator: "S(\\gamma)",
+      metron: "\\tau",
+      metronbar: "\\bar{\\delta}",
+      metrondelta: "\\nabla",
+      metrondifferential: "\\mathrm{d}",
+      metronenfunktion: "\\phi(n)",
+      metronenziffer: "n",
+      metronintegral: "\\mathrm{S}",
+      metronischegitter: "\\text{Metronische Gitter}",
+      metrophor: ["\\widetilde{#1}", 1],
+      metroplex: ["\\overset{\\scriptscriptstyle #2}{\\mathbf{M}}\\!\\left(#1\\right)", 2],
+      midpt: "\\operatorname{mid}",
+      nullsyntrix: "\\mathbf{ys}\\widetilde{\\mathbf{c}}",
+      op: "\\mathrm{op}",
+      opacity: 0.92;,
+      or: "\\operatorname{or}",
+      otBV: "\\mathbin{\\otimes_{\\mathrm{BV}}}",
+      oteps: "\\mathbin{\\widehat{\\otimes}_\\varepsilon}",
+      otpi: "\\mathbin{\\widehat{\\otimes}_\\pi}",
+      padding: 3px 6px;,
+      parttilde: "\\tilde{\\partial}",
+      polyquantor: ["\\mathop{\\mathsf{Q}}\\limits_{#2,#3}^{#4}\\!\\left(#1\\right)", 4],
+      position: sticky;,
+      predicatesymbol: "\\mathrel{\\models}",
+      protyposis: "\\text{Protyposis}",
+      qualitaetsaspekt: "\\text{Qualitätsaspekt}",
+      quantitaetsaspekt: "\\text{Quantitätsaspekt}",
+      quantitaetssyntrix: "\\mathbf{y}\\mathbf{R}_n",
+      quantor: ["\\mathsf{Q}\\left[#1\\right]", 1],
+      rank: "\\operatorname{rank}",
+      rk: "\\operatorname{rk}",
+      rrbracket: "\\mathclose{]\\mkern-3mu]}",
+      sBRST: "s_{\\mathrm{BRST}}",
+      semantischermetrophor: "R_n",
+      sp: "\\operatorname{sp}",
+      stroke: #FFD700;,
+      strukturkompressor: "{}^4\\mathbf{\\zeta}",
+      supmedsubscript: ["{}^{#2}_{#1,#3}", 3],
+      syndrom: "F",
+      synkolationsstufe: "m",
+      synkolator: "\\mathfrak{f}",
+      syntrix: ["\\mathbf{y}\\widetilde{#1}", 1],
+      syntroklinekettenkoppelung: "\\mathsf{K}",
+      syntroklinemetroplex: ["\\mathsf{B}_{#2}\\!\\left(#1\\right)", 2],
+      top: 0;,
+      tr: "\\operatorname{tr}",
+      transition: all 0.18s ease;,
+      vol: "\\operatorname{vol}",
+      vspacing: ["\\vphantom{\\sum}", 1],
+      widemetroplex: ["\\mathsf{M}_{#2}\\!\\left(#1\\right)", 2],
+      width: 100%;,
+      zahlenkoerper: "\\text{Zahlenkörper}"
     }
   }
 };
@@ -581,5 +684,723 @@ window.MathJax = {
   line-height: 1.36;
   color: #e2e8f0;
   overflow-x: auto;
+}
+
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll section {
+  font-size: clamp(14px, 1.35vw, 26px) !important;
+}
+.reveal-viewport.reveal-scroll .interactive-panel,
+.reveal-viewport.reveal-scroll .thm-box,
+.reveal-viewport.reveal-scroll .carnap-box,
+.reveal-viewport.reveal-scroll .firewall-box,
+.reveal-viewport.reveal-scroll .intuition-box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.widget-context-note {
+  font-size: 0.64em;
+  color: #cbd5e1;
+  line-height: 1.36;
+  margin: 4px 0 10px 0;
+}
+.syn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.syn-tab-btn {
+  background: #151c2c;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 0.60em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.syn-tab-btn.active, .syn-tab-btn:hover {
+  background: rgba(65, 105, 225, 0.28);
+  color: #FFD700;
+  border: 1px solid #FFD700;
+}
+.syn-tab-pane {
+  display: none;
+  background: rgba(10, 14, 23, 0.82);
+  border: 1px solid rgba(65, 105, 225, 0.45);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.72em;
+}
+.syn-tab-pane.active {
+  display: block;
+}
+.lean-code-card {
+  background: #0d131f;
+  border: 1.5px solid #334155;
+  border-left: 5px solid #20B2AA;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 0.54em;
+  line-height: 1.36;
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll section {
+  font-size: clamp(14px, 1.35vw, 26px) !important;
+}
+.reveal-viewport.reveal-scroll .interactive-panel,
+.reveal-viewport.reveal-scroll .thm-box,
+.reveal-viewport.reveal-scroll .carnap-box,
+.reveal-viewport.reveal-scroll .firewall-box,
+.reveal-viewport.reveal-scroll .intuition-box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.widget-context-note {
+  font-size: 0.64em;
+  color: #cbd5e1;
+  line-height: 1.36;
+  margin: 4px 0 8px 0;
+}
+.syn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.syn-tab-btn {
+  background: #151c2c;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 0.60em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.syn-tab-btn.active, .syn-tab-btn:hover {
+  background: rgba(65, 105, 225, 0.28);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+.syn-tab-pane {
+  display: none;
+  background: rgba(10, 14, 23, 0.82);
+  border: 1px solid rgba(65, 105, 225, 0.45);
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-size: 0.70em;
+}
+.syn-tab-pane.active {
+  display: block;
+}
+.lean-code-card {
+  background: #0d131f;
+  border: 1.5px solid #334155;
+  border-left: 5px solid #20B2AA;
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 0.54em;
+  line-height: 1.35;
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll section {
+  font-size: clamp(14px, 1.35vw, 26px) !important;
+}
+.reveal-viewport.reveal-scroll .interactive-panel,
+.reveal-viewport.reveal-scroll .thm-box,
+.reveal-viewport.reveal-scroll .carnap-box,
+.reveal-viewport.reveal-scroll .firewall-box,
+.reveal-viewport.reveal-scroll .intuition-box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.widget-context-note {
+  font-size: 0.64em;
+  color: #cbd5e1;
+  line-height: 1.36;
+  margin: 4px 0 10px 0;
+}
+.syn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.syn-tab-btn {
+  background: #151c2c;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 0.60em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.syn-tab-btn.active, .syn-tab-btn:hover {
+  background: rgba(65, 105, 225, 0.28);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+.syn-tab-pane {
+  display: none;
+  background: rgba(10, 14, 23, 0.82);
+  border: 1px solid rgba(65, 105, 225, 0.45);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.72em;
+}
+.syn-tab-pane.active {
+  display: block;
+}
+.lean-code-card {
+  background: #0d131f;
+  border: 1.5px solid #334155;
+  border-left: 5px solid #20B2AA;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 0.54em;
+  line-height: 1.36;
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+.ch9-grid-cell {
+  cursor: pointer;
+  transition: opacity 0.15s ease, stroke-width 0.15s ease;
+}
+.ch9-grid-cell:hover {
+  opacity: 0.92;
+  stroke: #FFD700;
+  stroke-width: 2px;
+}
+
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll section {
+  font-size: clamp(14px, 1.35vw, 26px) !important;
+}
+.reveal-viewport.reveal-scroll .interactive-panel,
+.reveal-viewport.reveal-scroll .thm-box,
+.reveal-viewport.reveal-scroll .carnap-box,
+.reveal-viewport.reveal-scroll .firewall-box,
+.reveal-viewport.reveal-scroll .intuition-box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.widget-context-note {
+  font-size: 0.64em;
+  color: #cbd5e1;
+  line-height: 1.36;
+  margin: 4px 0 10px 0;
+}
+.syn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.syn-tab-btn {
+  background: #151c2c;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 0.60em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.syn-tab-btn.active, .syn-tab-btn:hover {
+  background: rgba(65, 105, 225, 0.28);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+.syn-tab-pane {
+  display: none;
+  background: rgba(10, 14, 23, 0.82);
+  border: 1px solid rgba(65, 105, 225, 0.45);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.72em;
+}
+.syn-tab-pane.active {
+  display: block;
+}
+.lean-code-card {
+  background: #0d131f;
+  border: 1.5px solid #334155;
+  border-left: 5px solid #20B2AA;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 0.54em;
+  line-height: 1.36;
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll section {
+  font-size: clamp(14px, 1.35vw, 26px) !important;
+}
+.reveal-viewport.reveal-scroll .interactive-panel,
+.reveal-viewport.reveal-scroll .thm-box,
+.reveal-viewport.reveal-scroll .carnap-box,
+.reveal-viewport.reveal-scroll .firewall-box,
+.reveal-viewport.reveal-scroll .intuition-box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.widget-context-note {
+  font-size: 0.64em;
+  color: #cbd5e1;
+  line-height: 1.36;
+  margin: 4px 0 10px 0;
+}
+.syn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.syn-tab-btn {
+  background: #151c2c;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 0.60em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.syn-tab-btn.active, .syn-tab-btn:hover {
+  background: rgba(65, 105, 225, 0.28);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+.syn-tab-pane {
+  display: none;
+  background: rgba(10, 14, 23, 0.82);
+  border: 1px solid rgba(65, 105, 225, 0.45);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.72em;
+}
+.syn-tab-pane.active {
+  display: block;
+}
+.lean-code-card {
+  background: #0d131f;
+  border: 1.5px solid #334155;
+  border-left: 5px solid #20B2AA;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 0.54em;
+  line-height: 1.36;
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+.claim-ceiling-pill {
+  display: inline-block;
+  background: rgba(220, 20, 60, 0.14);
+  border: 1px solid #DC143C;
+  border-left: 4px solid #DC143C;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 0.68em;
+  color: #fecdd3;
+  margin-top: 6px;
+}
+.pdg-table-compact table {
+  width: 100%;
+  font-size: 0.58em;
+  border-collapse: collapse;
+}
+.pdg-table-compact th, .pdg-table-compact td {
+  padding: 3px 6px;
+  border-bottom: 1px solid #1e293b;
+}
+.pdg-table-compact th {
+  color: #FFD700;
+  background: rgba(30, 41, 59, 0.7);
+}
+
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll section {
+  font-size: clamp(14px, 1.35vw, 26px) !important;
+}
+.reveal-viewport.reveal-scroll .interactive-panel,
+.reveal-viewport.reveal-scroll .thm-box,
+.reveal-viewport.reveal-scroll .carnap-box,
+.reveal-viewport.reveal-scroll .firewall-box,
+.reveal-viewport.reveal-scroll .intuition-box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.widget-context-note {
+  font-size: 0.64em;
+  color: #cbd5e1;
+  line-height: 1.36;
+  margin: 4px 0 10px 0;
+}
+.syn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.syn-tab-btn {
+  background: #151c2c;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 0.60em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.syn-tab-btn.active, .syn-tab-btn:hover {
+  background: rgba(65, 105, 225, 0.28);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+.syn-tab-pane {
+  display: none;
+  background: rgba(10, 14, 23, 0.82);
+  border: 1px solid rgba(65, 105, 225, 0.45);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.72em;
+}
+.syn-tab-pane.active {
+  display: block;
+}
+.lean-code-card {
+  background: #0d131f;
+  border: 1.5px solid #334155;
+  border-left: 5px solid #20B2AA;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 0.54em;
+  line-height: 1.36;
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll section {
+  font-size: clamp(14px, 1.35vw, 26px) !important;
+}
+.reveal-viewport.reveal-scroll .interactive-panel,
+.reveal-viewport.reveal-scroll .thm-box,
+.reveal-viewport.reveal-scroll .carnap-box,
+.reveal-viewport.reveal-scroll .firewall-box,
+.reveal-viewport.reveal-scroll .intuition-box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.widget-context-note {
+  font-size: 0.64em;
+  color: #cbd5e1;
+  line-height: 1.36;
+  margin: 4px 0 10px 0;
+}
+.syn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.syn-tab-btn {
+  background: #151c2c;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 0.60em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.syn-tab-btn.active, .syn-tab-btn:hover {
+  background: rgba(65, 105, 225, 0.28);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+.syn-tab-pane {
+  display: none;
+  background: rgba(10, 14, 23, 0.82);
+  border: 1px solid rgba(65, 105, 225, 0.45);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.72em;
+}
+.syn-tab-pane.active {
+  display: block;
+}
+.lean-code-card {
+  background: #0d131f;
+  border: 1.5px solid #334155;
+  border-left: 5px solid #20B2AA;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 0.54em;
+  line-height: 1.36;
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+.ch13-grid-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.65em;
+  margin-top: 6px;
+}
+.ch13-grid-table th, .ch13-grid-table td {
+  border: 1px solid #334155;
+  padding: 5px 7px;
+  text-align: center;
+}
+.ch13-grid-cell {
+  cursor: pointer;
+  background: #0f172a;
+  transition: all 0.15s ease;
+  font-weight: 700;
+}
+.ch13-grid-cell:hover, .ch13-grid-cell.active {
+  background: rgba(65, 105, 225, 0.35);
+  border-color: #FFD700;
+  color: #FFD700;
+}
+.ch13-hermetry-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3px;
+  margin-top: 6px;
+}
+.ch13-hcell {
+  font-family: monospace;
+  font-size: 0.56em;
+  padding: 4px 2px;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid #334155;
+}
+
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll section {
+  font-size: clamp(14px, 1.35vw, 26px) !important;
+}
+.reveal-viewport.reveal-scroll .interactive-panel,
+.reveal-viewport.reveal-scroll .thm-box,
+.reveal-viewport.reveal-scroll .carnap-box,
+.reveal-viewport.reveal-scroll .firewall-box,
+.reveal-viewport.reveal-scroll .intuition-box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.widget-context-note {
+  font-size: 0.64em;
+  color: #cbd5e1;
+  line-height: 1.36;
+  margin: 4px 0 10px 0;
+}
+.syn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.syn-tab-btn {
+  background: #151c2c;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 0.60em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.syn-tab-btn.active, .syn-tab-btn:hover {
+  background: rgba(65, 105, 225, 0.28);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+.syn-tab-pane {
+  display: none;
+  background: rgba(10, 14, 23, 0.82);
+  border: 1px solid rgba(65, 105, 225, 0.45);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.72em;
+}
+.syn-tab-pane.active {
+  display: block;
+}
+.lean-code-card {
+  background: #0d131f;
+  border: 1.5px solid #334155;
+  border-left: 5px solid #20B2AA;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 0.54em;
+  line-height: 1.36;
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+.sm-ledger-scroll {
+  max-height: 360px;
+  overflow-y: auto;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: rgba(8, 12, 22, 0.9);
+  padding: 6px 10px;
+  font-size: 0.58em;
+}
+.sm-ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.sm-ledger-table th {
+  position: sticky;
+  top: 0;
+  background: #111827;
+  color: #FFD700;
+  text-align: left;
+  padding: 4px 8px;
+  border-bottom: 1.5px solid #4169E1;
+  z-index: 2;
+}
+.sm-ledger-table td {
+  padding: 4px 8px;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.55);
+  vertical-align: top;
+}
+.sm-ledger-table tr:hover {
+  background: rgba(65, 105, 225, 0.14);
+}
+.lex-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid #334155;
+  border-left: 4px solid #4169E1;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  font-size: 0.64em;
+  line-height: 1.34;
+}
+.lex-card b.lex-term {
+  color: #FFD700;
+  font-size: 1.06em;
+}
+
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll section {
+  font-size: clamp(14px, 1.35vw, 26px) !important;
+}
+.reveal-viewport.reveal-scroll .interactive-panel,
+.reveal-viewport.reveal-scroll .thm-box,
+.reveal-viewport.reveal-scroll .carnap-box,
+.reveal-viewport.reveal-scroll .firewall-box,
+.reveal-viewport.reveal-scroll .intuition-box,
+.reveal-viewport.reveal-scroll .scholium-box,
+.reveal-viewport.reveal-scroll .remark-box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.widget-context-note {
+  font-size: 0.64em;
+  color: #cbd5e1;
+  line-height: 1.36;
+  margin: 4px 0 8px 0;
+}
+.syn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+.syn-tab-btn {
+  background: #151c2c;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.58em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.syn-tab-btn.active, .syn-tab-btn:hover {
+  background: rgba(65, 105, 225, 0.28);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+.syn-tab-pane {
+  display: none;
+  background: rgba(10, 14, 23, 0.85);
+  border: 1px solid rgba(65, 105, 225, 0.45);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.68em;
+}
+.syn-tab-pane.active {
+  display: block;
+}
+.lean-code-card {
+  background: #0d131f;
+  border: 1.5px solid #334155;
+  border-left: 5px solid #20B2AA;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 0.52em;
+  line-height: 1.32;
+  color: #e2e8f0;
+  overflow-x: auto;
+  white-space: pre;
+}
+.ch15-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.58em;
+  margin: 4px 0;
+}
+.ch15-table th {
+  background: rgba(65, 105, 225, 0.25);
+  color: #FFD700;
+  padding: 4px 6px;
+  border-bottom: 1.5px solid #4169E1;
+  text-align: left;
+}
+.ch15-table td {
+  padding: 3px 6px;
+  border-bottom: 1px solid #1e293b;
+  color: #e2e8f0;
+}
+.ch15-dag-node {
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.ch15-dag-node:hover {
+  filter: brightness(1.25);
 }
 </style>

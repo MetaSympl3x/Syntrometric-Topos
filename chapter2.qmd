@@ -25,36 +25,6 @@ format:
         <script src="shared/chapter2-widgets.js"></script>
 ---
 
-<!-- FALLBACK GLOBAL MATHJAX MACROS MATCHING CHAPTER 2 OF SYNTROMETRIC-TOPOS.TEX -->
-<div style="display:none;">
-$$
-\newcommand{\Ctx}{\mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}}
-\newcommand{\Ban}{\mathbf{Ban}_{\le 1}}
-\newcommand{\FinBan}{\mathbf{FinBan}_{\le 1}}
-\newcommand{\Esyn}{\mathcal{E}_{\mathrm{syn}}}
-\newcommand{\Osyn}{\mathcal{O}_{\mathrm{syn}}}
-\newcommand{\Opyr}{\mathcal{O}_{\mathrm{pyr}}}
-\newcommand{\Ofrag}{\mathcal{O}_{\mathrm{frag}}}
-\newcommand{\Ohom}{\mathcal{O}_{\mathrm{hom}}}
-\newcommand{\otpi}{\mathbin{\widehat{\otimes}_\pi}}
-\newcommand{\otBV}{\mathbin{\otimes_{\mathrm{BV}}}}
-\newcommand{\syntrix}{\mathbf{y}\widetilde{\mathbf{a}}}
-\newcommand{\homsyntrix}{\mathbf{x}\widetilde{\mathbf{a}}}
-\newcommand{\metrophor}{\widetilde{\mathbf{a}}}
-\newcommand{\synkolator}{\mathfrak{f}}
-\newcommand{\Shift}{\mathsf{Shift}}
-\newcommand{\BoxSyn}{\Box_{\mathrm{Syn}}}
-\newcommand{\Aut}{\operatorname{Aut}}
-\newcommand{\Stab}{\operatorname{Stab}}
-\newcommand{\Sym}{\operatorname{Sym}}
-\newcommand{\Col}{\mathbf{Col}}
-\newcommand{\CSL}{\mathcal{C}_{\mathrm{SL}}}
-\newcommand{\Cspine}{\mathcal{C}_{\mathrm{spine}}}
-\newcommand{\AP}{\mathbf{AP}}
-\newcommand{\Prop}{\mathbf{Prop}}
-$$
-</div>
-
 ## §2.1.1: The Quest for Universality & The Syntrix Triad {.smaller transition="convex"}
 
 <div class="stratum-badge badge-d">LEVEL II OF KONSTITUTIONSSTAMMBAUM &amp; STRATUM D (SM, PP. 24–27, EQ. 5)</div>

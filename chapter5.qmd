@@ -25,34 +25,6 @@ format:
         <script src="shared/chapter5-widgets.js"></script>
 ---
 
-<!-- FALLBACK GLOBAL MATHJAX MACROS MATCHING CHAPTER 5 OF SYNTROMETRIC-TOPOS.TEX -->
-<div style="display:none;">
-$$
-\newcommand{\Ctx}{\mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}}
-\newcommand{\Ban}{\mathbf{Ban}_{\le 1}}
-\newcommand{\FinBan}{\mathbf{FinBan}_{\le 1}}
-\newcommand{\Esyn}{\mathcal{E}_{\mathrm{syn}}}
-\newcommand{\Xsyn}{\mathcal{X}_{\mathrm{syn}}}
-\newcommand{\Jsyn}{J_{\mathrm{syn}}}
-\newcommand{\Osyn}{\mathcal{O}_{\mathrm{syn}}}
-\newcommand{\On}{\mathcal{O}_n}
-\newcommand{\Met}{\operatorname{Met}}
-\newcommand{\Alg}{\operatorname{Alg}}
-\newcommand{\dCSeg}{\operatorname{dCSeg}}
-\newcommand{\CSeg}{\operatorname{CSeg}}
-\newcommand{\Tect}{\operatorname{Tect}}
-\newcommand{\HypMet}{\operatorname{HypMet}}
-\newcommand{\Free}{\operatorname{Free}}
-\newcommand{\Map}{\operatorname{Map}}
-\newcommand{\Disc}{\operatorname{Disc}}
-\newcommand{\Codisc}{\operatorname{Codisc}}
-\newcommand{\RBan}{\mathfrak{R}_{\mathrm{Ban}}}
-\newcommand{\SynEN}{\operatorname{SynEN}}
-\newcommand{\AbsEN}{\operatorname{AbsEN}}
-\newcommand{\colim}{\operatorname*{colim}}
-$$
-</div>
-
 ## §5.1.1: The *Hypersyntrix* ($\overset{\scriptscriptstyle 1}{\mathbf{M}}$) & Multi-Scale Encapsulation {.smaller transition="convex"}
 
 <div class="stratum-badge badge-d">MULTI-SCALE TRANSCENDENCE &amp; STRATUM D (SM, PP. 80–84, EQS. 20, 20a, 20b)</div>

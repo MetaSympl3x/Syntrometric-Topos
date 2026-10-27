@@ -1,0 +1,956 @@
+---
+title: "Syntrometrische Maximentelezentrik"
+subtitle: "Chapter 8: Syntrometrie über dem Quantitätsaspekt — Cornered Parameter Manifolds, Grothendieck Nuclearity, and the 3-Class Collapse"
+author: "Research Collective — Department of Mathematical Physics & Formal Epistemology"
+date: "August 2026"
+format:
+  revealjs:
+    theme: [dark, custom_syntrometrie.scss]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    min-scale: 0.2
+    max-scale: 1.5
+    transition: fade
+    background-transition: fade
+    slide-number: c/t
+    controls: true
+    progress: true
+    hash: true
+    center: false
+    html-math-method: mathjax
+    include-in-header: shared/chapter8-header.html
+    include-after-body:
+      text: |
+        <script src="shared/chapter8-widgets.js"></script>
+---
+
+## §8.1.1: The *Quantitätssyntrix* as a *Primigene Äondyne* (SM-29) {.smaller transition="convex"}
+
+<div class="stratum-badge badge-d">STRATUM D: HISTORICAL EXEGESIS OF SM SECTION 7.3.1 (SM, PP. 124–131, EQ. 29)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+<h3 style="color:#82aaff; margin-top:0;">Inherent Continuity Over Algebraic Number Fields</h3>
+
+* In Chapter 2, an **Äondyne** was defined abstractly as a syntrix whose foundational elements vary continuously across an underlying parameter space.
+* In **Section 7.3 (SM, p. 131)**, Heim identifies the *Quantitätssyntrix* $\quantitaetssyntrix$ with the general theory of *Äondynen* from *Teil A*. When applied to the *Quantitätsaspekt*, continuous variation is not an artificial addition—it is an inherent consequence of drawing quantitative parameters from algebraic number fields ($\zahlenkoerper$):
+  > *"Da die Quantitätssyntrix auf Elementen aus algebraischen Zahlkörpern basiert, die kontinuierlich sind, ist sie eine primigene Äondyne."* (SM, p. 131)
+
+::: {.thm-box .fragment .fade-right}
+**The *Primigene Äondyne* Identification (SM Eq. 29, p. 131):**
+$$
+\quantitaetssyntrix \equiv \langle \funktionaloperator, \semantischermetrophor, \synkolationsstufe \rangle \equiv \aeondynechaptereight, \quad \text{where } \semantischermetrophor = (x_i)_n, \quad 0 \le x_i \le \infty \tag{SM-29}
+$$
+* **Parameter-Tensorium ($R_n$):** An $n$-dimensional continuous manifold whose non-negative coordinates $x_i \in [0, \infty)$ span the domain of all emergent syndrome fields.
+* **Higher-Order Inheritance:** As a *primigene Äondyne*, $\quantitaetssyntrix$ automatically inherits all higher-order syntrometric operations: serving as Hypermetrophors for higher-grade Metroplexes ($\overset{\scriptscriptstyle n}{\mathbf{M}}$), forming continuous fiber sections in Grothendieck fibrations, and undergoing functorial transformations across aspect boundaries.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Primigene Äondyne &amp; Parameter-Tensorium Explorer (SM-29)</h4>
+  <p class="widget-context-note">
+  <b>Context (§8.1.1):</b> Adjust manifold dimension $n$, synkolation arity $m \le n$, and parameter coordinate $x_1 \in [0, 4]$ to inspect the continuous fiber section $\aeondynechaptereight$ over the non-negative octant $R_n = (\mathbb{R}_{\ge 0})^n$.
+  </p>
+  <div style="display:grid; grid-template-columns: 1.08fr 0.92fr; gap:10px; align-items:center;">
+  <div>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Dim <i>n</i>:</span>
+  <input type="range" id="ch8-aeon-n" min="1" max="6" step="1" value="4" oninput="ch8_updateAeondyneLab()">
+  <span id="ch8-aeon-n-val" style="font-family:monospace; width:20px;">4</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#20B2AA;">Arity <i>m</i>:</span>
+  <input type="range" id="ch8-aeon-m" min="1" max="4" step="1" value="2" oninput="ch8_updateAeondyneLab()">
+  <span id="ch8-aeon-m-val" style="font-family:monospace; width:20px;">2</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#FFA500;">Coord <i>x</i><sub>1</sub>:</span>
+  <input type="range" id="ch8-aeon-x" min="0" max="4" step="0.05" value="1.20" oninput="ch8_updateAeondyneLab()">
+  <span id="ch8-aeon-x-val" style="font-family:monospace; width:34px;">1.20</span>
+  </div>
+  </div>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+  <svg id="ch8-aeon-svg" viewBox="0 0 210 112" width="100%" height="110"></svg>
+  </div>
+  </div>
+  <div id="ch8-aeon-readout" class="matrix-readout" style="margin-top:6px; font-size:0.62em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act1_Primigene_Aeondyne_SM29.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act I: Quantitätssyntrix yR_n as a Primigene Äondyne over Parameter-Tensorium R_n (SM-29)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section 8.1.1 introduces Heim's Equation 29 (SM, p. 131), identifying the Quantitätssyntrix yR_n with a primigene Äondyne parameterized over non-negative coordinates x_i in [0, infinity). Because algebraic number continua vary smoothly, quantitative syntrices automatically inherit all higher-order Metroplex and fibration operations from Teil A.
+:::
+
+---
+
+## §8.1.2: *Separation der Variablen*, Asymmetries & *Ganzläufigkeit* {.smaller}
+
+<div class="stratum-badge badge-d">STRATUM D: VARIABLE SEPARATION, FUNKTIONALE ASYMMETRIEN &amp; GANZLÄUFIGE ÄONDYNEN (SM, P. 132)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+***Separation der Variablen* (Variable Separation, SM p. 132):**
+When a functional Synkolator $\funktionaloperator$ acts upon multiple coordinates $(x_1, \dots, x_m)$, the generated *Synkolationsfeld* can be analytically decomposed into an algebraic or functional product of independent single-variable factors:
+$$
+f(x_1, \dots, x_m) \;=\; \prod_{l=1}^m \phi_l(x_l)
+$$
+* **Analytical Importance:** Factors complex multi-dimensional field phenomena into isolated 1D functional channels, enabling independent examination of each coordinate's contribution.
+:::
+
+::: {.firewall-box .fragment .fade-up}
+***Funktionale Asymmetrien* & *Ganzläufige Äondynen* (SM, p. 132):**
+1. **Funktionale Asymmetrien (Functional Asymmetries):** In physical systems, coordinates rarely enter generative laws symmetrically—spatial coordinates, temporal duration, and electrostatic charge play structurally distinct roles. Variable separation exposes these anisotropic weightings within the Synkolator kernel.
+2. **Ganzläufige Äondyne (Path-Dependent Synkolator Evolution):** The functional Synkolator $\funktionaloperator$ is not held fixed, but is itself continuously parameterized over an auxiliary **Synkolationstensorium** $R_N$:
+$$
+\funktionaloperator \;\equiv\; \funktionaloperator(t'), \qquad t' \in R_{m_s} \coloneqq M'_U
+$$
+Endows the quantified system with adaptive, context-sensitive learning capabilities as generative rules evolve smoothly across time or boundary conditions.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Anisotropic Separation &amp; Ganzläufigkeit Lab (SM, p. 132)</h4>
+  <p class="widget-context-note">
+  <b>Context (§8.1.2):</b> Tune spatial decay $\alpha_1$, temporal/charge frequency $\omega_2$, and auxiliary *Synkolationstensorium* parameter $t' \in R_{m_s}$ to observe anisotropic channel factorization $f(x_1,x_2;t') = \phi_1(x_1;t')\phi_2(x_2;t')$.
+  </p>
+  <div style="display:grid; grid-template-columns: 1.08fr 0.92fr; gap:10px; align-items:center;">
+  <div>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Spatial <i>α</i><sub>1</sub>:</span>
+  <input type="range" id="ch8-asym-a1" min="0.3" max="2.5" step="0.05" value="0.85" oninput="ch8_updateAsymmetryLab()">
+  <span id="ch8-asym-a1-val" style="font-family:monospace; width:34px;">0.85</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#20B2AA;">Charge <i>ω</i><sub>2</sub>:</span>
+  <input type="range" id="ch8-asym-a2" min="0.5" max="4.0" step="0.05" value="2.40" oninput="ch8_updateAsymmetryLab()">
+  <span id="ch8-asym-a2-val" style="font-family:monospace; width:34px;">2.40</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#FFD700;">Param <i>t'</i>:</span>
+  <input type="range" id="ch8-asym-tp" min="0.0" max="2.0" step="0.05" value="0.50" oninput="ch8_updateAsymmetryLab()">
+  <span id="ch8-asym-tp-val" style="font-family:monospace; width:34px;">0.50</span>
+  </div>
+  </div>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+  <svg id="ch8-asym-svg" viewBox="0 0 210 112" width="100%" height="110"></svg>
+  </div>
+  </div>
+  <div id="ch8-asym-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act2_Variable_Separation_Ganzlaeufig.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act II: Separation der Variablen, Anisotropic Kernels &amp; Ganzläufige Äondyne 𝔣(t')</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section 8.1.2 covers three key concepts on SM p. 132: Separation der Variablen into 1D factors phi_l(x_l), funktionale Asymmetrien reflecting distinct physical roles of space, time, and charge, and the ganzläufige Äondyne where the synkolator f(t') itself evolves over an auxiliary Synkolationstensorium.
+:::
+
+---
+
+## §8.1.3: Infinitesimal Differential & Integral Functors (SM-30–36) {.smaller transition="zoom"}
+
+<div class="stratum-badge badge-d">STRATUM D/B: INFINITESIMAL CALCULUS FUNCTORS (SM EQS. 30–36, PP. 136–144) &amp; THEOREM 8.1</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Classical Analysis from Limiting Corporate Chains (SM, pp. 136–144):**
+Before the continuous manifold fractures into a discrete metronic lattice at extreme curvatures, Heim proves that corporate subtraction and addition chains reproduce classical calculus as $\Delta x_i \to 0$:
+
+1. **Differential Funktor ($\dtilde$, SM Eq. 30–31):** Limiting corporate difference between shifted and unshifted syntrix states:
+$$
+\dtilde = \lim_{(\Delta x_i)_n \to 0} \langle (\ ) ( (\ )_i + \Delta (\ )_i )_n (\ ) \rangle \left\{ \begin{matrix} \bar{-} \\ - \end{matrix} \right\} \langle ( (\ )_i )_n (\ ) \rangle \tag{SM-30}
+$$
+yielding partial differential functors $\parttilde_k|$ (SM-30a) and total differential chains (SM-31).
+2. **Integral Funktor ($\mathrm{I}$, SM Eq. 32–34):** Infinite corporate accumulation chain of infinitesimally adjacent syntrix states:
+$$
+\mathrm{I} \tilde{\mathrm{y}}| \left\{ \begin{matrix} \cdot \\ . \end{matrix} \right\} \dtilde, \tilde{\mathrm{z}}| = \lim_{N \to \infty} \left( \tilde{\mathrm{a}}_j| \left\{ \begin{matrix} + \\ ,+ \end{matrix} \right\} \tilde{\mathrm{a}}_{j+1}| \right]_1^{N-1} \tag{SM-32}
+$$
+recovering primitives, definite endpoint differences (SM-33), and multiple integrals (SM-34).
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Theorem 8.1: Double-Integral Partial Sieve Composition (SM Eqs. 35, 35a, p. 143):**
+Let ${}_+(y,z)?$ denote the *syncolatively partial integrator* (preserving the synkolator law) and ${}^+(y,z)?$ the *metrophorically partial integrator* (preserving the Metrophor, SM Eq. 35). Their composition on an identical syntrix satisfies:
+$$
+{}^+\!\left({}_+(y,y)\,?,(\ )\right)? \;=\; \frac{1}{2}\left(\mathbf{y}\widetilde{\mathbf{y}}\right)^2 \qquad \left(\int x\,dx = \frac{1}{2}x^2 + C\right) \tag{SM-35a}
+$$
+under the stated quadratic closure condition $\underline{f}(y_k^2)_1^p = \underline{f}^{\,2}$.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Corporate Calculus &amp; Double Partial Sieve Lab (SM-30–35a)</h4>
+  <p class="widget-context-note">
+  <b>Context (§8.1.3 &amp; Thm. 8.1):</b> Increase corporate chain subdivisions $N \to \infty$ ($\Delta x = y/N \to 0$) and adjust upper coordinate $y$ to see how dual partial integrators ${}_+(y,y)?$ and ${}^+(y,y)?$ partition the $y^2$ square into $\frac{1}{2}y^2$.
+  </p>
+  <div style="display:grid; grid-template-columns: 1.08fr 0.92fr; gap:10px; align-items:center;">
+  <div>
+  <div class="slider-row">
+  <span style="color:#20B2AA;">Chain Steps <i>N</i>:</span>
+  <input type="range" id="ch8-calc-n" min="4" max="100" step="2" value="16" oninput="ch8_updateSieveCalcLab()">
+  <span id="ch8-calc-n-val" style="font-family:monospace; width:28px;">16</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#FFD700;">Upper Bound <i>y</i>:</span>
+  <input type="range" id="ch8-calc-y" min="0.5" max="3.0" step="0.1" value="2.0" oninput="ch8_updateSieveCalcLab()">
+  <span id="ch8-calc-y-val" style="font-family:monospace; width:32px;">2.00</span>
+  </div>
+  <div style="font-size:0.60em; color:#5eead4; margin-top:4px;">
+  Lean 4: <code>double_integral_square_branch : (y * y) / 2 + (y * y) / 2 = y ^ 2</code>
+  </div>
+  </div>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+  <svg id="ch8-calc-svg" viewBox="0 0 210 112" width="100%" height="110"></svg>
+  </div>
+  </div>
+  <div id="ch8-calc-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act3_Infinitesimal_Functors_SM30_35.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act III: Differentialfunktor d̃| (SM-30), Integralfunktor I (SM-32) &amp; Double Partial Sieve (Thm. 8.1)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section 8.1.3 presents SM Equations 30 through 36 (SM, pp. 136–144). Heim verifies that corporate subtraction and addition chains converge to differential and integral operators as Delta x_i approaches 0, culminating in Theorem 8.1 (SM-35a) where composing syncolatively and metrophorically partial integrators yields the 1/2 y^2 quadratic integration law.
+:::
+
+---
+
+## §8.1.4 & §8.2: Algebraic Constraints & Grothendieck Nuclearity {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM D/A: ALGEBRAIC CONSTRAINTS (SM, P. 133) &amp; GROTHENDIECK NUCLEARITY SCHOLIUM 8.2</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**§8.1.4 Three Algebraic Constraints on $R_n$ (SM, p. 133):**
+Because coordinates $x_l$ spanning $R_n$ are continua derived from algebraic number fields ($\zahlenkoerper$), all quantitative operations obey three strict constraints:
+1. ***Fehlstelle 0* and *Einheit E*:** Every coordinate continuum $x_l$ intrinsically contains the additive identity ($0$, origin state or *Fehlstelle*) and multiplicative identity ($E \equiv 1$, unit scaling element):
+$$
+\{0, 1\} \subset x_l \quad \forall l \in \{1, \dots, n\}
+$$
+2. ***Reduzierbarkeit homometraler Formen*:** Synkolation operations with repeated parameter inputs (homometral sampling with replacement) reduce algebraically to distinct inputs of lower effective arity $A < m$.
+3. **3-Class Corporate Collapse:** Functional operations over number fields cannot be composed without coupling, collapsing the $15$ general corporate classes to $3$ operative types.
+:::
+
+::: {.scholium-box .fragment .fade-up}
+**Scholium 8.2 (Meta-Theoretic Justification: Cornered Manifolds & Nuclearity):**
+Why formalize $R_n$ as a smooth manifold with corners $\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n$ and evaluate kernels in the nuclear Fréchet space $\mathscr{S}(\mathcal{M}_n)$?
+* **Physical Positivity & Origin Boundary:** Fundamental physical magnitudes (mass, radial distance, absolute temperature, energy density) satisfy $0 \le x_i < \infty$, with *Fehlstelle* $\mathbf{0} \in \mathcal{M}_n$ and boundary faces $\partial_i \mathcal{M}_n = \{x_i = 0\}$.
+* **Grothendieck's Dual Legacy (Zalamea 2012; Marquis 2009):** Alexander Grothendieck created both **topos theory** (Ch. 1) and **nuclear locally convex spaces** (1955). Whereas infinite-dimensional Banach spaces are never nuclear ($\otpi \ne \oteps$), $\mathscr{S}(\mathcal{M}_n)$ is strictly nuclear:
+$$
+\mathscr{S}(\mathcal{M}_{m_1} \times \mathcal{M}_{m_2}) \;\cong\; \mathscr{S}(\mathcal{M}_{m_1}) \otpi \mathscr{S}(\mathcal{M}_{m_2}) \;\cong\; \mathscr{S}(\mathcal{M}_{m_1}) \oteps \mathscr{S}(\mathcal{M}_{m_2})
+$$
+embedding densely into $C_b^\infty(\mathcal{M}_n)$ as the exact engine for *Separation der Variablen*.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive 4-Tab Inspector: Algebraic Constraints &amp; Nuclearity (Scholium 8.2)</h4>
+  <div class="syn-tabs">
+  <button class="syn-tab-btn active" onclick="showGenericTab('ch8-found-pane', 1, 4, this)">1. Fehlstelle 0 &amp; Einheit E</button>
+  <button class="syn-tab-btn" onclick="showGenericTab('ch8-found-pane', 2, 4, this)">2. Corner Faces ∂_i M_n</button>
+  <button class="syn-tab-btn" onclick="showGenericTab('ch8-found-pane', 3, 4, this)">3. Grothendieck Nuclearity</button>
+  <button class="syn-tab-btn" onclick="showGenericTab('ch8-found-pane', 4, 4, this)">4. Banach vs. Fréchet</button>
+  </div>
+  <div id="ch8-found-pane-1" class="syn-tab-pane active">
+  <b>Intrinsic Arithmetic Anchors ($\{0, 1\} \subset x_l$, SM p. 133):</b><br>
+  In qualitative categories (Teil A), carriers lack canonical zero or unit elements. In $\Ctxquant$, every coordinate continuum carries the origin basepoint $\mathbf{0}$ (<i>Fehlstelle 0</i>, where syndrome fields vanish or anchor) and unit scale $E \equiv 1_{\mathbb{K}}$, ensuring arithmetic normalization and scaling across all $n$ dimensions.
+  </div>
+  <div id="ch8-found-pane-2" class="syn-tab-pane">
+  <b>Smooth Manifolds with Corners $\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n$:</b><br>
+  The boundary $\partial \mathcal{M}_n = \bigcup_{i=1}^n \partial_i \mathcal{M}_n$ consists of $n$ coordinate hyperplanes $\partial_i \mathcal{M}_n = \{x \in \mathcal{M}_n \mid x_i = 0\}$ intersecting at the origin corner $\mathbf{0} = (0,\dots,0)$. Smoothness up to all boundary faces requires one-sided derivatives of all orders to extend continuously to $x_i \to 0^+$.
+  </div>
+  <div id="ch8-found-pane-3" class="syn-tab-pane">
+  <b>Zalamea (2012) &amp; Marquis (2009) Synthesis:</b><br>
+  Grothendieck's 1955 <i>Produits tensoriels topologiques et espaces nucléaires</i> proves that in nuclear Fréchet spaces, the projective tensor completion $\otpi$ and injective tensor completion $\oteps$ coincide canonically. This eliminates cross-norm ambiguity when factoring multi-variable physical fields.
+  </div>
+  <div id="ch8-found-pane-4" class="syn-tab-pane">
+  <b>Why Banach Spaces Alone Cannot Factor Smooth Kernels:</b><br>
+  By the Dvoretzky–Rogers / Grothendieck theorem, a normed space is nuclear if and only if it is finite-dimensional! Working in the nuclear Fréchet subalgebra $\mathscr{S}(\mathcal{M}_n) \hookrightarrow C_b^\infty(\mathcal{M}_n)$ gives an exact tensor isomorphism while remaining compatible with our bounded Banach sections.
+  </div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act4_Algebraic_Constraints_Nuclear_Scholium.mp4" style="max-height:200px;"></video>
+  <div class="video-caption">Manim Act IV: Fehlstelle 0, Einheit E, Cornered Octant M_n &amp; Grothendieck Nuclearity Scholium 8.2</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 4 bridges Section 8.1.4 (SM, p. 133) and Section 8.2 (Scholium 8.2). We examine why $\{0,1\} \subset x_l$ forces cornered parameter manifolds $\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n$, and why Grothendieck's theory of nuclear Fréchet spaces provides the rigorous mathematical foundation for variable separation.
+:::
+
+---
+
+## §8.2.1: Cornered Parameter Manifolds $\Manparam$ & Base Envelope {.smaller transition="convex"}
+
+<div class="stratum-badge badge-a">STRATUM A: CATEGORY OF PARAMETER MANIFOLDS WITH CORNERS (DEF. 8.3) &amp; BASE RING ENVELOPE (DEF. 8.4)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Definition 8.3: Category of Parameter Manifolds with Corners $\Manparam$**
+The category $\Manparam$ consists of:
+1. **Objects:** Smooth $n$-dimensional manifolds with corners $\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n$, equipped with the subspace topology and smooth structure up to all boundary faces.
+2. **Morphisms:** Smooth proper contractions $h \colon \mathcal{M}_m \to \mathcal{M}_n$ preserving the origin basepoint: $h(\mathbf{0}) = \mathbf{0}$.
+3. **Nuclear Fréchet Algebra of Rapidly Decreasing Sections:** For $\mathcal{M}_n \in \operatorname{Obj}(\Manparam)$, $\mathscr{S}(\mathcal{M}_n)$ is the Schwartz space of smooth functions on $(\mathbb{R}_{\ge 0})^n$ whose partial derivatives extend continuously to the boundary faces and decay rapidly at infinity, equipped with the countable family of seminorms:
+$$
+\|f\|_{\alpha, \beta} \;\coloneqq\; \sup_{x \in \mathcal{M}_n} \left| x^\alpha \partial^\beta f(x) \right| < \infty \quad \forall \alpha, \beta \in \mathbb{N}_0^n
+$$
+$\mathscr{S}(\mathcal{M}_n)$ is a nuclear Fréchet algebra that embeds continuously into the unital Fréchet algebra $C_b^\infty(\mathcal{M}_n)$ of smooth functions with bounded derivatives.
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Definition 8.4: The Algebraic Base Ring Envelope $\mathcal{A}_{\mathbb{K}}(\mathcal{M}_n)$**
+Let $\mathbb{K} \in \operatorname{Obj}(\Coeff)$. The **Unital Algebraic Base Envelope** of $\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n$ is the unitization topological $\mathbb{K}$-algebra:
+$$
+\mathcal{A}_{\mathbb{K}}(\mathcal{M}_n) \;\coloneqq\; \mathbb{K} \cdot 1_{\mathcal{A}} \;\oplus\; \mathscr{S}(\mathcal{M}_n, \mathbb{K}) \;\subset\; C_b^\infty(\mathcal{M}_n, \mathbb{K})
+$$
+containing the nuclear ideal $\mathscr{S}(\mathcal{M}_n, \mathbb{K}) \cong \mathscr{S}(\mathcal{M}_n) \otimes_{\mathbb{R}} \mathbb{K}$ together with the multiplicative identity section $1_{\mathcal{A}} \colon x \mapsto 1_{\mathbb{K}}$ (*Einheit E*) and the additive identity section $0_{\mathcal{A}} \colon x \mapsto 0_{\mathbb{K}}$ (as well as the geometric origin basepoint $\mathbf{0} \in \mathcal{M}_n$, *Fehlstelle 0*).
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Schwartz Seminorm $\|f\|_{\alpha,\beta}$ &amp; Base Ring Envelope Explorer (Defs. 8.3–8.4)</h4>
+  <p class="widget-context-note">
+  <b>Context (§8.2.1):</b> Vary polynomial weight $\alpha$, derivative order $\beta$, and unit envelope scalar $c_0 \in \mathbb{K}$ for $f(x) = c_0 \cdot 1_{\mathcal{A}} + e^{-x} \in \mathcal{A}_{\mathbb{K}}(\mathcal{M}_1)$ to inspect the exact Schwartz seminorm $\|e^{-x}\|_{\alpha,\beta} = (\alpha/e)^\alpha$ attained at $x^* = \alpha$.
+  </p>
+  <div style="display:grid; grid-template-columns: 1.08fr 0.92fr; gap:10px; align-items:center;">
+  <div>
+  <div class="slider-row">
+  <span style="color:#20B2AA;">Weight <i>α</i>:</span>
+  <input type="range" id="ch8-sch-alpha" min="0" max="4" step="1" value="2" oninput="ch8_updateSchwartzSeminormLab()">
+  <span id="ch8-sch-alpha-val" style="font-family:monospace; width:20px;">2</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Deriv <i>β</i>:</span>
+  <input type="range" id="ch8-sch-beta" min="0" max="3" step="1" value="1" oninput="ch8_updateSchwartzSeminormLab()">
+  <span id="ch8-sch-beta-val" style="font-family:monospace; width:20px;">1</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#FFA500;">Unit <i>c</i><sub>0</sub>·1<sub>𝒜</sub>:</span>
+  <input type="range" id="ch8-sch-c0" min="0.0" max="2.0" step="0.1" value="1.0" oninput="ch8_updateSchwartzSeminormLab()">
+  <span id="ch8-sch-c0-val" style="font-family:monospace; width:30px;">1.00</span>
+  </div>
+  </div>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+  <svg id="ch8-sch-svg" viewBox="0 0 210 112" width="100%" height="110"></svg>
+  </div>
+  </div>
+  <div id="ch8-sch-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act5_Man_Param_Base_Ring_Envelope.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act V: Category Man_param, Schwartz Seminorms ‖f‖_{α,β} &amp; Unital Base Envelope 𝒜_𝕂(M_n)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section 8.2.1 establishes Definitions 8.3 and 8.4. Notice why the unitization direct sum A_K(M_n) = K * 1_A + S(M_n, K) is essential: constant unit functions 1_A do not decay at infinity and therefore do not belong to S(M_n) alone, so adjoining K * 1_A preserves both Einheit E and the nuclear Schwartz ideal.
+:::
+
+---
+
+## §8.2.2: Exterior Differential $\dtilde$, Poincaré Integral $\Izero$ & Carnap 8.1 {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM A: EXTERIOR DIFFERENTIAL &amp; POINCARÉ HOMOTOPY INTEGRAL (DEF. 8.5) &amp; CARNAP SCHOLIUM 8.1</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Definition 8.5: Exterior Differential & Poincaré Homotopy Integral on Corners**
+Let $\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n$ and $C_{\mathbf{0}}^\infty(\mathcal{M}_n) \coloneqq \{f \in C_b^\infty(\mathcal{M}_n) \mid f(\mathbf{0}) = 0\}$.
+1. **Whitney Closed Bounded 1-Forms $\Omega_{\mathrm{closed},b}^1(\mathcal{M}_n)$:** Smooth 1-forms $\omega = \sum_{i=1}^n \omega_i(x)\,dx^i$ on $(\mathbb{R}_{\ge 0})^n$ (smooth up to the boundary in the sense of Whitney) satisfying $d\omega = 0$.
+2. **Infinitesimal Differential Functor $\dtilde \colon C_b^\infty(\mathcal{M}_n) \to \Omega_{\mathrm{closed},b}^1(\mathcal{M}_n)$:**
+$$
+\dtilde f \;\coloneqq\; df \;=\; \sum_{i=1}^n \left(\parttilde_i| f\right) dx^i \;=\; \sum_{i=1}^n \frac{\partial f}{\partial x^i} dx^i \tag{SM-30}
+$$
+where $\parttilde_i| f(x) \coloneqq \lim_{\Delta x^i \to 0^+} \frac{f(x + \Delta x^i e_i) - f(x)}{\Delta x^i}$.
+3. **Poincaré Homotopy Integral Functor $\Izero \colon \Omega_{\mathrm{closed},b}^1(\mathcal{M}_n) \to C^\infty(\mathcal{M}_n)$:** Integrates $\omega$ along the radial ray $\gamma_x(t) = tx$ ($t \in [0,1]$) from $\mathbf{0} \in \mathcal{M}_n$:
+$$
+\left(\Izero\,\omega\right)(x) \;\coloneqq\; \int_0^1 \sum_{i=1}^n x^i \omega_i(tx)\,dt
+$$
+satisfying path-independence and the Fundamental Theorem of Calculus on the star-shaped octant $\mathcal{M}_n$ for any smooth path $\gamma \colon [a,b] \to \mathcal{M}_n$:
+$$
+\dtilde\left(\Izero\,\omega\right) = \omega, \qquad \Izero(\dtilde f)(x) = f(x) - f(\mathbf{0}), \qquad \mathrm{I}_a^b(\dtilde f) = f(\gamma(b)) - f(\gamma(a)) \tag{SM-33}
+$$
+:::
+
+::: {.carnap-box .fragment .fade-up}
+**Carnap 8.1: Synthetic Infinitesimals (Kock–Lawvere) vs. Discrete Metronics**
+In **Synthetic Differential Geometry** (SDG; Kock 1981, Lawvere 1979), differentiation is formalized algebraically inside a smooth topos via square-zero infinitesimals $D \coloneqq \llbracket d \in R \mid d^2 = 0 \rrbracket \subset R$ with $\forall d \in D,\; f(x+d) = f(x) + f'(x)d$.
+$$
+\boxed{\text{SDG provides an internal infinitesimal calculus; DEC provides a discrete cochain calculus.}}
+$$
+These are distinct mathematical architectures and modeling strata ($\mathbf{A}$ and $\mathbf{C}$); constructing a formal or functorial bridge is a separate reconstruction problem, not a deductive identity.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Poincaré Radial Homotopy Ray &amp; Path-Independence Lab (Def. 8.5)</h4>
+  <p class="widget-context-note">
+  <b>Context (§8.2.2):</b> Move target coordinates $(x_1, x_2) \in \mathcal{M}_2 = (\mathbb{R}_{\ge 0})^2$ and path bowing $\kappa$ to verify that the radial Poincaré ray integral $(\Izero\,\omega)(x)$ equals the curved path integral $\mathrm{I}_{\gamma_\kappa}(\omega) = f(x) - f(\mathbf{0})$ (SM-33).
+  </p>
+  <div style="display:grid; grid-template-columns: 1.08fr 0.92fr; gap:10px; align-items:center;">
+  <div>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Target <i>x</i><sub>1</sub>:</span>
+  <input type="range" id="ch8-poin-x1" min="0.4" max="2.2" step="0.05" value="1.60" oninput="ch8_updatePoincareRayLab()">
+  <span id="ch8-poin-x1-val" style="font-family:monospace; width:32px;">1.60</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#20B2AA;">Target <i>x</i><sub>2</sub>:</span>
+  <input type="range" id="ch8-poin-x2" min="0.4" max="2.2" step="0.05" value="1.40" oninput="ch8_updatePoincareRayLab()">
+  <span id="ch8-poin-x2-val" style="font-family:monospace; width:32px;">1.40</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#FFD700;">Bowing <i>κ</i>:</span>
+  <input type="range" id="ch8-poin-kap" min="-0.75" max="0.75" step="0.05" value="0.45" oninput="ch8_updatePoincareRayLab()">
+  <span id="ch8-poin-kap-val" style="font-family:monospace; width:36px;">+0.45</span>
+  </div>
+  </div>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+  <svg id="ch8-poin-svg" viewBox="0 0 210 112" width="100%" height="110"></svg>
+  </div>
+  </div>
+  <div id="ch8-poin-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act6_Poincare_Integral_SDG_Carnap.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act VI: Exterior Derivation d̃|, Poincaré Ray Homotopy Integral I₀ &amp; Carnap 8.1 (SDG vs. DEC)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section 8.2.2 formalizes Heim's differential and integral functors via Whitney closed 1-forms and the Poincaré homotopy operator I_0 on the star-shaped octant M_n = (R_{>=0})^n. Carnap 8.1 demarcates Kock–Lawvere synthetic infinitesimals (d^2 = 0 in a smooth topos, Stratum A) from discrete exterior calculus on a metronic lattice (Stratum C).
+:::
+
+---
+
+## §8.3.1: Corner Smoothness & Seeley Extension Operator (Thm. 8.6) {.smaller auto-animate=true}
+
+<div class="stratum-badge badge-b">STRATUM B: WHY NAIVE APPROACHES FAIL II, SEELEY EXTENSION ON CORNERS (THM. 8.6 PART 1 &amp; FIG. 8.2)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.firewall-box}
+**Why Naive Approaches Fail II: Boundary Smoothness at a Corner**
+* A **zero extension** across $x=0$ preserves smoothness only when every boundary derivative vanishes; for $e^{-x}$ on $x \ge 0$, $f(0^+) = 1 \ne 0$, so zero extension is discontinuous.
+* **Even reflection** $e^{-|x|}$ is continuous, but has a jump in its first derivative at $x=0$ ($f'(0^+) = -1 \ne f'(0^-) = +1$), destroying Schwartz seminorms $\|f\|_{\alpha,\beta}$.
+* **Resolution:** Robert Seeley's (1964) extension operator constructs a moment-matched linear combination of dyadically rescaled reflections across each boundary hyperplane, preserving all Schwartz seminorms on corners!
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Theorem 8.6 (Part 1): Multidimensional Seeley Extension on Corners (Fig. 8.2)**
+Let $\mathcal{M}_n \coloneqq (\mathbb{R}_{\ge 0})^n$ (with $R_n(\mathbb{C}) \cong \mathbb{R}^{2n}$ in real Cartesian coordinates). Following Seeley (1964), let $\chi \in C_c^\infty(\mathbb{R})$ satisfy $\chi(t)=1$ for $|t|\le 1$ and $\chi(t)=0$ for $|t|\ge 2$, and let $(a_k)_{k=0}^\infty$ be a rapidly decreasing sequence ($\sum_{k=0}^\infty |a_k| 2^{km} < \infty$ $\forall m \in \mathbb{N}_0$) satisfying the **Vandermonde moment identities**:
+$$
+\sum_{k=0}^\infty a_k (-2^k)^m \;=\; 1 \qquad \forall m \in \mathbb{N}_0
+$$
+Then the coordinatewise extension $\mathcal{E}_{x_i} f(x_i) \coloneqq \sum_{k=0}^\infty a_k \chi(-2^k x_i) f(-2^k x_i)$ ($x_i < 0$) and its tensor product $\mathcal{E}^{(n)} \coloneqq \bigotimes_{i=1}^n \mathcal{E}_{x_i} \colon \mathscr{S}((\mathbb{R}_{\ge 0})^n) \to \mathscr{S}(\mathbb{R}^n)$ define a continuous linear right-inverse to restriction $\mathcal{R}_+ \colon \mathscr{S}(\mathbb{R}^n) \twoheadrightarrow \mathscr{S}((\mathbb{R}_{\ge 0})^n)$:
+$$
+\mathcal{R}_+ \circ \mathcal{E}^{(n)} \;=\; \operatorname{id}_{\mathscr{S}(\mathcal{M}_n)}, \qquad P \coloneqq \mathcal{E}^{(n)} \circ \mathcal{R}_+ \;=\; P^2
+$$
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Naive vs. Seeley Moment-Matched Corner Extension Lab (Fig. 8.2)</h4>
+  <p class="widget-context-note">
+  <b>Context (§8.3.1, Thm. 8.6):</b> Compare **Zero Extension**, **Even Reflection $e^{-|x|}$**, and **Seeley's Vandermonde Extension $\mathcal{E}_{x_1} f$** across the corner boundary $x = 0$, and vary the number of moment-matching nodes $K$.
+  </p>
+  <div style="display:grid; grid-template-columns: 1.08fr 0.92fr; gap:10px; align-items:center;">
+  <div>
+  <div style="display:flex; gap:5px; margin-bottom:8px; flex-wrap:wrap;">
+  <button id="ch8-btn-zero" class="syn-btn" onclick="ch8_setSeeleyMode('zero')">Zero Ext</button>
+  <button id="ch8-btn-even" class="syn-btn" onclick="ch8_setSeeleyMode('even')">Even e^{-|x|}</button>
+  <button id="ch8-btn-seeley" class="syn-btn" onclick="ch8_setSeeleyMode('seeley')">Seeley ℰ_x f</button>
+  </div>
+  <div class="slider-row">
+  <span style="color:#FFD700;">Vandermonde <i>K</i>:</span>
+  <input type="range" id="ch8-see-terms" min="2" max="4" step="1" value="3" oninput="ch8_updateSeeleyExtensionLab()">
+  <span id="ch8-see-terms-val" style="font-family:monospace; width:20px;">3</span>
+  </div>
+  </div>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+  <svg id="ch8-see-svg" viewBox="0 0 210 112" width="100%" height="110"></svg>
+  </div>
+  </div>
+  <div id="ch8-see-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act7_Seeley_Extension_Corners_Fig82.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act VII (Fig. 8.2): Why Naive Extensions Fail II &amp; 4-Quadrant Seeley Moment Regularization</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 7 presents the "Why Naive Approaches Fail II" box and Part 1 of Theorem 8.6 (accompanied by Figure 8.2). Seeley's Vandermonde moment condition sum_{k=0}^infinity a_k (-2^k)^m = 1 matches derivatives of all orders across the corner hyperplanes x_i = 0, constructing a continuous linear right-inverse to restriction.
+:::
+
+---
+
+## §8.3.1: Grothendieck Nuclear Variable Separation & Proof (Thm. 8.6) {.smaller auto-animate=true}
+
+<div class="stratum-badge badge-b">STRATUM B: GROTHENDIECK NUCLEARITY ON CORNERS (THM. 8.6 PARTS 2–4, FIG. 8.1), FULL PROOF &amp; TOY EXAMPLE</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Theorem 8.6 (Parts 2–4): Nuclearity Inheritance & Tensor Expansion (Fig. 8.1)**
+* **Nuclearity Inheritance:** Because $\mathscr{S}((\mathbb{R}_{\ge 0})^n)$ is isomorphic via $\mathcal{E}^{(n)}$ to the closed complemented subspace $\operatorname{Im}(\mathcal{E}^{(n)} \circ \mathcal{R}_+) \subset \mathscr{S}(\mathbb{R}^n)$, it inherits nuclearity from $\mathscr{S}(\mathbb{R}^n)$ (Grothendieck 1955; Ryan 2002):
+$$
+\mathscr{S}\!\left((\mathbb{R}_{\ge 0})^m\right) \;\cong\; \widehat{\bigotimes}_{l=1}^{m,\pi} \mathscr{S}(\mathbb{R}_{\ge 0}) \;\cong\; \widehat{\bigotimes}_{l=1}^{m,\varepsilon} \mathscr{S}(\mathbb{R}_{\ge 0})
+$$
+* **Projective Tensor Expansion:** Every rapid-decay synkolation kernel $f \in \mathscr{S}((\mathbb{R}_{\ge 0})^m)$ admits an absolutely convergent projective tensor expansion into 1D factors with bounded $\{\phi_j^{(l)}\} \subset \mathscr{S}(\mathbb{R}_{\ge 0})$:
+$$
+f(x_1, \dots, x_m) \;=\; \sum_{j=1}^\infty \lambda_j \, \phi_j^{(1)}(x_1) \otimes \dots \otimes \phi_j^{(m)}(x_m), \qquad \sum_{j=1}^\infty |\lambda_j| < \infty
+$$
+* **Claim Ceiling ($c_{\mathrm{NUCL}}$):** Grothendieck nuclearity guarantees an *absolutely convergent series* of separated tensor products in $\mathscr{S}((\mathbb{R}_{\ge 0})^m)$; finite-rank (single-product) ODE separability holds iff the kernel has tensor rank $1$.
+:::
+
+::: {.proof-box .fragment .fade-up}
+**Proof of Theorem 8.6 & Toy Example ($f(x_1,x_2) = e^{-(x_1+x_2)}\cos(x_1 x_2)$):**
+1. **Step 1 (Derivative Matching):** Differentiating $\mathcal{E}_{x_i} f$ term-by-term for $x_i < 0$ via $\sum |a_k| 2^{km} < \infty$ yields $\lim_{x_i \to 0^-} \partial_{x_i}^m(\mathcal{E}_{x_i}f) = (\sum a_k(-2^k)^m)\partial_{x_i}^m f(0^+) = \partial_{x_i}^m f(0^+)$, preserving all Schwartz seminorms $\|\cdot\|_{\alpha,\beta}$.
+2. **Step 2 (Idempotent Retract):** $P = \mathcal{E}^{(n)} \circ \mathcal{R}_+$ satisfies $P^2 = P$, identifying $\mathscr{S}(\mathcal{M}_n)$ with the closed subspace $\operatorname{Im}(P) \subset \mathscr{S}(\mathbb{R}^n)$.
+3. **Step 3 (Nuclear Permanence):** Closed subspaces of nuclear Fréchet spaces are nuclear (Grothendieck 1955), yielding the series expansion. $\blacksquare$
+* **Toy Example (Remark):** $f(x_1,x_2) = e^{-(x_1+x_2)}\cos(x_1 x_2) = \sum_{k=0}^\infty \frac{(-1)^k}{(2k)!}(x_1^{2k}e^{-x_1})\otimes(x_2^{2k}e^{-x_2})$ with $\sum_{k=0}^\infty |\lambda_k| = \sum_{k=0}^\infty \frac{1}{(2k)!} = \cosh(1) \approx 1.543 < \infty$.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Nuclear Tensor Series &amp; $\cosh(1)$ Convergence Lab (Thm. 8.6)</h4>
+  <p class="widget-context-note">
+  <b>Context (§8.3.1 Remark):</b> Adjust truncation order $K$ and coordinates $(x_1, x_2) \in \mathcal{M}_2$ for $f(x_1,x_2) = e^{-(x_1+x_2)}\cos(x_1 x_2)$ to observe rapid factorial convergence of the rank-$(K+1)$ nuclear tensor expansion and $\sum_{k=0}^K |\lambda_k| \to \cosh(1)$.
+  </p>
+  <div style="display:grid; grid-template-columns: 1.08fr 0.92fr; gap:10px; align-items:center;">
+  <div>
+  <div class="slider-row">
+  <span style="color:#FFD700;">Order <i>K</i>:</span>
+  <input type="range" id="ch8-nuc-k" min="0" max="5" step="1" value="2" oninput="ch8_updateNuclearSeriesLab()">
+  <span id="ch8-nuc-k-val" style="font-family:monospace; width:20px;">2</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Coord <i>x</i><sub>1</sub>:</span>
+  <input type="range" id="ch8-nuc-x1" min="0.0" max="2.5" step="0.05" value="1.10" oninput="ch8_updateNuclearSeriesLab()">
+  <span id="ch8-nuc-x1-val" style="font-family:monospace; width:32px;">1.10</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#20B2AA;">Coord <i>x</i><sub>2</sub>:</span>
+  <input type="range" id="ch8-nuc-x2" min="0.0" max="2.5" step="0.05" value="0.90" oninput="ch8_updateNuclearSeriesLab()">
+  <span id="ch8-nuc-x2-val" style="font-family:monospace; width:32px;">0.90</span>
+  </div>
+  </div>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+  <svg id="ch8-nuc-svg" viewBox="0 0 210 112" width="100%" height="110"></svg>
+  </div>
+  </div>
+  <div id="ch8-nuc-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act8_Grothendieck_Nuclear_Wavepacket_Fig81.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act VIII (Fig. 8.1): Grothendieck Nuclear Wave-Packet Decomposition &amp; cosh(1) Tensor Expansion</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 8 completes Theorem 8.6 with Parts 2–4, the full 3-step proof using Grothendieck's hereditary permanence theorem for nuclear Fréchet spaces, Claim Ceiling c_NUCL, Figure 8.1, and the explicit 2-variable separable nuclear tensor field example converging with projective norm cosh(1).
+:::
+
+---
+
+## §8.3.2: Homometral Reducibility & Polarization on $\Sym^m(V)$ {.smaller transition="concave"}
+
+<div class="stratum-badge badge-b">STRATUM B: POLARIZATION SCHOLIUM 8.7, HOMOMETRAL REDUCIBILITY THEOREM 8.8, PROOF &amp; CUBIC TOY EXAMPLE</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.scholium-box}
+**Scholium 8.7 (Polarization and Effective Arity):**
+Polarization reconstructs the multilinear form hidden by repeated inputs. Consequently, homometral sampling can be reduced to the genuinely distinct channels that carry new information, clarifying why effective arity may be smaller than nominal arity.
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Theorem 8.8: Homometral Reduction in Symmetric Polynomial Envelopes**
+Let $V$ be an $n$-dimensional real vector space with basis $\{e_1, \dots, e_n\}$ and $\Sym^m(V)$ the $m$-th symmetric tensor power.
+1. **Polarization Identity:** Every element $v^m \in \Sym^m(V)$ generated by repeated (homometral) evaluation of $v = \sum_{i=1}^n x_i e_i$ decomposes uniquely into a linear combination of distinct (heterometral) symmetrized tensor products:
+$$
+v^m \;=\; \sum_{k=1}^m \sum_{1 \le i_1 < \dots < i_k \le n} c_{i_1 \dots i_k} \left( e_{i_1} \odot \dots \odot e_{i_k} \right)
+$$
+2. **Arity Reduction:** For any polynomial operadic functional $F \in \Oquant$ of nominal arity $m$ evaluated on $k < m$ distinct coordinates with multiplicities $(a_1, \dots, a_k)$ ($\sum a_j = m$), there exists a unique reduced operator $F_{\mathrm{red}} \in \Oquant(k; 1)$ of strict arity $k$ such that:
+$$
+F(\underbrace{x_1, \dots, x_1}_{a_1}, \dots, \underbrace{x_k, \dots, x_k}_{a_k}) \;=\; F_{\mathrm{red}}(x_1, \dots, x_k)
+$$
+:::
+
+::: {.proof-box .fragment .blur-in}
+**Proof of Theorem 8.8 & Cubic Toy Example ($m=3, k=2$):**
+* **Proof:** By the classical multilinear polarization identity, $P(v) = v^m$ is uniquely reconstructed from $m$ distinct slots via:
+$$
+\Pol(v_1, \dots, v_m) \;=\; \frac{1}{2^m m!} \sum_{\epsilon \in \{-1, 1\}^m} \left(\prod_{i=1}^m \epsilon_i\right) \left( \sum_{j=1}^m \epsilon_j v_j \right)^m
+$$
+When the input tuple contains only $k < m$ distinct variables, grouping identical slots collapses the summation domain onto a $k$-ary operator $F_{\mathrm{red}} \colon V^{\otimes k} \to W$ of strict effective arity $k < m$. $\blacksquare$
+* **Cubic Toy Example:** A tertiary Synkolator ($m=3$) evaluating $F(x_1, x_1, x_2) = x_1^2 x_2$ (multiplicities $a_1=2, a_2=1$) reduces to $F_{\mathrm{red}}(u,v) \coloneqq u^2 v \in \Oquant(2;1)$ of strict binary arity $k = 2 < 3$ (SM, p. 133).
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Multilinear Polarization &amp; Arity Reduction Calculator (Thm. 8.8)</h4>
+  <p class="widget-context-note">
+  <b>Context (§8.3.2):</b> Select nominal arity $m \in \{2, 3, 4\}$ and distinct coordinate inputs $(x_1, x_2)$ to evaluate the $2^m$-vertex hypercube polarization sum $\Pol(x_1,\dots,x_1,x_2)$ and verify its collapse to $F_{\mathrm{red}}(x_1,x_2) = x_1^{m-1}x_2 \in \Oquant(2;1)$.
+  </p>
+  <div class="slider-row">
+  <span style="color:#9370DB;">Nominal Arity <i>m</i>:</span>
+  <input type="range" id="ch8-pol-m" min="2" max="4" step="1" value="3" oninput="ch8_updatePolarizationLab()">
+  <span id="ch8-pol-m-val" style="font-family:monospace; width:20px;">3</span>
+  <span style="color:#4169E1;">Input <i>x</i><sub>1</sub>:</span>
+  <input type="range" id="ch8-pol-u" min="0.5" max="3.0" step="0.1" value="1.5" oninput="ch8_updatePolarizationLab()">
+  <span id="ch8-pol-u-val" style="font-family:monospace; width:30px;">1.50</span>
+  <span style="color:#20B2AA;">Input <i>x</i><sub>2</sub>:</span>
+  <input type="range" id="ch8-pol-v" min="0.5" max="3.0" step="0.1" value="2.0" oninput="ch8_updatePolarizationLab()">
+  <span id="ch8-pol-v-val" style="font-family:monospace; width:30px;">2.00</span>
+  </div>
+  <div id="ch8-pol-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act9_Homometral_Polarization_Reduction.mp4" style="max-height:215px;"></video>
+  <div class="video-caption">Manim Act IX: Symmetric Tensor Polarization Pol(v₁,…,v_m) &amp; Cubic Arity Reduction m=3 → k=2 (Thm. 8.8)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section 8.3.2 presents Scholium 8.7, Theorem 8.8, its multilinear polarization proof, and the cubic toy example (m=3 reducing to k=2). Repeated homometral inputs carry no independent multilinear degrees of freedom beyond their distinct coordinate channels.
+:::
+
+---
+
+## §8.3.3: The Algebraic 15-to-3 Corporate Class Collapse & Lean 4 {.smaller transition="zoom"}
+
+<div class="stratum-badge badge-b">STRATUM B: 15-TO-3 CORPORATE COLLAPSE THEOREM 8.9, PROOF &amp; KERNEL-CHECKED LEAN 4 MODULE (S₂)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Theorem 8.9: Algebraic Collapse of Corporate Classes in $\Ctxquant$**
+Let $\mathcal{S}_a, \mathcal{S}_b \in \Synquant$ be quantitative Syntrix algebras over parameter manifolds $R_{n_a}, R_{n_b}$ valued in a coefficient field $\mathbb{K} \in \Coeff$.
+1. **Identification of Carrier & Functional Tiers:** Because every quantitative Synkolator $f \in \Oquant$ is a $\mathbb{K}$-valued functional operator evaluated directly on the coordinates of $R_n$ via the ring operations of $\mathbb{K}$, the synkolative rule selection ($K_s, C_s$) cannot vary independently of the metrophoric carrier selection ($K_m, C_m$): an uncoupled carrier coproduct forces block-diagonal functional composition, while carrier coordinate coupling forces functional cross-modulation.
+2. **15-to-3 Class Reduction:** Restricting the $2 \times 2$ corporate rule matrix $\left\{\begin{smallmatrix} K_s & C_s \\ K_m & C_m \end{smallmatrix}\right\}$ to synchronized column selections ($K \coloneqq \{K_m, K_s\}$ and $C \coloneqq \{C_m, C_s\}$) collapses the $2^4 - 1 = 15$ general corporate classes (Ch. 3) to the $2^2 - 1 = \mathbf{3}$ non-empty subsets of $\{K, C\}$ (SM, pp. 133–135):
+$$
+\operatorname{Op}_{\mathrm{quant}} \;=\; \Big\{\; \mathbf{Kor}_{\{K\}} \ (\text{Pure Coupled}), \;\; \mathbf{Kor}_{\{C\}} \ (\text{Pure Parallel}), \;\; \mathbf{Kor}_{\{K, C\}} \ (\text{Partial Coupling + Composition}) \;\Big\}
+$$
+:::
+
+::: {.proof-box .fragment .fade-up}
+**Proof of Theorem 8.9:**
+In the qualitative category $\mathbf{Syn}$ (Ch. 3), $\{K_m, C_m\}$ and $\{K_s, C_s\}$ can be chosen independently ($2^4 - 1 = 15$ subsets). In $\Synquant$, every syndrome section $A_\gamma \in \Gamma_b^0(R_m, T^{\otimes k}R_m)$ is a function of the base parameter manifold $R_m$. If $R_{m_a}, R_{m_b}$ share $\lambda > 0$ coupled coordinates in the pushout $R_{m_a} \boxplus_\phi R_{m_b}$, evaluating functional operators across shared coordinates automatically induces synkolative coupling $K_s$; on uncoupled summands ($\lambda = 0$), operators act in parallel ($C_s$). Thus the active corporate rule is determined by a non-empty subset of $\{K, C\}$, yielding $2^2 - 1 = 3$ classes. $\blacksquare$
+:::
+
+<div class="lean-code-card fragment fade-up" style="margin-top:6px;">
+<b>Lean 4 Kernel-Checked Module (<code>Syntrometrie.StratumB.QuantitativeAlgebra</code>, Status S₂):</b><br>
+<code>theorem binary_polarization_identity (B_xx B_xy B_yy : ℝ) :</code><br>
+<code>&nbsp;&nbsp;((B_xx + 2 * B_xy + B_yy) - (B_xx - 2 * B_xy + B_yy)) / 4 = B_xy := by ring</code><br>
+<code>theorem double_integral_square_branch (y : ℝ) : (y * y) / 2 + (y * y) / 2 = y ^ 2 := by ring</code><br>
+<code>inductive QuantMode | K | C deriving DecidableEq, Fintype</code><br>
+<code>theorem quant_corporate_classes_card : Fintype.card (Finset QuantMode) - 1 = 3 := by decide</code>
+</div>
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive 15-to-3 Corporate Class Synchronizer (Thm. 8.9)</h4>
+  <p class="widget-context-note">
+  <b>Context (§8.3.3):</b> Click any of the $2^4 - 1 = 15$ non-empty subsets of $\{K_m, C_m, K_s, C_s\}$ below to inspect why only the **3 column-synchronized classes** ($\mathbf{Kor}_{\{K\}}$, $\mathbf{Kor}_{\{C\}}$, $\mathbf{Kor}_{\{K,C\}}$) survive over continuous number fields $\mathbb{K}$.
+  </p>
+  <div id="ch8-corp-grid" style="display:grid; grid-template-columns: repeat(5, 1fr); gap:5px; margin-bottom:8px;"></div>
+  <div id="ch8-corp-readout" class="matrix-readout" style="font-size:0.61em;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act10_Corporate_15_to_3_Collapse.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act X: Algebraic Collapse from 15 Qualitative Corporate Classes to 3 Quantitative Modes (Thm. 8.9)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section 8.3.3 proves Theorem 8.9: on quantitative parameter manifolds, carrier coordinate coupling in the pushout R_{m_a} boxplus_phi R_{m_b} and functional operator coupling are algebraically locked, collapsing 15 corporate classes to 3 viable interactions. We also display the kernel-checked Lean 4 proofs from Appendix C.
+:::
+
+---
+
+## §8.4: Stratum C — Formal Heimian Reconstruction Map $\mathcal{R}$ {.smaller}
+
+<div class="stratum-badge badge-c">STRATUM C: COMPLETE 11-ROW FORMAL RECONSTRUCTION MAP R (§8.4) &amp; PROVENANCE INSPECTOR</div>
+
+:::: {.columns}
+
+::: {.column width="58%"}
+
+$$
+\boxed{\mathcal{R} \colon \mathsf{HeimVocabulary} \rightsquigarrow \mathsf{MathematicalStructures}}
+$$
+
+| Heimian Concept ($\mathbf{D}$) | Mathematical Reconstruction ($\mathcal{R}$) | Epistemic Status |
+|:---|:---|:---:|
+| **Primigene Äondyne ($\quantitaetssyntrix \equiv \aeondynechaptereight$)** | Fiber section $\underline{\mathbf{S}} \in \operatorname{Obj}(\mathbf{Syn}(U))$ over parameter manifold $\mathcal{M}_n \cong R_n$ | **Stratum C: Model** (Def. 8.3) |
+| **Parameter-Tensorium ($R_n$)** | Smooth parameter manifold with corners $\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n$ | **Stratum A: Def** (Def. 8.3) |
+| **Separation der Variablen** | Nuclear Fréchet tensor isomorphism $\mathscr{S}(\prod M_i) \cong \otpi \mathscr{S}(M_i)$ | **Stratum B: Thm** (Thm. 8.6) |
+| **Funktionale Asymmetrie** | Anisotropic weighting in multilinear operator kernel $f \in \Oquant$ | **Stratum A: Def** |
+| **Differentialfunktor ($\dtilde$)** | Fréchet exterior differential functor $\dtilde \colon C_b^\infty \to \Omega_{\mathrm{closed},b}^1$ | **Stratum A: Def** (Def. 8.5) |
+| **Integralfunktor ($\mathrm{I}$)** | Poincaré radial homotopy integral functor $\Izero \colon \Omega_{\mathrm{closed},b}^1 \to C^\infty$ | **Stratum A: Def** (Def. 8.5) |
+| **Ganzläufige Äondyne ($\funktionaloperator(t')$)** | Smooth family of operad operations $t' \mapsto \funktionaloperator(t') \in C^\infty(R_N, \Oquant)$ | **Stratum C: Model** |
+| **Fehlstelle 0** | Additive identity $0_{\mathbb{K}} \in \mathbb{K}$ / Basepoint $\mathbf{0} \in \mathcal{M}_n$ | **Stratum A: Def** (Def. 8.4) |
+| **Einheit E** | Multiplicative identity $1_{\mathbb{K}} \in \mathbb{K}$ / Unit section $1_{\mathcal{A}} \in C_b^\infty(\mathcal{M}_n)$ | **Stratum A: Def** (Def. 8.4) |
+| **Reduzierbarkeit homometral** | Polarization projection $\Sym^m(V) \twoheadrightarrow \Oquant(k; 1)$ with $k < m$ | **Stratum B: Thm** (Thm. 8.8) |
+| **3-Klassen-Kollaps** | Collapse of 15 corporate classes to 3 on $\Ctxquant$ | **Stratum B: Thm** (Thm. 8.9) |
+
+:::
+
+::: {.column width="42%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Provenance &amp; Firewall Inspector ($\mathcal{R}$)</h4>
+  <div class="syn-tabs">
+  <button class="syn-tab-btn active" onclick="showGenericTab('ch8-rec-pane', 1, 3, this)">Stratum A (Foundations)</button>
+  <button class="syn-tab-btn" onclick="showGenericTab('ch8-rec-pane', 2, 3, this)">Stratum B (Theorems)</button>
+  <button class="syn-tab-btn" onclick="showGenericTab('ch8-rec-pane', 3, 3, this)">Stratum C/D (Bridge)</button>
+  </div>
+  <div id="ch8-rec-pane-1" class="syn-tab-pane active">
+  <b>Stratum A Formal Definitions (Defs. 8.3–8.5):</b><br>
+  Translates $R_n$, <i>Fehlstelle 0</i>, <i>Einheit E</i>, $\dtilde$, and $\mathrm{I}$ into smooth manifolds with corners $\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n$, the unital algebraic base envelope $\mathcal{A}_{\mathbb{K}}(\mathcal{M}_n)$, and the exterior/Poincaré calculus functors on Whitney closed 1-forms.
+  </div>
+  <div id="ch8-rec-pane-2" class="syn-tab-pane">
+  <b>Stratum B Derived Theorems (Thms. 8.1, 8.6, 8.8, 8.9):</b><br>
+  Establishes Grothendieck nuclear tensor factorization $\mathscr{S}(\mathcal{M}_m) \cong \otpi \mathscr{S}(\mathbb{R}_{\ge 0})$ via Seeley's Vandermonde extension, multilinear polarization arity reduction $k &lt; m$, and the $15 \to 3$ corporate class collapse.
+  </div>
+  <div id="ch8-rec-pane-3" class="syn-tab-pane">
+  <b>Epistemic Firewall Non-Transfer Principle:</b><br>
+  Nuclear tensor separability in $\mathscr{S}(\mathcal{M}_m)$ (Stratum B) guarantees convergent rank-1 series expansions ($c_{\mathrm{NUCL}}$), without claiming single-product ODE separability unless the physical kernel has tensor rank 1.
+  </div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act11_Reconstruction_Map_Sanity.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act XI: Complete 11-Row Reconstruction Map R &amp; Quantitative Sanity Checks</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section 8.4 presents the complete 11-row Formal Heimian Reconstruction Map R for Chapter 8, mapping every historical concept from SM Section 7.3 (pp. 124–144) to its exact mathematical realization across Strata A, B, and C.
+:::
+
+---
+
+## §8.5: Physical & Epistemic Sanity Checks & Carnapian Explication 8.1 {.smaller transition="convex"}
+
+<div class="stratum-badge badge-c">STRATUM C: THREE PHYSICAL &amp; EPISTEMIC SANITY CHECKS (§8.5) &amp; CARNAPIAN EXPLICATION 8.1</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Three Physical & Epistemic Sanity Checks (§8.5):**
+
+1. **Leibniz Product Derivation Consistency:**
+   Evaluating the differential functor $\dtilde$ on a product section $f \cdot g \in C_b^\infty(\mathcal{M}_n)$:
+   $$
+   \dtilde(f \cdot g) \;=\; d(fg) \;=\; f\,dg + g\,df \;=\; f \cdot (\dtilde g) + g \cdot (\dtilde f)
+   $$
+   which proves that the continuous differential functor strictly recovers the standard Leibniz derivation rule before passing to discrete metronic difference calculus (where a finite lattice cross-term $-\tau (\nabla u)(\nabla v)$ emerges in Chapter 10).
+
+2. **Ring Element Invariance Check:**
+   For any section $f \in \mathcal{A}_{\mathbb{K}}(\mathcal{M}_n)$, the zero and unity identities hold globally:
+   $$
+   f \cdot 0_{\mathcal{A}} = 0_{\mathcal{A}}, \qquad f \cdot 1_{\mathcal{A}} = f, \qquad f + 0_{\mathcal{A}} = f
+   $$
+   confirming that the parameter space $R_n$ preserves the exact algebraic field properties of $\mathbb{K}$.
+
+3. **Nuclear Tensor Completion Uniqueness:**
+   Because $\mathscr{S}(\mathbb{R}_{\ge 0})$ is nuclear, the topological tensor completions satisfy:
+   $$
+   \widehat{\otimes}_\pi \;=\; \widehat{\otimes}_\varepsilon
+   $$
+   Hence, variable separation is independent of the choice of cross-norm topology, guaranteeing that decomposed physical parameter channels are frame-invariant.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+::: {.carnap-box .fragment .zoom-in}
+**Carnapian Explication 8.1: Variable Separation, Infinitesimal Functors & the 3-Class Collapse**
+
+* **1. Explicandum (Stratum D):**
+  Heim's identification of the *Quantitätssyntrix* as a *primigene Äondyne* (SM Eq. 29), *Separation der Variablen*, the *Differential-* and *Integralfunktoren* ($\dtilde, \mathrm{I}$, SM Eqs. 30–36), *Fehlstelle 0* and *Einheit E*, homometral reducibility, and the collapse of the $15$ corporate classes to $3$ (SM, pp. 131–144).
+
+* **2. Explicatum (Stratum A/B):**
+  The category of cornered parameter manifolds $\Manparam$, the Seeley extension operator $\mathcal{E}^{(n)}$ and Grothendieck nuclear tensor isomorphism $\mathscr{S}((\mathbb{R}_{\ge 0})^m) \cong \otpi \mathscr{S}(\mathbb{R}_{\ge 0})$, the exterior derivative $d$ and Poincaré homotopy integral $\Izero$, multilinear polarization (Theorem 8.8), and the synchronized column reduction $2^4 - 1 \to 2^2 - 1 = 3$ (Theorem 8.9).
+
+* **3. Exactness & Simplicity:**
+  Grounds variable separation in Grothendieck's nuclearity permanence theorem via Seeley's Vandermonde moment identities (Seeley 1964; Grothendieck 1955) and proves $\dtilde \circ \Izero = \operatorname{id}$ on star-shaped octants.
+
+* **4. Fruitfulness:**
+  Unifies Grothendieck's topos logic (Chapter 1) with Grothendieck's nuclear functional analysis (Zalamea 2012; Marquis 2009), guaranteeing that multivariate quantitative fields decompose into convergent rank-$1$ coordinate channels without cross-norm ambiguity ($\otpi = \oteps$).
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Section 8.5 verifies three essential sanity checks: the Leibniz product rule in the smooth continuum limit, global preservation of zero and unit identities in A_K(M_n), and cross-norm uniqueness in nuclear Fréchet spaces, followed by Carnapian Explication 8.1.
+:::
+
+---
+
+## §8.6: Chapter 8 Synthesis, Deliverables & Bridge to *Strukturkaskaden* {.smaller transition="zoom"}
+
+<div class="stratum-badge badge-c">CHAPTER 8 SYNTHESIS: DELIVERABLES, ASYMPTOTIC LIMITS, CROSS-DISCIPLINARY MATRIX &amp; ASCENT TO CHAPTER 9</div>
+
+:::: {.columns}
+
+::: {.column width="52%"}
+
+::: {.deliverables-box .fragment .zoom-in}
+**Chapter 8 Deliverables: Nuclear Separation & Calculus**
+* **Parameter Äondynen:** $\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n$ embeds algebraic zero (*Fehlstelle 0*) and unit (*Einheit E*) identities inside the unital base envelope $\mathcal{A}_{\mathbb{K}}(\mathcal{M}_n)$.
+* **Nuclear Separation:** Schwartz-space kernels on corners admit absolutely convergent projective/injective tensor expansions into one-dimensional coordinate factors via Seeley's moment-matched extension ($\mathscr{S}(\mathcal{M}_m) \cong \otpi \mathscr{S}(\mathbb{R}_{\ge 0})$).
+* **Algebraic Simplification:** Multilinear polarization and variable separation reduce higher-arity homometral forms ($k < m$) and collapse corporate pairings from $15$ classes to $3$ synchronized modes ($\mathbf{Kor}_{\{K\}}, \mathbf{Kor}_{\{C\}}, \mathbf{Kor}_{\{K,C\}}$).
+:::
+
+<h4 style="color:#82aaff; margin:8px 0 4px 0;">Chapter 8: Asymptotic Limits &amp; Degeneracy Reductions</h4>
+
+| Regime / Boundary Limit | Mathematical Operation | Physical & Logical Reduction |
+|:---|:---|:---|
+| **Continuous Leibniz Limit** | $\Delta x^i \to 0$ in $\dtilde(uv)$ | Discrete cross-terms vanish: $\dtilde(uv) = u\,\dtilde v + v\,\dtilde u$, recovering smooth Fréchet calculus on parameter corners. |
+
+<h4 style="color:#5eead4; margin:8px 0 4px 0;">Chapter 8: Cross-Disciplinary Interpretation Matrix</h4>
+
+| Categorical & Topos Logic | Theoretical Physics & Geometry | Cognitive Science & Epistemology |
+|:---|:---|:---|
+| Nuclear Fréchet tensor isomorphisms $\mathscr{S}(\prod M_i) \cong \bigotimes^\pi \mathscr{S}(M_i)$. | Smooth parameter manifolds with corners $(\mathbb{R}_{\ge 0})^n$ and Fréchet derivations. | *Separation of Variables*: Decomposing multimodal cognitive sensations into isolated 1D channels. |
+
+:::
+
+::: {.column width="48%"}
+
+<div class="video-container">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act12_Chapter8_Synthesis_Bridge_Ch9.mp4" style="max-height:225px;"></video>
+  <div class="video-caption">Manim Act XII: Chapter 8 Synthesis Flowchart &amp; Dialectical Bridge to Chapter 9 (Strukturkaskaden)</div>
+</div>
+
+::: {.firewall-box .fragment .glow-pulse}
+**The Geometric Obstruction: Absence of Unified Affine Curvature**
+Separated tensor potentials float in an uncurved coordinate space: there is no common metric, affine connection, geodesic motion, or coupling of symmetric and skew-symmetric fields.
+
+**The Functorial Ascent to Chapter 9 (*Strukturkaskaden*): Hierarchical Metric Cascades**
+With nuclear tensor decomposition $\mathscr{S}((\mathbb{R}_{\ge 0})^n) \cong \otpi \mathscr{S}(\mathbb{R}_{\ge 0})$ and homometral polarization reducibility established, isolated coordinate potentials must assemble into macroscopic spacetime geometry. **Chapter 9** constructs the *Strukturkaskade*: combining partial metrics ${}^2\mathbf{g}_{(\mu)}$ into the **36-component non-Hermitian Hermetry matrix** ${}^2\bar{\mathbf{g}}$ on $R_6$ and proving Sobolev fixed-point convergence to the apex metric ${}^2\bar{\mathbf{g}}_\infty$.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Section 8.6 concludes Chapter 8 with the synthesis flowchart, deliverables box, asymptotic limits table, cross-disciplinary interpretation matrix, and the dialectical bridge to Chapter 9 (Strukturkaskaden), where isolated parameter potentials assemble into the 36-component non-Hermitian Hermetry metric cascade.
+:::

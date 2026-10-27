@@ -1,0 +1,96 @@
+<script>
+window.MathJax = {
+  tex: {
+    macros: {
+      coloneqq: "\\mathrel{:=}",
+      Coloneqq: "\\mathrel{::=}",
+      centernot: "\\not",
+      llbracket: "\\mathopen{[\\mkern-3mu[}",
+      rrbracket: "\\mathclose{]\\mkern-3mu]}",
+      longhookrightarrow: "\\lhook\\joinrel\\longrightarrow",
+      metron: "\\tau",
+      metronischegitter: "\\text{Metronische Gitter}",
+      metrondifferential: "\\bar{\\delta}",
+      metronbar: "\\bar{\\delta}",
+      metronintegral: "\\mathrm{S}",
+      metronenfunktion: "\\phi(n)",
+      metronenziffer: "n",
+      Mtau: "\\mathbb{M}_{\\tau}",
+      Ssum: "\\mathcal{S}",
+      GRAD: "\\operatorname{GRAD}",
+      DIV: "\\operatorname{DIV}",
+      ROT: "\\operatorname{ROT}",
+      sp: "\\operatorname{sp}",
+      or: "\\operatorname{or}",
+      Face: "\\operatorname{Face}",
+      Hom: "\\operatorname{Hom}",
+      id: "\\operatorname{id}"
+    }
+  }
+};
+</script>
+<style>
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll section {
+  font-size: clamp(14px, 1.35vw, 26px) !important;
+}
+.reveal-viewport.reveal-scroll .interactive-panel,
+.reveal-viewport.reveal-scroll .thm-box,
+.reveal-viewport.reveal-scroll .carnap-box,
+.reveal-viewport.reveal-scroll .firewall-box,
+.reveal-viewport.reveal-scroll .intuition-box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.widget-context-note {
+  font-size: 0.64em;
+  color: #cbd5e1;
+  line-height: 1.36;
+  margin: 4px 0 10px 0;
+}
+.syn-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.syn-tab-btn {
+  background: #151c2c;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 0.60em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.syn-tab-btn.active, .syn-tab-btn:hover {
+  background: rgba(65, 105, 225, 0.28);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+.syn-tab-pane {
+  display: none;
+  background: rgba(10, 14, 23, 0.82);
+  border: 1px solid rgba(65, 105, 225, 0.45);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.72em;
+}
+.syn-tab-pane.active {
+  display: block;
+}
+.lean-code-card {
+  background: #0d131f;
+  border: 1.5px solid #334155;
+  border-left: 5px solid #20B2AA;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 0.54em;
+  line-height: 1.36;
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+</style>

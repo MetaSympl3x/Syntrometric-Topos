@@ -1,0 +1,1079 @@
+
+## §15.1: The Master Axiomatic Dependency Architecture {.smaller transition="convex"}
+
+<div class="stratum-badge badge-a">STRATA A–C SYNTHESIS (§15.1): THE UNBROKEN DEDUCTIVE CHAIN ACROSS CHAPTERS 1–11</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+<h3 style="color:#82aaff; margin-top:0;">Four-Tier Deductive Architecture of Modernized Syntrometrie</h3>
+
+* **I. Universal Categorical Logic (Ch 1–3):**
+  - **Sheaf Topos $\Esyn$ (Thm. 1.8 &amp; 1.14):** Exact Descent Equalizers &amp; Heyting Classifier $\Omega$.
+  - **Operad $\Osyn$ (Def. 2.1 &amp; Thm. 2.9):** Tree Monads $T_{\mathsf{P}}$, *Spaltbarkeit* ($\lambda$), &amp; *Äondyne* Fibrations $\int\mathbf{Syn}$.
+  - **Corporate Determinacy (Thm. 3.11):** Coupled Span Pushouts $\boxplus_\phi$ &amp; Conflexivity Colimits $\varinjlim D$.
+* **II. Higher Topology &amp; Field Dynamics (Ch 4–6):**
+  - **Interaction Curvature (Thm. 4.6 &amp; 4.9):** Non-Abelian Gauge Bundles $\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}} = F_A - \sum \mathcal{F}_k^{(A_0)}$.
+  - **$\Xsyn$ &amp; *Tektonik* (Def. 5.2 &amp; Thm. 5.12):** Ambient $(\infty,1)$-Topos, Complete Segal Spaces &amp; Bridge Adjunctions.
+  - **Telecentric Dynamics (Thm. 6.7 &amp; 6.14):** Final Coalgebras $(\nu\mathcal{T}, \zeta)$ &amp; Lyapunov Stability $\dot{V} \le -\gamma V$.
+* **III. Quantitative Metric Cascades (Ch 7–9):**
+  - **$\Ctxquant$ Site (Def. 7.1 &amp; Thm. 7.6):** Nuclear Fréchet Separation $C_b^\infty \cong \widehat{\bigotimes}_\pi C_b^\infty$ over $(\mathbb{R}_{\ge 0})^n$.
+  - ***Strukturkaskaden* (Thm. 8.5 &amp; 9.4):** Monomial Tensor Norm Estimates &amp; Banach Apex ${}^2\bar{\mathbf{g}}_\infty$.
+  - **Transition Criterion (Thm. 9.7):** Geodesic Gradient Breakdown $\chi\sqrt{|g_{(p)}|} = 1 \implies$ Singularity.
+* **IV. Discrete Mechanics &amp; Mass Spectra (Ch 10–11):**
+  - **Metronic Calculus (Thm. 10.2 &amp; 10.6):** Discrete Lattice $\Mtau^n$, Difference Algebra $\nabla_i$, &amp; DEC $d_\tau^2 \equiv 0$.
+  - **Matter Condensation (Thm. 11.5 &amp; 11.9):** $\Sel\Psi = \lambda\Psi$ &amp; Mass Eigenvalues $m = m_0 \frac{L_p}{L_1} \prod \lambda_k$.
+
+::: {.scholium-box .fragment .fade-up}
+**Scholium on Axiomatic Dependency (§15.1):** Solid arrows ($\longrightarrow$) denote strict deductive implication, restriction of scalars, or induction of higher-algebraic structures. The dashed orange arrow ($\dashrightarrow$) isolates the **singular critical locus** of the entire framework: the topological/gradient breakdown of continuous Riemannian geodesics (Thm. 9.7), which mathematically mandates the transition from $\mathbf{Man}_{\mathrm{param}}$ to the discrete cellular cochain complex on $\Mtau^n$ (Thm. 10.4).
+:::
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Interactive Master Axiomatic Dependency DAG Explorer (§15.1)</h4>
+  <p class="widget-context-note">Click any of the 11 foundational nodes across Strata I–IV to inspect its governing theorem, incoming premise arrows, and outgoing deductive morphisms:</p>
+  <svg id="ch15-dag-svg" viewBox="0 0 460 195" style="width:100%; max-height:180px; background:#070a12; border:1px solid #334155; border-radius:8px;">
+  <defs>
+  <marker id="ch15-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+  <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+  </marker>
+  <marker id="ch15-arr-crisis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+  <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC143C"/>
+  </marker>
+  </defs>
+  <line x1="130" y1="26" x2="172" y2="26" stroke="#64748b" stroke-width="1.5" marker-end="url(#ch15-arr)"/>
+  <line x1="288" y1="26" x2="328" y2="26" stroke="#64748b" stroke-width="1.5" marker-end="url(#ch15-arr)"/>
+  <line x1="230" y1="40" x2="230" y2="62" stroke="#64748b" stroke-width="1.5" marker-end="url(#ch15-arr)"/>
+  <line x1="172" y1="76" x2="130" y2="76" stroke="#64748b" stroke-width="1.5" marker-end="url(#ch15-arr)"/>
+  <line x1="385" y1="40" x2="385" y2="62" stroke="#64748b" stroke-width="1.5" marker-end="url(#ch15-arr)"/>
+  <line x1="72" y1="40" x2="72" y2="112" stroke="#64748b" stroke-width="1.5" marker-end="url(#ch15-arr)"/>
+  <line x1="130" y1="126" x2="172" y2="126" stroke="#64748b" stroke-width="1.5" marker-end="url(#ch15-arr)"/>
+  <line x1="385" y1="90" x2="265" y2="112" stroke="#64748b" stroke-width="1.5" marker-end="url(#ch15-arr)"/>
+  <line x1="288" y1="126" x2="328" y2="126" stroke="#DC143C" stroke-width="1.8" marker-end="url(#ch15-arr-crisis)"/>
+  <path d="M 385,140 L 385,152 L 230,152 L 230,162" fill="none" stroke="#DC143C" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#ch15-arr-crisis)"/>
+  <line x1="288" y1="175" x2="328" y2="175" stroke="#64748b" stroke-width="1.5" marker-end="url(#ch15-arr)"/>
+  <path d="M 40,90 L 40,175 L 328,175" fill="none" stroke="#FFD700" stroke-width="1.3" stroke-dasharray="3,2" marker-end="url(#ch15-arr)"/>
+
+  <g class="ch15-dag-node" onclick="window.ch15_selectDagNode('topos')">
+  <rect id="ch15-node-topos" class="ch15-dag-rect" x="16" y="12" width="114" height="28" rx="4" fill="#151c2c" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="73" y="29" fill="#e2e8f0" font-size="9.5" font-weight="bold" text-anchor="middle">1. Topos E_syn (Ch 1)</text>
+  </g>
+  <g class="ch15-dag-node" onclick="window.ch15_selectDagNode('operad')">
+  <rect id="ch15-node-operad" class="ch15-dag-rect" x="172" y="12" width="116" height="28" rx="4" fill="#151c2c" stroke="#20B2AA" stroke-width="1.4"/>
+  <text x="230" y="29" fill="#e2e8f0" font-size="9.5" font-weight="bold" text-anchor="middle">2. Operad O_syn (Ch 2)</text>
+  </g>
+  <g class="ch15-dag-node" onclick="window.ch15_selectDagNode('pushout')">
+  <rect id="ch15-node-pushout" class="ch15-dag-rect" x="328" y="12" width="116" height="28" rx="4" fill="#151c2c" stroke="#20B2AA" stroke-width="1.4"/>
+  <text x="386" y="29" fill="#e2e8f0" font-size="9.5" font-weight="bold" text-anchor="middle">3. Pushouts ⊞_φ (Ch 3)</text>
+  </g>
+
+  <g class="ch15-dag-node" onclick="window.ch15_selectDagNode('coalg')">
+  <rect id="ch15-node-coalg" class="ch15-dag-rect" x="16" y="62" width="114" height="28" rx="4" fill="#151c2c" stroke="#FFD700" stroke-width="1.4"/>
+  <text x="73" y="79" fill="#FFD700" font-size="9.5" font-weight="bold" text-anchor="middle">6. Coalgebra νT (Ch 6)</text>
+  </g>
+  <g class="ch15-dag-node" onclick="window.ch15_selectDagNode('highertopos')">
+  <rect id="ch15-node-highertopos" class="ch15-dag-rect" x="172" y="62" width="116" height="28" rx="4" fill="#151c2c" stroke="#20B2AA" stroke-width="1.4"/>
+  <text x="230" y="79" fill="#e2e8f0" font-size="9.5" font-weight="bold" text-anchor="middle">5. (∞,1)-Topos X_syn (Ch 5)</text>
+  </g>
+  <g class="ch15-dag-node" onclick="window.ch15_selectDagNode('gauge')">
+  <rect id="ch15-node-gauge" class="ch15-dag-rect" x="328" y="62" width="116" height="28" rx="4" fill="#151c2c" stroke="#20B2AA" stroke-width="1.4"/>
+  <text x="386" y="79" fill="#e2e8f0" font-size="9.5" font-weight="bold" text-anchor="middle">4. Curvature Ω_int (Ch 4)</text>
+  </g>
+
+  <g class="ch15-dag-node" onclick="window.ch15_selectDagNode('quant')">
+  <rect id="ch15-node-quant" class="ch15-dag-rect" x="16" y="112" width="114" height="28" rx="4" fill="#151c2c" stroke="#4169E1" stroke-width="1.4"/>
+  <text x="73" y="129" fill="#e2e8f0" font-size="9.5" font-weight="bold" text-anchor="middle">7. Ctx_quant Site (Ch 7)</text>
+  </g>
+  <g class="ch15-dag-node" onclick="window.ch15_selectDagNode('cascade')">
+  <rect id="ch15-node-cascade" class="ch15-dag-rect" x="172" y="112" width="116" height="28" rx="4" fill="#151c2c" stroke="#20B2AA" stroke-width="1.4"/>
+  <text x="230" y="129" fill="#e2e8f0" font-size="9.5" font-weight="bold" text-anchor="middle">8. Cascade ²ḡ_∞ (Ch 8–9)</text>
+  </g>
+  <g class="ch15-dag-node" onclick="window.ch15_selectDagNode('singularity')">
+  <rect id="ch15-node-singularity" class="ch15-dag-rect" x="328" y="112" width="116" height="28" rx="4" fill="#2a1215" stroke="#DC143C" stroke-width="3.2"/>
+  <text x="386" y="129" fill="#ff6b81" font-size="9.5" font-weight="bold" text-anchor="middle">9. Crisis χ√|g|=1 (Thm 9.7)</text>
+  </g>
+
+  <g class="ch15-dag-node" onclick="window.ch15_selectDagNode('dec')">
+  <rect id="ch15-node-dec" class="ch15-dag-rect" x="172" y="161" width="116" height="28" rx="4" fill="#151c2c" stroke="#FFA500" stroke-width="1.4"/>
+  <text x="230" y="178" fill="#FFA500" font-size="9.5" font-weight="bold" text-anchor="middle">10. Metronic DEC (Ch 10)</text>
+  </g>
+  <g class="ch15-dag-node" onclick="window.ch15_selectDagNode('mass')">
+  <rect id="ch15-node-mass" class="ch15-dag-rect" x="328" y="161" width="116" height="28" rx="4" fill="#151c2c" stroke="#FFD700" stroke-width="1.4"/>
+  <text x="386" y="178" fill="#FFD700" font-size="9.5" font-weight="bold" text-anchor="middle">11. Mass Spectrum (Ch 11)</text>
+  </g>
+  </svg>
+  <div id="ch15-dag-readout" class="matrix-readout" style="margin-top:6px; font-size:0.60em; line-height:1.35;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act1_Master_Axiomatic_DAG.mp4" style="max-height:185px;"></video>
+  <div class="video-caption">Manim Act I (§15.1): Master Axiomatic Dependency DAG &amp; Geodesic Obstruction Bridge (Thm. 9.7 → Thm. 10.4)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section 15.1 synthesizes Chapters 1 through 11 into a single four-tier Master Axiomatic Dependency Graph. Notice the critical dashed orange arrow from Theorem 9.7 to Theorem 10.4: the geodesic gradient singularity $\chi\sqrt{|g_{(p)}|} = 1$ forces the transition from smooth Riemannian manifolds to discrete exterior calculus on the metronic lattice $\mathbb{M}_\tau^n$.
+:::
+
+---
+
+## §15.2–15.3: 21st-Century Physics Landscape & Empirical Falsification {.smaller transition="slide"}
+
+<div class="stratum-badge badge-c">STRATUM C (§15.2–15.3): COMPARATIVE FOUNDATIONAL LANDSCAPE (FIG. 15.1), FALSIFICATION MATRIX (TABLE 15.1) &amp; LIV BOUNDS (FIG. 15.2)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**§15.2 Synthesis of Contemporary Foundational Programs (Fig. 15.1):**
+Modernized Syntrometrie unifies three major 21st-century mathematical physics architectures:
+1. **Topos Quantum Theory (Isham–Döring 2008, Flori 2013):** Presheaf models of contextuality motivate our metric-compatible context site $\Ctxadm$, equipping observer frames with active projective channel contractions and continuous isometric metropie flows.
+2. **Higher Gauge Theory (Schreiber, Lurie 2009, Sati):** Cohesive $(\infty,1)$-toposes provide the natural arena for the Metroplex hierarchy $\Xsyn$ and its change-of-operad bridge adjunctions.
+3. **Discrete Exterior Calculus (Desbrun, Hirani, Marsden 2005):** The transition criterion $\chi\sqrt{|g_{(p)}|} = 1$ supplies an explicit dynamical boundary between smooth Riemannian continua and discrete metronic cochain complexes $\Mtau^n$.
+:::
+
+::: {.firewall-box .fragment .fade-up}
+**§15.3 Empirical Falsification Matrix &amp; Test Protocols (Table 15.1):**
+A mathematical reconstruction of a physical theory must provide quantitative criteria by which it could fail:
+
+<table class="ch15-table">
+  <thead>
+  <tr><th>Domain</th><th>Prediction</th><th>Current Status</th><th>Test Protocol</th></tr>
+  </thead>
+  <tbody>
+  <tr><td><b>Astroparticle LIV Dispersion</b></td><td>Energy-dependent photon delays ($\Delta t \propto (E/E_{\mathrm{QG}})^2 D/c$)</td><td>Fermi-LAT GRB 090510 bounds ($E_{\mathrm{QG},1} > 1.22 M_P$)</td><td>Ultra-high-energy CTA / LHAASO measurements</td></tr>
+  <tr><td><b>Micro-Scale Gravitation</b></td><td>Skew-torsion corrections below $r &lt; \sqrt{\tau}$</td><td>Inverse-square tests reach tens of $\mu\mathrm{m}$</td><td>Sub-micron Casimir / torsion-balance gravity tests</td></tr>
+  <tr><td><b>Mesobaric Gauge Coupling</b></td><td>Resonant gravito-magnetic conversion on $S_2$</td><td>No established anomalous coupling</td><td>High-$Q$ rotating-field superconducting cavities</td></tr>
+  </tbody>
+</table>
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Interactive Astroparticle LIV Dispersion &amp; GRB 090510 Exclusion Lab (Fig. 15.2 &amp; §B.6)</h4>
+  <p class="widget-context-note">Compare the Fermi-LAT GRB 090510 lower bound ($1.22\,M_{\mathrm{Planck}}$) against the derived metronic cutoff $E_{\mathrm{QG}} = \frac{\hbar c}{\sqrt{\tau}} \approx 1.52\,M_{\mathrm{Planck}}$ ($\tau_{\mathrm{derived}} = \frac{\sqrt{3}}{4}\ell_P^2$):</p>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Cell Area $\tau / \tau_0$:</span>
+  <input type="range" id="ch15-liv-tau" min="0.50" max="2.50" step="0.05" value="1.00" oninput="window.ch15_updateLIVLab()">
+  <span id="ch15-liv-tau-val" style="font-family:monospace; width:68px;">1.00 × τ₀</span>
+  <span style="color:#20B2AA;">$E_\gamma$:</span>
+  <input type="range" id="ch15-liv-egamma" min="10" max="100" step="5" value="31" oninput="window.ch15_updateLIVLab()">
+  <span id="ch15-liv-egamma-val" style="font-family:monospace; width:58px;">31 GeV</span>
+  <span style="color:#FFA500;">$D$:</span>
+  <input type="range" id="ch15-liv-dist" min="0.5" max="8.0" step="0.5" value="4.0" oninput="window.ch15_updateLIVLab()">
+  <span id="ch15-liv-dist-val" style="font-family:monospace; width:54px;">4.0 Gpc</span>
+  </div>
+  <svg viewBox="0 0 420 72" style="width:100%; max-height:70px; background:#070a12; border-radius:6px; border:1px solid #334155; margin-top:4px;">
+  <rect x="20" y="10" width="140" height="44" fill="rgba(220,20,60,0.22)"/>
+  <text x="90" y="30" fill="#ff6b81" font-size="8.5" font-weight="bold" text-anchor="middle">Excluded by Fermi-LAT GRB 090510</text>
+  <text x="90" y="42" fill="#ff6b81" font-size="8" text-anchor="middle">(E_{QG,1} &lt; 1.22 M_Planck)</text>
+  <rect x="160" y="10" width="240" height="44" fill="rgba(32,178,170,0.16)"/>
+  <text x="315" y="28" fill="#5eead4" font-size="8.5" font-weight="bold" text-anchor="middle">Empirically Viable QG Regime</text>
+  <line x1="160" y1="6" x2="160" y2="58" stroke="#DC143C" stroke-width="2" stroke-dasharray="3,2"/>
+  <text x="160" y="67" fill="#ff6b81" font-size="8" font-weight="bold" text-anchor="middle">1.22 M_P</text>
+  <line x1="120" y1="10" x2="120" y2="54" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="120" y="67" fill="#94a3b8" font-size="7.5" text-anchor="middle">1.0 M_P</text>
+  <circle id="ch15-liv-marker" cx="213.6" cy="34" r="6" fill="#FFD700" stroke="#000" stroke-width="1.5"/>
+  <text id="ch15-liv-marker-lbl" x="213.6" y="21" fill="#FFD700" font-size="8.5" font-weight="bold" text-anchor="middle">E_QG = 1.52 M_P</text>
+  </svg>
+  <div id="ch15-liv-readout" class="matrix-readout" style="margin-top:5px; font-size:0.58em; line-height:1.34;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act2_Physics_Landscape_LIV.mp4" style="max-height:185px;"></video>
+  <div class="video-caption">Manim Act II (§15.2–15.3): Topos/Higher-Gauge/DEC Triad &amp; Astroparticle LIV Exclusion Plot (Fig. 15.1–15.2)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Sections 15.2 and 15.3 situate modernized Syntrometrie at the intersection of Topos Quantum Theory, Higher Gauge Theory, and Discrete Exterior Calculus, and establish explicit empirical falsification protocols across gamma-ray burst LIV dispersion, sub-micron gravitation, and mesobaric cavities.
+:::
+
+---
+
+## §15.4.1–15.4.2: Open Conjectures 1 & 2 — Topos Completeness & 12D Null-Space {.smaller transition="zoom"}
+
+<div class="stratum-badge badge-b">STRATA B &amp; C RESEARCH HORIZON (§15.4.1–15.4.2): CONJECTURES 15.1 &amp; 15.2</div>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.thm-box}
+**Conjecture 1 (§15.4.1): Topos-Relative Completeness of $\LiMSL$**
+Let $\mathcal{M}^c = (W^c, \preceq^c, R_{\BoxS}^c, R_{\pi_F}^c, V^c)$ be the Henkin canonical model of $\LiMSL$ over maximal $k$-consistent theories (Thm. 1.19).
+**Conjecture:** There exists a **fully faithful realization functor**:
+$$
+\Phi_{\mathrm{realize}} \colon \mathcal{M}^c \longrightarrow \mathbf{Sh}(\Ctxadm, \Jsyn)
+$$
+mapping each prime theory $\Delta \in W^c$ to an admissible structured context $U_\Delta \in \Ctxadm$ such that modal Kripke forcing coincides with internal Kripke–Joyal sheaf forcing:
+$$
+(\Delta, k) \models \psi \iff U_\Delta \Vdash \psi
+$$
+establishing that $\LiMSL$ is the complete, internal modal logic of $\Esyn$.
+:::
+
+::: {.scholium-box .fragment .fade-up}
+**Proof Reduction Strategy &amp; Horizon Payoff (Conjecture 1):**
+* **Step 1:** Construct the syntactic category $\SynCat$ whose objects are deductive theories $(S(x),\Gamma)$ and whose morphisms are provable sequents modulo cut-elimination.
+* **Step 2:** Define a canonical Grothendieck coverage $\Jproof$ on $\SynCat$ whose covering sieves correspond to disjunctive proof trees and Fischer–Servi modal confluence paths.
+* **Step 3:** Apply **Joyal's Representation Theorem** for Grothendieck toposes to construct the fully faithful embedding $\Phi_{\mathrm{realize}}$.
+* **Horizon Payoff:** Unifies Heim's multi-leveled structural logic with Grothendieck Topos Theory, providing a universally sound, machine-checkable foundation for automated theorem provers on context-dependent physics.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.thm-box .fragment .fade-left}
+**Conjecture 2 (§15.4.2): Non-Trivial 12D Metric Null-Space &amp; $R_6$ Condensation**
+Let $\operatorname{Met}(R_{12})$ and $\operatorname{Conn}(R_{12})$ be the Fréchet spaces of non-Hermitian metrics and affine connections on $R_{12} = R_4 \times S_2 \times I_6$, and let ${}^4\mathbf{F} \colon \operatorname{Conn}(R_{12}) \times \operatorname{Met}(R_{12}) \to \ell^\infty(\Mtau^{12}, \operatorname{End}(\Lambda^2\mathbb{R}^{12}))$ be the metronized curvature compressor (SM Eq. 100).
+**Conjecture:**
+1. The solution variety $\mathcal{S}_{\mathrm{matter}} \coloneqq \{(g,\nabla) \mid {}^4\mathbf{F}(g,\nabla) = \mathbf{0}\}$ is non-empty and decomposes into a discrete family of compact 6D sub-manifolds $R_6 = R_4 \times S_2$, forcing **spontaneous geometric compactification** of the informational sub-bundle $I_6$.
+2. The discrete volume spectrum $\operatorname{vol}(\operatorname{supp}(\Psi_k))$ across combinatorial selector weights $L_p = \binom{6}{p}$ reproduces the empirical mass eigenvalues of the lepton and baryon spectrum (Thm. 11.9, App. B).
+:::
+
+::: {.scholium-box .fragment .fade-up}
+**Proof Reduction Strategy &amp; Horizon Payoff (Conjecture 2):**
+* **Step 1:** Formulate ${}^4\mathbf{F} = \mathbf{0}$ as an elliptic, non-linear partial difference system on the discrete 12-torus $\mathbb{T}_\tau^{12}$.
+* **Step 2:** Apply **discrete Morse theory** and the **Atiyah–Singer index theorem** for discrete difference complexes to prove $\ker {}^4\mathbf{F}$ is finite-dimensional and non-trivial.
+* **Step 3:** Show energy-minimizing configurations force curvature along $I_6$ into localized instantonic solitons, isolating active dynamics to $R_6$.
+* **Horizon Payoff:** Purely geometric, singularity-free derivation of Standard Model particle generations without free Yukawa parameters.
+:::
+
+<div class="video-container fragment fade-up" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act3_Conjectures_Topos_12D.mp4" style="max-height:165px;"></video>
+  <div class="video-caption">Manim Act III (§15.4.1–15.4.2): Joyal Topos Realization Φ_realize &amp; 12D → 6D Matter Condensation</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section 15.4 isolates five well-defined open mathematical conjectures. Conjecture 1 targets unconditional Joyal completeness of L_iMSL relative to the sheaf topos E_syn; Conjecture 2 targets the non-trivial kernel of the 4th-rank metronized curvature compressor 4F = 0 and spontaneous compactification of I_6 onto R_6.
+:::
+
+---
+
+## §15.4.3–15.4.5: Open Conjectures 3, 4 & 5 — Spectral Gap, Negentropy & $I_6$ Moduli {.smaller}
+
+<div class="stratum-badge badge-c">STRATA B &amp; C RESEARCH HORIZON (§15.4.3–15.4.5): CONJECTURES 15.3, 15.4 &amp; 15.5</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.thm-box}
+**Conjecture 3 (§15.4.3): The Discrete Metronic Mass Gap**
+On the discrete metronic spacetime lattice $\Mtau^4 \subset \mathbb{R}^4$ ($\tau > 0$) with difference Laplacian $\Delta_\tau \coloneqq \sum_{i=1}^4 \nabla_i^*\nabla_i$ on $\ell^2(\Mtau^4)$ and discrete Yang–Mills Hamiltonian $H_\tau \coloneqq \Delta_\tau + V_{\mathrm{gauge}}$, for any compact non-Abelian gauge group $G$, $\sigma(H_\tau)$ exhibits a strictly positive uniform spectral gap above vacuum $\lambda_0$:
+$$
+\inf_{\tau > 0} \dist\!\left(\lambda_0(H_\tau),\; \sigma(H_\tau)\setminus\{\lambda_0\}\right) = m_0 c^2 \ge \frac{\hbar c}{\sqrt{\tau}} > 0
+$$
+* **Reduction Strategy:** Compact Brillouin torus $\mathbb{T}^4 = [-\pi/\tau,\pi/\tau]^4$ gives intrinsic UV cutoff $\Lambda_{\mathrm{UV}}\sim 1/\sqrt{\tau}$; transfer-matrix spectral bounds &amp; discrete Osterwalder–Schrader reflection positivity yield $\langle \mathbf{\Omega}_{\mathrm{int}}(0)\mathbf{\Omega}_{\mathrm{int}}(x)\rangle \le C e^{-m_0\|x\|}$.
+:::
+
+::: {.thm-box .fragment .fade-right}
+**Conjecture 4 (§15.4.4): Dynamic Negentropy Flux on $S_2(x_5,x_6)$**
+Along any televariant trajectory $\mathbf{W}_{\mathrm{tele}}(t)$ satisfying $\dot{V} \le -\gamma V$ (Thm. 6.14), the Lie derivative of Boltzmann entropy $\mathcal{S}_{\mathrm{therm}}$ along entelechial vector field $X_5 \coloneqq \partial/\partial x_5$ satisfies:
+$$
+\mathcal{L}_{X_5}\mathcal{S}_{\mathrm{therm}} \le \frac{d}{dt_{\mathrm{aeon}}}V(\Phi_t(x)) \le -\gamma V(\Phi_t(x)) < 0
+$$
+* **Reduction Strategy:** Couple ${}^2\bar{\mathbf{g}}$ on $R_4\times S_2$ to stress-energy-entropy $S^\mu = s\cdot u^\mu$; anti-Hermitian connection $\Gamma_{(-)}$ with $[\partial_5,\partial_6]$ acts as an entropy sink pumping negentropy into $R_4$.
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Conjecture 5 (§15.4.5): Gauge Coupling Fixation on $I_6 \cong T^2\times T^2\times T^2$**
+The volume moduli of 2-cycles $\Sigma_k \subset I_6$ evaluated over curvature forms $F_A$:
+$$
+\frac{1}{g_k^2} \coloneqq \frac{1}{8\pi^2}\int_{\Sigma_k\times\Sigma_k^*} \operatorname{tr}(F_A \wedge *F_A) \implies g_1 \equiv \alpha_{\mathrm{QED}} \approx \frac{1}{137.035999},\;\; g_2 \equiv \alpha_s(M_Z) \approx 0.1181,\;\; g_3 \equiv G_F\!\left(\frac{m_p c}{\hbar}\right)^{\!2}
+$$
+via Chern–Simons invariants $\operatorname{CS}_3(\mathbf{A})$ and $\operatorname{SL}(2,\mathbb{Z})^3$ modular holonomy quantization in units of $\tau/\ell_P^2$.
+:::
+
+:::
+
+::: {.column width="51%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Interactive 5-Conjecture Horizon Inspector &amp; Negentropy Flux Lab (§15.4)</h4>
+  <div class="syn-tabs">
+  <button class="syn-tab-btn active" onclick="window.showGenericTab('ch15-conj', 1, 5, this)">Conj 1: Topos</button>
+  <button class="syn-tab-btn" onclick="window.showGenericTab('ch15-conj', 2, 5, this)">Conj 2: 12D→6D</button>
+  <button class="syn-tab-btn" onclick="window.showGenericTab('ch15-conj', 3, 5, this)">Conj 3: Mass Gap</button>
+  <button class="syn-tab-btn" onclick="window.showGenericTab('ch15-conj', 4, 5, this)">Conj 4: Negentropy</button>
+  <button class="syn-tab-btn" onclick="window.showGenericTab('ch15-conj', 5, 5, this)">Conj 5: I₆ Moduli</button>
+  </div>
+  <div id="ch15-conj-pane-1" class="syn-tab-pane active">
+  <b>Conjecture 1 Payoff:</b> Proves $\Phi_{\mathrm{realize}} \colon \mathcal{M}^c \hookrightarrow \Esyn$ is conservative &amp; fully faithful, uniting Kripke world forcing $(\Delta,k)\models\psi$ with Kripke–Joyal sheaf forcing $U_\Delta \Vdash \psi$.
+  </div>
+  <div id="ch15-conj-pane-2" class="syn-tab-pane">
+  <b>Conjecture 2 Payoff:</b> Discrete Atiyah–Singer index on $\mathbb{T}_\tau^{12}$ proves $\ker {}^4\mathbf{F} \ne \{0\}$, locking $I_6$ into instantonic solitons and deriving Standard Model generations from $L_p = \binom{6}{p}$.
+  </div>
+  <div id="ch15-conj-pane-3" class="syn-tab-pane">
+  <b>Conjecture 3 Payoff:</b> Brillouin torus $\mathbb{T}^4 = [-\pi/\tau,\pi/\tau]^4$ eliminates UV divergences natively, yielding a lattice-geometric solution to the Yang–Mills Mass Gap ($\Delta E \ge \hbar c/\sqrt{\tau}$).
+  </div>
+  <div id="ch15-conj-pane-4" class="syn-tab-pane">
+  <b>Conjecture 4 Payoff:</b> Grounds *Telezentrik* thermodynamically: complex biological and cognitive self-organization is a strict geometric consequence of $\mathcal{L}_{X_5}\mathcal{S}_{\mathrm{therm}} \le -\gamma V &lt; 0$ on $S_2$.
+  </div>
+  <div id="ch15-conj-pane-5" class="syn-tab-pane">
+  <b>Conjecture 5 Payoff:</b> Derives $\alpha_{\mathrm{QED}} \approx 1/137.036$, $\alpha_s(M_Z)$, and $G_F$ purely from $\operatorname{SL}(2,\mathbb{Z})^3$ modular holonomy integrals over $I_6 \cong T^2\times T^2\times T^2$.
+  </div>
+  <div class="slider-row" style="margin-top:6px;">
+  <span style="color:#20B2AA;">Lyapunov $\gamma$:</span>
+  <input type="range" id="ch15-conj-gamma" min="0.1" max="2.0" step="0.1" value="0.6" oninput="window.ch15_updateConjectureSim()">
+  <span id="ch15-conj-gamma-val" style="font-family:monospace; width:30px;">0.60</span>
+  <span style="color:#FFA500;">$t_{\mathrm{aeon}}$:</span>
+  <input type="range" id="ch15-conj-taeon" min="0.0" max="5.0" step="0.2" value="1.6" oninput="window.ch15_updateConjectureSim()">
+  <span id="ch15-conj-taeon-val" style="font-family:monospace; width:28px;">1.6</span>
+  <span style="color:#FFD700;">Tier $p$:</span>
+  <input type="range" id="ch15-conj-p" min="1" max="6" step="1" value="3" oninput="window.ch15_updateConjectureSim()">
+  <span id="ch15-conj-p-val" style="font-family:monospace; width:28px;">p=3</span>
+  </div>
+  <div id="ch15-conj-readout" class="matrix-readout" style="margin-top:4px; font-size:0.58em; line-height:1.35;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act4_Spectral_Gap_Negentropy_I6.mp4" style="max-height:185px;"></video>
+  <div class="video-caption">Manim Act IV (§15.4.3–15.4.5): Brillouin Mass Gap ΔE, S₂ Negentropy Flux &amp; I₆ Toroidal Holonomy</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Conjectures 3, 4, and 5 connect the discrete metronic lattice and 12-dimensional fiber bundle to three foundational targets: the Yang–Mills spectral gap on the compact Brillouin 4-torus, thermodynamic negentropy flux along the entelechial plane S_2, and topological fixation of the fine-structure constant on the informational 6-torus I_6.
+:::
+
+---
+
+## §15.5–15.7: Global Limiting Projections, Structural Realism Coda & Epilogue {.smaller transition="convex"}
+
+<div class="stratum-badge badge-a">GLOBAL SANITY CHECKS (§15.5, FIG. 15.3), CARNAPIAN CODA (§15.6, FIG. 15.4) &amp; EPILOGUE (§15.7)</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.thm-box}
+**§15.5 Global Limiting Projections &amp; Backward-Compatibility (Fig. 15.3):**
+$$
+\begin{array}{ccccc}
+\mathbf{12D}\; R_{12}=R_4\times S_2\times I_6 & \xrightarrow{\text{Compactify }I_6} & \mathbf{6D}\; R_6=R_4\times S_2 & \xrightarrow{\text{Project }S_2} & \mathbf{4D}\; R_4 \\
+\Big\downarrow{\scriptstyle \tau\to 0^+\;\text{(Continuum)}} & & \Big\downarrow{\scriptstyle \text{Hermetry Split}} & & \Big\downarrow{\scriptstyle \text{Riemannian}} \\
+\text{Continuous } R_{12}\text{ Field} & \xrightarrow[\text{36-Comp. Partition}]{} & \text{Einstein–Maxwell–Torsion }({}^2\bar{\mathbf{g}}) & \xrightarrow[{}^2\bar{\mathbf{g}}_-\to\mathbf{0}]{} & \mathbf{GR}\; (\mathbf{G}=\mathbf{0})
+\end{array}
+$$
+1. **Global Epistemic Firewall Invariance:** Every Stratum A/B proof is closed under standard categorical logic, functional analysis, and differential geometry—independent of Stratum C/D interpretations.
+2. **Continuum GR Recovery:** As ${}^2\bar{\mathbf{g}}_-\to\mathbf{0}$ and $\tau\to 0^+$, Theorem 9.11 collapses to $\nabla^\mu G_{\mu\nu}=0$.
+3. **Discrete QM Recovery:** On flat Minkowski space with trivial connection, $\ell^2(\Mtau^4)$ difference equations recover Schrödinger and Dirac equations via the Continuum Correspondence Limit (Thm. 10.9).
+:::
+
+::: {.carnap-box .fragment .fade-up}
+**§15.6 Carnapian Scholium: Syntrometric Structural Realism (*Wissenschaftslogik*)**
+Rational reconstruction translates historical heuristics ($\mathbf{D}$) into a structural explicatum ($\mathbf{C}\rightsquigarrow\mathbf{A,B}$):
+1. **From Subjectivity to Intersubjectivity:** Contexts, operadic quasi-analysis, and span pushouts build shared relational descriptions (Carnap 1928).
+2. ***Reine Strukturbeschreibungen*:** Toposes, bundles, coalgebras, DEC, and selector spectra describe relational invariants without metaphysical substance (Worrall 1989; Ladyman 2007).
+3. **Internal vs. External Questions:** Forcing $U\Vdash\phi$ is internal to $\Esyn$; framework adoption is pragmatic (Stratum C).
+4. **Newman Anti-Trivialization:** Concrete realization functors $U_{\mathrm{quant}}$, metric norms, and cutoff $\tau$ enforce $\mathcal{M}_{\mathrm{admissible}} \subsetneq \mathcal{M}_{\mathrm{unconstrained}}$, defeating vacuous Ramsey cardinality matching (Newman 1928).
+5. **Duhem–Quine Immunity:** Deductive theorems ($\mathbf{A}\vdash\mathbf{B}$) remain analytically immune to Stratum C model revisions.
+:::
+
+:::
+
+::: {.column width="51%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Interactive Global Limiting Projection &amp; Commutative Reduction Explorer (§15.5)</h4>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Lattice $\tau$:</span>
+  <input type="range" id="ch15-lim-tau" min="0" max="100" step="25" value="0" oninput="window.ch15_updateLimitProjection()">
+  <span id="ch15-lim-tau-val" style="font-family:monospace; width:56px;">τ → 0⁺</span>
+  <span style="color:#FFA500;">Skew ${}^2\bar{\mathbf{g}}_-$:</span>
+  <input type="range" id="ch15-lim-skew" min="0" max="100" step="25" value="0" oninput="window.ch15_updateLimitProjection()">
+  <span id="ch15-lim-skew-val" style="font-family:monospace; width:58px;">²ḡ₋ → 0</span>
+  <span style="color:#20B2AA;">Bundle:</span>
+  <input type="range" id="ch15-lim-dim" min="4" max="12" step="2" value="4" oninput="window.ch15_updateLimitProjection()">
+  <span id="ch15-lim-dim-val" style="font-family:monospace; width:34px;">R_4</span>
+  </div>
+  <div id="ch15-lim-readout" class="matrix-readout" style="margin-top:4px; font-size:0.58em; line-height:1.34;"></div>
+</div>
+
+::: {.remark-box .fragment .fade-left}
+**Historical Vignette (*The Solitary Legacy of Northeim*) &amp; Reflexive Loop (Fig. 15.4):**
+Heim's isolated working method is transformed into an inspectable, collaborative architecture:
+$$
+\text{Subjective Contexts } U\in\Ctxadm \xrightarrow{\text{Descent}} \text{Sheaf Topos }\Esyn \xrightarrow{\text{Condensation}} \text{Objective States } m=m_0\frac{L_p}{L_1}\prod\lambda_k \dashrightarrow \text{Physical Substrate}
+$$
+> *"Reality is neither an unmediated mechanical substance independent of observation, nor a solipsistic illusion of consciousness. It is an invariant relational topology whose local perspectives glue into objective existence."* — **§15.7 Epilogue: The Enduring Syntrometric Legacy**
+:::
+
+<div class="video-container fragment fade-up" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act5_Global_Limits_Reflexive_Loop.mp4" style="max-height:155px;"></video>
+  <div class="video-caption">Manim Act V (§15.5–15.7): Commutative Continuum Limits (R₁₂ → R₆ → R₄) &amp; Reflexive Epistemic Loop</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Sections 15.5 through 15.7 close the main chapters of the treatise by verifying exact limiting reductions to General Relativity and Quantum Mechanics, articulating Syntrometric Structural Realism via Carnapian Wissenschaftslogik and Newman anti-trivialization constraints, and presenting the Reflexive Epistemic Loop.
+:::
+
+---
+
+## Appendix A (§A.1–A.2): Stratified Syntax & Sequent Calculus of $\LiMSL$ {.smaller transition="slide"}
+
+<div class="stratum-badge badge-b">APPENDIX A (§A.1–A.2): CONSTRUCTIVE PROOF THEORY, GRAMMAR (DEF. A.1), RANK METRIC (DEF. A.2) &amp; SEQUENT CALCULUS</div>
+
+:::: {.columns}
+
+::: {.column width="47%"}
+
+::: {.thm-box}
+**§A.1 Stratified Grammar of $\WFFiMSL$ (Def. A.1) &amp; Rank Metric (Def. A.2):**
+* **Constructive Imperative:** In $\Esyn$, truth is local ($\phi \vee \neg\phi \not\equiv \top$); derivations must trace back to apodictic identifiers $\mathbf{AP}_0 = \{a_0,\dots,a_N\}$ and aspect atoms $\mathbf{AP}_S = \{p_0,p_1,\dots\}$ without circular detours.
+* **Generative Term Hierarchy (Def. A.1):**
+  $$
+  \operatorname{Gen}_0 \coloneqq \mathbf{AP}_0 \sqcup \mathbf{AP}_S, \quad \operatorname{Gen}_{j+1} \coloneqq \big\{\operatorname{Conj}(\phi,\psi),\, \operatorname{Lift}_{\mathrm{syn}}(\phi),\, \operatorname{ParaConj}(\phi) \;\big|\; \phi,\psi\in\operatorname{Gen}_j\big\}
+  $$
+  $$
+  \mathbf{Prop}_k \coloneqq \bigcup_{j=0}^k \operatorname{Gen}_j, \quad \phi,\psi \Coloneqq P \mid \bot \mid \phi\wedge\psi \mid \phi\vee\psi \mid \phi\to\psi \mid \Stable_k(P) \mid \BoxS\phi \mid \DiaS\phi \mid [\pi_F]\phi \mid \langle\pi_F\rangle\phi
+  $$
+* **Formula Complexity Rank $\rk(\phi)$ &amp; Assertion Level $\lvl(\phi)$ (Def. A.2):**
+  $$
+  \rk(P) = \rk(\bot) \coloneqq 1, \quad \rk(\phi\circ\psi) \coloneqq \max(\rk(\phi),\rk(\psi))+1
+  $$
+  $$
+  \rk(\BoxS\phi) = \rk(\DiaS\phi) = \rk([\pi_F]\phi) = \rk(\langle\pi_F\rangle\phi) \coloneqq \rk(\phi)+1, \quad \rk(\Stable_k(P)) \coloneqq 2^k + \deg(P) + 2
+  $$
+  The lexicographic pair $(\lvl(\phi), \rk(\phi)) \in \mathbb{N}_0 \times \mathbb{N}$ forms a strictly well-founded induction metric.
+:::
+
+<div class="video-container fragment fade-up" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act6_AppA_Sequent_Calculus.mp4" style="max-height:185px;"></video>
+  <div class="video-caption">Manim Act VI (App. A §A.1–A.2): Stratified Formula Hierarchy WFF_iMSL &amp; Single-Succedent Sequent Rules</div>
+</div>
+
+:::
+
+::: {.column width="53%"}
+
+::: {.thm-box}
+**§A.2 Single-Succedent Constructive Sequent Calculus ($S(x);\Gamma\vdash^k\phi$):**
+Enforces constructive single-succedent discipline across 6 rule strata:
+
+1. **Structural Rules:**
+   $\frac{}{S(x);\Gamma,\phi\vdash^k\phi}(\text{Ax})$, $\frac{S(x);\Gamma\vdash^k\phi}{S(x);\Gamma,\psi\vdash^k\phi}(\text{W})$, $\frac{S(x);\Gamma,\psi,\psi\vdash^k\phi}{S(x);\Gamma,\psi\vdash^k\phi}(\text{C})$, $\frac{S(x);\Gamma\vdash^k\psi \quad S(x);\Delta,\psi\vdash^k\phi}{S(x);\Gamma,\Delta\vdash^k\phi}(\text{Cut})$
+2. **Intuitionistic Propositional Rules:**
+   $(\wedge R), (\wedge L), (\vee R_i), (\vee L), (\bot L), (\to R): \frac{S(x);\Gamma,\phi\vdash^k\psi}{S(x);\Gamma\vdash^k\phi\to\psi}, (\to L): \frac{S(x);\Gamma\vdash^k\phi \quad S(x);\Delta,\psi\vdash^k\chi}{S(x);\Gamma,\Delta,\phi\to\psi\vdash^k\chi}$
+3. **Aspectual Interface with $S_{\mathrm{mod}}(x)$:**
+   $\frac{(S_{\mathrm{mod}}(x),k)\models p\;(p\in\mathbf{AP}_S)}{S(x);\Gamma\vdash^k p}(\text{Fact-S}_A)$, $\quad\frac{S(x);\Gamma\vdash^k(d_r,v_{dr}) \quad S(x);\Delta\vdash^k(f_q,v_{fq})\;[\operatorname{Strength}>\theta_{\mathrm{coord}}]}{S(x);\Gamma,\Delta\vdash^k\operatorname{Coord}((d_r,v_{dr}),(f_q,v_{fq}))}(\chi\text{-I}_S)$
+4. **Fischer–Servi Modal Rules:**
+   $\frac{S(x);\Gamma\vdash^k\phi}{S(x);\BoxS\Gamma\vdash^k\BoxS\phi}(\BoxS K)$, $\frac{S(x);\BoxS\Gamma,\phi\vdash^k\DiaS\psi}{S(x);\BoxS\Gamma,\DiaS\phi\vdash^k\DiaS\psi}(\DiaS K)$, $\frac{S(x);\BoxS\Gamma\vdash^k\phi\to\psi}{S(x);\DiaS\Gamma\vdash^k\DiaS\phi\to\DiaS\psi}(\text{FS-Int})$, $(\BoxS\text{-Ref}), (\DiaS\text{-Ref}), (B_{\Diamond\text{-Adj}})$
+5. **Hereditary Stability Rules:**
+   $(\operatorname{Stab}_0 R)$, $\frac{P'\in\operatorname{Gen}_{j+1}\;\;S(x);\Gamma\vdash^{j+1}P'\;\;(S(x);\Gamma|_{\le j}\vdash^j\Stable_j(X))_{\operatorname{IGP}}}{S(x);\Gamma\vdash^{j+1}\Stable_{j+1}(P')}(\operatorname{Stab}_{j+1}R)$, $(\operatorname{Stab}L_1)$, $(\operatorname{Stab}L_2)$
+6. **Deterministic Dynamic Modality Rules:**
+   $(K_{\pi_F}), (\text{MP}_{\pi_F}), (\langle\pi_F\rangle FI), ([\pi_F]\Box_{\mathrm{Syn}}P), ([\pi_F]\leftrightarrow\langle\pi_F\rangle), ([\pi_F]\text{-App}), \frac{S(x);[\pi_F]\Gamma\vdash^k[\pi_F]\theta}{k+1;\Gamma\vdash\theta}([\pi_F]\text{-Step/Unstep})$
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Appendix A Sections A.1 and A.2 establish the complete proof-theoretic syntax of L_iMSL, the exponential rank measure rk(Stable_k(P)) = 2^k + deg(P) + 2, and all six families of single-succedent constructive inference rules.
+:::
+
+---
+
+## Appendix A (§A.3): Syntactic Cut Elimination (Gentzen's *Hauptsatz*) {.smaller transition="zoom"}
+
+<div class="stratum-badge badge-b">APPENDIX A (§A.3): DERIVATION HEIGHT (DEF. A.3), PERMUTATION (LEM. A.4), PRINCIPAL REDUCTION (LEM. A.5) &amp; HAUPTSATZ (THM. A.6)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Derivation Height $|\mathcal{D}|$ (Def. A.3) &amp; Cut Permutation Lemma (Lem. A.4):**
+* **Height $|\mathcal{D}|$:** $0$ on axioms $(\text{Ax}), (\text{Fact-S}_A), (\bot L)$; $|\mathcal{D}_1|+1$ on unary rules; $\max(|\mathcal{D}_1|,|\mathcal{D}_2|)+1$ on binary rules.
+* **Lemma A.4 (Cut Permutation):** If cut formula $\psi$ is not principal in the final rule of $\mathcal{D}_1$ or $\mathcal{D}_2$, the Cut permutes upward to sub-derivations with strictly smaller height sum $|\mathcal{D}_1'|+|\mathcal{D}_2'| < |\mathcal{D}_1|+|\mathcal{D}_2|$:
+  - *Case 1 (Left rules on $\Delta$):* Permute Cut above $(\wedge L, \vee L, \to L)$ on auxiliary $\chi \in \Delta$; height drops to $|\mathcal{D}_{2a}| = |\mathcal{D}_2|-1$.
+  - *Case 2 (Right rules on $\phi$):* Permute Cut across premises $\mathcal{D}_{2a}, \mathcal{D}_{2b}$ of $(\wedge R)$.
+  - *Case 3 (Dynamic shift $[\pi_F]\text{-Step}$):* Preserves structure since $\operatorname{Ext}_{[\pi_F]}(\Gamma,\Delta) = \operatorname{Ext}_{[\pi_F]}(\Gamma)\cup\operatorname{Ext}_{[\pi_F]}(\Delta)$.
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Lemma A.5 (Principal Reduction) &amp; Theorem A.6 (Gentzen's *Hauptsatz*):**
+If $\psi$ is principal in both $\mathcal{D}_1$ and $\mathcal{D}_2$, the Cut on $\psi$ reduces to Cuts on strictly lower-rank $\psi'$ ($\rk(\psi') < \rk(\psi)$):
+1. **Conjunction ($\psi_1\wedge\psi_2$, Fig. 45):** Replace $(\wedge R)+(\wedge L)$ cut with sequential cuts on $\psi_1$ and $\psi_2$ plus Contraction $(\text{C})$.
+2. **Implication ($\psi_1\to\psi_2$):** Cut $\mathcal{D}_{2a}\vdash\psi_1$ with $\mathcal{D}_{1a}:\Gamma,\psi_1\vdash\psi_2$, then cut $\psi_2$ with $\mathcal{D}_{2b}:\Delta',\psi_2\vdash\phi$.
+3. **Disjunction ($\psi_1\vee\psi_2$):** Select matching premise $\mathcal{D}_{2i}:\Delta,\psi_i\vdash^k\phi$ for $(\vee R_i)$ premise $\Gamma\vdash^k\psi_i$.
+4. **Modal Necessity ($\BoxS\theta$):** Apply $(\BoxS\text{-Ref})$ iteratively to $\Gamma_0$ in $\mathcal{D}_{1a}:\Gamma_0\vdash^k\theta$ to get $\mathcal{D}_{1a}':\BoxS\Gamma_0\vdash^k\theta$, then cut directly on $\theta$ with $\mathcal{D}_{2a}:\Delta,\theta\vdash^k\phi$ ($\rk(\theta) < \rk(\BoxS\theta)$).
+5. **Dynamic Modality ($[\pi_F]\theta$):** Cut at level $k+1$ on $\theta$ between $\mathcal{D}_{1a}$ and $\mathcal{D}_{2a}$, then apply $([\pi_F]\text{-Unstep})$.
+* **Theorem A.6 (Cut Elimination):** By double induction on $(\rk(\psi), |\mathcal{D}_1|+|\mathcal{D}_2|) \in \mathbb{N}\times\mathbb{N}_0$, every derivable sequent $S(x);\Gamma\vdash^k\phi$ has a pure **cut-free derivation** $\mathcal{D}_{\mathrm{norm}}$. $\blacksquare$
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Interactive Gentzen Principal Cut-Reduction Explorer (Lem. A.5 &amp; Fig. 45)</h4>
+  <div class="slider-row">
+  <span style="color:#FFD700;">Principal Cut Connective:</span>
+  <select id="ch15-cut-conn" onchange="window.ch15_updateCutReduction()" style="background:#151c2c; color:#FFD700; border:1px solid #4169E1; border-radius:4px; padding:2px 6px; font-size:0.75em;">
+  <option value="conj">1. Conjunction (φ₁ ∧ φ₂) — Fig. 45</option>
+  <option value="impl">2. Implication (φ₁ → φ₂)</option>
+  <option value="box">3. Modal Necessity (□_S θ)</option>
+  <option value="dyn">4. Dynamic Step ([π_F] θ)</option>
+  <option value="stab">5. Hereditary Stability (Stable_k(P))</option>
+  </select>
+  </div>
+  <div class="slider-row" style="margin-top:4px;">
+  <span style="color:#4169E1;">Level $k$:</span>
+  <input type="range" id="ch15-cut-k" min="0" max="4" step="1" value="1" oninput="window.ch15_updateCutReduction()">
+  <span id="ch15-cut-k-val" style="font-family:monospace; width:34px;">k=1</span>
+  <span style="color:#20B2AA;">$\rk(\phi_1)$:</span>
+  <input type="range" id="ch15-cut-rka" min="1" max="5" step="1" value="2" oninput="window.ch15_updateCutReduction()">
+  <span id="ch15-cut-rka-val" style="font-family:monospace; width:20px;">2</span>
+  <span style="color:#FFA500;">$\rk(\phi_2)$:</span>
+  <input type="range" id="ch15-cut-rkb" min="1" max="5" step="1" value="3" oninput="window.ch15_updateCutReduction()">
+  <span id="ch15-cut-rkb-val" style="font-family:monospace; width:20px;">3</span>
+  </div>
+  <div id="ch15-cut-readout" class="matrix-readout" style="margin-top:5px; font-size:0.58em; line-height:1.36;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act7_AppA_Cut_Elimination.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act VII (App. A §A.3, Fig. 45): Gentzen Principal Cut Reduction &amp; Double Induction on (rk(ψ), |D₁|+|D₂|)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section A.3 proves Gentzen's Hauptsatz (Theorem A.6) for L_iMSL via Lemma A.4 (Cut Permutation) and Lemma A.5 (Principal Reduction across conjunction, implication, disjunction, modal necessity Box_S, and dynamic step [pi_F]).
+:::
+
+---
+
+## Appendix A (§A.4–A.5): Structural Metatheorems & Joyal Representation {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">APPENDIX A (§A.4–A.5): SUBFORMULA (THM. A.7), CONSISTENCY (COR. A.8), DISJUNCTION (THM. A.9) &amp; JOYAL COMPLETENESS (THM. A.12)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**§A.4 Constructive Structural Metatheorems (Thms. A.7–A.9):**
+* **Theorem A.7 (Subformula Property):** Every formula $\theta$ occurring in any sequent of a cut-free derivation of $S(x);\Gamma\vdash^k\phi$ is a syntactic subformula of $\Gamma \cup \{\phi\} \cup \mathbf{AP}_0$.
+  *Proof:* By inspection of all non-Cut rules in §A.2 and induction on cut-free derivation height $|\mathcal{D}|$. $\blacksquare$
+* **Corollary A.8 (Absolute Syntactic Consistency):**
+  $$
+  S(x);\; \emptyset \nvdash^k \bot
+  $$
+  *Proof:* Suppose a cut-free derivation $\mathcal{D}$ of $S(x);\emptyset\vdash^k\bot$ exists. $(\text{Ax})$ and left rules require $\Gamma\ne\emptyset$; $(\text{Fact-S}_A)$ derives $p\in\mathbf{AP}_S\ne\bot$; all right rules conclude with compound formulas $\ne\bot$. Contradiction! $\blacksquare$
+* **Theorem A.9 (Constructive Disjunction Property):**
+  $$
+  S(x);\;\emptyset \vdash^k \phi_1 \vee \phi_2 \implies S(x);\;\emptyset \vdash^k \phi_1 \quad\text{or}\quad S(x);\;\emptyset \vdash^k \phi_2
+  $$
+  *Proof:* With $\Gamma=\emptyset$, the final cut-free inference must be $(\vee R_1)$ or $(\vee R_2)$, whose premise directly proves $\phi_1$ or $\phi_2$. $\blacksquare$
+:::
+
+::: {.thm-box .fragment .fade-up}
+**§A.5 Syntactic Category (Def. A.10) &amp; FS1 Frame Saturation (Lem. A.11):**
+* **Def. A.10 ($\SynCat$):** Objects are deductive theories $(S(x),\Gamma)$; morphisms $[\theta]\colon (S(x),\Gamma)\to (S(y),\Delta)$ are cut-free proof equivalence classes deriving $S(y);\Delta\vdash^k\bigwedge\Gamma$ with composition $[\theta_2]\circ[\theta_1] \coloneqq [\operatorname{Cut}(\theta_1,\theta_2)]_{\mathrm{norm}}$.
+* **Lemma A.11 (Fischer–Servi FS1 Canonical Frame Saturation):** If $\Delta_1\subseteq\Delta_2$ and $w_1 R^c w_3$, then $\Sigma \coloneqq \Delta_2^{\BoxS}\cup\Delta_3$ is $k$-consistent (by $(\text{FS-Int})$) and extends to prime saturated $w_4=(\Delta_4,k)$ with $w_2 R^c w_4$ and $w_3\preceq^c w_4$. $\blacksquare$
+:::
+
+:::
+
+::: {.column width="52%"}
+
+::: {.thm-box}
+**Theorem A.12: Conditional Joyal Representation (Fig. 46)**
+Given a site morphism $F \colon (\SynCat, \Jproof) \to (\Ctxadm, \Jsyn)$ preserving covering families and finite limits ($\mathsf{Stratum}=\mathbf{B}, \mathsf{Status}=\mathbf{S_1}, \mathsf{Evid}=\mathbf{E_3}$):
+1. **Exactness &amp; Beck–Chevalley:** The representation functor $\Phi_F \colon \SynCat \to \Esyn$ preserves $\Sigma_f \dashv f^* \dashv \Pi_f$, binary products $\Phi_{\mathrm{Joyal}}(\phi\wedge\psi)\cong \Phi_{\mathrm{Joyal}}(\phi)\times_{\mathbf{y}(U)}\Phi_{\mathrm{Joyal}}(\psi)$, equalizers (by subcanonicity of $\Jsyn$), and pullback base-change:
+   $$
+   \big(g^*\Sigma_f(\llbracket\phi\rrbracket)\big)(X) = \big\{(x_1,x_2)\in V_1\times_U V_2 \;\big|\; x_2\in\llbracket\phi\rrbracket\big\} = \big(\Sigma_{\pi_1}\pi_2^*(\llbracket\phi\rrbracket)\big)(X)
+   $$
+2. **Bidirectional Completeness (conditional on conservativity of $\Phi_F$):**
+   $$
+   S(x);\;\Gamma \vdash^k \phi \iff U_{S(x)} \Vdash \left(\bigwedge\Gamma \to \phi\right)
+   $$
+:::
+
+::: {.firewall-box .fragment .fade-left}
+**Claim Ceiling ($c_{\mathrm{JOYAL}}$) &amp; Appendix A Synthesis (§A.6):**
+Topos-theoretic completeness is conditional on the explicitly supplied site morphism $F$ and conservativity theorem:
+$$
+\mathcal{D} \xrightarrow{\text{Thm. A.6}} \mathcal{D}_{\mathrm{norm}} \xrightarrow{\text{Thm. A.7}} \text{Subformula Prop.} \xrightarrow{\text{Cor. A.8 / Thm. A.9}} \nvdash^k\bot \;\wedge\; \text{Disjunction Prop.} \xrightarrow{\text{Thm. A.12}} U_{S(x)}\Vdash(\textstyle\bigwedge\Gamma\to\phi)
+$$
+:::
+
+<div class="video-container fragment fade-up" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act8_AppA_Joyal_Completeness.mp4" style="max-height:165px;"></video>
+  <div class="video-caption">Manim Act VIII (App. A §A.4–A.6): Syntactic Category Syn(L_iMSL), Beck–Chevalley Square &amp; Joyal Functor Φ_F</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Sections A.4 through A.6 derive the Subformula Property, Absolute Syntactic Consistency, Constructive Disjunction Property, Fischer–Servi FS1 frame saturation, and Conditional Joyal Representation Theorem (Theorem A.12) with explicit claim ceiling c_JOYAL.
+:::
+
+---
+
+## Appendix B (§B.1–B.3): Metron Scale $\tau$, 6D State Vector & DESY Mass Spectrum {.smaller transition="slide"}
+
+<div class="stratum-badge badge-c">APPENDIX B (§B.1–B.3): METRON SCALE (DEF. B.1), 6D QUANTUM STATE (DEF. B.2–B.4) &amp; HIGH-PRECISION PDG MASS TABLE (TABLE B.1)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.scholium-box}
+**§B.1 Metron Scale Arithmetic &amp; Epistemic Demarcation (Def. B.1):**
+From CODATA constants ($\ell_P^2 = \frac{\hbar G}{c^3} \approx 2.61223\times 10^{-70}\,\mathrm{m}^2$):
+$$
+\tau_{\mathrm{derived}} \coloneqq \frac{\sqrt{3}\hbar G}{4c^3} = \frac{\sqrt{3}}{4}\ell_P^2 = \mathbf{1.13115\times 10^{-70}\,\mathrm{m}^2}, \quad m_0 \coloneqq \frac{\hbar}{c\sqrt{\tau_{\mathrm{derived}}}} \approx \mathbf{1.855\times 10^{19}\,\mathrm{GeV}/c^2}
+$$
+* **Demarcation Guard:** $\boxed{\text{Correct Arithmetic} \ne \text{Correct Formula} \ne \text{Correct Physical Realization}}$ ($\tau_{\mathrm{historical}}\approx 4.05\times 10^{-70}\,\mathrm{m}^2$ uses an alternative normalization prefactor).
+:::
+
+::: {.thm-box .fragment .fade-up}
+**§B.2 6D State Vector $\mathbf{q}_{\mathrm{Heim}}$ (Def. B.2) &amp; DESY Constants (Defs. B.3–B.4):**
+$$
+m = m_0 \cdot \left(\frac{\sqrt{\tau}}{\ell_{\mathrm{hadron}}}\right)\cdot \frac{\binom{6}{p}}{6}\cdot \prod_{k=1}^3 \lambda_k(p,\hat{s})\cdot \Big[1 - \kappa_1 q_x^2 + \kappa_n(1-|q_x|) + \kappa_2|C| + \kappa_3\mathcal{P}(\nu)\Big] \tag{SM-100a.app}
+$$
+* **State Tuple $\mathbf{q}_{\mathrm{Heim}} = (k, P, Q, \nu, C, q_x)$:** Grade $k\in\{1\text{ lepton},2\text{ meson},3\text{ baryon},4\text{ res.}\}$, double isospin $P=2I$, double spin $Q=2J$, radial mode $\nu\in\mathbb{N}$, structure distributor $C\in\mathbb{Z}$, electric charge $q_x\in\{-1,0,+1\}$.
+* **Subspace Multiplicity Vector (Def. B.4):** $\mathbf{L} = \big(\binom{6}{1},\dots,\binom{6}{6}\big) = (6, 15, 20, 15, 6, 1)$, base $L_1=6$.
+* **DESY Constants (Def. B.3):** $\ell_{\mathrm{hadron}} \approx 2.103089\times 10^{-16}\,\mathrm{m}$, $\kappa_1=0.000543$, $\kappa_n=0.001378$ (ensuring $m_n > m_p$ by $+1.293\,\mathrm{MeV}$, Fig. B.1), $\kappa_2=0.001210$, $\kappa_3=0.000852$, $\mathcal{P}(\nu) = (\nu-1) + 7.42(\nu-1)^3$.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Interactive DESY 1982 / PDG 2024 Mass Spectrum Inspector (§B.3, Table B.1)</h4>
+  <div class="slider-row">
+  <span style="color:#FFD700;">Select Particle State:</span>
+  <select id="ch15-mass-preset" onchange="window.ch15_updateMassCalc()" style="background:#151c2c; color:#FFD700; border:1px solid #4169E1; border-radius:4px; padding:2px 6px; font-size:0.75em;">
+  <option value="0">Lepton k=1: Electron e⁻ (0.51099 MeV)</option>
+  <option value="1">Lepton k=1: Muon μ⁻ (105.658 MeV)</option>
+  <option value="2">Lepton k=1: Tau τ⁻ (1776.82 MeV)</option>
+  <option value="3">Meson k=2: Neutral Pion π⁰ (134.96 MeV)</option>
+  <option value="4">Meson k=2: Charged Pion π± (139.57 MeV)</option>
+  <option value="5">Meson k=2: Charged Kaon K± (493.68 MeV)</option>
+  <option value="6">Meson k=2: Neutral Kaon K⁰ (497.61 MeV)</option>
+  <option value="7">Meson k=2: Eta Meson η (548.64 MeV)</option>
+  <option value="8">Meson k=2: Rho Resonance ρ± (775.20 MeV)</option>
+  <option value="9" selected>Baryon k=3: Proton p⁺ (938.272 MeV)</option>
+  <option value="10">Baryon k=3: Neutron n⁰ (939.565 MeV)</option>
+  <option value="11">Baryon k=3: Lambda Λ⁰ (1115.68 MeV)</option>
+  <option value="12">Baryon k=3: Sigma Plus Σ⁺ (1189.37 MeV)</option>
+  <option value="13">Baryon k=3: Sigma Zero Σ⁰ (1192.64 MeV)</option>
+  <option value="14">Baryon k=3: Sigma Minus Σ⁻ (1197.45 MeV)</option>
+  <option value="15">Baryon k=3: Xi Minus Ξ⁻ (1321.71 MeV)</option>
+  <option value="16">Baryon k=3: Omega Minus Ω⁻ (1672.45 MeV)</option>
+  </select>
+  </div>
+  <div id="ch15-mass-readout" class="matrix-readout" style="margin-top:4px; font-size:0.57em; line-height:1.33;"></div>
+  <div style="max-height:108px; overflow-y:auto; margin-top:4px;">
+  <table class="ch15-table">
+  <thead>
+  <tr><th>Particle</th><th>$(k,P,Q,\nu,C,q_x)$</th><th>Heim (MeV)</th><th>PDG Exp (MeV)</th><th>$\Delta m/m$</th></tr>
+  </thead>
+  <tbody>
+  <tr><td>$e^- / \mu^- / \tau^-$</td><td>$(1,0,1,\{1,2,3\},0,-1)$</td><td>0.51099 / 105.658 / 1776.82</td><td>0.5109989 / 105.65837 / 1776.86</td><td>$\le 0.0022\%$</td></tr>
+  <tr><td>$\nu_e / \nu_\mu / \nu_\tau$</td><td>$(1,0,1,\{1,2,3\},0,0)$</td><td>$3.8\text{e-}6 / 5.4\text{e-}4 / 0.014$</td><td>$&lt;8\text{e-}7 / &lt;0.17 / &lt;18.2$</td><td>Constrained/Val.</td></tr>
+  <tr><td>$\pi^0 / \pi^\pm / K^\pm / K^0$</td><td>$k=2$ Pseudoscalars</td><td>134.96 / 139.57 / 493.68 / 497.61</td><td>134.977 / 139.570 / 493.677 / 497.611</td><td>$\le 0.0124\%$</td></tr>
+  <tr><td>$\eta / \rho^\pm$</td><td>$(2,0,0,1,0,0) / (2,2,2,1,0,\pm 1)$</td><td>548.64 / 775.20</td><td>547.862 / 775.26</td><td>$+0.14\% / -0.008\%$</td></tr>
+  <tr><td>$p / n / \Lambda^0$</td><td>$k=3, L_3=20$ Nucleons/Hyperon</td><td>938.272 / 939.565 / 1115.68</td><td>938.27208 / 939.56542 / 1115.683</td><td>$\le 0.0003\%$</td></tr>
+  <tr><td>$\Sigma^+ / \Sigma^0 / \Sigma^- / \Xi^0 / \Xi^- / \Omega^-$</td><td>$k=3, C\in\{-1,-2,-3\}$</td><td>1189.37 / 1192.64 / 1197.45 / 1314.86 / 1321.71 / 1672.45</td><td>Exact 6-digit PDG match</td><td>$\le 0.0002\%$</td></tr>
+  </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act9_AppB_DESY_Mass_Spectrum.mp4" style="max-height:155px;"></video>
+  <div class="video-caption">Manim Act IX (App. B §B.1–B.3): 6D Selector Mass Spectrum (overline{ε}_rel &lt; 0.012%) &amp; Proton–Neutron Splitting (Fig. B.1)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Appendix B Sections B.1 to B.3 document the derived metronic scale tau_derived = 1.13115e-70 m^2, the 6D quantum number state vector q_Heim, the DESY perturbation parameters, and the 17-particle PDG validation table with mean relative error below 0.012%.
+:::
+
+---
+
+## Appendix B (§B.4–B.7): Fine-Structure Constant $\alpha_{\mathrm{met}}^{-1}$ & Lattice Geodesics {.smaller transition="zoom"}
+
+<div class="stratum-badge badge-c">APPENDIX B (§B.4–B.7): FCC SPHERE-PACKING α⁻¹ (THM. B.5, ASSUMP. B.6) &amp; VERLET GEODESICS ON M_τ⁴ (DEF. B.7, PROP. B.8)</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.thm-box}
+**§B.4 Discrete Fine-Structure Constant with Sphere Packing (Thm. B.5):**
+On the spatial metronic lattice $\Mtau^3$ with cell area $\tau \approx 1.13115\times 10^{-70}\,\mathrm{m}^2$, electron reduced Compton wavelength $\lambda_C = \frac{\hbar}{m_e c} \approx 3.86159\times 10^{-13}\,\mathrm{m}$, and maximal face-centered cubic (FCC) sphere-packing fraction $f_{\mathrm{pack}} \coloneqq \frac{\pi}{3\sqrt{2}} \approx 0.74048$:
+1. **Discrete Geometric Coulomb Rotor Packing Correction Factor:**
+   $$
+   \eta_{\mathrm{cell}} \coloneqq 1 + f_{\mathrm{pack}}\frac{\sqrt{3}}{8\pi}\!\left(\sqrt{\frac{8}{\pi}}\,\alpha\right) = 1 + \left(\frac{\sqrt{6}}{48}\sqrt{\frac{8}{\pi}}\right)\alpha \approx 1 + 2.63036\times 10^{-4}
+   $$
+2. **Exact Theoretical Fine-Structure Value ($\mathsf{Stratum}=\mathbf{C}, \mathsf{Type}=\mathbf{P}$):**
+   $$
+   \alpha_{\mathrm{met}}^{-1} \coloneqq 137.000 \cdot \eta_{\mathrm{cell}} = \mathbf{137.036036}
+   $$
+   matching $\alpha_{\mathrm{CODATA}}^{-1} = 137.035999084(21)$ to within $2.7\times 10^{-7}$ relative precision!
+:::
+
+::: {.firewall-box .fragment .fade-up}
+**Assumption B.6 (Metronic Fine-Structure Conjecture — Stratum D, Lean Status: $\mathbf{S_0}$):**
+A complete first-principles discrete variational derivation of $\alpha^{-1} = \alpha_{\mathrm{CODATA}}^{-1}$ on $\Mtau^3$ requires: (i) constructive determination of $\tau$ from metronic quantization, (ii) formal computation of $\operatorname{ROT}_3\widehat{\Phi}$ in the DEC of Chapter 10, and (iii) certified numerical verification. Until completed, this remains classified **Stratum D (Speculative Physical Hypothesis)**.
+:::
+
+:::
+
+::: {.column width="51%"}
+
+::: {.thm-box}
+**§B.5 Symplectic Verlet Integrator on $\Mtau^4$ (Def. B.7) &amp; Orbital Precession (Prop. B.8):**
+* **Central Verlet Lattice Geodesic Stencil (Def. B.7):** For integer lattice coordinates $n^i(m) \in \mathbb{Z}$ at step $m \in \mathbb{N}_0$:
+  $$
+  n^i(m+1) = 2n^i(m) - n^i(m-1) - \sum_{k,l=1}^4 \frac{\alpha_k\alpha_l}{\alpha_i}\Big(n^k(m)-n^k(m-1)\Big)\Big(n^l(m)-n^l(m-1)\Big)\Gamma_{kl}^i(\mathbf{n}(m))
+  $$
+* **Proposition B.8 (Orbital Precession &amp; Light Bending, Figs. B.2–B.3):**
+  In the spherically symmetric Schwarzschild–Heim metric $g_{00} = -(1 - \frac{2GM}{c^2 r})$, $g_{rr} = (1 - \frac{2GM}{c^2 r})^{-1}$:
+  1. Reproduces Einstein's perihelion advance of Mercury ($\Delta\phi = \frac{6\pi GM}{c^2 a(1-e^2)} = 42.98''/\text{century}$) and light deflection ($\delta\theta = \frac{4GM}{c^2 b} + \mathcal{O}(\tau/b^2)$) with error $\mathcal{O}(\tau/r^2) < 10^{-40}$.
+  2. **Singularity Resolution:** Eliminates point singularities at $r\to 0$ due to the minimum metronic cell bound $r_{\min} \ge \sqrt{\tau}$.
+:::
+
+::: {.scholium-box .fragment .fade-left}
+**§B.6–B.7 Astrophysical LIV Synthesis:**
+Quadratic dispersion $\Delta t \approx \xi (E/E_{\mathrm{QG}})^2 (D/c)$ with $E_{\mathrm{QG}} = m_0 c^2 \approx 1.52\,M_{\mathrm{Planck}} > 1.22\,M_{\mathrm{Planck}}$ satisfies Fermi-LAT GRB 090510 bounds, treating $\Mtau^4$ as a covariant UV regulator rather than a preferred-frame medium.
+:::
+
+<div class="video-container fragment fade-up" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act10_AppB_Alpha_Verlet_Geodesics.mp4" style="max-height:165px;"></video>
+  <div class="video-caption">Manim Act X (App. B §B.4–B.7): FCC Sphere-Packing α_met⁻¹ = 137.036036 &amp; Discrete Verlet Precession (Figs. B.2–B.3)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Sections B.4 through B.7 present the FCC sphere-packing derivation of the fine-structure constant together with its Stratum D epistemic firewall demarcation (Assumption B.6), followed by the discrete Verlet geodesic integrator on M_tau^4 reproducing Mercury's perihelion precession and gravitational light bending without point singularities.
+:::
+
+---
+
+## Appendix C (§C.1–C.2): Lean 4 Blueprint, Import Firewall DAG & Axiom Ledger {.smaller transition="convex"}
+
+<div class="stratum-badge badge-a">APPENDIX C (§C.1–C.2): LEAN 4 / MATHLIB4 ARCHITECTURE, IMPORT FIREWALL DAG (FIG. 46), STATUS MATRIX (TABLE C.1) &amp; AXIOM LEDGER (TABLE C.2)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.firewall-box}
+**§C.1 Four Epistemic Truth Dimensions &amp; Enforced Import DAG (Fig. 46):**
+We strictly separate: (1) **Kernel Verification ($\mathcal{T}\vdash\phi$)**, (2) **Formal Consistency ($\operatorname{Con}(\mathcal{T})$)**, (3) **Semantic Soundness ($\mathcal{M}\models\mathcal{T}$)**, and (4) **Physical Adequacy ($\mathcal{T}\approx\text{Nature}$)**.
+The Four-Stratum Epistemic Firewall is enforced statically by Lean 4's module import DAG:
+$$
+\texttt{StratumA.\{Topos,Operads,DEC\}} \longrightarrow \texttt{StratumB.\{Sequents,Joyal\}} \;\Big|\!\Big|\; \xcancel{\longleftarrow} \;\Big|\!\Big|\; \texttt{StratumC.Realization} \longleftarrow \texttt{StratumD.HeimCorpus}
+$$
+* **Verification Integrity Rule:** An object is classified $\mathbf{S_2}$ (**Kernel-Checked Proof**) *only* after the pinned Lean 4 / Mathlib4 environment compiles it without `sorry`, `admit`, or project-specific axioms ($\mathbf{S_0}$ Blueprint $\to \mathbf{S_{1a}}$ Signature Elaborated $\to \mathbf{S_{1b}}$ Scaffold $\to \mathbf{S_2}$ Kernel-Checked $\to \mathbf{S_3}$ Independently Audited).
+:::
+
+::: {.thm-box .fragment .fade-up}
+**§C.2 The Formal Axiom Ledger (Table C.2) &amp; Non-Contamination Rule:**
+<table class="ch15-table">
+  <thead>
+  <tr><th>Axiom</th><th>Formal Role</th><th>Epistemic Scope &amp; Mathematical Domain</th></tr>
+  </thead>
+  <tbody>
+  <tr><td>$A_{\mathrm{cov}}$ (<code>CoverSpec</code>)</td><td>Specification Signature</td><td>Quantitative channel-coverage splitting condition for pretopology (Def. 1.7)</td></tr>
+  <tr><td>$A_{\mathrm{cont}}$ (<code>OpNorm</code>)</td><td>Derived Lemma ($\mathbf{S_2}$)</td><td>Operator norm submultiplicativity $\|g\circ f\| \le \|g\|\cdot\|f\| \le 1$ in Banach spaces</td></tr>
+  <tr><td>$A_{\mathrm{Banach}}$ (<code>FinDim</code>)</td><td>Derived Lemma</td><td>Completeness of finite-dimensional real normed spaces ($D^U, P^U, C^U$)</td></tr>
+  <tr><td>$A_{\mathrm{Beck}}$ (<code>BeckDist</code>)</td><td>Derived Proposition</td><td>Monad distributive law $\lambda \colon T_{\mathrm{pyr}}T_{\mathrm{frag}} \Rightarrow T_{\mathrm{frag}}T_{\mathrm{pyr}}$ (4 whiskered axioms)</td></tr>
+  <tr><td>$A_{\mathrm{DEC}}$ (<code>CochainComplex</code>)</td><td>Geometric Blueprint</td><td>Cellular incidence on Delaunay–Voronoi complexes &amp; $d_1(d_0 f) = 0$ ($\mathbf{S_2}$)</td></tr>
+  <tr><td>$A_{\mathrm{mass}}$ (<code>SelectorSpec</code>)</td><td>Physical Hypothesis ($\mathbf{C}$)</td><td>Self-adjoint selector spectrum on $R_{12}\to R_6$ (Strictly isolated in <code>StratumC</code>!)</td></tr>
+  </tbody>
+</table>
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Interactive Lean 4 Import Firewall Linter Simulator (Fig. 46 &amp; <code>checkTransitiveFirewall</code>)</h4>
+  <p class="widget-context-note">Simulate compiling a target Lean 4 module while importing a dependency namespace to test how <code>checkTransitiveFirewall</code> enforces the Axiomatic Non-Contamination Rule:</p>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Target Module:</span>
+  <select id="ch15-fw-src" onchange="window.ch15_testFirewallLinter()" style="background:#151c2c; color:#e2e8f0; border:1px solid #4169E1; border-radius:4px; padding:2px 5px; font-size:0.72em;">
+  <option value="StratumA.Topos">Syntrometrie.StratumA.Topos [A, M]</option>
+  <option value="StratumA.DEC">Syntrometrie.StratumA.DEC [A, M]</option>
+  <option value="StratumB.Sequents" selected>Syntrometrie.StratumB.Sequents [B, M]</option>
+  <option value="StratumC.Realization">Syntrometrie.StratumC.Realization [C, P]</option>
+  </select>
+  </div>
+  <div class="slider-row" style="margin-top:4px;">
+  <span style="color:#FFA500;">Imported Dependency:</span>
+  <select id="ch15-fw-dst" onchange="window.ch15_testFirewallLinter()" style="background:#151c2c; color:#FFD700; border:1px solid #FFA500; border-radius:4px; padding:2px 5px; font-size:0.72em;">
+  <option value="StratumA.Topos">Syntrometrie.StratumA.Topos [A, M]</option>
+  <option value="StratumA.Operads">Syntrometrie.StratumA.Operads [A, M]</option>
+  <option value="StratumC.Realization">Syntrometrie.StratumC.Realization [C, P] (Forbidden in A/B!)</option>
+  <option value="StratumD.HeimCorpus" selected>Syntrometrie.StratumD.HeimCorpus [D, R] (Forbidden in A/B!)</option>
+  </select>
+  </div>
+  <div id="ch15-fw-readout" class="matrix-readout" style="margin-top:5px; font-size:0.58em; line-height:1.35;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act11_AppC_Lean4_Firewall_DAG.mp4" style="max-height:185px;"></video>
+  <div class="video-caption">Manim Act XI (App. C §C.1–C.2, Fig. 46): Lean 4 Namespace Dependency DAG &amp; Static Import Firewall Linter</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Appendix C Sections C.1 and C.2 establish the Lean 4 / Mathlib4 formalization blueprint, the five verification states S_0 through S_3, the Formal Axiom Ledger (Table C.2), and the transitive dependency firewall linter that prevents physical hypotheses or historical text from contaminating Stratum A/B proofs.
+:::
+
+---
+
+## Appendix C (§C.3–C.5): Lean 4 Modules 1–3 — Contexts, Operads & Sequents {.smaller transition="slide"}
+
+<div class="stratum-badge badge-a">APPENDIX C (§C.3–C.5): LEAN 4 FORMAL SIGNATURES FOR STRUCTURED CONTEXTS, COLORED BANACH OPERADS &amp; L_iMSL SEQUENTS</div>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+<h3 style="color:#5eead4; margin-top:0;">Module 1 (`StratumA.Topos`) &amp; Module 2 (`StratumA.Operads`)</h3>
+
+<div class="lean-code-card">-- Module 1: Bundled Normed Contexts &amp; Category Instance (Status: S_1a / S_2)
+namespace Syntrometrie.StratumA.Topos
+structure StructuredContext where
+  D : Type; P : Type; C : Type
+  [instD : NormedAddCommGroup D] [instDSpace : NormedSpace ℝ D] [instDFin : FiniteDimensional ℝ D]
+  [instP : NormedAddCommGroup P] [instPSpace : NormedSpace ℝ P] [instPFin : FiniteDimensional ℝ P]
+  [instC : NormedAddCommGroup C] [instCSpace : NormedSpace ℝ C] [instCFin : FiniteDimensional ℝ C]
+  K : D →L[ℝ] (P →L[ℝ] C)
+  K_contractive : ‖K‖ ≤ 1
+  z : P ≃ₗᵢ[ℝ] P
+  zeta : D ≃ₗᵢ[ℝ] D
+
+lemma opNorm_comp_le_one {E F G : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F] [NormedAddCommGroup G] [NormedSpace ℝ G]
+    (f : E →L[ℝ] F) (g : F →L[ℝ] G) (hf : ‖f‖ ≤ 1) (hg : ‖g‖ ≤ 1) : ‖g.comp f‖ ≤ 1 := by
+  calc ‖g.comp f‖ ≤ ‖g‖ * ‖f‖ := ContinuousLinearMap.opNorm_comp_le g f
+    _ ≤ 1 * 1 := mul_le_mul hg hf (norm_nonneg f) zero_le_one
+    _ = 1 := mul_one 1
+
+-- Module 2: Colored Banach Operad &amp; 4-Axiom Beck Distributive Law
+namespace Syntrometrie.StratumA.Operads
+class BeckDistributiveLaw {C : Type*} [Category C] (T_pyr T_frag : Monad C) where
+  dist : (T_pyr.toFunctor ⋙ T_frag.toFunctor) ⟶ (T_frag.toFunctor ⋙ T_pyr.toFunctor)
+  unit_pyr  : (myWhiskerRight T_pyr.η T_frag.toFunctor) ≫ dist = myWhiskerLeft T_frag.toFunctor T_pyr.η
+  unit_frag : (myWhiskerLeft T_pyr.toFunctor T_frag.η) ≫ dist = myWhiskerRight T_frag.η T_pyr.toFunctor
+  mult_pyr  : (myWhiskerRight T_pyr.μ T_frag.toFunctor) ≫ dist =
+              (myWhiskerLeft T_pyr.toFunctor dist) ≫ (myWhiskerRight dist T_pyr.toFunctor) ≫ (myWhiskerLeft T_frag.toFunctor T_pyr.μ)
+  mult_frag : (myWhiskerLeft T_pyr.toFunctor T_frag.μ) ≫ dist =
+              (myWhiskerRight dist T_frag.toFunctor) ≫ (myWhiskerLeft T_frag.toFunctor dist) ≫ (myWhiskerRight T_frag.μ T_pyr.toFunctor)</div>
+
+:::
+
+::: {.column width="50%"}
+<h3 style="color:#82aaff; margin-top:0;">Module 3 (`StratumB.Sequents`): Stratified $\LiMSL$ &amp; `IsCutFreeDerivation`</h3>
+
+<div class="lean-code-card">-- Module 3: Stratified Inductive Formula Algebra &amp; Constructive Sequent Calculus
+namespace Syntrometrie.StratumB.Sequents
+inductive PropTerm : Nat -&gt; Type where
+  | base_ap0 : AP0 -&gt; PropTerm 0
+  | base_aps : APS -&gt; PropTerm 0
+  | lift_syn {k : Nat} : PropTerm k -&gt; PropTerm (k+1)
+  | conj     {k : Nat} : PropTerm k -&gt; PropTerm k -&gt; PropTerm (k+1)
+  | para     {k : Nat} : PropTerm k -&gt; PropTerm (k+1)
+
+inductive WFF (k : Nat) where
+  | atom : PropTerm k -&gt; WFF k  | bot : WFF k
+  | conj : WFF k -&gt; WFF k -&gt; WFF k | disj : WFF k -&gt; WFF k -&gt; WFF k | impl : WFF k -&gt; WFF k -&gt; WFF k
+  | box_S : WFF k -&gt; WFF k | dia_S : WFF k -&gt; WFF k
+  | stable : forall (j : Nat), (j &lt;= k) -&gt; PropTerm j -&gt; WFF k
+  | dyn_box : WFF (k+1) -&gt; WFF k | dyn_dia : WFF (k+1) -&gt; WFF k
+
+inductive Derivation (k : Nat) : List (WFF k) -&gt; WFF k -&gt; Type where
+  | ax (G : List (WFF k)) (phi : WFF k) : phi ∈ G -&gt; Derivation k G phi
+  | dyn_unstep (G : List (WFF (k+1))) (theta : WFF (k+1)) :
+      Derivation (k+1) G theta -&gt; Derivation k (G.map WFF.dyn_box) (WFF.dyn_box theta)
+  | cut (G D : List (WFF k)) (psi phi : WFF k) :
+      Derivation k G psi -&gt; Derivation k (psi :: D) phi -&gt; Derivation k (G ++ D) phi
+  | fs_interact (G : List (WFF k)) (phi psi : WFF k) :
+      Derivation k (G.map WFF.box_S) (WFF.impl phi psi) -&gt;
+      Derivation k (G.map WFF.dia_S) (WFF.impl (WFF.dia_S phi) (WFF.dia_S psi))
+  -- (+ weak, conj_R/L, disj_R1/R2/L, impl_R/L, bot_L, box_K, box_ref, dia_ref, stab_0_R, stab_succ_R, stab_L1/L2)
+
+def IsCutFreeDerivation {k : Nat} {G : List (WFF k)} {phi : WFF k} : Derivation k G phi -&gt; Prop
+  | Derivation.ax _ _ _ =&gt; True
+  | Derivation.cut _ _ _ _ _ _ =&gt; False -- Statically rejects any Cut application!</div>
+
+:::
+
+::::
+
+::: {.notes}
+Sections C.3, C.4, and C.5 provide the exact Lean 4 type definitions for Module 1 (StructuredContext, ContextMorphism, opNorm_comp_le_one, and the Category instance), Module 2 (ColoredBanachOperadSignature and BeckDistributiveLaw), and Module 3 (stratified PropTerm, WFF, Derivation, and IsCutFreeDerivation).
+:::
+
+---
+
+## Appendix C (§C.6–C.10): Lean 4 Modules 4–6, Verified Proofs & Roadmap {.smaller transition="convex"}
+
+<div class="stratum-badge badge-a">APPENDIX C (§C.6–C.10): KERNEL-CHECKED PROOFS (ANCHORS L.3–L.15, DEC &amp; PALATINI) &amp; SIX-PHASE ROADMAP (FIG. C.2)</div>
+
+:::: {.columns}
+
+::: {.column width="52%"}
+<h3 style="color:#FFD700; margin-top:0;">Modules 4–6 &amp; Kernel-Checked Theorems (Anchors L.3–L.15, Status $\mathbf{S_2}$)</h3>
+
+<div class="lean-code-card">-- Module 4 (StratumA.DEC): Scaled Metronic Leibniz Product Identity
+theorem scaled_metronic_leibniz_product {n : Nat} (L : MetronicLattice n) (i : Fin n)
+    (u v : LatticePoint n -&gt; Real) (x : LatticePoint n) :
+    ScaledMetronDifference L i (fun y =&gt; u y * v y) x =
+      (ScaledMetronDifference L i u x) * v x + u (shift_backward i x) * (ScaledMetronDifference L i v x) := by
+  dsimp [ScaledMetronDifference, shift_backward]; have h_tau_ne : L.tau i ≠ 0 := ne_of_gt (L.tau_pos i)
+  field_simp [h_tau_ne]; ring
+
+-- Verified DEC Coboundary Nilpotency d₁(d₀ f) = 0 on 2D Metronic Grid
+theorem dec_coboundary_nilpotent (f : Form0) : d1 (d0 f) = (fun _ =&gt; 0) := by
+  funext p; dsimp [d1, d0, shiftX, shiftY, shiftXY]; ring
+
+-- Verified Pass B &amp; Chapter 1–11 Anchors (L.3–L.15):
+-- 1. Heyting Glivenko Double-Negation: compl (compl (sup R (compl R))) = OrderTop.top (by rw [compl_sup, inf_compl_self, compl_bot])
+-- 2. Cascade Inductive Step (Ch 8): norm_curr ≤ (C_curr * Gamma_prev ^ r_curr) * norm_0 ^ (D_prev * r_curr)
+-- 3. Unsatisfiability of Literal SM-61 (Ch 9): ¬ (Nat.choose n w1 = n / 2) for 1 ≤ w1 &lt; n, 2 ≤ n
+-- 4. 6D Capacity Balance Root (Ch 11): N^4 / 16 = (N^3 + 3*N^2)/4 ↔ N^2 * (N - 6) * (N + 2) = 0 (by ring / linarith)
+-- 5. Subspace Multiplicity Sum: ∑_{p=1}^6 Nat.choose 6 p = 63 (by decide)
+-- 6. Palatini Connection Q-Tensor Decomposition (Ch 9): connection_decomposition_identity (verified over Fin ω)</div>
+
+:::
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Module 5 (`StratumA.Aufbau`) &amp; Module 6 (`Syntrometrie.Metatheory`):**
+* **Module 5 (`ConstitutionalStratum`):** Encodes Carnap's 6 constitutional levels (`Level_I_Autopsychological` $\to$ `Level_VI_MatterCondensation`) with strict ordering `ConstitutionalPrecedence a b := stratumLevel a < stratumLevel b`.
+* **Module 6 (`ProvenancedClaim` &amp; `checkTransitiveFirewall`):** Binds `TypedClaim` to `FullMetadataCompatible` (`StratumTypeCompatible ∧ TypeRoleCompatible`) and traverses `env.find?` via `getTransitiveConstants` to block `[P]` or `StratumD` leakage into `StratumA/B`.
+:::
+
+::: {.scholium-box .fragment .fade-up}
+**§C.9–C.10 Decoupled Six-Phase Formalization Roadmap (Fig. C.2):**
+* **Top Track (Logic &amp; Topos):**
+  **Phase I (`StratumA.Topos`):** Pretopology $J_{\mathrm{syn}} \to \mathbf{Sh}(\mathbf{Ctx}, J_{\mathrm{syn}})$, Heyting $\Omega$ $\longrightarrow$ **Phase II (`StratumB.Sequents`):** Rank-induction `cut_elimination_target` &amp; $\nvdash^k\bot$ $\longrightarrow$ **Phase III (`SemanticsBridge`):** $S(x);\Gamma\vdash^k\phi \implies U_{S(x)}\Vdash(\bigwedge\Gamma\to\phi)$.
+* **Bottom Track (Algebra &amp; Geometry):**
+  **Phase IV (`StratumA.Operads`):** Whiskered Beck Law $\lambda$ for $T_{\mathrm{hom}} = T_{\mathrm{frag}}\circ T_{\mathrm{pyr}}$ $\longrightarrow$ **Phase V (`StratumA.DEC`):** 7-step DEC pipeline ($d_\tau^2 = 0$, $*_\tau$, Gauss–Stokes) $\longrightarrow$ **Phase VI (`StratumC.Realization`):** Unbounded self-adjoint selectors $\Sel$ &amp; mass spectrum.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Sections C.6 through C.10 complete Appendix C with Module 4 (scaled metronic Leibniz rule), Module 5 (Carnapian Aufbau stratification), Module 6 (Quint-Axial metatheoretic provenance linter), the verified proof modules (Glivenko's theorem, cascade bounds, literal SM-61 refutation, N=6 capacity balance, DEC d1(d0 f)=0, and Palatini decomposition), and the six-phase verification roadmap.
+:::
+
+---
+
+## Appendix D (§D.1–D.2): Computational Solvers & Interval Newton–Krawczyk {.smaller transition="zoom"}
+
+<div class="stratum-badge badge-c">APPENDIX D (§D.1–D.2): ALGORITHMS D.1–D.4, KRAWCZYK MASS ENCLOSURE (FIG. 47) &amp; PYTHON/SYMPY VERIFICATION SANDBOX</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**§D.1 Four Core Computational Algorithms ($\mathsf{Stratum}=\mathbf{C}, \mathsf{Status}=\mathbf{S_1}, \mathsf{Evid}=\mathbf{E_4^{\mathrm{comp}}}$):**
+* **Scholium on Algorithmic Demarcation:** Interval solvers compute rigorous enclosures $[m_{\min},m_{\max}]$ conditional on IEEE-754 rounding bounds, whereas the lattice projection $\mathbf{n}(m+1)\leftarrow \lfloor \mathbf{x}\oslash\alpha + 0.5\rfloor$ acts as a discontinuous quantization filter.
+* **Algorithm D.1 (Čech Descent Equalizer):** Given cover $\{V_i\}_{i=1}^m$, local sections $s_i$, contractive $\sigma_i$, and tolerance $\epsilon>0$, compute overlap defect $D = \max_{i<j}\|s_i|_{V_{ij}} - s_j|_{V_{ij}}\|$. If $D\le\epsilon$, glue unique global section $\Gamma \coloneqq \sum_{i=1}^m \sigma_i^*(s_i) \in \mathbf{P}(U) \cong \mathsf{Hol}(\mathcal{U},\mathbf{P})$.
+* **Algorithm D.2 (Discrete Metronic Geodesic Integrator):** Iterates central Verlet stencil on $\mathbb{Z}^4$ through $N_{\max}$.
+* **Algorithm D.3 (Null-Stability Matter Eigenvalue Solver):** Solves $\det(\Sel - \lambda I)=0$ and evaluates $m_{\mathrm{calc}} = m_0\frac{\binom{6}{p}}{6}\prod_k\lambda_k$.
+* **Algorithm D.4 (Interval Newton–Krawczyk Mass Enclosure, Fig. 47):**
+  From box $\mathbf{X}^{(0)} = [m^{(0)}-\delta, m^{(0)}+\delta]$, midpoint $c_k = \midpt(\mathbf{X}^{(k)})$, $\mathbf{f}(c_k)=\det(\Sel_{\mathrm{trunc}}-c_k I)$, interval Jacobian $\mathbf{J}_k = D\mathbf{f}(\mathbf{X}^{(k)})$, and $Y_k = (\midpt(\mathbf{J}_k))^{-1}$, iterate the **Krawczyk operator**:
+  $$
+  \mathbb{K}(\mathbf{X}^{(k)}) \coloneqq \mathbf{c}_k - Y_k\mathbf{f}(\mathbf{c}_k) + (I_N - Y_k\mathbf{J}_k)(\mathbf{X}^{(k)} - \mathbf{c}_k), \qquad \mathbf{X}^{(k+1)} \coloneqq \mathbb{K}(\mathbf{X}^{(k)}) \cap \mathbf{X}^{(k)}
+  $$
+  By Brouwer's Fixed-Point Theorem, $\mathbb{K}(\mathbf{X}^{(k)}) \subset \operatorname{int}(\mathbf{X}^{(k)})$ guarantees a unique eigenvalue $\lambda \in \mathbf{X}^*$.
+:::
+
+::: {.scholium-box .fragment .fade-up}
+**§D.2 Executable Python / SymPy Verification Sandbox:**
+1. **`metronic_mass_scale(3, 0.30013404, q_x=1, C=0, nu=1)`:** Reproduces proton mass $938.2721\,\mathrm{MeV}/c^2$ directly from $\hbar, G, c$ and $\tau = \frac{\sqrt{3}}{4}\frac{\hbar G}{c^3}$.
+2. **SymPy Discrete Leibniz Check:** Verifies $\nabla(u_n v_n) - [(\nabla u_n)v_n + u_n(\nabla v_n) - (\nabla u_n)(\nabla v_n)] \equiv 0$.
+3. **`compute_phi_topos` ($SU(2)$ Curvature &amp; Čech Descent):** Evaluates $\Phi_{\mathrm{topos}} = \|\mathbf{\Omega}_{\mathrm{int}}\|\cdot\exp(-D^2/(2\sigma_{\mathrm{tol}}^2))$ across bound triad ($\Phi_{\mathrm{topos}}=0.903$), Abelian split ($0.000$), and overlap rivalry ($0.003$).
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Interactive Interval Newton–Krawczyk &amp; Čech Descent Simulator (Algs. D.1 &amp; D.4)</h4>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Initial $\delta$:</span>
+  <input type="range" id="ch15-kr-delta" min="0.20" max="2.00" step="0.10" value="1.20" oninput="window.ch15_updateKrawczykCech()">
+  <span id="ch15-kr-delta-val" style="font-family:monospace; width:68px;">±1.20 MeV</span>
+  <span style="color:#20B2AA;">$\|I-Y_k\mathbf{J}_k\|$:</span>
+  <input type="range" id="ch15-kr-lip" min="0.10" max="1.15" step="0.05" value="0.35" oninput="window.ch15_updateKrawczykCech()">
+  <span id="ch15-kr-lip-val" style="font-family:monospace; width:34px;">0.35</span>
+  <span style="color:#FFA500;">Defect $D$:</span>
+  <input type="range" id="ch15-kr-def" min="0.00" max="0.90" step="0.05" value="0.00" oninput="window.ch15_updateKrawczykCech()">
+  <span id="ch15-kr-def-val" style="font-family:monospace; width:34px;">0.00</span>
+  </div>
+  <svg id="ch15-kr-svg" viewBox="0 0 400 88" style="width:100%; max-height:82px; background:#070a12; border-radius:6px; border:1px solid #334155; margin-top:4px;"></svg>
+  <div id="ch15-kr-readout" class="matrix-readout" style="margin-top:4px; font-size:0.58em; line-height:1.34;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act12_AppD_Krawczyk_Cech_Solvers.mp4" style="max-height:185px;"></video>
+  <div class="video-caption">Manim Act XII (App. D §D.1–D.2, Fig. 47): Interval Newton–Krawczyk Contraction &amp; Čech Descent Gluing</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Appendix D concludes the technical appendices with Algorithms D.1 through D.4—highlighting the Interval Newton–Krawczyk mass enclosure solver (Figure 47) and the Čech Descent Equalizer—alongside the three executable Python and SymPy verification scripts.
+:::

@@ -1,24 +1,4 @@
 
-<!-- FALLBACK GLOBAL MATHJAX MACROS MATCHING CHAPTER 6 OF SYNTROMETRIC-TOPOS.TEX -->
-<div style="display:none;">
-$$
-\newcommand{\MAR}{\mathcal{M}_{\mathfrak{AR}}}
-\newcommand{\gAR}{g_{\mathfrak{AR}}}
-\newcommand{\XAR}{X_{\mathfrak{AR}}}
-\newcommand{\Dext}{\mathcal{D}_{\mathrm{ext}}}
-\newcommand{\Coalg}{\mathbf{Coalg}}
-\newcommand{\HypMet}{\operatorname{HypMet}}
-\newcommand{\nullsyntrix}{\mathbf{ys}\widetilde{\mathbf{c}}}
-\newcommand{\Ffree}{\mathcal{F}_{\mathrm{free}}}
-\newcommand{\Rresyn}{\mathcal{R}_{\mathrm{resyn}}}
-\newcommand{\grad}{\operatorname{grad}}
-\newcommand{\dist}{\operatorname{dist}}
-\newcommand{\ind}{\operatorname{ind}}
-\newcommand{\Crit}{\operatorname{Crit}}
-\newcommand{\Hess}{\operatorname{Hess}}
-$$
-</div>
-
 ## §6.1.1: *Metroplexäondyne*, *Mono-/Polydromie* & *Area* (SM-27) {.smaller transition="convex"}
 
 <div class="stratum-badge badge-d">CULMINATION OF TEIL A &amp; STRATUM D (SM, PP. 104–108, EQ. 27)</div>
@@ -214,7 +194,7 @@ Why model Heim's telecentric attractors through Universal Coalgebra rather than 
 :::
 
 ::: {.interactive-panel}
-#### Interactive 4-Tab Inspector: Final Coalgebra $(\nu\mathcal{T}, \zeta)$ & Carnap 6.1
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive 4-Tab Inspector: Final Coalgebra $(\nu\mathcal{T}, \zeta)$ & Carnap 6.1</h4>
 
 <div class="syn-tabs">
   <button class="syn-tab-btn active" onclick="showCoalgTab(1, this)">1. Signature T_ℝ (Def 6.6)</button>

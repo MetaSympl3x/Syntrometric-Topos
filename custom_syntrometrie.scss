@@ -322,3 +322,185 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
     }
   }
 }
+
+// ===========================================================================
+// MOBILE / SCROLL-VIEW RESPONSIVE LAYER (desktop slide mode is unaffected)
+// ===========================================================================
+@keyframes synScrollIn {
+  from { opacity: 0; transform: translate3d(0, 28px, 0); filter: blur(4px); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0);    filter: blur(0); }
+}
+
+// 1. Scroll view (any width): fragments are never hidden; they animate on scroll.
+.reveal-viewport.reveal-scroll .reveal .fragment,
+.reveal-viewport.reveal-scroll .reveal .fragment.visible,
+.reveal-viewport.reveal-scroll .reveal .fragment[class*="fade-"],
+.reveal-viewport.reveal-scroll .reveal .fragment.blur-in,
+.reveal-viewport.reveal-scroll .reveal .fragment.zoom-in,
+.reveal-viewport.reveal-scroll .reveal .fragment.glow-pulse {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+@supports (animation-timeline: view()) {
+  .reveal-viewport.reveal-scroll .reveal .fragment {
+    animation: synScrollIn linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+}
+
+// 2. Narrow screens in scroll view: stack, resize, make touch friendly.
+@media (max-width: 900px) {
+  .reveal-viewport.reveal-scroll,
+  .reveal-viewport.reveal-scroll .reveal {
+    overflow-x: hidden;
+  }
+
+  .reveal-viewport.reveal-scroll .slides section,
+  .reveal-viewport.reveal-scroll .slides section.slide {
+    font-size: clamp(15px, 4.1vw, 20px) !important;
+    line-height: 1.5 !important;
+    padding: 18px 14px !important;
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100vw;
+    height: auto !important;
+    min-height: 0 !important;
+    text-align: left;
+  }
+
+  .reveal-viewport.reveal-scroll .slides section h1 { font-size: 1.6em !important; }
+  .reveal-viewport.reveal-scroll .slides section h2 { font-size: 1.35em !important; line-height: 1.25; }
+  .reveal-viewport.reveal-scroll .slides section h3 { font-size: 1.15em !important; }
+  .reveal-viewport.reveal-scroll .slides section h4 { font-size: 1.05em !important; }
+
+  // Stack every multi-column construct
+  .reveal-viewport.reveal-scroll .columns,
+  .reveal-viewport.reveal-scroll .slides section > div[style*="display:flex"] {
+    flex-direction: column !important;
+    gap: 14px !important;
+  }
+  .reveal-viewport.reveal-scroll .column,
+  .reveal-viewport.reveal-scroll .columns > div {
+    width: 100% !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+  .reveal-viewport.reveal-scroll .grid-2,
+  .reveal-viewport.reveal-scroll .video-grid-2,
+  .reveal-viewport.reveal-scroll .stat-grid-3,
+  .reveal-viewport.reveal-scroll .stat-grid-4,
+  .reveal-viewport.reveal-scroll [style*="grid-template-columns"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .reveal-viewport.reveal-scroll .stat-grid-3,
+  .reveal-viewport.reveal-scroll .stat-grid-4 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  // Undo tiny inline font sizes on boxes
+  .reveal-viewport.reveal-scroll .slides section [style*="font-size"] {
+    font-size: max(1em, 15px) !important;
+  }
+  .reveal-viewport.reveal-scroll .slides section svg text { font-size: revert; }
+
+  // Boxes & panels
+  .reveal-viewport.reveal-scroll .interactive-panel,
+  .reveal-viewport.reveal-scroll .def-box,
+  .reveal-viewport.reveal-scroll .thm-box,
+  .reveal-viewport.reveal-scroll .prop-box,
+  .reveal-viewport.reveal-scroll .proof-box,
+  .reveal-viewport.reveal-scroll .remark-box,
+  .reveal-viewport.reveal-scroll .carnap-box,
+  .reveal-viewport.reveal-scroll .firewall-box,
+  .reveal-viewport.reveal-scroll .intuition-box,
+  .reveal-viewport.reveal-scroll .scholium-box,
+  .reveal-viewport.reveal-scroll .vignette-box,
+  .reveal-viewport.reveal-scroll .claim-ceiling,
+  .reveal-viewport.reveal-scroll .lean-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    padding: 12px 14px !important;
+    margin: 10px 0 !important;
+    overflow-x: auto;
+  }
+
+  // Wide math & tables scroll sideways instead of overflowing the page
+  .reveal-viewport.reveal-scroll .MathJax_Display,
+  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    font-size: 0.88em;
+  }
+  .reveal-viewport.reveal-scroll table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    font-size: 0.82em !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .reveal-viewport.reveal-scroll pre,
+  .reveal-viewport.reveal-scroll pre code {
+    max-width: 100%;
+    overflow-x: auto;
+    font-size: 0.78em !important;
+    max-height: none !important;
+  }
+
+  // Media
+  .reveal-viewport.reveal-scroll video,
+  .reveal-viewport.reveal-scroll .video-card video,
+  .reveal-viewport.reveal-scroll .video-container video {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    border-radius: 8px;
+  }
+  .reveal-viewport.reveal-scroll svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  // Touch-friendly controls
+  .reveal-viewport.reveal-scroll .syn-tabs,
+  .reveal-viewport.reveal-scroll .tab-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .reveal-viewport.reveal-scroll .syn-tab-btn,
+  .reveal-viewport.reveal-scroll .tab-btn,
+  .reveal-viewport.reveal-scroll .syn-btn,
+  .reveal-viewport.reveal-scroll button {
+    min-height: 40px;
+    padding: 8px 12px !important;
+    font-size: 0.85em !important;
+  }
+  .reveal-viewport.reveal-scroll input[type="range"] {
+    width: 100% !important;
+    min-height: 32px;
+  }
+  .reveal-viewport.reveal-scroll .slider-row {
+    flex-wrap: wrap;
+    font-size: 0.9em !important;
+  }
+
+  // Hide desktop-only chrome clutter
+  .reveal-viewport.reveal-scroll .stratum-badge,
+  .reveal-viewport.reveal-scroll .slides section > div[style*="margin-bottom"] > span {
+    display: inline-block;
+    margin: 2px 4px 2px 0;
+    font-size: 0.7em !important;
+    line-height: 1.3;
+    white-space: normal;
+  }
+  .reveal-viewport.reveal-scroll .slide-number { font-size: 12px; }
+}

@@ -1,0 +1,1034 @@
+---
+title: "Syntrometrische Maximentelezentrik"
+subtitle: "Chapter 12: The Resolution of Representational Discontinuity — Operadic Consumption and Protosimplex Encapsulation"
+author: "Research Collective — Department of Mathematical Physics & Formal Epistemology"
+date: "August 2026"
+format:
+  revealjs:
+    theme: [dark, custom_syntrometrie.scss]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    min-scale: 0.2
+    max-scale: 1.5
+    transition: fade
+    background-transition: fade
+    slide-number: c/t
+    controls: true
+    progress: true
+    hash: true
+    center: false
+    html-math-method: mathjax
+    include-in-header: shared/chapter12-header.html
+    include-after-body:
+      text: |
+        <script src="shared/chapter12-widgets.js"></script>
+---
+
+## §12.1.1–12.1.2: The Mystery of Representational Discontinuity &amp; The 4 Mechanisms {.smaller transition="convex"}
+
+<div class="stratum-badge badge-a">EPISTEMIC FIREWALL &amp; STRATUM A/B/C ARCHITECTURE (§12.1.1–12.1.2, FIG. 12.1)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.firewall-box}
+**Strict Non-Transfer Principle (Epistemic Firewall):**
+$$
+\boxed{\mathbf{A}\text{-Mathematical Validity} \;\centernot\Rightarrow_{\text{arch}}\; \mathbf{C}\text{-Cognitive Architecture} \;\centernot\Rightarrow_{\text{arch}}\; \mathbf{E}\text{-Empirical Confirmation}}
+$$
+Formal derivability ($\Gamma_A \vdash_{\mathcal{F}} c$) certifies internal structural consistency; it neither substitutes for neurobiological testing nor depends on speculative physical claims.
+:::
+
+::: {.thm-box .fragment .fade-right}
+**The Phenomenological–Neurobiological Gap (§12.1.1):**
+* **V1** computes localized spatial-frequency decompositions via 2D Gabor wavelets (Hubel &amp; Wiesel 1962); **A1** computes logarithmic tonotopic modulations; **IT** computes affine latent hyperplanes (Felleman &amp; Van Essen 1991).
+* Yet consciousness never presents $10^6$ retinal voltages or Gabor coefficients—it presents an **immediate, unified, qualitative gestalt**:
+$$
+\boxed{\text{Lower Cortical Tiers: Distributed Statistical Syntax} \;\overset{\textbf{Discontinuity}}{\Longrightarrow}\; \text{Conscious Perception: Unified Gestalt}}
+$$
+* **Two Standard Fallacies:** (1) *Cartesian Display Fallacy* (homuncular screen regress, Dennett 1991); (2) *Linear Pooling Reductionism* ($v_1 \oplus v_2 \in \mathbb{R}^{N+M}$ yields no internal binding or non-linear gestalt).
+:::
+
+::: {.intuition-box .fragment .fade-up}
+**The Four Formal Mechanisms of Syntrometrie (§12.1.2):**
+1. **Operadic Feature Consumption (Ch. 2):** $\Osyn$ consumes lower features via *Episyllogismus* $\ev_{\vec{\gamma};\gamma+1}$ into coinvariant quotients $F_{\gamma+1}$.
+2. **Protosimplex Encapsulation (Ch. 5):** $10^4$-neuron attractor basins in slice $T_n$ collapse to 0D categorical points $\mathcal{P} \in \CSeg(\Xsyn)$ under $\mathbf{M}^n \to \mathbf{M}^{n+1}$.
+3. **Non-Abelian Commutators (Ch. 4):** Non-commuting neural timing ($a_i a_j \ne a_j a_i$) generates Lie curvature $\Omegaint = \sum [a_i, a_j] + \dots \ne \mathbf{0}$.
+4. **Layered *Strukturkaskade* (Chs. 7 &amp; 9):** Banach contractions compile into the 6D Apex Metric ${}^2\bar{\mathbf{g}}_\infty$ on $R_6 = R_4 \times S_2$ (${}^2\bar{\mathbf{g}}_+$ kinematics vs. ${}^2\bar{\mathbf{g}}_-$ affective agency).
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive 4-Tier Syntrometric Functorial Engine vs. Naive Pooling (Fig. 12.1)</h4>
+  <p class="widget-context-note">
+  <b>Context (§12.1.1–12.1.2):</b> Inspect each tier of the Syntrometric Functorial Engine alongside the Cartesian/Linear Pooling failure mode to see how raw coordinates $R_n$ ascend to the Holoform Gestalt $\Hol(\mathcal{U}, \mathbf{P})$.
+  </p>
+  <div style="display:flex; gap:5px; flex-wrap:wrap; margin-bottom:8px;">
+  <button id="ch12-tier-btn-0" class="syn-btn" onclick="window.ch12_setTier(0)">Fallacy: Linear Pooling</button>
+  <button id="ch12-tier-btn-1" class="syn-btn" onclick="window.ch12_setTier(1)">Tier I:Continua R_n</button>
+  <button id="ch12-tier-btn-2" class="syn-btn" onclick="window.ch12_setTier(2)">Tier II: Operad ev</button>
+  <button id="ch12-tier-btn-3" class="syn-btn" onclick="window.ch12_setTier(3)">Tier III: Protosimplex</button>
+  <button id="ch12-tier-btn-4" class="syn-btn" style="background:#FFD700; color:#000; font-weight:bold;" onclick="window.ch12_setTier(4)">Tier IV: Quale Gestalt</button>
+  </div>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+  <svg id="ch12-tier-svg" viewBox="0 0 420 135" width="100%" height="130"></svg>
+  </div>
+  <div id="ch12-tier-readout" class="matrix-readout" style="margin-top:6px; font-size:0.63em; text-align:left;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act1_Discontinuity_Four_Tiers.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act I (Fig. 12.1): Cartesian Display Fallacy vs. The 4-Tier Syntrometric Functorial Ascent</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Introduce the Representational Discontinuity Paradox: early sensory cortices compute distributed vector arrays (Gabor wavelets in V1, tonotopy in A1, affine manifolds in IT), yet subjective consciousness presents a unified qualitative gestalt. Contrast the Cartesian Display Fallacy and Linear Pooling Reductionism with the four formal mechanisms of Syntrometrie.
+:::
+
+---
+
+## §12.1.3–12.1.4: Kantian Aesthetics, Carnap's *Aufbau* &amp; Goodman's Critique {.smaller transition="slide"}
+
+<div class="stratum-badge badge-d">STRATUM D/A: REFLEXIVE ABSTRAKTION (FIG. 12.2), CARNAP'S QUASI-ANALYSIS (FIG. 12.3) &amp; GOODMAN'S IMPERFECT COMMUNITY (FIG. 12.4)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.carnap-box}
+**Kantian Transcendental Aesthetics &amp; Heim's *Reflexive Move* (§12.1.3, Fig. 12.2):**
+* Kant (*Critique of Pure Reason*, 1781) grounded space and time as pure *a priori* forms of sensible intuition. Heim radicalized this as **anthropomorphe Transzendentalästhetik** (Heim 2000): mistaking our species' sensory filtering and bivalent habits $\{0, 1\}$ for intrinsic ontology fractures continuous reality into artificial *Antagonismen* (wave vs. particle, determinism vs. qualia).
+* **Reflexive Abstraktion:** Turns the analytical lens onto observation itself, replacing static $\{0,1\}$ projection with a Grothendieck sheaf topos over structured contexts $U = (P^U, D^U, K^U)$ glued along $\Hol(\mathcal{U}, \mathbf{P})$ where $\Def_{\mathcal{U}}(s) = 0$.
+:::
+
+::: {.thm-box .fragment .fade-right}
+**Carnap's *Aufbau* (1928) &amp; Goodman's Critique (1951) (§12.1.4, Figs. 12.3–12.4):**
+* Carnap (*Der logische Aufbau der Welt*, §§67–74) started from the *eigenpsychische Basis* of elementary experiences $e \in E$ and recollected similarity $P_s \subseteq E \times E$ (*Ähnlichkeitserinnerung*), defining **Quality Classes** via **Quasi-Analysis**:
+$$
+Q \coloneqq \bigcap \left\{ K \subseteq E \;\middle|\; K \text{ is a maximal } P_s\text{-similarity circle and } e_1, e_2 \in K \right\}
+$$
+* **Goodman's Collapse (*The Structure of Appearance*, 1951):**
+  1. **Imperfect Community:** $\{e_1\text{ (Red, Rough)}, e_2\text{ (Red, Round)}, e_3\text{ (Round, Rough)}\}$ satisfy $e_i P_s e_j$ pairwise via *different* qualities; extensional set theory intersects them into a maximal clique, fabricating a **phantom quale**!
+  2. **Companionship Difficulty:** A rare quality $Q_1$ co-occurring with pervasive $Q_2$ collapses extensionally into $Q_2$.
+:::
+
+::: {.proof-box .fragment .fade-up}
+**Sheaf-Theoretic Resolution in the Operadic-Sheaf Model (OSM):**
+Replacing set intersections with Kripke–Joyal sheaf semantics over $\Ctx$ equipped with Banach contractions $K^U \colon D^U \widehat{\otimes}_\pi P^U \to C^U$, three pairwise-similar contexts with no common property have trivial triple fiber product:
+$$
+e_1 \times_U e_2 \times_U e_3 \cong \mathbf{0}_{\Ctx} \implies \mathbf{y}(\mathbf{0}_{\Ctx}) \cong \mathbf{0}_{\Esyn} \implies \Def_{\mathcal{U}}(s)_{123} \ne 0
+$$
+The Čech descent defect diverges on the 2-simplex overlap, **rejecting the imperfect community** and rescuing qualia as **sheaf-theoretic descent invariants**.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Goodman Imperfect Community &amp; Sheaf Descent Lab (Fig. 12.4)</h4>
+  <p class="widget-context-note">
+  <b>Context (§12.1.4):</b> Switch between **Goodman's Imperfect Community** (pairwise overlaps without triple intersection), **Valid Holoform Community** (shared universal quality), and **Companionship Pair** to compare Carnap's extensional clique against the OSM triple fiber product $e_1 \times_U e_2 \times_U e_3$ and Čech defect $\Def_{\mathcal{U}}(s)_{123}$.
+  </p>
+  <div style="display:flex; gap:6px; margin-bottom:8px;">
+  <button id="ch12-gm-btn-1" class="syn-btn" style="background:#FFD700; color:#000; font-weight:bold;" onclick="window.ch12_setGoodmanMode(1)">1. Imperfect Community (Phantom)</button>
+  <button id="ch12-gm-btn-2" class="syn-btn" onclick="window.ch12_setGoodmanMode(2)">2. True Holoform (Shared Red)</button>
+  <button id="ch12-gm-btn-3" class="syn-btn" onclick="window.ch12_setGoodmanMode(3)">3. Companionship Separation</button>
+  </div>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+  <svg id="ch12-gm-svg" viewBox="0 0 420 135" width="100%" height="130"></svg>
+  </div>
+  <div id="ch12-gm-readout" class="matrix-readout" style="margin-top:6px; font-size:0.63em; text-align:left;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act2_Carnap_Goodman_Sheaf.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act II (Figs. 12.2–12.4): Carnap's Aufbau Hierarchy, Goodman's Imperfect Community &amp; Sheaf Pullback Resolution</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Explain how Heim's reflexive abstraction radicalizes Kant's transcendental aesthetics by moving from Boolean $\{0,1\}$ projections to structured contexts in a sheaf topos. Walk through Carnap's 1928 Quasi-Analysis, Goodman's 1951 Imperfect Community counterexample, and how the triple fiber product $e_1 \times_U e_2 \times_U e_3 \cong \mathbf{0}_{\Ctx}$ forces $\Def_{\mathcal{U}}(s)_{123} \ne 0$, blocking spurious qualia.
+:::
+
+---
+
+## §12.1.5–12.1.7: Block's Split, Chalmers' Hard Problem &amp; Zombie Refutation {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATUM A/B: DEFS. 12.1–12.2, CLASS A_12 SINGULARITY (FIG. 12.5), SYNTHESIS (FIG. 12.6) &amp; ZOMBIE IMPOSSIBILITY (THM. 12.3)</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.thm-box}
+**Block's Split (1995), Chalmers' Hard Problem (1995) &amp; Categorical Mismatch (§12.1.5–12.1.6):**
+* **Block's Dichotomy:** *Access Consciousness* ($A$, functional/reportable) vs. *Phenomenal Consciousness* ($P$, qualitative "what it is like", Nagel 1974; Levine's 1983 Explanatory Gap; Jackson's 1982 Mary's Room).
+* **Category Mistake (Fig. 12.5):** Reductive physicalism projects a non-Abelian topos structure onto a scalar $q \in \mathbb{R}$, triggering a **Class $A_{12}$ Dimension-Defect Singularity**: $\dim(F(\mathcal{M}_{\mathrm{syn}})) < \dim(\mathcal{M}_{\mathrm{syn}})$.
+* **Def. 12.1 ($A$-Consciousness as Free Tree Monad $T_{\mathsf{P}}$):** Typed by cortical levels $\gamma \in \mathbb{N}_0$ over $\Osyn$:
+$$
+T_{\mathsf{P}}(X) \;\cong\; X \;\oplus_1\; \widehat{\mathsf{P}}(T_{\mathsf{P}}(X)) \quad (\text{Episyllogismus } k\uparrow)
+$$
+* **Def. 12.2 ($P$-Consciousness as Sheaf Equalizer $\Hol$ &amp; Curvature $\Omegaint$):**
+  1. **Holoform Gestalt:** $\Def_{\mathcal{U}}(s) = 0 \iff \Hol(\mathcal{U}, \mathbf{P}) \cong \mathbf{P}(U)$.
+  2. **Quale as Curvature:** $\Omegaint \coloneqq \sum_{1 \le i < j \le N} [a_i, a_j] + D_{A_0}a_{\mathrm{int}} + \sum_{k=1}^N [a_k, a_{\mathrm{int}}] + \frac{1}{2}[a_{\mathrm{int}}, a_{\mathrm{int}}]$ with Frobenius intensity $g_E = \frac{1}{2}\|\Omegaint\|^2$.
+:::
+
+::: {.proof-box .fragment .fade-up}
+**Theorem 12.3 &amp; Proof (Formal Impossibility of Chalmersian Zombies):**
+Let $\mathcal{N} = (P_U \to M_U, \mathbf{A}, \Osyn)$ execute multi-modal binding across $N \ge 2$ channels. Define:
+$$
+\mathsf{Zombie}(\mathcal{N}) \iff \big(A\text{-Conscious}(\mathcal{N}) = \text{True}\big) \wedge \big(P\text{-Conscious}(\mathcal{N}) = \text{False} \iff \Omegaint^{\mathcal{D}} \equiv \mathbf{0}\big)
+$$
+**Proof:** Assume $A\text{-Conscious}(\mathcal{N}) = \text{True}$ and $g_E = \frac{1}{2}\|\Omegaint^{\mathcal{D}}\|^2 = 0 \iff \Omegaint^{\mathcal{D}} \equiv \mathbf{0}$. For linearly independent channel 1-forms $a_1, a_2$ in a non-Abelian gauge algebra $\mathfrak{g} = \operatorname{Lie}(G)$, $\Omegaint^{\mathcal{D}} \equiv \mathbf{0}$ holds iff $[a_i, a_j] \equiv 0$ ($\forall i \ne j$) and $a_{\mathrm{int}} \equiv 0$, reducing $\mathbf{A}$ to an Abelian Cartan subalgebra $\mathfrak{h} \subset \mathfrak{g}$. Then the carrier pushout $P_1 \boxplusphi P_2$ collapses to the uncoupled $\ell^1$-coproduct $P_1 \oplus_1 P_2$. On overlap $W = V_1 \times_U V_2$, $s_1|_W \ne s_2|_W \implies \Def_{\mathcal{U}}(s)_{12} = \delta^0(s)_{12} \ne 0 \implies \Hol(\mathcal{U}, \mathbf{P}) \cong \emptyset$. Without a global section, $T_{\mathsf{P}}(X)$ cannot evaluate cross-color terms: $\ev_{\vec{\gamma};\gamma+1}(\Osyn \widehat{\otimes}_\pi \bigotimes F_{\gamma_i}) = \{0\}$, contradicting $A\text{-Conscious}(\mathcal{N}) = \text{True}$! Thus $\llbracket \mathsf{Zombie}(\mathcal{N}) \rrbracket = \bot_\Omega$. $\blacksquare$
+:::
+
+:::
+
+::: {.column width="51%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Chalmersian Zombie Refutation Lab (Thm. 12.3)</h4>
+  <p class="widget-context-note">
+  <b>Context (Thm. 12.3):</b> Adjust cross-modal Lie commutator norm $\|[a_1, a_2]\|$ and interaction potential $\|a_{\mathrm{int}}\|$ to test whether an agent can maintain Access Consciousness ($T_{\mathsf{P}}$ evaluation) while suppressing Phenomenal Curvature ($g_E = \frac{1}{2}\|\Omegaint\|^2 \to 0$).
+  </p>
+  <div class="slider-row">
+  <span style="color:#FFA500;">Commutator $\|[a_1,a_2]\|$:</span>
+  <input type="range" id="ch12-zm-comm" min="0" max="2.0" step="0.05" value="1.20" oninput="window.ch12_updateZombieLab()">
+  <span id="ch12-zm-comm-val" style="font-family:monospace; width:36px;">1.20</span>
+  <span style="color:#20B2AA;">Coupling $\|a_{\mathrm{int}}\|$:</span>
+  <input type="range" id="ch12-zm-aint" min="0" max="2.0" step="0.05" value="0.80" oninput="window.ch12_updateZombieLab()">
+  <span id="ch12-zm-aint-val" style="font-family:monospace; width:36px;">0.80</span>
+  </div>
+  <div style="display:flex; gap:6px; justify-content:center; margin:6px 0;">
+  <button class="syn-btn" onclick="window.ch12_setZombiePreset(0, 0)">Attempt Zombie ($\Omegaint \equiv 0$)</button>
+  <button class="syn-btn" onclick="window.ch12_setZombiePreset(1.2, 0.8)">Conscious Multi-Modal Binding</button>
+  </div>
+  <div id="ch12-zm-readout" class="matrix-readout" style="font-size:0.62em; text-align:left; line-height:1.38;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act3_Zombie_Impossibility_Proof.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act III (Figs. 12.5–12.6, Thm. 12.3): A/P Synthesis &amp; Proof that Ω_int = 0 Forces Total Inferential Breakdown</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Present Definitions 12.1 and 12.2 and Theorem 12.3 (Formal Impossibility of Chalmersian Philosophical Zombies). Emphasize the exact causal chain: $\Omegaint \equiv 0 \implies [a_i, a_j] = 0 \implies \Def_{\mathcal{U}}(s) \ne 0 \implies \Hol = \emptyset \implies \ev = \{0\}$, proving that multi-modal access consciousness requires non-Abelian phenomenal curvature.
+:::
+
+---
+
+## §12.1.8–12.1.9: Dialectical Sublation ($\operatorname{Aufhebung}$) &amp; Heyting Mereology {.smaller transition="fade"}
+
+<div class="stratum-badge badge-a">STRATUM A/B: DIALECTICAL SYNTHESIS (THM. 12.4), HEYTING MEREOLOGY (DEF. 12.5) &amp; SEQUENT CALCULUS L_iMSL</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Theorem 12.4: Dialectical Concept Synthesis Theorem ($\operatorname{Aufhebung}$, §12.1.8)**
+Let $A, B \le \mathfrak{M}_{\mathrm{asp}}(W)$ be two internal subobjects exhibiting an evaluative antagonism:
+$$
+\operatorname{Incomp}_{\mathcal{E}}(A, B) \;\coloneqq\; \big\llbracket |\ev_P(A) - \ev_P(B)| > \theta_{\mathrm{tol}} \big\rrbracket \;=\; \top_{\Omega(W)}
+$$
+Reflexive abstraction models dialectical sublation ($\operatorname{Aufhebung}$) as a functor mapping contradictory context $S_{\mathrm{mod}}(x)$ to successor context $S'_{\mathrm{mod}}(x')$ containing a synthesized composite whole $C \coloneqq \operatorname{Synthesize}(A, B)$ such that:
+1. **Internal Consistency:** $\neg \exists A', B' \big(\operatorname{Part}(A', C) \wedge \operatorname{Part}(B', C) \wedge \operatorname{Incomp}_{\mathcal{E}}(A', B')\big)$.
+2. **Higher-Level Generator:** $C$ acts as an initial generator for syndrome construction in $\Prop_{k+1}$, proving that cognitive conflict directly drives conceptual intelligence growth.
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Definition 12.5: The Internal Heyting Mereological Universe $\mathfrak{M}_{\mathrm{asp}}$ (§12.1.9)**
+Over context $U \in \Ctx$, the mereological universe is the complete Heyting subobject lattice:
+$$
+\mathfrak{M}_{\mathrm{asp}}(U) \;\coloneqq\; \Sub_{\Esyn}\!\left(\mathbf{y}(U) \times (\underline{\mathsf{Pred}}_U \sqcup \underline{\mathsf{Qual}}_U)\right)
+$$
+where parthood is $\operatorname{Part}(A, B) \iff A \le B$ in $\Omega(U)$. Relational coordination strength between qualifier $(d_r, v_{dr})$ and predicate $(f_q, v_{fq})$ is governed by a continuous Archimedean $t$-norm $\chi \colon [0, 1] \times [0, 1] \to [0, 1]$:
+$$
+\operatorname{Strength}\big((d_r, f_q), U\big) \;\coloneqq\; \chi\big(\zeta_r \cdot \sigma_{dr}(v_{dr}),\; \mathbf{z}_q \cdot \sigma_{fq}(v_{fq})\big) \;\in\; [0, 1]
+$$
+A pair is actively coordinated iff $\operatorname{Strength}((d_r, f_q), U) > \theta_{\mathrm{coord}}(U)$, satisfying constructive CEM axioms **MSL-M1** and **MSL-M2**.
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive $t$-Norm Coordination &amp; $\mathcal{L}_{\mathrm{iMSL}}$ Sequent Inspector (Thm. 12.4, Def. 12.5)</h4>
+  <div class="syn-tabs">
+  <button class="syn-tab-btn active" onclick="window.showGenericTab('ch12-msl', 1, 3, this)">1. t-Norm &amp; Aufhebung Lab</button>
+  <button class="syn-tab-btn" onclick="window.showGenericTab('ch12-msl', 2, 3, this)">2. L_iMSL Rules (1–3)</button>
+  <button class="syn-tab-btn" onclick="window.showGenericTab('ch12-msl', 3, 3, this)">3. Modal &amp; Stability Rules (4–6)</button>
+  </div>
+  <div id="ch12-msl-pane-1" class="syn-tab-pane active">
+  <div class="slider-row">
+  <span style="color:#4169E1;">Qualifier $a_D$:</span>
+  <input type="range" id="ch12-mer-ad" min="0.1" max="1.0" step="0.05" value="0.85" oninput="window.ch12_updateMereologyLab()">
+  <span id="ch12-mer-ad-val" style="font-family:monospace; width:34px;">0.85</span>
+  <span style="color:#20B2AA;">Predicate $b_P$:</span>
+  <input type="range" id="ch12-mer-bp" min="0.1" max="1.0" step="0.05" value="0.80" oninput="window.ch12_updateMereologyLab()">
+  <span id="ch12-mer-bp-val" style="font-family:monospace; width:34px;">0.80</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#FFA500;">Threshold $\theta_{\mathrm{coord}}$:</span>
+  <input type="range" id="ch12-mer-th" min="0.2" max="0.9" step="0.05" value="0.55" oninput="window.ch12_updateMereologyLab()">
+  <span id="ch12-mer-th-val" style="font-family:monospace; width:34px;">0.55</span>
+  <span style="color:#FFD700;">$t$-Norm $\chi$:</span>
+  <select id="ch12-mer-tnorm" onchange="window.ch12_updateMereologyLab()" style="background:#151c2c; color:#FFD700; border:1px solid #334155; border-radius:4px; font-size:0.8em; padding:2px 6px;">
+  <option value="prod">Product (a · b)</option>
+  <option value="luk">Łukasiewicz max(0, a+b-1)</option>
+  <option value="godel">Gödel min(a, b)</option>
+  </select>
+  </div>
+  <div id="ch12-mer-readout" class="matrix-readout" style="margin-top:6px; font-size:0.84em; text-align:left;"></div>
+  </div>
+  <div id="ch12-msl-pane-2" class="syn-tab-pane">
+  <b>1. Structural &amp; 2. Intuitionistic Propositional Rules ($S(x);\Gamma \vdash^k \phi$):</b><br>
+  $(\text{Ax})\;\frac{}{S(x);\Gamma,\phi\vdash^k\phi}$, $(\text{Cut})\;\frac{S(x);\Gamma\vdash^k\psi \quad S(x);\Delta,\psi\vdash^k\phi}{S(x);\Gamma,\Delta\vdash^k\phi}$, $(\to R)\;\frac{S(x);\Gamma,\phi\vdash^k\psi}{S(x);\Gamma\vdash^k\phi\to\psi}$<br>
+  <b>3. Aspectual Interface with $S_{\mathrm{mod}}(x)$:</b><br>
+  $(\text{Fact-S}_A)\;\frac{(S_{\mathrm{mod}}(x),k)\models p\;(p\in\AP_S)}{S(x);\Gamma\vdash^k p}$, $\quad (\chi\text{-I}_S)\;\frac{S(x);\Gamma\vdash^k(d_r,v_{dr}) \quad S(x);\Delta\vdash^k(f_q,v_{fq}) \quad [\operatorname{Strength}>\theta_{\mathrm{coord}}(x)]}{S(x);\Gamma,\Delta\vdash^k \operatorname{Coord}((d_r,v_{dr}),(f_q,v_{fq}))}$
+  </div>
+  <div id="ch12-msl-pane-3" class="syn-tab-pane">
+  <b>4. Fischer–Servi Bi-Modal Rules:</b> $(\text{FS-Int})\;\frac{S(x);\Box_S\Gamma\vdash^k\phi\to\psi}{S(x);\Diamond_S\Gamma\vdash^k\Diamond_S\phi\to\Diamond_S\psi}$, $(B_{\Diamond\text{-Adj}})\;\frac{S(x);\Gamma\vdash^k\Box_S\psi}{S(x);\Diamond_S(\bigwedge\Gamma)\vdash^k\psi}$<br>
+  <b>5. Hereditary Stability Rules:</b> $(\operatorname{Stab}_{j+1}R)\;\frac{P'\in\Gen_{j+1}\quad S(x);\Gamma\vdash^{j+1}P'\quad (S(x);\Gamma|_{\le j}\vdash^j\Stable_j(X))_{\IGP_{j+1}(X,P')}}{S(x);\Gamma\vdash^{j+1}\Stable_{j+1}(P')}$<br>
+  <b>6. Dynamic Modality Rules:</b> $(\langle\pi_F\rangle FI)\;\frac{S(x);\Gamma\vdash^k\bigwedge_{i=1}^m\phi_i\quad (\psi=F_{\mathrm{ops}}(\vec{\phi})\in\Prop_{k+1})}{S(x);\Gamma\vdash^k\langle\pi_F\rangle\psi}$, $([\pi_F]\text{-Step/Unstep})\;\frac{S(x);[\pi_F]\Gamma\vdash^k[\pi_F]\theta}{k+1;\Gamma\vdash\theta}$
+  </div>
+</div>
+
+::: {.carnap-box .fragment .fade-left}
+**Why Constructive Heyting Mereology Replaces Extensional Set Union:**
+* In classical Boolean mereology, incompatible local percepts $A, B$ with $|\ev_P(A) - \ev_P(B)| > \theta_{\mathrm{tol}}$ either explode deductively ($\bot$) or coexist as unintegrated vectors.
+* In $\mathfrak{M}_{\mathrm{asp}}(U)$, the $t$-norm rule $(\chi\text{-I}_S)$ gates lower-level feature binding, while Theorem 12.4 lifts incompatible subobjects $A, B$ via *Aufhebung* to a conflict-free higher generator $C \in \Prop_{k+1}$.
+:::
+
+<div class="video-container fragment fade-up" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act4_Dialectical_Aufhebung_Mereology.mp4" style="max-height:175px;"></video>
+  <div class="video-caption">Manim Act IV (Thm. 12.4, Def. 12.5): Dialectical Sublation (Aufhebung) &amp; Archimedean t-Norm Coordination in M_asp(U)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Cover Theorem 12.4 (Dialectical Concept Synthesis / Aufhebung), Definition 12.5 (Internal Heyting Mereological Universe $\mathfrak{M}_{\mathrm{asp}}(U)$ with Archimedean $t$-norm coordination), and the full single-succedent sequent calculus $\mathcal{L}_{\mathrm{iMSL}}$.
+:::
+
+---
+
+## §12.2.1: Mechanism 1 — Operadic Feature Consumption (*Episyllogismus*) {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATUM B: OPERADIC EVALUATION (FIGS. 12.7–12.9) &amp; INFORMATION ERASURE THEOREM (THM. 12.6)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Operadic Feature Consumption via the *Episyllogismus* ($k \uparrow$, §12.2.1, Figs. 12.7–12.9):**
+* Higher cortical tiers do **not** maintain an uncompressed pixel buffer of lower sensory arrays. Within the completed colored Banach operad $\Osyn$ (Ch. 2), multi-channel integration across levels is governed by:
+$$
+\ev_{\vec{\gamma};\gamma+1} \colon \Osyn(\underbrace{\gamma,\dots,\gamma}_{m\text{ times}};\; \gamma+1) \;\widehat{\otimes}_\pi\; \left(F_\gamma \;\widehat{\otimes}_\pi \dots \widehat{\otimes}_\pi\; F_\gamma\right) \longrightarrow F_{\gamma+1}
+$$
+* Input activations at tier $\gamma$ (V1 Gabor orientations, spatial frequencies, motion vectors, A1 pitch bands) function strictly as **operands**, projected into the **coinvariant quotient space**:
+$$
+F_{\gamma+1} \;\cong\; \left(F_\gamma^{\;\widehat{\otimes}_\pi m}\right) \Big/ \overline{\operatorname{span}}\big\{u - \sigma(u) \;\big|\; \sigma \in \Sigma_m\big\} \Big/ \mathcal{I}_{\mathrm{relations}}
+$$
+:::
+
+::: {.proof-box .fragment .fade-up}
+**Theorem 12.6 &amp; Proof (Operadic Information Erasure Theorem):**
+Let $F_\gamma$ be an $n$-dimensional real Banach space representing a lower cortical feature map. Under $\ev_{\vec{\gamma};\gamma+1}$, input coordinates $(x_1, \dots, x_m) \in (F_\gamma)^m$ are algebraically consumed into the coinvariant quotient. For any $n \ge 2$ and $m \ge 2$, the evaluation kernel satisfies:
+$$
+\boxed{\dim\big(\ker(\ev_{\vec{\gamma};\gamma+1})\big) \;\ge\; n^m \;-\; \binom{n + m - 1}{m} \;>\; 0}
+$$
+**Proof:** The evaluation morphism factors through the symmetrized coinvariant projection $\pi_{\mathrm{sym}} \colon (F_\gamma)^{\widehat{\otimes}_\pi m} \twoheadrightarrow \Sym^m(F_\gamma)$, whose kernel is spanned by all non-symmetric tensor permutations. In finite dimensions, $\dim(F_\gamma^{\otimes m}) = n^m$ while $\dim(\Sym^m(F_\gamma)) = \binom{n+m-1}{m}$. For all $n \ge 2, m \ge 2$, $n^m - \binom{n+m-1}{m} > 0$. Because $\ev$ factors through $\pi_{\mathrm{sym}}$, $\ker(\pi_{\mathrm{sym}}) \subseteq \ker(\ev)$, erasing individual lower coordinates unless an explicit top-down adjoint section $\ev^*$ is applied. $\blacksquare$
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Operadic Information Erasure Calculator (Thm. 12.6, Figs. 12.8–12.9)</h4>
+  <p class="widget-context-note">
+  <b>Context (Thm. 12.6):</b> Adjust lower-tier feature dimension $n = \dim(F_\gamma)$ and operadic arity $m$ to compute the full tensor space $n^m$, symmetric coinvariant quotient $\binom{n+m-1}{m}$, and the minimum erased kernel dimension $\dim\ker(\ev_{\vec{\gamma};\gamma+1})$.
+  </p>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Feature Dim $n$:</span>
+  <input type="range" id="ch12-er-n" min="2" max="8" step="1" value="4" oninput="window.ch12_updateErasureLab()">
+  <span id="ch12-er-n-val" style="font-family:monospace; width:26px;">4</span>
+  <span style="color:#20B2AA;">Operadic Arity $m$:</span>
+  <input type="range" id="ch12-er-m" min="2" max="5" step="1" value="4" oninput="window.ch12_updateErasureLab()">
+  <span id="ch12-er-m-val" style="font-family:monospace; width:26px;">4</span>
+  </div>
+  <div id="ch12-er-bars" style="margin:8px 0;"></div>
+  <div id="ch12-er-readout" class="matrix-readout" style="font-size:0.63em; text-align:left;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act5_Operadic_Feature_Erasure.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act V (Figs. 12.8–12.9, Thm. 12.6): Episyllogismus Evaluation Tree &amp; Coinvariant Coordinate Erasure</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Walk through Mechanism 1: Operadic Feature Consumption via the Episyllogismus $\ev_{\vec{\gamma};\gamma+1}$. Prove Theorem 12.6 showing that $\dim\ker(\ev) \ge n^m - \binom{n+m-1}{m} > 0$, which explains mathematically why conscious perception does not display raw V1 Gabor syntax.
+:::
+
+---
+
+## §12.2.2: Mechanism 2 — Protosimplex Encapsulation &amp; The Metroplex Lift {.smaller transition="slide"}
+
+<div class="stratum-badge badge-b">STRATUM B: SUBOBJECT-MINIMAL PROTOSIMPLEX (DEF. 12.7) &amp; DIMENSION-COLLAPSE THEOREM (THM. 12.8, FIG. 12.10)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Dimensional Chunking via the Metroplex Lift ($\mathbf{M}^n \to \mathbf{M}^{n+1}$, §12.2.2, Fig. 12.10):**
+* A distributed, recurrent firing pattern across $10^4$ spiking neurons in the inferior temporal (IT) cortex does not present to conscious awareness as $10^4$ coupled differential equations.
+* In the slice category $T_n \coloneqq \operatorname{Met}_n(\Xsyn)/G_n$ of grade-$n$ configurations over blueprint $G_n$, stabilized attractor basins $\mathcal{B}(T_z)$ ($\dot{V} \le -\gamma V$) are encapsulated into atomic 0D objects of the higher-level Hypermetrophor ${}^{n+1}\mathbf{w}\widetilde{\mathbf{a}}$.
+:::
+
+::: {.thm-box .fragment .fade-right}
+**Definition 12.7: Augmented Subobject-Minimal Protosimplex**
+Let $T_n \coloneqq \operatorname{Met}_n(\Xsyn)/G_n$ and let $\Alg_{\mathcal{O}_n}^0$ be the category of augmented algebras over the base constant subalgebra $\Free_{\mathcal{O}_n}(\emptyset)$. An object $\mathcal{P} \in \Obj(T_n)$ is a **Protosimplex of Grade $n$** if it is non-trivial and contains no proper non-trivial augmented sub-algebras:
+$$
+\forall A \hookrightarrow \mathcal{P} \text{ in } \Alg_{\mathcal{O}_n}^0, \qquad A \;\cong\; \Free_{\mathcal{O}_n}(\emptyset) \;\;\vee\;\; A \;\cong\; \mathcal{P}
+$$
+:::
+
+::: {.proof-box .fragment .fade-up}
+**Theorem 12.8 &amp; Proof (Protosimplex Dimension-Collapse Theorem):**
+Let $\mathcal{N}_{\mathrm{circuit}}$ be a recurrent neural circuit whose state space is a smooth Fréchet manifold $\mathcal{M}_{\mathrm{circuit}} = C^\infty(\mathbb{R}^k, \mathbb{R}^N)$ possessing an asymptotically stable attractor $\mathcal{B}(T_z)$. If $\mathcal{N}_{\mathrm{circuit}}$ stabilizes into a Protosimplex $\mathcal{P} \in \Obj(T_n)$, then under the nerve embedding:
+$$
+N_{n+1} \colon \operatorname{Met}_{n+1}(\Xsyn) \longhookrightarrow \operatorname{Cat}_\infty(\Xsyn), \qquad \mathcal{P} \;\in\; \big(N_{n+1}(\mathbf{M}^{n+1})\big)_0 \;\cong\; \Obj(\mathbf{M}^{n+1})
+$$
+**Proof:** By Def. 12.7, $\mathcal{P}$ contains no proper non-trivial subobjects in $T_n$. In the complete Segal space $\CSeg(\Xsyn)$, the 0-th simplicial degree $X_0$ comprises the objects of the internal category (Hypermetrophor components). Because $\mathcal{P}$ is subobject-minimal, internal trajectories within $\mathcal{M}_{\mathrm{circuit}}$ collapse into degenerate 1-simplices $s_0(\mathcal{P}) \in X_1$, presenting $\mathcal{P}$ as a discrete 0-dimensional point token to $\operatorname{Met}_{n+1}$. $\blacksquare$
+:::
+
+:::
+
+::: {.column width="52%"}
+
+::: {.intuition-box}
+**Why Complex Chords &amp; Semantic Concepts Feel Indivisible (Fig. 12.10):**
+* **Lower Level $n$ ($\operatorname{Met}_n / G_n$):**
+  * Attractor Basin $\mathcal{B}(T_{z,1})$ ($10^4$ spiking IT neurons encoding moving vertical stripe contours) $\xrightarrow{\text{Lift}}$ **0D Atom $\mathbf{P}_A$ ("Stripes")**.
+  * Attractor Basin $\mathcal{B}(T_{z,2})$ ($10^4$ spiking STG neurons encoding $80\,\mathrm{Hz}$ acoustic harmonics) $\xrightarrow{\text{Lift}}$ **0D Atom $\mathbf{P}_B$ ("Growl")**.
+* **Upper Level $n+1$ ($\operatorname{Met}_{n+1}(\Xsyn)$):**
+  * The conscious workspace operates **exclusively over these 0D categorical pointers** $\mathbf{P}_A, \mathbf{P}_B \in X_0$ linked by higher relational functors ${}^{n+1}\mathfrak{f}$, explaining why a musical chord or face is experienced as a single indivisible unit rather than a neural ledger.
+:::
+
+<div class="video-container fragment fade-left" style="margin-top:10px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act6_Protosimplex_Dimension_Collapse.mp4" style="max-height:245px;"></video>
+  <div class="video-caption">Manim Act VI (Fig. 12.10, Def. 12.7, Thm. 12.8): 10^4-Neuron Attractor Basin Collapsing via Nerve Embedding N_{n+1} to a 0-Simplex Token P</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Explain Mechanism 2: Protosimplex Encapsulation (Definition 12.7) and the Protosimplex Dimension-Collapse Theorem (Theorem 12.8). Highlight how subobject minimality in $T_n$ collapses internal trajectories into degenerate 1-simplices $s_0(\mathcal{P}) \in X_1$, turning an infinite-dimensional Fréchet attractor manifold into a 0-simplex point token in $\operatorname{CSeg}(\Xsyn)_0$.
+:::
+
+---
+
+## §12.2.3: Mechanism 3 — Non-Abelian Commutators &amp; Hodge Qualia Bipartition {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATUM B: INTERACTION CURVATURE (THM. 12.9, FIG. 12.11) &amp; HODGE BIPARTITION OF QUALIA (THM. 12.10, FIGS. 12.12–12.13)</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.thm-box}
+**Theorem 12.9 &amp; Proof (Relative Interaction Curvature Decomposition, Fig. 12.11):**
+Let $P_U \to M_U$ be a principal $G$-bundle over $(M_U, g_U)$ with non-Abelian $\mathfrak{g} = \operatorname{Lie}(G)$, and let $\mathbf{A} = A_0 + \sum_{k=1}^N a_k + a_{\mathrm{int}} \in \operatorname{Conn}(P_U)$ across $N \ge 2$ sensory channels. The total curvature 2-form $F_A \in \Omega^2(M_U, \operatorname{ad} P_U)$ decomposes identically as:
+$$
+F_A \;=\; \sum_{k=1}^N \mathcal{F}_k^{(A_0)} \;+\; \Omegaint^{\mathcal{D}}, \quad \Omegaint^{\mathcal{D}} \;\coloneqq\; \sum_{1 \le i < j \le N} [a_i, a_j] + D_{A_0}a_{\mathrm{int}} + \sum_{k=1}^N [a_k, a_{\mathrm{int}}] + \frac{1}{2}[a_{\mathrm{int}}, a_{\mathrm{int}}]
+$$
+**Proof:** Expanding $F_A = d(A_0 + a) + \frac{1}{2}[A_0 + a, A_0 + a] = F_{A_0} + D_{A_0}a + \frac{1}{2}[a,a]$ for $a = \sum_{k=1}^N a_k + a_{\mathrm{int}}$ and grouping single-channel terms under $\mathcal{F}_k^{(A_0)} = \frac{1}{N}F_{A_0} + D_{A_0}a_k + \frac{1}{2}[a_k,a_k]$ isolates $\Omegaint^{\mathcal{D}}$. Even when each individual sensory channel is internally flat ($\mathcal{F}_k^{(A_0)} = 0$), non-commutativity $[a_i, a_j] \ne 0$ generates non-zero interaction curvature with Frobenius intensity $g_E \coloneqq \frac{1}{2}\|\Omegaint^{\mathcal{D}}\|^2$. $\blacksquare$
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Theorem 12.10: Hodge Bipartition of Qualia Energy (Figs. 12.12–12.13)**
+On a compact boundaryless context manifold $(M_U, g_U)$, the connection Laplacian $\Delta_{A_0} \coloneqq D_{A_0}D_{A_0}^* + D_{A_0}^*D_{A_0}$ yields the $L^2$-orthogonal Fredholm splitting in $L^2\Omega^2(M_U, \operatorname{ad} P_U)$:
+$$
+\boxed{\Omegaint \;=\; \underbrace{\Delta_{A_0}\Phi_{\mathrm{int}}}_{\in\,\operatorname{im}(\Delta_{A_0})\;\text{(Dynamic Flow)}} \;+\; \underbrace{\gamma_{\mathrm{harm}}}_{\in\,\ker(\Delta_{A_0})\;\text{(Topological Core)}} \quad\Longrightarrow\quad g_E = \frac{1}{2}\|\Delta_{A_0}\Phi_{\mathrm{int}}\|_{L^2}^2 + \frac{1}{2}\|\gamma_{\mathrm{harm}}\|_{L^2}^2}
+$$
+* **Dynamic Intentional Qualia ($\Delta_{A_0}\Phi_{\mathrm{int}} = \Delta_{A_0}G_{A_0}(\Omegaint)$):** Transient focal perceptions, attention shifts, and adaptive sensory updates.
+* **Topological Background Qualia ($\gamma_{\mathrm{harm}} \in H^2_{\mathrm{dR}}(M_U, \operatorname{ad} P_U)$):** Invariant self-presence and baseline embodiment.
+:::
+
+:::
+
+::: {.column width="51%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Non-Abelian Vortex &amp; Hodge Energy Bipartition Lab (Thms. 12.9–12.10)</h4>
+  <p class="widget-context-note">
+  <b>Context (§12.2.3, Figs. 12.12–12.13):</b> Vary the Dynamic Attention Flux $\|\Delta_{A_0}\Phi_{\mathrm{int}}\|_{L^2}$ and Harmonic Topological Background $\|\gamma_{\mathrm{harm}}\|_{L^2}$ to inspect the $L^2$-orthogonal Pythagorean partition of gauge-invariant quale energy $g_E$.
+  </p>
+  <div class="slider-row">
+  <span style="color:#20B2AA;">Dynamic $\|\Delta_{A_0}\Phi_{\mathrm{int}}\|$:</span>
+  <input type="range" id="ch12-hdg-dyn" min="0.0" max="2.5" step="0.05" value="1.60" oninput="window.ch12_updateHodgeLab()">
+  <span id="ch12-hdg-dyn-val" style="font-family:monospace; width:36px;">1.60</span>
+  <span style="color:#FFA500;">Harmonic $\|\gamma_{\mathrm{harm}}\|$:</span>
+  <input type="range" id="ch12-hdg-harm" min="0.2" max="2.5" step="0.05" value="1.10" oninput="window.ch12_updateHodgeLab()">
+  <span id="ch12-hdg-harm-val" style="font-family:monospace; width:36px;">1.10</span>
+  </div>
+  <div style="text-align:center; background:#070a12; border:1px solid #334155; border-radius:8px; padding:4px;">
+  <svg id="ch12-hdg-svg" viewBox="0 0 420 120" width="100%" height="115"></svg>
+  </div>
+  <div id="ch12-hdg-readout" class="matrix-readout" style="margin-top:6px; font-size:0.62em; text-align:left;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act7_NonAbelian_Qualia_Hodge.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act VII (Figs. 12.11–12.13, Thms. 12.9–12.10): Cross-Modal Lie Vortex [a_vis, a_aud] &amp; Hodge Energy Splitting</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Derive Theorem 12.9 (Relative Interaction Curvature Decomposition) and Theorem 12.10 (Hodge Bipartition of Qualia Energy). Emphasize the orthogonal Fredholm splitting into transient exact cognitive flows $\Delta_{A_0}\Phi_{\mathrm{int}}$ and persistent harmonic de Rham cohomology classes $\gamma_{\mathrm{harm}} \in H^2_{\mathrm{dR}}$.
+:::
+
+---
+
+## §12.2.4–12.2.5: Mechanism 4 — 6D Affective Geometry ($R_6$) &amp; Predator Scenario {.smaller transition="slide"}
+
+<div class="stratum-badge badge-c">STRATUM B/C: 6D AFFECTIVE HERMETRY (THM. 12.11, FIG. 12.14), PIPELINE (FIG. 12.15) &amp; PREDATOR THREAT SYNTHESIS (FIG. 12.16)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
+**Theorem 12.11: Phenomenal Subspace Derivation &amp; Affective Hermetry (Fig. 12.14)**
+Equating total metric condenser capacity $Z_\omega(N) \coloneqq N^4/16$ with coordinate deformation capacity $Z_k(N) \coloneqq (N^3 + 3N^2)/4$ yields the unique positive integer root $N = 6$, proving that conscious perception is structured over $R_6 \coloneqq R_4 \times S_2$:
+* **$R_4$ (Kinematic Spacetime Subspace):** $x_1, x_2, x_3$ (3D spatial geometry) + $x_4 \coloneqq \mathrm{i}ct$ (temporal flow $\delta t_n$); **10 metric potentials** ($g_{\mu\nu}$) + **6 vorticity potentials** ($F_{\mu\nu}$ attention flux).
+* **$S_2$ (Entelechial–Aeonic Affective Subspace, Russell's 1980 Circumplex):**
+  1. **Valence ($x_5$ Entelechial Axis):** Governed by negentropy flux $\mathcal{L}_{X_5}\mathcal{S}_{\mathrm{therm}} \le -\gamma V < 0$ (positive adaptive valence) vs. $\mathcal{L}_{X_5}\mathcal{S}_{\mathrm{therm}} > 0$ (negative distress).
+  2. **Arousal ($x_6$ Aeonic Axis):** Pushout update frequency $\|\partial_6\| = 1/\delta t_n$ (3 mesobaric homeostasis potentials + 1 entelechial commutator $[\partial_5, \partial_6]$ intentionality).
+* **36-Component Non-Hermitian Hermetry Matrix:** $36 = 21\text{ symmetric } ({}^2\bar{\mathbf{g}}_+) + 15\text{ skew-symmetric } ({}^2\bar{\mathbf{g}}_-)$ satisfying affective energy conservation $\operatorname{div}_{\bar{g}}\big[\Gamma_{(-)}^{(6,6)}({}^2\bar{\mathbf{R}} - \frac{1}{2}{}^2\bar{\mathbf{g}}\mathrm{R})\big] = \mathbf{0}$.
+:::
+
+::: {.intuition-box .fragment .fade-up}
+**Synthesis: The Complete Predator Threat Scenario (§12.2.5, Figs. 12.15–12.16):**
+1. **Tier I ($R_n$):** Retinal photons at $\lambda = 580\,\mathrm{nm}$ (orange/black gradients) + cochlear basilar resonance at $f = 80\,\mathrm{Hz}$ (low-frequency growl).
+2. **Tier II ($F_1 \in \Alg_{\Osyn}$):** V1 Gabor filters extract moving vertical stripes; A1 extracts harmonic bands; raw photons/frequencies consumed into coinvariants!
+3. **Tier III ($\mathcal{P} \in \CSeg(\Xsyn)_0$):** $10^4$-neuron IT attractor collapses to 0D pointer $\mathbf{P}_{\mathrm{tiger}}$; STG collapses to $\mathbf{P}_{\mathrm{growl}}$ *(still no felt fear!)*.
+4. **Tier IV ($\Hol \;\text{\&amp;}\; \Omegaint$):** Global workspace (PFC + Amygdala + Parietal) forms pushout $P_{\mathrm{vis}} \boxplusphi P_{\mathrm{aud}} \boxplusphi P_{\mathrm{visc}}$ with $\Def_{\mathcal{U}} = 0$ and non-Abelian friction $[a_{\mathrm{vis}}, a_{\mathrm{threat}}] \ne 0 \implies$ **vivid holistic quale of terror** driving active motor saccade $\alpha \colon U \to U'$ ($\dot{V} \le -\gamma V$).
+:::
+
+:::
+
+::: {.column width="52%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive 6D Affective Circumplex ($R_4 \times S_2$) &amp; Predator Pipeline Lab (Thm. 12.11)</h4>
+  <p class="widget-context-note">
+  <b>Context (§12.2.4–12.2.5):</b> Adjust Entelechial Negentropy Flux ($-\mathcal{L}_{X_5}\mathcal{S}_{\mathrm{therm}}$, Valence $x_5$) and Zeitkorn Update Frequency ($1/\delta t_n$, Arousal $x_6$), or trigger the Predator Threat scenario.
+  </p>
+  <div class="slider-row">
+  <span style="color:#20B2AA;">Valence $x_5$ ($-\mathcal{L}_{X_5}\mathcal{S}$):</span>
+  <input type="range" id="ch12-aff-val" min="-1.0" max="1.0" step="0.05" value="-0.85" oninput="window.ch12_updateAffectiveLab()">
+  <span id="ch12-aff-val-lbl" style="font-family:monospace; width:38px;">-0.85</span>
+  <span style="color:#FFA500;">Arousal $x_6$ ($1/\delta t_n$):</span>
+  <input type="range" id="ch12-aff-aro" min="5" max="50" step="1" value="42" oninput="window.ch12_updateAffectiveLab()">
+  <span id="ch12-aff-aro-lbl" style="font-family:monospace; width:38px;">42Hz</span>
+  </div>
+  <div style="display:flex; gap:6px; justify-content:center; margin:5px 0;">
+  <button class="syn-btn" onclick="window.ch12_setAffectivePreset(-0.85, 42)">🐅 Predator Terror</button>
+  <button class="syn-btn" onclick="window.ch12_setAffectivePreset(0.80, 35)">✨ Creative Flow</button>
+  <button class="syn-btn" onclick="window.ch12_setAffectivePreset(0.65, 12)">🌿 Serene Homeostasis</button>
+  </div>
+  <div id="ch12-aff-readout" class="matrix-readout" style="font-size:0.62em; text-align:left; line-height:1.36;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act8_SixD_Affective_Predator.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act VIII (Figs. 12.14–12.16, Thm. 12.11): 6D Hermetry Matrix (21+15) &amp; 4-Tier Predator Threat Ignition</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Explain Mechanism 4: Theorem 12.11 ($Z_\omega(N) = Z_k(N) \implies N=6$, decomposing $R_6 = R_4 \times S_2$ into 21 symmetric kinematic and 15 skew-symmetric affective components matching Russell's Affective Circumplex). Walk through the complete 6-stage Consciousness Construction Pipeline (Fig. 12.15) and Predator Threat Scenario (Fig. 12.16).
+:::
+
+---
+
+## §12.3.1–12.3.2: Structured Contexts $\Ctx$, Seifert–van Kampen &amp; Metropie Flow {.smaller transition="convex"}
+
+<div class="stratum-badge badge-a">STRATUM A/B: STRUCTURED CONTEXTS (DEF. 12.12), SEIFERT–VAN KAMPEN (THM. 12.13), PSEUDOMETRIC d_P (DEF. 12.14, PROP. 12.15) &amp; LIOUVILLE METROPIE (DEF. 12.16, THM. 12.17)</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.thm-box}
+**Definition 12.12: The Category of Structured Contexts $\Ctx$ (§12.3.1)**
+$\Ctx$ is the small skeleton category in $\FinBan$ whose:
+1. **Objects** are tuples $U \coloneqq (D^U, P^U, C^U, K^U, z^U, \zeta^U, \mathcal{S}_D^U, \mathcal{S}_P^U)$ with Predicatrix space $P^U$, Dialectic space $D^U$, output channel space $C^U$, linear contraction $K^U \colon D^U \widehat{\otimes}_\pi P^U \to C^U$ ($\|K^U\|_{\mathrm{op}} \le 1$), isometric ciphers $z^U \in \operatorname{Isom}(P^U)$, $\zeta^U \in \operatorname{Isom}(D^U)$, and closed convex cylinders $\mathcal{S}_D^U, \mathcal{S}_P^U$.
+2. **Morphisms** $\alpha = (\alpha_D, \alpha_P, \alpha_C) \colon V \to U$ are linear contractions satisfying:
+$$
+\alpha_C(K^V(d, p)) = K^U(\alpha_D(d), \alpha_P(p)), \quad \alpha_P \circ z^V = z^U \circ \alpha_P, \quad \alpha_D \circ \zeta^V = \zeta^U \circ \alpha_D
+$$
+:::
+
+::: {.proof-box .fragment .fade-right}
+**Theorem 12.13 &amp; Proof (Context Seifert–van Kampen Pushout–Pullback Commutation):**
+For a span $W \xrightarrow{\iota_1} U, W \xrightarrow{\iota_2} V$ in $\Ctx$ with overlap $W = U \times_Z V$ and pushout $U \sqcup_W V$:
+1. **Colimit Preservation:** $\mathfrak{R}_P(U \sqcup_W V) \cong P^U \boxplusphi P^V \coloneqq (P^U \oplus_1 P^V)/\Im(\delta_\phi)$, where $\delta_\phi(w) = (\iota_{1,P}(w), -\iota_{2,P}(w))$.
+2. **Mayer–Vietoris Equalizer in $\Esyn$:** For any sheaf $\mathbf{F} \in \Esyn$,
+$$
+0 \longrightarrow \mathbf{F}(U \sqcup_W V) \xlongrightarrow{\;\rho^*\;} \mathbf{F}(U) \oplus \mathbf{F}(V) \xlongrightarrow{\;\iota_1^* - \iota_2^*\;} \mathbf{F}(W)
+$$
+**Proof:** (1) In $\FinBan$, the pushout of contractions is the $\ell^1$-coproduct quotient by $\Im(\delta_\phi)$; naturality of $z^U, z^V, z^W$ induces an isometric cipher on the quotient. (2) Yoneda $\mathbf{y} \colon \Ctx \to \Esyn$ preserves colimits up to sheafification, so $\Hom_{\Esyn}(-, \mathbf{F})$ maps the epimorphic covering sieve $\mathbf{y}U \sqcup_{\mathbf{y}W} \mathbf{y}V \twoheadrightarrow \mathbf{y}(U \sqcup_W V)$ to the exact equalizer $\ker(\iota_1^* - \iota_2^*)$. $\blacksquare$
+:::
+
+:::
+
+::: {.column width="51%"}
+
+::: {.thm-box}
+**Discrepancy Metric $d_P$ (Def. 12.14, Prop. 12.15) &amp; Metropie Flow (Def. 12.16, Thm. 12.17):**
+* **Def. 12.14 &amp; Prop. 12.15:** $d_P(U, V) \coloneqq \inf_{\alpha,\beta} \max_{F \in \{D,P,C\}} \max(\|I_{F^U} - \beta_F\alpha_F\|_{\mathrm{op}}, \|I_{F^V} - \alpha_F\beta_F\|_{\mathrm{op}})$ satisfies $d_P(U,W) \le d_P(U,V) + d_P(V,W)$ via $\|I - \beta_1\beta_2\alpha_2\alpha_1\|_{\mathrm{op}} \le \|I - \beta_1\alpha_1\|_{\mathrm{op}} + \|\beta_1\|_{\mathrm{op}}\|I - \beta_2\alpha_2\|_{\mathrm{op}}\|\alpha_1\|_{\mathrm{op}}$.
+* **Def. 12.16 (Infinitesimal Metropie Metric Tensor):** On $G = \operatorname{Isom}^+(P_n) \cong \mathrm{SO}(n)$, $g_{\mathrm{met}}(\dot{z}_1, \dot{z}_2) \coloneqq -\frac{1}{2}\operatorname{tr}((z^{-1}\dot{z}_1)(z^{-1}\dot{z}_2)) \ge 0$.
+* **Theorem 12.17 &amp; Proof (Liouville Invariance of Metropie Geodesic Flows):**
+  1. **Haar Invariance:** Since $\mathrm{SO}(n)$ is compact and unimodular, 1-parameter geodesic translations $\Phi_t(z) = z\exp(tX)$ preserve Haar measure: $(\Phi_t)_*(d\mu_{\mathrm{Haar}}) = d\mu_{\mathrm{Haar}}$.
+  2. **Symplectic Liouville Volume:** On $T^*G$ with $\omega_{\mathrm{can}} = dp_i \wedge dq^i$ and $H(z,p) = \frac{1}{2}\|p\|_{g_{\mathrm{met}}}^2$, Cartan's Magic Formula gives $\mathcal{L}_{X_H}\omega_{\mathrm{can}} = d(\iota_{X_H}\omega_{\mathrm{can}}) + \iota_{X_H}(d\omega_{\mathrm{can}}) = -d^2H = 0 \implies \mathcal{L}_{X_H}\Omega^n = 0 \implies \operatorname{div}_{\Omega^n}(X_H) \equiv 0$. Perspective shifts neither compress nor dilate cognitive informational volume! $\blacksquare$
+:::
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act9_VanKampen_Liouville_Metropie.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act IX (Thms. 12.13 &amp; 12.17): Context Seifert–van Kampen Pushout &amp; Volume-Preserving SO(n) Metropie Geodesics</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Present Section 12.3.1–12.3.2: Definition 12.12 ($\Ctx$), Theorem 12.13 (Seifert–van Kampen pushout-pullback commutation and Mayer–Vietoris exactness), Definition 12.14 & Proposition 12.15 (extended pseudometric $d_P$ and triangle inequality), and Definition 12.16 & Theorem 12.17 (Metropie metric $g_{\mathrm{met}}$ on $\mathrm{SO}(n)$ and Liouville phase-volume conservation).
+:::
+
+---
+
+## §12.3.3–12.3.5: Subcanonicity of $\Jsyn$, Čech Cohomology &amp; Obstruction Dichotomy {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATUM A/B: SUBCANONICITY PROOF (THM. 12.18), ČECH COBOUNDARY NILPOTENCY (DEF. 12.19, PROP. 12.20) &amp; OBSTRUCTION DICHOTOMY (THM. 12.21)</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.proof-box}
+**Theorem 12.18 &amp; Proof (Subcanonicity of the Syntrometric Topology $\Jsyn$, §12.3.3):**
+Every representable presheaf $\mathbf{h}_X \coloneqq \Hom_{\Ctx}(-, X)$ is a sheaf in $\Esyn$, and $\Omega(U)$ is a complete internal Heyting algebra ($p \vee \neg p \ne 1_\Omega$):
+$$
+\Hom_{\Ctx}(U, X) \xlongrightarrow{\mathcal{R}} \prod_{i=1}^m \Hom_{\Ctx}(V_i, X) \rightrightarrows \prod_{i,j=1}^m \Hom_{\Ctx}(V_i \times_U V_j, X)
+$$
+1. **Injectivity (Separation):** By Def. 12.12, joint addition $\rho_F \colon \bigoplus_{i=1}^m F^{V_i} \to F^U$ admits a contractive split-section $\sigma_F$ with $\rho_F \circ \sigma_F = \operatorname{id}_{F^U}$. If $f \circ \rho_i = g \circ \rho_i$, then $f_F(u) = \sum_i (f_F \circ (\rho_i)_F)(\sigma_{F,i}(u)) = g_F(u) \implies f = g$.
+2. **Surjectivity (Gluing):** Given matching $(f_i)_{i=1}^m$, define $f_F \coloneqq \sum_{i=1}^m (f_i)_F \circ \sigma_{F,i}$. Contractivity holds since $\|f_F\|_{\mathrm{op}} \le \max_i \|(f_i)_F\|_{\mathrm{op}}\|\sigma_F\|_{\mathrm{op}} \le 1$, and cipher naturality holds because $\sigma_P, \sigma_D$ commute with $z^U, \zeta^U$. $\blacksquare$
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Čech Complex (Def. 12.19, Prop. 12.20) &amp; Obstruction Dichotomy (Thm. 12.21, §12.3.4–12.3.5):**
+* **Def. 12.19 &amp; Prop. 12.20:** On $\check{C}^p(\mathcal{U}, \mathbf{A}) = \prod_{i_0 < \dots < i_p} \mathbf{A}(V_{i_0\dots i_p})$, $(\delta^p\omega)_{i_0\dots i_{p+1}} = \sum_{j=0}^{p+1} (-1)^j d_j^*(\omega_{i_0\dots\widehat{i_j}\dots i_{p+1}})$ satisfies $\delta^{p+1} \circ \delta^p \equiv 0$ via simplicial identity $d_j^* \circ d_k^* = d_k^* \circ d_{j-1}^*$ ($k < j$).
+* **Theorem 12.21 (The Epistemic Obstruction Dichotomy):**
+  1. **Type I Conflict (Evaluative Discrepancies / 0-Coboundaries):** $s \in \check{C}^0$ with $s_i|_{V_{ij}} \ne s_j|_{V_{ij}}$ yields $\Def_{\mathcal{U}}(s) = \delta^0(s) \ne 0$, but $[\delta^0(s)] = 0 \in \check{H}^1(\mathcal{U}, \mathbf{A})$ since $\delta^1(\delta^0 s) = 0$. Resolvable by local context refinement!
+  2. **Type II Conflict (Intrinsic Topological Antinomies / Non-Trivial 1-Cocycles):** $g \in \check{Z}^1(\mathcal{U}, \mathbf{A})$ with $[g] \ne 0 \in \check{H}^1(\mathcal{U}, \mathbf{A}) \iff \neg\exists s \in \check{C}^0$ with $\delta^0(s) = g$. Global Holoform $\Gamma \in \mathbf{A}(U)$ is **topologically obstructed**!
+:::
+
+:::
+
+::: {.column width="51%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Čech Cohomology &amp; Epistemic Obstruction Inspector (Thm. 12.21)</h4>
+  <p class="widget-context-note">
+  <b>Context (§12.3.4–12.3.5):</b> Compare **Consensus ($\Def_{\mathcal{U}}=0$)**, **Type I Evaluative Discrepancy ($\delta^0 s \ne 0, [g]=0$)**, and **Type II Topological Antinomy ($[g] \ne 0 \in \check{H}^1$)** on a 3-context cover $\{V_1, V_2, V_3\}$.
+  </p>
+  <div style="display:flex; gap:6px; margin-bottom:8px;">
+  <button id="ch12-ob-btn-0" class="syn-btn" onclick="window.ch12_setObstructionMode(0)">0. Holoform Consensus</button>
+  <button id="ch12-ob-btn-1" class="syn-btn" onclick="window.ch12_setObstructionMode(1)">I. Type I (0-Coboundary)</button>
+  <button id="ch12-ob-btn-2" class="syn-btn" style="background:#FFD700; color:#000; font-weight:bold;" onclick="window.ch12_setObstructionMode(2)">II. Type II (H¹ Antinomy)</button>
+  </div>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Local Bias $\Delta s_{12}$:</span>
+  <input type="range" id="ch12-ob-ds" min="0.0" max="1.5" step="0.1" value="0.5" oninput="window.ch12_updateObstructionLab()">
+  <span id="ch12-ob-ds-val" style="font-family:monospace; width:32px;">0.5</span>
+  <span style="color:#DC143C;">Cocycle Twist $\oint g$:</span>
+  <input type="range" id="ch12-ob-tw" min="0.0" max="2.0" step="0.1" value="1.2" oninput="window.ch12_updateObstructionLab()">
+  <span id="ch12-ob-tw-val" style="font-family:monospace; width:32px;">1.2</span>
+  </div>
+  <div id="ch12-ob-readout" class="matrix-readout" style="margin-top:6px; font-size:0.62em; text-align:left; line-height:1.36;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act10_Subcanonicity_Cech_Obstruction.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act X (Thms. 12.18 &amp; 12.21): Subcanonical Gluing via σ_F &amp; Type I vs. Type II Čech Cohomology Obstructions</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Prove Theorem 12.18 (subcanonicity of $\Jsyn$ via contractive split-sections $\sigma_F$), Proposition 12.20 ($\delta^{p+1}\circ\delta^p = 0$), and Theorem 12.21 (Epistemic Obstruction Dichotomy separating Type I 0-coboundary evaluative discrepancies from Type II non-trivial $\check{H}^1$ topological antinomies).
+:::
+
+---
+
+## §12.3.6–12.3.8: Beck–Chevalley, Hereditary Stability $\Stable_k$ &amp; Prime Saturation {.smaller transition="slide"}
+
+<div class="stratum-badge badge-b">STRATUM A/B: TRI-ADJOINT QUANTIFIERS (PROP. 12.22), BECK–CHEVALLEY (THM. 12.23), WORKING MEMORY INVARIANCE (DEF. 12.24, THM. 12.25, FIG. 12.17) &amp; PRIME SATURATION (THM. 12.26)</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.thm-box}
+**Tri-Adjoint Quantifiers (Prop. 12.22) &amp; Beck–Chevalley Invariance (Thm. 12.23, §12.3.6):**
+* **Prop. 12.22:** For every $f \colon V \to U$ in $\Ctx$, pullback $f^* \colon \Sub_{\mathcal{E}}(\mathbf{y}U) \to \Sub_{\mathcal{E}}(\mathbf{y}V)$ admits left and right adjoints $\exists_f \dashv f^* \dashv \forall_f$, with $\exists_f(A) \coloneqq \Im(f \circ \iota_A)$ and $\forall_f(A) \coloneqq \max\{B \hookrightarrow \mathbf{y}U \mid f^*(B) \le A\}$.
+* **Theorem 12.23 &amp; Proof (Beck–Chevalley Invariance):** Over pullback $W = V_1 \times_U V_2$ with $\pi_1 \colon W \to V_1, \pi_2 \colon W \to V_2$ and $g \colon V_1 \to U, f \colon V_2 \to U$, for every $A \hookrightarrow \mathbf{y}V_2$:
+$$
+\mathbf{BC}_\exists \colon \;\exists_{\pi_1}(\pi_2^*(A)) \;\cong\; g^*(\exists_f(A)), \qquad \mathbf{BC}_\forall \colon \;g^*(\forall_f(A)) \;\cong\; \forall_{\pi_1}(\pi_2^*(A))
+$$
+**Proof:** ($\mathbf{BC}_\exists$) Since $\Esyn$ is a Grothendieck topos, regular images are stable under pullback, so pulling back $A \twoheadrightarrow \exists_f(A) \hookrightarrow \mathbf{y}U$ along $\mathbf{y}g^*$ yields $\exists_{\pi_1}(\pi_2^*A) \cong g^*(\exists_f A)$. ($\mathbf{BC}_\forall$) By categorical mates: $\Hom(B, g^*(\forall_f A)) \cong \Hom(f^*(\exists_g B), A) \cong \Hom(\exists_{\pi_2}(\pi_1^*B), A) \cong \Hom(B, \forall_{\pi_1}(\pi_2^*A))$, plus Yoneda. $\blacksquare$
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Hereditary Stability $\Stable_k$ &amp; Working Memory Invariance (Def. 12.24, Thm. 12.25, Fig. 12.17):**
+* **Def. 12.24:** Immediate Generative Parthood $\IGP_{j+1}(X, P') \iff (P' = \operatorname{Conj}(X,Y)) \vee (P' = \operatorname{Conj}(Y,X)) \vee (P' = \operatorname{Lift}_{\mathrm{syn}}(X))$. World $(U, k)$ satisfies:
+$$
+(U, k) \models \Stable_{j+1}(P') \iff (U, k) \models P' \;\wedge\; \forall X\big(\IGP_{j+1}(X, P') \implies (U, k) \models \Stable_j(X)\big)
+$$
+* **Theorem 12.25 &amp; Proof (Working Memory Invariance):** If $S(x); \Gamma \vdash^k \Stable_k(P)$, then for every $\alpha \colon V \to U$ in $\Ctx$, $U \Vdash P \implies V \Vdash \alpha^*(P)$. Proven by induction on $k$: base $k=0$ uses $\nu_V(\alpha^*a_i) = \Omega(\alpha)(\top_{\Omega(U)}) = \top_{\Omega(V)}$; step $k=j+1$ uses $\alpha_C \circ K^V = K^U \circ (\alpha_D \widehat{\otimes}_\pi \alpha_P)$. $\blacksquare$
+:::
+
+:::
+
+::: {.column width="51%"}
+
+::: {.proof-box}
+**Theorem 12.26 &amp; Proof (Simultaneous Multi-Level Prime Saturation Theorem, §12.3.8):**
+Let $S(x); \Gamma_0 \nvdash^0 \phi_0$ be an unprovable root sequent at level $k=0$. There exists an infinite sequence of Prime Saturated Theories $\mathbf{\Delta} \coloneqq \langle \Delta_k \subset \mathcal{L}_k \rangle_{k \in \mathbb{N}_0}$ linked by the deterministic dynamic transition relation:
+$$
+(\Delta_k, k) \,R_{\pi_F}^c\, (\Delta_{k+1}, k+1) \;\iff\; \big\{\theta \in \mathcal{L}_{k+1} \;\big|\; [\pi_F]\theta \in \Delta_k\big\} \;\subseteq\; \Delta_{k+1}
+$$
+satisfying the **Truth Lemma across all levels $k \in \mathbb{N}_0$**:
+$$
+\boxed{(\Delta_k, k) \models \psi \;\iff\; \psi \in \Delta_k \qquad \forall \psi \in \mathcal{L}_k}
+$$
+**Proof:** Extend $\Gamma_0$ to a prime $0$-theory $\Delta_0$ with $\phi_0 \notin \Delta_0$ via the Prime Extension Lemma. Inductively, given $\Delta_k$, define $\Theta_{k+1} \coloneqq \{\theta \mid [\pi_F]\theta \in \Delta_k\} \cup F_{\mathrm{ops}}(\Delta_k \cap \Prop_k)$. If $\Theta_{k+1} \vdash^{k+1} \bot$, rule $([\pi_F]\text{-Unstep})$ forces $\Delta_k \vdash^k [\pi_F]\bot \to \bot$, contradicting consistency of $\Delta_k$. Thus $\Theta_{k+1}$ extends to a prime $(k+1)$-theory $\Delta_{k+1}$, and Truth Lemma induction holds on lexicographic rank $\mathbf{m}(\psi) = (\operatorname{rk}(\psi), k)$. $\blacksquare$
+:::
+
+<div class="interactive-panel" style="margin-top:8px;">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Working Memory Stability &amp; Beck–Chevalley Explorer (Thms. 12.23, 12.25)</h4>
+  <div class="slider-row">
+  <span style="color:#4169E1;">Deduction Stratum $k$:</span>
+  <input type="range" id="ch12-wm-k" min="0" max="4" step="1" value="2" oninput="window.ch12_updateWorkingMemoryLab()">
+  <span id="ch12-wm-k-val" style="font-family:monospace; width:28px;">k=2</span>
+  <span style="color:#20B2AA;">Base Anchor $\AP_0$:</span>
+  <select id="ch12-wm-anchor" onchange="window.ch12_updateWorkingMemoryLab()" style="background:#151c2c; color:#FFD700; border:1px solid #334155; border-radius:4px; font-size:0.8em; padding:2px 6px;">
+  <option value="1">Apodictic (Stable_0 = ⊤)</option>
+  <option value="0">Unanchored Drift Risk</option>
+  </select>
+  </div>
+  <div id="ch12-wm-readout" class="matrix-readout" style="margin-top:5px; font-size:0.62em; text-align:left;"></div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Cover Section 12.3.6–12.3.8: Tri-adjoint quantifiers $\exists_f \dashv f^* \dashv \forall_f$ (Prop. 12.22), Beck–Chevalley Invariance (Thm. 12.23), Hereditary Stability Modality $\Stable_k$ and Cognitive Working Memory Invariance (Def. 12.24, Thm. 12.25), and Simultaneous Multi-Level Prime Saturation (Thm. 12.26).
+:::
+
+---
+
+## §12.4.1–12.4.2: Completed Operad $\Osyn$, Beck Distributive Law &amp; Selection Functors {.smaller transition="convex"}
+
+<div class="stratum-badge badge-a">STRATUM A/B: COMPLETED COLORED OPERAD O_syn (DEF. 12.27), BECK DISTRIBUTIVE LAW (THM. 12.28) &amp; SELECTION POWER FUNCTORS (DEF. 12.29)</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.thm-box}
+**Definition 12.27: Completed Free Colored Banach Operad $\Osyn$ (§12.4.1)**
+Let $E_{\mathrm{pyr}} \in \mathsf{Coll}_{\mathbf{Col}}(\mathbf{Ban})$ be the colored generating collection with operations $E_{\mathrm{pyr}}(\gamma,\dots,\gamma;\gamma+1) \coloneqq \mathcal{B}_{\le 1}((F_\gamma)^{\widehat{\otimes}_\pi m}, F_{\gamma+1})$ and $\{0\}$ otherwise. The **Completed Free Operad** is:
+$$
+\Osyn \;\coloneqq\; \widehat{\mathbb{F}}_\pi(E_{\mathrm{pyr}})(\vec{\gamma}; \gamma) \;\coloneqq\; \bigoplus_{[\tau] \in \operatorname{Tree}(\vec{\gamma};\gamma)/\sim}^{\ell^1} \left(\widehat{\bigotimes}_{v \in V(\tau)}^\pi E_{\mathrm{pyr}}\big(\operatorname{in}(v); \operatorname{out}(v)\big)\right)_{\Aut(\tau)}
+$$
+:::
+
+::: {.proof-box .fragment .fade-up}
+**Theorem 12.28 &amp; Proof (Inductive Proof of the Beck Distributive Law for Tree Monads):**
+Let $(\mathbb{T}_{\mathrm{pyr}}, \mu_{\mathrm{pyr}}, \eta_{\mathrm{pyr}})$ and $(\mathbb{T}_{\mathrm{frag}}, \mu_{\mathrm{frag}}, \eta_{\mathrm{frag}})$ be the algebraic free tree monads on $\FinBan$. The natural transformation $\lambda \colon \mathbb{T}_{\mathrm{pyr}} \circ \mathbb{T}_{\mathrm{frag}} \Longrightarrow \mathbb{T}_{\mathrm{frag}} \circ \mathbb{T}_{\mathrm{pyr}}$ defined by structural recursion:
+$$
+\lambda_X\big(\eta_{\mathrm{pyr}}(t)\big) \coloneqq \mathbb{T}_{\mathrm{frag}}(\eta_{\mathrm{pyr}})(t), \qquad \lambda_X\big(\psi(t_1,\dots,t_m)\big) \coloneqq \mu_{\mathrm{frag}} \circ \mathbb{T}_{\mathrm{frag}}(\psi)\big(\lambda_X(t_1),\dots,\lambda_X(t_m)\big)
+$$
+satisfies the **four Beck coherence diagrams** identically:
+1. **Unit Law 1 ($\lambda \circ \mathbb{T}_{\mathrm{pyr}}\eta_{\mathrm{frag}} = \eta_{\mathrm{frag}}\mathbb{T}_{\mathrm{pyr}}$):** $\lambda_X(\eta_{\mathrm{pyr}}(\eta_{\mathrm{frag}}(x))) = \mathbb{T}_{\mathrm{frag}}(\eta_{\mathrm{pyr}})(\eta_{\mathrm{frag}}(x)) = \eta_{\mathrm{frag}}(\eta_{\mathrm{pyr}}(x))$.
+2. **Unit Law 2 ($\lambda \circ \eta_{\mathrm{pyr}}\mathbb{T}_{\mathrm{frag}} = \mathbb{T}_{\mathrm{frag}}\eta_{\mathrm{pyr}}$):** Holds directly by the base definition.
+3. **Multiplication Law 1 ($\mu_{\mathrm{frag}}$ Pentagon):** Naturality of operadic substitution $\psi \circ_i \theta$ commutes with root grafting in $\mathbb{T}_{\mathrm{frag}}$.
+4. **Multiplication Law 2 ($\mu_{\mathrm{pyr}}$ Pentagon):** Induction on tree depth + associativity of $\widehat{\otimes}_\pi$ gives $\lambda_X(\mu_{\mathrm{pyr}}(T)) = (\mathbb{T}_{\mathrm{frag}}\mu_{\mathrm{pyr}}) \circ (\lambda\mathbb{T}_{\mathrm{pyr}}) \circ (\mathbb{T}_{\mathrm{pyr}}\lambda)(T)$, extending continuously via the BLT Theorem to $T_{\mathrm{pyr}}, T_{\mathrm{frag}}$. $\blacksquare$
+:::
+
+:::
+
+::: {.column width="51%"}
+
+::: {.thm-box}
+**Definition 12.29: The Four Elementary Selection Power Functors in $\FinBan$ (§12.4.2)**
+For an $n$-dimensional carrier space $V \in \Obj(\FinBan)$, the four universal selection functors of arity $m$ are:
+$$
+\begin{aligned}
+\mathsf{Sel}_{(4)}^{(m)}(V) &\coloneqq V^{\otimes m}, & \dim &= n^m & &\text{(Homometral Asymmetric)} \\
+\mathsf{Sel}_{(2)}^{(m)}(V, B) &\coloneqq V^{\underline{\otimes}m}(B), & \dim &= \frac{n!}{(n-m)!} & &\text{(Heterometral Asymmetric)} \\
+\mathsf{Sel}_{(3)}^{(m)}(V) &\coloneqq \Sym^m(V), & \dim &= \binom{n+m-1}{m} & &\text{(Homometral Symmetric)} \\
+\mathsf{Sel}_{(1)}^{(m)}(V, B) &\coloneqq \Lambda^m(V), & \dim &= \binom{n}{m} & &\text{(Heterometral Alternating)}
+\end{aligned}
+$$
+:::
+
+::: {.intuition-box .fragment .fade-left}
+**Role of the Four Selection Regimes in Cortical Syntax Compression:**
+* $\mathsf{Sel}_{(4)}^{(m)}$ preserves full ordered sequence syntax ($n^m$).
+* $\mathsf{Sel}_{(3)}^{(m)} = \Sym^m(V)$ drives **Operadic Feature Consumption** (Thm. 12.6), projecting out permutation order to form order-invariant perceptual gestalts.
+* $\mathsf{Sel}_{(1)}^{(m)} = \Lambda^m(V)$ drives **Programmable Cognitive Closure (*Syndromabschluss*, Thm. 12.34)**, vanishing identically whenever $m > n$.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Present Section 12.4.1–12.4.2: Definition 12.27 (Completed Free Colored Banach Operad $\Osyn$), Theorem 12.28 (Inductive proof of the 4 Beck coherence laws for $\lambda \colon \mathbb{T}_{\mathrm{pyr}}\mathbb{T}_{\mathrm{frag}} \Rightarrow \mathbb{T}_{\mathrm{frag}}\mathbb{T}_{\mathrm{pyr}}$), and Definition 12.29 (The Four Elementary Selection Power Functors $\mathsf{Sel}_{(1\dots 4)}^{(m)}$).
+:::
+
+---
+
+## §12.4.3–12.4.5: Carrier Pushouts, Corporate Classes &amp; *Syndromabschluss* {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATUM B: CONFLEXIVITY INDEX (DEF. 12.30, FIG. 12.18), PUSHOUT EXACT SEQUENCE (THM. 12.31), CORPORATE DETERMINACY (THM. 12.32), CYCLIC RESONANCE (THM. 12.33) &amp; SYNDROMABSCHLUSS (THM. 12.34)</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.thm-box}
+**Conflexivity (Def. 12.30, Fig. 12.18) &amp; Carrier Pushout Exact Sequence (Thm. 12.31, §12.4.3):**
+* **Def. 12.30:** On interaction tree $G_{\mathcal{S}} = (V, E_C \sqcup E_K, \Sigma)$, $\operatorname{ConfIndex}_{\mathrm{pres}}(G_{\mathcal{S}}) \coloneqq |E_K| + 1$ ($|E_K|=0$: subconscious Konzenter coproduct $P_a \oplus_1 P_b$; $|E_K| \ge 1$: conscious Exzenter pushout $P_a \boxplusphi P_b$).
+* **Theorem 12.31 &amp; Proof (Carrier Pushout Short Exact Sequence):** Let $\dim P_a = p, \dim P_b = q$, and $\delta_\phi(r) = (\phi_a(r), -\phi_b(r))$:
+$$
+0 \longrightarrow \frac{R_\phi}{\ker\phi_a \cap \ker\phi_b} \xlongrightarrow{\;\bar{\delta}_\phi\;} P_a \oplus_1 P_b \xlongrightarrow{\;\pi_{\boxplus}\;} P_a \boxplusphi P_b \longrightarrow 0
+$$
+1. **Exactness &amp; Rank–Nullity:** $\ker(\delta_\phi) = \ker\phi_a \cap \ker\phi_b \implies \dim(P_a \boxplusphi P_b) = p + q - \operatorname{rank}(\delta_\phi) = p + q - \lambda_{\mathrm{eff}}$.
+2. **Universal Quotient Norm:** $\|[(x,y)]\|_{\boxplus} \coloneqq \inf_{r \in R_\phi}(\|x - \phi_a(r)\|_{P_a} + \|y + \phi_b(r)\|_{P_b})$ satisfies $\|h([(x,y)])\|_Z \le \|[(x,y)]\|_{\boxplus}$ for any contractions $f \circ \phi_a = g \circ \phi_b$. $\blacksquare$
+:::
+
+::: {.proof-box .fragment .fade-up}
+**Corporate Classes (Thm. 12.32), Cyclic Holonomy (Thm. 12.33) &amp; Closure (Thm. 12.34):**
+* **Thm. 12.32 (Corporate Class Determinacy):** The $2^4 - 1 = 15$ non-empty subsets of $r \subseteq \{K_s, C_s, K_m, C_m\}$ partition into **9 Mixed Classes** ($1+4+4=9$, algebraically deterministic Syntrix algebras) and **6 Pure Classes** ($2+4=6$, underdetermined).
+* **Thm. 12.33 (Re-entrant Cyclic Resonance):** Recurrent feedback loops yield first Betti number $\beta_1(G_{\mathcal{S}}) \coloneqq |E| - |V| + k(G_{\mathcal{S}}) \ge 1$ and fundamental group representation $\rho_{\mathrm{loop}} \colon \pi_1(G_{\mathcal{S}}) \to \Aut_{\mathbf{Syn}}(\konflexivsyntrix)$; self-sustaining working memory holds iff $\rho_{\mathrm{loop}}(\gamma)$ is an attracting isometry.
+* **Thm. 12.34 (Programmable Cognitive Closure / *Syndromabschluss*):** Under alternating exterior selection $\Lambda^{m_K}(F_{\chi(K-1)})$, if $m_K > \dim(F_{\chi(K-1)})$, then $F_\gamma \cong \{0\}$ for all $\gamma \ge \chi(K)$, enforcing perceptual decision commitment.
+:::
+
+:::
+
+::: {.column width="51%"}
+
+<div class="interactive-panel">
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Carrier Pushout, Selection Functors &amp; *Syndromabschluss* Lab (Thms. 12.31–12.34)</h4>
+  <p class="widget-context-note">
+  <b>Context (§12.4.2–12.4.5):</b> Adjust carrier dimensions $p = \dim P_a$, $q = \dim P_b$, coupling rank $\lambda_{\mathrm{eff}}$, and exterior arity $m_K$ to compute pushout dimension $p+q-\lambda_{\mathrm{eff}}$, all 4 Selection Functor dimensions, and *Syndromabschluss* ($m_K > \dim$).
+  </p>
+  <div class="slider-row">
+  <span style="color:#4169E1;">$\dim P_a = p$:</span>
+  <input type="range" id="ch12-po-p" min="2" max="8" step="1" value="4" oninput="window.ch12_updatePushoutClosureLab()">
+  <span id="ch12-po-p-val" style="font-family:monospace; width:24px;">4</span>
+  <span style="color:#20B2AA;">$\dim P_b = q$:</span>
+  <input type="range" id="ch12-po-q" min="2" max="8" step="1" value="4" oninput="window.ch12_updatePushoutClosureLab()">
+  <span id="ch12-po-q-val" style="font-family:monospace; width:24px;">4</span>
+  </div>
+  <div class="slider-row">
+  <span style="color:#FFA500;">Coupling $\lambda_{\mathrm{eff}}$:</span>
+  <input type="range" id="ch12-po-lam" min="0" max="4" step="1" value="2" oninput="window.ch12_updatePushoutClosureLab()">
+  <span id="ch12-po-lam-val" style="font-family:monospace; width:24px;">2</span>
+  <span style="color:#DC143C;">Exterior $m_K$:</span>
+  <input type="range" id="ch12-po-mk" min="1" max="10" step="1" value="3" oninput="window.ch12_updatePushoutClosureLab()">
+  <span id="ch12-po-mk-val" style="font-family:monospace; width:24px;">3</span>
+  </div>
+  <div id="ch12-po-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em; text-align:left; line-height:1.36;"></div>
+</div>
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act11_Pushout_Corporate_Closure.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act XI (Fig. 12.18, Thms. 12.31–12.34): Konzenter vs. Exzenter Pushout, β₁ ≥ 1 Loops &amp; Syndromabschluss</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Walk through Section 12.4.3–12.4.5: Definition 12.30 & Theorem 12.31 (Presentation Conflexivity Index and Short Exact Sequence for $P_a \boxplusphi P_b$), Theorem 12.32 (9 mixed + 6 pure corporate classes), Theorem 12.33 (Re-entrant cyclic holonomy $\beta_1 \ge 1$), and Theorem 12.34 (Programmable Cognitive Closure / Syndromabschluss).
+:::
+
+---
+
+## §12.4.6: Lean 4 Verification, Reconstruction Map $\mathcal{R}$ &amp; Sanity Checks {.smaller transition="fade"}
+
+<div class="stratum-badge badge-a">STRATUM A/B/C: MACHINE-CHECKED LEAN 4 PROOFS (S0–S3), RECONSTRUCTION MAP R &amp; CARNAPIAN EXPLICATION 12.1</div>
+
+:::: {.columns}
+
+::: {.column width="54%"}
+
+<h3 style="color:#FFD700; font-size:0.82em; margin:0 0 6px 0;">Complete Chapter 12 Reconstruction Map $\mathcal{R}$</h3>
+
+| Heimian / Philosophical Concept ($\mathbf{D}$) | Mathematical Realization ($\mathcal{R}$) | Stratum &amp; Ref |
+|:---|:---|:---:|
+| **Representational Discontinuity** | Stratified functorial ascent $R_n \to F_{\gamma+1} \to \mathcal{P} \to \Hol(\mathcal{U},\mathbf{P})$ | **Stratum C** (§12.1.1) |
+| **Episyllogismus ($k \uparrow$)** | Operadic evaluation $\ev_{\vec{\gamma};\gamma+1}$ into coinvariants; $\dim\ker(\ev) > 0$ | **Stratum B** (Thm. 12.6) |
+| **Protosimplex ($\mathcal{P}$)** | Subobject-minimal algebra in $T_n$ collapsing to 0-simplex in $\CSeg(\Xsyn)_0$ | **Stratum B** (Def. 12.7, Thm. 12.8) |
+| **Carnapian Quality Class ($Q$)** | Sheaf descent equalizer $\Hol(\mathcal{U}, \mathbf{P})$ rejecting Goodman cliques | **Stratum B** (§12.1.4) |
+| **Access Consciousness ($A$)** | Completed Free Tree Monad $T_{\mathsf{P}}(X) \cong X \oplus_1 \widehat{\mathsf{P}}(T_{\mathsf{P}}(X))$ | **Stratum C** (Def. 12.1) |
+| **Phenomenal Consciousness ($P$)** | Holoform $\Def_{\mathcal{U}}(s)=0$ + Non-Abelian curvature $\Omegaint^{\mathcal{D}} \ne \mathbf{0}$ | **Stratum C** (Def. 12.2, Thm. 12.9) |
+| **Chalmersian Zombie ($\mathsf{Zombie}$)** | Internally contradictory predicate $\llbracket \mathsf{Zombie}(\mathcal{N}) \rrbracket = \bot_\Omega$ | **Stratum B** (Thm. 12.3) |
+| **Dialectical *Aufhebung*** | Reflexive functor $S_{\mathrm{mod}}(x) \mapsto S'_{\mathrm{mod}}(x')$ synthesizing $C \in \Prop_{k+1}$ | **Stratum B** (Thm. 12.4) |
+| **Affective Circumplex ($R_6$)** | 36-component Hermetry matrix ($21\,{}^2\bar{\mathbf{g}}_+ + 15\,{}^2\bar{\mathbf{g}}_-$) on $R_4 \times S_2$ | **Stratum B/C** (Thm. 12.11) |
+| **Metropie Flow ($\Phi_t$)** | Haar &amp; Liouville volume-preserving geodesic flow on $T^*\mathrm{SO}(n)$ | **Stratum B** (Thm. 12.17) |
+| **Working Memory Stability** | Hereditary modality $\Stable_k(P)$ invariant under pullback $\alpha^*$ | **Stratum B** (Thm. 12.25) |
+| **Konzenter vs. Exzenter** | Disjoint $\ell^1$-coproduct $P_a \oplus_1 P_b$ vs. span pushout $P_a \boxplusphi P_b$ | **Stratum B** (Thm. 12.31) |
+| **Syndromabschluss** | Exterior nilpotence $\Lambda^{m_K}(F_{\chi(K-1)}) = \{0\}$ when $m_K > \dim F$ | **Stratum B** (Thm. 12.34) |
+
+:::
+
+::: {.column width="46%"}
+
+<div class="lean-code-card">
+<b>-- Lean 4 Verification (Stratum A/B: Thms. 12.6, 12.31, 12.32, 12.34)</b><br>
+import Mathlib.Data.Nat.Choose.Basic<br><br>
+namespace Syntrometrie.Ch12<br><br>
+-- Thm 12.6: Operadic coinvariant erasure dimension (n=2, m=2 =&gt; 4 - 3 = 1 &gt; 0)<br>
+theorem operadic_erasure_pos : 2^2 - Nat.choose (2 + 2 - 1) 2 &gt; 0 := by decide<br><br>
+-- Thm 12.31: Carrier pushout exact dimension formula<br>
+def pushoutDim (p q lam : Nat) : Nat := p + q - lam<br>
+theorem pushout_rank_nullity (p q lam : Nat) (h : lam ≤ p + q) :<br>
+&nbsp;&nbsp;pushoutDim p q lam + lam = p + q := Nat.sub_add_cancel h<br><br>
+-- Thm 12.32: 15 Corporate classes partition into 9 mixed + 6 pure<br>
+theorem corporate_15_partition : (1 + 4 + 4) + (2 + 4) = 2^4 - 1 := by rfl<br><br>
+-- Thm 12.34: Programmable cognitive closure (Syndromabschluss)<br>
+theorem syndromabschluss_zero (n m_K : Nat) (h : n &lt; m_K) :<br>
+&nbsp;&nbsp;Nat.choose n m_K = 0 := Nat.choose_eq_zero_of_lt h<br><br>
+end Syntrometrie.Ch12
+</div>
+
+::: {.carnap-box .fragment .fade-up}
+**Carnapian Explication 12.1: *Quasi-Analysis* as Sheaf Descent Equalizer**
+1. **Explicandum ($\mathbf{D}$):** Carnap's *Quasianalyse* (*Aufbau*, §§70–74) &amp; Heim's *Holoform* synthesis across observer contexts.
+2. **Explicatum ($\mathbf{A}/\mathbf{B}$):** Sheaf equalizer $\Hol(\mathcal{U}, \mathbf{P}) = \ker(\delta^0)$ over subcanonical site $(\Ctx, \Jsyn)$ (Thm. 12.18).
+3. **Exactness &amp; Simplicity:** Triple pullback $e_1 \times_U e_2 \times_U e_3 \cong \mathbf{0}_{\Ctx}$ forces $\Def_{\mathcal{U}}(s)_{123} \ne 0$, eliminating Goodman's Imperfect Community without ad hoc postulates.
+4. **Fruitfulness:** Unifies $A$-consciousness ($T_{\mathsf{P}}$) and $P$-consciousness ($\Omegaint$) and refutes Chalmersian zombies (Thm. 12.3).
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Review the complete Chapter 12 Reconstruction Map $\mathcal{R}$, the machine-checked Lean 4 verification suite covering Theorems 12.6, 12.31, 12.32, and 12.34, and Carnapian Explication 12.1.
+:::
+
+---
+
+## §12.5: Chapter 12 Synthesis, Deliverables &amp; Bridge to Chapter 13 {.smaller transition="zoom"}
+
+<div class="stratum-badge badge-c">CHAPTER 12 SYNTHESIS: OPERADIC CONSUMPTION, PROTOSIMPLEX LIFT &amp; DIALECTICAL TRANSITION TO CHAPTER 13 (FIG. 12.19)</div>
+
+:::: {.columns}
+
+::: {.column width="52%"}
+
+::: {.deliverables-box .fragment .zoom-in}
+**Chapter 12 Deliverables: Resolution of Representational Discontinuity**
+* **Operadic Feature Consumption (Thm. 12.6):** Removes the Cartesian display fallacy by consuming lower-tier features as operands of $\Osyn$ into coinvariant quotients ($\dim\ker(\ev_{\vec{\gamma};\gamma+1}) \ge n^m - \binom{n+m-1}{m} > 0$).
+* **Protosimplex Encapsulation (Def. 12.7, Thm. 12.8):** Subobject-minimal attractors in $T_n$ collapse under nerve embedding $N_{n+1}$ into 0-dimensional categorical tokens $\mathcal{P} \in \CSeg(\Xsyn)_0$.
+* **Zombie Refutation &amp; 6D Affective Geometry (Thms. 12.3, 12.9–12.11):** Multi-modal access requires non-Abelian curvature $\Omegaint^{\mathcal{D}} \ne \mathbf{0}$ and vanishing descent defect $\Def_{\mathcal{U}}(s) = 0$, structured over $R_6 = R_4 \times S_2$.
+* **Autopsychological Topos &amp; Proof Theory (Thms. 12.13–12.34):** Subcanonicity of $\Jsyn$, Seifert–van Kampen pushouts ($p+q-\lambda_{\mathrm{eff}}$), Type I/II Čech obstruction dichotomy, Beck–Chevalley invariance, hereditary working memory $\Stable_k$, and *Syndromabschluss*.
+:::
+
+<h3 style="color:#FFD700; font-size:0.80em; margin:6px 0 4px 0;">Asymptotic Limits &amp; Degeneracy Reductions</h3>
+
+| Regime / Boundary Limit | Mathematical Operation | Physical &amp; Logical Reduction |
+|:---|:---|:---|
+| **Abelian Decoupling Limit** | $[a_i, a_j] \equiv 0,\; a_{\mathrm{int}} \equiv 0$ | $\Omegaint^{\mathcal{D}} \to \mathbf{0}$, $P_1 \boxplusphi P_2 \to P_1 \oplus_1 P_2$, $\Def_{\mathcal{U}} \ne 0$: subconscious Konzenter modularity. |
+| **Pure Harmonic Limit** | $\Delta_{A_0}\Phi_{\mathrm{int}} \to 0$ in Thm. 12.10 | Transient focal thoughts vanish; only topological background self-presence $\gamma_{\mathrm{harm}} \in H^2_{\mathrm{dR}}$ remains. |
+| **Exterior Arity Overflow** | $m_K > \dim(F_{\chi(K-1)})$ in Thm. 12.34 | $\Lambda^{m_K}(F) \equiv \{0\} \implies F_\gamma \cong \{0\}$ (*Syndromabschluss* perceptual decision commitment). |
+
+<h3 style="color:#20B2AA; font-size:0.80em; margin:6px 0 4px 0;">Cross-Disciplinary Interpretation Matrix</h3>
+
+| Categorical &amp; Topos Logic | Theoretical Physics &amp; Geometry | Cognitive Science &amp; Epistemology |
+|:---|:---|:---|
+| Subcanonical site $(\Ctx, \Jsyn)$, tree monad $T_{\mathsf{P}}$, pushout $P_a \boxplusphi P_b$, and 0-simplex nerve $\CSeg(\Xsyn)_0$. | Non-Abelian curvature $\Omegaint^{\mathcal{D}}$, Fredholm Hodge splitting, Liouville $\mathrm{SO}(n)$ flow, and 6D Hermetry on $R_6$. | Resolution of the Explanatory Gap, refutation of Chalmersian zombies, working memory $\Stable_k$, and Russell's circumplex. |
+
+:::
+
+::: {.column width="48%"}
+
+<div class="video-container">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act12_Chapter12_Synthesis.mp4" style="max-height:235px;"></video>
+  <div class="video-caption">Manim Act XII (Fig. 12.19): Complete 4-Tiered Categorical Resolution of Representational Discontinuity</div>
+</div>
+
+::: {.firewall-box .fragment .glow-pulse}
+**Scholium 12.35 (Open Problem 12.1 — Empirical Neural Decoding of $\Omegaint^{\mathcal{D}}$):**
+Characterize the exact high-density Neuropixels / MEG phase-locking bispectrum Estimator that separates Type I evaluative coboundaries ($\delta^0 s \ne 0$) from Type II non-trivial $\check{H}^1$ cocycle obstructions during binocular rivalry and cross-modal ventriloquism.
+
+**Syntrometric Dialectical Transition to Chapter 13:**
+*Having completed the operadic resolution of representational discontinuity and shown how Protosimplex encapsulation compresses distributed features into invariant conceptual pointers, we now turn to the geometry of subjective awareness. **Chapter 13** formalizes qualia as non-Abelian gauge holonomy, self-consciousness through Lawvere fixed points, and integrated information through topos-theoretic descent.*
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Conclude Chapter 12 by summarizing the four-tiered categorical resolution of representational discontinuity (Fig. 12.19), the asymptotic degeneracy limits, the cross-disciplinary interpretation matrix, Open Problem 12.1, and the bridge to Chapter 13.
+:::
