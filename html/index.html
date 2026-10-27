@@ -243,6 +243,7 @@
       height: 100%;
       border: none;
       background: var(--bg-deep);
+      display: block;
     }
 
     /* Overview Modal Grid */
@@ -485,6 +486,11 @@
       }
     }
 </style>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="media/icon.svg">
+  <meta name="theme-color" content="#060911">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 
@@ -497,49 +503,49 @@
     </div>
 
     <nav class="chapter-tabs" aria-label="Chapter Navigation">
-      <button class="ch-btn active" data-ch="1" onclick="selectChapter(1)">
+      <button class="ch-btn active" data-ch="1" onclick="selectChapter(1)" onpointerenter="prefetchChapter(1)" ontouchstart="prefetchChapter(1)">
         <span class="ch-num">Ch 1</span><span>Subjective Topos</span>
       </button>
-      <button class="ch-btn" data-ch="2" onclick="selectChapter(2)">
+      <button class="ch-btn" data-ch="2" onclick="selectChapter(2)" onpointerenter="prefetchChapter(2)" ontouchstart="prefetchChapter(2)">
         <span class="ch-num">Ch 2</span><span>Syntrix Operads</span>
       </button>
-      <button class="ch-btn" data-ch="3" onclick="selectChapter(3)">
+      <button class="ch-btn" data-ch="3" onclick="selectChapter(3)" onpointerenter="prefetchChapter(3)" ontouchstart="prefetchChapter(3)">
         <span class="ch-num">Ch 3</span><span>Korporationen</span>
       </button>
-      <button class="ch-btn" data-ch="4" onclick="selectChapter(4)">
+      <button class="ch-btn" data-ch="4" onclick="selectChapter(4)" onpointerenter="prefetchChapter(4)" ontouchstart="prefetchChapter(4)">
         <span class="ch-num">Ch 4</span><span>Enyphansyntrizen</span>
       </button>
-      <button class="ch-btn" data-ch="5" onclick="selectChapter(5)">
+      <button class="ch-btn" data-ch="5" onclick="selectChapter(5)" onpointerenter="prefetchChapter(5)" ontouchstart="prefetchChapter(5)">
         <span class="ch-num">Ch 5</span><span>Metroplextheorie</span>
       </button>
-      <button class="ch-btn" data-ch="6" onclick="selectChapter(6)">
+      <button class="ch-btn" data-ch="6" onclick="selectChapter(6)" onpointerenter="prefetchChapter(6)" ontouchstart="prefetchChapter(6)">
         <span class="ch-num">Ch 6</span><span>Televariante Area</span>
       </button>
-      <button class="ch-btn" data-ch="7" onclick="selectChapter(7)">
+      <button class="ch-btn" data-ch="7" onclick="selectChapter(7)" onpointerenter="prefetchChapter(7)" ontouchstart="prefetchChapter(7)">
         <span class="ch-num">Ch 7</span><span>Anthropomorphic</span>
       </button>
-      <button class="ch-btn" data-ch="8" onclick="selectChapter(8)">
+      <button class="ch-btn" data-ch="8" onclick="selectChapter(8)" onpointerenter="prefetchChapter(8)" ontouchstart="prefetchChapter(8)">
         <span class="ch-num">Ch 8</span><span>Quantitätsaspekt</span>
       </button>
-      <button class="ch-btn" data-ch="9" onclick="selectChapter(9)">
+      <button class="ch-btn" data-ch="9" onclick="selectChapter(9)" onpointerenter="prefetchChapter(9)" ontouchstart="prefetchChapter(9)">
         <span class="ch-num">Ch 9</span><span>Strukturkaskaden</span>
       </button>
-      <button class="ch-btn" data-ch="10" onclick="selectChapter(10)">
+      <button class="ch-btn" data-ch="10" onclick="selectChapter(10)" onpointerenter="prefetchChapter(10)" ontouchstart="prefetchChapter(10)">
         <span class="ch-num">Ch 10</span><span>Metronik</span>
       </button>
-      <button class="ch-btn" data-ch="11" onclick="selectChapter(11)">
+      <button class="ch-btn" data-ch="11" onclick="selectChapter(11)" onpointerenter="prefetchChapter(11)" ontouchstart="prefetchChapter(11)">
         <span class="ch-num">Ch 11</span><span>Hyperstrukturen</span>
       </button>
-      <button class="ch-btn" data-ch="12" onclick="selectChapter(12)">
+      <button class="ch-btn" data-ch="12" onclick="selectChapter(12)" onpointerenter="prefetchChapter(12)" ontouchstart="prefetchChapter(12)">
         <span class="ch-num">Ch 12</span><span>Representational</span>
       </button>
-      <button class="ch-btn" data-ch="13" onclick="selectChapter(13)">
+      <button class="ch-btn" data-ch="13" onclick="selectChapter(13)" onpointerenter="prefetchChapter(13)" ontouchstart="prefetchChapter(13)">
         <span class="ch-num">Ch 13</span><span>Qualia &amp; IIT</span>
       </button>
-      <button class="ch-btn" data-ch="14" onclick="selectChapter(14)">
+      <button class="ch-btn" data-ch="14" onclick="selectChapter(14)" onpointerenter="prefetchChapter(14)" ontouchstart="prefetchChapter(14)">
         <span class="ch-num">Ch 14</span><span>Synthese (SM 1–100a)</span>
       </button>
-      <button class="ch-btn" data-ch="15" onclick="selectChapter(15)">
+      <button class="ch-btn" data-ch="15" onclick="selectChapter(15)" onpointerenter="prefetchChapter(15)" ontouchstart="prefetchChapter(15)">
         <span class="ch-num">Ch 15</span><span>Horizon &amp; Synthesis</span>
       </button>
     </nav>
@@ -670,7 +676,7 @@
 
       const targetUrl = `chapter${ch}.html${slideHash}`;
       const frame = document.getElementById('chapter-frame');
-      if (frame.getAttribute('src') !== targetUrl) {
+      if (frame && frame.getAttribute('src') !== targetUrl) {
         frame.setAttribute('src', targetUrl);
       }
 
@@ -687,6 +693,9 @@
       setTimeout(() => {
         if (frame && frame.contentWindow) frame.contentWindow.focus();
       }, 120);
+
+      // Prefetch adjacent chapters on idle
+      scheduleIdlePrefetch(ch);
     }
 
     function stepChapter(delta) {
@@ -701,7 +710,7 @@
       const megaBtn = document.getElementById('mega-btn');
       if (megaBtn) megaBtn.style.borderColor = '#FFD700';
       const frame = document.getElementById('chapter-frame');
-      frame.setAttribute('src', 'syntrometrie_all.html');
+      if (frame) frame.setAttribute('src', 'syntrometrie_all.html');
       const standalone = document.getElementById('standalone-link');
       if (standalone) standalone.setAttribute('href', 'syntrometrie_all.html');
       history.replaceState(null, '', '#all');
@@ -710,12 +719,35 @@
       }, 120);
     }
 
+    // Native browser resource hints for fast responsivity
+    const prefetchedUrls = new Set();
+    function prefetchChapter(chNum) {
+      const url = `chapter${chNum}.html`;
+      if (prefetchedUrls.has(url)) return;
+      prefetchedUrls.add(url);
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = url;
+      document.head.appendChild(link);
+    }
+
+    let idlePrefetchTimer = null;
+    function scheduleIdlePrefetch(activeCh) {
+      clearTimeout(idlePrefetchTimer);
+      idlePrefetchTimer = setTimeout(() => {
+        const nextCh = activeCh < totalChapters ? activeCh + 1 : 1;
+        const prevCh = activeCh > 1 ? activeCh - 1 : totalChapters;
+        prefetchChapter(nextCh);
+        prefetchChapter(prevCh);
+      }, 1200);
+    }
+
     function toggleOverview() {
       const modal = document.getElementById('overview-modal');
       modal.classList.toggle('open');
     }
 
-        // Dynamic Window Scaling & Responsive Layout Controller
+    // Dynamic Window Scaling & Responsive Layout Controller
     function handleWindowResize() {
       const header = document.querySelector('.portal-header');
       const wrapper = document.querySelector('.viewport-wrapper');
@@ -758,7 +790,7 @@
       if (frame && frame.contentWindow) frame.contentWindow.focus();
     }
 
-        function toggleScrollView() {
+    function toggleScrollView() {
       const frame = document.getElementById('chapter-frame');
       if (!frame || !frame.contentWindow) return;
 
@@ -775,11 +807,8 @@
             called = true;
           }
         }
-      } catch (e) {
-        // Handled below if cross-origin
-      }
+      } catch (e) {}
 
-      // ONLY use postMessage if direct same-origin call was not possible
       if (!called) {
         frame.contentWindow.postMessage({ type: 'toggle-scroll-view' }, '*');
       }
@@ -808,29 +837,24 @@
     function applyScrollBtnState(isScroll) {
       const btn = document.getElementById('scroll-toggle-btn');
       if (!btn) return;
+      const textEl = btn.querySelector('.btn-text');
       if (isScroll) {
         btn.classList.add('active');
-        btn.innerHTML = '▤<span class="btn-text"> Slide View</span>';
-        btn.style.borderColor = 'var(--gold)';
-        btn.style.color = 'var(--gold)';
-        btn.style.background = 'rgba(255, 215, 0, 0.15)';
+        if (textEl) textEl.textContent = 'Slide View';
+        btn.setAttribute('title', 'Switch to 16:9 Slide Presentation View (Shortcut: R)');
       } else {
         btn.classList.remove('active');
-        btn.innerHTML = '📜<span class="btn-text"> Scroll View</span>';
-        btn.style.borderColor = '';
-        btn.style.color = '';
-        btn.style.background = '';
+        if (textEl) textEl.textContent = 'Scroll View';
+        btn.setAttribute('title', 'Switch to Responsive Full-Page Continuous Scroll View (Shortcut: R)');
       }
     }
 
-    window.addEventListener('message', (event) => {
-      if (!event.data) return;
-      if (event.data.type === 'scroll-view-state') {
-        applyScrollBtnState(event.data.isScrollView);
+    window.addEventListener('message', (e) => {
+      if (e && e.data && e.data.type === 'scroll-view-state') {
+        applyScrollBtnState(e.data.isScrollView);
       }
     });
 
-    // Parse initial hash (e.g. index.html#ch11 or index.html#all)
     function initFromHash() {
       if (window.location.hash === '#all') {
         selectMegaDeck();
@@ -866,6 +890,18 @@
         if (modal.classList.contains('open')) modal.classList.remove('open');
       }
     });
+
+    // Ensure any service worker or stale cache is immediately cleaned up
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(regs => {
+        for (const r of regs) r.unregister();
+      }).catch(() => {});
+      if ('caches' in window) {
+        caches.keys().then(keys => {
+          keys.forEach(k => caches.delete(k));
+        }).catch(() => {});
+      }
+    }
 
     initFromHash();
     handleWindowResize();

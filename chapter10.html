@@ -36,7 +36,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="chapter10_files/libs/revealjs/dist/theme/quarto-7bab24c20a79a37d3149f553c52a0157.css">
+  <link rel="stylesheet" href="chapter10_files/libs/revealjs/dist/theme/quarto-f01986ae67ab8f74e3153fc6e8fc0b5a.css">
   <link href="chapter10_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="chapter10_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="chapter10_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -910,6 +910,16 @@
       initRevealHooks();
 
     });
+
+    if ('serviceWorker' in navigator) {
+
+      navigator.serviceWorker.getRegistrations().then(function(regs) {
+
+        for (var i = 0; i < regs.length; i++) regs[i].unregister();
+
+      }).catch(function() {});
+
+    }
 
   })();
 

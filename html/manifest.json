@@ -1,0 +1,11 @@
+{
+  "name": "Syntrometrische Maximentelezentrik",
+  "short_name": "Syntrometrie",
+  "description": "Unified 15-Chapter Dialectical Topos & Formal Mathematical Presentation Suite",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#05080f",
+  "theme_color": "#060911",
+  "orientation": "any"
+}
+

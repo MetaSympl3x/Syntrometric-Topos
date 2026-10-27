@@ -51,6 +51,14 @@ for d in html_dir.iterdir():
         shutil.copytree(d, dest, dirs_exist_ok=True)
 if (root / "shared").exists():
     shutil.copytree(root / "shared", html_dir / "shared", dirs_exist_ok=True)
+for f in ["sw.js", "manifest.json"]:
+    if (root / f).exists():
+        shutil.copy2(root / f, html_dir / f)
+    elif (html_dir / f).exists():
+        shutil.copy2(html_dir / f, root / f)
+if (root / "media" / "icon.svg").exists():
+    (html_dir / "media").mkdir(exist_ok=True)
+    shutil.copy2(root / "media" / "icon.svg", html_dir / "media" / "icon.svg")
 print("  Synced deliverables to root successfully.")
 
 print("\n==========================================")
