@@ -625,3 +625,4 @@ Slide 11 synthesizes the master concordance functor, validating the complete tra
 ::: {.notes}
 Slide 12 concludes Chapter 14 with the asymptotic reductions and the complete cross-disciplinary translation matrix.
 :::
+

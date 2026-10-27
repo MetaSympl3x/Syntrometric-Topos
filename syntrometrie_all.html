@@ -36,7 +36,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="syntrometrie_all_files/libs/revealjs/dist/theme/quarto-07353885cfe09bb2a1a76fdd53bbc552.css">
+  <link rel="stylesheet" href="syntrometrie_all_files/libs/revealjs/dist/theme/quarto-693ed4107ad9e3c2e35506a368f6741a.css">
   <link href="syntrometrie_all_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="syntrometrie_all_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="syntrometrie_all_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -133,6 +133,12 @@
 
   window.MathJax = {
 
+    "HTML-CSS": { linebreaks: { automatic: true, width: "container" } },
+
+    CommonHTML: { linebreaks: { automatic: true, width: "container" } },
+
+    SVG: { linebreaks: { automatic: true, width: "container" } },
+
     tex: {
 
       macros: {
@@ -174,6 +180,8 @@
         Col: "\\mathbf{Col}",
 
         Coloneqq: "\\mathrel{::=}",
+
+        CommonHTML: {,
 
         ConfIndex: "\\operatorname{ConfIndex}_{\\mathrm{pres}}",
 
@@ -309,6 +317,8 @@
 
         Rresyn: "\\mathcal{R}_{\\mathrm{resyn}}",
 
+        SVG: {,
+
         Sel: "\\operatorname{Sel}",
 
         Sh: "\\mathbf{Sh}",
@@ -379,7 +389,7 @@
 
         diam: "\\operatorname{diam}",
 
-        display: block;,
+        display: block !important;,
 
         dist: "\\operatorname{dist}",
 
@@ -442,6 +452,8 @@
         korporatorkette: "\\mathord{\\llcorner}",
 
         korrelationstensor: "\\mathbf{f}",
+
+        linebreaks: { automatic: true, width: "container" },
 
         llbracket: "\\mathopen{[\\mkern-3mu[}",
 
@@ -761,6 +773,76 @@
 
   
 
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+  }
+
+  
+
   .reveal-viewport.reveal-scroll .slide-background,
 
   .reveal-viewport.reveal-scroll section {
@@ -917,6 +999,76 @@
 
   
 
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+  }
+
+  
+
   .reveal-viewport.reveal-scroll .slide-background,
 
   .reveal-viewport.reveal-scroll section {
@@ -1064,6 +1216,76 @@
     border-left: 5px solid;
 
     background: rgba(255,255,255,0.04);
+
+  }
+
+  
+
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
 
   }
 
@@ -1225,6 +1447,76 @@
 
   
 
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+  }
+
+  
+
   .reveal-viewport.reveal-scroll .slide-background,
 
   .reveal-viewport.reveal-scroll section {
@@ -1377,6 +1669,76 @@
 
   
 
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+  }
+
+  
+
   .reveal-viewport.reveal-scroll .slide-background,
 
   .reveal-viewport.reveal-scroll section {
@@ -1500,6 +1862,76 @@
     color: #e2e8f0;
 
     overflow-x: auto;
+
+  }
+
+  
+
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
 
   }
 
@@ -1633,6 +2065,76 @@
 
   
 
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+  }
+
+  
+
   .reveal-viewport.reveal-scroll .slide-background,
 
   .reveal-viewport.reveal-scroll section {
@@ -1756,6 +2258,76 @@
     color: #e2e8f0;
 
     overflow-x: auto;
+
+  }
+
+  
+
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
 
   }
 
@@ -1907,6 +2479,76 @@
 
   
 
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+  }
+
+  
+
   .reveal-viewport.reveal-scroll .slide-background,
 
   .reveal-viewport.reveal-scroll section {
@@ -2030,6 +2672,76 @@
     color: #e2e8f0;
 
     overflow-x: auto;
+
+  }
+
+  
+
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
 
   }
 
@@ -2211,6 +2923,76 @@
 
   
 
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+  }
+
+  
+
   .reveal-viewport.reveal-scroll .slide-background,
 
   .reveal-viewport.reveal-scroll section {
@@ -2334,6 +3116,76 @@
     color: #e2e8f0;
 
     overflow-x: auto;
+
+  }
+
+  
+
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
 
   }
 
@@ -2534,6 +3386,76 @@
     border-radius: 4px;
 
     border: 1px solid #334155;
+
+  }
+
+  
+
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
 
   }
 
@@ -2757,6 +3679,76 @@
 
   
 
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+  }
+
+  
+
   .reveal-viewport.reveal-scroll .slide-background,
 
   .reveal-viewport.reveal-scroll section {
@@ -2936,6 +3928,76 @@
   .ch15-dag-node:hover {
 
     filter: brightness(1.25);
+
+  }
+
+  
+
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
 
   }
 

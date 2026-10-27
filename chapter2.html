@@ -36,7 +36,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="chapter2_files/libs/revealjs/dist/theme/quarto-07353885cfe09bb2a1a76fdd53bbc552.css">
+  <link rel="stylesheet" href="chapter2_files/libs/revealjs/dist/theme/quarto-693ed4107ad9e3c2e35506a368f6741a.css">
   <link href="chapter2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="chapter2_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="chapter2_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -129,121 +129,325 @@
     }
   </style>
   <script>
+
   window.MathJax = {
+
+    "HTML-CSS": {
+
+      linebreaks: { automatic: true, width: "container" }
+
+    },
+
+    CommonHTML: {
+
+      linebreaks: { automatic: true, width: "container" }
+
+    },
+
+    SVG: {
+
+      linebreaks: { automatic: true, width: "container" }
+
+    },
+
     tex: {
+
       macros: {
+
         coloneqq: "\\mathrel{:=}",
+
         Coloneqq: "\\mathrel{::=}",
+
         llbracket: "\\mathopen{[\\mkern-3mu[}",
+
         rrbracket: "\\mathclose{]\\mkern-3mu]}",
+
         longhookrightarrow: "\\lhook\\joinrel\\longrightarrow",
+
         Ctx: "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+
         Ban: "\\mathbf{Ban}_{\\le 1}",
+
         FinBan: "\\mathbf{FinBan}_{\\le 1}",
+
         Esyn: "\\mathcal{E}_{\\mathrm{syn}}",
+
         Osyn: "\\mathcal{O}_{\\mathrm{syn}}",
+
         Opyr: "\\mathcal{O}_{\\mathrm{pyr}}",
+
         Ofrag: "\\mathcal{O}_{\\mathrm{frag}}",
+
         Ohom: "\\mathcal{O}_{\\mathrm{hom}}",
+
         otpi: "\\mathbin{\\widehat{\\otimes}_\\pi}",
+
         otBV: "\\mathbin{\\otimes_{\\mathrm{BV}}}",
+
         syntrix: "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+
         homsyntrix: "\\mathbf{x}\\widetilde{\\mathbf{a}}",
+
         metrophor: "\\widetilde{\\mathbf{a}}",
+
         synkolator: "\\mathfrak{f}",
+
         Shift: "\\mathsf{Shift}",
+
         BoxSyn: "\\Box_{\\mathrm{Syn}}",
+
         Aut: "\\operatorname{Aut}",
+
         Stab: "\\operatorname{Stab}",
+
         Sym: "\\operatorname{Sym}",
+
         Col: "\\mathbf{Col}",
+
         CSL: "\\mathcal{C}_{\\mathrm{SL}}",
+
         Cspine: "\\mathcal{C}_{\\mathrm{spine}}",
+
         AP: "\\mathbf{AP}",
+
         Prop: "\\mathbf{Prop}"
+
       }
+
     }
+
   };
+
   </script>
+
   <style>
+
   .reveal-viewport.reveal-scroll .slide-background,
+
   .reveal-viewport.reveal-scroll section {
+
     font-size: clamp(14px, 1.35vw, 26px) !important;
+
   }
+
   .reveal-viewport.reveal-scroll .interactive-panel,
+
   .reveal-viewport.reveal-scroll .thm-box,
+
   .reveal-viewport.reveal-scroll .carnap-box,
+
   .reveal-viewport.reveal-scroll .firewall-box,
+
   .reveal-viewport.reveal-scroll .intuition-box {
+
     max-width: 100%;
+
     box-sizing: border-box;
+
   }
+
   .widget-context-note {
+
     font-size: 0.64em;
+
     color: #cbd5e1;
+
     line-height: 1.36;
+
     margin: 4px 0 10px 0;
+
   }
+
   .syn-tabs {
+
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 6px;
+
     margin-bottom: 10px;
+
   }
+
   .syn-tab-btn {
+
     background: #151c2c;
+
     color: #94a3b8;
+
     border: 1px solid #334155;
+
     border-radius: 6px;
+
     padding: 5px 11px;
+
     font-size: 0.60em;
+
     font-weight: 700;
+
     cursor: pointer;
+
     transition: all 0.18s ease;
+
   }
+
   .syn-tab-btn.active, .syn-tab-btn:hover {
+
     background: rgba(65, 105, 225, 0.28);
+
     color: #FFD700;
+
     border-color: #FFD700;
+
   }
+
   .syn-tab-pane {
+
     display: none;
+
     background: rgba(10, 14, 23, 0.82);
+
     border: 1px solid rgba(65, 105, 225, 0.45);
+
     border-radius: 8px;
+
     padding: 10px 14px;
+
     font-size: 0.72em;
+
   }
+
   .syn-tab-pane.active {
+
     display: block;
+
   }
+
   .lean-code-card {
+
     background: #0d131f;
+
     border: 1.5px solid #334155;
+
     border-left: 5px solid #20B2AA;
+
     border-radius: 8px;
+
     padding: 10px 14px;
+
     font-family: "Libertinus Mono", monospace;
+
     font-size: 0.54em;
+
     line-height: 1.36;
+
     color: #e2e8f0;
+
     overflow-x: auto;
+
   }
+
   .stat-grid-4 {
+
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 8px;
+
     margin-top: 8px;
+
   }
+
   .stat-card {
+
     background: rgba(15, 23, 42, 0.85);
+
     border: 1px solid #334155;
+
     border-left: 4px solid #4169E1;
+
     border-radius: 6px;
+
     padding: 6px 10px;
+
     font-size: 0.64em;
+
   }
+
+  
+
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+  }
+
   </style>
+
 </head>
 <body class="quarto-dark">
   <div class="reveal">

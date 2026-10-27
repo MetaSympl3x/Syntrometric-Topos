@@ -36,7 +36,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="chapter13_files/libs/revealjs/dist/theme/quarto-07353885cfe09bb2a1a76fdd53bbc552.css">
+  <link rel="stylesheet" href="chapter13_files/libs/revealjs/dist/theme/quarto-693ed4107ad9e3c2e35506a368f6741a.css">
   <link href="chapter13_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="chapter13_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="chapter13_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -129,148 +129,379 @@
     }
   </style>
   <script>
+
   window.MathJax = {
+
+    "HTML-CSS": {
+
+      linebreaks: { automatic: true, width: "container" }
+
+    },
+
+    CommonHTML: {
+
+      linebreaks: { automatic: true, width: "container" }
+
+    },
+
+    SVG: {
+
+      linebreaks: { automatic: true, width: "container" }
+
+    },
+
     tex: {
+
       macros: {
+
         coloneqq: "\\mathrel{:=}",
+
         Coloneqq: "\\mathrel{::=}",
+
         centernot: "\\not",
+
         llbracket: "\\mathopen{[\\mkern-3mu[}",
+
         rrbracket: "\\mathclose{]\\mkern-3mu]}",
+
         longhookrightarrow: "\\lhook\\joinrel\\longrightarrow",
+
         Hol: "\\operatorname{Hol}",
+
         Omegaint: "\\mathbf{\\Omega}_{\\mathrm{int}}",
+
         Ctx: "\\mathbf{Ctx}",
+
         Osyn: "\\mathcal{O}_{\\mathrm{syn}}",
+
         Esyn: "\\mathcal{E}_{\\mathrm{syn}}",
+
         Jsyn: "J_{\\mathrm{syn}}",
+
         Xsyn: "\\mathcal{X}_{\\mathrm{syn}}",
+
         FinBan: "\\mathbf{FinBan}",
+
         CSeg: "\\operatorname{CSeg}",
+
         Alg: "\\operatorname{Alg}",
+
         ev: "\\operatorname{ev}",
+
         Def: "\\operatorname{Def}",
+
         nullsyntrix: "\\mathbf{ys}\\widetilde{\\mathbf{c}}",
+
         MAR: "\\mathcal{M}_{\\mathfrak{AR}}",
+
         gAR: "g_{\\mathfrak{AR}}",
+
         Dext: "\\mathcal{D}_{\\mathrm{ext}}",
+
         Crit: "\\operatorname{Crit}",
+
         Spec: "\\operatorname{Spec}",
+
         tr: "\\operatorname{tr}",
+
         id: "\\operatorname{id}",
+
         rk: "\\operatorname{rk}",
+
         Bil: "\\operatorname{Bil}",
+
         Map: "\\operatorname{Map}",
+
         Sh: "\\mathbf{Sh}",
+
         Free: "\\operatorname{Free}",
+
         Sym: "\\operatorname{Sym}",
+
         Hom: "\\operatorname{Hom}",
+
         Obj: "\\operatorname{Obj}"
+
       }
+
     }
+
   };
+
   </script>
+
   <style>
+
   .reveal-viewport.reveal-scroll .slide-background,
+
   .reveal-viewport.reveal-scroll section {
+
     font-size: clamp(14px, 1.35vw, 26px) !important;
+
   }
+
   .reveal-viewport.reveal-scroll .interactive-panel,
+
   .reveal-viewport.reveal-scroll .thm-box,
+
   .reveal-viewport.reveal-scroll .carnap-box,
+
   .reveal-viewport.reveal-scroll .firewall-box,
+
   .reveal-viewport.reveal-scroll .intuition-box {
+
     max-width: 100%;
+
     box-sizing: border-box;
+
   }
+
   .widget-context-note {
+
     font-size: 0.64em;
+
     color: #cbd5e1;
+
     line-height: 1.36;
+
     margin: 4px 0 10px 0;
+
   }
+
   .syn-tabs {
+
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 6px;
+
     margin-bottom: 10px;
+
   }
+
   .syn-tab-btn {
+
     background: #151c2c;
+
     color: #94a3b8;
+
     border: 1px solid #334155;
+
     border-radius: 6px;
+
     padding: 5px 11px;
+
     font-size: 0.60em;
+
     font-weight: 700;
+
     cursor: pointer;
+
     transition: all 0.18s ease;
+
   }
+
   .syn-tab-btn.active, .syn-tab-btn:hover {
+
     background: rgba(65, 105, 225, 0.28);
+
     color: #FFD700;
+
     border-color: #FFD700;
+
   }
+
   .syn-tab-pane {
+
     display: none;
+
     background: rgba(10, 14, 23, 0.82);
+
     border: 1px solid rgba(65, 105, 225, 0.45);
+
     border-radius: 8px;
+
     padding: 10px 14px;
+
     font-size: 0.72em;
+
   }
+
   .syn-tab-pane.active {
+
     display: block;
+
   }
+
   .lean-code-card {
+
     background: #0d131f;
+
     border: 1.5px solid #334155;
+
     border-left: 5px solid #20B2AA;
+
     border-radius: 8px;
+
     padding: 10px 14px;
+
     font-family: "Libertinus Mono", monospace;
+
     font-size: 0.54em;
+
     line-height: 1.36;
+
     color: #e2e8f0;
+
     overflow-x: auto;
+
   }
+
   .ch13-grid-table {
+
     width: 100%;
+
     border-collapse: collapse;
+
     font-size: 0.65em;
+
     margin-top: 6px;
+
   }
+
   .ch13-grid-table th, .ch13-grid-table td {
+
     border: 1px solid #334155;
+
     padding: 5px 7px;
+
     text-align: center;
+
   }
+
   .ch13-grid-cell {
+
     cursor: pointer;
+
     background: #0f172a;
+
     transition: all 0.15s ease;
+
     font-weight: 700;
+
   }
+
   .ch13-grid-cell:hover, .ch13-grid-cell.active {
+
     background: rgba(65, 105, 225, 0.35);
+
     border-color: #FFD700;
+
     color: #FFD700;
+
   }
+
   .ch13-hermetry-grid {
+
     display: grid;
+
     grid-template-columns: repeat(6, 1fr);
+
     gap: 3px;
+
     margin-top: 6px;
+
   }
+
   .ch13-hcell {
+
     font-family: monospace;
+
     font-size: 0.56em;
+
     padding: 4px 2px;
+
     text-align: center;
+
     border-radius: 4px;
+
     border: 1px solid #334155;
+
   }
+
+  
+
+  /* Formula Containment & Wrapping */
+
+  .reveal .math.display,
+
+  .reveal .MathJax_Display,
+
+  .reveal mjx-container[display="true"] {
+
+    display: block !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    text-align: center !important;
+
+  }
+
+  .reveal .interactive-panel,
+
+  .reveal .def-box,
+
+  .reveal .thm-box,
+
+  .reveal .prop-box,
+
+  .reveal .proof-box,
+
+  .reveal .remark-box,
+
+  .reveal .scholium-box,
+
+  .reveal .carnap-box,
+
+  .reveal .firewall-box,
+
+  .reveal .intuition-box,
+
+  .reveal .vignette-box,
+
+  .reveal .claim-ceiling,
+
+  .reveal .deliverables-box,
+
+  .reveal .lean-card,
+
+  .reveal .syn-tab-pane,
+
+  .reveal .tab-pane,
+
+  .reveal .formula-highlight,
+
+  .reveal .matrix-readout,
+
+  .reveal .column {
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+  }
+
   </style>
+
 </head>
 <body class="quarto-dark">
   <div class="reveal">

@@ -324,6 +324,124 @@ $font-family-sans-serif: "Libertinus Sans", "Inter", sans-serif;
 }
 
 // ===========================================================================
+// FORMULA WRAPPING & PANEL OVERFLOW CONTAINMENT (Desktop & Mobile)
+// ===========================================================================
+
+// 1. Containment for columns and panels (min-width: 0 is essential for Flex/Grid items)
+.reveal .column,
+.reveal .columns > div,
+.reveal .grid-2 > div,
+.reveal .video-grid-2 > div,
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+// 2. Display math blocks (MathJax 2 .MathJax_Display, Pandoc span.math.display, MathJax 3 mjx-container)
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+  margin: 0.35em 0 !important;
+  padding: 4px 6px 6px 6px !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(65, 105, 225, 0.45) rgba(15, 23, 42, 0.3);
+  -webkit-overflow-scrolling: touch;
+}
+
+// 3. Keep MathJax inner math boxes from exceeding their parent wrapper
+.reveal .MathJax_Display > .MathJax,
+.reveal .MathJax_Display span.MathJax,
+.reveal mjx-container[display="true"] > mjx-math {
+  max-width: 100% !important;
+}
+
+// 4. Custom scrollbars for wide formulas that need horizontal panning
+.reveal .math.display::-webkit-scrollbar,
+.reveal .MathJax_Display::-webkit-scrollbar,
+.reveal mjx-container[display="true"]::-webkit-scrollbar,
+.reveal .formula-highlight::-webkit-scrollbar,
+.reveal .matrix-readout::-webkit-scrollbar {
+  height: 5px;
+}
+.reveal .math.display::-webkit-scrollbar-track,
+.reveal .MathJax_Display::-webkit-scrollbar-track,
+.reveal mjx-container[display="true"]::-webkit-scrollbar-track,
+.reveal .formula-highlight::-webkit-scrollbar-track,
+.reveal .matrix-readout::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 4px;
+}
+.reveal .math.display::-webkit-scrollbar-thumb,
+.reveal .MathJax_Display::-webkit-scrollbar-thumb,
+.reveal mjx-container[display="true"]::-webkit-scrollbar-thumb,
+.reveal .formula-highlight::-webkit-scrollbar-thumb,
+.reveal .matrix-readout::-webkit-scrollbar-thumb {
+  background: rgba(65, 105, 225, 0.65);
+  border-radius: 4px;
+}
+.reveal .math.display::-webkit-scrollbar-thumb:hover,
+.reveal .MathJax_Display::-webkit-scrollbar-thumb:hover,
+.reveal mjx-container[display="true"]::-webkit-scrollbar-thumb:hover,
+.reveal .formula-highlight::-webkit-scrollbar-thumb:hover,
+.reveal .matrix-readout::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.85);
+}
+
+// 5. Inline formulas wrapping & soft breaks
+.reveal span.math.inline {
+  max-width: 100%;
+  display: inline-block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: -0.22em;
+  scrollbar-width: none;
+}
+.reveal span.math.inline::-webkit-scrollbar {
+  display: none;
+}
+.reveal span.math.inline .MathJax {
+  white-space: normal !important;
+}
+
+// 6. Formula readout boxes (e.g. in interactive panels)
+.formula-highlight {
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(65, 105, 225, 0.35);
+  border-left: 3px solid #FFD700;
+  border-radius: 6px;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 4px 8px;
+}
+
+// ===========================================================================
 // MOBILE / SCROLL-VIEW RESPONSIVE LAYER (desktop slide mode is unaffected)
 // ===========================================================================
 @keyframes synScrollIn {

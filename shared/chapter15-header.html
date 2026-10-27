@@ -1,5 +1,14 @@
 <script>
 window.MathJax = {
+  "HTML-CSS": {
+    linebreaks: { automatic: true, width: "container" }
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "container" }
+  },
+  SVG: {
+    linebreaks: { automatic: true, width: "container" }
+  },
   tex: {
     macros: {
       coloneqq: "\\mathrel{:=}",
@@ -127,6 +136,41 @@ window.MathJax = {
 }
 .ch15-dag-node:hover {
   filter: brightness(1.25);
+}
+
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 </style>
 

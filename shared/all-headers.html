@@ -1,5 +1,8 @@
 <script>
 window.MathJax = {
+  "HTML-CSS": { linebreaks: { automatic: true, width: "container" } },
+  CommonHTML: { linebreaks: { automatic: true, width: "container" } },
+  SVG: { linebreaks: { automatic: true, width: "container" } },
   tex: {
     macros: {
       AP: "\\mathbf{AP}",
@@ -21,6 +24,7 @@ window.MathJax = {
       Coeff: "\\mathbf{Coeff}",
       Col: "\\mathbf{Col}",
       Coloneqq: "\\mathrel{::=}",
+      CommonHTML: {,
       ConfIndex: "\\operatorname{ConfIndex}_{\\mathrm{pres}}",
       Conn: "\\operatorname{Conn}",
       Crit: "\\operatorname{Crit}",
@@ -88,6 +92,7 @@ window.MathJax = {
       ROT: "\\operatorname{ROT}",
       Rbar: "{}^2\\bar{\\mathbf{R}}",
       Rresyn: "\\mathcal{R}_{\\mathrm{resyn}}",
+      SVG: {,
       Sel: "\\operatorname{Sel}",
       Sh: "\\mathbf{Sh}",
       Shift: "\\mathsf{Shift}",
@@ -123,7 +128,7 @@ window.MathJax = {
       dCSeg: "\\operatorname{dCSeg}",
       deg: "\\operatorname{deg}",
       diam: "\\operatorname{diam}",
-      display: block;,
+      display: block !important;,
       dist: "\\operatorname{dist}",
       divg: "\\operatorname{div}_{\\bar{g}}",
       dtilde: "\\tilde{\\mathrm{d}}|",
@@ -155,6 +160,7 @@ window.MathJax = {
       koppelungstensor: "\\mathbf{Q}",
       korporatorkette: "\\mathord{\\llcorner}",
       korrelationstensor: "\\mathbf{f}",
+      linebreaks: { automatic: true, width: "container" },
       llbracket: "\\mathopen{[\\mkern-3mu[}",
       longhookrightarrow: "\\lhook\\joinrel\\longrightarrow",
       longlongrightarrow: "\\longrightarrow",
@@ -314,6 +320,41 @@ window.MathJax = {
   background: rgba(255,255,255,0.04);
 }
 
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 .reveal-viewport.reveal-scroll .slide-background,
 .reveal-viewport.reveal-scroll section {
   font-size: clamp(14px, 1.35vw, 26px) !important;
@@ -392,6 +433,41 @@ window.MathJax = {
   font-size: 0.64em;
 }
 
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 .reveal-viewport.reveal-scroll .slide-background,
 .reveal-viewport.reveal-scroll section {
   font-size: clamp(14px, 1.35vw, 26px) !important;
@@ -466,6 +542,41 @@ window.MathJax = {
   font-size: 0.64em;
   border-left: 5px solid;
   background: rgba(255,255,255,0.04);
+}
+
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .reveal-viewport.reveal-scroll .slide-background,
@@ -546,6 +657,41 @@ window.MathJax = {
   font-size: 0.62em;
 }
 
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 .reveal-viewport.reveal-scroll .slide-background,
 .reveal-viewport.reveal-scroll section {
   font-size: clamp(14px, 1.35vw, 26px) !important;
@@ -622,6 +768,41 @@ window.MathJax = {
   background: rgba(255,255,255,0.04);
 }
 
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 .reveal-viewport.reveal-scroll .slide-background,
 .reveal-viewport.reveal-scroll section {
   font-size: clamp(14px, 1.35vw, 26px) !important;
@@ -684,6 +865,41 @@ window.MathJax = {
   line-height: 1.36;
   color: #e2e8f0;
   overflow-x: auto;
+}
+
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .reveal-viewport.reveal-scroll .slide-background,
@@ -750,6 +966,41 @@ window.MathJax = {
   overflow-x: auto;
 }
 
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 .reveal-viewport.reveal-scroll .slide-background,
 .reveal-viewport.reveal-scroll section {
   font-size: clamp(14px, 1.35vw, 26px) !important;
@@ -812,6 +1063,41 @@ window.MathJax = {
   line-height: 1.35;
   color: #e2e8f0;
   overflow-x: auto;
+}
+
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .reveal-viewport.reveal-scroll .slide-background,
@@ -887,6 +1173,41 @@ window.MathJax = {
   stroke-width: 2px;
 }
 
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 .reveal-viewport.reveal-scroll .slide-background,
 .reveal-viewport.reveal-scroll section {
   font-size: clamp(14px, 1.35vw, 26px) !important;
@@ -949,6 +1270,41 @@ window.MathJax = {
   line-height: 1.36;
   color: #e2e8f0;
   overflow-x: auto;
+}
+
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .reveal-viewport.reveal-scroll .slide-background,
@@ -1039,6 +1395,41 @@ window.MathJax = {
   background: rgba(30, 41, 59, 0.7);
 }
 
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 .reveal-viewport.reveal-scroll .slide-background,
 .reveal-viewport.reveal-scroll section {
   font-size: clamp(14px, 1.35vw, 26px) !important;
@@ -1101,6 +1492,41 @@ window.MathJax = {
   line-height: 1.36;
   color: #e2e8f0;
   overflow-x: auto;
+}
+
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .reveal-viewport.reveal-scroll .slide-background,
@@ -1201,6 +1627,41 @@ window.MathJax = {
   text-align: center;
   border-radius: 4px;
   border: 1px solid #334155;
+}
+
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .reveal-viewport.reveal-scroll .slide-background,
@@ -1312,6 +1773,41 @@ window.MathJax = {
   font-size: 1.06em;
 }
 
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 .reveal-viewport.reveal-scroll .slide-background,
 .reveal-viewport.reveal-scroll section {
   font-size: clamp(14px, 1.35vw, 26px) !important;
@@ -1402,5 +1898,40 @@ window.MathJax = {
 }
 .ch15-dag-node:hover {
   filter: brightness(1.25);
+}
+
+/* Formula Containment & Wrapping */
+.reveal .math.display,
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"] {
+  display: block !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  text-align: center !important;
+}
+.reveal .interactive-panel,
+.reveal .def-box,
+.reveal .thm-box,
+.reveal .prop-box,
+.reveal .proof-box,
+.reveal .remark-box,
+.reveal .scholium-box,
+.reveal .carnap-box,
+.reveal .firewall-box,
+.reveal .intuition-box,
+.reveal .vignette-box,
+.reveal .claim-ceiling,
+.reveal .deliverables-box,
+.reveal .lean-card,
+.reveal .syn-tab-pane,
+.reveal .tab-pane,
+.reveal .formula-highlight,
+.reveal .matrix-readout,
+.reveal .column {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 </style>

@@ -58,7 +58,11 @@ for hf in header_files:
 
 macro_lines = [f"      {k}: {v}" for k, v in sorted(macros.items())]
 all_header_html = (
-    "<script>\nwindow.MathJax = {\n  tex: {\n    macros: {\n"
+    "<script>\nwindow.MathJax = {\n"
+    + "  \"HTML-CSS\": { linebreaks: { automatic: true, width: \"container\" } },\n"
+    + "  CommonHTML: { linebreaks: { automatic: true, width: \"container\" } },\n"
+    + "  SVG: { linebreaks: { automatic: true, width: \"container\" } },\n"
+    + "  tex: {\n    macros: {\n"
     + ",\n".join(macro_lines)
     + "\n    }\n  }\n};\n</script>\n<style>\n"
     + "\n\n".join(styles)
