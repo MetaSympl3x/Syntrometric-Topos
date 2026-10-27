@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act3_Zombie_Impossibility_Proof/dac118edc6c06e0ef658dac69ad0a4543b4acd4af61553a94e010f9e90ca31f7.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act3_Zombie_Impossibility_Proof/8d0350c4cc0b3f16e89389208c9188123d6b7e8456006d2f63ee376b3782de10.mp4'

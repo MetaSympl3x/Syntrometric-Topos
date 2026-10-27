@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act12_Synthesis_Bridge/b94e27f9cddc6c1f09ed5e945bd5ce2abfef8f8204919e5e8e4101790336d4dc.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act12_Synthesis_Bridge/9c65ba5ba2db132aaf42bea853596a35b14f18ef858268337e0425a938c43b92.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act12_Synthesis_Bridge/763ebf25cb4efcbef0eedb1c449992df53d9126e1aa6b7f3fb4e63d21c5bd687.mp4'

@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act12_Synthesis/ad1ff0ba8d845b4bba4f9f72663c6a4a84c2451a2c90efde8b3fe3945f0d1279.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act12_Synthesis/9b5e953aed58f28ea2987224131681f817d98f8bc1748026412780e1d39a6807.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act12_Synthesis/66dce30957a43f01c58f6625ab08931bc54b75857fa80f48f9668fb4cf544902.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act12_Synthesis/374bce0f210b547667a3b6e9ca11b01d87edb71e9156acfe5841ba88eb29b6ce.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act12_Synthesis/a15ab9482bad459fb85148f7ca7d908fdb8639922ac39742ffd8f84a20a3406d.mp4'

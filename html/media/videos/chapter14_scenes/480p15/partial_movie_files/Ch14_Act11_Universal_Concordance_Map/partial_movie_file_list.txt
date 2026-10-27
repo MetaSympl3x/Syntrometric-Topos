@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act11_Universal_Concordance_Map/e3f870520d032453a793b24491195120d04ad2b83581dd48521a4b62aa6269d1.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act11_Universal_Concordance_Map/b0fed83a1074b7bfb306b99b7fa82d9f865bb9c20aaf8c75f35cca188f73197c.mp4'

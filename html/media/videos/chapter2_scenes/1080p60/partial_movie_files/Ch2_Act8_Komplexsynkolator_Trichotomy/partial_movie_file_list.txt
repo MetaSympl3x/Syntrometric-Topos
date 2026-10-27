@@ -1,7 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act8_Komplexsynkolator_Trichotomy/70705111b7114041166bdf1ecfef9a3989d23131af50ee6ef37dd46b3cd49dbb.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act8_Komplexsynkolator_Trichotomy/4d714bf21c715087ba1c14e4e1a803e3bb33e17877dcca93a66f810e43c17af0.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act8_Komplexsynkolator_Trichotomy/ac6fe72935748c40963e3ec1491853ab1b310ba7e4eef317a344f7884f3f70e1.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act8_Komplexsynkolator_Trichotomy/0e4504da3a92c79b5fd0ca8faaaaea3f0d577d5cfcc76eccb727ed5d0abe867d.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act8_Komplexsynkolator_Trichotomy/2be1d7041fa1da59e31d42bd23f9b9d58bdd209e09c8f9ce4b3f203ebd7ac327.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act8_Komplexsynkolator_Trichotomy/5cbd334b69e5d7e54cfb399d7e783fad20bba0a88c754e9319690eea1f55fb0c.mp4'

@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act2_Variable_Separation_Ganzlaeufig/600c544e5321bfb24aaf9512a22d6d09e98cd351a26f45dbc8b8a31d6afc119e.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act2_Variable_Separation_Ganzlaeufig/ae6f7f438b051fbd0aa678acfb0566e651cab48c2852cea680c8f80311d1f60b.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act2_Variable_Separation_Ganzlaeufig/467e535c9a2050932ea73bb3d2eb3b14eac6f88b124e0584b05e62dc6dec9235.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act2_Variable_Separation_Ganzlaeufig/f478f59a0b30f6739c4ca25f63473da245773c551bdcb8976d6f65e999af33b9.mp4'

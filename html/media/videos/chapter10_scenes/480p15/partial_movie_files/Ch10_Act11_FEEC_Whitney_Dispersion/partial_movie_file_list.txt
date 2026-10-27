@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act11_FEEC_Whitney_Dispersion/e6d06f34a13773ba6d302ddac28bbb7c76ef28a612abd0c97e5605de9a576656.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act11_FEEC_Whitney_Dispersion/3a60cd51cfd5514a6ceb74ecd338694730978df9153ef9073d5a0e6bd1fb07f2.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act11_FEEC_Whitney_Dispersion/35b7af077dce04a4f76573029ebb9f03106f26c52d3ee49388f33d14066b6c9f.mp4'

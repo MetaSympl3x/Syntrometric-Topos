@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter11_scenes/480p15/partial_movie_files/Ch11_Act3_Resonant_Soliton_Null_Stability/d9f263122ba6639f0b4b6e0cdf45c742a6069b54667f5885dae4651d39a29525.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter11_scenes/480p15/partial_movie_files/Ch11_Act3_Resonant_Soliton_Null_Stability/4075d348ed5c06c56c269affcea0609f994e7d2d1eb8fee57dc974b372564ca7.mp4'

@@ -1,7 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act2_Discrete_Continuous_Enyphane/8eddde150bd8f8bf67abaf0cc5a095b28e96d38c5c85aefecdc16539b0dff38b.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act2_Discrete_Continuous_Enyphane/b4ff3d95ed263aa238fab2931f713f74bc8df1714b49c61aab8882b427c362bb.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act2_Discrete_Continuous_Enyphane/646d5d9e19433ac5969064de366041951d451777f3e3099c29dbff3a44a87786.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act2_Discrete_Continuous_Enyphane/2fe96c1a7a7ba846573d3dde6fbabab6be73f96a9ad6b6e7b2b2bcfa774b8b7b.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act2_Discrete_Continuous_Enyphane/642d47892aec7f9e23d0fb7bb6d6537a5a19add413a9cb9e0bc8332c3aba62ee.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act2_Discrete_Continuous_Enyphane/87c398840a90475188eae260d7dd8654215898a21c41d6528585ff779a849b92.mp4'

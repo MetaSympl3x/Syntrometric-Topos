@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act5_Quantitative_Topos_Dedekind/ac09f1c744e5f21daf4c4e07fb48d6b4a03660661c213c3d7379696ff79a877a.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act5_Quantitative_Topos_Dedekind/014d8a928ab7d083e87a665dcae612bfcbe508468ff9607ea837ebb9d2d73f5d.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act5_Quantitative_Topos_Dedekind/852a2ccbc2e2a6ac27cafdd1560105829534199cfeb98f1f38f0f3b8f5af0cd6.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act5_Quantitative_Topos_Dedekind/f20411514ca3200c79f150c3c363fcb414085f2fe62358ac7d81f12946d67b68.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act5_Quantitative_Topos_Dedekind/87fd2dd99715c139c6d2d818f5c93317ad4e921d191db0d06a3db5c6e55c7dee.mp4'

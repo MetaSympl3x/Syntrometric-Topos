@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act10_Sec_535_Tectonic_Spectral/ccff9523d9e8209e6f747f929ae92c50299de5ad9a19e64ccc122b0b9e0225b7.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act10_Sec_535_Tectonic_Spectral/92e53e204dd30499aba5f88634c8b024932d9af3676b9c08117f9db5219f9890.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act10_Sec_535_Tectonic_Spectral/0c7d1a41787964a5e006ebffcdec188ef521b301f1be732a1a50c45cd375d741.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act10_Sec_535_Tectonic_Spectral/5c71db1719e06dbefff80d57e98f4d77112b2ce27335b078d2b543ca4ae4f579.mp4'

@@ -1,7 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act3_Secs_514515_Syntrokline_Brcken/eb7d155ec0400d1fc369117623320822eba84ccb3500657ef461ec268d9a20bf.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act3_Secs_514515_Syntrokline_Brcken/960a01ddf8494d8d91a2fc46603bd1de2ebb67c8e08d63086cfc4930593ebe16.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act3_Secs_514515_Syntrokline_Brcken/12cd2eb84fd65fa19f603c015558195ab28d9df6cdcd98847b6cfc55c660846f.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act3_Secs_514515_Syntrokline_Brcken/40d304018b27b8c8a8686e89f46cc8253bca2640956e626e607d9ea94898c45a.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act3_Secs_514515_Syntrokline_Brcken/e2ca411a52e6c74f2b4e7f424b06b449e1f099f28bf1476a184b48e99b202886.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act3_Secs_514515_Syntrokline_Brcken/ec4d987f758e4ea8773287cf2345d4a00fcbee979cf87ead822d2892007b8200.mp4'

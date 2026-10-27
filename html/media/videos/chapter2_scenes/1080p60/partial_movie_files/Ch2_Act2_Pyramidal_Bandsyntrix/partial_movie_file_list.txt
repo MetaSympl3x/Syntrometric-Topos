@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act2_Pyramidal_Bandsyntrix/4b8357e52a36ab106eb5e2b2a9204cf057ac81a46367706395e65a0ce4708614.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act2_Pyramidal_Bandsyntrix/566f59967690051fe584a4f4f4fcf8f76c2367c71409396b3eb146200e3230dc.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act2_Pyramidal_Bandsyntrix/b6b58e90e001f7572d4fbb9c8084870b0165a001c0a00ace510df5eae0ccf054.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act2_Pyramidal_Bandsyntrix/63899be701168fb2dbaa8d4ae2e6daa88edd17d6cc260486b3473d3ce0583fa2.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act2_Pyramidal_Bandsyntrix/9568a03525d92006db0ea9254cebecb58c351cc155d67eab5e20fa682d71b865.mp4'

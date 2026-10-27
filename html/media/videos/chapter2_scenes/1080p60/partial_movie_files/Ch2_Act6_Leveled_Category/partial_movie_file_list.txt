@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act6_Leveled_Category/6c3e86be43411b2ae94c3fcf4bb3e3d9a1417af7d069352dc577f04f2482a44b.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act6_Leveled_Category/9dca74fe88d04314cc69b53253f27d704c216fc85a34dfaea68dfcddb538b539.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act6_Leveled_Category/3ddbf5932b8b5754fd1f01a4d4e8e413342987929329cd393855445208bc4db4.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act6_Leveled_Category/694dd42bac4330526efe3cb9a80081d3943bc46a5e64addfd4ae67ed6225247d.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act6_Leveled_Category/4fee2a37ea06947fa986dbf90423bd27008ad5df935e1636255cd39e1d5e1314.mp4'

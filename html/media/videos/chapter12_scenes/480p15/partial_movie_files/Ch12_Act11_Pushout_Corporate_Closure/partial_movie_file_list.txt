@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act11_Pushout_Corporate_Closure/faae36aef1fc930154197953231bac4060293126d1419f200db351032f728c5d.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act11_Pushout_Corporate_Closure/c40258fe7527d686f9a5fb280f67a5a131423802a10f0da0e791ed0b53194f6d.mp4'

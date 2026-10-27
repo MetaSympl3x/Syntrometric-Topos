@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act10_Cascade_Norm_Theorem/cedb032a7f1fd08fcd1d53920280d91170a306dc4d7c6307912468fe5182b522.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act10_Cascade_Norm_Theorem/703c0fd7966a4aa39ebe0ed94866ab84d62108bbb0e6df80f3c4e99d1ba51295.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act10_Cascade_Norm_Theorem/bdc83fac00ab484c5d7e0b0f058bffc4c87570b291109d217ef8d8cef271e01d.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act10_Cascade_Norm_Theorem/3a110c28de7450ed6e232913400def73bb0170190da2b2d4fc12081ff61b8c35.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act10_Cascade_Norm_Theorem/6204928a302c9d3bc040e34e88a1de754edecec6cd8172c84bcf1fa6d5a4b3b6.mp4'

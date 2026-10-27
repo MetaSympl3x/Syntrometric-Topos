@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act8_Grothendieck_Nuclear_Wavepacket_Fig81/f991d81e14b98967bee14cfd2db07f12326d6375c48018cc8ae17c9c35951723.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act8_Grothendieck_Nuclear_Wavepacket_Fig81/3d9406830671097f7d3e384b34384f155d7c088dd092cf17e36418e26558a474.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act8_Grothendieck_Nuclear_Wavepacket_Fig81/0de9ea1d023f11e45e18f709ccf41fe7ff48834af8dd353e999e5b082597d656.mp4'

@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act7_Seeley_Extension_Corners_Fig82/9c591277954d8c4e6c7b390d3c077f0bc661a098bac48d89ec0810d088cde950.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act7_Seeley_Extension_Corners_Fig82/e752c3fef1c79efdfb97dbd4386e534985bac7f26c147519d17050a8a7218a28.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act7_Seeley_Extension_Corners_Fig82/ec2fffdd394c118a8cc2d256eea38b157e1bb229ce09cb6d512387446afdcfc4.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act7_Seeley_Extension_Corners_Fig82/8f906b0146a58d671b24eef5e04cbbb91abed1cb0055800f761c643a76d55c9b.mp4'

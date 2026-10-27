@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act8_9_Laplacian_Bogomolny/4aeccf77d16f41ebad5951bf6486906dca54501e0b3f41236e0e9ac6c43d0939.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act8_9_Laplacian_Bogomolny/fc25d8fb498bdd20a93b343acfe3476294a6679af10c22dc4ec4ed94e989acd7.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act8_9_Laplacian_Bogomolny/01def2c0cdd1c377df0f006db3476b456d3204063481b275f70a5f4c039ac4f4.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act8_9_Laplacian_Bogomolny/afffd57b95ef5eb09cacb23f5304c1791410bdf03f090c5a77f04e7dc5c74e9b.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act8_9_Laplacian_Bogomolny/4bbf4cec4f88d7cf4054af8141f853e3081ba04e8ee7597da131e73084862da7.mp4'

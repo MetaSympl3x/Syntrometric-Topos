@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act4_Algebraic_Constraints_Nuclear_Scholium/0436abafb137e5f3a7ac5a2fb5f14073e0f2b78073279dcb96988d6888c3b5ab.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act4_Algebraic_Constraints_Nuclear_Scholium/e2e25a495b57af16cd3d94a3464cec4276296ff7c98cdcef6660e4cc9f4a3f82.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act4_Algebraic_Constraints_Nuclear_Scholium/4bc5958490adb16228118dc8910f129136479f2f068d8345ca706ed1eb04c7d5.mp4'

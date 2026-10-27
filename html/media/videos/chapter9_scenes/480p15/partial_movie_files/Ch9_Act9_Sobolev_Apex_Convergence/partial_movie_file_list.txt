@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act9_Sobolev_Apex_Convergence/fb0b24a7a6add3e24bcac05288850e5917b37fb96a46b9dfe8ac1649bcb3c3f7.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act9_Sobolev_Apex_Convergence/163481a254c80072b08c64335e6e5308b3f4be6c6ba2a404c3cbd685a342f9d6.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act9_Sobolev_Apex_Convergence/80877a9246de29d8bd82490ae776edbb4d8554ea0035b21245b29355c89d395c.mp4'

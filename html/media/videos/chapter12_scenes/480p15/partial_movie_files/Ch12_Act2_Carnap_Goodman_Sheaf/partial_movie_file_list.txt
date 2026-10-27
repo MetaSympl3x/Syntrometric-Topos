@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act2_Carnap_Goodman_Sheaf/1efbfc01d687dc223a86d462e5615c7ed63a36f55404f49db0b43a7e542c66f0.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act2_Carnap_Goodman_Sheaf/99e27f657532a66e34ca53e8347dfd6b9bfe2070348387149bd563a5f2ea9d40.mp4'

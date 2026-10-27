@@ -1,7 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act9_Sec_335_4syntropod_Colimit/a643842c7399e745ccb84e6071411ae2b2befa2abea6945f4943f330b9304bb2.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act9_Sec_335_4syntropod_Colimit/475604098452a716f636e3ffb040d2dd76f8eb4ea61ccc10bedc49c78448fe02.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act9_Sec_335_4syntropod_Colimit/070e8e5e970ce02340645668d2af488de772261b5bbc8db47d6aad88376c8058.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act9_Sec_335_4syntropod_Colimit/7a8a96ae73c7395afac823e5722c101cadd95249559f92448b6542fadc222bad.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act9_Sec_335_4syntropod_Colimit/05ce100bbd6590e651d378f57c78d6f605f90830695336c68d8fab0d28126df8.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act9_Sec_335_4syntropod_Colimit/c4f9c49a8e6f21052e0db38749bcf98af501a85202841c1319d19fac534491a6.mp4'

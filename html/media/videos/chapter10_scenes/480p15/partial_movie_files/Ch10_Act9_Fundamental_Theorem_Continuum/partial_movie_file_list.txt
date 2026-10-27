@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act9_Fundamental_Theorem_Continuum/b6aa3a171bd12fda2411a20d42f072e588b91a41394bc7945495b2b911c49476.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act9_Fundamental_Theorem_Continuum/607b81153770a5aceb7ffd9c6f57b20bf916b40fb45a27f1d365a0550b277da5.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act9_Fundamental_Theorem_Continuum/aa177ef8579b0301a86c1d40ecdbdecf43524ad7414ec2eed9020940217b7592.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act9_Fundamental_Theorem_Continuum/49b1e240f070dad66b05af6c126ba77603730fe0c4a730a0619f249793d252b5.mp4'

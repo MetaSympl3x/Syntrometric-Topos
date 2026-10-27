@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act5_Operadic_Feature_Erasure/6f1a8dae849224b8cd8fada6c489937fbbcd8cd70bf7fe46cb6912c1b6d8522e.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act5_Operadic_Feature_Erasure/91556e69721e889bc921433eb40e25110f466a9f0e47afac4f2afa7a1081c479.mp4'

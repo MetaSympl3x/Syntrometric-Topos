@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act11_Secs_536537_Protosimplexe_Enproduct/7c291e6c8bb5a997bbda4feb9df3b2336b76d40c662e77e5fe79376feaeecf34.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act11_Secs_536537_Protosimplexe_Enproduct/d725329c0f3480e09ceed52c64404f4314810ea4f921d2e7cdb6bacd1bdb3969.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act11_Secs_536537_Protosimplexe_Enproduct/34613eb7aaddd87c2e9c4d81467c0204afbf48be0bce9cc2d8e23ed885eaa18b.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act11_Secs_536537_Protosimplexe_Enproduct/2b886fefc10d8f769768e68a59f77001ed046292b5d4989bcde809c53db75e23.mp4'

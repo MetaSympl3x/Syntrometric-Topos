@@ -1,8 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act3_Realification_Bundle/85038bf259a6010776a0e7ad80b0d126d2cf439d7b8c47f758b1b23e0b671ce1.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act3_Realification_Bundle/b34286c75afe90ce677d7eb745b4ac9dd9849f1299c28b12437d3179906aacf1.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act3_Realification_Bundle/25a44109d3bde9a9433c311cd8f84d22d74f5c56936f4242c28ef9bfdf8a580a.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act3_Realification_Bundle/83ad13f49422514a8357575ea9d220dc39da1a594949c2f011645d36da4109dd.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act3_Realification_Bundle/31ba18c62ce338813c8d5c8554427a91c4bfbe7bac7710861f552c97377712e1.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act3_Realification_Bundle/ec2c4d619ac6f180032580a1d5188f21383599b758031b84e32975e053584b45.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act3_Realification_Bundle/afee3561ec74fffcb5e6609acee505c04bc522fdacaf44a3b2db089cdc6f61bb.mp4'

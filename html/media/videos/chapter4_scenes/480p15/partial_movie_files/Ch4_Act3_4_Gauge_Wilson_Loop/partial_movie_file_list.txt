@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act3_4_Gauge_Wilson_Loop/7052e7a5dfbc17765ba5758d4035e59f4b2a3d797972f0e43e1f1bc6f0a4ef3f.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act3_4_Gauge_Wilson_Loop/49db2cfa84ad7e310610b687d1474bdeddc22b4ee5cf35619e4214cb50111ca2.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act3_4_Gauge_Wilson_Loop/372d8d0d7b936d7b5fb00a8654025a6a620173a1b5f5dba5e62e9346d9f9f118.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act3_4_Gauge_Wilson_Loop/f8f5c362849a27667f17fe74a25b18a1d9fc86d0fe55df54ac8ab69abe8eeecc.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act3_4_Gauge_Wilson_Loop/422c59e705a4083833c06c2b913de755fa89ac03fe813be332304f7f4446a524.mp4'

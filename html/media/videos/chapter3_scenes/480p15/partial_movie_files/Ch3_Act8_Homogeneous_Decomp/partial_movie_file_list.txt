@@ -1,8 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act8_Homogeneous_Decomp/62b8349c2a9f08b92b05237bb48aeb38b6d92eecf9eb36836e45ebc22dd27948.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act8_Homogeneous_Decomp/e20da21f9aa16decbbd912201fd2b161d382393d3200037eed399aaa55a0d858.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act8_Homogeneous_Decomp/228e9e0bbc5585e5067bbe02f53efb198d0dccce54ed2384341fc89ed4cac1ac.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act8_Homogeneous_Decomp/3ed309724efd8fe44ae05832f5da0d811c5d4b27e9c0c2f40150640db440f383.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act8_Homogeneous_Decomp/18b12854979a77313dac29691ba4e0cdb3631ff4ff1477a0f31024d7113b0df9.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act8_Homogeneous_Decomp/fc39cb649a441dcd04f3efccf70f0130213b5448c11caddfba873249b9187525.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act8_Homogeneous_Decomp/6da3204bd3a0b01a92c12232fb3ceab70e66d664d22c88d1e236699286d49ee7.mp4'

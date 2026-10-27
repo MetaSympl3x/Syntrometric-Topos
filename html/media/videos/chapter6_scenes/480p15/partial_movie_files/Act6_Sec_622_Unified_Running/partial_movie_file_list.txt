@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act6_Sec_622_Unified_Running/15e74769e9fd87c55cbe5b25f0ff28829bb02940c5a85d19ba2e9c6d1daf5e90.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act6_Sec_622_Unified_Running/d9dd01b99d9f4347949ed3c1a7f80f2af3b0220c045d523728d193d11bb1c301.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act6_Sec_622_Unified_Running/0033301d1b926e7799cd674f99801d8c62521f2760c58b21b60fa0f55fc1eeab.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act6_Sec_622_Unified_Running/6563bc40849eefb9ca09a306e7aaef1b34d1d42339e7e133fde439ac2d7990c0.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act6_Sec_622_Unified_Running/363bf7bd67d6c798b46467c682c5136560171d96dbb3ff160181a3e93edef695.mp4'

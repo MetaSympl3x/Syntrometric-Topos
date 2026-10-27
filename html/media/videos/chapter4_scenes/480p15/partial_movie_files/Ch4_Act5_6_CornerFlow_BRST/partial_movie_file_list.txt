@@ -1,7 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act5_6_CornerFlow_BRST/6a7103689e9e7652dfefbe0b014ab3de732454e0176151d3ee95f53cfa2d2654.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act5_6_CornerFlow_BRST/dc2362c71c86600d573afe02c0960723b78dd28dd0ef3d459343634677bed989.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act5_6_CornerFlow_BRST/296f72dbe16cc9fce07b20d8305f43ff66678157bd68db7036a6f318723677ca.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act5_6_CornerFlow_BRST/c09dc87d26a947dfb3fb549c8d632e70c4d623e00606049e8e5617b8d52204f5.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act5_6_CornerFlow_BRST/1c240d4ef6bf66e0fd8a0916a2411105eeecc7da705b5e7f64ede3f49a9fa3a3.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act5_6_CornerFlow_BRST/57cf329df78d627cfa18016ba0818b04649833d2632f3d235c44a9043d2d4f87.mp4'

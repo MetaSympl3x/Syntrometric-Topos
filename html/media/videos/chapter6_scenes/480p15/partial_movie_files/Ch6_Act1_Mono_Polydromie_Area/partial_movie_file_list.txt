@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act1_Mono_Polydromie_Area/978aba7b3da0f9ba33b4b6bad85799fc024f1715c2f259d3a192157f27c144dc.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act1_Mono_Polydromie_Area/36aed2e382f41268cd88d42622c6fe8d0b5df5ba08a295aea8b9939f3d959f65.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act1_Mono_Polydromie_Area/868e25310b6965055ae1f4281ab87548c5366acbf03b5c3a8ce2089bdb9aa2c0.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act1_Mono_Polydromie_Area/6b4a07893a54309f738958e6f5c716d4176038c6c1faba851a7603c3870b32df.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act1_Mono_Polydromie_Area/2189657314524db6a7119bbae0deb9c744a1c7ddf4c9736b63d8ccb94fd43048.mp4'

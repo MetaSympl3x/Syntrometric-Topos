@@ -1,8 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act6_7_Tower_Postnikov/ac1062f1517938b9b8ff6affdc8960769daebc1ce4d49b9a24857cb3a9c0d347.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act6_7_Tower_Postnikov/6dc9921ab31fed9852e4b8162ae5663f5b2b01723eee1d632ac45b744d919468.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act6_7_Tower_Postnikov/fa9310556b33ce4e905d5f4f015a66df087bde7ef52afc77c97d5934a858b571.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act6_7_Tower_Postnikov/37ffa0ed97b4d190ae6dfc938a0205a5590e2b73324b95cc0a17911cb5a8de82.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act6_7_Tower_Postnikov/87ec5fd71b4dd8d9fa5f3bad3c864b2f4536995eb361267b3c5f0d587ad27c33.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act6_7_Tower_Postnikov/17893fe32a474a05bf12b59af988258b62f154672c51524223a321581bae5984.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act6_7_Tower_Postnikov/34c26b20a52357252b954fc7b8d65d5f9c16b4e307b4ef0952a9b2d3cc9a9e94.mp4'

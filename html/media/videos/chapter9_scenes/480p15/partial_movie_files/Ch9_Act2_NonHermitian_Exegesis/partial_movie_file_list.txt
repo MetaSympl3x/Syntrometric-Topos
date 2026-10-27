@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act2_NonHermitian_Exegesis/f6d2009e0bffe7e625069ce17e580dc269996aad9ae66bae0553e314f10b774c.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act2_NonHermitian_Exegesis/4a35c512ec8a5b0c17cfc44e0687ea0921c6a5df1daa0aec8b23e0946da82d93.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act2_NonHermitian_Exegesis/9147afe5fa4e825b201477f535beabb728c379720af9336f0da84504288d8623.mp4'

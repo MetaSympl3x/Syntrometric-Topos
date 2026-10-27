@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act11_Sec_634_Wasserstein_Free/93339b932a5ebb48921fe63f6cae601cc30d2880bf25f238d31884b71a75287f.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act11_Sec_634_Wasserstein_Free/b35a0f3e12b8c7a1aa00533238f0acaff2b4a9cf3bf7f8994ed3531c0a5a9d0a.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act11_Sec_634_Wasserstein_Free/3e87134297d15e98872dfa55e9bc04d93d65e7afb6e5787ba817ad9181838571.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act11_Sec_634_Wasserstein_Free/f047d98e65cb7ffbb77fb455d860308656cd1d77551215d418e484017c71981b.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act11_Sec_634_Wasserstein_Free/e3b6c50fee7964eb04ea854f6615799d82d1ac6f60909250568f71a3499c2f23.mp4'

@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act10_Lawvere_Ego_Fixed_Point/0c129c7340a82db9e5db0cfa2ffa799183f99f4458f7d0c4e304d915024496df.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act10_Lawvere_Ego_Fixed_Point/13daafb1f5c9ee9371f07362cc8dbcdc93c5dbc8c47e68cf45c8fc05827a1e72.mp4'

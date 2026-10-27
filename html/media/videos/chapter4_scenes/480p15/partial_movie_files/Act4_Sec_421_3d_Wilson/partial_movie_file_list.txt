@@ -1,9 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act4_Sec_421_3d_Wilson/ebde4308682dde03c80ca3d76d6201925e8d9e43c2fe89cecd5d3fc79b50ac49.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act4_Sec_421_3d_Wilson/7fcb24793a1e98aa49fb6e73a52d1ec965ce3b54110ba9a73cae727cda9aad3f.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act4_Sec_421_3d_Wilson/1c2e14b69ee19c6bde8c65680ac08d0bf037ba50da6b570e13bf5f3f96025c63.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act4_Sec_421_3d_Wilson/c175bf008cfa1920343d0837162d54f0a0da2eccc66adee009265b7f851ca39b.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act4_Sec_421_3d_Wilson/93f3eeacace53b8902d3de88a2194e71c7a84a958279abba197e705e1a9ef05c.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act4_Sec_421_3d_Wilson/1618a3947627794a358df01931ca53b42a604b382d11529e300695a963a1fab1.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act4_Sec_421_3d_Wilson/1385461258fe87602fe722fc8f54252323cd59930a1687df6af557ef2d90fe5d.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Act4_Sec_421_3d_Wilson/556accf9e16b9bfbe348b187e5b4acf6cb37e0c96fb4835854d1741d23681cbb.mp4'

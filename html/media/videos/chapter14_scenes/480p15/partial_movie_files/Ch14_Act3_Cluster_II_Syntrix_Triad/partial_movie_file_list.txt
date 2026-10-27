@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act3_Cluster_II_Syntrix_Triad/88cd9e210effdd6783e262f0c8b7e724f1857857567c363065bd4fad2c4b94eb.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act3_Cluster_II_Syntrix_Triad/c04ec166ff825e808da26249db73718ee1350033676bcd6ec6949a42d4d85436.mp4'

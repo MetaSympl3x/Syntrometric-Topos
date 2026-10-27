@@ -1,7 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act10_11_Zeitkorn_Grid/667d918b29a3b02352ee3bb8dea8672789d662ecc9e7ebbe8ee672c985da7c34.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act10_11_Zeitkorn_Grid/d3728029bd71dcf4218230a2ec048d63f2882c7ad383a74d37124b432ffdab6e.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act10_11_Zeitkorn_Grid/367d7602f6897a5d19a395a721b59ea5610ffa76342fb8bfe5cea37799f5b999.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act10_11_Zeitkorn_Grid/9f544497803f2acd69e7cb8944f743ceefb2efc35f68f4d3c728d30c11bba5f3.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act10_11_Zeitkorn_Grid/baf7d8db9588fc43ae3036356dab53a1f38b96b09b5fd8e55286d93835eb76b5.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter4_scenes/480p15/partial_movie_files/Ch4_Act10_11_Zeitkorn_Grid/dca1a3cbab95fe828efc96b04005f23a9c85a5ab00ab71e5d40656d6b18cb855.mp4'

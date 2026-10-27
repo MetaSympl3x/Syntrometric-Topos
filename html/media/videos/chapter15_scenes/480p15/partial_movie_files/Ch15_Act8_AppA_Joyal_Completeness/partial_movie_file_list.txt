@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act8_AppA_Joyal_Completeness/5c86da83e14e7cfc05a1513b274f17f38d63d19eea43993e4822ea855c54b70f.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act8_AppA_Joyal_Completeness/57c65e5e74106af9a1ecc010228f98a489134681f16d15200aeb6d474f66cdeb.mp4'

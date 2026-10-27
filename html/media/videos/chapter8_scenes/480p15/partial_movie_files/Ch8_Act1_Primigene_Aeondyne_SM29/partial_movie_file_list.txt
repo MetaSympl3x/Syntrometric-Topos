@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act1_Primigene_Aeondyne_SM29/8080f9c589a4db2e52be8b24114712a8d23168eee7e2963c80cf6be42d528f83.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act1_Primigene_Aeondyne_SM29/81de246b656b049f702610e8ea0665b722b5ce44009510887d6ed6a6dd95b73e.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act1_Primigene_Aeondyne_SM29/fb5ca78d27d4f4f00b630bf30847a8d49aaae3b45ed18f2da57da50cfd115b66.mp4'

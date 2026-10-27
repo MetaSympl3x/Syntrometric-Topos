@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter11_scenes/480p15/partial_movie_files/Ch11_Act9_DESY_Mass_Formula_State_Vector/e5739caefb8468627f7f7eaa3a91513fa1e976d08865398b91f7af4c7b9c983d.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter11_scenes/480p15/partial_movie_files/Ch11_Act9_DESY_Mass_Formula_State_Vector/9b0850448fb51fd36394b410477d8990a8b0b72e8b451f52ce565ac17465fd95.mp4'

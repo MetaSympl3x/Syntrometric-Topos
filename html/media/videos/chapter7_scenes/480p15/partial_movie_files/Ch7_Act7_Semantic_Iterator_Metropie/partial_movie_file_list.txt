@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act7_Semantic_Iterator_Metropie/0a3bb35826384d667791b0a01321b140886ce5f63d9525cc9c33bcb243928947.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act7_Semantic_Iterator_Metropie/f7b675d3d4793d5d76d266036c6d132bfb0f17ca0e180a32e4e70a84f2d48ee5.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act7_Semantic_Iterator_Metropie/717705e9961c999739137cd8abc4f2eb657a894f9b4843cd3959953b37d8bb9d.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act7_Semantic_Iterator_Metropie/173b22703ceb790a7a6ad5314c3212a389443893a5d744f5383039824eccea0a.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act7_Semantic_Iterator_Metropie/157ad57ff8b131c2742e954a2cc143a4bfe0981329ff68304ec1edf0386c57e5.mp4'

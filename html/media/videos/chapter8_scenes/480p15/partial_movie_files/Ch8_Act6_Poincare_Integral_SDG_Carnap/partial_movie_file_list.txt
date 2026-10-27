@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act6_Poincare_Integral_SDG_Carnap/b86e7b1384298737a8e5998b3a0e99f1da374b3c7c495745d31a277ae9128705.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act6_Poincare_Integral_SDG_Carnap/6c5948ee7879507a06116b9e21ed14cad11b06693c37978868ede980aa5ac35e.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act6_Poincare_Integral_SDG_Carnap/c1a05b3642be34bf8d84daa0833a72d72dd556f528c841f50a58c186371d8654.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act6_Poincare_Integral_SDG_Carnap/01340bbf857f5708bbe209c13d321c58debce24bb06f0cbf7a4e1b6b536da371.mp4'

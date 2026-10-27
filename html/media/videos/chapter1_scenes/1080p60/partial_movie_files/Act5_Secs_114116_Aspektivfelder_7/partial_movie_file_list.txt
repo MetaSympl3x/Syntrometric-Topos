@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act5_Secs_114116_Aspektivfelder_7/e7b230aaa9ea975207f093018e352a4db3e7d61963300deeaadaadeef093e522.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act5_Secs_114116_Aspektivfelder_7/2d0231560cc8cc03a0962e570fa26eef98ed0f3f91c077a4cec71c7529cb0efe.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act5_Secs_114116_Aspektivfelder_7/1b3788a9b9595f0635959d48230017c4bdeecee389f846b1a16be45f6e4c1cd0.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act5_Secs_114116_Aspektivfelder_7/a78c07fa9d19858ff4866456b4f8d9c3a8346fea41dbcf2c30b614006e614394.mp4'

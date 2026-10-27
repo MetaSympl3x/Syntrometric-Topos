@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act8_Cluster_VII_Metronic_Calculus/255e953ae39695c1cb64252da7b841decaa5553224e183d23bf2cc99558a0a36.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act8_Cluster_VII_Metronic_Calculus/2f64382dcdc18ef480e1a79fd59ccc0fa302a0eb12304e596d4176fcd72f2fb4.mp4'

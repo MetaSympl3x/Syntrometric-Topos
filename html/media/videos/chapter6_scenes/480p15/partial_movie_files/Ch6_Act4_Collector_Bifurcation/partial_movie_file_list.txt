@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act4_Collector_Bifurcation/c0f6a834bac83bfbc43a4682d5215fc022de69ee13bbd4c2ecf27fe087d83ea0.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act4_Collector_Bifurcation/99eb79950f140e2ecb66e01e2e5d86fe556d6283f8f8b3af60a853d93279e6f5.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act4_Collector_Bifurcation/b88836debc515db35169007c942b2df7b55565556a985bda43e941273cc1d5a8.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act4_Collector_Bifurcation/bf261c414fff4bc2acba2f94efef48b9daf8a320fa76f17ee3c7f12b8ff270f2.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act4_Collector_Bifurcation/bde87b11317aa8c41dd15805eada0980d471ea969a90d11af64f0f45c334e22d.mp4'

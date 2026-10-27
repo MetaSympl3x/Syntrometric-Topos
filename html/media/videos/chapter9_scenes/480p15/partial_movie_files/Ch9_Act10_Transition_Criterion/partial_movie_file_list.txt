@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act10_Transition_Criterion/f75ffcf94c3f9d93233b50eac1ad1e8032ee8c84713a771b823392ce25e020c2.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act10_Transition_Criterion/efb2d1f00d60f3ae4c80e9b61d0ce4aa81dcebd105b9c9d612f4347f88db8c7e.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act10_Transition_Criterion/651d38cde195c63947c52dbb40b7b0fe9f4d5e13ce460ba1ad3d88f6ab3758a8.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act10_Transition_Criterion/25927ceb4e9bb2bbd3d76f45a0527a86cb43b3f8d847d6b01d4f5f04b06424e8.mp4'

@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act3_Metronintegral_Staircase/7db92b93a8ca09609e300dc82e7f346430da5717564a73bb6c25cb49c735cc1a.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act3_Metronintegral_Staircase/61e1dd8d51bc04e545d05cfdaba9a90b09109dc555bc227cb77cd7b6164dcc79.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act3_Metronintegral_Staircase/70fa4f23d9881c1f9d850bd0aa1f43591fd2216a730eb7e2fac7e0265b82bcb9.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act3_Metronintegral_Staircase/1dccf508fa941876b3a60df27cbc71ab56ebea3db396a8351b2552953c236715.mp4'

@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act6_DEC_Hodge_Duality/79ad9c768f2a1c8d30296b3de5ff7ff667b1e6c7f8249e1f33e80e259b8a165c.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act6_DEC_Hodge_Duality/d213eb833e9359988ae030742fac529b359eeb3d8b9c185e6198d9c7d1a13c02.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act6_DEC_Hodge_Duality/d27e429d547f5909e3c1cac054f38798b9447b809dacc6a2fee51e4ec63de297.mp4'

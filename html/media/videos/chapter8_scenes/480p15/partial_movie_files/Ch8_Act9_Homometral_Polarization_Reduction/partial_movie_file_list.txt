@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act9_Homometral_Polarization_Reduction/a51353750fab400b5f20bce98faf0c0b66200ec1529ed9d78d62e00a227be3ba.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act9_Homometral_Polarization_Reduction/b74dc8fc8226075ceb93da1dd9c0d17f9914ca7fdeee680e9fee56a5a452d9da.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act9_Homometral_Polarization_Reduction/06da1af7d3956e0b2b2e96a1dd5f837f4b0f6e1647339bd9dd10008f3b6b2907.mp4'

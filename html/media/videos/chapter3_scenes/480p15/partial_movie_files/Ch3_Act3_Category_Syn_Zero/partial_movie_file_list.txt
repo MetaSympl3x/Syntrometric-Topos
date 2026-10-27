@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act3_Category_Syn_Zero/27756c631b575ae4b52b64ee042d99d850c15cd6328989aacf0a14afc338cb12.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act3_Category_Syn_Zero/bbaac5b9a31f953daea5dbf8a8dc31e55f76d413722ed3d85842f4289b124a00.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act3_Category_Syn_Zero/438485a45c11192a9148bb7cd99c196c5bd86e1d0ecf1491a9369f6edbc07048.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act3_Category_Syn_Zero/dec4ddf0279b117e2655c38fc851e8e9570984a35920343a8ba212a1a921679b.mp4'

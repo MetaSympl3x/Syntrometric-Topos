@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act1_Syntrix_Triad/d25cf81ed69ef4a71dc3f8d9903f7ad5fe10692c3b3896ec2e6935321d97ab89.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act1_Syntrix_Triad/da977bbcc67eee94810eadec6a834bd5a9ca35295a0298445dbf6e1ccc569a44.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act1_Syntrix_Triad/73ed592baa4fbe2c3bbe6fb8cf8bd00f62ca23923eec42f88d19e7536a9171ca.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act1_Syntrix_Triad/e8f3e7fb146a89f5dbe34ac24755615abf7aa117b7e1aa6c6bfcbef8abbc6a33.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act1_Syntrix_Triad/6fc8eac6856e65575b4d0f7e9d47a0122cc4d068d2736205a93bbcb43c946b35.mp4'

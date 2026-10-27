@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act3_Conjectures_Topos_12D/53b472ee3a129c5c393c2788fc5955360c84571ccd82e99b1f7669992c711096.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act3_Conjectures_Topos_12D/c1a56aa2f2d9af1c8b3c534a2320bf1823415c60534058a8e75b9912b334ff88.mp4'

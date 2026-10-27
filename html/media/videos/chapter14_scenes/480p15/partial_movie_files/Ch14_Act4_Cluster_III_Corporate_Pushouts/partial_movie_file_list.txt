@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act4_Cluster_III_Corporate_Pushouts/fb1b6e42553ca5b15948aea275abd568de2a57f83af1af2acd49dc33fa14813d.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act4_Cluster_III_Corporate_Pushouts/6fcee30965eeb5fbb88d86016e5ba1cf1c57045327611d8e26063da2621c1e56.mp4'

@@ -1,8 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act7_8_Lyapunov_Separatrix/6db38285e8bbf59defc55d9846ac3dc9207afc1756206f67f0d564437942c672.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act7_8_Lyapunov_Separatrix/e4dd690b4a3040de72040895064002b34ecf04f3936af64c61fd1b8b56464dcb.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act7_8_Lyapunov_Separatrix/b1f8cd178ddda6fbaa7eaa74ef80cd0fcc4097fca0707ca45a1777f991499c82.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act7_8_Lyapunov_Separatrix/10db1681582cbbded60da95d0345863ea585757de6318c66bad424d1a14a56d6.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act7_8_Lyapunov_Separatrix/d7c478c9681eace0c93d95b01b98683a873168be5ec1d9219ca7f05ebfca26e0.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act7_8_Lyapunov_Separatrix/3f6594f945e062be06dbd757301553aafe84de662c305be8626ea6cc03698a3f.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act7_8_Lyapunov_Separatrix/0fec6d8c98a95fcfd2b79d99fc2335696fd1b18b91b91a38a6124dd9f83874a5.mp4'

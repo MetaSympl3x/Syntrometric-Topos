@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act8_Density_Divergence/4e029f7e841dc7367504c6441f00f5e1da4ace8b88bf9b7fb8b29509733cee05.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act8_Density_Divergence/04c022d20b5b892081d7429128a0c25cb777e45b8559feedca7320623c231c05.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act8_Density_Divergence/050da92d60ee25c123388d710a35050d68ca89014729d08e84c67497a4b8c9fa.mp4'

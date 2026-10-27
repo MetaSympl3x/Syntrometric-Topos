@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act4_Spectral_Gap_Negentropy_I6/6f9ba8019547f2249cca4dd6aae8cf7fb54e6bee3fd69018b6cc7c81284020c1.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act4_Spectral_Gap_Negentropy_I6/5b7fc9f845322816846b12120e24283b1cbb4404aa8158846ba7ec86fafbe6b2.mp4'

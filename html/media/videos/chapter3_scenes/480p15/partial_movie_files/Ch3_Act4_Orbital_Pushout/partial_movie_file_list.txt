@@ -1,7 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act4_Orbital_Pushout/46959233629ff1d079e604b21d4cebf2a61ca69d0d11570f326bac152513bf3b.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act4_Orbital_Pushout/6d42004c43891c7814cbb8f8e870a4e987c533fab5dd4b487c0e3e57693e9aff.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act4_Orbital_Pushout/7bc4e24cbab77cd7e8421954df9e1d959c0eca55415a3eb63d27700214719c76.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act4_Orbital_Pushout/856b155e914c3992684b01648baebf45720d71a281e8688e4b3466186f5b34ff.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act4_Orbital_Pushout/9f337c3ce8c00f7deac8d766d395db3ee92b8f5b733f89290b39968d0bbf1289.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Ch3_Act4_Orbital_Pushout/b31ce48103cd3525e09fcc52de468f4a8b452e678bb4ae98c25da859b9904e5c.mp4'

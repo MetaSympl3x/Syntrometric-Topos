@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act10_AppB_Alpha_Verlet_Geodesics/0de7ea17052137fe5ab453e643ae6645063acd93e24e6316877f2fa11712ccde.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act10_AppB_Alpha_Verlet_Geodesics/23de60e8bc11d2819d201df0f5cd502bcedd3216d32de72bcbdad4f5cdfeba0a.mp4'

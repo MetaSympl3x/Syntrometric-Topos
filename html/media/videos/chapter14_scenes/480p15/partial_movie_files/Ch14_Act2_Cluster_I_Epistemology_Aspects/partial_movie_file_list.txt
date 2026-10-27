@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act2_Cluster_I_Epistemology_Aspects/d6908f40c967c16a4de0f35650c2da59efd536345aa6850bdb11e5df702d2854.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act2_Cluster_I_Epistemology_Aspects/5808acb06c5b2ea9eeb59ea4a5e86882cd08780ab5bf2b59776756ae74da7766.mp4'

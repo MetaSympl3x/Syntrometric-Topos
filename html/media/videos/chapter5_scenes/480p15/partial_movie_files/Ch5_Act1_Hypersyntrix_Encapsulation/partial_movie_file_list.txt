@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act1_Hypersyntrix_Encapsulation/e28eee5c44310856a908d749bcfd4bc09d3b9fd7665ecb8f3f0c71bf51883775.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act1_Hypersyntrix_Encapsulation/1c891dfe990f655ea81de1e85c714e80870a7bba5a02ea0a75302042e6e63a36.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act1_Hypersyntrix_Encapsulation/3570e981799f28dee62066f8e3b4e16804a02d997fe2e3a97854c1d141e427e8.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act1_Hypersyntrix_Encapsulation/b844b044ead33f3a8f3b85b5e031d37275fb5e8ca6fceadb958c4a5eae5efcb3.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Ch5_Act1_Hypersyntrix_Encapsulation/49e16e61e6313bd4da7b385c691b32a03d5b80c8c0dca42b2d393adf894dd837.mp4'

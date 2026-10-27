@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act7_Secs_532533_Syntroclinic_Adjunction/19a04ee5e3cb95332468e1397635edd29d710f1802796c6f658de6403fede09d.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act7_Secs_532533_Syntroclinic_Adjunction/0d4a991cf05d0eaa95d8632da46c61be2be675fe92b94be1afedf101b18d5a1c.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act7_Secs_532533_Syntroclinic_Adjunction/cf00ccdd52ebe6c2c4db33d1e0d9932293c297e97026654499ecb8c078c50a4d.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act7_Secs_532533_Syntroclinic_Adjunction/9509e38ae3e09cc735863cb8eef237a8e5fb5c4c370a94322bfa5c403875343c.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act7_Secs_532533_Syntroclinic_Adjunction/6298baaa66549b8a5e084f57046826c87dea73bd44b55751e68d655b1a4ad302.mp4'

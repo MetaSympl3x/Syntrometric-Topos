@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act9_Cluster_VIII_Mass_Selectors/ea70aeddbce3f7c19261826fbf2b9f176918af831eedf276c9c2f51417a4ce57.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter14_scenes/480p15/partial_movie_files/Ch14_Act9_Cluster_VIII_Mass_Selectors/3541688cd0d1ea2ed6afe7d296fac9de03b39a18284fd90534ac04e0c4e55bba.mp4'

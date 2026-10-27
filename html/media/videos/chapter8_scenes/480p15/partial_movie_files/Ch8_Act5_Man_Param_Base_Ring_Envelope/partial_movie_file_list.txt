@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act5_Man_Param_Base_Ring_Envelope/37a0defe430c71b6027d2277572dc0026bcfdd80d0f9480a8ac20b6a0f50584a.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act5_Man_Param_Base_Ring_Envelope/34da05bf24595ead1794c822e5c596a5effa4e503f488efda579f182cd6b9d51.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter8_scenes/480p15/partial_movie_files/Ch8_Act5_Man_Param_Base_Ring_Envelope/a097cc2229c297fb86970603e9db8b6e5192e2f22a39952ba9a0bae122781e6c.mp4'

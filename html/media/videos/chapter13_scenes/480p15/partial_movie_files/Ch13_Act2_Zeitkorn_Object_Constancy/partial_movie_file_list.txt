@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act2_Zeitkorn_Object_Constancy/a8c83f1168abbfdf9108a5229fb87260cd0315bb40b08fadafa3b87dcd438c5a.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act2_Zeitkorn_Object_Constancy/85c87971eedf52fa2fc3f37e62aa738040232e966cb63d4ab3e7e79c81c25d09.mp4'

@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act4_Hermetry_36_Matrix/2bccd5290eb3ff5800d9c2c560a16c34c6304c81f46cb1c2577a364134d40b73.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act4_Hermetry_36_Matrix/79bea28bc88470c869fb1639b53cd5c65d4e04f5d16ec47ef3a3882958ab5f03.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act4_Hermetry_36_Matrix/b2a428d5d66fce92d095e02155fa5ba1c60f5d1bfb3d6d1cbe919516696b7e6a.mp4'

@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act7_AppA_Cut_Elimination/4ce932f5222664ec51e05a36103c97d8aaba264f591735acb062799d275f407d.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act7_AppA_Cut_Elimination/41527ae3d8e4c299734b03ceac1932758abfaa8723a479f4f10da65d542bfe4a.mp4'

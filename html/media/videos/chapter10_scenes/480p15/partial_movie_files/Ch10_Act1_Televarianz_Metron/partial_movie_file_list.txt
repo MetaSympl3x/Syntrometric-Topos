@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act1_Televarianz_Metron/1125a253f35575b39ff00293d159e28bf97984a07ba9e0aeb6858720d134685e.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act1_Televarianz_Metron/b28f33bac81d96d54e8cf30c5b17f2bf189cf906bb97c32cadc4bf6ca704b814.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act1_Televarianz_Metron/63872c69293b0f71d5bc2d41b9d4ed75bf5d84eb1dd392b0d13b0de155450137.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter10_scenes/480p15/partial_movie_files/Ch10_Act1_Televarianz_Metron/f74a36094b62a8a2ffd04851ea81a851b810f1498b4497e03ac3e111b8b5fc15.mp4'

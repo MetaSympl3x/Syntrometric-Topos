@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act4_Permutohedron/21f330feda337f580d79bfe4805129ddb73352a9d45f6eb3291ebb544081140d.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act4_Permutohedron/3ff56262a3cfb8dd6cd34434b71cd8e1593c67f50cdfc31e1c0df06c15526127.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act4_Permutohedron/fc45fb36f1b467dee58e638137f8a9192accf8428df6d267b8f54b586e4bb425.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act4_Permutohedron/a2d252bdddadf598a31b3a81889c4280c1e57f9844117b28c4a42c873b148c50.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter2_scenes/1080p60/partial_movie_files/Ch2_Act4_Permutohedron/ba52d0e83210805d8df664410ff190d25b88fb2a0c4696a2c737da5d39c09a8b.mp4'

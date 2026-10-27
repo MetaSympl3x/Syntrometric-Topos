@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act10_Sec_335_Pseudoexzenter_21branch/cdae3ae4165e85ae84a5a5fa55fc03c3638998bb93274314fdcbe15c549beb1f.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act10_Sec_335_Pseudoexzenter_21branch/ae40974cf67c7ef64c39c865fb782f9e5abc7ee6da2d035be353594a01f33dfb.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act10_Sec_335_Pseudoexzenter_21branch/dbd92bed999bddf7e7ce5967ab2a644d444606567decf3a7335797194fe225e0.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter3_scenes/480p15/partial_movie_files/Act10_Sec_335_Pseudoexzenter_21branch/f4832c180fd10069ed2998f0fc3e9834e6b4db0770ebf4d076fcbd7a6fd84d0a.mp4'

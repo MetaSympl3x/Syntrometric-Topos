@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act12_Chapter12_Synthesis/aeaf47b53697048e100706cf46e54b2d4bb8a3b7ed4c9fd594f2e257b83dd613.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act12_Chapter12_Synthesis/771d68f0cca009593c88bd0f4eb521da4a87e989194b2d956d321bdaae6c7a53.mp4'

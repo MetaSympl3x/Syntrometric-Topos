@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act2_3_Telezentrik_Dimensions/c095e3c559689b095ca1b0f6992c01b11e2fad238bc291a2e2a15f11f74713cd.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act2_3_Telezentrik_Dimensions/b3f0a788e5b47a3fe00c6c6babb4c56051582f7b5401da98c4af7d491526db86.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act2_3_Telezentrik_Dimensions/40963c550b9a830c14596731e6d9466c2626f192e322bcfc5094d0b9572ca83e.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act2_3_Telezentrik_Dimensions/eb6cd143dc8d4ef0d31c3ae683f7d07085867ea8dfcbdf2fbc12b7b8063f68c9.mp4'

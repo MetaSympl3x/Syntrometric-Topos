@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act2_Quantitaetssyntrix_SM28/3db1c50ae7c0cd2916ab5870e6399bd2b1255c5c8db324f2d223e3cdd2b49c16.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act2_Quantitaetssyntrix_SM28/928fdead37b7170dfce5169aece6cec2aa5f141362398745e3fb624e9f06c46e.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act2_Quantitaetssyntrix_SM28/ca17f74cbdddb9ebe58faa8fc0d9ab20e594dcb56b19ba34a2257a03167f8e4a.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter7_scenes/480p15/partial_movie_files/Ch7_Act2_Quantitaetssyntrix_SM28/94d5548333470026c07ec3c1184bd6856a976249697bda0db6439e96f05caea4.mp4'

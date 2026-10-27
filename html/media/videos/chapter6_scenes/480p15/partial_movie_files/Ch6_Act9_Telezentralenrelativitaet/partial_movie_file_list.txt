@@ -1,6 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act9_Telezentralenrelativitaet/891502189b02c6de0067767a7529da6bfeee3e235d2e095b2a16109dae42f4c4.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act9_Telezentralenrelativitaet/12f6acad6fb5e0ad6b194693c6db46785cda30aea54b927d0a8f7b7f394965a4.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act9_Telezentralenrelativitaet/a65be58319edb6ef07bcec345bc9c9e5c7d6ad7bf607c8511617242cf335d18c.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act9_Telezentralenrelativitaet/030c0bedcc28af7dc94d0dc24eacd980c0b289e96b3325d2edcae575f41c5df4.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Ch6_Act9_Telezentralenrelativitaet/6bb08d1398b190ad7a3d654d11d37d37a0bc00beff360a04c513cefee549eec2.mp4'

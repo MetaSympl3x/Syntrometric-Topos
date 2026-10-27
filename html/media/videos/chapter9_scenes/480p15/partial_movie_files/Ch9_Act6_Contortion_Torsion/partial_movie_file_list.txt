@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act6_Contortion_Torsion/71d10414ebf4bc4bd8bf0677937f09546d31be4db68868091d93e8104df75b38.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act6_Contortion_Torsion/07fa6fcba1639b3fb056d50f53de31e2c48dba3362dcc2307a112d7474495189.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter9_scenes/480p15/partial_movie_files/Ch9_Act6_Contortion_Torsion/1aa84778f76957a6f6a5023e05911c5d7eda5edca695fabda3b62e5f1b6c9f16.mp4'

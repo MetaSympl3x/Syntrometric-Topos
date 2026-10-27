@@ -1,4 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act4_Dialectical_Aufhebung_Mereology/b9de77336b7a44397c34f2c2ed17496f9ce9215ed00b3e1deef89d8d3605575c.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act4_Dialectical_Aufhebung_Mereology/f37d594b6ca2d1cfdc8bba770f3dc76cd5de023182b7a9f108634915fc1c48db.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter12_scenes/480p15/partial_movie_files/Ch12_Act4_Dialectical_Aufhebung_Mereology/1f06145b789da75098eb7be8986e7b9027456d304fa5bbf10b72106edf655b10.mp4'

@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act5_Coalgebra_Postnikov_Tower/d6a1a96a7ec72ff51bce39bb32713d46ba73e9070be0bfe0bab13c3eb3d17b00.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act5_Coalgebra_Postnikov_Tower/5e2fdf0a33f9b08e31e3e24477cfe7d008ef31bc0c350c0cb339647c3f1be9df.mp4'

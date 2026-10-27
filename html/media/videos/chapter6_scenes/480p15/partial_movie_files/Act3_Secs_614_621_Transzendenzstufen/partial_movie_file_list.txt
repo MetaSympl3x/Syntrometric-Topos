@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act3_Secs_614_621_Transzendenzstufen/0edc5276118e2fe150eedde674a0ed802a2d2608674d2b04d5c77df2ca37eeed.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act3_Secs_614_621_Transzendenzstufen/027b1251931876ad025d0415c798df6e9f8ae7cb7828a41367929289b44ef4f4.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act3_Secs_614_621_Transzendenzstufen/1a8378af71871ad8c8929e01b5ce1d4596eeff049dce790c342fa4ccdb88a09b.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter6_scenes/480p15/partial_movie_files/Act3_Secs_614_621_Transzendenzstufen/bbf94bbef1a82b33491952731bf3e74a2f2877a8e94e2423346f85fdc2a1499f.mp4'

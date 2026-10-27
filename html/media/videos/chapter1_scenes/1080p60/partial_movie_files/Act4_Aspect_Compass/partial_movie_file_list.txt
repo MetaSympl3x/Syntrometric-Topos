@@ -1,7 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act4_Aspect_Compass/7766167e5fb71d0aac25d74c26d6bbd743453bed47057aba21241885eaae07a1.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act4_Aspect_Compass/b2a888e91406a55f86550eb4fc653d0d7957ff71cbf131953a549fdee20c557e.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act4_Aspect_Compass/fd9f5bccb043db18a67975b9f087cc9bc3a8c4937265b0afe72cb2f27eb5f360.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act4_Aspect_Compass/7f3285d6bbaab9de6ec5a6f4b293da62383051ebcc34fc8e04f94f07e978f922.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act4_Aspect_Compass/e98da612aa7724ea1d3937fd768d889c5247a39c01f7f51d96d6776718d7c5a5.mp4'
-file 'file:C:/Users/lutin/Manim/media/videos/chapter1_scenes/1080p60/partial_movie_files/Act4_Aspect_Compass/a7c740d1d29b0c6816878d81a6ed970f9f4175122d9439a35c7691d72bf2e48a.mp4'

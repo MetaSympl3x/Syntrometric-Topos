@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act9_AppB_DESY_Mass_Spectrum/90e49292c86b7f93fa799ce3cb2db22462b5d972733e7bae986f4fe5899b0b25.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter15_scenes/480p15/partial_movie_files/Ch15_Act9_AppB_DESY_Mass_Spectrum/b1b14658f15b6167d0162edf5abc54118205a2c873c6dc0f219ddcb1cf7fc9f0.mp4'

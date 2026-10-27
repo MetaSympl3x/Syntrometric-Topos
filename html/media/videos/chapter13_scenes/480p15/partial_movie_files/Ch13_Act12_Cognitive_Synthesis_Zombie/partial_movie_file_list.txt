@@ -1,3 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act12_Cognitive_Synthesis_Zombie/aadba67dfc013c0debb89c2b200eb58af156c4cbf671f6247dd6c01aecd066eb.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter13_scenes/480p15/partial_movie_files/Ch13_Act12_Cognitive_Synthesis_Zombie/127fca0d724328019657b83b55fc89b48895e0f0b8ca85ba587828ccacf89998.mp4'

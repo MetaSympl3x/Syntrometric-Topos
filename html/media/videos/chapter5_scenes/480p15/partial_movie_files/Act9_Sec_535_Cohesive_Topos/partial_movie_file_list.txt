@@ -1,5 +1,0 @@
-# This file records the segment order used by Manim.
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act9_Sec_535_Cohesive_Topos/64ecde41946630db8b7b55bafbc977bb87cf3e0aab8cc8cf4042be2506c0c5e0.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act9_Sec_535_Cohesive_Topos/011c360426162e606ec3c36328707454d979573ab9ba04f562590153b90be078.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act9_Sec_535_Cohesive_Topos/c3f35fdb8467956020f0a15b94ff911eae0e6851d80467a3891c0b019b84c340.mp4'
-file 'file:c:/Users/lutin/Manim/media/videos/chapter5_scenes/480p15/partial_movie_files/Act9_Sec_535_Cohesive_Topos/afe668c4b150f790ff13f6c6e4d85a7007355a0a9b2cc68378f490d812777d63.mp4'
