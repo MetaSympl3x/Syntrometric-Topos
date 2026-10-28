@@ -1,0 +1,812 @@
+<!-- =========================================================================
+     CHAPTER 1: 60FPS 3D INTERACTIVE TOPOS, PULLBACK & HOLOFORM ENGINE
+     Synchronizes with all 21 slides of Chapter 1 + Interactive Node Inspector
+     ========================================================================= -->
+<style>
+#ch1-3d-hud {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 440px;
+  background: linear-gradient(145deg, rgba(7, 10, 19, 0.96) 0%, rgba(14, 21, 38, 0.98) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.65);
+  border-radius: 14px;
+  padding: 10px 14px 12px 14px;
+  z-index: 9999;
+  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.86), 0 0 28px rgba(65, 105, 225, 0.34);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: "Libertinus Sans", "Inter", system-ui, sans-serif;
+  color: #e8ecf2;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  user-select: none;
+}
+
+#ch1-3d-hud.spotlight {
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+  width: min(920px, 95vw);
+  border-color: #FFD700;
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
+}
+
+#ch1-3d-hud.minimized {
+  width: 285px;
+  padding: 7px 12px;
+}
+
+#ch1-3d-hud.minimized .ch1-hud-body {
+  display: none;
+}
+
+.ch1-hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(65, 105, 225, 0.45);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.ch1-hud-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  color: #FFD700;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.ch1-hud-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.ch1-hud-btn {
+  background: #172033;
+  color: #cbd5e1;
+  border: 1px solid #3b4963;
+  border-radius: 5px;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ch1-hud-btn:hover, .ch1-hud-btn.active {
+  background: #FFD700;
+  color: #000;
+  border-color: #FFD700;
+}
+
+.ch1-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 265px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #2d3748;
+  background: radial-gradient(circle at 50% 55%, #111b30 0%, #05070e 100%);
+  cursor: grab;
+}
+
+.ch1-canvas-wrap:active {
+  cursor: grabbing;
+}
+
+#ch1-3d-hud.spotlight .ch1-canvas-wrap {
+  height: 500px;
+}
+
+#ch1-3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ch1-overlay-bar {
+  position: absolute;
+  top: 7px;
+  left: 9px;
+  right: 9px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 10px;
+  gap: 6px;
+}
+
+.ch1-telemetry {
+  background: rgba(6, 9, 17, 0.84);
+  border: 1px solid rgba(65, 105, 225, 0.55);
+  border-radius: 5px;
+  padding: 2px 7px;
+  color: #82aaff;
+  white-space: nowrap;
+}
+
+#ch1-node-inspector {
+  background: rgba(6, 9, 17, 0.88);
+  border: 1px solid rgba(255, 215, 0, 0.6);
+  border-radius: 5px;
+  padding: 2px 8px;
+  color: #FFD700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ch1-scrubber {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 11px;
+}
+
+.ch1-scrubber input[type="range"] {
+  flex: 1;
+  accent-color: #FFD700;
+  height: 5px;
+  cursor: pointer;
+}
+
+#ch1-caption {
+  margin-top: 6px;
+  padding: 6px 9px;
+  background: rgba(4, 7, 14, 0.9);
+  border-left: 3px solid #20B2AA;
+  border-radius: 5px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 10.5px;
+  line-height: 1.38;
+  color: #5eead4;
+}
+
+@media (max-width: 900px) {
+  #ch1-3d-hud {
+    right: 8px;
+    bottom: 8px;
+    width: calc(100vw - 16px);
+    max-width: 385px;
+  }
+}
+</style>
+
+<div id="ch1-3d-hud">
+  <div class="ch1-hud-header">
+    <div class="ch1-hud-title">
+      <span>🧭 Ch 1 · 3D Topos Engine</span>
+      <span id="ch1-stage-pill" style="background:#4169E1; color:#fff; padding:1px 7px; border-radius:4px; font-size:9.5px;">Stage 1.0 / 10</span>
+    </div>
+    <div class="ch1-hud-controls">
+      <button class="ch1-hud-btn active" id="ch1-btn-orbit" onclick="toggleCh1Orbit()">⟳ Orbit</button>
+      <button class="ch1-hud-btn" onclick="toggleCh1Spotlight()">⛶ Spotlight</button>
+      <button class="ch1-hud-btn" id="ch1-btn-min" onclick="toggleCh1Minimize()">—</button>
+    </div>
+  </div>
+
+  <div class="ch1-hud-body">
+    <div class="ch1-canvas-wrap" id="ch1-canvas-wrap">
+      <canvas id="ch1-3d-canvas"></canvas>
+      <div class="ch1-overlay-bar">
+        <div class="ch1-telemetry" id="ch1-telemetry">ℰ_syn = Sh(Ctx_adm^sk, J_syn)</div>
+        <div id="ch1-node-inspector">Drag to Orbit 3D · Click Node to Inspect</div>
+      </div>
+    </div>
+
+    <div class="ch1-scrubber">
+      <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
+      <input type="range" id="ch1-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh1Stage(this.value)">
+      <button class="ch1-hud-btn active" id="ch1-btn-sync" onclick="enableCh1Sync()">Auto-Sync</button>
+    </div>
+
+    <div id="ch1-caption">
+      <b>Stage 1 (Firewall &amp; Aufbau):</b> 4-Stratum Epistemic Firewall (A, B, C, D) blocking illicit upward transfer.
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('ch1-3d-canvas');
+  const wrap = document.getElementById('ch1-canvas-wrap');
+  if (!canvas || !wrap) return;
+  const ctx = canvas.getContext('2d');
+
+  let targetStage = 1.0;
+  let curStage = 1.0;
+  let autoSync = true;
+  let autoOrbit = true;
+  let camYaw = -0.52;
+  let camPitch = 0.34;
+  let camZoom = 1.0;
+  let isDragging = false;
+  let lastX = 0, lastY = 0;
+  let timeSec = 0;
+  let hitNodes = [];
+  let selectedId = null;
+
+  const STAGE_CAPTIONS = {
+    1: "<b>Stage 1 (Frontmatter &amp; Firewall):</b> 4-Stratum Epistemic Firewall (D → C → B → A) with Non-Transfer Barrier (A ⇏ C ⇏ E).",
+    2: "<b>Stage 2 (Crisis of Bivalence &amp; Carnap 1.1):</b> Continuous context wave φ(U) shattered by a binary {0,1} sieve vs. smooth Heyting sieves Ω(U).",
+    3: "<b>Stage 3 (§1.1.1–1.1.3 — Aspect Compass, SM-1–SM-4):</b> 3D radial Prädikatbänder P_nn, tilted Dialektik ring D_nn &amp; Koordination lens K_n.",
+    4: "<b>Stage 4 (§1.1.4–1.1.6 — 7 Aspect Subsystems):</b> 3D Boolean Hypercube {D, K, P} highlighting the 2³ − 1 = 7 nonempty generator supports (Prop. 1.2).",
+    5: "<b>Stage 5 (§1.2.1–1.2.3 — Naturality in Ban_≤1):</b> Commuting 3D Naturality Prism α_C ∘ K^U = K^V ∘ (α_D ⊗̂_π α_P) eliminating context creep.",
+    6: "<b>Stage 6 (§1.2.3 — Prop. 1.13 Pullback W = V₁ ×_U V₂):</b> 3D ℓ^∞ unit cube F^{V₁} ⊕_∞ F^{V₂} sliced by the contractive equalizer plane.",
+    7: "<b>Stage 7 (§1.3–1.4 — Subcanonical Site &amp; Hyperdoctrine Prism):</b> Base pullback W lifted to subobject fibers (∃_f ⊣ f* ⊣ ∀_f Beck–Chevalley).",
+    8: "<b>Stage 8 (§1.5 — Thm. 1.22/1.24 Holoform Crystal):</b> Vanishing Čech defect Def_U(s) = δ⁰(s) = 0 condenses the golden 3D Holoform Γ ∈ Hol(U,P)!",
+    9: "<b>Stage 9 (§1.6–1.7 — Dialectical Aufhebung &amp; Metropie d_P):</b> Conflicting A, B ∈ Prop₀ sublate along the 3D helix into C ∈ Prop₁ inside SO(6) flow.",
+    10: "<b>Stage 10 (§1.8–1.11 — Tri-Layer Synthesis &amp; ℒ_iMSL):</b> Layer 1 Topos ℰ_syn + Layer 2 Fischer–Servi Frame + Layer 3 Cut-Free Sequent Crown!"
+  };
+
+  const STAGE_TELEMETRY = {
+    1: "Firewall: ClaimType(c) = (S, T, R, V, E_p)",
+    2: "U ⊭ φ ∨ ¬φ  ⇏  U ⊩ ⊥ (Heyting Ω)",
+    3: "S ≡ ⌈D_nn × K_n × P_nn⌉ (SM Eq. 1)",
+    4: "Prop 1.2: 2³ − 1 = 7 Aspect Subsystems",
+    5: "‖K^U(d ⊗ p)‖ ≤ ‖d‖·‖p‖ ≤ 1 (Ban_≤1)",
+    6: "Pullback W = V₁ ×_U V₂ in ℓ^∞ Norm",
+    7: "Beck–Chevalley: g*∃_f ≅ ∃_{π₁}π₂*",
+    8: "Holoform Γ ∈ Eq(d⁰, d¹) | Def_U(s) ≤ ε",
+    9: "Aufhebung: Synthesize(A,B) ∈ Prop₁",
+    10: "S(x); Γ ⊢^k φ ⟺ S(x); Γ ⊨^k φ (Thm 1.38)"
+  };
+
+  function resize() {
+    const r = wrap.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = r.width * dpr;
+    canvas.height = r.height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function proj(x, y, z, w, h) {
+    const cy = Math.cos(camYaw), sy = Math.sin(camYaw);
+    const x1 = x * cy - y * sy;
+    const y1 = x * sy + y * cy;
+    const cp = Math.cos(camPitch), sp = Math.sin(camPitch);
+    const y2 = y1 * cp - z * sp;
+    const z2 = y1 * sp + z * cp;
+    const fov = Math.min(w, h) * 0.43 * camZoom;
+    const sc = fov / Math.max(0.85, 4.6 - y2 * 0.45);
+    return { sx: w * 0.5 + x1 * sc, sy: h * 0.53 - z2 * sc, depth: y2, sc: sc / 100 };
+  }
+
+  function drawLine3D(p1, p2, col, lw, dash) {
+    ctx.save();
+    ctx.beginPath();
+    if (dash) ctx.setLineDash(dash);
+    ctx.strokeStyle = col;
+    ctx.lineWidth = lw || 2;
+    ctx.moveTo(p1.sx, p1.sy);
+    ctx.lineTo(p2.sx, p2.sy);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawNode3D(id, x, y, z, r, fill, stroke, label, info, w, h) {
+    const p = proj(x, y, z, w, h);
+    hitNodes.push({ id, p, r, info });
+    const isSel = (selectedId === id);
+    ctx.save();
+    ctx.beginPath();
+    ctx.fillStyle = isSel ? "#ffffff" : fill;
+    ctx.strokeStyle = isSel ? "#FFD700" : (stroke || "#ffffff");
+    ctx.lineWidth = isSel ? 3.0 : 1.6;
+    ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    if (label) {
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 9.5px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(label, p.sx, p.sy - r - 4);
+    }
+    ctx.restore();
+    return p;
+  }
+
+  // =========================================================================
+  // STAGE RENDERERS (STAGES 1 TO 10)
+  // =========================================================================
+
+  // Stage 1: 3D 4-Stratum Epistemic Firewall Tower
+  function renderStage1(w, h) {
+    const strata = [
+      { z: -1.1, col: "#94a3b8", lbl: "Stratum D: Historical Exegesis (SM 2000)", id: "S_D" },
+      { z: -0.4, col: "#FFA500", lbl: "Stratum C: Reconstruction Map ℛ", id: "S_C" },
+      { z:  0.4, col: "#20B2AA", lbl: "Stratum B: Derived Logic ℒ_iMSL & Hol", id: "S_B" },
+      { z:  1.1, col: "#4169E1", lbl: "Stratum A: Foundational Topos ℰ_syn", id: "S_A" }
+    ];
+    strata.forEach((st, idx) => {
+      const c = [
+        proj(-1.3, -0.8, st.z, w, h), proj(1.3, -0.8, st.z, w, h),
+        proj(1.3,  0.8, st.z, w, h), proj(-1.3,  0.8, st.z, w, h)
+      ];
+      ctx.save();
+      ctx.fillStyle = idx === 3 ? "rgba(65,105,225,0.22)" : "rgba(30,41,59,0.45)";
+      ctx.strokeStyle = st.col;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(c[0].sx, c[0].sy);
+      c.slice(1).forEach(p => ctx.lineTo(p.sx, p.sy));
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+      drawNode3D(st.id, 0, 0, st.z, 7, st.col, "#fff", st.id, st.lbl, w, h);
+    });
+    // Glowing Crimson Firewall Barrier Plane between Stratum B/A and C/D
+    const fwZ = 0.0 + 0.04 * Math.sin(timeSec * 3);
+    const fw = [
+      proj(-1.45, -0.95, fwZ, w, h), proj(1.45, -0.95, fwZ, w, h),
+      proj(1.45,  0.95, fwZ, w, h), proj(-1.45,  0.95, fwZ, w, h)
+    ];
+    ctx.save();
+    ctx.fillStyle = "rgba(220, 20, 60, 0.28)";
+    ctx.strokeStyle = "#DC143C";
+    ctx.lineWidth = 2.5;
+    ctx.setLineDash([5, 3]);
+    ctx.beginPath();
+    ctx.moveTo(fw[0].sx, fw[0].sy);
+    fw.slice(1).forEach(p => ctx.lineTo(p.sx, p.sy));
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // Stage 2: Continuous Context Wave vs Binary {0,1} Sieve Antinomy Spikes
+  function renderStage2(w, h) {
+    // Smooth 3D Context Wave
+    for (let y = -0.9; y <= 0.91; y += 0.45) {
+      ctx.beginPath();
+      ctx.strokeStyle = "#20B2AA";
+      ctx.lineWidth = 2.2;
+      for (let x = -1.6; x <= 1.61; x += 0.1) {
+        const z = 0.65 * Math.sin(x * 2.2 + timeSec * 2) * Math.cos(y * 1.5);
+        const p = proj(x, y, z, w, h);
+        if (x === -1.6) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+      }
+      ctx.stroke();
+    }
+    // Binary Sieve Plane z = 0 & Crimson Antinomy Spikes at Zero-Crossings
+    for (let k = -1; k <= 1; k++) {
+      const xZero = (k * Math.PI - (timeSec * 2) % Math.PI) / 2.2;
+      if (Math.abs(xZero) < 1.45) {
+        const pBot = proj(xZero, 0, -0.95, w, h);
+        const pTop = proj(xZero, 0,  1.15, w, h);
+        drawLine3D(pBot, pTop, "#DC143C", 2.8, [3, 2]);
+        drawNode3D("Ant_" + k, xZero, 0, 1.15, 6, "#DC143C", "#FFD700", "⚡Antinomy", "Binary Sieve Tear: U ⊭ φ ∨ ¬φ forced into {0,1}", w, h);
+      }
+    }
+  }
+
+  // Stage 3: 3D Geometric Aspect Compass (P_nn, D_nn, K_n)
+  function renderStage3(w, h) {
+    // Radial Prädikatbänder P_nn in horizontal plane
+    for (let q = 0; q < 6; q++) {
+      const a1 = (q / 6) * Math.PI * 2 + timeSec * 0.25;
+      const a2 = a1 + 0.38;
+      const p0 = proj(0, 0, 0, w, h);
+      const p1 = proj(1.45 * Math.cos(a1), 1.45 * Math.sin(a1), 0, w, h);
+      const p2 = proj(1.45 * Math.cos(a2), 1.45 * Math.sin(a2), 0, w, h);
+      ctx.save();
+      ctx.fillStyle = "rgba(65, 105, 225, 0.28)";
+      ctx.strokeStyle = "#4169E1";
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(p0.sx, p0.sy);
+      ctx.lineTo(p1.sx, p1.sy);
+      ctx.lineTo(p2.sx, p2.sy);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+    }
+    // Tilted 3D Dialektik Ring D_nn
+    ctx.beginPath();
+    ctx.strokeStyle = "#20B2AA";
+    ctx.lineWidth = 3.0;
+    for (let i = 0; i <= 48; i++) {
+      const a = (i / 48) * Math.PI * 2;
+      const p = proj(1.15 * Math.cos(a), 0.85 * Math.sin(a), 0.65 * Math.sin(a + timeSec), w, h);
+      if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+    }
+    ctx.stroke();
+    // Central Koordination Lens K_n
+    drawNode3D("K_n", 0, 0, 0, 13, "#FFA500", "#FFD700", "K_n ≡ E_n F(ζ,z)", "Koordination Lens K^U : D^U ⊗̂_π P^U → C^U (SM Eq. 1)", w, h);
+    drawNode3D("P_nn", 1.25, 0.3, 0, 7, "#4169E1", "#fff", "P_nn [a,f,b]", "Prädikatrix Continuous Interval Cylinder S_P^U", w, h);
+    drawNode3D("D_nn", -0.8, 0.6, 0.5, 7, "#20B2AA", "#fff", "D_nn [α,d,β]", "Dialektik Evaluative Nuance Band S_D^U", w, h);
+  }
+
+  // Stage 4: 3D Boolean Cube of the 7 Nonempty Aspect Subsystems (Prop. 1.2)
+  function renderStage4(w, h) {
+    const verts = [];
+    const labels = ["∅", "{D}", "{K}", "{D,K}", "{P}", "{D,P}", "{K,P}", "{D,K,P}"];
+    for (let b = 0; b < 8; b++) {
+      const dx = (b & 1) ? 0.9 : -0.9;
+      const dy = (b & 2) ? 0.9 : -0.9;
+      const dz = (b & 4) ? 0.85 : -0.85;
+      verts.push({ b, x: dx, y: dy, z: dz, lbl: labels[b] });
+    }
+    for (let i = 0; i < 8; i++) {
+      for (let j = i + 1; j < 8; j++) {
+        const xor = i ^ j;
+        if (xor === 1 || xor === 2 || xor === 4) {
+          const p1 = proj(verts[i].x, verts[i].y, verts[i].z, w, h);
+          const p2 = proj(verts[j].x, verts[j].y, verts[j].z, w, h);
+          drawLine3D(p1, p2, (i === 0) ? "rgba(148,163,184,0.3)" : "rgba(32,178,170,0.65)", 1.8);
+        }
+      }
+    }
+    verts.forEach(v => {
+      const col = v.b === 0 ? "#475569" : (v.b === 7 ? "#FFD700" : "#20B2AA");
+      const info = v.b === 7
+        ? "Total Subsystem {D_nn, K_n, P_nn}: Allows variable arity n!"
+        : (v.b === 0 ? "Empty Support (Excluded)" : `Partial Subsystem ${v.lbl}: Must keep arity n fixed (Prop. 1.2)`);
+      drawNode3D("Sub_" + v.b, v.x, v.y, v.z, v.b === 7 ? 10 : 6.5, col, "#fff", v.lbl, info, w, h);
+    });
+  }
+
+  // Stage 5: 3D Naturality Square Prism in Ban_<=1
+  function renderStage5(w, h) {
+    const n1 = drawNode3D("DU_PU", -1.1, -0.6,  0.8, 8.5, "#4169E1", "#fff", "D^U ⊗̂_π P^U", "Source Projective Tensor Product (‖u‖_π ≤ 1)", w, h);
+    const n2 = drawNode3D("CU",     1.1, -0.6,  0.8, 8.5, "#FFA500", "#fff", "C^U", "Source Coordinated State Space C^U", w, h);
+    const n3 = drawNode3D("DV_PV", -1.1,  0.6, -0.8, 8.5, "#20B2AA", "#fff", "D^V ⊗̂_π P^V", "Target Projective Tensor Product via α_D ⊗̂_π α_P", w, h);
+    const n4 = drawNode3D("CV",     1.1,  0.6, -0.8, 9.5, "#FFD700", "#fff", "C^V", "Commuting Target State: α_C(K^U) = K^V(α_D ⊗ α_P)", w, h);
+
+    drawLine3D(n1, n2, "#FFA500", 2.6);
+    drawLine3D(n1, n3, "#20B2AA", 2.6);
+    drawLine3D(n2, n4, "#FFD700", 2.6);
+    drawLine3D(n3, n4, "#FFD700", 2.6);
+
+    // Animated Commuting Packets along Top-Right and Left-Bottom Paths
+    const s = (timeSec * 0.65) % 1.0;
+    const pTop = (s < 0.5)
+      ? proj(-1.1 + 4.4 * s, -0.6, 0.8, w, h)
+      : proj(1.1, -0.6 + 2.4 * (s - 0.5), 0.8 - 3.2 * (s - 0.5), w, h);
+    const pBot = (s < 0.5)
+      ? proj(-1.1, -0.6 + 2.4 * s, 0.8 - 3.2 * s, w, h)
+      : proj(-1.1 + 4.4 * (s - 0.5), 0.6, -0.8, w, h);
+    ctx.fillStyle = "#FFD700";
+    ctx.beginPath(); ctx.arc(pTop.sx, pTop.sy, 4.5, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = "#5eead4";
+    ctx.beginPath(); ctx.arc(pBot.sx, pBot.sy, 4.5, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Stage 6 & 7: 3D l^\infty Pullback Cube & 2-Tier Hyperdoctrine Prism
+  function renderStage6And7(w, h, st) {
+    const s = 0.95;
+    const zShift = (st >= 6.5) ? -0.45 : 0.0;
+    const cube = [];
+    for (let dx of [-s, s]) for (let dy of [-s, s]) for (let dz of [-s * 0.75 + zShift, s * 0.75 + zShift]) {
+      cube.push(proj(dx, dy, dz, w, h));
+    }
+    const edges = [[0,1],[2,3],[4,5],[6,7],[0,2],[1,3],[4,6],[5,7],[0,4],[1,5],[2,6],[3,7]];
+    edges.forEach(e => drawLine3D(cube[e[0]], cube[e[1]], "rgba(130,170,255,0.42)", 1.5, [3, 2]));
+
+    // Diagonal Equalizer Pullback Slice W = V_1 x_U V_2
+    const eq = [
+      proj(-s, -s, -s * 0.75 + zShift, w, h),
+      proj( s,  s, -s * 0.75 + zShift, w, h),
+      proj( s,  s,  s * 0.75 + zShift, w, h),
+      proj(-s, -s,  s * 0.75 + zShift, w, h)
+    ];
+    ctx.save();
+    ctx.fillStyle = "rgba(32, 178, 170, 0.34)";
+    ctx.strokeStyle = "#20B2AA";
+    ctx.lineWidth = 2.6;
+    ctx.beginPath();
+    ctx.moveTo(eq[0].sx, eq[0].sy);
+    eq.slice(1).forEach(p => ctx.lineTo(p.sx, p.sy));
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+
+    drawNode3D("W_pb", 0, 0, zShift, 8.5, "#FFD700", "#000", "W = V₁ ×_U V₂", "Pullback in Ctx_adm^sk with ℓ^∞ Norm max(‖x₁‖, ‖x₂‖)", w, h);
+
+    // Stage 7: Upper Hyperdoctrine Subobject Lattice Roof (Beck-Chevalley)
+    if (st >= 6.5) {
+      const zUp = 0.95;
+      const roof = [
+        drawNode3D("Sub_W",  0.0, -0.9, zUp, 7, "#FFD700", "#fff", "Sub(yW)", "Pullback Subobject Fiber Sub(yW)", w, h),
+        drawNode3D("Sub_V1", -1.1, 0.0, zUp, 7, "#4169E1", "#fff", "Sub(yV₁)", "Left Adjoint ∃_{π₁} / Right Adjoint ∀_{π₁}", w, h),
+        drawNode3D("Sub_V2",  1.1, 0.0, zUp, 7, "#20B2AA", "#fff", "Sub(yV₂)", "Pullback π₂* along V₁ ×_U V₂ → V₂", w, h),
+        drawNode3D("Sub_U",   0.0, 0.9, zUp, 7.5, "#FFA500", "#fff", "Sub(yU)", "Base Heyting Subobject Lattice Ω(U) (∀_f = Universalquantor)", w, h)
+      ];
+      drawLine3D(roof[0], roof[1], "#FFD700", 2.2);
+      drawLine3D(roof[0], roof[2], "#FFD700", 2.2);
+      drawLine3D(roof[1], roof[3], "#4169E1", 2.2);
+      drawLine3D(roof[2], roof[3], "#20B2AA", 2.2);
+      drawLine3D(proj(0, 0, zShift, w, h), roof[0], "rgba(255,215,0,0.55)", 1.8, [4, 3]);
+    }
+  }
+
+  // Stage 8: 3-Observer Sheaf Descent & 3D Golden Holoform Crystal
+  function renderStage8(w, h) {
+    const obsCols = ["#4169E1", "#20B2AA", "#FFA500"];
+    const obsBase = [0, 1, 2].map(k => {
+      const a = (k / 3) * Math.PI * 2 + timeSec * 0.35;
+      return drawNode3D(
+        "V_" + (k + 1),
+        1.15 * Math.cos(a), 1.15 * Math.sin(a), -0.85,
+        8.5, obsCols[k], "#fff", `V_${k+1} (s_${k+1})`,
+        `Local Observer Context V_${k+1}: Compatible Section s_${k+1} ∈ P(V_${k+1})`, w, h
+      );
+    });
+    // Overlap Edges V_ij with zero Cech defect
+    for (let i = 0; i < 3; i++) {
+      drawLine3D(obsBase[i], obsBase[(i + 1) % 3], "#20B2AA", 2.4);
+    }
+    // Floating 3D Golden Holoform Octahedron at Apex
+    const top = proj(0, 0, 1.35, w, h);
+    const bot = proj(0, 0, 0.15, w, h);
+    const mid = [0, 1, 2, 3].map(k => {
+      const a = -timeSec * 1.4 + (k / 4) * Math.PI * 2;
+      return proj(0.65 * Math.cos(a), 0.65 * Math.sin(a), 0.75, w, h);
+    });
+    mid.forEach((m, k) => {
+      drawLine3D(top, m, "#FFD700", 2.6);
+      drawLine3D(bot, m, "#FFA500", 2.2);
+      drawLine3D(m, mid[(k + 1) % 4], "#FFD700", 2.2);
+    });
+    obsBase.forEach(v => drawLine3D(v, bot, "rgba(255,215,0,0.5)", 1.6, [4, 3]));
+    drawNode3D("Hol_Gamma", 0, 0, 1.35, 10, "#FFD700", "#fff", "Γ ∈ Hol(U,P)", "Global Amalgamated Holoform Section: Def_U(s) = δ⁰(s) = 0", w, h);
+  }
+
+  // Stage 9: 3D Dialectical Aufhebung Helix & SO(6) Metropie Geodesic Ring
+  function renderStage9(w, h) {
+    // Double Helix rising from conflicting A, B in Prop_0 to synthesized C in Prop_1
+    for (let strand of [-1, 1]) {
+      ctx.beginPath();
+      ctx.strokeStyle = strand < 0 ? "#ff6b81" : "#4169E1";
+      ctx.lineWidth = 2.6;
+      for (let i = 0; i <= 60; i++) {
+        const t = i / 60;
+        const rad = 0.95 * (1 - t * 0.88);
+        const ang = strand * Math.PI * 0.5 + t * Math.PI * 3 + timeSec * 1.5;
+        const p = proj(rad * Math.cos(ang), rad * Math.sin(ang), -1.1 + t * 2.3, w, h);
+        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+      }
+      ctx.stroke();
+    }
+    drawNode3D("Ant_A", -0.95, 0, -1.1, 7.5, "#DC143C", "#fff", "A ∈ Prop₀", "Basal Subobject A: |ev_P(A) − ev_P(B)| > θ_tol (Ant_mer)", w, h);
+    drawNode3D("Ant_B",  0.95, 0, -1.1, 7.5, "#4169E1", "#fff", "B ∈ Prop₀", "Basal Subobject B: Dialectical Thesis/Antithesis Pair", w, h);
+    drawNode3D("Auf_C",  0,    0,  1.2, 11,  "#FFD700", "#20B2AA", "C = Synthesize(A,B) ∈ Prop₁", "Thm 1.30 Dialectical Sublation (Aufhebung) into Level-1 Generator!", w, h);
+  }
+
+  // Stage 10: Tri-Layer Semantic & Sequent Crown (Topos + KTB Frame + L_iMSL)
+  function renderStage10(w, h) {
+    const zTiers = [
+      { z: -1.05, col: "#4169E1", lbl: "Layer 1: Sheaf Topos ℰ_syn (U ⊩ φ)", id: "L1" },
+      { z:  0.00, col: "#20B2AA", lbl: "Layer 2: Fischer–Servi Frame 𝔉_cand (d_P < ε_A)", id: "L2" },
+      { z:  1.05, col: "#FFD700", lbl: "Layer 3: Cut-Free Sequent Calculus ℒ_iMSL", id: "L3" }
+    ];
+    zTiers.forEach((tr, idx) => {
+      ctx.beginPath();
+      ctx.strokeStyle = tr.col;
+      ctx.lineWidth = 2.2;
+      for (let i = 0; i <= 40; i++) {
+        const a = (i / 40) * Math.PI * 2;
+        const r = 1.25 - idx * 0.22;
+        const p = proj(r * Math.cos(a), r * Math.sin(a), tr.z, w, h);
+        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+      }
+      ctx.stroke();
+      drawNode3D(tr.id, 0, 0, tr.z, 8.5 + idx * 1.5, tr.col, "#fff", tr.id, tr.lbl, w, h);
+    });
+    // Vertical Lawvere-Tierney Bridge Pillars j_S = ¬_J □_S ¬_J
+    for (let k = 0; k < 4; k++) {
+      const a = timeSec * 0.6 + (k / 4) * Math.PI * 2;
+      const p1 = proj(1.15 * Math.cos(a), 1.15 * Math.sin(a), -1.05, w, h);
+      const p2 = proj(0.95 * Math.cos(a), 0.95 * Math.sin(a),  0.00, w, h);
+      const p3 = proj(0.75 * Math.cos(a), 0.75 * Math.sin(a),  1.05, w, h);
+      drawLine3D(p1, p2, "#20B2AA", 2.0);
+      drawLine3D(p2, p3, "#FFD700", 2.0);
+    }
+  }
+
+  // Master 60fps Render Loop
+  function renderLoop() {
+    timeSec += 0.016;
+    curStage += (targetStage - curStage) * 0.14;
+    if (autoOrbit && !isDragging) camYaw += 0.0055;
+
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+    if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
+      resize();
+    }
+    ctx.clearRect(0, 0, w, h);
+    hitNodes = [];
+
+    const stInt = Math.round(curStage);
+    if (stInt === 1) renderStage1(w, h);
+    else if (stInt === 2) renderStage2(w, h);
+    else if (stInt === 3) renderStage3(w, h);
+    else if (stInt === 4) renderStage4(w, h);
+    else if (stInt === 5) renderStage5(w, h);
+    else if (stInt === 6 || stInt === 7) renderStage6And7(w, h, curStage);
+    else if (stInt === 8) renderStage8(w, h);
+    else if (stInt === 9) renderStage9(w, h);
+    else renderStage10(w, h);
+
+    requestAnimationFrame(renderLoop);
+  }
+
+  // UI & Slide Synchronization
+  window.setCh1Stage = function(val, manual) {
+    targetStage = Math.max(1.0, Math.min(10.0, parseFloat(val)));
+    const stInt = Math.round(targetStage);
+
+    const sl = document.getElementById('ch1-slider');
+    if (sl && Math.abs(parseFloat(sl.value) - targetStage) > 0.02) sl.value = targetStage;
+
+    const pill = document.getElementById('ch1-stage-pill');
+    if (pill) pill.innerText = `Stage ${targetStage.toFixed(1)} / 10`;
+
+    const cap = document.getElementById('ch1-caption');
+    if (cap) cap.innerHTML = STAGE_CAPTIONS[stInt] || STAGE_CAPTIONS[1];
+
+    const tel = document.getElementById('ch1-telemetry');
+    if (tel) tel.innerText = STAGE_TELEMETRY[stInt] || STAGE_TELEMETRY[1];
+
+    if (manual) {
+      autoSync = false;
+      const b = document.getElementById('ch1-btn-sync');
+      if (b) { b.classList.remove('active'); b.innerText = "Manual"; }
+    }
+  };
+
+  window.scrubCh1Stage = function(val) { window.setCh1Stage(val, true); };
+
+  window.enableCh1Sync = function() {
+    autoSync = true;
+    const b = document.getElementById('ch1-btn-sync');
+    if (b) { b.classList.add('active'); b.innerText = "Auto-Sync"; }
+    syncCh1WithDeck();
+  };
+
+  window.toggleCh1Orbit = function() {
+    autoOrbit = !autoOrbit;
+    const b = document.getElementById('ch1-btn-orbit');
+    if (b) b.classList.toggle('active', autoOrbit);
+  };
+
+  window.toggleCh1Spotlight = function() {
+    const hud = document.getElementById('ch1-3d-hud');
+    if (hud) {
+      hud.classList.remove('minimized');
+      hud.classList.toggle('spotlight');
+      setTimeout(resize, 360);
+    }
+  };
+
+  window.toggleCh1Minimize = function() {
+    const hud = document.getElementById('ch1-3d-hud');
+    const b = document.getElementById('ch1-btn-min');
+    if (hud) {
+      hud.classList.remove('spotlight');
+      hud.classList.toggle('minimized');
+      if (b) b.innerText = hud.classList.contains('minimized') ? "+" : "—";
+      setTimeout(resize, 360);
+    }
+  };
+
+  function syncCh1WithDeck() {
+    if (!autoSync) return;
+    const vp = document.querySelector('.reveal-viewport');
+    const isScroll = vp && vp.classList.contains('reveal-scroll');
+    if (isScroll) {
+      const scEl = vp.scrollHeight > vp.clientHeight ? vp : document.documentElement;
+      const top = vp.scrollTop || window.scrollY || document.documentElement.scrollTop || 0;
+      const max = Math.max(1, (scEl.scrollHeight || document.body.scrollHeight) - window.innerHeight);
+      window.setCh1Stage(1.0 + Math.min(1, Math.max(0, top / max)) * 9.0, false);
+    } else if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
+      const idx = window.Reveal.getIndices();
+      const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 21);
+      const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
+      const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.18) : 0;
+      window.setCh1Stage(1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0, false);
+    }
+  }
+
+  // Mouse Orbit, Zoom & Node Hit-Testing
+  wrap.addEventListener('mousedown', e => {
+    e.stopPropagation();
+    isDragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+  });
+
+  wrap.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      lastX = e.touches[0].clientX;
+      lastY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    camYaw += (e.clientX - lastX) * 0.012;
+    camPitch = Math.max(-0.85, Math.min(1.15, camPitch + (e.clientY - lastY) * 0.012));
+    lastX = e.clientX;
+    lastY = e.clientY;
+  });
+
+  window.addEventListener('touchmove', e => {
+    if (!isDragging || e.touches.length !== 1) return;
+    const dx = e.touches[0].clientX - lastX;
+    const dy = e.touches[0].clientY - lastY;
+    lastX = e.touches[0].clientX;
+    lastY = e.touches[0].clientY;
+    camYaw += dx * 0.012;
+    camPitch = Math.max(-0.85, Math.min(1.15, camPitch + dy * 0.012));
+  }, { passive: true });
+
+  window.addEventListener('mouseup', () => { isDragging = false; });
+  window.addEventListener('touchend', () => { isDragging = false; });
+
+  wrap.addEventListener('click', e => {
+    e.stopPropagation();
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    let hit = null;
+    for (let i = hitNodes.length - 1; i >= 0; i--) {
+      const n = hitNodes[i];
+      if (Math.hypot(mx - n.p.sx, my - n.p.sy) <= n.r + 6) { hit = n; break; }
+    }
+    const insp = document.getElementById('ch1-node-inspector');
+    if (hit && insp) {
+      selectedId = hit.id;
+      insp.innerText = hit.info;
+    } else if (insp) {
+      selectedId = null;
+      insp.innerText = "Drag to Orbit 3D · Click Node to Inspect";
+    }
+  });
+
+  wrap.addEventListener('wheel', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    camZoom = Math.max(0.65, Math.min(1.65, camZoom - e.deltaY * 0.001));
+  }, { passive: false });
+
+  function init() {
+    resize();
+    syncCh1WithDeck();
+    requestAnimationFrame(renderLoop);
+    window.addEventListener('resize', resize);
+    window.addEventListener('scroll', syncCh1WithDeck, { passive: true });
+    const vp = document.querySelector('.reveal-viewport');
+    if (vp) vp.addEventListener('scroll', syncCh1WithDeck, { passive: true });
+    if (window.Reveal) {
+      window.Reveal.on('ready', syncCh1WithDeck);
+      window.Reveal.on('slidechanged', syncCh1WithDeck);
+      window.Reveal.on('fragmentshown', syncCh1WithDeck);
+      window.Reveal.on('fragmenthidden', syncCh1WithDeck);
+    }
+    const hud = document.getElementById('ch1-3d-hud');
+    if (hud) {
+      hud.querySelectorAll('input, button').forEach(el => {
+        el.addEventListener('keydown', e => e.stopPropagation());
+        el.addEventListener('mousedown', e => e.stopPropagation());
+        el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
