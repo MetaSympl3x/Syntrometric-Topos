@@ -1,0 +1,1391 @@
+<!-- =========================================================================
+
+     CHAPTER 6: 60FPS 3D INTERACTIVE COALGEBRA, LYAPUNOV BASIN & SEPARATRIX ENGINE
+
+     Synchronizes with all 10 slides of Chapter 6 + Interactive 3D Node Inspector
+
+     ========================================================================= -->
+
+<style>
+
+#ch6-3d-hud {
+
+  position: fixed;
+
+  right: 20px;
+
+  bottom: 20px;
+
+  width: 445px;
+
+  background: linear-gradient(145deg, rgba(7, 10, 19, 0.96) 0%, rgba(14, 21, 38, 0.98) 100%);
+
+  border: 1.5px solid rgba(255, 215, 0, 0.65);
+
+  border-radius: 14px;
+
+  padding: 10px 14px 12px 14px;
+
+  z-index: 9999;
+
+  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.86), 0 0 28px rgba(65, 105, 225, 0.34);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+  font-family: "Libertinus Sans", "Inter", system-ui, sans-serif;
+
+  color: #e8ecf2;
+
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+
+              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+  user-select: none;
+
+}
+
+
+
+#ch6-3d-hud.spotlight {
+
+  right: 50%;
+
+  bottom: 50%;
+
+  transform: translate(50%, 50%);
+
+  width: min(920px, 95vw);
+
+  border-color: #FFD700;
+
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
+
+}
+
+
+
+#ch6-3d-hud.minimized {
+
+  width: 285px;
+
+  padding: 7px 12px;
+
+}
+
+
+
+#ch6-3d-hud.minimized .ch6-hud-body {
+
+  display: none;
+
+}
+
+
+
+.ch6-hud-header {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(65, 105, 225, 0.45);
+
+  padding-bottom: 6px;
+
+  margin-bottom: 8px;
+
+}
+
+
+
+.ch6-hud-title {
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+
+  color: #FFD700;
+
+  text-transform: uppercase;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+}
+
+
+
+.ch6-hud-controls {
+
+  display: flex;
+
+  gap: 5px;
+
+}
+
+
+
+.ch6-hud-btn {
+
+  background: #172033;
+
+  color: #cbd5e1;
+
+  border: 1px solid #3b4963;
+
+  border-radius: 5px;
+
+  padding: 2px 8px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.15s ease;
+
+}
+
+
+
+.ch6-hud-btn:hover, .ch6-hud-btn.active {
+
+  background: #FFD700;
+
+  color: #000;
+
+  border-color: #FFD700;
+
+}
+
+
+
+.ch6-canvas-wrap {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 265px;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  border: 1px solid #2d3748;
+
+  background: radial-gradient(circle at 50% 55%, #111b30 0%, #05070e 100%);
+
+  cursor: grab;
+
+}
+
+
+
+.ch6-canvas-wrap:active {
+
+  cursor: grabbing;
+
+}
+
+
+
+#ch6-3d-hud.spotlight .ch6-canvas-wrap {
+
+  height: 500px;
+
+}
+
+
+
+#ch6-3d-canvas {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+}
+
+
+
+.ch6-overlay-bar {
+
+  position: absolute;
+
+  top: 7px;
+
+  left: 9px;
+
+  right: 9px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  pointer-events: none;
+
+  font-family: "Libertinus Mono", monospace;
+
+  font-size: 10px;
+
+  gap: 6px;
+
+}
+
+
+
+.ch6-telemetry {
+
+  background: rgba(6, 9, 17, 0.84);
+
+  border: 1px solid rgba(65, 105, 225, 0.55);
+
+  border-radius: 5px;
+
+  padding: 2px 7px;
+
+  color: #82aaff;
+
+  white-space: nowrap;
+
+}
+
+
+
+#ch6-node-inspector {
+
+  background: rgba(6, 9, 17, 0.88);
+
+  border: 1px solid rgba(255, 215, 0, 0.6);
+
+  border-radius: 5px;
+
+  padding: 2px 8px;
+
+  color: #FFD700;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+}
+
+
+
+.ch6-scrubber {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 8px;
+
+  font-size: 11px;
+
+}
+
+
+
+.ch6-scrubber input[type="range"] {
+
+  flex: 1;
+
+  accent-color: #FFD700;
+
+  height: 5px;
+
+  cursor: pointer;
+
+}
+
+
+
+#ch6-caption {
+
+  margin-top: 6px;
+
+  padding: 6px 9px;
+
+  background: rgba(4, 7, 14, 0.9);
+
+  border-left: 3px solid #20B2AA;
+
+  border-radius: 5px;
+
+  font-family: "Libertinus Mono", monospace;
+
+  font-size: 10.5px;
+
+  line-height: 1.38;
+
+  color: #5eead4;
+
+}
+
+
+
+@media (max-width: 900px) {
+
+  #ch6-3d-hud {
+
+    right: 8px;
+
+    bottom: 8px;
+
+    width: calc(100vw - 16px);
+
+    max-width: 385px;
+
+  }
+
+}
+
+</style>
+
+
+
+<div id="ch6-3d-hud">
+
+  <div class="ch6-hud-header">
+
+    <div class="ch6-hud-title">
+
+      <span>🎯 Ch 6 · 3D Telezentrik Engine</span>
+
+      <span id="ch6-stage-pill" style="background:#4169E1; color:#fff; padding:1px 7px; border-radius:4px; font-size:9.5px;">Stage 1.0 / 10</span>
+
+    </div>
+
+    <div class="ch6-hud-controls">
+
+      <button class="ch6-hud-btn active" id="ch6-btn-orbit" onclick="toggleCh6Orbit()">⟳ Orbit</button>
+
+      <button class="ch6-hud-btn" onclick="toggleCh6Spotlight()">⛶ Spotlight</button>
+
+      <button class="ch6-hud-btn" id="ch6-btn-min" onclick="toggleCh6Minimize()">—</button>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="ch6-hud-body">
+
+    <div class="ch6-canvas-wrap" id="ch6-canvas-wrap">
+
+      <canvas id="ch6-3d-canvas"></canvas>
+
+      <div class="ch6-overlay-bar">
+
+        <div class="ch6-telemetry" id="ch6-telemetry">(ν𝒯, ζ) | V̇ ≤ −γV</div>
+
+        <div id="ch6-node-inspector">Drag to Orbit 3D · Click Node to Inspect</div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="ch6-scrubber">
+
+      <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
+
+      <input type="range" id="ch6-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh6Stage(this.value)">
+
+      <button class="ch6-hud-btn active" id="ch6-btn-sync" onclick="enableCh6Sync()">Auto-Sync</button>
+
+    </div>
+
+
+
+    <div id="ch6-caption">
+
+      <b>Stage 1 (§6.1.1 — SM-27):</b> Polydromic branching tuft (P_μ = 4) between guiding attractors (T₁, T₂) in Area AR_q.
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+(function() {
+
+  const canvas = document.getElementById('ch6-3d-canvas');
+
+  const wrap = document.getElementById('ch6-canvas-wrap');
+
+  if (!canvas || !wrap) return;
+
+  const ctx = canvas.getContext('2d');
+
+
+
+  let targetStage = 1.0;
+
+  let curStage = 1.0;
+
+  let autoSync = true;
+
+  let autoOrbit = true;
+
+  let camYaw = -0.46;
+
+  let camPitch = 0.36;
+
+  let camZoom = 1.0;
+
+  let isDragging = false;
+
+  let lastX = 0, lastY = 0;
+
+  let timeSec = 0;
+
+  let hitNodes = [];
+
+  let selectedId = null;
+
+
+
+  const STAGE_CAPTIONS = {
+
+    1: "<b>Stage 1 (§6.1.1 — SM-27 Mono-/Polydromie &amp; Area AR_q):</b> Polydromic branching tuft P_μ = 4 at saddle x₀ bounded by attractors (T₁, T₂).",
+
+    2: "<b>Stage 2 (§6.1.2–6.1.4 — Televarianz vs. Dysvarianz):</b> Televariant orbits W_tele ⊂ B(T_z) (−grad Ψ) vs. Dysvariant escape across D_ext.",
+
+    3: "<b>Stage 3 (§6.2.1 — Def. 6.4 Far-Centered Collector 𝔎):</b> Unstable tuft W^u_tele(x₀) reconverges into Far-Centered Collector 𝔎 at distance L > 0.",
+
+    4: "<b>Stage 4 (§6.2.2 — Thm. 6.7 &amp; Prop. 6.8 Final Coalgebra (ν𝒯, ζ)):</b> Terminal cone lim_k 𝒯^k(1), universal arrow !ₐ &amp; Lambek fixed point ζ.",
+
+    5: "<b>Stage 5 (Stage V Polarimeter &amp; Thm. 6.10 Lyapunov Stability):</b> Coercive PL basin V̇ ≤ −γV driving exponential convergence dist(Φ_t, 𝒜) ≤ C e^{−γt/2}.",
+
+    6: "<b>Stage 6 (§6.3.2 — Thm. 6.14 Morse–Smale Separatrix D_ext):</b> 3D Double-Well surface Ψ(x,y) = (x²−1)²+y² split by crimson ridge D_ext = W^s(p₀).",
+
+    7: "<b>Stage 7 (Thm. 6.13 Telezentralen Foliations &amp; Thm. 6.16):</b> Geodesic Telezentralen foliating between γ₁=0 and γ₂=1 attractors + metastable recovery.",
+
+    8: "<b>Stage 8 (§6.3.3 — Thm. 6.19 Telezentralenrelativität):</b> Left adjoint Γ_m ⊣ U_{m+1} maps terminal ν𝒯_m in C(m) to basal Nebentelezentrum in C(m+1)!",
+
+    9: "<b>Stage 9 (§6.3.4 — Thm. 6.20 Even Parity μ=2c₀ &amp; Thm. 6.21 Resynkolation):</b> Morse–Poincaré–Hopf ring (3 attractors + 3 saddles) &amp; Kramers barrier deepening!",
+
+    10: "<b>Stage 10 (§6.4–6.6 — Completion of Teil A &amp; Pivot to Teil B):</b> Teil A Synthesis Crown projecting onto the Number Field Triad Coeff = [ℚ ⊆ ℝ ⊆ ℂ]."
+
+  };
+
+
+
+  const STAGE_TELEMETRY = {
+
+    1: "AR_q ≡ AR_{(T₁)}^{(T₂)}[(AR_{q−1})]_1^{P_{q−1}} (SM-27)",
+
+    2: "W_tele ⊂ B(T_z) | D_ext = ∂B(T_z)",
+
+    3: "W^u_tele(x₀) ⊆ B(𝔎) | γ ∈ {0, 1, 2, 3}",
+
+    4: "ν𝒯 = lim_{k<ω} 𝒯^k(1) | ζ : ν𝒯 ≅ 𝒯(ν𝒯)",
+
+    5: "V̇ ≤ −γV ⇒ dist(Φ_t, 𝒜) ≤ √(2V₀/μ) e^{−γt/2}",
+
+    6: "D_ext = ⋃_{ind(p_r)≥1} W^s(p_r) (Thm. 6.14)",
+
+    7: "dim(Telezentrale) = γ₁ + 1 (Thm. 6.13)",
+
+    8: "Γ_m(ν𝒯_m) ≅ HypMet_{m+1} ≇ ν𝒯_{m+1}",
+
+    9: "χ(Ω)=0 ⇒ μ = 2c₀ ∈ 2ℕ | τ_surv ~ exp(ΔE/ε)",
+
+    10: "Teil A Complete ⇒ Pivot to Coeff = [ℚ⊆ℝ⊆ℂ]"
+
+  };
+
+
+
+  function resize() {
+
+    const r = wrap.getBoundingClientRect();
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = r.width * dpr;
+
+    canvas.height = r.height * dpr;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  }
+
+
+
+  function proj(x, y, z, w, h) {
+
+    const cy = Math.cos(camYaw), sy = Math.sin(camYaw);
+
+    const x1 = x * cy - y * sy;
+
+    const y1 = x * sy + y * cy;
+
+    const cp = Math.cos(camPitch), sp = Math.sin(camPitch);
+
+    const y2 = y1 * cp - z * sp;
+
+    const z2 = y1 * sp + z * cp;
+
+    const fov = Math.min(w, h) * 0.43 * camZoom;
+
+    const sc = fov / Math.max(0.85, 4.6 - y2 * 0.45);
+
+    return { sx: w * 0.5 + x1 * sc, sy: h * 0.53 - z2 * sc, depth: y2, sc: sc / 100 };
+
+  }
+
+
+
+  function drawLine3D(p1, p2, col, lw, dash) {
+
+    ctx.save();
+
+    ctx.beginPath();
+
+    if (dash) ctx.setLineDash(dash);
+
+    ctx.strokeStyle = col;
+
+    ctx.lineWidth = lw || 2;
+
+    ctx.moveTo(p1.sx, p1.sy);
+
+    ctx.lineTo(p2.sx, p2.sy);
+
+    ctx.stroke();
+
+    ctx.restore();
+
+  }
+
+
+
+  function drawNode3D(id, x, y, z, r, fill, stroke, label, info, w, h) {
+
+    const p = proj(x, y, z, w, h);
+
+    hitNodes.push({ id, p, r, info });
+
+    const isSel = (selectedId === id);
+
+    ctx.save();
+
+    ctx.beginPath();
+
+    ctx.fillStyle = isSel ? "#ffffff" : fill;
+
+    ctx.strokeStyle = isSel ? "#FFD700" : (stroke || "#ffffff");
+
+    ctx.lineWidth = isSel ? 3.0 : 1.6;
+
+    ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+
+    ctx.fill();
+
+    ctx.stroke();
+
+    if (label) {
+
+      ctx.fillStyle = "#ffffff";
+
+      ctx.font = "bold 9.5px sans-serif";
+
+      ctx.textAlign = "center";
+
+      ctx.fillText(label, p.sx, p.sy - r - 4);
+
+    }
+
+    ctx.restore();
+
+    return p;
+
+  }
+
+
+
+  // =========================================================================
+
+  // STAGE RENDERERS (STAGES 1 TO 10)
+
+  // =========================================================================
+
+
+
+  // Stage 1 & 3: Polydromic Branching Tuft (SM-27) & Far-Centered Collector \mathcal{K} (Def. 6.4)
+
+  function renderStage1And3(w, h, st) {
+
+    const isCollector = (st >= 2.5);
+
+    const pIn  = drawNode3D("In_State", -1.45, 0, 0, 7, "#4169E1", "#fff", "S₀", "Initial Metroplexäondyne State before Polydromy Saddle", w, h);
+
+    const pSad = drawNode3D("Sad_x0",   -0.55, 0, 0, 8.5, "#DC143C", "#FFD700", "x₀ ∈ D_ext", "Polydromie Bifurcation Saddle x₀: Branches into P_μ = 4 paths", w, h);
+
+    drawLine3D(pIn, pSad, "#4169E1", 3.0);
+
+
+
+    const pCol = isCollector
+
+      ? drawNode3D("Col_K", 1.35, 0, 0, 10.5, "#FFD700", "#20B2AA", "Collector 𝔎 (L > 0)", "Far-Centered Collector 𝔎 capturing unstable tuft W^u_tele(x₀) ⊆ B(𝔎) (Def. 6.4)", w, h)
+
+      : null;
+
+
+
+    for (let b = 0; b < 4; b++) {
+
+      const ang = (b / 4) * Math.PI * 2 + timeSec * 0.6;
+
+      const radY = 0.75 * Math.cos(ang);
+
+      const radZ = 0.75 * Math.sin(ang);
+
+      ctx.beginPath();
+
+      ctx.strokeStyle = b % 2 === 0 ? "#20B2AA" : "#FFA500";
+
+      ctx.lineWidth = 2.4;
+
+      for (let i = 0; i <= 40; i++) {
+
+        const s = i / 40;
+
+        const env = isCollector ? Math.sin(s * Math.PI) : s;
+
+        const x = -0.55 + s * 1.9;
+
+        const p = proj(x, radY * env, radZ * env, w, h);
+
+        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+      }
+
+      ctx.stroke();
+
+      if (!isCollector) {
+
+        drawNode3D("Tuft_" + b, 1.35, radY, radZ, 6.5, "#20B2AA", "#fff", `T_{z,${b+1}}`, `Competing Polydromic Attractor Branch ${b+1} in AR_q`, w, h);
+
+      }
+
+    }
+
+  }
+
+
+
+  // Stage 2: Televarianz (Inward Basin Spiral) vs Dysvarianz (Outward Escape across D_ext)
+
+  function renderStage2(w, h) {
+
+    // Separatrix Ring D_ext = \partial B(T_z)
+
+    ctx.beginPath();
+
+    ctx.strokeStyle = "#DC143C";
+
+    ctx.lineWidth = 2.6;
+
+    ctx.setLineDash([5, 3]);
+
+    for (let i = 0; i <= 48; i++) {
+
+      const a = (i / 48) * Math.PI * 2;
+
+      const p = proj(1.05 * Math.cos(a), 1.05 * Math.sin(a), 0, w, h);
+
+      if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+    }
+
+    ctx.stroke();
+
+    ctx.setLineDash([]);
+
+
+
+    // Inward Televariant Spiral W_tele -> T_z
+
+    ctx.beginPath();
+
+    ctx.strokeStyle = "#20B2AA";
+
+    ctx.lineWidth = 2.8;
+
+    for (let i = 0; i <= 70; i++) {
+
+      const s = i / 70;
+
+      const r = 0.95 * (1 - s * 0.9);
+
+      const a = s * Math.PI * 5 + timeSec * 2;
+
+      const p = proj(r * Math.cos(a), r * Math.sin(a), -0.75 * s, w, h);
+
+      if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+    }
+
+    ctx.stroke();
+
+
+
+    // Outward Dysvariant Trajectory W_dys -> Nullsyntrix
+
+    const dysA = timeSec * 1.2;
+
+    const pDys = drawNode3D("W_dys", 1.48 * Math.cos(dysA), 1.48 * Math.sin(dysA), 0.55, 7, "#DC143C", "#fff", "W_dys → 0_Syn", "Dysvariant Trajectory crossing D_ext into structural/functional decay", w, h);
+
+    drawLine3D(proj(1.05 * Math.cos(dysA), 1.05 * Math.sin(dysA), 0, w, h), pDys, "#DC143C", 2.4);
+
+    drawNode3D("Tz_Center", 0, 0, -0.75, 10, "#FFD700", "#20B2AA", "T_z (W_tele)", "Televariant Telezentrum Attractor minimizing Friston Free Energy", w, h);
+
+  }
+
+
+
+  // Stage 4: Final Telecentric Coalgebra (\nu\mathcal{T}_{\mathbb{R}}, \zeta) & Lambek Isomorphism
+
+  function renderStage4(w, h) {
+
+    // Adamek-Aczel Terminal Sequence Rings 1 <- T(1) <- T^2(1) <- \nu T
+
+    const levels = [
+
+      { z: -1.1, r: 1.35, col: "#4169E1", lbl: "𝒯¹(1)" },
+
+      { z: -0.4, r: 0.95, col: "#20B2AA", lbl: "𝒯²(1)" },
+
+      { z:  0.3, r: 0.55, col: "#FFA500", lbl: "𝒯^k(1)" }
+
+    ];
+
+    levels.forEach((lv, idx) => {
+
+      ctx.beginPath();
+
+      ctx.strokeStyle = lv.col;
+
+      ctx.lineWidth = 2.0;
+
+      for (let i = 0; i <= 40; i++) {
+
+        const a = (i / 40) * Math.PI * 2;
+
+        const p = proj(lv.r * Math.cos(a), lv.r * Math.sin(a), lv.z, w, h);
+
+        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+      }
+
+      ctx.stroke();
+
+      drawNode3D("Term_" + idx, lv.r, 0, lv.z, 6.5, lv.col, "#fff", lv.lbl, `Terminal Sequence Approximant ${lv.lbl} in Diff_smooth (Thm. 6.7)`, w, h);
+
+    });
+
+    const pNu = drawNode3D("Nu_T", 0, 0, 1.05, 11.5, "#FFD700", "#fff", "ν𝒯 ≅ 𝒯(ν𝒯) (Lambek ζ)", "Final Telecentric Coalgebra (ν𝒯, ζ): Unique mediating arrow !ₐ : (S,α) → ν𝒯 (Prop. 6.8)", w, h);
+
+    const pS  = drawNode3D("State_S", -1.25, 0.6, -0.9, 8, "#20B2AA", "#fff", "(S, α)", "Local Dynamical System Coalgebra (S, α : S → 𝒯(S))", w, h);
+
+    drawLine3D(pS, pNu, "#FFD700", 3.0, [5, 3]);
+
+  }
+
+
+
+  // Stage 5: Stage V Coupled Polarimeter Phase-Locking & Coercive PL Basin (Thm. 6.10)
+
+  function renderStage5(w, h) {
+
+    // 3D Paraboloid Bowl V(\theta) = 1 - \cos\theta \ge \frac{\mu}{2}\theta^2
+
+    for (let r = 0.35; r <= 1.41; r += 0.35) {
+
+      ctx.beginPath();
+
+      ctx.strokeStyle = "rgba(65,105,225,0.48)";
+
+      ctx.lineWidth = 1.6;
+
+      for (let i = 0; i <= 40; i++) {
+
+        const a = (i / 40) * Math.PI * 2;
+
+        const z = -0.95 + 0.85 * r * r;
+
+        const p = proj(r * Math.cos(a), r * Math.sin(a), z, w, h);
+
+        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+      }
+
+      ctx.stroke();
+
+    }
+
+    const decay = Math.exp(-((timeSec % 3.5) * 0.95));
+
+    const rad = 1.3 * decay;
+
+    const ang = timeSec * 3.0;
+
+    const bx = rad * Math.cos(ang), by = rad * Math.sin(ang), bz = -0.95 + 0.85 * rad * rad;
+
+    drawNode3D("Pol_Ball", bx, by, bz, 7.5, "#FFD700", "#000", "θ(t) → 0", "Stage V Polarimeter State: dist(Φ_t(x₀), 𝒜) ≤ √(2V₀/μ) e^{−γt/2} (Thm. 6.10)", w, h);
+
+    drawNode3D("Pol_Min", 0, 0, -0.95, 10, "#20B2AA", "#FFD700", "θ_target = 0 (T_z)", "Synchronized Polarimeter Telezentrum Ψ(0) = 0", w, h);
+
+  }
+
+
+
+  // Stage 6, 7 & 9: 3D Double-Well Lyapunov Surface \Psi(x,y) = (x^2-1)^2 + y^2, Separatrix D_ext & Kramers
+
+  function renderStage6And7And9(w, h, st) {
+
+    const isStage7 = (st >= 6.5 && st < 7.5);
+
+    const isStage9 = (st >= 8.5);
+
+    const wellScale = isStage9 ? (0.28 + 0.14 * Math.sin(timeSec * 2)) : 0.22;
+
+    const zFn = (u, v) => -0.85 + wellScale * Math.pow(u * u - 1.35, 2) + 0.28 * v * v;
+
+
+
+    for (let u = -1.6; u <= 1.61; u += 0.32) {
+
+      ctx.beginPath();
+
+      const isRidge = Math.abs(u) < 0.05;
+
+      ctx.strokeStyle = isRidge ? "#DC143C" : "rgba(65,105,225,0.42)";
+
+      ctx.lineWidth = isRidge ? 3.4 : 1.3;
+
+      for (let v = -1.1; v <= 1.11; v += 0.22) {
+
+        const p = proj(u, v, zFn(u, v), w, h);
+
+        if (v === -1.1) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+      }
+
+      ctx.stroke();
+
+    }
+
+
+
+    const pTz1 = drawNode3D("Tz_1", -1.16, 0, zFn(-1.16, 0), 8.5, "#20B2AA", "#FFD700", "T_{z,1} (−1)", "Left Stable Punkttelezentrum T_{z,1} (Morse Index 0)", w, h);
+
+    const pTz2 = drawNode3D("Tz_2",  1.16, 0, zFn( 1.16, 0), 8.5, "#20B2AA", "#FFD700", "T_{z,2} (+1)", "Right Stable Punkttelezentrum T_{z,2} (Morse Index 0)", w, h);
+
+    const pSad = drawNode3D("Sad_p0", 0, 0, zFn(0, 0), 8, "#DC143C", "#FFD700", "p* ∈ D_ext (Index 1)", "Morse Index-1 Saddle on Extinktionsdiskriminante D_ext = ∂B(𝒜) (Thm. 6.14)", w, h);
+
+
+
+    if (isStage7) {
+
+      // Telezentralen Foliation Arcs between T_{z,1} and T_{z,2} (Thm. 6.13)
+
+      for (let vOff of [-0.65, 0.0, 0.65]) {
+
+        ctx.beginPath();
+
+        ctx.strokeStyle = "#FFD700";
+
+        ctx.lineWidth = 2.0;
+
+        for (let i = 0; i <= 30; i++) {
+
+          const u = -1.16 + (i / 30) * 2.32;
+
+          const v = vOff * Math.sin((i / 30) * Math.PI);
+
+          const p = proj(u, v, zFn(u, v) + 0.08, w, h);
+
+          if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+        }
+
+        ctx.stroke();
+
+      }
+
+    }
+
+
+
+    if (isStage9) {
+
+      // Thermal Kramers particle hopping & Resynkolation barrier
+
+      const ux = -1.16 + 0.45 * Math.sin(timeSec * 5);
+
+      drawNode3D("Kramers_Pt", ux, 0, zFn(ux, 0) + 0.12, 7, "#FFD700", "#DC143C", "R_resyn (τ_surv)", "Thm. 6.21 Wasserstein Free-Energy & Eyring–Kramers Resynkolation!", w, h);
+
+    }
+
+  }
+
+
+
+  // Stage 8: Transzendente Telezentralenrelativität \Gamma_m(\nu\mathcal{T}_m) \not\cong \nu\mathcal{T}_{m+1} (Thm. 6.19)
+
+  function renderStage8(w, h) {
+
+    // Lower Stratum C(m) vs Upper Stratum C(m+1)
+
+    const pBotTerm = drawNode3D("Nu_m", -0.85, 0, -0.75, 10, "#FFD700", "#20B2AA", "ν𝒯_m (Haupttelezentrum in C(m))", "Terminal Final Coalgebra at the Apex of Lower Stratum C(m)", w, h);
+
+    const pTopBasal = drawNode3D("Hyp_m1", -0.85, 0, 0.45, 8.5, "#4169E1", "#FFD700", "Γ_m(ν𝒯_m) = HypMet_{m+1}", "Demoted by Left Adjoint Γ_m ⊣ U_{m+1} to Basal Nebentelezentrum in C(m+1)!", w, h);
+
+    const pTopTerm = drawNode3D("Nu_m1", 0.95, 0, 0.95, 11, "#FFD700", "#DC143C", "ν𝒯_{m+1} (New Terminal in C(m+1))", "Thm. 6.19: Γ_m(ν𝒯_m) ≇ ν𝒯_{m+1} (Left adjoints do not preserve terminal coalgebras!)", w, h);
+
+
+
+    drawLine3D(pBotTerm, pTopBasal, "#20B2AA", 3.0);
+
+    drawLine3D(pTopBasal, pTopTerm, "#FFD700", 3.0, [5, 3]);
+
+  }
+
+
+
+  // Stage 10: Teil A Completion Crown & Anthropomorphic Pivot to Coeff = [\mathbb{Q} \subseteq \mathbb{R} \subseteq \mathbb{C}]
+
+  function renderStage10(w, h) {
+
+    const teilA = ["Ch1: ℰ_syn", "Ch2: 𝒪_syn", "Ch3: ⊞_φ", "Ch4: Ω_int", "Ch5: 𝒳_syn", "Ch6: ν𝒯"];
+
+    const ringPts = teilA.map((lbl, k) => {
+
+      const a = timeSec * 0.45 + (k / 6) * Math.PI * 2;
+
+      return drawNode3D("TA_" + k, 1.25 * Math.cos(a), 1.25 * Math.sin(a), 0.55, 7, "#20B2AA", "#fff", lbl, `Completed Teil A Pillar ${lbl}`, w, h);
+
+    });
+
+    for (let i = 0; i < 6; i++) {
+
+      drawLine3D(ringPts[i], ringPts[(i + 1) % 6], "#20B2AA", 2.0);
+
+    }
+
+    // Lower Number Field Triad Coeff = [Q <= R <= C] (Bridge to Teil B, Chapter 7)
+
+    const pQ = drawNode3D("Fld_Q", -1.0, 0, -0.85, 8, "#4169E1", "#fff", "ℚ (Discrete Counts)", "Rational Field ℚ ∈ Coeff (Teil B Anthropomorphic Pivot)", w, h);
+
+    const pR = drawNode3D("Fld_R",  0.0, 0, -0.85, 9, "#FFA500", "#fff", "ℝ (Continuum R_n)", "Real Field ℝ ∈ Coeff (Semantischer Metrophor R_n = S_n ; ã)", w, h);
+
+    const pC = drawNode3D("Fld_C",  1.0, 0, -0.85, 9.5, "#FFD700", "#fff", "ℂ (Phase / Realification)", "Complex Field ℂ ∈ Coeff (Realification dim_ℝ((ℂ^n)_ℝ) = 2n)", w, h);
+
+    drawLine3D(pQ, pR, "#FFD700", 2.8);
+
+    drawLine3D(pR, pC, "#FFD700", 2.8);
+
+    ringPts.forEach(p => drawLine3D(p, pR, "rgba(255,215,0,0.38)", 1.5, [3, 3]));
+
+  }
+
+
+
+  // Master 60fps Loop
+
+  function renderLoop() {
+
+    timeSec += 0.016;
+
+    curStage += (targetStage - curStage) * 0.14;
+
+    if (autoOrbit && !isDragging) camYaw += 0.0055;
+
+
+
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+
+    if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
+
+      resize();
+
+    }
+
+    ctx.clearRect(0, 0, w, h);
+
+    hitNodes = [];
+
+
+
+    const stInt = Math.round(curStage);
+
+    if (stInt === 1 || stInt === 3) renderStage1And3(w, h, curStage);
+
+    else if (stInt === 2) renderStage2(w, h);
+
+    else if (stInt === 4) renderStage4(w, h);
+
+    else if (stInt === 5) renderStage5(w, h);
+
+    else if (stInt === 6 || stInt === 7 || stInt === 9) renderStage6And7And9(w, h, curStage);
+
+    else if (stInt === 8) renderStage8(w, h);
+
+    else renderStage10(w, h);
+
+
+
+    requestAnimationFrame(renderLoop);
+
+  }
+
+
+
+  // UI & Slide Sync Controllers
+
+  window.setCh6Stage = function(val, manual) {
+
+    targetStage = Math.max(1.0, Math.min(10.0, parseFloat(val)));
+
+    const stInt = Math.round(targetStage);
+
+
+
+    const sl = document.getElementById('ch6-slider');
+
+    if (sl && Math.abs(parseFloat(sl.value) - targetStage) > 0.02) sl.value = targetStage;
+
+
+
+    const pill = document.getElementById('ch6-stage-pill');
+
+    if (pill) pill.innerText = `Stage ${targetStage.toFixed(1)} / 10`;
+
+
+
+    const cap = document.getElementById('ch6-caption');
+
+    if (cap) cap.innerHTML = STAGE_CAPTIONS[stInt] || STAGE_CAPTIONS[1];
+
+
+
+    const tel = document.getElementById('ch6-telemetry');
+
+    if (tel) tel.innerText = STAGE_TELEMETRY[stInt] || STAGE_TELEMETRY[1];
+
+
+
+    if (manual) {
+
+      autoSync = false;
+
+      const b = document.getElementById('ch6-btn-sync');
+
+      if (b) { b.classList.remove('active'); b.innerText = "Manual"; }
+
+    }
+
+  };
+
+
+
+  window.scrubCh6Stage = function(val) { window.setCh6Stage(val, true); };
+
+
+
+  window.enableCh6Sync = function() {
+
+    autoSync = true;
+
+    const b = document.getElementById('ch6-btn-sync');
+
+    if (b) { b.classList.add('active'); b.innerText = "Auto-Sync"; }
+
+    syncCh6WithDeck();
+
+  };
+
+
+
+  window.toggleCh6Orbit = function() {
+
+    autoOrbit = !autoOrbit;
+
+    const b = document.getElementById('ch6-btn-orbit');
+
+    if (b) b.classList.toggle('active', autoOrbit);
+
+  };
+
+
+
+  window.toggleCh6Spotlight = function() {
+
+    const hud = document.getElementById('ch6-3d-hud');
+
+    if (hud) {
+
+      hud.classList.remove('minimized');
+
+      hud.classList.toggle('spotlight');
+
+      setTimeout(resize, 360);
+
+    }
+
+  };
+
+
+
+  window.toggleCh6Minimize = function() {
+
+    const hud = document.getElementById('ch6-3d-hud');
+
+    const b = document.getElementById('ch6-btn-min');
+
+    if (hud) {
+
+      hud.classList.remove('spotlight');
+
+      hud.classList.toggle('minimized');
+
+      if (b) b.innerText = hud.classList.contains('minimized') ? "+" : "—";
+
+      setTimeout(resize, 360);
+
+    }
+
+  };
+
+
+
+  function syncCh6WithDeck() {
+    if (!autoSync) return;
+    const isMegaDeck = !!document.getElementById('syntrix-3d-hud') || document.querySelectorAll('h1').length > 5;
+    const ch6Hud = document.getElementById('ch6-3d-hud');
+    if (isMegaDeck && ch6Hud && window.Reveal && window.Reveal.getCurrentSlide) {
+      const currentSlide = window.Reveal.getCurrentSlide();
+      const inCh6 = currentSlide ? !!currentSlide.closest('#chapter-6, section[data-chapter="6"]') : true;
+      ch6Hud.style.display = inCh6 ? '' : 'none';
+      if (!inCh6) return;
+    }
+    const vp = document.querySelector('.reveal-viewport');
+
+    const isScroll = vp && vp.classList.contains('reveal-scroll');
+
+    if (isScroll) {
+
+      const scEl = vp.scrollHeight > vp.clientHeight ? vp : document.documentElement;
+
+      const top = vp.scrollTop || window.scrollY || document.documentElement.scrollTop || 0;
+
+      const max = Math.max(1, (scEl.scrollHeight || document.body.scrollHeight) - window.innerHeight);
+
+      window.setCh6Stage(1.0 + Math.min(1, Math.max(0, top / max)) * 9.0, false);
+
+    } else if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
+
+      const idx = window.Reveal.getIndices();
+
+      const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 10);
+
+      const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
+
+      const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
+
+      window.setCh6Stage(1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0, false);
+
+    }
+
+  }
+
+
+
+  // 3D Orbit Drag, Wheel Zoom & Node Click Hit-Testing
+
+  wrap.addEventListener('mousedown', e => {
+
+    e.stopPropagation();
+
+    isDragging = true;
+
+    lastX = e.clientX;
+
+    lastY = e.clientY;
+
+  });
+
+
+
+  window.addEventListener('mousemove', e => {
+
+    if (!isDragging) return;
+
+    camYaw += (e.clientX - lastX) * 0.012;
+
+    camPitch = Math.max(-0.85, Math.min(1.15, camPitch + (e.clientY - lastY) * 0.012));
+
+    lastX = e.clientX;
+
+    lastY = e.clientY;
+
+  });
+
+
+
+  wrap.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      lastX = e.touches[0].clientX;
+      lastY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', e => {
+    if (!isDragging || e.touches.length !== 1) return;
+    const dx = e.touches[0].clientX - lastX;
+    const dy = e.touches[0].clientY - lastY;
+    lastX = e.touches[0].clientX;
+    lastY = e.touches[0].clientY;
+    camYaw += dx * 0.012;
+    camPitch = Math.max(-0.85, Math.min(1.15, camPitch + dy * 0.012));
+  }, { passive: true });
+
+  window.addEventListener('touchend', () => { isDragging = false; });
+
+  window.addEventListener('mouseup', () => { isDragging = false; });
+
+
+
+  wrap.addEventListener('click', e => {
+
+    e.stopPropagation();
+
+    const rect = canvas.getBoundingClientRect();
+
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+
+    let hit = null;
+
+    for (let i = hitNodes.length - 1; i >= 0; i--) {
+
+      const n = hitNodes[i];
+
+      if (Math.hypot(mx - n.p.sx, my - n.p.sy) <= n.r + 6) { hit = n; break; }
+
+    }
+
+    const insp = document.getElementById('ch6-node-inspector');
+
+    if (hit && insp) {
+
+      selectedId = hit.id;
+
+      insp.innerText = hit.info;
+
+    } else if (insp) {
+
+      selectedId = null;
+
+      insp.innerText = "Drag to Orbit 3D · Click Node to Inspect";
+
+    }
+
+  });
+
+
+
+  wrap.addEventListener('wheel', e => {
+
+    e.preventDefault();
+
+    e.stopPropagation();
+
+    camZoom = Math.max(0.65, Math.min(1.65, camZoom - e.deltaY * 0.001));
+
+  }, { passive: false });
+
+
+
+  function init() {
+
+    resize();
+
+    syncCh6WithDeck();
+
+    requestAnimationFrame(renderLoop);
+
+    window.addEventListener('resize', resize);
+
+    window.addEventListener('scroll', syncCh6WithDeck, { passive: true });
+
+    const vp = document.querySelector('.reveal-viewport');
+
+    if (vp) vp.addEventListener('scroll', syncCh6WithDeck, { passive: true });
+
+    if (window.Reveal) {
+
+      window.Reveal.on('ready', syncCh6WithDeck);
+
+      window.Reveal.on('slidechanged', syncCh6WithDeck);
+
+      window.Reveal.on('fragmentshown', syncCh6WithDeck);
+
+      window.Reveal.on('fragmenthidden', syncCh6WithDeck);
+
+    }
+
+    const hud = document.getElementById('ch6-3d-hud');
+
+    if (hud) {
+
+      hud.querySelectorAll('input, button').forEach(el => {
+
+        el.addEventListener('keydown', e => e.stopPropagation());
+
+        el.addEventListener('mousedown', e => e.stopPropagation());
+
+        el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+
+      });
+
+    }
+
+  }
+
+
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+
+  else init();
+
+})();
+
+</script>
