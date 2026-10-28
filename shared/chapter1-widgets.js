@@ -426,6 +426,7 @@ if (document.readyState === 'loading') {
 
 const CH1_3D_STYLE = `
 #ch1-3d-hud {
+  box-sizing: border-box;
   position: fixed;
   right: 20px;
   bottom: 20px;
@@ -447,11 +448,17 @@ const CH1_3D_STYLE = `
   user-select: none;
 }
 
+#ch1-3d-hud *, #ch1-3d-hud *::before, #ch1-3d-hud *::after {
+  box-sizing: border-box;
+}
+
 #ch1-3d-hud.spotlight {
   right: 50%;
   bottom: 50%;
   transform: translate(50%, 50%);
   width: min(960px, 94vw);
+  max-width: 94vw;
+  box-sizing: border-box;
   border-color: #FFD700;
   box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
 }
@@ -460,6 +467,7 @@ const CH1_3D_STYLE = `
   width: clamp(280px, 26vw, 380px);
   max-width: calc(100vw - 20px);
   padding: 6px 11px;
+  box-sizing: border-box;
 }
 
 #ch1-3d-hud.minimized .ch1-hud-body {
@@ -636,10 +644,14 @@ const CH1_3D_STYLE = `
     right: 8px;
     bottom: 8px;
     width: clamp(280px, calc(100vw - 16px), 480px);
+    max-width: calc(100vw - 16px);
     padding: 8px 10px 10px 10px;
+    box-sizing: border-box;
   }
   #ch1-3d-hud.minimized {
     width: clamp(280px, calc(100vw - 16px), 380px);
+    max-width: calc(100vw - 16px);
+    box-sizing: border-box;
   }
   .ch1-hud-title {
     font-size: clamp(9px, 1.8vw, 10.5px);
@@ -661,16 +673,28 @@ const CH1_3D_STYLE = `
 
 @media (max-width: 600px) {
   #ch1-3d-hud {
+    left: 6px;
     right: 6px;
     bottom: 6px;
-    width: calc(100vw - 12px);
+    width: auto;
     max-width: calc(100vw - 12px);
     padding: 6px 9px 8px 9px;
+    box-sizing: border-box;
   }
   #ch1-3d-hud.minimized {
-    width: calc(100vw - 12px);
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    width: auto;
     max-width: calc(100vw - 12px);
     padding: 6px 9px;
+    box-sizing: border-box;
+  }
+  #ch1-3d-hud.spotlight {
+    left: auto;
+    right: 50%;
+    width: min(960px, calc(100vw - 12px));
+    max-width: calc(100vw - 12px);
   }
   .ch1-hud-header {
     gap: 5px;
@@ -700,16 +724,28 @@ const CH1_3D_STYLE = `
 
 @media (max-width: 400px) {
   #ch1-3d-hud {
+    left: 4px;
     right: 4px;
     bottom: 4px;
-    width: calc(100vw - 8px);
+    width: auto;
     max-width: calc(100vw - 8px);
     padding: 5px 7px 7px 7px;
+    box-sizing: border-box;
   }
   #ch1-3d-hud.minimized {
-    width: calc(100vw - 8px);
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    width: auto;
     max-width: calc(100vw - 8px);
     padding: 5px 7px;
+    box-sizing: border-box;
+  }
+  #ch1-3d-hud.spotlight {
+    left: auto;
+    right: 50%;
+    width: min(960px, calc(100vw - 8px));
+    max-width: calc(100vw - 8px);
   }
   .ch1-hud-title {
     font-size: 8.5px;
