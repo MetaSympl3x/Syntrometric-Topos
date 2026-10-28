@@ -438,3 +438,755 @@ if (document.readyState === 'loading') {
 } else if (!window.Reveal || !window.Reveal.isReady || window.Reveal.isReady()) {
   initChapter3();
 }
+
+
+// =========================================================================
+// CHAPTER 3: 60FPS 3D INTERACTIVE KORPORATOR, 4D TESSERACT & MAYER-VIETORIS ENGINE
+// =========================================================================
+
+const CH3_3D_STYLE = `#ch3-3d-hud {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 445px;
+  background: linear-gradient(145deg, rgba(7, 10, 19, 0.96) 0%, rgba(14, 21, 38, 0.98) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.65);
+  border-radius: 14px;
+  padding: 10px 14px 12px 14px;
+  z-index: 9999;
+  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.86), 0 0 28px rgba(65, 105, 225, 0.34);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: "Libertinus Sans", "Inter", system-ui, sans-serif;
+  color: #e8ecf2;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  user-select: none;
+}
+
+#ch3-3d-hud.spotlight {
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+  width: min(920px, 95vw);
+  border-color: #FFD700;
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
+}
+
+#ch3-3d-hud.minimized {
+  width: 285px;
+  padding: 7px 12px;
+}
+
+#ch3-3d-hud.minimized .ch3-hud-body {
+  display: none;
+}
+
+.ch3-hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(65, 105, 225, 0.45);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.ch3-hud-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  color: #FFD700;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.ch3-hud-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.ch3-hud-btn {
+  background: #172033;
+  color: #cbd5e1;
+  border: 1px solid #3b4963;
+  border-radius: 5px;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ch3-hud-btn:hover, .ch3-hud-btn.active {
+  background: #FFD700;
+  color: #000;
+  border-color: #FFD700;
+}
+
+.ch3-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 265px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #2d3748;
+  background: radial-gradient(circle at 50% 55%, #111b30 0%, #05070e 100%);
+  cursor: grab;
+  touch-action: none;
+}
+
+.ch3-canvas-wrap:active {
+  cursor: grabbing;
+}
+
+#ch3-3d-hud.spotlight .ch3-canvas-wrap {
+  height: 500px;
+}
+
+#ch3-3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ch3-overlay-bar {
+  position: absolute;
+  top: 7px;
+  left: 9px;
+  right: 9px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 10px;
+  gap: 6px;
+}
+
+.ch3-telemetry {
+  background: rgba(6, 9, 17, 0.84);
+  border: 1px solid rgba(65, 105, 225, 0.55);
+  border-radius: 5px;
+  padding: 2px 7px;
+  color: #82aaff;
+  white-space: nowrap;
+}
+
+#ch3-node-inspector {
+  background: rgba(6, 9, 17, 0.88);
+  border: 1px solid rgba(255, 215, 0, 0.6);
+  border-radius: 5px;
+  padding: 2px 8px;
+  color: #FFD700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ch3-scrubber {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 11px;
+}
+
+.ch3-scrubber input[type="range"] {
+  flex: 1;
+  accent-color: #FFD700;
+  height: 5px;
+  cursor: pointer;
+}
+
+#ch3-caption {
+  margin-top: 6px;
+  padding: 6px 9px;
+  background: rgba(4, 7, 14, 0.9);
+  border-left: 3px solid #20B2AA;
+  border-radius: 5px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 10.5px;
+  line-height: 1.38;
+  color: #5eead4;
+}
+
+@media (max-width: 900px) {
+  #ch3-3d-hud {
+    right: 8px;
+    bottom: 8px;
+    width: calc(100vw - 16px);
+    max-width: 385px;
+  }
+}`;
+
+const CH3_3D_HTML = `
+<div class="ch3-hud-header">
+    <div class="ch3-hud-title">
+      <span>🔗 Ch 3 · 3D Korporator Engine</span>
+      <span id="ch3-stage-pill" style="background:#4169E1; color:#fff; padding:1px 7px; border-radius:4px; font-size:9.5px;">Stage 1.0 / 10</span>
+    </div>
+    <div class="ch3-hud-controls">
+      <button class="ch3-hud-btn active" id="ch3-btn-orbit" onclick="toggleCh3Orbit()">⟳ Orbit</button>
+      <button class="ch3-hud-btn" onclick="toggleCh3Spotlight()">⛶ Spotlight</button>
+      <button class="ch3-hud-btn" id="ch3-btn-min" onclick="toggleCh3Minimize()">—</button>
+    </div>
+  </div>
+
+  <div class="ch3-hud-body">
+    <div class="ch3-canvas-wrap" id="ch3-canvas-wrap">
+      <canvas id="ch3-3d-canvas"></canvas>
+      <div class="ch3-overlay-bar">
+        <div class="ch3-telemetry" id="ch3-telemetry">P_a ⊞_φ P_b ∈ FinBan_≤1</div>
+        <div id="ch3-node-inspector">Drag to Orbit 3D · Click Node to Inspect</div>
+      </div>
+    </div>
+
+    <div class="ch3-scrubber">
+      <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
+      <input type="range" id="ch3-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh3Stage(this.value)">
+      <button class="ch3-hud-btn active" id="ch3-btn-sync" onclick="enableCh3Sync()">Auto-Sync</button>
+    </div>
+
+    <div id="ch3-caption">
+      <b>Stage 1 (§3.1.1–3.1.2):</b> Principle of Inversion &amp; Metrophorkorporation (C_m: p+q vs. K_m: p+q−λ).
+    </div>
+  </div>
+`;
+
+function injectCh33DHUD() {
+  if (document.getElementById('ch3-3d-hud')) return;
+  const styleEl = document.createElement('style');
+  styleEl.textContent = CH3_3D_STYLE;
+  document.head.appendChild(styleEl);
+
+  const hudEl = document.createElement('div');
+  hudEl.id = 'ch3-3d-hud';
+  hudEl.innerHTML = CH3_3D_HTML;
+  document.body.appendChild(hudEl);
+}
+
+(function() {
+  if (window.__ch3_3d_engine_loaded) return;
+  window.__ch3_3d_engine_loaded = true;
+
+  function runCh3Engine() {
+    injectCh33DHUD();
+    if (window.__ch3_3d_engine_initialized) return;
+    window.__ch3_3d_engine_initialized = true;
+
+    const canvas = document.getElementById('ch3-3d-canvas');
+    const wrap = document.getElementById('ch3-canvas-wrap');
+    if (!canvas || !wrap) return;
+    const ctx = canvas.getContext('2d');
+
+    let targetStage = 1.0;
+    let curStage = 1.0;
+    let autoSync = true;
+    let autoOrbit = true;
+    let camYaw = -0.48;
+    let camPitch = 0.35;
+    let camZoom = 1.0;
+    let isDragging = false;
+    let lastX = 0, lastY = 0;
+    let timeSec = 0;
+    let hitNodes = [];
+    let selectedId = null;
+
+    const STAGE_CAPTIONS = {
+      1: "<b>Stage 1 (§3.1.1–3.1.2 — Inversion &amp; Metrophorkorporation):</b> 3D carriers P_a (ℝ^p) and P_b (ℝ^q) linked across λ shared R_φ channels.",
+      2: "<b>Stage 2 (§3.1.3–3.1.4 — Korporator Matrix &amp; Prop. 3.1):</b> 2×2 Korporator Matrix {K_s, C_s; K_m, C_m} &amp; Tripartite Syntropod ring z = z_c + z_p + z_e.",
+      3: "<b>Stage 3 (§3.2.1–3.2.2 — Category Syn &amp; Zero Object 0_Syn):</b> Graded Syntrix tower F_γ anchored to Nullsyntrix zero object 0_Syn (Prop. 3.2).",
+      4: "<b>Stage 4 (§3.2.3 — Thm. 3.4 Span Pushout P_a ⊞_φ P_b):</b> Quotienting P_a ⊕₁ P_b by Im(δ_φ) yields exact dimension subtraction p + q − λ_eff.",
+      5: "<b>Stage 5 (Stage III Polarimeter Running Example):</b> Two ℝ⁶ polarimeters fuse across R_φ = ℝ³ into P_c = ℝ⁹ ⇒ Λ²(ℝ⁹) = 36 Hermetry capacity!",
+      6: "<b>Stage 6 (§3.2.4 — Prop. 3.7 Synkolative Lifts C_s &amp; K_s):</b> Graded projective tensor module F_α^a ⊗̂_π F_β^b &amp; Factual Valency r − n + 1.",
+      7: "<b>Stage 7 (§3.3.1–3.3.2 — 4D Tesseract of 15 Corporate Classes):</b> Rotating 4D hypercube: 9 Teal Mixed (Determinate) vs. 6 Crimson Pure (Underdetermined)!",
+      8: "<b>Stage 8 (§3.3.3–3.3.4 — Thms. 3.17 &amp; 3.19 Decomposition Chain):</b> Well-founded complexity contraction μ(D_s(S)) &lt; μ(S) &amp; population balance n_H − μ.",
+      9: "<b>Stage 9 (§3.3.5 — Thm. 3.22 Syntropod Tree &amp; 21-Branch Fan-Out):</b> 4-Syntropod Colimit Tree (ConfIndex = ε + 1) &amp; Pseudoexzenter ½N(N+1) = 21 crown.",
+      10: "<b>Stage 10 (§3.3.6–3.6 — Thm. 3.26 Double Category &amp; Mayer–Vietoris):</b> Gluing contractible edges e_a, e_b across R_φ births emergent cycle [e_a − e_b] ∈ H₁(S_c)!"
+    };
+
+    const STAGE_TELEMETRY = {
+      1: "C_m: p+q | K_m: p+q−λ | Z_comb = p·λ·q",
+      2: "Kor ≡ {K_s, C_s; K_m, C_m} (SM Eq. 10)",
+      3: "Kor_{C_m,C_s}(S, 0_Syn) ≅ S (Prop. 3.2)",
+      4: "0 → R_φ/ker δ_φ → P_a⊕₁P_b → P_a⊞_φP_b → 0",
+      5: "Stage III: 6 + 6 − 3 = 9 ⇒ C(9,2) = 36",
+      6: "F_γ^{K_s} = ⨁ F_α^a ⊗̂_π F_β^b | Val = r−n+1",
+      7: "2⁴ − 1 = 15 Classes: 9 Mixed + 6 Pure",
+      8: "n_H − μ = ∑ n_j (Thm. 3.19 Balance)",
+      9: "ConfIndex = ε + 1 | Fan-Out ½(6)(7) = 21",
+      10: "∂_* : H_{γ+1}(S_c) → ker(δ_{φ*}) ⊂ H_γ(S_φ)"
+    };
+
+    function resize() {
+      const r = wrap.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = r.width * dpr;
+      canvas.height = r.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function proj(x, y, z, w, h) {
+      const cy = Math.cos(camYaw), sy = Math.sin(camYaw);
+      const x1 = x * cy - y * sy;
+      const y1 = x * sy + y * cy;
+      const cp = Math.cos(camPitch), sp = Math.sin(camPitch);
+      const y2 = y1 * cp - z * sp;
+      const z2 = y1 * sp + z * cp;
+      const fov = Math.min(w, h) * 0.43 * camZoom;
+      const sc = fov / Math.max(0.85, 4.6 - y2 * 0.45);
+      return { sx: w * 0.5 + x1 * sc, sy: h * 0.53 - z2 * sc, depth: y2, sc: sc / 100 };
+    }
+
+    function drawLine3D(p1, p2, col, lw, dash) {
+      ctx.save();
+      ctx.beginPath();
+      if (dash) ctx.setLineDash(dash);
+      ctx.strokeStyle = col;
+      ctx.lineWidth = lw || 2;
+      ctx.moveTo(p1.sx, p1.sy);
+      ctx.lineTo(p2.sx, p2.sy);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawNode3D(id, x, y, z, r, fill, stroke, label, info, w, h) {
+      const p = proj(x, y, z, w, h);
+      hitNodes.push({ id, p, r, info });
+      const isSel = (selectedId === id);
+      ctx.save();
+      ctx.beginPath();
+      ctx.fillStyle = isSel ? "#ffffff" : fill;
+      ctx.strokeStyle = isSel ? "#FFD700" : (stroke || "#ffffff");
+      ctx.lineWidth = isSel ? 3.0 : 1.6;
+      ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      if (label) {
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 9.5px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(label, p.sx, p.sy - r - 4);
+      }
+      ctx.restore();
+      return p;
+    }
+
+    function drawOctahedron(cx, cy, cz, rad, col, w, h) {
+      const v = [
+        proj(cx + rad, cy, cz, w, h), proj(cx - rad, cy, cz, w, h),
+        proj(cx, cy + rad, cz, w, h), proj(cx, cy - rad, cz, w, h),
+        proj(cx, cy, cz + rad, w, h), proj(cx, cy, cz - rad, w, h)
+      ];
+      const edges = [[4,0],[4,1],[4,2],[4,3],[5,0],[5,1],[5,2],[5,3],[0,2],[2,1],[1,3],[3,0]];
+      edges.forEach(e => drawLine3D(v[e[0]], v[e[1]], col, 1.5));
+    }
+
+    function renderStage1(w, h) {
+      drawOctahedron(-1.05, 0, 0, 0.72, "rgba(65,105,225,0.65)", w, h);
+      drawOctahedron( 1.05, 0, 0, 0.72, "rgba(32,178,170,0.65)", w, h);
+      const pA = drawNode3D("P_a", -1.05, 0, 0, 8.5, "#4169E1", "#fff", "P_a (ℝ^p)", "Carrier Space P_a (p = 6 channels)", w, h);
+      const pB = drawNode3D("P_b",  1.05, 0, 0, 8.5, "#20B2AA", "#fff", "P_b (ℝ^q)", "Carrier Space P_b (q = 6 channels)", w, h);
+      [-0.45, 0.0, 0.45].forEach((zOff, l) => {
+        const pK = drawNode3D("Phi_" + l, 0, 0.25 * Math.sin(timeSec * 2 + l), zOff, 6, "#FFD700", "#FFA500", l === 1 ? "R_φ (λ)" : "", `Shared Coupling Channel φ_${l+1} ∈ R_φ (Reduces dim to p+q−λ)`, w, h);
+        drawLine3D(pA, pK, "#FFD700", 2.0, [4, 2]);
+        drawLine3D(pK, pB, "#FFD700", 2.0, [4, 2]);
+      });
+    }
+
+    function renderStage2(w, h) {
+      const kor = [
+        { id: "K_s", x: -0.45, z:  0.45, col: "#20B2AA", info: "K_s: Synkolative Coupling (Graded Projective Tensor F^a ⊗̂_π F^b)" },
+        { id: "C_s", x:  0.45, z:  0.45, col: "#4169E1", info: "C_s: Synkolative Composition (Direct Sum Module F^a ⊕₁ F^b)" },
+        { id: "K_m", x: -0.45, z: -0.45, col: "#FFA500", info: "K_m: Metrophor Coupling (Span Pushout P_a ⊞_φ P_b)" },
+        { id: "C_m", x:  0.45, z: -0.45, col: "#9370DB", info: "C_m: Metrophor Composition (ℓ¹-Coproduct P_a ⊕₁ P_b)" }
+      ];
+      kor.forEach(k => drawNode3D(k.id, k.x, 0, k.z, 8.5, k.col, "#fff", k.id, k.info, w, h));
+      const types = [
+        { lbl: "z_c (Konzenter)", col: "#4169E1", info: "Concentric Sub-System: Disjoint carriers (K_m = 0, C_m ≠ 0)" },
+        { lbl: "z_p (Pseudoexz.)", col: "#9370DB", info: "Pseudoexcentric Sub-System: Indirect chain fan-out ½N(N+1)" },
+        { lbl: "z_e (Exzenter)", col: "#FFA500", info: "Excentric Sub-System: Active Konflektorknoten pushout (K_m ≠ 0)" }
+      ];
+      for (let i = 0; i < 6; i++) {
+        const a = timeSec * 0.55 + (i / 6) * Math.PI * 2;
+        const t = types[i % 3];
+        const pS = drawNode3D("Syn_" + i, 1.38 * Math.cos(a), 1.38 * Math.sin(a), 0.25 * Math.sin(a * 2), 6, t.col, "#fff", i < 3 ? t.lbl : "", t.info, w, h);
+        drawLine3D(pS, proj(0, 0, 0, w, h), "rgba(255,215,0,0.35)", 1.4, [3, 3]);
+      }
+    }
+
+    function renderStage3(w, h) {
+      const pZero = drawNode3D("Zero_Syn", -1.15, 0, -0.8, 9, "#64748b", "#FFD700", "0_Syn (ys c̃ ≡ 0)", "Strict Zero Object in Syn: Initial & Terminal (Prop. 3.2)", w, h);
+      const grades = [-0.8, -0.1, 0.6, 1.25];
+      let prev = null;
+      grades.forEach((z, g) => {
+        const pG = drawNode3D("F_" + g, 0.65, 0, z, 7.5 + g, g === 0 ? "#4169E1" : (g === 3 ? "#FFD700" : "#20B2AA"), "#fff", `F_${g}`, `Grade-${g} Banach Space F_${g} ⊕₁ {0} ≅ F_${g} (Isometric Identity)`, w, h);
+        if (prev) drawLine3D(prev, pG, "#20B2AA", 2.5);
+        drawLine3D(pZero, pG, "rgba(255,215,0,0.5)", 1.6, [4, 3]);
+        prev = pG;
+      });
+    }
+
+    function renderStage4And5(w, h, st) {
+      const isStage5 = (st >= 4.5);
+      const sep = isStage5 ? 0.55 : 0.85;
+      drawOctahedron(-sep, 0, -0.35, 0.68, "rgba(65,105,225,0.55)", w, h);
+      drawOctahedron( sep, 0, -0.35, 0.68, "rgba(32,178,170,0.55)", w, h);
+
+      const pA = drawNode3D("Pa_po", -sep, 0, -0.35, 8, "#4169E1", "#fff", isStage5 ? "S_a (ℝ⁶)" : "P_a (ℝ^p)", "Polarimeter A Carrier P_a = ℝ³_H ⊕ ℝ³_V ≅ ℝ⁶", w, h);
+      const pB = drawNode3D("Pb_po",  sep, 0, -0.35, 8, "#20B2AA", "#fff", isStage5 ? "S_b (ℝ⁶)" : "P_b (ℝ^q)", "Polarimeter B Carrier P_b = ℝ³_H ⊕ ℝ³_V ≅ ℝ⁶", w, h);
+      const pR = drawNode3D("R_phi",  0,   0, -1.05, 7.5, "#FFA500", "#FFD700", isStage5 ? "R_φ = ℝ³ (λ=3)" : "R_φ / ker δ_φ", "Shared Konflektorknoten Parameter Space R_φ (Rank λ_eff = 3)", w, h);
+      const pPush = drawNode3D("P_push", 0, 0, 0.65, 10.5, "#FFD700", "#fff", isStage5 ? "P_c = ℝ⁹" : "P_a ⊞_φ P_b", "Quotient Pushout Space (P_a ⊕₁ P_b)/Im(δ_φ) of dim p+q−λ = 9", w, h);
+
+      drawLine3D(pR, pA, "#FFA500", 2.2);
+      drawLine3D(pR, pB, "#FFA500", 2.2);
+      drawLine3D(pA, pPush, "#FFD700", 2.6);
+      drawLine3D(pB, pPush, "#FFD700", 2.6);
+
+      if (isStage5) {
+        ctx.beginPath();
+        ctx.strokeStyle = "#FFD700";
+        ctx.lineWidth = 2.0;
+        for (let i = 0; i <= 36; i++) {
+          const a = (i / 36) * Math.PI * 2 + timeSec * 0.4;
+          const p = proj(1.15 * Math.cos(a), 1.15 * Math.sin(a), 1.15, w, h);
+          if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+        }
+        ctx.stroke();
+        drawNode3D("Ext_36", 0, 0, 1.25, 8, "#20B2AA", "#FFD700", "F₁^c = Λ²(ℝ⁹) (dim 36)", "Exact 36-Component Hermetry Matrix Capacity C(9,2) = 36!", w, h);
+      }
+    }
+
+    function renderStage6(w, h) {
+      for (let a = 1; a <= 3; a++) {
+        for (let b = 1; b <= 3; b++) {
+          const x = (a - 2) * 0.85;
+          const y = (b - 2) * 0.85;
+          const z = (a + b - 4) * 0.45;
+          const isDiag = (a + b === 4);
+          const p = drawNode3D(
+            `Ks_${a}_${b}`, x, y, z, isDiag ? 7.5 : 5.5,
+            isDiag ? "#FFD700" : "#20B2AA", "#fff",
+            isDiag ? `F_${a}^a⊗F_${b}^b` : "",
+            `Graded Projective Tensor Summand F_${a}^a ⊗̂_π F_${b}^b at total grade γ = ${a+b}`, w, h
+          );
+          if (a < 3) drawLine3D(p, proj(x + 0.85, y, z + 0.45, w, h), "rgba(65,105,225,0.5)", 1.5);
+          if (b < 3) drawLine3D(p, proj(x, y + 0.85, z + 0.45, w, h), "rgba(32,178,170,0.5)", 1.5);
+        }
+      }
+    }
+
+    function renderStage7(w, h) {
+      const pts = [];
+      for (let b0 of [-1, 1]) for (let b1 of [-1, 1]) for (let b2 of [-1, 1]) for (let b3 of [-1, 1]) {
+        const r = b3 > 0 ? 0.52 : 1.15;
+        const wRot = 0.22 * Math.sin(timeSec * 1.2 + b3);
+        const x = b0 * r + wRot, y = b1 * r, z = b2 * r * 0.85;
+        const hasMet = (b0 > 0 || b1 > 0);
+        const hasSynk = (b2 > 0 || b3 > 0);
+        const isMixed = hasMet && hasSynk;
+        const isNull = !hasMet && !hasSynk;
+        const ruleNames = [];
+        if (b0 > 0) ruleNames.push("K_m");
+        if (b1 > 0) ruleNames.push("C_m");
+        if (b2 > 0) ruleNames.push("K_s");
+        if (b3 > 0) ruleNames.push("C_s");
+        const rStr = isNull ? "∅ (0_Syn)" : `{${ruleNames.join(",")}}`;
+        pts.push({
+          b: [b0, b1, b2, b3], x, y, z, isMixed, isNull, rStr,
+          p: proj(x, y, z, w, h)
+        });
+      }
+      for (let i = 0; i < 16; i++) {
+        for (let j = i + 1; j < 16; j++) {
+          let diff = 0;
+          for (let k = 0; k < 4; k++) if (pts[i].b[k] !== pts[j].b[k]) diff++;
+          if (diff === 1) {
+            const isW = pts[i].b[3] !== pts[j].b[3];
+            drawLine3D(pts[i].p, pts[j].p, isW ? "rgba(255,165,0,0.65)" : "rgba(100,116,139,0.45)", isW ? 2.0 : 1.3);
+          }
+        }
+      }
+      pts.forEach((v, idx) => {
+        const col = v.isNull ? "#ffffff" : (v.isMixed ? "#20B2AA" : "#DC143C");
+        const status = v.isNull ? "Nullsyntrix 0_Syn" : (v.isMixed ? "MIXED (Determinate Class — Eindeutigkeitssatz ✓)" : "PURE (Underdetermined Row-Only Class ✗)");
+        drawNode3D("Tess_" + idx, v.x, v.y, v.z, v.isMixed ? 6.5 : 5.0, col, "#000", idx === 15 ? "{K_m,C_m,K_s,C_s}" : "", `${v.rStr}: ${status}`, w, h);
+      });
+    }
+
+    function renderStage8(w, h) {
+      const steps = [
+        { id: "S_hom", x: -1.25, z:  1.0, col: "#FFD700", lbl: "S ∈ Syn_hom (μ=4)", info: "Homogeneous Syntrix Algebra: Population n_H − μ = ∑ n_j (Thm. 3.19)" },
+        { id: "Ds_1",  x: -0.42, z:  0.35, col: "#FFA500", lbl: "D_s(S) (μ=3)", info: "1st Synkolative Contraction Step: Peels off Pyramidal Leaf P₄" },
+        { id: "Ds_2",  x:  0.42, z: -0.30, col: "#20B2AA", lbl: "D_s²(S) (μ=2)", info: "2nd Synkolative Contraction Step: Peels off Pyramidal Leaf P₃" },
+        { id: "Ds_3",  x:  1.25, z: -0.95, col: "#4169E1", lbl: "P₁ ∈ Syn_pyr (μ=1)", info: "Terminal Pyramidal Base Syntrix P₁ (Terminates at 0_Syn)" }
+      ];
+      for (let i = 0; i < steps.length; i++) {
+        const s = steps[i];
+        const pMain = drawNode3D(s.id, s.x, -0.3, s.z, 8.5, s.col, "#fff", s.lbl, s.info, w, h);
+        if (i > 0) {
+          const pPrev = proj(steps[i - 1].x, -0.3, steps[i - 1].z, w, h);
+          drawLine3D(pPrev, pMain, "#FFD700", 2.6);
+          const pLeaf = drawNode3D("Leaf_" + i, s.x, 0.85, s.z + 0.25, 6.5, "#20B2AA", "#fff", `P_${5-i} ∈ Syn_pyr`, `Extracted Pyramidal Factor P_${5-i} in Corporate Chain (SM-11b)`, w, h);
+          drawLine3D(pPrev, pLeaf, "#20B2AA", 1.8, [4, 2]);
+        }
+      }
+    }
+
+    function renderStage9(w, h) {
+      const ringPts = [];
+      for (let k = 0; k < 6; k++) {
+        const a = timeSec * 0.3 + (k / 6) * Math.PI * 2;
+        const x = 1.25 * Math.cos(a), y = 1.25 * Math.sin(a), z = -0.75;
+        ringPts.push(drawNode3D("Br_" + k, x, y, z, 6, "#4169E1", "#fff", `S_${k+1}`, `Pure Single-Metrophor Branch ${k+1} (Total: 6 pure + 15 mixed = 21 branches)`, w, h));
+      }
+      for (let i = 0; i < 6; i++) {
+        for (let j = i + 1; j < 6; j++) {
+          drawLine3D(ringPts[i], ringPts[j], "rgba(32,178,170,0.35)", 1.2);
+        }
+      }
+      const pKor1 = drawNode3D("Kor_1", -0.65, 0, 0.2, 8, "#FFA500", "#fff", "Kor₁ (Exzenter)", "Exzenter Edge e₁ ∈ E_K (K_m ≠ 0)", w, h);
+      const pKor2 = drawNode3D("Kor_2",  0.65, 0, 0.2, 8, "#4169E1", "#fff", "Kor₂ (Konzenter)", "Konzenter Edge e₂ ∈ E_C (K_m = 0)", w, h);
+      const pApex = drawNode3D("Colim_Apex", 0, 0, 1.15, 10.5, "#FFD700", "#fff", "y c̃ = colim G_S (ConfIndex = 3)", "Universal Tree Colimit in Syn (Prop. 3.24)", w, h);
+      drawLine3D(ringPts[0], pKor1, "#FFA500", 2.2);
+      drawLine3D(ringPts[1], pKor1, "#FFA500", 2.2);
+      drawLine3D(ringPts[3], pKor2, "#4169E1", 2.2);
+      drawLine3D(ringPts[4], pKor2, "#4169E1", 2.2);
+      drawLine3D(pKor1, pApex, "#FFA500", 2.8);
+      drawLine3D(pKor2, pApex, "#FFD700", 2.8);
+    }
+
+    function renderStage10(w, h) {
+      const r0 = drawNode3D("MV_r0", -1.25, 0, 0, 8.5, "#FFA500", "#FFD700", "r₀ ∈ R_φ (v₀∼w₀)", "Glued Konflektorknoten Boundary Vertex r₀ ∈ C₀(S_φ)", w, h);
+      const r1 = drawNode3D("MV_r1",  1.25, 0, 0, 8.5, "#FFA500", "#FFD700", "r₁ ∈ R_φ (v₁∼w₁)", "Glued Konflektorknoten Boundary Vertex r₁ ∈ C₀(S_φ)", w, h);
+
+      for (let sgn of [-1, 1]) {
+        ctx.beginPath();
+        ctx.strokeStyle = sgn > 0 ? "#4169E1" : "#20B2AA";
+        ctx.lineWidth = 3.2;
+        for (let i = 0; i <= 36; i++) {
+          const a = (i / 36) * Math.PI;
+          const p = proj(-1.25 * Math.cos(a), 0.35 * sgn * Math.sin(a), sgn * 0.95 * Math.sin(a), w, h);
+          if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+        }
+        ctx.stroke();
+      }
+      drawNode3D("MV_ea", 0,  0.35,  0.95, 7, "#4169E1", "#fff", "e_a ∈ C₁(S_a)", "Contractible 1-Chain in S_a (H₁(S_a) = 0 in isolation)", w, h);
+      drawNode3D("MV_eb", 0, -0.35, -0.95, 7, "#20B2AA", "#fff", "e_b ∈ C₁(S_b)", "Contractible 1-Chain in S_b (H₁(S_b) = 0 in isolation)", w, h);
+
+      const ang = timeSec * 2.2;
+      const pCyc = proj(-1.25 * Math.cos(ang), 0.35 * Math.sin(ang), 0.95 * Math.sin(ang), w, h);
+      ctx.save();
+      ctx.fillStyle = "#FFD700";
+      ctx.beginPath();
+      ctx.arc(pCyc.sx, pCyc.sy, 6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      drawNode3D("MV_H1", 0, 0, 0, 9.5, "#FFD700", "#DC143C", "∂_*[e_a − e_b] = [r₁ − r₀] ≠ 0", "Thm. 3.26 Emergent Homology Class in H₁(S_c) \ Im(π_*) (Humphreys Fusion Emergence)!", w, h);
+    }
+
+    function renderLoop() {
+      timeSec += 0.016;
+      curStage += (targetStage - curStage) * 0.14;
+      if (autoOrbit && !isDragging) camYaw += 0.0055;
+
+      const w = wrap.clientWidth, h = wrap.clientHeight;
+      if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
+        resize();
+      }
+      ctx.clearRect(0, 0, w, h);
+      hitNodes = [];
+
+      const stInt = Math.round(curStage);
+      if (stInt === 1) renderStage1(w, h);
+      else if (stInt === 2) renderStage2(w, h);
+      else if (stInt === 3) renderStage3(w, h);
+      else if (stInt === 4 || stInt === 5) renderStage4And5(w, h, curStage);
+      else if (stInt === 6) renderStage6(w, h);
+      else if (stInt === 7) renderStage7(w, h);
+      else if (stInt === 8) renderStage8(w, h);
+      else if (stInt === 9) renderStage9(w, h);
+      else renderStage10(w, h);
+
+      requestAnimationFrame(renderLoop);
+    }
+
+    // Window controller handlers
+    window.setCh3Stage = function(val, manual) {
+      targetStage = Math.max(1.0, Math.min(10.0, parseFloat(val)));
+      const stInt = Math.round(targetStage);
+
+      const sl = document.getElementById('ch3-slider');
+      if (sl && Math.abs(parseFloat(sl.value) - targetStage) > 0.02) sl.value = targetStage;
+
+      const pill = document.getElementById('ch3-stage-pill');
+      if (pill) pill.innerText = `Stage ${targetStage.toFixed(1)} / 10`;
+
+      const cap = document.getElementById('ch3-caption');
+      if (cap) cap.innerHTML = STAGE_CAPTIONS[stInt] || STAGE_CAPTIONS[1];
+
+      const tel = document.getElementById('ch3-telemetry');
+      if (tel) tel.innerText = STAGE_TELEMETRY[stInt] || STAGE_TELEMETRY[1];
+
+      if (manual) {
+        autoSync = false;
+        const b = document.getElementById('ch3-btn-sync');
+        if (b) { b.classList.remove('active'); b.innerText = "Manual"; }
+      }
+    };
+
+    window.scrubCh3Stage = function(val) { window.setCh3Stage(val, true); };
+
+    window.enableCh3Sync = function() {
+      autoSync = true;
+      const b = document.getElementById('ch3-btn-sync');
+      if (b) { b.classList.add('active'); b.innerText = "Auto-Sync"; }
+      syncCh3WithDeck();
+    };
+
+    window.toggleCh3Orbit = function() {
+      autoOrbit = !autoOrbit;
+      const b = document.getElementById('ch3-btn-orbit');
+      if (b) b.classList.toggle('active', autoOrbit);
+    };
+
+    window.toggleCh3Spotlight = function() {
+      const hud = document.getElementById('ch3-3d-hud');
+      if (hud) {
+        hud.classList.remove('minimized');
+        hud.classList.toggle('spotlight');
+        setTimeout(resize, 360);
+      }
+    };
+
+    window.toggleCh3Minimize = function() {
+      const hud = document.getElementById('ch3-3d-hud');
+      const b = document.getElementById('ch3-btn-min');
+      if (hud) {
+        hud.classList.remove('spotlight');
+        hud.classList.toggle('minimized');
+        if (b) b.innerText = hud.classList.contains('minimized') ? "+" : "—";
+        setTimeout(resize, 360);
+      }
+    };
+
+    function syncCh3WithDeck() {
+      if (!autoSync) return;
+
+      const isMegaDeck = !!document.getElementById('syntrix-3d-hud') || document.querySelectorAll('h1').length > 5;
+      const ch3Hud = document.getElementById('ch3-3d-hud');
+      if (isMegaDeck && ch3Hud && window.Reveal && window.Reveal.getCurrentSlide) {
+        const currentSlide = window.Reveal.getCurrentSlide();
+        const inCh3 = currentSlide ? !!currentSlide.closest('#chapter-3, section[data-chapter="3"]') : true;
+        ch3Hud.style.display = inCh3 ? '' : 'none';
+        if (!inCh3) return;
+      }
+
+      const vp = document.querySelector('.reveal-viewport');
+      const isScroll = vp && vp.classList.contains('reveal-scroll');
+      if (isScroll) {
+        const scEl = vp.scrollHeight > vp.clientHeight ? vp : document.documentElement;
+        const top = vp.scrollTop || window.scrollY || document.documentElement.scrollTop || 0;
+        const max = Math.max(1, (scEl.scrollHeight || document.body.scrollHeight) - window.innerHeight);
+        window.setCh3Stage(1.0 + Math.min(1, Math.max(0, top / max)) * 9.0, false);
+      } else if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
+        const idx = window.Reveal.getIndices();
+        const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 12);
+        const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
+        const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
+        window.setCh3Stage(1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0, false);
+      }
+    }
+
+    wrap.addEventListener('mousedown', e => {
+      e.stopPropagation();
+      isDragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+    });
+
+    wrap.addEventListener('touchstart', e => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        lastX = e.touches[0].clientX;
+        lastY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    window.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      camYaw += (e.clientX - lastX) * 0.012;
+      camPitch = Math.max(-0.85, Math.min(1.15, camPitch + (e.clientY - lastY) * 0.012));
+      lastX = e.clientX;
+      lastY = e.clientY;
+    });
+
+    window.addEventListener('touchmove', e => {
+      if (!isDragging || e.touches.length !== 1) return;
+      const dx = e.touches[0].clientX - lastX;
+      const dy = e.touches[0].clientY - lastY;
+      lastX = e.touches[0].clientX;
+      lastY = e.touches[0].clientY;
+      camYaw += dx * 0.012;
+      camPitch = Math.max(-0.85, Math.min(1.15, camPitch + dy * 0.012));
+    }, { passive: true });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    wrap.addEventListener('click', e => {
+      e.stopPropagation();
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+      let hit = null;
+      for (let i = hitNodes.length - 1; i >= 0; i--) {
+        const n = hitNodes[i];
+        if (Math.hypot(mx - n.p.sx, my - n.p.sy) <= n.r + 6) { hit = n; break; }
+      }
+      const insp = document.getElementById('ch3-node-inspector');
+      if (hit && insp) {
+        selectedId = hit.id;
+        insp.innerText = hit.info;
+      } else if (insp) {
+        selectedId = null;
+        insp.innerText = "Drag to Orbit 3D · Click Node to Inspect";
+      }
+    });
+
+    wrap.addEventListener('wheel', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      camZoom = Math.max(0.65, Math.min(1.65, camZoom - e.deltaY * 0.001));
+    }, { passive: false });
+
+    resize();
+    syncCh3WithDeck();
+    requestAnimationFrame(renderLoop);
+    window.addEventListener('resize', resize);
+    window.addEventListener('scroll', syncCh3WithDeck, { passive: true });
+    const vp = document.querySelector('.reveal-viewport');
+    if (vp) vp.addEventListener('scroll', syncCh3WithDeck, { passive: true });
+    if (window.Reveal) {
+      window.Reveal.on('ready', syncCh3WithDeck);
+      window.Reveal.on('slidechanged', syncCh3WithDeck);
+      window.Reveal.on('fragmentshown', syncCh3WithDeck);
+      window.Reveal.on('fragmenthidden', syncCh3WithDeck);
+    }
+    const hud = document.getElementById('ch3-3d-hud');
+    if (hud) {
+      hud.querySelectorAll('input, button').forEach(el => {
+        el.addEventListener('keydown', e => e.stopPropagation());
+        el.addEventListener('mousedown', e => e.stopPropagation());
+        el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runCh3Engine);
+  } else {
+    runCh3Engine();
+  }
+})();
