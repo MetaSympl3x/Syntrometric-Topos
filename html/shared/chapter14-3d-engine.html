@@ -1,476 +1,853 @@
-<!-- =========================================================================
-     CHAPTER 14: 60FPS 3D INTERACTIVE 100-EQUATION CONCORDANCE & LEXICON ENGINE
-     Synchronizes with all 12 slides of Chapter 14 + Interactive 3D Node Inspector
-     ========================================================================= -->
-<style>
-#ch14-3d-hud {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 445px;
-  background: linear-gradient(145deg, rgba(7, 10, 19, 0.96) 0%, rgba(14, 21, 38, 0.98) 100%);
-  border: 1.5px solid rgba(255, 215, 0, 0.65);
-  border-radius: 14px;
-  padding: 10px 14px 12px 14px;
-  z-index: 9999;
-  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.86), 0 0 28px rgba(65, 105, 225, 0.34);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  font-family: "Libertinus Sans", "Inter", system-ui, sans-serif;
-  color: #e8ecf2;
-  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  user-select: none;
-}
-
-#ch14-3d-hud.spotlight {
-  right: 50%;
-  bottom: 50%;
-  transform: translate(50%, 50%);
-  width: min(920px, 95vw);
-  border-color: #FFD700;
-  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
-}
-
-#ch14-3d-hud.minimized {
-  width: 285px;
-  padding: 7px 12px;
-}
-
-#ch14-3d-hud.minimized .ch14-hud-body {
-  display: none;
-}
-
-.ch14-hud-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(65, 105, 225, 0.45);
-  padding-bottom: 6px;
-  margin-bottom: 8px;
-}
-
-.ch14-hud-title {
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.7px;
-  color: #FFD700;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.ch14-hud-controls {
-  display: flex;
-  gap: 5px;
-}
-
-.ch14-hud-btn {
-  background: #172033;
-  color: #cbd5e1;
-  border: 1px solid #3b4963;
-  border-radius: 5px;
-  padding: 2px 8px;
-  font-size: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.ch14-hud-btn:hover, .ch14-hud-btn.active {
-  background: #FFD700;
-  color: #000;
-  border-color: #FFD700;
-}
-
-.ch14-canvas-wrap {
-  position: relative;
-  width: 100%;
-  height: 265px;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid #2d3748;
-  background: radial-gradient(circle at 50% 55%, #111b30 0%, #05070e 100%);
-  cursor: grab;
-}
-
-.ch14-canvas-wrap:active {
-  cursor: grabbing;
-}
-
-#ch14-3d-hud.spotlight .ch14-canvas-wrap {
-  height: 500px;
-}
-
-#ch14-3d-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.ch14-overlay-bar {
-  position: absolute;
-  top: 7px;
-  left: 9px;
-  right: 9px;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  font-family: "Libertinus Mono", monospace;
-  font-size: 10px;
-  gap: 6px;
-}
-
-.ch14-telemetry {
-  background: rgba(6, 9, 17, 0.84);
-  border: 1px solid rgba(65, 105, 225, 0.55);
-  border-radius: 5px;
-  padding: 2px 7px;
-  color: #82aaff;
-  white-space: nowrap;
-}
-
-#ch14-node-inspector {
-  background: rgba(6, 9, 17, 0.88);
-  border: 1px solid rgba(255, 215, 0, 0.6);
-  border-radius: 5px;
-  padding: 2px 8px;
-  color: #FFD700;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.ch14-scrubber {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  font-size: 11px;
-}
-
-.ch14-scrubber input[type="range"] {
-  flex: 1;
-  accent-color: #FFD700;
-  height: 5px;
-  cursor: pointer;
-}
-
-#ch14-caption {
-  margin-top: 6px;
-  padding: 6px 9px;
-  background: rgba(4, 7, 14, 0.9);
-  border-left: 3px solid #20B2AA;
-  border-radius: 5px;
-  font-family: "Libertinus Mono", monospace;
-  font-size: 10.5px;
-  line-height: 1.38;
-  color: #5eead4;
-}
-
-@media (max-width: 900px) {
-  #ch14-3d-hud {
-    right: 8px;
-    bottom: 8px;
-    width: calc(100vw - 16px);
-    max-width: 385px;
-  }
-}
-</style>
-
-<div id="ch14-3d-hud">
-  <div class="ch14-hud-header">
-    <div class="ch14-hud-title">
-      <span>🏛️ Ch 14 · 3D Master Register Engine</span>
-      <span id="ch14-stage-pill" style="background:#4169E1; color:#fff; padding:1px 7px; border-radius:4px; font-size:9.5px;">Stage 1.0 / 10</span>
-    </div>
-    <div class="ch14-hud-controls">
-      <button class="ch14-hud-btn active" id="ch14-btn-orbit" onclick="toggleCh14Orbit()">⟳ Orbit</button>
-      <button class="ch14-hud-btn" onclick="toggleCh14Spotlight()">⛶ Spotlight</button>
-      <button class="ch14-hud-btn" id="ch14-btn-min" onclick="toggleCh14Minimize()">—</button>
-    </div>
-  </div>
-
-  <div class="ch14-hud-body">
-    <div class="ch14-canvas-wrap" id="ch14-canvas-wrap">
-      <canvas id="ch14-3d-canvas"></canvas>
-      <div class="ch14-overlay-bar">
-        <div class="ch14-telemetry" id="ch14-telemetry">ℛ : HeimCorpus(1–100a) → Math</div>
-        <div id="ch14-node-inspector">Drag to Orbit 3D · Click Cluster to Inspect</div>
-      </div>
-    </div>
-
-    <div class="ch14-scrubber">
-      <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
-      <input type="range" id="ch14-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh14Stage(this.value)">
-      <button class="ch14-hud-btn active" id="ch14-btn-sync" onclick="enableCh14Sync()">Auto-Sync</button>
-    </div>
-
-    <div id="ch14-caption">
-      <b>Stage 1 (§14.1 — Master Register):</b> 8 Canonical Equation Clusters (SM Eqs. 1–100a) mapped by functor ℛ.
-    </div>
-  </div>
-</div>
-
-<script>
-(function() {
-  const canvas = document.getElementById('ch14-3d-canvas');
-  const wrap = document.getElementById('ch14-canvas-wrap');
-  if (!canvas || !wrap) return;
-  const ctx = canvas.getContext('2d');
-
-  let targetStage = 1.0;
-  let curStage = 1.0;
-  let autoSync = true;
-  let autoOrbit = true;
-  let camYaw = -0.45;
-  let camPitch = 0.36;
-  let camZoom = 1.0;
-  let isDragging = false;
-  let lastX = 0, lastY = 0;
-  let timeSec = 0;
-  let hitNodes = [];
-  let selectedId = null;
-
-  const CLUSTERS = [
-    { id: "CL_I",    num: "I",    eqs: "SM 1–4",    col: "#4169E1", name: "Cluster I: Epistemology & Aspects", target: "ℰ_syn = Sh(Ctx_adm^sk, J_syn) & Ω", info: "Cluster I (SM 1–4): Prädikatrix P_n, Dialektik D_n, Koordination K_n, Quantoren → Sheaf Topos ℰ_syn (Ch. 1)" },
-    { id: "CL_II",   num: "II",   eqs: "SM 5–9a",   col: "#20B2AA", name: "Cluster II: Syntrix & Operads",     target: "𝒪_syn, Tree Monad T_P & Beck Law λ̂", info: "Cluster II (SM 5–9a): Syntrix Triad yã, Bandsyntrix, Spaltbarkeit, Äondyne → Colored Operad 𝒪_syn (Ch. 2)" },
-    { id: "CL_III",  num: "III",  eqs: "SM 10–13a", col: "#FFA500", name: "Cluster III: Corporate Pushouts",   target: "Span Pushout P_a ⊞_φ P_b & 4D Tesseract", info: "Cluster III (SM 10–13a): Korporator Matrix, Eindeutigkeitssatz, Konflexion → Span Pushout ⊞_φ (Ch. 3)" },
-    { id: "CL_IV",   num: "IV",   eqs: "SM 14–19a", col: "#DC143C", name: "Cluster IV: Enyphanie & Gauge",     target: "Curvature Ω_int^𝒟 = [a_i,a_j] & BRST", info: "Cluster IV (SM 14–19a): Enyphanie Eν, T0, Holoformen, Zeitkorn → Non-Abelian Gauge Curvature Ω_int^𝒟 (Ch. 4)" },
-    { id: "CL_V",    num: "V",    eqs: "SM 20–27",  col: "#9370DB", name: "Cluster V: Metroplexe & Area",      target: "(∞,1)-Topos 𝒳_syn & Coalgebra (ν𝒯, ζ)", info: "Cluster V (SM 20–27): Hypersyntrix ⁿM, Syntrokline Brücken, Telezentren → 𝒳_syn & Final Coalgebra ν𝒯 (Ch. 5–6)" },
-    { id: "CL_VI",   num: "VI",   eqs: "SM 28–62",  col: "#FFD700", name: "Cluster VI: Continua & Cascades",   target: "Nuclear 𝒮(ℳ_n) & 36-Hermetry ²ḡ on R₆", info: "Cluster VI (SM 28–62): Quantitätssyntrix, Separation, Kondensor ³Γ, 36-Hermetry → Sobolev Apex ²ḡ_∞ (Ch. 7–9)" },
-    { id: "CL_VII",  num: "VII",  eqs: "SM 63–83",  col: "#38bdf8", name: "Cluster VII: Metronic Calculus",    target: "Lattice 𝕄_τ^n & DEC (Ω_d^•, d_τ, *_τ)", info: "Cluster VII (SM 63–83): Metron τ, Differences ∇_i, Metronintegral 𝒮, Gauss–Stokes → DEC Cochains (Ch. 10)" },
-    { id: "CL_VIII", num: "VIII", eqs: "SM 84–100a",col: "#4ade80", name: "Cluster VIII: Selectors & Matter",  target: "Sel Ψ = λΨ on K₈ & Mass m = m₀(L_p/L₁)∏λ_k", info: "Cluster VIII (SM 84–100a): Strukturkompressor ⁴ζ, Null-Stability ⁴F=0, Mass Formula → Spectral Selectors (Ch. 11)" }
-  ];
-
-  const STAGE_CAPTIONS = {
-    1: "<b>Stage 1 (§14.1 — Master Translation Register):</b> All 8 Canonical Clusters (SM Eqs. 1–100a) mapped by Reconstruction Functor ℛ.",
-    2: "<b>Stage 2 (§14.2 — Cluster I, SM 1–4):</b> Epistemology, Prädikatrix P_n, Dialektik D_n &amp; Quantoren → Sheaf Topos ℰ_syn = Sh(Ctx, J_syn).",
-    3: "<b>Stage 3 (§14.3 — Cluster II, SM 5–9a):</b> Syntrix Triad, Spaltbarkeit &amp; Äondynen → Colored Banach Operad 𝒪_syn &amp; Beck Law λ̂.",
-    4: "<b>Stage 4 (§14.4 — Cluster III, SM 10–13a):</b> Korporator 2×2 Matrix &amp; Konflexionsfeld → Banach Span Pushout P_a ⊞_φ P_b (15 Classes).",
-    5: "<b>Stage 5 (§14.5 — Cluster IV, SM 14–19a):</b> Enyphanie Eν, T0, Holoformen &amp; Zeitkorn → Non-Abelian Gauge Curvature Ω_int^𝒟 &amp; BRST.",
-    6: "<b>Stage 6 (§14.6 — Cluster V, SM 20–27):</b> Metroplexe ⁿM, Bridges &amp; Telezentren → Ambient (∞,1)-Topos 𝒳_syn &amp; Final Coalgebra (ν𝒯, ζ).",
-    7: "<b>Stage 7 (§14.7 — Cluster VI, SM 28–62):</b> Continua R_n, Kondensor ³Γ &amp; Strukturkaskaden → Nuclear 𝒮(ℳ_n) &amp; 36-Component Hermetry ²ḡ.",
-    8: "<b>Stage 8 (§14.8 — Cluster VII, SM 63–83):</b> Metron τ, Differences ∇_i &amp; Sums 𝒮 → Discrete Exterior Calculus (Ω_d^•(𝕄_τ^n), d_τ, *_τ).",
-    9: "<b>Stage 9 (§14.9 — Cluster VIII, SM 84–100a):</b> Strukturkompressor ⁴ζ &amp; Null-Stability ⁴F=0 → Self-Adjoint Selectors &amp; PDG Mass Spectrum.",
-    10: "<b>Stage 10 (§14.10–14.12 — 35-Term Lexicon &amp; 4 Asymptotic Limits):</b> Classical (τ→0), Boolean (ΔP→0), Abelian ([a_i,a_j]→0) &amp; Autonomous limits!"
-  };
-
-  const STAGE_TELEMETRY = {
-    1: "ℛ : HeimCorpus(100 Eqs) → 9 Math Frameworks",
-    2: "Cluster I (SM 1–4): MSC 18F20, 03B45 → Ch. 1",
-    3: "Cluster II (SM 5–9a): MSC 18M60, 18M70 → Ch. 2",
-    4: "Cluster III (SM 10–13a): MSC 18A30 → Ch. 3",
-    5: "Cluster IV (SM 14–19a): MSC 53C07, 81T13 → Ch. 4",
-    6: "Cluster V (SM 20–27): MSC 18N60, 18F10 → Ch. 5–6",
-    7: "Cluster VI (SM 28–62): MSC 53B20, 58A10 → Ch. 7–9",
-    8: "Cluster VII (SM 63–83): MSC 39A12, 52C22 → Ch. 10",
-    9: "Cluster VIII (SM 84–100a): MSC 81V25 → Ch. 11 & App. B",
-    10: "35 Canonical Terms | 4 Exact Degeneracy Limits"
-  };
-
-  function resize() {
-    const r = wrap.getBoundingClientRect();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = r.width * dpr;
-    canvas.height = r.height * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-
-  function proj(x, y, z, w, h) {
-    const cy = Math.cos(camYaw), sy = Math.sin(camYaw);
-    const x1 = x * cy - y * sy;
-    const y1 = x * sy + y * cy;
-    const cp = Math.cos(camPitch), sp = Math.sin(camPitch);
-    const y2 = y1 * cp - z * sp;
-    const z2 = y1 * sp + z * cp;
-    const fov = Math.min(w, h) * 0.43 * camZoom;
-    const sc = fov / Math.max(0.85, 4.6 - y2 * 0.45);
-    return { sx: w * 0.5 + x1 * sc, sy: h * 0.53 - z2 * sc, depth: y2, sc: sc / 100 };
-  }
-
-  function drawLine3D(p1, p2, col, lw, dash) {
-    ctx.save();
-    ctx.beginPath();
-    if (dash) ctx.setLineDash(dash);
-    ctx.strokeStyle = col;
-    ctx.lineWidth = lw || 2;
-    ctx.moveTo(p1.sx, p1.sy);
-    ctx.lineTo(p2.sx, p2.sy);
-    ctx.stroke();
-    ctx.restore();
-  }
-
-  function drawNode3D(id, x, y, z, r, fill, stroke, label, info, w, h) {
-    const p = proj(x, y, z, w, h);
-    hitNodes.push({ id, p, r, info });
-    const isSel = (selectedId === id);
-    ctx.save();
-    ctx.beginPath();
-    ctx.fillStyle = isSel ? "#ffffff" : fill;
-    ctx.strokeStyle = isSel ? "#FFD700" : (stroke || "#ffffff");
-    ctx.lineWidth = isSel ? 3.0 : 1.6;
-    ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.stroke();
-    if (label) {
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 9.5px sans-serif";
-      ctx.textAlign = "center";
-      ctx.fillText(label, p.sx, p.sy - r - 4);
-    }
-    ctx.restore();
-    return p;
-  }
-
-  // =========================================================================
-  // RENDERER FOR STAGES 1–9 (8-CLUSTER CONCORDANCE RING + SPOTLIGHTED CLUSTER)
-  // =========================================================================
-  function renderConcordanceRing(w, h, stInt) {
-    // stInt = 1: All 8 Clusters active; stInt = 2..9: Spotlight Cluster (stInt - 2)
-    const activeIdx = (stInt >= 2 && stInt <= 9) ? (stInt - 2) : -1;
-
-    // Central Modern Mathematical Synthesis Core
-    const coreLbl = activeIdx >= 0 ? CLUSTERS[activeIdx].target : "Modern Topos / Operad / Gauge / DEC Core";
-    const pCore = drawNode3D(
-      "Core_R", 0, 0, 0.55, 12, "#FFD700", "#20B2AA", coreLbl,
-      "Codomain of Reconstruction Functor ℛ : HeimCorpus(SM Eqs. 1–100a) → Modern Mathematics (Strata A/B/C)", w, h
-    );
-
-    // Outer Octagonal Ring of the 8 Canonical Equation Clusters
-    const ringPts = [];
-    CLUSTERS.forEach((cl, idx) => {
-      const a = (idx / 8) * Math.PI * 2 + timeSec * 0.25;
-      const isSpot = (activeIdx === -1 || activeIdx === idx);
-      const rad = (activeIdx === idx) ? 1.15 : 1.32;
-      const z = (activeIdx === idx) ? 0.15 : -0.55;
-      const x = rad * Math.cos(a), y = rad * Math.sin(a);
-
-      const pCl = drawNode3D(
-        cl.id, x, y, z, isSpot ? 9.5 : 6.0,
-        isSpot ? cl.col : "#334155", "#fff",
-        `Cluster ${cl.num} (${cl.eqs})`, cl.info, w, h
-      );
-      ringPts.push({ p: pCl, x, y, z, col: cl.col, isSpot });
-
-      // Functorial R-Translation Beam to Central Core
-      drawLine3D(pCl, pCore, isSpot ? cl.col : "rgba(100,116,139,0.25)", isSpot ? 2.8 : 1.2, isSpot ? null : [3, 3]);
-
-      // Animated Functorial Translation Packet along active beam(s)
-      if (isSpot) {
-        const s = (timeSec * 0.75 + idx * 0.125) % 1.0;
-        const px = x * (1 - s), py = y * (1 - s), pz = z * (1 - s) + 0.55 * s;
-        const pt = proj(px, py, pz, w, h);
-        ctx.save();
-        ctx.fillStyle = "#FFD700";
-        ctx.beginPath();
-        ctx.arc(pt.sx, pt.sy, 4.0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    });
-
-    // Connect Octagonal Ring Perimeter
-    for (let i = 0; i < 8; i++) {
-      drawLine3D(ringPts[i].p, ringPts[(i + 1) % 8].p, "rgba(65,105,225,0.42)", 1.6);
-    }
-  }
-
-  // Stage 10: 35-Term Ontological Lexicon Tree & 4 Asymptotic Degeneracy Reductions (§14.10–14.12)
-  function renderStage10(w, h) {
-    const pCenter = drawNode3D("Lex_Root", 0, 0, 0, 11.5, "#FFD700", "#fff", "35-Term Syntrometric Lexicon", "Complete Ontological Concordance & Asymptotic Degeneracy Reductions (§14.10–14.12)", w, h);
-    const limits = [
-      { id: "Lim_Class", x: -1.15, y: -0.75, z:  0.65, col: "#38bdf8", lbl: "1. Classical Limit (τ → 0)", info: "Metron area τ → 0: ∇_i → ∂_i and DEC complex Ω_d^• converges to smooth de Rham Ω^•(M)" },
-      { id: "Lim_Bool",  x:  1.15, y: -0.75, z:  0.65, col: "#4169E1", lbl: "2. Boolean Limit (ΔP, ΔD → 0)", info: "Interval bands collapse to points: Heyting Ω(U) degenerates to Boolean {0, 1} (Tarskian logic)" },
-      { id: "Lim_Abel",  x: -1.15, y:  0.75, z: -0.65, col: "#20B2AA", lbl: "3. Abelian Limit ([a_i, a_j] → 0)", info: "Commutators vanish: Interaction curvature Ω_int^𝒟 → 0 (Decoupled Maxwell electrodynamics)" },
-      { id: "Lim_Auto",  x:  1.15, y:  0.75, z: -0.65, col: "#FFA500", lbl: "4. Autonomous Limit (ν𝒯 → const)", info: "Telecentric attractor decouples: Äondyne trajectories reduce to memoryless Markov chains" }
-    ];
-    limits.forEach(lm => {
-      const pL = drawNode3D(lm.id, lm.x, lm.y, lm.z, 8.5, lm.col, "#fff", lm.lbl, lm.info, w, h);
-      drawLine3D(pCenter, pL, lm.col, 2.8, [4, 2]);
-    });
-  }
-
-  // Master 60fps Loop
-  function renderLoop() {
-    timeSec += 0.016;
-    curStage += (targetStage - curStage) * 0.14;
-    if (autoOrbit && !isDragging) camYaw += 0.0055;
-
-    const w = wrap.clientWidth, h = wrap.clientHeight;
-    if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
-      resize();
-    }
-    ctx.clearRect(0, 0, w, h);
-    hitNodes = [];
-
-    const stInt = Math.round(curStage);
-    if (stInt <= 9) renderConcordanceRing(w, h, stInt);
-    else renderStage10(w, h);
-
-    requestAnimationFrame(renderLoop);
-  }
-
-  // UI & Slide Sync Controllers
-  window.setCh14Stage = function(val, manual) {
-    targetStage = Math.max(1.0, Math.min(10.0, parseFloat(val)));
-    const stInt = Math.round(targetStage);
-
-    const sl = document.getElementById('ch14-slider');
-    if (sl && Math.abs(parseFloat(sl.value) - targetStage) > 0.02) sl.value = targetStage;
-
-    const pill = document.getElementById('ch14-stage-pill');
-    if (pill) pill.innerText = `Stage ${targetStage.toFixed(1)} / 10`;
-
-    const cap = document.getElementById('ch14-caption');
-    if (cap) cap.innerHTML = STAGE_CAPTIONS[stInt] || STAGE_CAPTIONS[1];
-
-    const tel = document.getElementById('ch14-telemetry');
-    if (tel) tel.innerText = STAGE_TELEMETRY[stInt] || STAGE_TELEMETRY[1];
-
-    if (manual) {
-      autoSync = false;
-      const b = document.getElementById('ch14-btn-sync');
-      if (b) { b.classList.remove('active'); b.innerText = "Manual"; }
-    }
-  };
-
-  window.scrubCh14Stage = function(val) { window.setCh14Stage(val, true); };
-
-  window.enableCh14Sync = function() {
-    autoSync = true;
-    const b = document.getElementById('ch14-btn-sync');
-    if (b) { b.classList.add('active'); b.innerText = "Auto-Sync"; }
-    syncCh14WithDeck();
-  };
-
-  window.toggleCh14Orbit = function() {
-    autoOrbit = !autoOrbit;
-    const b = document.getElementById('ch14-btn-orbit');
-    if (b) b.classList.toggle('active', autoOrbit);
-  };
-
-  window.toggleCh14Spotlight = function() {
-    const hud = document.getElementById('ch14-3d-hud');
-    if (hud) {
-      hud.classList.remove('minimized');
-      hud.classList.toggle('spotlight');
-      setTimeout(resize, 360);
-    }
-  };
-
-  window.toggleCh14Minimize = function() {
-    const hud = document.getElementById('ch14-3d-hud');
-    const b = document.getElementById('ch14-btn-min');
-    if (hud) {
-      hud.classList.remove('spotlight');
-      hud.classList.toggle('minimized');
-      if (b) b.innerText = hud.classList.contains('minimized') ? "+" : "—";
-      setTimeout(resize, 360);
-    }
-  };
-
+<!-- =========================================================================
+
+     CHAPTER 14: 60FPS 3D INTERACTIVE 100-EQUATION CONCORDANCE & LEXICON ENGINE
+
+     Synchronizes with all 12 slides of Chapter 14 + Interactive 3D Node Inspector
+
+     ========================================================================= -->
+
+<style>
+#ch14-3d-hud {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: clamp(280px, 30vw, 540px);
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
+  background: linear-gradient(145deg, rgba(7, 10, 19, 0.96) 0%, rgba(14, 21, 38, 0.98) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.65);
+  border-radius: 14px;
+  padding: 9px 13px 11px 13px;
+  z-index: 9999;
+  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.86), 0 0 28px rgba(65, 105, 225, 0.34);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: "Libertinus Sans", "Inter", system-ui, sans-serif;
+  color: #e8ecf2;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  user-select: none;
+}
+
+#ch14-3d-hud.spotlight {
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+  width: min(960px, 94vw);
+  border-color: #FFD700;
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
+}
+
+#ch14-3d-hud.minimized {
+  width: clamp(280px, 26vw, 380px);
+  max-width: calc(100vw - 20px);
+  padding: 6px 11px;
+}
+
+#ch14-3d-hud.minimized .ch14-hud-body {
+  display: none;
+}
+
+.ch14-hud-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid rgba(65, 105, 225, 0.45);
+  padding-bottom: 5px;
+  margin-bottom: 6px;
+}
+
+.ch14-hud-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  color: #FFD700;
+  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 6px;
+  min-width: 0;
+  flex: 1 1 auto;
+  line-height: 1.1;
+}
+
+.ch14-hud-title span:first-child {
+  line-height: 1.1;
+}
+
+.ch14-hud-title span[id$="-stage-pill"] {
+  flex-shrink: 0;
+  font-size: 9px;
+  padding: 1px 6px;
+  line-height: 1.1;
+  border-radius: 4px;
+}
+
+.ch14-hud-controls {
+  display: flex;
+  align-items: center;
+  gap: clamp(3px, 0.4vw, 6px);
+  flex-shrink: 0;
+}
+
+.ch14-hud-btn {
+  background: #172033;
+  color: #cbd5e1;
+  border: 1px solid #3b4963;
+  border-radius: 5px;
+  padding: clamp(2.5px, 0.35vh, 4.5px) clamp(5px, 0.6vw, 9px);
+  font-size: clamp(9px, 0.9vw, 11px);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: all 0.15s ease;
+}
+
+.ch14-hud-btn:hover, .ch14-hud-btn.active {
+  background: #FFD700;
+  color: #000;
+  border-color: #FFD700;
+}
+
+.ch14-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: clamp(200px, 28vh, 440px);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #2d3748;
+  background: radial-gradient(circle at 50% 55%, #111b30 0%, #05070e 100%);
+  cursor: grab;
+}
+
+.ch14-canvas-wrap:active {
+  cursor: grabbing;
+}
+
+#ch14-3d-hud.spotlight .ch14-canvas-wrap {
+  height: clamp(340px, 60vh, 720px);
+}
+
+#ch14-3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ch14-overlay-bar {
+  position: absolute;
+  top: 7px;
+  left: 9px;
+  right: 9px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  font-family: "Libertinus Mono", monospace;
+  font-size: clamp(8px, 0.8vw, 10px);
+  gap: 6px;
+}
+
+.ch14-telemetry {
+  background: rgba(6, 9, 17, 0.84);
+  border: 1px solid rgba(65, 105, 225, 0.55);
+  border-radius: 5px;
+  padding: 2px 7px;
+  color: #82aaff;
+  white-space: nowrap;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#ch14-node-inspector {
+  background: rgba(6, 9, 17, 0.88);
+  border: 1px solid rgba(255, 215, 0, 0.6);
+  border-radius: 5px;
+  padding: 2px 8px;
+  color: #FFD700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 50%;
+}
+
+.ch14-scrubber {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 0.8vw, 8px);
+  margin-top: 7px;
+  font-size: clamp(9px, 0.9vw, 11px);
+}
+
+.ch14-scrubber span {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ch14-scrubber input[type="range"] {
+  flex: 1 1 50px;
+  min-width: 35px;
+  accent-color: #FFD700;
+  height: 5px;
+  cursor: pointer;
+}
+
+.ch14-scrubber .ch14-hud-btn {
+  flex-shrink: 0;
+}
+
+#ch14-caption {
+  margin-top: 6px;
+  padding: 6px 9px;
+  background: rgba(4, 7, 14, 0.9);
+  border-left: 3px solid #20B2AA;
+  border-radius: 5px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: clamp(8.5px, 0.85vw, 10.5px);
+  line-height: 1.35;
+  color: #5eead4;
+}
+
+@media (max-width: 900px) {
+  #ch14-3d-hud {
+    right: 8px;
+    bottom: 8px;
+    width: clamp(280px, calc(100vw - 16px), 480px);
+    padding: 8px 10px 10px 10px;
+  }
+  .ch14-hud-title {
+    font-size: clamp(9px, 2vw, 11px);
+    gap: 2px 4px;
+    line-height: 1.1;
+  }
+  .ch14-hud-controls {
+    gap: 3px;
+  }
+  .ch14-hud-btn {
+    padding: 2px clamp(4px, 1vw, 7px);
+    font-size: clamp(8px, 1.8vw, 10px);
+  }
+  .ch14-scrubber {
+    gap: 4px;
+    font-size: 9.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  #ch14-3d-hud {
+    right: 4px;
+    bottom: 4px;
+    width: calc(100vw - 8px);
+    padding: 6px 8px 8px 8px;
+  }
+  .ch14-hud-title {
+    font-size: 8.5px;
+    line-height: 1.05;
+  }
+  .ch14-hud-btn {
+    padding: 2px 5px;
+    font-size: 8px;
+  }
+  .ch14-scrubber span {
+    font-size: 8.5px;
+  }
+}
+</style>
+
+
+
+<div id="ch14-3d-hud" class="minimized">
+
+  <div class="ch14-hud-header">
+
+    <div class="ch14-hud-title">
+
+      <span>🏛️ Ch 14 · 3D Master Register Engine</span>
+
+      <span id="ch14-stage-pill" style="background:#4169E1; color:#fff; padding:1px 7px; border-radius:4px; font-size:9.5px;">Stage 1.0 / 10</span>
+
+    </div>
+
+    <div class="ch14-hud-controls">
+
+      <button class="ch14-hud-btn active" id="ch14-btn-orbit" onclick="toggleCh14Orbit()">⟳ Orbit</button>
+
+      <button class="ch14-hud-btn" onclick="toggleCh14Spotlight()">⛶ Spotlight</button>
+
+      <button class="ch14-hud-btn" id="ch14-btn-min" onclick="toggleCh14Minimize()">+</button>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="ch14-hud-body">
+
+    <div class="ch14-canvas-wrap" id="ch14-canvas-wrap">
+
+      <canvas id="ch14-3d-canvas"></canvas>
+
+      <div class="ch14-overlay-bar">
+
+        <div class="ch14-telemetry" id="ch14-telemetry">ℛ : HeimCorpus(1–100a) → Math</div>
+
+        <div id="ch14-node-inspector">Drag to Orbit 3D · Click Cluster to Inspect</div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="ch14-scrubber">
+
+      <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
+
+      <input type="range" id="ch14-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh14Stage(this.value)">
+
+      <button class="ch14-hud-btn active" id="ch14-btn-sync" onclick="enableCh14Sync()">Auto-Sync</button>
+
+    </div>
+
+
+
+    <div id="ch14-caption">
+
+      <b>Stage 1 (§14.1 — Master Register):</b> 8 Canonical Equation Clusters (SM Eqs. 1–100a) mapped by functor ℛ.
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+(function() {
+
+  const canvas = document.getElementById('ch14-3d-canvas');
+
+  const wrap = document.getElementById('ch14-canvas-wrap');
+
+  if (!canvas || !wrap) return;
+
+  const ctx = canvas.getContext('2d');
+
+
+
+  let targetStage = 1.0;
+
+  let curStage = 1.0;
+
+  let autoSync = true;
+
+  let autoOrbit = true;
+
+  let camYaw = -0.45;
+
+  let camPitch = 0.36;
+
+  let camZoom = 1.65;
+
+  let isDragging = false;
+
+  let lastX = 0, lastY = 0;
+
+  let timeSec = 0;
+
+  let hitNodes = [];
+
+  let selectedId = null;
+
+
+
+  const CLUSTERS = [
+
+    { id: "CL_I",    num: "I",    eqs: "SM 1–4",    col: "#4169E1", name: "Cluster I: Epistemology & Aspects", target: "ℰ_syn = Sh(Ctx_adm^sk, J_syn) & Ω", info: "Cluster I (SM 1–4): Prädikatrix P_n, Dialektik D_n, Koordination K_n, Quantoren → Sheaf Topos ℰ_syn (Ch. 1)" },
+
+    { id: "CL_II",   num: "II",   eqs: "SM 5–9a",   col: "#20B2AA", name: "Cluster II: Syntrix & Operads",     target: "𝒪_syn, Tree Monad T_P & Beck Law λ̂", info: "Cluster II (SM 5–9a): Syntrix Triad yã, Bandsyntrix, Spaltbarkeit, Äondyne → Colored Operad 𝒪_syn (Ch. 2)" },
+
+    { id: "CL_III",  num: "III",  eqs: "SM 10–13a", col: "#FFA500", name: "Cluster III: Corporate Pushouts",   target: "Span Pushout P_a ⊞_φ P_b & 4D Tesseract", info: "Cluster III (SM 10–13a): Korporator Matrix, Eindeutigkeitssatz, Konflexion → Span Pushout ⊞_φ (Ch. 3)" },
+
+    { id: "CL_IV",   num: "IV",   eqs: "SM 14–19a", col: "#DC143C", name: "Cluster IV: Enyphanie & Gauge",     target: "Curvature Ω_int^𝒟 = [a_i,a_j] & BRST", info: "Cluster IV (SM 14–19a): Enyphanie Eν, T0, Holoformen, Zeitkorn → Non-Abelian Gauge Curvature Ω_int^𝒟 (Ch. 4)" },
+
+    { id: "CL_V",    num: "V",    eqs: "SM 20–27",  col: "#9370DB", name: "Cluster V: Metroplexe & Area",      target: "(∞,1)-Topos 𝒳_syn & Coalgebra (ν𝒯, ζ)", info: "Cluster V (SM 20–27): Hypersyntrix ⁿM, Syntrokline Brücken, Telezentren → 𝒳_syn & Final Coalgebra ν𝒯 (Ch. 5–6)" },
+
+    { id: "CL_VI",   num: "VI",   eqs: "SM 28–62",  col: "#FFD700", name: "Cluster VI: Continua & Cascades",   target: "Nuclear 𝒮(ℳ_n) & 36-Hermetry ²ḡ on R₆", info: "Cluster VI (SM 28–62): Quantitätssyntrix, Separation, Kondensor ³Γ, 36-Hermetry → Sobolev Apex ²ḡ_∞ (Ch. 7–9)" },
+
+    { id: "CL_VII",  num: "VII",  eqs: "SM 63–83",  col: "#38bdf8", name: "Cluster VII: Metronic Calculus",    target: "Lattice 𝕄_τ^n & DEC (Ω_d^•, d_τ, *_τ)", info: "Cluster VII (SM 63–83): Metron τ, Differences ∇_i, Metronintegral 𝒮, Gauss–Stokes → DEC Cochains (Ch. 10)" },
+
+    { id: "CL_VIII", num: "VIII", eqs: "SM 84–100a",col: "#4ade80", name: "Cluster VIII: Selectors & Matter",  target: "Sel Ψ = λΨ on K₈ & Mass m = m₀(L_p/L₁)∏λ_k", info: "Cluster VIII (SM 84–100a): Strukturkompressor ⁴ζ, Null-Stability ⁴F=0, Mass Formula → Spectral Selectors (Ch. 11)" }
+
+  ];
+
+
+
+  const STAGE_CAPTIONS = {
+
+    1: "<b>Stage 1 (§14.1 — Master Translation Register):</b> All 8 Canonical Clusters (SM Eqs. 1–100a) mapped by Reconstruction Functor ℛ.",
+
+    2: "<b>Stage 2 (§14.2 — Cluster I, SM 1–4):</b> Epistemology, Prädikatrix P_n, Dialektik D_n &amp; Quantoren → Sheaf Topos ℰ_syn = Sh(Ctx, J_syn).",
+
+    3: "<b>Stage 3 (§14.3 — Cluster II, SM 5–9a):</b> Syntrix Triad, Spaltbarkeit &amp; Äondynen → Colored Banach Operad 𝒪_syn &amp; Beck Law λ̂.",
+
+    4: "<b>Stage 4 (§14.4 — Cluster III, SM 10–13a):</b> Korporator 2×2 Matrix &amp; Konflexionsfeld → Banach Span Pushout P_a ⊞_φ P_b (15 Classes).",
+
+    5: "<b>Stage 5 (§14.5 — Cluster IV, SM 14–19a):</b> Enyphanie Eν, T0, Holoformen &amp; Zeitkorn → Non-Abelian Gauge Curvature Ω_int^𝒟 &amp; BRST.",
+
+    6: "<b>Stage 6 (§14.6 — Cluster V, SM 20–27):</b> Metroplexe ⁿM, Bridges &amp; Telezentren → Ambient (∞,1)-Topos 𝒳_syn &amp; Final Coalgebra (ν𝒯, ζ).",
+
+    7: "<b>Stage 7 (§14.7 — Cluster VI, SM 28–62):</b> Continua R_n, Kondensor ³Γ &amp; Strukturkaskaden → Nuclear 𝒮(ℳ_n) &amp; 36-Component Hermetry ²ḡ.",
+
+    8: "<b>Stage 8 (§14.8 — Cluster VII, SM 63–83):</b> Metron τ, Differences ∇_i &amp; Sums 𝒮 → Discrete Exterior Calculus (Ω_d^•(𝕄_τ^n), d_τ, *_τ).",
+
+    9: "<b>Stage 9 (§14.9 — Cluster VIII, SM 84–100a):</b> Strukturkompressor ⁴ζ &amp; Null-Stability ⁴F=0 → Self-Adjoint Selectors &amp; PDG Mass Spectrum.",
+
+    10: "<b>Stage 10 (§14.10–14.12 — 35-Term Lexicon &amp; 4 Asymptotic Limits):</b> Classical (τ→0), Boolean (ΔP→0), Abelian ([a_i,a_j]→0) &amp; Autonomous limits!"
+
+  };
+
+
+
+  const STAGE_TELEMETRY = {
+
+    1: "ℛ : HeimCorpus(100 Eqs) → 9 Math Frameworks",
+
+    2: "Cluster I (SM 1–4): MSC 18F20, 03B45 → Ch. 1",
+
+    3: "Cluster II (SM 5–9a): MSC 18M60, 18M70 → Ch. 2",
+
+    4: "Cluster III (SM 10–13a): MSC 18A30 → Ch. 3",
+
+    5: "Cluster IV (SM 14–19a): MSC 53C07, 81T13 → Ch. 4",
+
+    6: "Cluster V (SM 20–27): MSC 18N60, 18F10 → Ch. 5–6",
+
+    7: "Cluster VI (SM 28–62): MSC 53B20, 58A10 → Ch. 7–9",
+
+    8: "Cluster VII (SM 63–83): MSC 39A12, 52C22 → Ch. 10",
+
+    9: "Cluster VIII (SM 84–100a): MSC 81V25 → Ch. 11 & App. B",
+
+    10: "35 Canonical Terms | 4 Exact Degeneracy Limits"
+
+  };
+
+
+
+  function resize() {
+
+    const r = wrap.getBoundingClientRect();
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = r.width * dpr;
+
+    canvas.height = r.height * dpr;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  }
+
+
+
+  function proj(x, y, z, w, h) {
+
+    const cy = Math.cos(camYaw), sy = Math.sin(camYaw);
+
+    const x1 = x * cy - y * sy;
+
+    const y1 = x * sy + y * cy;
+
+    const cp = Math.cos(camPitch), sp = Math.sin(camPitch);
+
+    const y2 = y1 * cp - z * sp;
+
+    const z2 = y1 * sp + z * cp;
+
+    const fov = Math.min(w, h) * 0.43 * camZoom;
+
+    const sc = fov / Math.max(0.85, 4.6 - y2 * 0.45);
+
+    return { sx: w * 0.5 + x1 * sc, sy: h * 0.53 - z2 * sc, depth: y2, sc: sc / 100 };
+
+  }
+
+
+
+  function drawLine3D(p1, p2, col, lw, dash) {
+
+    ctx.save();
+
+    ctx.beginPath();
+
+    if (dash) ctx.setLineDash(dash);
+
+    ctx.strokeStyle = col;
+
+    ctx.lineWidth = lw || 2;
+
+    ctx.moveTo(p1.sx, p1.sy);
+
+    ctx.lineTo(p2.sx, p2.sy);
+
+    ctx.stroke();
+
+    ctx.restore();
+
+  }
+
+
+
+  function drawNode3D(id, x, y, z, r, fill, stroke, label, info, w, h) {
+
+    const p = proj(x, y, z, w, h);
+
+    hitNodes.push({ id, p, r, info });
+
+    const isSel = (selectedId === id);
+
+    ctx.save();
+
+    ctx.beginPath();
+
+    ctx.fillStyle = isSel ? "#ffffff" : fill;
+
+    ctx.strokeStyle = isSel ? "#FFD700" : (stroke || "#ffffff");
+
+    ctx.lineWidth = isSel ? 3.0 : 1.6;
+
+    ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+
+    ctx.fill();
+
+    ctx.stroke();
+
+    if (label) {
+
+      ctx.fillStyle = "#ffffff";
+
+      ctx.font = "bold 9.5px sans-serif";
+
+      ctx.textAlign = "center";
+
+      ctx.fillText(label, p.sx, p.sy - r - 4);
+
+    }
+
+    ctx.restore();
+
+    return p;
+
+  }
+
+
+
+  // =========================================================================
+
+  // RENDERER FOR STAGES 1–9 (8-CLUSTER CONCORDANCE RING + SPOTLIGHTED CLUSTER)
+
+  // =========================================================================
+
+  function renderConcordanceRing(w, h, stInt) {
+
+    // stInt = 1: All 8 Clusters active; stInt = 2..9: Spotlight Cluster (stInt - 2)
+
+    const activeIdx = (stInt >= 2 && stInt <= 9) ? (stInt - 2) : -1;
+
+
+
+    // Central Modern Mathematical Synthesis Core
+
+    const coreLbl = activeIdx >= 0 ? CLUSTERS[activeIdx].target : "Modern Topos / Operad / Gauge / DEC Core";
+
+    const pCore = drawNode3D(
+
+      "Core_R", 0, 0, 0.55, 12, "#FFD700", "#20B2AA", coreLbl,
+
+      "Codomain of Reconstruction Functor ℛ : HeimCorpus(SM Eqs. 1–100a) → Modern Mathematics (Strata A/B/C)", w, h
+
+    );
+
+
+
+    // Outer Octagonal Ring of the 8 Canonical Equation Clusters
+
+    const ringPts = [];
+
+    CLUSTERS.forEach((cl, idx) => {
+
+      const a = (idx / 8) * Math.PI * 2 + timeSec * 0.25;
+
+      const isSpot = (activeIdx === -1 || activeIdx === idx);
+
+      const rad = (activeIdx === idx) ? 1.15 : 1.32;
+
+      const z = (activeIdx === idx) ? 0.15 : -0.55;
+
+      const x = rad * Math.cos(a), y = rad * Math.sin(a);
+
+
+
+      const pCl = drawNode3D(
+
+        cl.id, x, y, z, isSpot ? 9.5 : 6.0,
+
+        isSpot ? cl.col : "#334155", "#fff",
+
+        `Cluster ${cl.num} (${cl.eqs})`, cl.info, w, h
+
+      );
+
+      ringPts.push({ p: pCl, x, y, z, col: cl.col, isSpot });
+
+
+
+      // Functorial R-Translation Beam to Central Core
+
+      drawLine3D(pCl, pCore, isSpot ? cl.col : "rgba(100,116,139,0.25)", isSpot ? 2.8 : 1.2, isSpot ? null : [3, 3]);
+
+
+
+      // Animated Functorial Translation Packet along active beam(s)
+
+      if (isSpot) {
+
+        const s = (timeSec * 0.75 + idx * 0.125) % 1.0;
+
+        const px = x * (1 - s), py = y * (1 - s), pz = z * (1 - s) + 0.55 * s;
+
+        const pt = proj(px, py, pz, w, h);
+
+        ctx.save();
+
+        ctx.fillStyle = "#FFD700";
+
+        ctx.beginPath();
+
+        ctx.arc(pt.sx, pt.sy, 4.0, 0, Math.PI * 2);
+
+        ctx.fill();
+
+        ctx.restore();
+
+      }
+
+    });
+
+
+
+    // Connect Octagonal Ring Perimeter
+
+    for (let i = 0; i < 8; i++) {
+
+      drawLine3D(ringPts[i].p, ringPts[(i + 1) % 8].p, "rgba(65,105,225,0.42)", 1.6);
+
+    }
+
+  }
+
+
+
+  // Stage 10: 35-Term Ontological Lexicon Tree & 4 Asymptotic Degeneracy Reductions (§14.10–14.12)
+
+  function renderStage10(w, h) {
+
+    const pCenter = drawNode3D("Lex_Root", 0, 0, 0, 11.5, "#FFD700", "#fff", "35-Term Syntrometric Lexicon", "Complete Ontological Concordance & Asymptotic Degeneracy Reductions (§14.10–14.12)", w, h);
+
+    const limits = [
+
+      { id: "Lim_Class", x: -1.15, y: -0.75, z:  0.65, col: "#38bdf8", lbl: "1. Classical Limit (τ → 0)", info: "Metron area τ → 0: ∇_i → ∂_i and DEC complex Ω_d^• converges to smooth de Rham Ω^•(M)" },
+
+      { id: "Lim_Bool",  x:  1.15, y: -0.75, z:  0.65, col: "#4169E1", lbl: "2. Boolean Limit (ΔP, ΔD → 0)", info: "Interval bands collapse to points: Heyting Ω(U) degenerates to Boolean {0, 1} (Tarskian logic)" },
+
+      { id: "Lim_Abel",  x: -1.15, y:  0.75, z: -0.65, col: "#20B2AA", lbl: "3. Abelian Limit ([a_i, a_j] → 0)", info: "Commutators vanish: Interaction curvature Ω_int^𝒟 → 0 (Decoupled Maxwell electrodynamics)" },
+
+      { id: "Lim_Auto",  x:  1.15, y:  0.75, z: -0.65, col: "#FFA500", lbl: "4. Autonomous Limit (ν𝒯 → const)", info: "Telecentric attractor decouples: Äondyne trajectories reduce to memoryless Markov chains" }
+
+    ];
+
+    limits.forEach(lm => {
+
+      const pL = drawNode3D(lm.id, lm.x, lm.y, lm.z, 8.5, lm.col, "#fff", lm.lbl, lm.info, w, h);
+
+      drawLine3D(pCenter, pL, lm.col, 2.8, [4, 2]);
+
+    });
+
+  }
+
+
+
+  // Master 60fps Loop
+
+  function renderLoop() {
+
+    timeSec += 0.016;
+
+    curStage += (targetStage - curStage) * 0.14;
+
+    if (autoOrbit && !isDragging) camYaw += 0.0055;
+
+
+
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+    if (w <= 0 || h <= 0) {
+      requestAnimationFrame(renderLoop);
+      return;
+    }
+    if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
+
+      resize();
+
+    }
+
+    ctx.clearRect(0, 0, w, h);
+
+    hitNodes = [];
+
+
+
+    const stInt = Math.round(curStage);
+
+    if (stInt <= 9) renderConcordanceRing(w, h, stInt);
+
+    else renderStage10(w, h);
+
+
+
+    requestAnimationFrame(renderLoop);
+
+  }
+
+
+
+  // UI & Slide Sync Controllers
+
+  window.setCh14Stage = function(val, manual) {
+
+    targetStage = Math.max(1.0, Math.min(10.0, parseFloat(val)));
+
+    const stInt = Math.round(targetStage);
+
+
+
+    const sl = document.getElementById('ch14-slider');
+
+    if (sl && Math.abs(parseFloat(sl.value) - targetStage) > 0.02) sl.value = targetStage;
+
+
+
+    const pill = document.getElementById('ch14-stage-pill');
+
+    if (pill) pill.innerText = `Stage ${targetStage.toFixed(1)} / 10`;
+
+
+
+    const cap = document.getElementById('ch14-caption');
+
+    if (cap) cap.innerHTML = STAGE_CAPTIONS[stInt] || STAGE_CAPTIONS[1];
+
+
+
+    const tel = document.getElementById('ch14-telemetry');
+
+    if (tel) tel.innerText = STAGE_TELEMETRY[stInt] || STAGE_TELEMETRY[1];
+
+
+
+    if (manual) {
+
+      autoSync = false;
+
+      const b = document.getElementById('ch14-btn-sync');
+
+      if (b) { b.classList.remove('active'); b.innerText = "Manual"; }
+
+    }
+
+  };
+
+
+
+  window.scrubCh14Stage = function(val) { window.setCh14Stage(val, true); };
+
+
+
+  window.enableCh14Sync = function() {
+
+    autoSync = true;
+
+    const b = document.getElementById('ch14-btn-sync');
+
+    if (b) { b.classList.add('active'); b.innerText = "Auto-Sync"; }
+
+    syncCh14WithDeck();
+
+  };
+
+
+
+  window.toggleCh14Orbit = function() {
+
+    autoOrbit = !autoOrbit;
+
+    const b = document.getElementById('ch14-btn-orbit');
+
+    if (b) b.classList.toggle('active', autoOrbit);
+
+  };
+
+
+
+  window.toggleCh14Spotlight = function() {
+
+    const hud = document.getElementById('ch14-3d-hud');
+
+    if (hud) {
+
+      hud.classList.remove('minimized');
+
+      hud.classList.toggle('spotlight');
+
+      setTimeout(resize, 360);
+
+    }
+
+  };
+
+
+
+  window.toggleCh14Minimize = function() {
+
+    const hud = document.getElementById('ch14-3d-hud');
+
+    const b = document.getElementById('ch14-btn-min');
+
+    if (hud) {
+
+      hud.classList.remove('spotlight');
+
+      hud.classList.toggle('minimized');
+
+      if (b) b.innerText = hud.classList.contains('minimized') ? "+" : "—";
+
+      setTimeout(resize, 360);
+
+    }
+
+  };
+
+
+
   function syncCh14WithDeck() {
     if (!autoSync) return;
     const isMegaDeck = !!document.getElementById('syntrix-3d-hud') || document.querySelectorAll('h1').length > 5;
@@ -481,38 +858,70 @@
       chHud.style.display = inCh ? '' : 'none';
       if (!inCh) return;
     }
-    const vp = document.querySelector('.reveal-viewport');
-    const isScroll = vp && vp.classList.contains('reveal-scroll');
-    if (isScroll) {
-      const scEl = vp.scrollHeight > vp.clientHeight ? vp : document.documentElement;
-      const top = vp.scrollTop || window.scrollY || document.documentElement.scrollTop || 0;
-      const max = Math.max(1, (scEl.scrollHeight || document.body.scrollHeight) - window.innerHeight);
-      window.setCh14Stage(1.0 + Math.min(1, Math.max(0, top / max)) * 9.0, false);
-    } else if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
-      const idx = window.Reveal.getIndices();
-      const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 12);
-      const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
-      const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
-      window.setCh14Stage(1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0, false);
-    }
-  }
-
-  // 3D Orbit Drag, Wheel Zoom & Node Click Hit-Testing
-  wrap.addEventListener('mousedown', e => {
-    e.stopPropagation();
-    isDragging = true;
-    lastX = e.clientX;
-    lastY = e.clientY;
-  });
-
-  window.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    camYaw += (e.clientX - lastX) * 0.012;
-    camPitch = Math.max(-0.85, Math.min(1.15, camPitch + (e.clientY - lastY) * 0.012));
-    lastX = e.clientX;
-    lastY = e.clientY;
-  });
-
+    const vp = document.querySelector('.reveal-viewport');
+
+    const isScroll = vp && vp.classList.contains('reveal-scroll');
+
+    if (isScroll) {
+
+      const scEl = vp.scrollHeight > vp.clientHeight ? vp : document.documentElement;
+
+      const top = vp.scrollTop || window.scrollY || document.documentElement.scrollTop || 0;
+
+      const max = Math.max(1, (scEl.scrollHeight || document.body.scrollHeight) - window.innerHeight);
+
+      window.setCh14Stage(1.0 + Math.min(1, Math.max(0, top / max)) * 9.0, false);
+
+    } else if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
+
+      const idx = window.Reveal.getIndices();
+
+      const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 12);
+
+      const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
+
+      const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
+
+      window.setCh14Stage(1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0, false);
+
+    }
+
+  }
+
+
+
+  // 3D Orbit Drag, Wheel Zoom & Node Click Hit-Testing
+
+  wrap.addEventListener('mousedown', e => {
+
+    e.stopPropagation();
+
+    isDragging = true;
+
+    lastX = e.clientX;
+
+    lastY = e.clientY;
+
+  });
+
+
+
+  window.addEventListener('mousemove', e => {
+
+    if (!isDragging) return;
+
+    camYaw += (e.clientX - lastX) * 0.012;
+
+    camPitch = Math.max(-0.85, Math.min(1.15, camPitch + (e.clientY - lastY) * 0.012));
+
+    lastX = e.clientX;
+
+    lastY = e.clientY;
+
+  });
+
+
+
   window.addEventListener('mouseup', () => { isDragging = false; });
 
   wrap.addEventListener('touchstart', e => {
@@ -533,58 +942,112 @@
     camPitch = Math.max(-0.85, Math.min(1.15, camPitch + dy * 0.012));
   }, { passive: true });
 
-  window.addEventListener('touchend', () => { isDragging = false; });
-
-  wrap.addEventListener('click', e => {
-    e.stopPropagation();
-    const rect = canvas.getBoundingClientRect();
-    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
-    let hit = null;
-    for (let i = hitNodes.length - 1; i >= 0; i--) {
-      const n = hitNodes[i];
-      if (Math.hypot(mx - n.p.sx, my - n.p.sy) <= n.r + 6) { hit = n; break; }
-    }
-    const insp = document.getElementById('ch14-node-inspector');
-    if (hit && insp) {
-      selectedId = hit.id;
-      insp.innerText = hit.info;
-    } else if (insp) {
-      selectedId = null;
-      insp.innerText = "Drag to Orbit 3D · Click Cluster to Inspect";
-    }
-  });
-
-  wrap.addEventListener('wheel', e => {
-    e.preventDefault();
-    e.stopPropagation();
-    camZoom = Math.max(0.65, Math.min(1.65, camZoom - e.deltaY * 0.001));
-  }, { passive: false });
-
-  function init() {
-    resize();
-    syncCh14WithDeck();
-    requestAnimationFrame(renderLoop);
-    window.addEventListener('resize', resize);
-    window.addEventListener('scroll', syncCh14WithDeck, { passive: true });
-    const vp = document.querySelector('.reveal-viewport');
-    if (vp) vp.addEventListener('scroll', syncCh14WithDeck, { passive: true });
-    if (window.Reveal) {
-      window.Reveal.on('ready', syncCh14WithDeck);
-      window.Reveal.on('slidechanged', syncCh14WithDeck);
-      window.Reveal.on('fragmentshown', syncCh14WithDeck);
-      window.Reveal.on('fragmenthidden', syncCh14WithDeck);
-    }
-    const hud = document.getElementById('ch14-3d-hud');
-    if (hud) {
-      hud.querySelectorAll('input, button').forEach(el => {
-        el.addEventListener('keydown', e => e.stopPropagation());
-        el.addEventListener('mousedown', e => e.stopPropagation());
-        el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
-      });
-    }
-  }
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
-})();
+  window.addEventListener('touchend', () => { isDragging = false; });
+
+
+
+  wrap.addEventListener('click', e => {
+
+    e.stopPropagation();
+
+    const rect = canvas.getBoundingClientRect();
+
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+
+    let hit = null;
+
+    for (let i = hitNodes.length - 1; i >= 0; i--) {
+
+      const n = hitNodes[i];
+
+      if (Math.hypot(mx - n.p.sx, my - n.p.sy) <= n.r + 6) { hit = n; break; }
+
+    }
+
+    const insp = document.getElementById('ch14-node-inspector');
+
+    if (hit && insp) {
+
+      selectedId = hit.id;
+
+      insp.innerText = hit.info;
+
+    } else if (insp) {
+
+      selectedId = null;
+
+      insp.innerText = "Drag to Orbit 3D · Click Cluster to Inspect";
+
+    }
+
+  });
+
+
+
+  wrap.addEventListener('wheel', e => {
+
+    e.preventDefault();
+
+    e.stopPropagation();
+
+    camZoom = Math.max(0.65, Math.min(2.0, camZoom - e.deltaY * 0.001));
+
+  }, { passive: false });
+
+
+
+  function init() {
+
+    resize();
+
+    syncCh14WithDeck();
+
+    requestAnimationFrame(renderLoop);
+
+    window.addEventListener('resize', resize);
+
+    window.addEventListener('scroll', syncCh14WithDeck, { passive: true });
+
+    const vp = document.querySelector('.reveal-viewport');
+
+    if (vp) vp.addEventListener('scroll', syncCh14WithDeck, { passive: true });
+
+    if (window.Reveal) {
+
+      window.Reveal.on('ready', syncCh14WithDeck);
+
+      window.Reveal.on('slidechanged', syncCh14WithDeck);
+
+      window.Reveal.on('fragmentshown', syncCh14WithDeck);
+
+      window.Reveal.on('fragmenthidden', syncCh14WithDeck);
+
+    }
+
+    const hud = document.getElementById('ch14-3d-hud');
+
+    if (hud) {
+
+      hud.querySelectorAll('input, button').forEach(el => {
+
+        el.addEventListener('keydown', e => e.stopPropagation());
+
+        el.addEventListener('mousedown', e => e.stopPropagation());
+
+        el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+
+      });
+
+    }
+
+  }
+
+
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+
+  else init();
+
+})();
+
 </script>

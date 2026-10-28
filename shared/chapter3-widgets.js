@@ -444,15 +444,18 @@ if (document.readyState === 'loading') {
 // CHAPTER 3: 60FPS 3D INTERACTIVE KORPORATOR, 4D TESSERACT & MAYER-VIETORIS ENGINE
 // =========================================================================
 
-const CH3_3D_STYLE = `#ch3-3d-hud {
+const CH3_3D_STYLE = `
+#ch3-3d-hud {
   position: fixed;
   right: 20px;
   bottom: 20px;
-  width: 445px;
+  width: clamp(280px, 30vw, 540px);
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
   background: linear-gradient(145deg, rgba(7, 10, 19, 0.96) 0%, rgba(14, 21, 38, 0.98) 100%);
   border: 1.5px solid rgba(255, 215, 0, 0.65);
   border-radius: 14px;
-  padding: 10px 14px 12px 14px;
+  padding: 9px 13px 11px 13px;
   z-index: 9999;
   box-shadow: 0 14px 46px rgba(0, 0, 0, 0.86), 0 0 28px rgba(65, 105, 225, 0.34);
   backdrop-filter: blur(12px);
@@ -468,14 +471,15 @@ const CH3_3D_STYLE = `#ch3-3d-hud {
   right: 50%;
   bottom: 50%;
   transform: translate(50%, 50%);
-  width: min(920px, 95vw);
+  width: min(960px, 94vw);
   border-color: #FFD700;
   box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
 }
 
 #ch3-3d-hud.minimized {
-  width: 285px;
-  padding: 7px 12px;
+  width: clamp(280px, 26vw, 380px);
+  max-width: calc(100vw - 20px);
+  padding: 6px 11px;
 }
 
 #ch3-3d-hud.minimized .ch3-hud-body {
@@ -484,27 +488,47 @@ const CH3_3D_STYLE = `#ch3-3d-hud {
 
 .ch3-hud-header {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   border-bottom: 1px solid rgba(65, 105, 225, 0.45);
-  padding-bottom: 6px;
-  margin-bottom: 8px;
+  padding-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .ch3-hud-title {
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.6px;
   color: #FFD700;
   text-transform: uppercase;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 7px;
+  gap: 2px 6px;
+  min-width: 0;
+  flex: 1 1 auto;
+  line-height: 1.1;
+}
+
+.ch3-hud-title span:first-child {
+  line-height: 1.1;
+}
+
+.ch3-hud-title span[id$="-stage-pill"] {
+  flex-shrink: 0;
+  font-size: 9px;
+  padding: 1px 6px;
+  line-height: 1.1;
+  border-radius: 4px;
 }
 
 .ch3-hud-controls {
   display: flex;
-  gap: 5px;
+  align-items: center;
+  gap: clamp(3px, 0.4vw, 6px);
+  flex-shrink: 0;
 }
 
 .ch3-hud-btn {
@@ -512,10 +536,13 @@ const CH3_3D_STYLE = `#ch3-3d-hud {
   color: #cbd5e1;
   border: 1px solid #3b4963;
   border-radius: 5px;
-  padding: 2px 8px;
-  font-size: 10px;
+  padding: clamp(2.5px, 0.35vh, 4.5px) clamp(5px, 0.6vw, 9px);
+  font-size: clamp(9px, 0.9vw, 11px);
   font-weight: 700;
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-sizing: border-box;
   transition: all 0.15s ease;
 }
 
@@ -528,13 +555,12 @@ const CH3_3D_STYLE = `#ch3-3d-hud {
 .ch3-canvas-wrap {
   position: relative;
   width: 100%;
-  height: 265px;
+  height: clamp(200px, 28vh, 440px);
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #2d3748;
   background: radial-gradient(circle at 50% 55%, #111b30 0%, #05070e 100%);
   cursor: grab;
-  touch-action: none;
 }
 
 .ch3-canvas-wrap:active {
@@ -542,7 +568,7 @@ const CH3_3D_STYLE = `#ch3-3d-hud {
 }
 
 #ch3-3d-hud.spotlight .ch3-canvas-wrap {
-  height: 500px;
+  height: clamp(340px, 60vh, 720px);
 }
 
 #ch3-3d-canvas {
@@ -560,7 +586,7 @@ const CH3_3D_STYLE = `#ch3-3d-hud {
   justify-content: space-between;
   pointer-events: none;
   font-family: "Libertinus Mono", monospace;
-  font-size: 10px;
+  font-size: clamp(8px, 0.8vw, 10px);
   gap: 6px;
 }
 
@@ -571,6 +597,9 @@ const CH3_3D_STYLE = `#ch3-3d-hud {
   padding: 2px 7px;
   color: #82aaff;
   white-space: nowrap;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #ch3-node-inspector {
@@ -582,21 +611,32 @@ const CH3_3D_STYLE = `#ch3-3d-hud {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 50%;
 }
 
 .ch3-scrubber {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  font-size: 11px;
+  gap: clamp(4px, 0.8vw, 8px);
+  margin-top: 7px;
+  font-size: clamp(9px, 0.9vw, 11px);
+}
+
+.ch3-scrubber span {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .ch3-scrubber input[type="range"] {
-  flex: 1;
+  flex: 1 1 50px;
+  min-width: 35px;
   accent-color: #FFD700;
   height: 5px;
   cursor: pointer;
+}
+
+.ch3-scrubber .ch3-hud-btn {
+  flex-shrink: 0;
 }
 
 #ch3-caption {
@@ -606,8 +646,8 @@ const CH3_3D_STYLE = `#ch3-3d-hud {
   border-left: 3px solid #20B2AA;
   border-radius: 5px;
   font-family: "Libertinus Mono", monospace;
-  font-size: 10.5px;
-  line-height: 1.38;
+  font-size: clamp(8.5px, 0.85vw, 10.5px);
+  line-height: 1.35;
   color: #5eead4;
 }
 
@@ -615,10 +655,47 @@ const CH3_3D_STYLE = `#ch3-3d-hud {
   #ch3-3d-hud {
     right: 8px;
     bottom: 8px;
-    width: calc(100vw - 16px);
-    max-width: 385px;
+    width: clamp(280px, calc(100vw - 16px), 480px);
+    padding: 8px 10px 10px 10px;
   }
-}`;
+  .ch3-hud-title {
+    font-size: clamp(9px, 2vw, 11px);
+    gap: 2px 4px;
+    line-height: 1.1;
+  }
+  .ch3-hud-controls {
+    gap: 3px;
+  }
+  .ch3-hud-btn {
+    padding: 2px clamp(4px, 1vw, 7px);
+    font-size: clamp(8px, 1.8vw, 10px);
+  }
+  .ch3-scrubber {
+    gap: 4px;
+    font-size: 9.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  #ch3-3d-hud {
+    right: 4px;
+    bottom: 4px;
+    width: calc(100vw - 8px);
+    padding: 6px 8px 8px 8px;
+  }
+  .ch3-hud-title {
+    font-size: 8.5px;
+    line-height: 1.05;
+  }
+  .ch3-hud-btn {
+    padding: 2px 5px;
+    font-size: 8px;
+  }
+  .ch3-scrubber span {
+    font-size: 8.5px;
+  }
+}
+`;
 
 const CH3_3D_HTML = `
 <div class="ch3-hud-header">
@@ -629,7 +706,7 @@ const CH3_3D_HTML = `
     <div class="ch3-hud-controls">
       <button class="ch3-hud-btn active" id="ch3-btn-orbit" onclick="toggleCh3Orbit()">⟳ Orbit</button>
       <button class="ch3-hud-btn" onclick="toggleCh3Spotlight()">⛶ Spotlight</button>
-      <button class="ch3-hud-btn" id="ch3-btn-min" onclick="toggleCh3Minimize()">—</button>
+      <button class="ch3-hud-btn" id="ch3-btn-min" onclick="toggleCh3Minimize()">+</button>
     </div>
   </div>
 
@@ -662,6 +739,7 @@ function injectCh33DHUD() {
 
   const hudEl = document.createElement('div');
   hudEl.id = 'ch3-3d-hud';
+  hudEl.className = 'minimized';
   hudEl.innerHTML = CH3_3D_HTML;
   document.body.appendChild(hudEl);
 }
@@ -686,7 +764,7 @@ function injectCh33DHUD() {
     let autoOrbit = true;
     let camYaw = -0.48;
     let camPitch = 0.35;
-    let camZoom = 1.0;
+    let camZoom = 1.65;
     let isDragging = false;
     let lastX = 0, lastY = 0;
     let timeSec = 0;
@@ -993,7 +1071,11 @@ function injectCh33DHUD() {
       if (autoOrbit && !isDragging) camYaw += 0.0055;
 
       const w = wrap.clientWidth, h = wrap.clientHeight;
-      if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
+    if (w <= 0 || h <= 0) {
+      requestAnimationFrame(renderLoop);
+      return;
+    }
+    if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
         resize();
       }
       ctx.clearRect(0, 0, w, h);
@@ -1158,7 +1240,7 @@ function injectCh33DHUD() {
     wrap.addEventListener('wheel', e => {
       e.preventDefault();
       e.stopPropagation();
-      camZoom = Math.max(0.65, Math.min(1.65, camZoom - e.deltaY * 0.001));
+      camZoom = Math.max(0.65, Math.min(2.0, camZoom - e.deltaY * 0.001));
     }, { passive: false });
 
     resize();

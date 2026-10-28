@@ -424,15 +424,18 @@ if (document.readyState === 'loading') {
 // CHAPTER 1: 60FPS 3D INTERACTIVE TOPOS, PULLBACK & HOLOFORM ENGINE
 // =========================================================================
 
-const CH1_3D_STYLE = `#ch1-3d-hud {
+const CH1_3D_STYLE = `
+#ch1-3d-hud {
   position: fixed;
   right: 20px;
   bottom: 20px;
-  width: 440px;
+  width: clamp(280px, 30vw, 540px);
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
   background: linear-gradient(145deg, rgba(7, 10, 19, 0.96) 0%, rgba(14, 21, 38, 0.98) 100%);
   border: 1.5px solid rgba(255, 215, 0, 0.65);
   border-radius: 14px;
-  padding: 10px 14px 12px 14px;
+  padding: 9px 13px 11px 13px;
   z-index: 9999;
   box-shadow: 0 14px 46px rgba(0, 0, 0, 0.86), 0 0 28px rgba(65, 105, 225, 0.34);
   backdrop-filter: blur(12px);
@@ -448,14 +451,15 @@ const CH1_3D_STYLE = `#ch1-3d-hud {
   right: 50%;
   bottom: 50%;
   transform: translate(50%, 50%);
-  width: min(920px, 95vw);
+  width: min(960px, 94vw);
   border-color: #FFD700;
   box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
 }
 
 #ch1-3d-hud.minimized {
-  width: 285px;
-  padding: 7px 12px;
+  width: clamp(280px, 26vw, 380px);
+  max-width: calc(100vw - 20px);
+  padding: 6px 11px;
 }
 
 #ch1-3d-hud.minimized .ch1-hud-body {
@@ -464,27 +468,47 @@ const CH1_3D_STYLE = `#ch1-3d-hud {
 
 .ch1-hud-header {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   border-bottom: 1px solid rgba(65, 105, 225, 0.45);
-  padding-bottom: 6px;
-  margin-bottom: 8px;
+  padding-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .ch1-hud-title {
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.6px;
   color: #FFD700;
   text-transform: uppercase;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 7px;
+  gap: 2px 6px;
+  min-width: 0;
+  flex: 1 1 auto;
+  line-height: 1.1;
+}
+
+.ch1-hud-title span:first-child {
+  line-height: 1.1;
+}
+
+.ch1-hud-title span[id$="-stage-pill"] {
+  flex-shrink: 0;
+  font-size: 9px;
+  padding: 1px 6px;
+  line-height: 1.1;
+  border-radius: 4px;
 }
 
 .ch1-hud-controls {
   display: flex;
-  gap: 5px;
+  align-items: center;
+  gap: clamp(3px, 0.4vw, 6px);
+  flex-shrink: 0;
 }
 
 .ch1-hud-btn {
@@ -492,10 +516,13 @@ const CH1_3D_STYLE = `#ch1-3d-hud {
   color: #cbd5e1;
   border: 1px solid #3b4963;
   border-radius: 5px;
-  padding: 2px 8px;
-  font-size: 10px;
+  padding: clamp(2.5px, 0.35vh, 4.5px) clamp(5px, 0.6vw, 9px);
+  font-size: clamp(9px, 0.9vw, 11px);
   font-weight: 700;
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-sizing: border-box;
   transition: all 0.15s ease;
 }
 
@@ -508,7 +535,7 @@ const CH1_3D_STYLE = `#ch1-3d-hud {
 .ch1-canvas-wrap {
   position: relative;
   width: 100%;
-  height: 265px;
+  height: clamp(200px, 28vh, 440px);
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #2d3748;
@@ -521,7 +548,7 @@ const CH1_3D_STYLE = `#ch1-3d-hud {
 }
 
 #ch1-3d-hud.spotlight .ch1-canvas-wrap {
-  height: 500px;
+  height: clamp(340px, 60vh, 720px);
 }
 
 #ch1-3d-canvas {
@@ -539,7 +566,7 @@ const CH1_3D_STYLE = `#ch1-3d-hud {
   justify-content: space-between;
   pointer-events: none;
   font-family: "Libertinus Mono", monospace;
-  font-size: 10px;
+  font-size: clamp(8px, 0.8vw, 10px);
   gap: 6px;
 }
 
@@ -550,6 +577,9 @@ const CH1_3D_STYLE = `#ch1-3d-hud {
   padding: 2px 7px;
   color: #82aaff;
   white-space: nowrap;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #ch1-node-inspector {
@@ -561,21 +591,32 @@ const CH1_3D_STYLE = `#ch1-3d-hud {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 50%;
 }
 
 .ch1-scrubber {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  font-size: 11px;
+  gap: clamp(4px, 0.8vw, 8px);
+  margin-top: 7px;
+  font-size: clamp(9px, 0.9vw, 11px);
+}
+
+.ch1-scrubber span {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .ch1-scrubber input[type="range"] {
-  flex: 1;
+  flex: 1 1 50px;
+  min-width: 35px;
   accent-color: #FFD700;
   height: 5px;
   cursor: pointer;
+}
+
+.ch1-scrubber .ch1-hud-btn {
+  flex-shrink: 0;
 }
 
 #ch1-caption {
@@ -585,8 +626,8 @@ const CH1_3D_STYLE = `#ch1-3d-hud {
   border-left: 3px solid #20B2AA;
   border-radius: 5px;
   font-family: "Libertinus Mono", monospace;
-  font-size: 10.5px;
-  line-height: 1.38;
+  font-size: clamp(8.5px, 0.85vw, 10.5px);
+  line-height: 1.35;
   color: #5eead4;
 }
 
@@ -594,10 +635,47 @@ const CH1_3D_STYLE = `#ch1-3d-hud {
   #ch1-3d-hud {
     right: 8px;
     bottom: 8px;
-    width: calc(100vw - 16px);
-    max-width: 385px;
+    width: clamp(280px, calc(100vw - 16px), 480px);
+    padding: 8px 10px 10px 10px;
   }
-}`;
+  .ch1-hud-title {
+    font-size: clamp(9px, 2vw, 11px);
+    gap: 2px 4px;
+    line-height: 1.1;
+  }
+  .ch1-hud-controls {
+    gap: 3px;
+  }
+  .ch1-hud-btn {
+    padding: 2px clamp(4px, 1vw, 7px);
+    font-size: clamp(8px, 1.8vw, 10px);
+  }
+  .ch1-scrubber {
+    gap: 4px;
+    font-size: 9.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  #ch1-3d-hud {
+    right: 4px;
+    bottom: 4px;
+    width: calc(100vw - 8px);
+    padding: 6px 8px 8px 8px;
+  }
+  .ch1-hud-title {
+    font-size: 8.5px;
+    line-height: 1.05;
+  }
+  .ch1-hud-btn {
+    padding: 2px 5px;
+    font-size: 8px;
+  }
+  .ch1-scrubber span {
+    font-size: 8.5px;
+  }
+}
+`;
 
 const CH1_3D_HTML = `
 <div class="ch1-hud-header">
@@ -608,7 +686,7 @@ const CH1_3D_HTML = `
     <div class="ch1-hud-controls">
       <button class="ch1-hud-btn active" id="ch1-btn-orbit" onclick="toggleCh1Orbit()">⟳ Orbit</button>
       <button class="ch1-hud-btn" onclick="toggleCh1Spotlight()">⛶ Spotlight</button>
-      <button class="ch1-hud-btn" id="ch1-btn-min" onclick="toggleCh1Minimize()">—</button>
+      <button class="ch1-hud-btn" id="ch1-btn-min" onclick="toggleCh1Minimize()">+</button>
     </div>
   </div>
 
@@ -641,6 +719,7 @@ function injectCh13DHUD() {
 
   const hudEl = document.createElement('div');
   hudEl.id = 'ch1-3d-hud';
+  hudEl.className = 'minimized';
   hudEl.innerHTML = CH1_3D_HTML;
   document.body.appendChild(hudEl);
 }
@@ -665,7 +744,7 @@ function injectCh13DHUD() {
     let autoOrbit = true;
     let camYaw = -0.52;
     let camPitch = 0.34;
-    let camZoom = 1.0;
+    let camZoom = 1.65;
     let isDragging = false;
     let lastX = 0, lastY = 0;
     let timeSec = 0;
@@ -1034,7 +1113,11 @@ function injectCh13DHUD() {
       if (autoOrbit && !isDragging) camYaw += 0.0055;
 
       const w = wrap.clientWidth, h = wrap.clientHeight;
-      if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
+    if (w <= 0 || h <= 0) {
+      requestAnimationFrame(renderLoop);
+      return;
+    }
+    if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
         resize();
       }
       ctx.clearRect(0, 0, w, h);
@@ -1200,7 +1283,7 @@ function injectCh13DHUD() {
     wrap.addEventListener('wheel', e => {
       e.preventDefault();
       e.stopPropagation();
-      camZoom = Math.max(0.65, Math.min(1.65, camZoom - e.deltaY * 0.001));
+      camZoom = Math.max(0.65, Math.min(2.0, camZoom - e.deltaY * 0.001));
     }, { passive: false });
 
     resize();

@@ -525,211 +525,319 @@ window.ch13_updateAscLab = function() {
 // =========================================================================
 // CHAPTER 13 3D ENGINE INJECTOR & RUNNER
 // =========================================================================
-const CH13_3D_STYLE = `#ch13-3d-hud {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 445px;
-  background: linear-gradient(145deg, rgba(7, 10, 19, 0.96) 0%, rgba(14, 21, 38, 0.98) 100%);
-  border: 1.5px solid rgba(255, 215, 0, 0.65);
-  border-radius: 14px;
-  padding: 10px 14px 12px 14px;
-  z-index: 9999;
-  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.86), 0 0 28px rgba(65, 105, 225, 0.34);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  font-family: "Libertinus Sans", "Inter", system-ui, sans-serif;
-  color: #e8ecf2;
-  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  user-select: none;
-}
-
-#ch13-3d-hud.spotlight {
-  right: 50%;
-  bottom: 50%;
-  transform: translate(50%, 50%);
-  width: min(920px, 95vw);
-  border-color: #FFD700;
-  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
-}
-
-#ch13-3d-hud.minimized {
-  width: 285px;
-  padding: 7px 12px;
-}
-
-#ch13-3d-hud.minimized .ch13-hud-body {
-  display: none;
-}
-
-.ch13-hud-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(65, 105, 225, 0.45);
-  padding-bottom: 6px;
-  margin-bottom: 8px;
-}
-
-.ch13-hud-title {
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.7px;
-  color: #FFD700;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.ch13-hud-controls {
-  display: flex;
-  gap: 5px;
-}
-
-.ch13-hud-btn {
-  background: #172033;
-  color: #cbd5e1;
-  border: 1px solid #3b4963;
-  border-radius: 5px;
-  padding: 2px 8px;
-  font-size: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.ch13-hud-btn:hover, .ch13-hud-btn.active {
-  background: #FFD700;
-  color: #000;
-  border-color: #FFD700;
-}
-
-.ch13-canvas-wrap {
-  position: relative;
-  width: 100%;
-  height: 265px;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid #2d3748;
-  background: radial-gradient(circle at 50% 55%, #111b30 0%, #05070e 100%);
-  cursor: grab;
-}
-
-.ch13-canvas-wrap:active {
-  cursor: grabbing;
-}
-
-#ch13-3d-hud.spotlight .ch13-canvas-wrap {
-  height: 500px;
-}
-
-#ch13-3d-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.ch13-overlay-bar {
-  position: absolute;
-  top: 7px;
-  left: 9px;
-  right: 9px;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  font-family: "Libertinus Mono", monospace;
-  font-size: 10px;
-  gap: 6px;
-}
-
-.ch13-telemetry {
-  background: rgba(6, 9, 17, 0.84);
-  border: 1px solid rgba(65, 105, 225, 0.55);
-  border-radius: 5px;
-  padding: 2px 7px;
-  color: #82aaff;
-  white-space: nowrap;
-}
-
-#ch13-node-inspector {
-  background: rgba(6, 9, 17, 0.88);
-  border: 1px solid rgba(255, 215, 0, 0.6);
-  border-radius: 5px;
-  padding: 2px 8px;
-  color: #FFD700;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.ch13-scrubber {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  font-size: 11px;
-}
-
-.ch13-scrubber input[type="range"] {
-  flex: 1;
-  accent-color: #FFD700;
-  height: 5px;
-  cursor: pointer;
-}
-
-#ch13-caption {
-  margin-top: 6px;
-  padding: 6px 9px;
-  background: rgba(4, 7, 14, 0.9);
-  border-left: 3px solid #20B2AA;
-  border-radius: 5px;
-  font-family: "Libertinus Mono", monospace;
-  font-size: 10.5px;
-  line-height: 1.38;
-  color: #5eead4;
-}
-
-@media (max-width: 900px) {
-  #ch13-3d-hud {
-    right: 8px;
-    bottom: 8px;
-    width: calc(100vw - 16px);
-    max-width: 385px;
-  }
-}`;
+const CH13_3D_STYLE = `
+#ch13-3d-hud {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: clamp(280px, 30vw, 540px);
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
+  background: linear-gradient(145deg, rgba(7, 10, 19, 0.96) 0%, rgba(14, 21, 38, 0.98) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.65);
+  border-radius: 14px;
+  padding: 9px 13px 11px 13px;
+  z-index: 9999;
+  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.86), 0 0 28px rgba(65, 105, 225, 0.34);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: "Libertinus Sans", "Inter", system-ui, sans-serif;
+  color: #e8ecf2;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  user-select: none;
+}
 
-const CH13_3D_HTML = `<div class="ch13-hud-header">
-    <div class="ch13-hud-title">
-      <span>👁️ Ch 13 · 3D Qualia, Φ_topos &amp; Ego Engine</span>
-      <span id="ch13-stage-pill" style="background:#4169E1; color:#fff; padding:1px 7px; border-radius:4px; font-size:9.5px;">Stage 1.0 / 10</span>
-    </div>
-    <div class="ch13-hud-controls">
-      <button class="ch13-hud-btn active" id="ch13-btn-orbit" onclick="toggleCh13Orbit()">⟳ Orbit</button>
-      <button class="ch13-hud-btn" onclick="toggleCh13Spotlight()">⛶ Spotlight</button>
-      <button class="ch13-hud-btn" id="ch13-btn-min" onclick="toggleCh13Minimize()">—</button>
-    </div>
-  </div>
-
-  <div class="ch13-hud-body">
-    <div class="ch13-canvas-wrap" id="ch13-canvas-wrap">
-      <canvas id="ch13-3d-canvas"></canvas>
-      <div class="ch13-overlay-bar">
-        <div class="ch13-telemetry" id="ch13-telemetry">Hol_A(∂Σ) ≠ id | Φ_topos | e* : 1 → A</div>
-        <div id="ch13-node-inspector">Drag to Orbit 3D · Click Node to Inspect</div>
-      </div>
-    </div>
-
-    <div class="ch13-scrubber">
-      <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
-      <input type="range" id="ch13-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh13Stage(this.value)">
-      <button class="ch13-hud-btn active" id="ch13-btn-sync" onclick="enableCh13Sync()">Auto-Sync</button>
-    </div>
-
-    <div id="ch13-caption">
-      <b>Stage 1 (§13.1.1 — Thm. 13.2):</b> Non-Abelian Stokes–Wilson Quale Holonomy Hol_A(∂Σ) = 𝒫 exp(−∬ [a₁, a₂]) ≠ id_G.
-    </div>
+#ch13-3d-hud.spotlight {
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+  width: min(960px, 94vw);
+  border-color: #FFD700;
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
+}
+
+#ch13-3d-hud.minimized {
+  width: clamp(280px, 26vw, 380px);
+  max-width: calc(100vw - 20px);
+  padding: 6px 11px;
+}
+
+#ch13-3d-hud.minimized .ch13-hud-body {
+  display: none;
+}
+
+.ch13-hud-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid rgba(65, 105, 225, 0.45);
+  padding-bottom: 5px;
+  margin-bottom: 6px;
+}
+
+.ch13-hud-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  color: #FFD700;
+  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 6px;
+  min-width: 0;
+  flex: 1 1 auto;
+  line-height: 1.1;
+}
+
+.ch13-hud-title span:first-child {
+  line-height: 1.1;
+}
+
+.ch13-hud-title span[id$="-stage-pill"] {
+  flex-shrink: 0;
+  font-size: 9px;
+  padding: 1px 6px;
+  line-height: 1.1;
+  border-radius: 4px;
+}
+
+.ch13-hud-controls {
+  display: flex;
+  align-items: center;
+  gap: clamp(3px, 0.4vw, 6px);
+  flex-shrink: 0;
+}
+
+.ch13-hud-btn {
+  background: #172033;
+  color: #cbd5e1;
+  border: 1px solid #3b4963;
+  border-radius: 5px;
+  padding: clamp(2.5px, 0.35vh, 4.5px) clamp(5px, 0.6vw, 9px);
+  font-size: clamp(9px, 0.9vw, 11px);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: all 0.15s ease;
+}
+
+.ch13-hud-btn:hover, .ch13-hud-btn.active {
+  background: #FFD700;
+  color: #000;
+  border-color: #FFD700;
+}
+
+.ch13-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: clamp(200px, 28vh, 440px);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #2d3748;
+  background: radial-gradient(circle at 50% 55%, #111b30 0%, #05070e 100%);
+  cursor: grab;
+}
+
+.ch13-canvas-wrap:active {
+  cursor: grabbing;
+}
+
+#ch13-3d-hud.spotlight .ch13-canvas-wrap {
+  height: clamp(340px, 60vh, 720px);
+}
+
+#ch13-3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ch13-overlay-bar {
+  position: absolute;
+  top: 7px;
+  left: 9px;
+  right: 9px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  font-family: "Libertinus Mono", monospace;
+  font-size: clamp(8px, 0.8vw, 10px);
+  gap: 6px;
+}
+
+.ch13-telemetry {
+  background: rgba(6, 9, 17, 0.84);
+  border: 1px solid rgba(65, 105, 225, 0.55);
+  border-radius: 5px;
+  padding: 2px 7px;
+  color: #82aaff;
+  white-space: nowrap;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#ch13-node-inspector {
+  background: rgba(6, 9, 17, 0.88);
+  border: 1px solid rgba(255, 215, 0, 0.6);
+  border-radius: 5px;
+  padding: 2px 8px;
+  color: #FFD700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 50%;
+}
+
+.ch13-scrubber {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 0.8vw, 8px);
+  margin-top: 7px;
+  font-size: clamp(9px, 0.9vw, 11px);
+}
+
+.ch13-scrubber span {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ch13-scrubber input[type="range"] {
+  flex: 1 1 50px;
+  min-width: 35px;
+  accent-color: #FFD700;
+  height: 5px;
+  cursor: pointer;
+}
+
+.ch13-scrubber .ch13-hud-btn {
+  flex-shrink: 0;
+}
+
+#ch13-caption {
+  margin-top: 6px;
+  padding: 6px 9px;
+  background: rgba(4, 7, 14, 0.9);
+  border-left: 3px solid #20B2AA;
+  border-radius: 5px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: clamp(8.5px, 0.85vw, 10.5px);
+  line-height: 1.35;
+  color: #5eead4;
+}
+
+@media (max-width: 900px) {
+  #ch13-3d-hud {
+    right: 8px;
+    bottom: 8px;
+    width: clamp(280px, calc(100vw - 16px), 480px);
+    padding: 8px 10px 10px 10px;
+  }
+  .ch13-hud-title {
+    font-size: clamp(9px, 2vw, 11px);
+    gap: 2px 4px;
+    line-height: 1.1;
+  }
+  .ch13-hud-controls {
+    gap: 3px;
+  }
+  .ch13-hud-btn {
+    padding: 2px clamp(4px, 1vw, 7px);
+    font-size: clamp(8px, 1.8vw, 10px);
+  }
+  .ch13-scrubber {
+    gap: 4px;
+    font-size: 9.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  #ch13-3d-hud {
+    right: 4px;
+    bottom: 4px;
+    width: calc(100vw - 8px);
+    padding: 6px 8px 8px 8px;
+  }
+  .ch13-hud-title {
+    font-size: 8.5px;
+    line-height: 1.05;
+  }
+  .ch13-hud-btn {
+    padding: 2px 5px;
+    font-size: 8px;
+  }
+  .ch13-scrubber span {
+    font-size: 8.5px;
+  }
+}
+`;
+
+const CH13_3D_HTML = `<div class="ch13-hud-header">
+
+    <div class="ch13-hud-title">
+
+      <span>👁️ Ch 13 · 3D Qualia, Φ_topos &amp; Ego Engine</span>
+
+      <span id="ch13-stage-pill" style="background:#4169E1; color:#fff; padding:1px 7px; border-radius:4px; font-size:9.5px;">Stage 1.0 / 10</span>
+
+    </div>
+
+    <div class="ch13-hud-controls">
+
+      <button class="ch13-hud-btn active" id="ch13-btn-orbit" onclick="toggleCh13Orbit()">⟳ Orbit</button>
+
+      <button class="ch13-hud-btn" onclick="toggleCh13Spotlight()">⛶ Spotlight</button>
+
+      <button class="ch13-hud-btn" id="ch13-btn-min" onclick="toggleCh13Minimize()">+</button>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="ch13-hud-body">
+
+    <div class="ch13-canvas-wrap" id="ch13-canvas-wrap">
+
+      <canvas id="ch13-3d-canvas"></canvas>
+
+      <div class="ch13-overlay-bar">
+
+        <div class="ch13-telemetry" id="ch13-telemetry">Hol_A(∂Σ) ≠ id | Φ_topos | e* : 1 → A</div>
+
+        <div id="ch13-node-inspector">Drag to Orbit 3D · Click Node to Inspect</div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="ch13-scrubber">
+
+      <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
+
+      <input type="range" id="ch13-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh13Stage(this.value)">
+
+      <button class="ch13-hud-btn active" id="ch13-btn-sync" onclick="enableCh13Sync()">Auto-Sync</button>
+
+    </div>
+
+
+
+    <div id="ch13-caption">
+
+      <b>Stage 1 (§13.1.1 — Thm. 13.2):</b> Non-Abelian Stokes–Wilson Quale Holonomy Hol_A(∂Σ) = 𝒫 exp(−∬ [a₁, a₂]) ≠ id_G.
+
+    </div>
+
   </div>`;
 
 function injectCh133DHUD() {
@@ -740,6 +848,7 @@ function injectCh133DHUD() {
 
   const hudEl = document.createElement('div');
   hudEl.id = 'ch13-3d-hud';
+  hudEl.className = 'minimized';
   hudEl.innerHTML = CH13_3D_HTML;
   document.body.appendChild(hudEl);
 }
@@ -753,360 +862,717 @@ function injectCh133DHUD() {
     if (window.__ch13_3d_engine_initialized) return;
     window.__ch13_3d_engine_initialized = true;
 
-const canvas = document.getElementById('ch13-3d-canvas');
-  const wrap = document.getElementById('ch13-canvas-wrap');
-  if (!canvas || !wrap) return;
-  const ctx = canvas.getContext('2d');
-
-  let targetStage = 1.0;
-  let curStage = 1.0;
-  let autoSync = true;
-  let autoOrbit = true;
-  let camYaw = -0.50;
-  let camPitch = 0.36;
-  let camZoom = 1.0;
-  let isDragging = false;
-  let lastX = 0, lastY = 0;
-  let timeSec = 0;
-  let hitNodes = [];
-  let selectedId = null;
-
-  const STAGE_CAPTIONS = {
-    1: "<b>Stage 1 (§13.1.1 — Thm. 13.2 Stokes–Wilson Holonomy):</b> Flat channels (ℱ₁=ℱ₂=0) with [a₁,a₂]≠0 generate Hol_A(∂Σ) = 𝒫 exp(−∬[a₁,a₂]) ≠ id_G!",
-    2: "<b>Stage 2 (§13.1.2–13.1.4 — Thms. 13.3–13.5 Zeitkorn, Constancy &amp; ToM):</b> Saccade loop ∮_𝒞 A = 0 &amp; two-sided affinity interface ker T_β = ker S_β = {0}.",
-    3: "<b>Stage 3 (§13.1.5–13.1.6 — Thms. 13.6–13.8 BRST &amp; 3×3 Grid Â):</b> Observer-invariant H⁰_BRST(ℱ_ext) &amp; dimension-defect singularities A₁₂, A₂₂.",
-    4: "<b>Stage 4 (§13.2.1 — Thms. 13.9–13.10 Morse Separatrix &amp; DeTurck):</b> Parabolic heat-smoothed contraction Φ_apex (k_M < 1) onto stationary ²ḡ_∞.",
-    5: "<b>Stage 5 (§13.2.2 — Thm. 13.11 &amp; Def. 13.12 Postnikov Tower τ_{≤m}):</b> Filtering synaptic homotopy noise (π_k=0 for k>1) to π₁ rules &amp; π₀ concepts.",
-    6: "<b>Stage 6 (§13.3.1–13.3.2 — Thms. 13.13–13.14 6D Phenomenal Field R₆):</b> N²(N−6)(N+2)=0 ⇒ R₆ = R₄ × S₂ (21 Sym + 15 Skew Affective Hermetry).",
-    7: "<b>Stage 7 (§13.3.3–13.3.6 — Thms. 13.18–13.20 K₈ Harmonics &amp; DEC):</b> Orthonormal eigenmodes Sel(Ψ_k)=λ_kΨ_k on K₈ &amp; Stokes–Cartan d_h∘ℛ_h = ℛ_h∘d.",
-    8: "<b>Stage 8 (§13.4–13.5 — Def. 13.21 &amp; Thm. 13.22 Topos Φ_topos vs. IIT 4.0):</b> Polynomial O(N²) 3-node su(2) curvature triad vs. O(2^N) MIP explosion!",
-    9: "<b>Stage 9 (§13.6.1 — Thm. 13.24 Lawvere Ego Fixed-Point Theorem):</b> Diagonal self-reflection Δ_A induces invariant Ego Token e* : 1 → A (f∘y* = y*)!",
-    10: "<b>Stage 10 (§13.6.2–13.10 — Thm. 13.25 Active Inference &amp; Def. 13.26 REBUS):</b> Psychedelic de-encapsulation 𝔇_relax(𝒫) &amp; Lean 4 Import Firewall DAG!"
-  };
-
-  const STAGE_TELEMETRY = {
-    1: "Hol_A(∂Σ) = 𝒫 exp(−∬_Σ [a₁, a₂]) ≠ id_G",
-    2: "Hol_Syn(𝒞)(a) = a | ker T_β = ker S_β = {0}",
-    3: "ℋ_phenom = H⁰_BRST(ℱ_ext) | π : ∫_Ctx Syn → Ctx",
-    4: "‖Φ_apex(g₁) − Φ_apex(g₂)‖_{H^s} ≤ k_M ‖g₁−g₂‖",
-    5: "τ_{≤m} ⊣ ι_m : Map(τ_{≤m}X, Y) ≃ Map(X, Y)",
-    6: "R₆ = R₄ × S₂ | div_ḡ[Γ_(−)^(6,6)(G)] = 0",
-    7: "d_h ∘ ℛ_h^k = ℛ_h^{k+1} ∘ d | Λ_UV = 4/√τ",
-    8: "Φ_topos = ‖Ω_int^𝒟‖_{L²} exp(−‖Def_U‖²/2σ²)",
-    9: "Φ ∘ ⟨e*, e*⟩ = f(Φ ∘ ⟨e*, e*⟩) (Lawvere Thm. 13.24)",
-    10: "𝔇_relax : CSeg(𝒳_syn) → Alg_{𝒪_syn} (REBUS)"
-  };
-
-  function resize() {
-    const r = wrap.getBoundingClientRect();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = r.width * dpr;
-    canvas.height = r.height * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-
-  function proj(x, y, z, w, h) {
-    const cy = Math.cos(camYaw), sy = Math.sin(camYaw);
-    const x1 = x * cy - y * sy;
-    const y1 = x * sy + y * cy;
-    const cp = Math.cos(camPitch), sp = Math.sin(camPitch);
-    const y2 = y1 * cp - z * sp;
-    const z2 = y1 * sp + z * cp;
-    const fov = Math.min(w, h) * 0.43 * camZoom;
-    const sc = fov / Math.max(0.85, 4.6 - y2 * 0.45);
-    return { sx: w * 0.5 + x1 * sc, sy: h * 0.53 - z2 * sc, depth: y2, sc: sc / 100 };
-  }
-
-  function drawLine3D(p1, p2, col, lw, dash) {
-    ctx.save();
-    ctx.beginPath();
-    if (dash) ctx.setLineDash(dash);
-    ctx.strokeStyle = col;
-    ctx.lineWidth = lw || 2;
-    ctx.moveTo(p1.sx, p1.sy);
-    ctx.lineTo(p2.sx, p2.sy);
-    ctx.stroke();
-    ctx.restore();
-  }
-
-  function drawNode3D(id, x, y, z, r, fill, stroke, label, info, w, h) {
-    const p = proj(x, y, z, w, h);
-    hitNodes.push({ id, p, r, info });
-    const isSel = (selectedId === id);
-    ctx.save();
-    ctx.beginPath();
-    ctx.fillStyle = isSel ? "#ffffff" : fill;
-    ctx.strokeStyle = isSel ? "#FFD700" : (stroke || "#ffffff");
-    ctx.lineWidth = isSel ? 3.0 : 1.6;
-    ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.stroke();
-    if (label) {
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 9.5px sans-serif";
-      ctx.textAlign = "center";
-      ctx.fillText(label, p.sx, p.sy - r - 4);
-    }
-    ctx.restore();
-    return p;
-  }
-
-  // =========================================================================
-  // STAGE RENDERERS (STAGES 1 TO 10)
-  // =========================================================================
-
-  // Stage 1: Non-Abelian Stokes-Wilson Quale Holonomy Hol_A(\partial\Sigma) = P\exp(-\iint [a_1, a_2]) (Thm. 13.2)
-  function renderStage1(w, h) {
-    // Plaquette Surface \Sigma \subset M_U at z = -0.85
-    const s = 1.05;
-    const pl = [proj(-s, -s, -0.85, w, h), proj(s, -s, -0.85, w, h), proj(s, s, -0.85, w, h), proj(-s, s, -0.85, w, h)];
-    ctx.save();
-    ctx.fillStyle = "rgba(65, 105, 225, 0.22)";
-    ctx.strokeStyle = "#4169E1";
-    ctx.lineWidth = 2.4;
-    ctx.beginPath();
-    ctx.moveTo(pl[0].sx, pl[0].sy);
-    pl.slice(1).forEach(p => ctx.lineTo(p.sx, p.sy));
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.restore();
-
-    // Lifted Wilson Loop Helix in Principal Fiber G accumulating phase \iint_\Sigma [a_1, a_2]
-    ctx.beginPath();
-    ctx.strokeStyle = "#20B2AA";
-    ctx.lineWidth = 3.2;
-    for (let i = 0; i <= 60; i++) {
-      const t = i / 60;
-      const a = t * Math.PI * 2;
-      const p = proj(0.95 * Math.cos(a), 0.95 * Math.sin(a), -0.65 + t * 1.55, w, h);
-      if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
-    }
-    ctx.stroke();
-
-    drawNode3D("W_Start", 0.95, 0, -0.65, 7.5, "#4169E1", "#fff", "Γ(0) = id_G", "Initial Fiber Reference Frame before parallel transport around ∂Σ", w, h);
-    drawNode3D("W_End",   0.95, 0,  0.90, 9.5, "#FFD700", "#DC143C", "Hol_A(∂Σ) ≠ id_G", "Thm. 13.2 Pure Quale Commutator Phase Shift: 𝒫 exp(−∬_Σ [a₁,a₂]) ≠ id_G!", w, h);
-    drawNode3D("W_Flux",  0.00, 0,  0.10, 8.5, "#DC143C", "#FFD700", "∬_Σ [a₁, a₂]", "Surface Integral of Non-Abelian Commutator 2-Form over Σ", w, h);
-    drawLine3D(proj(0.95, 0, -0.65, w, h), proj(0.95, 0, 0.90, w, h), "#FFD700", 3.2, [4, 2]);
-  }
-
-  // Stage 2: Functorial Zeitkorn \delta t_n, Saccadic Object Constancy & Theory of Mind (Thms. 13.3-13.5)
-  function renderStage2(w, h) {
-    // Left: Saccadic Loop B_1 -> B_2 -> B_3 -> B_1 with zero holonomy defect \oint A = 0 (Thm. 13.4)
-    const b1 = drawNode3D("Sac_B1", -1.25, -0.65, 0.3, 7.5, "#20B2AA", "#fff", "B₁ (Fovea 1)", "Saccade Fixation Frame B₁ in ∫_Ctx Syn", w, h);
-    const b2 = drawNode3D("Sac_B2", -0.45,  0.85, 0.3, 7.5, "#20B2AA", "#fff", "B₂ (Fovea 2)", "Saccade Fixation Frame B₂: Hol_Syn(𝒞)(a) = a iff ∮_𝒞 A = 0 (Thm. 13.4)", w, h);
-    const b3 = drawNode3D("Sac_B3", -0.35, -0.65, -0.6, 7.5, "#20B2AA", "#fff", "B₃ (Fovea 3)", "Saccade Fixation Frame B₃ (Perceptual Object Constancy)", w, h);
-    drawLine3D(b1, b2, "#20B2AA", 2.6);
-    drawLine3D(b2, b3, "#20B2AA", 2.6);
-    drawLine3D(b3, b1, "#20B2AA", 2.6);
-
-    // Right: Intersubjective Affinity Bridge \beta^\infty between \mathcal{E}_A and \mathcal{E}_B (Thm. 13.5)
-    const eA = drawNode3D("ToM_A", 0.65, -0.65,  0.65, 9, "#4169E1", "#FFD700", "ℰ_A (Subject A)", "Autopsychological Topos ℰ_A with Metrophor Base F₀^A", w, h);
-    const eB = drawNode3D("ToM_B", 1.25,  0.65, -0.55, 9, "#FFA500", "#FFD700", "ℰ_B (Subject B)", "Autopsychological Topos ℰ_B: ker(T_β) = ker(S_β) = {0} (Faithful Theory of Mind!)", w, h);
-    drawLine3D(eA, eB, "#FFD700", 3.4);
-  }
-
-  // Stage 3 & 4: BRST Cohomology H^0_{BRST}, 3x3 Grid & DeTurck Parabolic Contraction (Thms. 13.6-13.10)
-  function renderStage3And4(w, h, st) {
-    const isStage4 = (st >= 3.5);
-    // 3D DeTurck / BRST Funnel converging onto Gauge-Invariant Stationary Core
-    for (let z = -0.9; z <= 0.91; z += 0.45) {
-      const s = (z + 0.9) / 1.8;
-      const rad = 0.22 + 1.05 * s;
-      ctx.beginPath();
-      ctx.strokeStyle = isStage4 ? "#20B2AA" : "#4169E1";
-      ctx.lineWidth = 1.8;
-      for (let i = 0; i <= 36; i++) {
-        const a = (i / 36) * Math.PI * 2;
-        const p = proj(rad * Math.cos(a), rad * Math.sin(a), z, w, h);
-        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
-      }
-      ctx.stroke();
-    }
-    drawNode3D("Core_Inv", 0, 0, -0.9, 11, "#FFD700", "#20B2AA", isStage4 ? "²ḡ_∞ ∈ C^∞(ℳ) (k_M < 1)" : "H⁰_BRST = ker s / im s", isStage4 ? "Thm. 13.10 DeTurck Parabolic Smoothing Contraction onto Stationary Apex Metric!" : "Thm. 13.6 Observer-Invariant Phenomenal Cohomology (s_BRST² ≡ 0)", w, h);
-    drawNode3D("Sing_A12", -1.15, 0.5, 0.75, 8, "#DC143C", "#fff", "⚠ A₁₂ / A₂₂ Singular", "Thm. 13.8 Dimension-Defect Topological Singularity (dim F(ℳ) ≠ dim ℳ)", w, h);
-  }
-
-  // Stage 5: Postnikov Homotopy Truncation Tower \tau_{\le m} \dashv \iota_m in \mathcal{X}_{syn} (Def. 13.12)
-  function renderStage5(w, h) {
-    const levels = [
-      { z:  0.95, col: "#DC143C", rip: 0.32, id: "Post_Inf", lbl: "X ∈ 𝒳_syn (Raw ∞-Stack: π_k jitter)", info: "Unfiltered Sensory ∞-Stack containing high-frequency thermal/synaptic homotopy fluctuations" },
-      { z:  0.00, col: "#20B2AA", rip: 0.08, id: "Post_1",   lbl: "τ_{≤1}(X) ∈ 𝒳_syn^{≤1} (π₁ Holonomy Rules)", info: "1-Truncation: Kills π_k = 0 for k ≥ 2 while preserving fundamental groupoid holonomy loops" },
-      { z: -0.95, col: "#FFD700", rip: 0.00, id: "Post_0",   lbl: "τ_{≤0}(X) ≃ π₀(X) ∈ ℰ_syn (0D Concepts)", info: "0-Truncation: Collapses paths into discrete conceptual Protosimplex pointers in 1-topos ℰ_syn" }
-    ];
-    levels.forEach(lv => {
-      ctx.beginPath();
-      ctx.strokeStyle = lv.col;
-      ctx.lineWidth = 2.4;
-      for (let i = 0; i <= 48; i++) {
-        const a = (i / 48) * Math.PI * 2;
-        const r = 1.05 + lv.rip * Math.sin(a * 8 + timeSec * 4);
-        const p = proj(r * Math.cos(a), r * Math.sin(a), lv.z, w, h);
-        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
-      }
-      ctx.stroke();
-      drawNode3D(lv.id, 0, 0, lv.z, 8.5, lv.col, "#fff", lv.lbl, lv.info, w, h);
-    });
-  }
-
-  // Stage 6 & 7: 6D Phenomenal Field R_6 = R_4 x S_2, K_8 Harmonics & Stokes-Cartan DEC (Thms. 13.13-13.20)
-  function renderStage6And7(w, h, st) {
-    const isStage7 = (st >= 6.5);
-    // 2D Affective Sphere S_2(x_5 Valence, x_6 Arousal) / Compact Fiber K_8
-    for (let lat = -45; lat <= 45; lat += 45) {
-      const r = 0.95 * Math.cos(lat * Math.PI / 180);
-      const z = 0.95 * Math.sin(lat * Math.PI / 180);
-      ctx.beginPath();
-      ctx.strokeStyle = "#20B2AA";
-      ctx.lineWidth = 2.0;
-      for (let i = 0; i <= 40; i++) {
-        const a = (i / 40) * Math.PI * 2;
-        const p = proj(r * Math.cos(a), r * Math.sin(a), z, w, h);
-        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
-      }
-      ctx.stroke();
-    }
-    drawNode3D("R6_Core", 0, 0, 0, 11, "#FFD700", "#DC143C", isStage7 ? "Sel(Ψ_k) = λ_k Ψ_k on K₈" : "R₆ = R₄ × S₂ (N=6 Root)", isStage7 ? "Thm. 13.18 Discrete Orthonormal Eigenbasis on Compact K₈ & Thm. 13.19 Stokes–Cartan d_h∘ℛ_h = ℛ_h∘d" : "Thm. 13.13 Phenomenal Condensation N²(N−6)(N+2)=0 ⇒ 36 = 21 Sym + 15 Skew Hermetry", w, h);
-    drawNode3D("S2_Val", 1.15, 0, 0, 7.5, "#FFA500", "#fff", "x₅ Valence (Negentropy)", "Entelechial Valence Axis: ℒ_{X₅} S_therm ≤ −γV < 0", w, h);
-    drawNode3D("S2_Aro", 0, 0, 1.15, 7.5, "#4169E1", "#fff", "x₆ Arousal (1/δt_n)", "Aeonic Arousal Axis & Intentional Agency Commutator [∂₅, ∂₆]", w, h);
-  }
-
-  // Stage 8: Topos Integrated Information \Phi_{topos} (O(N^2)) vs Classical IIT 4.0 (O(2^N), Def. 13.21-Prop. 13.23)
-  function renderStage8(w, h) {
-    // 3-Node su(2) Bound Triad (\omega_1, \omega_2, \omega_3) with polynomial O(N^2) Lie Bracket Edges
-    const n1 = drawNode3D("Phi_1", -1.10, -0.70, 0, 9, "#4169E1", "#fff", "Module V₁ (ω₁ T₁)", "Cortical Stream 1: su(2) Generator T₁ with strength ω₁", w, h);
-    const n2 = drawNode3D("Phi_2",  1.10, -0.70, 0, 9, "#20B2AA", "#fff", "Module V₂ (ω₂ T₂)", "Cortical Stream 2: su(2) Generator T₂ with strength ω₂", w, h);
-    const n3 = drawNode3D("Phi_3",  0.00,  1.05, 0, 9, "#FFA500", "#fff", "Module V₃ (ω₃ T₃)", "Cortical Stream 3: su(2) Generator T₃ with strength ω₃", w, h);
-
-    drawLine3D(n1, n2, "#FFD700", 3.4);
-    drawLine3D(n2, n3, "#FFD700", 3.4);
-    drawLine3D(n3, n1, "#FFD700", 3.4);
-
-    drawNode3D("Phi_Center", 0, -0.1, 0.35, 11.5, "#FFD700", "#DC143C", "Φ_topos = ½√(∑ ω_i²ω_j²) (O(N²))", "Thm. 13.22 & Prop. 13.23: Polynomial O(N²) Lie curvature + Čech descent replaces O(2^N) MIP cuts!", w, h);
-  }
-
-  // Stage 9: Lawvere Diagonal Ego Fixed-Point Theorem e* : 1 -> A (Thm. 13.24)
-  function renderStage9(w, h) {
-    // 3D Figure-Eight / Möbius Diagonal Self-Evaluation Loop \Delta_A : A -> A \times A -> \Omega
-    ctx.beginPath();
-    ctx.strokeStyle = "#FFD700";
-    ctx.lineWidth = 3.2;
-    for (let i = 0; i <= 80; i++) {
-      const t = (i / 80) * Math.PI * 2;
-      const x = 1.25 * Math.sin(t);
-      const y = 0.85 * Math.sin(2 * t);
-      const z = 0.55 * Math.cos(t + timeSec * 2);
-      const p = proj(x, y, z, w, h);
-      if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
-    }
-    ctx.stroke();
-
-    const pTerm = drawNode3D("Law_1", -1.25, 0, -0.65, 8, "#4169E1", "#fff", "Terminal 1", "Terminal Object 1 in Cartesian Closed Category 𝒞", w, h);
-    const pEgo  = drawNode3D("Law_Ego", 0, 0, 0, 12, "#FFD700", "#DC143C", "Ego Token e* : 1 → A", "Thm. 13.24 Lawvere Fixed Point: Φ ∘ ⟨e*, e*⟩ = f(Φ ∘ ⟨e*, e*⟩) (Self-awareness without regress!)", w, h);
-    const pOm   = drawNode3D("Law_Om",  1.25, 0,  0.65, 9, "#20B2AA", "#fff", "y* ∈ Ω (f ∘ y* = y*)", "Fixed Point in Internal Truth/Evaluation Object Ω under endomorphism f : Ω → Ω", w, h);
-
-    drawLine3D(pTerm, pEgo, "#4169E1", 3.0);
-    drawLine3D(pEgo, pOm, "#20B2AA", 3.0);
-  }
-
-  // Stage 10: Active Inference Descent, REBUS De-Encapsulation \mathfrak{D}_{relax} & Lean 4 Firewall (Def. 13.26)
-  function renderStage10(w, h) {
-    // Central Protosimplex \mathcal{P} blossoming outward under REBUS De-Encapsulation \mathfrak{D}_{relax}
-    const pCore = drawNode3D("Reb_Core", 0, 0, 0, 10.5, "#FFD700", "#9370DB", "𝔇_relax(𝒫) = Free_{𝒪_syn}(x_i)", "Def. 13.26 REBUS De-Encapsulation: 5-HT₂A prior relaxation unravels 0D tokens into Tier-II syntax!", w, h);
-    const expRad = 0.75 + 0.55 * (0.5 + 0.5 * Math.sin(timeSec * 2.2));
-    for (let k = 0; k < 8; k++) {
-      const a = timeSec * 0.8 + (k / 8) * Math.PI * 2;
-      const x = expRad * Math.cos(a), y = expRad * Math.sin(a), z = 0.55 * Math.sin(a * 2 + timeSec);
-      const pF = drawNode3D("Reb_" + k, x, y, z, 6, k % 2 === 0 ? "#20B2AA" : "#FFA500", "#fff", k === 0 ? "Unraveled Tier-II Syntax" : "", "Unraveled Micro-Circuit Filament flooding Global Workspace (Synesthesia / Ego Dissolution)", w, h);
-      drawLine3D(pCore, pF, "#9370DB", 2.0, [3, 2]);
-    }
-  }
-
-  // Master 60fps Loop
-  function renderLoop() {
-    timeSec += 0.016;
-    curStage += (targetStage - curStage) * 0.14;
-    if (autoOrbit && !isDragging) camYaw += 0.0055;
-
-    const w = wrap.clientWidth, h = wrap.clientHeight;
-    if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
-      resize();
-    }
-    ctx.clearRect(0, 0, w, h);
-    hitNodes = [];
-
-    const stInt = Math.round(curStage);
-    if (stInt === 1) renderStage1(w, h);
-    else if (stInt === 2) renderStage2(w, h);
-    else if (stInt === 3 || stInt === 4) renderStage3And4(w, h, curStage);
-    else if (stInt === 5) renderStage5(w, h);
-    else if (stInt === 6 || stInt === 7) renderStage6And7(w, h, curStage);
-    else if (stInt === 8) renderStage8(w, h);
-    else if (stInt === 9) renderStage9(w, h);
-    else renderStage10(w, h);
-
-    requestAnimationFrame(renderLoop);
-  }
-
-  // UI & Slide Sync Controllers
-  window.setCh13Stage = function(val, manual) {
-    targetStage = Math.max(1.0, Math.min(10.0, parseFloat(val)));
-    const stInt = Math.round(targetStage);
-
-    const sl = document.getElementById('ch13-slider');
-    if (sl && Math.abs(parseFloat(sl.value) - targetStage) > 0.02) sl.value = targetStage;
-
-    const pill = document.getElementById('ch13-stage-pill');
-    if (pill) pill.innerText = `Stage ${targetStage.toFixed(1)} / 10`;
-
-    const cap = document.getElementById('ch13-caption');
-    if (cap) cap.innerHTML = STAGE_CAPTIONS[stInt] || STAGE_CAPTIONS[1];
-
-    const tel = document.getElementById('ch13-telemetry');
-    if (tel) tel.innerText = STAGE_TELEMETRY[stInt] || STAGE_TELEMETRY[1];
-
-    if (manual) {
-      autoSync = false;
-      const b = document.getElementById('ch13-btn-sync');
-      if (b) { b.classList.remove('active'); b.innerText = "Manual"; }
-    }
-  };
-
-  window.scrubCh13Stage = function(val) { window.setCh13Stage(val, true); };
-
-  window.enableCh13Sync = function() {
-    autoSync = true;
-    const b = document.getElementById('ch13-btn-sync');
-    if (b) { b.classList.add('active'); b.innerText = "Auto-Sync"; }
-    syncCh13WithDeck();
-  };
-
-  window.toggleCh13Orbit = function() {
-    autoOrbit = !autoOrbit;
-    const b = document.getElementById('ch13-btn-orbit');
-    if (b) b.classList.toggle('active', autoOrbit);
-  };
-
-  window.toggleCh13Spotlight = function() {
-    const hud = document.getElementById('ch13-3d-hud');
-    if (hud) {
-      hud.classList.remove('minimized');
-      hud.classList.toggle('spotlight');
-      setTimeout(resize, 360);
-    }
-  };
-
-  window.toggleCh13Minimize = function() {
-    const hud = document.getElementById('ch13-3d-hud');
-    const b = document.getElementById('ch13-btn-min');
-    if (hud) {
-      hud.classList.remove('spotlight');
-      hud.classList.toggle('minimized');
-      if (b) b.innerText = hud.classList.contains('minimized') ? "+" : "—";
-      setTimeout(resize, 360);
-    }
-  };
-
+const canvas = document.getElementById('ch13-3d-canvas');
+
+  const wrap = document.getElementById('ch13-canvas-wrap');
+
+  if (!canvas || !wrap) return;
+
+  const ctx = canvas.getContext('2d');
+
+
+
+  let targetStage = 1.0;
+
+  let curStage = 1.0;
+
+  let autoSync = true;
+
+  let autoOrbit = true;
+
+  let camYaw = -0.50;
+
+  let camPitch = 0.36;
+
+  let camZoom = 1.65;
+
+  let isDragging = false;
+
+  let lastX = 0, lastY = 0;
+
+  let timeSec = 0;
+
+  let hitNodes = [];
+
+  let selectedId = null;
+
+
+
+  const STAGE_CAPTIONS = {
+
+    1: "<b>Stage 1 (§13.1.1 — Thm. 13.2 Stokes–Wilson Holonomy):</b> Flat channels (ℱ₁=ℱ₂=0) with [a₁,a₂]≠0 generate Hol_A(∂Σ) = 𝒫 exp(−∬[a₁,a₂]) ≠ id_G!",
+
+    2: "<b>Stage 2 (§13.1.2–13.1.4 — Thms. 13.3–13.5 Zeitkorn, Constancy &amp; ToM):</b> Saccade loop ∮_𝒞 A = 0 &amp; two-sided affinity interface ker T_β = ker S_β = {0}.",
+
+    3: "<b>Stage 3 (§13.1.5–13.1.6 — Thms. 13.6–13.8 BRST &amp; 3×3 Grid Â):</b> Observer-invariant H⁰_BRST(ℱ_ext) &amp; dimension-defect singularities A₁₂, A₂₂.",
+
+    4: "<b>Stage 4 (§13.2.1 — Thms. 13.9–13.10 Morse Separatrix &amp; DeTurck):</b> Parabolic heat-smoothed contraction Φ_apex (k_M < 1) onto stationary ²ḡ_∞.",
+
+    5: "<b>Stage 5 (§13.2.2 — Thm. 13.11 &amp; Def. 13.12 Postnikov Tower τ_{≤m}):</b> Filtering synaptic homotopy noise (π_k=0 for k>1) to π₁ rules &amp; π₀ concepts.",
+
+    6: "<b>Stage 6 (§13.3.1–13.3.2 — Thms. 13.13–13.14 6D Phenomenal Field R₆):</b> N²(N−6)(N+2)=0 ⇒ R₆ = R₄ × S₂ (21 Sym + 15 Skew Affective Hermetry).",
+
+    7: "<b>Stage 7 (§13.3.3–13.3.6 — Thms. 13.18–13.20 K₈ Harmonics &amp; DEC):</b> Orthonormal eigenmodes Sel(Ψ_k)=λ_kΨ_k on K₈ &amp; Stokes–Cartan d_h∘ℛ_h = ℛ_h∘d.",
+
+    8: "<b>Stage 8 (§13.4–13.5 — Def. 13.21 &amp; Thm. 13.22 Topos Φ_topos vs. IIT 4.0):</b> Polynomial O(N²) 3-node su(2) curvature triad vs. O(2^N) MIP explosion!",
+
+    9: "<b>Stage 9 (§13.6.1 — Thm. 13.24 Lawvere Ego Fixed-Point Theorem):</b> Diagonal self-reflection Δ_A induces invariant Ego Token e* : 1 → A (f∘y* = y*)!",
+
+    10: "<b>Stage 10 (§13.6.2–13.10 — Thm. 13.25 Active Inference &amp; Def. 13.26 REBUS):</b> Psychedelic de-encapsulation 𝔇_relax(𝒫) &amp; Lean 4 Import Firewall DAG!"
+
+  };
+
+
+
+  const STAGE_TELEMETRY = {
+
+    1: "Hol_A(∂Σ) = 𝒫 exp(−∬_Σ [a₁, a₂]) ≠ id_G",
+
+    2: "Hol_Syn(𝒞)(a) = a | ker T_β = ker S_β = {0}",
+
+    3: "ℋ_phenom = H⁰_BRST(ℱ_ext) | π : ∫_Ctx Syn → Ctx",
+
+    4: "‖Φ_apex(g₁) − Φ_apex(g₂)‖_{H^s} ≤ k_M ‖g₁−g₂‖",
+
+    5: "τ_{≤m} ⊣ ι_m : Map(τ_{≤m}X, Y) ≃ Map(X, Y)",
+
+    6: "R₆ = R₄ × S₂ | div_ḡ[Γ_(−)^(6,6)(G)] = 0",
+
+    7: "d_h ∘ ℛ_h^k = ℛ_h^{k+1} ∘ d | Λ_UV = 4/√τ",
+
+    8: "Φ_topos = ‖Ω_int^𝒟‖_{L²} exp(−‖Def_U‖²/2σ²)",
+
+    9: "Φ ∘ ⟨e*, e*⟩ = f(Φ ∘ ⟨e*, e*⟩) (Lawvere Thm. 13.24)",
+
+    10: "𝔇_relax : CSeg(𝒳_syn) → Alg_{𝒪_syn} (REBUS)"
+
+  };
+
+
+
+  function resize() {
+
+    const r = wrap.getBoundingClientRect();
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = r.width * dpr;
+
+    canvas.height = r.height * dpr;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  }
+
+
+
+  function proj(x, y, z, w, h) {
+
+    const cy = Math.cos(camYaw), sy = Math.sin(camYaw);
+
+    const x1 = x * cy - y * sy;
+
+    const y1 = x * sy + y * cy;
+
+    const cp = Math.cos(camPitch), sp = Math.sin(camPitch);
+
+    const y2 = y1 * cp - z * sp;
+
+    const z2 = y1 * sp + z * cp;
+
+    const fov = Math.min(w, h) * 0.43 * camZoom;
+
+    const sc = fov / Math.max(0.85, 4.6 - y2 * 0.45);
+
+    return { sx: w * 0.5 + x1 * sc, sy: h * 0.53 - z2 * sc, depth: y2, sc: sc / 100 };
+
+  }
+
+
+
+  function drawLine3D(p1, p2, col, lw, dash) {
+
+    ctx.save();
+
+    ctx.beginPath();
+
+    if (dash) ctx.setLineDash(dash);
+
+    ctx.strokeStyle = col;
+
+    ctx.lineWidth = lw || 2;
+
+    ctx.moveTo(p1.sx, p1.sy);
+
+    ctx.lineTo(p2.sx, p2.sy);
+
+    ctx.stroke();
+
+    ctx.restore();
+
+  }
+
+
+
+  function drawNode3D(id, x, y, z, r, fill, stroke, label, info, w, h) {
+
+    const p = proj(x, y, z, w, h);
+
+    hitNodes.push({ id, p, r, info });
+
+    const isSel = (selectedId === id);
+
+    ctx.save();
+
+    ctx.beginPath();
+
+    ctx.fillStyle = isSel ? "#ffffff" : fill;
+
+    ctx.strokeStyle = isSel ? "#FFD700" : (stroke || "#ffffff");
+
+    ctx.lineWidth = isSel ? 3.0 : 1.6;
+
+    ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+
+    ctx.fill();
+
+    ctx.stroke();
+
+    if (label) {
+
+      ctx.fillStyle = "#ffffff";
+
+      ctx.font = "bold 9.5px sans-serif";
+
+      ctx.textAlign = "center";
+
+      ctx.fillText(label, p.sx, p.sy - r - 4);
+
+    }
+
+    ctx.restore();
+
+    return p;
+
+  }
+
+
+
+  // =========================================================================
+
+  // STAGE RENDERERS (STAGES 1 TO 10)
+
+  // =========================================================================
+
+
+
+  // Stage 1: Non-Abelian Stokes-Wilson Quale Holonomy Hol_A(\partial\Sigma) = P\exp(-\iint [a_1, a_2]) (Thm. 13.2)
+
+  function renderStage1(w, h) {
+
+    // Plaquette Surface \Sigma \subset M_U at z = -0.85
+
+    const s = 1.05;
+
+    const pl = [proj(-s, -s, -0.85, w, h), proj(s, -s, -0.85, w, h), proj(s, s, -0.85, w, h), proj(-s, s, -0.85, w, h)];
+
+    ctx.save();
+
+    ctx.fillStyle = "rgba(65, 105, 225, 0.22)";
+
+    ctx.strokeStyle = "#4169E1";
+
+    ctx.lineWidth = 2.4;
+
+    ctx.beginPath();
+
+    ctx.moveTo(pl[0].sx, pl[0].sy);
+
+    pl.slice(1).forEach(p => ctx.lineTo(p.sx, p.sy));
+
+    ctx.closePath();
+
+    ctx.fill();
+
+    ctx.stroke();
+
+    ctx.restore();
+
+
+
+    // Lifted Wilson Loop Helix in Principal Fiber G accumulating phase \iint_\Sigma [a_1, a_2]
+
+    ctx.beginPath();
+
+    ctx.strokeStyle = "#20B2AA";
+
+    ctx.lineWidth = 3.2;
+
+    for (let i = 0; i <= 60; i++) {
+
+      const t = i / 60;
+
+      const a = t * Math.PI * 2;
+
+      const p = proj(0.95 * Math.cos(a), 0.95 * Math.sin(a), -0.65 + t * 1.55, w, h);
+
+      if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+    }
+
+    ctx.stroke();
+
+
+
+    drawNode3D("W_Start", 0.95, 0, -0.65, 7.5, "#4169E1", "#fff", "Γ(0) = id_G", "Initial Fiber Reference Frame before parallel transport around ∂Σ", w, h);
+
+    drawNode3D("W_End",   0.95, 0,  0.90, 9.5, "#FFD700", "#DC143C", "Hol_A(∂Σ) ≠ id_G", "Thm. 13.2 Pure Quale Commutator Phase Shift: 𝒫 exp(−∬_Σ [a₁,a₂]) ≠ id_G!", w, h);
+
+    drawNode3D("W_Flux",  0.00, 0,  0.10, 8.5, "#DC143C", "#FFD700", "∬_Σ [a₁, a₂]", "Surface Integral of Non-Abelian Commutator 2-Form over Σ", w, h);
+
+    drawLine3D(proj(0.95, 0, -0.65, w, h), proj(0.95, 0, 0.90, w, h), "#FFD700", 3.2, [4, 2]);
+
+  }
+
+
+
+  // Stage 2: Functorial Zeitkorn \delta t_n, Saccadic Object Constancy & Theory of Mind (Thms. 13.3-13.5)
+
+  function renderStage2(w, h) {
+
+    // Left: Saccadic Loop B_1 -> B_2 -> B_3 -> B_1 with zero holonomy defect \oint A = 0 (Thm. 13.4)
+
+    const b1 = drawNode3D("Sac_B1", -1.25, -0.65, 0.3, 7.5, "#20B2AA", "#fff", "B₁ (Fovea 1)", "Saccade Fixation Frame B₁ in ∫_Ctx Syn", w, h);
+
+    const b2 = drawNode3D("Sac_B2", -0.45,  0.85, 0.3, 7.5, "#20B2AA", "#fff", "B₂ (Fovea 2)", "Saccade Fixation Frame B₂: Hol_Syn(𝒞)(a) = a iff ∮_𝒞 A = 0 (Thm. 13.4)", w, h);
+
+    const b3 = drawNode3D("Sac_B3", -0.35, -0.65, -0.6, 7.5, "#20B2AA", "#fff", "B₃ (Fovea 3)", "Saccade Fixation Frame B₃ (Perceptual Object Constancy)", w, h);
+
+    drawLine3D(b1, b2, "#20B2AA", 2.6);
+
+    drawLine3D(b2, b3, "#20B2AA", 2.6);
+
+    drawLine3D(b3, b1, "#20B2AA", 2.6);
+
+
+
+    // Right: Intersubjective Affinity Bridge \beta^\infty between \mathcal{E}_A and \mathcal{E}_B (Thm. 13.5)
+
+    const eA = drawNode3D("ToM_A", 0.65, -0.65,  0.65, 9, "#4169E1", "#FFD700", "ℰ_A (Subject A)", "Autopsychological Topos ℰ_A with Metrophor Base F₀^A", w, h);
+
+    const eB = drawNode3D("ToM_B", 1.25,  0.65, -0.55, 9, "#FFA500", "#FFD700", "ℰ_B (Subject B)", "Autopsychological Topos ℰ_B: ker(T_β) = ker(S_β) = {0} (Faithful Theory of Mind!)", w, h);
+
+    drawLine3D(eA, eB, "#FFD700", 3.4);
+
+  }
+
+
+
+  // Stage 3 & 4: BRST Cohomology H^0_{BRST}, 3x3 Grid & DeTurck Parabolic Contraction (Thms. 13.6-13.10)
+
+  function renderStage3And4(w, h, st) {
+
+    const isStage4 = (st >= 3.5);
+
+    // 3D DeTurck / BRST Funnel converging onto Gauge-Invariant Stationary Core
+
+    for (let z = -0.9; z <= 0.91; z += 0.45) {
+
+      const s = (z + 0.9) / 1.8;
+
+      const rad = 0.22 + 1.05 * s;
+
+      ctx.beginPath();
+
+      ctx.strokeStyle = isStage4 ? "#20B2AA" : "#4169E1";
+
+      ctx.lineWidth = 1.8;
+
+      for (let i = 0; i <= 36; i++) {
+
+        const a = (i / 36) * Math.PI * 2;
+
+        const p = proj(rad * Math.cos(a), rad * Math.sin(a), z, w, h);
+
+        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+      }
+
+      ctx.stroke();
+
+    }
+
+    drawNode3D("Core_Inv", 0, 0, -0.9, 11, "#FFD700", "#20B2AA", isStage4 ? "²ḡ_∞ ∈ C^∞(ℳ) (k_M < 1)" : "H⁰_BRST = ker s / im s", isStage4 ? "Thm. 13.10 DeTurck Parabolic Smoothing Contraction onto Stationary Apex Metric!" : "Thm. 13.6 Observer-Invariant Phenomenal Cohomology (s_BRST² ≡ 0)", w, h);
+
+    drawNode3D("Sing_A12", -1.15, 0.5, 0.75, 8, "#DC143C", "#fff", "⚠ A₁₂ / A₂₂ Singular", "Thm. 13.8 Dimension-Defect Topological Singularity (dim F(ℳ) ≠ dim ℳ)", w, h);
+
+  }
+
+
+
+  // Stage 5: Postnikov Homotopy Truncation Tower \tau_{\le m} \dashv \iota_m in \mathcal{X}_{syn} (Def. 13.12)
+
+  function renderStage5(w, h) {
+
+    const levels = [
+
+      { z:  0.95, col: "#DC143C", rip: 0.32, id: "Post_Inf", lbl: "X ∈ 𝒳_syn (Raw ∞-Stack: π_k jitter)", info: "Unfiltered Sensory ∞-Stack containing high-frequency thermal/synaptic homotopy fluctuations" },
+
+      { z:  0.00, col: "#20B2AA", rip: 0.08, id: "Post_1",   lbl: "τ_{≤1}(X) ∈ 𝒳_syn^{≤1} (π₁ Holonomy Rules)", info: "1-Truncation: Kills π_k = 0 for k ≥ 2 while preserving fundamental groupoid holonomy loops" },
+
+      { z: -0.95, col: "#FFD700", rip: 0.00, id: "Post_0",   lbl: "τ_{≤0}(X) ≃ π₀(X) ∈ ℰ_syn (0D Concepts)", info: "0-Truncation: Collapses paths into discrete conceptual Protosimplex pointers in 1-topos ℰ_syn" }
+
+    ];
+
+    levels.forEach(lv => {
+
+      ctx.beginPath();
+
+      ctx.strokeStyle = lv.col;
+
+      ctx.lineWidth = 2.4;
+
+      for (let i = 0; i <= 48; i++) {
+
+        const a = (i / 48) * Math.PI * 2;
+
+        const r = 1.05 + lv.rip * Math.sin(a * 8 + timeSec * 4);
+
+        const p = proj(r * Math.cos(a), r * Math.sin(a), lv.z, w, h);
+
+        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+      }
+
+      ctx.stroke();
+
+      drawNode3D(lv.id, 0, 0, lv.z, 8.5, lv.col, "#fff", lv.lbl, lv.info, w, h);
+
+    });
+
+  }
+
+
+
+  // Stage 6 & 7: 6D Phenomenal Field R_6 = R_4 x S_2, K_8 Harmonics & Stokes-Cartan DEC (Thms. 13.13-13.20)
+
+  function renderStage6And7(w, h, st) {
+
+    const isStage7 = (st >= 6.5);
+
+    // 2D Affective Sphere S_2(x_5 Valence, x_6 Arousal) / Compact Fiber K_8
+
+    for (let lat = -45; lat <= 45; lat += 45) {
+
+      const r = 0.95 * Math.cos(lat * Math.PI / 180);
+
+      const z = 0.95 * Math.sin(lat * Math.PI / 180);
+
+      ctx.beginPath();
+
+      ctx.strokeStyle = "#20B2AA";
+
+      ctx.lineWidth = 2.0;
+
+      for (let i = 0; i <= 40; i++) {
+
+        const a = (i / 40) * Math.PI * 2;
+
+        const p = proj(r * Math.cos(a), r * Math.sin(a), z, w, h);
+
+        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+      }
+
+      ctx.stroke();
+
+    }
+
+    drawNode3D("R6_Core", 0, 0, 0, 11, "#FFD700", "#DC143C", isStage7 ? "Sel(Ψ_k) = λ_k Ψ_k on K₈" : "R₆ = R₄ × S₂ (N=6 Root)", isStage7 ? "Thm. 13.18 Discrete Orthonormal Eigenbasis on Compact K₈ & Thm. 13.19 Stokes–Cartan d_h∘ℛ_h = ℛ_h∘d" : "Thm. 13.13 Phenomenal Condensation N²(N−6)(N+2)=0 ⇒ 36 = 21 Sym + 15 Skew Hermetry", w, h);
+
+    drawNode3D("S2_Val", 1.15, 0, 0, 7.5, "#FFA500", "#fff", "x₅ Valence (Negentropy)", "Entelechial Valence Axis: ℒ_{X₅} S_therm ≤ −γV < 0", w, h);
+
+    drawNode3D("S2_Aro", 0, 0, 1.15, 7.5, "#4169E1", "#fff", "x₆ Arousal (1/δt_n)", "Aeonic Arousal Axis & Intentional Agency Commutator [∂₅, ∂₆]", w, h);
+
+  }
+
+
+
+  // Stage 8: Topos Integrated Information \Phi_{topos} (O(N^2)) vs Classical IIT 4.0 (O(2^N), Def. 13.21-Prop. 13.23)
+
+  function renderStage8(w, h) {
+
+    // 3-Node su(2) Bound Triad (\omega_1, \omega_2, \omega_3) with polynomial O(N^2) Lie Bracket Edges
+
+    const n1 = drawNode3D("Phi_1", -1.10, -0.70, 0, 9, "#4169E1", "#fff", "Module V₁ (ω₁ T₁)", "Cortical Stream 1: su(2) Generator T₁ with strength ω₁", w, h);
+
+    const n2 = drawNode3D("Phi_2",  1.10, -0.70, 0, 9, "#20B2AA", "#fff", "Module V₂ (ω₂ T₂)", "Cortical Stream 2: su(2) Generator T₂ with strength ω₂", w, h);
+
+    const n3 = drawNode3D("Phi_3",  0.00,  1.05, 0, 9, "#FFA500", "#fff", "Module V₃ (ω₃ T₃)", "Cortical Stream 3: su(2) Generator T₃ with strength ω₃", w, h);
+
+
+
+    drawLine3D(n1, n2, "#FFD700", 3.4);
+
+    drawLine3D(n2, n3, "#FFD700", 3.4);
+
+    drawLine3D(n3, n1, "#FFD700", 3.4);
+
+
+
+    drawNode3D("Phi_Center", 0, -0.1, 0.35, 11.5, "#FFD700", "#DC143C", "Φ_topos = ½√(∑ ω_i²ω_j²) (O(N²))", "Thm. 13.22 & Prop. 13.23: Polynomial O(N²) Lie curvature + Čech descent replaces O(2^N) MIP cuts!", w, h);
+
+  }
+
+
+
+  // Stage 9: Lawvere Diagonal Ego Fixed-Point Theorem e* : 1 -> A (Thm. 13.24)
+
+  function renderStage9(w, h) {
+
+    // 3D Figure-Eight / Möbius Diagonal Self-Evaluation Loop \Delta_A : A -> A \times A -> \Omega
+
+    ctx.beginPath();
+
+    ctx.strokeStyle = "#FFD700";
+
+    ctx.lineWidth = 3.2;
+
+    for (let i = 0; i <= 80; i++) {
+
+      const t = (i / 80) * Math.PI * 2;
+
+      const x = 1.25 * Math.sin(t);
+
+      const y = 0.85 * Math.sin(2 * t);
+
+      const z = 0.55 * Math.cos(t + timeSec * 2);
+
+      const p = proj(x, y, z, w, h);
+
+      if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+    }
+
+    ctx.stroke();
+
+
+
+    const pTerm = drawNode3D("Law_1", -1.25, 0, -0.65, 8, "#4169E1", "#fff", "Terminal 1", "Terminal Object 1 in Cartesian Closed Category 𝒞", w, h);
+
+    const pEgo  = drawNode3D("Law_Ego", 0, 0, 0, 12, "#FFD700", "#DC143C", "Ego Token e* : 1 → A", "Thm. 13.24 Lawvere Fixed Point: Φ ∘ ⟨e*, e*⟩ = f(Φ ∘ ⟨e*, e*⟩) (Self-awareness without regress!)", w, h);
+
+    const pOm   = drawNode3D("Law_Om",  1.25, 0,  0.65, 9, "#20B2AA", "#fff", "y* ∈ Ω (f ∘ y* = y*)", "Fixed Point in Internal Truth/Evaluation Object Ω under endomorphism f : Ω → Ω", w, h);
+
+
+
+    drawLine3D(pTerm, pEgo, "#4169E1", 3.0);
+
+    drawLine3D(pEgo, pOm, "#20B2AA", 3.0);
+
+  }
+
+
+
+  // Stage 10: Active Inference Descent, REBUS De-Encapsulation \mathfrak{D}_{relax} & Lean 4 Firewall (Def. 13.26)
+
+  function renderStage10(w, h) {
+
+    // Central Protosimplex \mathcal{P} blossoming outward under REBUS De-Encapsulation \mathfrak{D}_{relax}
+
+    const pCore = drawNode3D("Reb_Core", 0, 0, 0, 10.5, "#FFD700", "#9370DB", "𝔇_relax(𝒫) = Free_{𝒪_syn}(x_i)", "Def. 13.26 REBUS De-Encapsulation: 5-HT₂A prior relaxation unravels 0D tokens into Tier-II syntax!", w, h);
+
+    const expRad = 0.75 + 0.55 * (0.5 + 0.5 * Math.sin(timeSec * 2.2));
+
+    for (let k = 0; k < 8; k++) {
+
+      const a = timeSec * 0.8 + (k / 8) * Math.PI * 2;
+
+      const x = expRad * Math.cos(a), y = expRad * Math.sin(a), z = 0.55 * Math.sin(a * 2 + timeSec);
+
+      const pF = drawNode3D("Reb_" + k, x, y, z, 6, k % 2 === 0 ? "#20B2AA" : "#FFA500", "#fff", k === 0 ? "Unraveled Tier-II Syntax" : "", "Unraveled Micro-Circuit Filament flooding Global Workspace (Synesthesia / Ego Dissolution)", w, h);
+
+      drawLine3D(pCore, pF, "#9370DB", 2.0, [3, 2]);
+
+    }
+
+  }
+
+
+
+  // Master 60fps Loop
+
+  function renderLoop() {
+
+    timeSec += 0.016;
+
+    curStage += (targetStage - curStage) * 0.14;
+
+    if (autoOrbit && !isDragging) camYaw += 0.0055;
+
+
+
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+    if (w <= 0 || h <= 0) {
+      requestAnimationFrame(renderLoop);
+      return;
+    }
+    if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
+
+      resize();
+
+    }
+
+    ctx.clearRect(0, 0, w, h);
+
+    hitNodes = [];
+
+
+
+    const stInt = Math.round(curStage);
+
+    if (stInt === 1) renderStage1(w, h);
+
+    else if (stInt === 2) renderStage2(w, h);
+
+    else if (stInt === 3 || stInt === 4) renderStage3And4(w, h, curStage);
+
+    else if (stInt === 5) renderStage5(w, h);
+
+    else if (stInt === 6 || stInt === 7) renderStage6And7(w, h, curStage);
+
+    else if (stInt === 8) renderStage8(w, h);
+
+    else if (stInt === 9) renderStage9(w, h);
+
+    else renderStage10(w, h);
+
+
+
+    requestAnimationFrame(renderLoop);
+
+  }
+
+
+
+  // UI & Slide Sync Controllers
+
+  window.setCh13Stage = function(val, manual) {
+
+    targetStage = Math.max(1.0, Math.min(10.0, parseFloat(val)));
+
+    const stInt = Math.round(targetStage);
+
+
+
+    const sl = document.getElementById('ch13-slider');
+
+    if (sl && Math.abs(parseFloat(sl.value) - targetStage) > 0.02) sl.value = targetStage;
+
+
+
+    const pill = document.getElementById('ch13-stage-pill');
+
+    if (pill) pill.innerText = `Stage ${targetStage.toFixed(1)} / 10`;
+
+
+
+    const cap = document.getElementById('ch13-caption');
+
+    if (cap) cap.innerHTML = STAGE_CAPTIONS[stInt] || STAGE_CAPTIONS[1];
+
+
+
+    const tel = document.getElementById('ch13-telemetry');
+
+    if (tel) tel.innerText = STAGE_TELEMETRY[stInt] || STAGE_TELEMETRY[1];
+
+
+
+    if (manual) {
+
+      autoSync = false;
+
+      const b = document.getElementById('ch13-btn-sync');
+
+      if (b) { b.classList.remove('active'); b.innerText = "Manual"; }
+
+    }
+
+  };
+
+
+
+  window.scrubCh13Stage = function(val) { window.setCh13Stage(val, true); };
+
+
+
+  window.enableCh13Sync = function() {
+
+    autoSync = true;
+
+    const b = document.getElementById('ch13-btn-sync');
+
+    if (b) { b.classList.add('active'); b.innerText = "Auto-Sync"; }
+
+    syncCh13WithDeck();
+
+  };
+
+
+
+  window.toggleCh13Orbit = function() {
+
+    autoOrbit = !autoOrbit;
+
+    const b = document.getElementById('ch13-btn-orbit');
+
+    if (b) b.classList.toggle('active', autoOrbit);
+
+  };
+
+
+
+  window.toggleCh13Spotlight = function() {
+
+    const hud = document.getElementById('ch13-3d-hud');
+
+    if (hud) {
+
+      hud.classList.remove('minimized');
+
+      hud.classList.toggle('spotlight');
+
+      setTimeout(resize, 360);
+
+    }
+
+  };
+
+
+
+  window.toggleCh13Minimize = function() {
+
+    const hud = document.getElementById('ch13-3d-hud');
+
+    const b = document.getElementById('ch13-btn-min');
+
+    if (hud) {
+
+      hud.classList.remove('spotlight');
+
+      hud.classList.toggle('minimized');
+
+      if (b) b.innerText = hud.classList.contains('minimized') ? "+" : "—";
+
+      setTimeout(resize, 360);
+
+    }
+
+  };
+
+
+
   function syncCh13WithDeck() {
     if (!autoSync) return;
     const isMegaDeck = !!document.getElementById('syntrix-3d-hud') || document.querySelectorAll('h1').length > 5;
@@ -1117,38 +1583,70 @@ const canvas = document.getElementById('ch13-3d-canvas');
       chHud.style.display = inCh ? '' : 'none';
       if (!inCh) return;
     }
-    const vp = document.querySelector('.reveal-viewport');
-    const isScroll = vp && vp.classList.contains('reveal-scroll');
-    if (isScroll) {
-      const scEl = vp.scrollHeight > vp.clientHeight ? vp : document.documentElement;
-      const top = vp.scrollTop || window.scrollY || document.documentElement.scrollTop || 0;
-      const max = Math.max(1, (scEl.scrollHeight || document.body.scrollHeight) - window.innerHeight);
-      window.setCh13Stage(1.0 + Math.min(1, Math.max(0, top / max)) * 9.0, false);
-    } else if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
-      const idx = window.Reveal.getIndices();
-      const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 14);
-      const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
-      const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
-      window.setCh13Stage(1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0, false);
-    }
-  }
-
-  // 3D Orbit Drag, Wheel Zoom & Node Click Hit-Testing
-  wrap.addEventListener('mousedown', e => {
-    e.stopPropagation();
-    isDragging = true;
-    lastX = e.clientX;
-    lastY = e.clientY;
-  });
-
-  window.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    camYaw += (e.clientX - lastX) * 0.012;
-    camPitch = Math.max(-0.85, Math.min(1.15, camPitch + (e.clientY - lastY) * 0.012));
-    lastX = e.clientX;
-    lastY = e.clientY;
-  });
-
+    const vp = document.querySelector('.reveal-viewport');
+
+    const isScroll = vp && vp.classList.contains('reveal-scroll');
+
+    if (isScroll) {
+
+      const scEl = vp.scrollHeight > vp.clientHeight ? vp : document.documentElement;
+
+      const top = vp.scrollTop || window.scrollY || document.documentElement.scrollTop || 0;
+
+      const max = Math.max(1, (scEl.scrollHeight || document.body.scrollHeight) - window.innerHeight);
+
+      window.setCh13Stage(1.0 + Math.min(1, Math.max(0, top / max)) * 9.0, false);
+
+    } else if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
+
+      const idx = window.Reveal.getIndices();
+
+      const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 14);
+
+      const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
+
+      const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
+
+      window.setCh13Stage(1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0, false);
+
+    }
+
+  }
+
+
+
+  // 3D Orbit Drag, Wheel Zoom & Node Click Hit-Testing
+
+  wrap.addEventListener('mousedown', e => {
+
+    e.stopPropagation();
+
+    isDragging = true;
+
+    lastX = e.clientX;
+
+    lastY = e.clientY;
+
+  });
+
+
+
+  window.addEventListener('mousemove', e => {
+
+    if (!isDragging) return;
+
+    camYaw += (e.clientX - lastX) * 0.012;
+
+    camPitch = Math.max(-0.85, Math.min(1.15, camPitch + (e.clientY - lastY) * 0.012));
+
+    lastX = e.clientX;
+
+    lastY = e.clientY;
+
+  });
+
+
+
   window.addEventListener('mouseup', () => { isDragging = false; });
 
   wrap.addEventListener('touchstart', e => {
@@ -1169,57 +1667,108 @@ const canvas = document.getElementById('ch13-3d-canvas');
     camPitch = Math.max(-0.85, Math.min(1.15, camPitch + dy * 0.012));
   }, { passive: true });
 
-  window.addEventListener('touchend', () => { isDragging = false; });
-
-  wrap.addEventListener('click', e => {
-    e.stopPropagation();
-    const rect = canvas.getBoundingClientRect();
-    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
-    let hit = null;
-    for (let i = hitNodes.length - 1; i >= 0; i--) {
-      const n = hitNodes[i];
-      if (Math.hypot(mx - n.p.sx, my - n.p.sy) <= n.r + 6) { hit = n; break; }
-    }
-    const insp = document.getElementById('ch13-node-inspector');
-    if (hit && insp) {
-      selectedId = hit.id;
-      insp.innerText = hit.info;
-    } else if (insp) {
-      selectedId = null;
-      insp.innerText = "Drag to Orbit 3D · Click Node to Inspect";
-    }
-  });
-
-  wrap.addEventListener('wheel', e => {
-    e.preventDefault();
-    e.stopPropagation();
-    camZoom = Math.max(0.65, Math.min(1.65, camZoom - e.deltaY * 0.001));
-  }, { passive: false });
-
-  function init() {
-    resize();
-    syncCh13WithDeck();
-    requestAnimationFrame(renderLoop);
-    window.addEventListener('resize', resize);
-    window.addEventListener('scroll', syncCh13WithDeck, { passive: true });
-    const vp = document.querySelector('.reveal-viewport');
-    if (vp) vp.addEventListener('scroll', syncCh13WithDeck, { passive: true });
-    if (window.Reveal) {
-      window.Reveal.on('ready', syncCh13WithDeck);
-      window.Reveal.on('slidechanged', syncCh13WithDeck);
-      window.Reveal.on('fragmentshown', syncCh13WithDeck);
-      window.Reveal.on('fragmenthidden', syncCh13WithDeck);
-    }
-    const hud = document.getElementById('ch13-3d-hud');
-    if (hud) {
-      hud.querySelectorAll('input, button').forEach(el => {
-        el.addEventListener('keydown', e => e.stopPropagation());
-        el.addEventListener('mousedown', e => e.stopPropagation());
-        el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
-      });
-    }
-  }
-
+  window.addEventListener('touchend', () => { isDragging = false; });
+
+
+
+  wrap.addEventListener('click', e => {
+
+    e.stopPropagation();
+
+    const rect = canvas.getBoundingClientRect();
+
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+
+    let hit = null;
+
+    for (let i = hitNodes.length - 1; i >= 0; i--) {
+
+      const n = hitNodes[i];
+
+      if (Math.hypot(mx - n.p.sx, my - n.p.sy) <= n.r + 6) { hit = n; break; }
+
+    }
+
+    const insp = document.getElementById('ch13-node-inspector');
+
+    if (hit && insp) {
+
+      selectedId = hit.id;
+
+      insp.innerText = hit.info;
+
+    } else if (insp) {
+
+      selectedId = null;
+
+      insp.innerText = "Drag to Orbit 3D · Click Node to Inspect";
+
+    }
+
+  });
+
+
+
+  wrap.addEventListener('wheel', e => {
+
+    e.preventDefault();
+
+    e.stopPropagation();
+
+    camZoom = Math.max(0.65, Math.min(2.0, camZoom - e.deltaY * 0.001));
+
+  }, { passive: false });
+
+
+
+  function init() {
+
+    resize();
+
+    syncCh13WithDeck();
+
+    requestAnimationFrame(renderLoop);
+
+    window.addEventListener('resize', resize);
+
+    window.addEventListener('scroll', syncCh13WithDeck, { passive: true });
+
+    const vp = document.querySelector('.reveal-viewport');
+
+    if (vp) vp.addEventListener('scroll', syncCh13WithDeck, { passive: true });
+
+    if (window.Reveal) {
+
+      window.Reveal.on('ready', syncCh13WithDeck);
+
+      window.Reveal.on('slidechanged', syncCh13WithDeck);
+
+      window.Reveal.on('fragmentshown', syncCh13WithDeck);
+
+      window.Reveal.on('fragmenthidden', syncCh13WithDeck);
+
+    }
+
+    const hud = document.getElementById('ch13-3d-hud');
+
+    if (hud) {
+
+      hud.querySelectorAll('input, button').forEach(el => {
+
+        el.addEventListener('keydown', e => e.stopPropagation());
+
+        el.addEventListener('mousedown', e => e.stopPropagation());
+
+        el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+
+      });
+
+    }
+
+  }
+
+
+
   init();
   }
 

@@ -448,18 +448,20 @@ if (document.readyState === 'loading') {
 const HUD_3D_STYLE = `
 #syntrix-3d-hud {
   position: fixed;
-  right: 22px;
-  bottom: 22px;
-  width: 430px;
-  background: linear-gradient(145deg, rgba(8, 11, 20, 0.95) 0%, rgba(15, 22, 40, 0.97) 100%);
-  border: 1.5px solid rgba(255, 215, 0, 0.6);
+  right: 20px;
+  bottom: 20px;
+  width: clamp(280px, 30vw, 540px);
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
+  background: linear-gradient(145deg, rgba(7, 10, 19, 0.96) 0%, rgba(14, 21, 38, 0.98) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.65);
   border-radius: 14px;
-  padding: 10px 14px 12px 14px;
+  padding: 9px 13px 11px 13px;
   z-index: 9999;
-  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.82), 0 0 28px rgba(65, 105, 225, 0.32);
+  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.86), 0 0 28px rgba(65, 105, 225, 0.34);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  font-family: "Libertinus Sans", "Inter", sans-serif;
+  font-family: "Libertinus Sans", "Inter", system-ui, sans-serif;
   color: #e8ecf2;
   transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
@@ -470,14 +472,15 @@ const HUD_3D_STYLE = `
   right: 50%;
   bottom: 50%;
   transform: translate(50%, 50%);
-  width: min(880px, 94vw);
+  width: min(960px, 94vw);
   border-color: #FFD700;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.95), 0 0 50px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
 }
 
 #syntrix-3d-hud.minimized {
-  width: 270px;
-  padding: 7px 12px;
+  width: clamp(280px, 26vw, 380px);
+  max-width: calc(100vw - 20px);
+  padding: 6px 11px;
 }
 
 #syntrix-3d-hud.minimized .hud3d-body {
@@ -486,27 +489,47 @@ const HUD_3D_STYLE = `
 
 .hud3d-header {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   border-bottom: 1px solid rgba(65, 105, 225, 0.45);
-  padding-bottom: 6px;
-  margin-bottom: 8px;
+  padding-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .hud3d-title {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.6px;
   color: #FFD700;
   text-transform: uppercase;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 7px;
+  gap: 2px 6px;
+  min-width: 0;
+  flex: 1 1 auto;
+  line-height: 1.1;
+}
+
+.hud3d-title span:first-child {
+  line-height: 1.1;
+}
+
+.hud3d-title span[id$="-stage-pill"] {
+  flex-shrink: 0;
+  font-size: 9px;
+  padding: 1px 6px;
+  line-height: 1.1;
+  border-radius: 4px;
 }
 
 .hud3d-controls {
   display: flex;
-  gap: 5px;
+  align-items: center;
+  gap: clamp(3px, 0.4vw, 6px);
+  flex-shrink: 0;
 }
 
 .hud3d-btn {
@@ -514,10 +537,13 @@ const HUD_3D_STYLE = `
   color: #cbd5e1;
   border: 1px solid #3b4963;
   border-radius: 5px;
-  padding: 3px 8px;
-  font-size: 10.5px;
+  padding: clamp(2.5px, 0.35vh, 4.5px) clamp(5px, 0.6vw, 9px);
+  font-size: clamp(9px, 0.9vw, 11px);
   font-weight: 700;
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-sizing: border-box;
   transition: all 0.15s ease;
 }
 
@@ -530,13 +556,12 @@ const HUD_3D_STYLE = `
 .canvas-wrap {
   position: relative;
   width: 100%;
-  height: 265px;
+  height: clamp(200px, 28vh, 440px);
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #2d3748;
-  background: radial-gradient(circle at 50% 55%, #111a2e 0%, #05070e 100%);
+  background: radial-gradient(circle at 50% 55%, #111b30 0%, #05070e 100%);
   cursor: grab;
-  touch-action: none;
 }
 
 .canvas-wrap:active {
@@ -544,7 +569,7 @@ const HUD_3D_STYLE = `
 }
 
 #syntrix-3d-hud.spotlight .canvas-wrap {
-  height: 490px;
+  height: clamp(340px, 60vh, 720px);
 }
 
 #syntrix-3d-canvas {
@@ -555,65 +580,120 @@ const HUD_3D_STYLE = `
 
 .canvas-overlay-hud {
   position: absolute;
-  top: 8px;
-  left: 10px;
-  right: 10px;
+  top: 7px;
+  left: 9px;
+  right: 9px;
   display: flex;
   justify-content: space-between;
   pointer-events: none;
   font-family: "Libertinus Mono", monospace;
-  font-size: 10.5px;
+  font-size: clamp(8px, 0.8vw, 10px);
+  gap: 6px;
 }
 
 .hud-telemetry-badge {
-  background: rgba(7, 10, 18, 0.78);
-  border: 1px solid rgba(65, 105, 225, 0.5);
+  background: rgba(6, 9, 17, 0.84);
+  border: 1px solid rgba(65, 105, 225, 0.55);
   border-radius: 5px;
-  padding: 3px 7px;
+  padding: 2px 7px;
   color: #82aaff;
+  white-space: nowrap;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #hud3d-node-inspector {
-  background: rgba(7, 10, 18, 0.85);
+  background: rgba(6, 9, 17, 0.88);
   border: 1px solid rgba(255, 215, 0, 0.6);
   border-radius: 5px;
-  padding: 3px 8px;
+  padding: 2px 8px;
   color: #FFD700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 50%;
 }
 
 .hud3d-scrubber {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  font-size: 11px;
+  gap: clamp(4px, 0.8vw, 8px);
+  margin-top: 7px;
+  font-size: clamp(9px, 0.9vw, 11px);
+}
+
+.hud3d-scrubber span {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .hud3d-scrubber input[type="range"] {
-  flex: 1;
+  flex: 1 1 50px;
+  min-width: 35px;
   accent-color: #FFD700;
   height: 5px;
   cursor: pointer;
 }
 
+.hud3d-scrubber .hud3d-btn {
+  flex-shrink: 0;
+}
+
 #hud3d-caption {
   margin-top: 6px;
   padding: 6px 9px;
-  background: rgba(4, 7, 14, 0.88);
+  background: rgba(4, 7, 14, 0.9);
   border-left: 3px solid #20B2AA;
   border-radius: 5px;
   font-family: "Libertinus Mono", monospace;
-  font-size: 11px;
-  line-height: 1.38;
+  font-size: clamp(8.5px, 0.85vw, 10.5px);
+  line-height: 1.35;
   color: #5eead4;
 }
 
 @media (max-width: 900px) {
   #syntrix-3d-hud {
-    right: 10px;
-    bottom: 10px;
-    width: calc(100vw - 20px);
-    max-width: 380px;
+    right: 8px;
+    bottom: 8px;
+    width: clamp(280px, calc(100vw - 16px), 480px);
+    padding: 8px 10px 10px 10px;
+  }
+  .hud3d-title {
+    font-size: clamp(9px, 2vw, 11px);
+    gap: 2px 4px;
+    line-height: 1.1;
+  }
+  .hud3d-controls {
+    gap: 3px;
+  }
+  .hud3d-btn {
+    padding: 2px clamp(4px, 1vw, 7px);
+    font-size: clamp(8px, 1.8vw, 10px);
+  }
+  .hud3d-scrubber {
+    gap: 4px;
+    font-size: 9.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  #syntrix-3d-hud {
+    right: 4px;
+    bottom: 4px;
+    width: calc(100vw - 8px);
+    padding: 6px 8px 8px 8px;
+  }
+  .hud3d-title {
+    font-size: 8.5px;
+    line-height: 1.05;
+  }
+  .hud3d-btn {
+    padding: 2px 5px;
+    font-size: 8px;
+  }
+  .hud3d-scrubber span {
+    font-size: 8.5px;
   }
 }
 `;
@@ -627,7 +707,7 @@ const HUD_3D_HTML = `
     <div class="hud3d-controls">
       <button class="hud3d-btn active" id="btn-orbit-3d" title="Toggle 3D Auto-Orbit" onclick="toggle3DOrbit()">⟳ Orbit</button>
       <button class="hud3d-btn" title="Spotlight Mode (Expand Center)" onclick="toggle3DSpotlight()">⛶ Spotlight</button>
-      <button class="hud3d-btn" id="btn-min-3d" title="Minimize / Restore" onclick="toggle3DMinimize()">—</button>
+      <button class="hud3d-btn" id="btn-min-3d" title="Minimize / Restore" onclick="toggle3DMinimize()">+</button>
     </div>
   </div>
 
@@ -664,6 +744,7 @@ function inject3DHUD() {
 
   const hudEl = document.createElement('div');
   hudEl.id = 'syntrix-3d-hud';
+  hudEl.className = 'minimized';
   hudEl.innerHTML = HUD_3D_HTML;
   document.body.appendChild(hudEl);
 }
@@ -677,7 +758,7 @@ function inject3DHUD() {
   let autoOrbit = true;
   let camYaw = -0.45;
   let camPitch = 0.32;
-  let camZoom = 1.0;
+  let camZoom = 1.65;
   let isDragging = false;
   let lastMX = 0, lastMY = 0;
   let timeSec = 0;
@@ -1249,7 +1330,7 @@ function inject3DHUD() {
     wrap.addEventListener('wheel', e => {
       e.preventDefault();
       e.stopPropagation();
-      camZoom = Math.max(0.65, Math.min(1.65, camZoom - e.deltaY * 0.001));
+      camZoom = Math.max(0.65, Math.min(2.0, camZoom - e.deltaY * 0.001));
     }, { passive: false });
 
     resizeCanvas();
