@@ -492,43 +492,43 @@ const HUD_3D_STYLE = `
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 6px;
   border-bottom: 1px solid rgba(65, 105, 225, 0.45);
   padding-bottom: 5px;
   margin-bottom: 6px;
 }
 
 .hud3d-title {
-  font-size: 12px;
+  font-size: clamp(10px, 1.05vw, 11.5px);
   font-weight: 800;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.35px;
   color: #FFD700;
   text-transform: uppercase;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 2px 6px;
+  gap: 2px 5px;
   min-width: 0;
   flex: 1 1 auto;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .hud3d-title span:first-child {
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .hud3d-title span[id$="-stage-pill"] {
   flex-shrink: 0;
-  font-size: 9px;
-  padding: 1px 6px;
-  line-height: 1.1;
+  font-size: 8.5px;
+  padding: 1px 5px;
+  line-height: 1.15;
   border-radius: 4px;
 }
 
 .hud3d-controls {
   display: flex;
   align-items: center;
-  gap: clamp(3px, 0.4vw, 6px);
+  gap: clamp(2.5px, 0.35vw, 5px);
   flex-shrink: 0;
 }
 
@@ -659,17 +659,20 @@ const HUD_3D_STYLE = `
     width: clamp(280px, calc(100vw - 16px), 480px);
     padding: 8px 10px 10px 10px;
   }
+  #syntrix-3d-hud.minimized {
+    width: clamp(280px, calc(100vw - 16px), 380px);
+  }
   .hud3d-title {
-    font-size: clamp(9px, 2vw, 11px);
+    font-size: clamp(9px, 1.8vw, 10.5px);
     gap: 2px 4px;
-    line-height: 1.1;
+    line-height: 1.15;
   }
   .hud3d-controls {
     gap: 3px;
   }
   .hud3d-btn {
-    padding: 2px clamp(4px, 1vw, 7px);
-    font-size: clamp(8px, 1.8vw, 10px);
+    padding: 2px clamp(4px, 0.8vw, 6px);
+    font-size: clamp(8px, 1.6vw, 9.5px);
   }
   .hud3d-scrubber {
     gap: 4px;
@@ -677,23 +680,69 @@ const HUD_3D_STYLE = `
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+  #syntrix-3d-hud {
+    right: 6px;
+    bottom: 6px;
+    width: calc(100vw - 12px);
+    max-width: calc(100vw - 12px);
+    padding: 6px 9px 8px 9px;
+  }
+  #syntrix-3d-hud.minimized {
+    width: calc(100vw - 12px);
+    max-width: calc(100vw - 12px);
+    padding: 6px 9px;
+  }
+  .hud3d-header {
+    gap: 5px;
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+  }
+  .hud3d-title {
+    font-size: 9.5px;
+    gap: 2px 4px;
+    line-height: 1.15;
+  }
+  .hud3d-title span[id$="-stage-pill"] {
+    font-size: 8px;
+    padding: 1px 4px;
+  }
+  .hud3d-controls {
+    gap: 3px;
+  }
+  .hud3d-btn {
+    padding: 2px 5px;
+    font-size: 8.5px;
+  }
+  .hud3d-scrubber span {
+    font-size: 8.5px;
+  }
+}
+
+@media (max-width: 400px) {
   #syntrix-3d-hud {
     right: 4px;
     bottom: 4px;
     width: calc(100vw - 8px);
-    padding: 6px 8px 8px 8px;
+    max-width: calc(100vw - 8px);
+    padding: 5px 7px 7px 7px;
+  }
+  #syntrix-3d-hud.minimized {
+    width: calc(100vw - 8px);
+    max-width: calc(100vw - 8px);
+    padding: 5px 7px;
   }
   .hud3d-title {
     font-size: 8.5px;
-    line-height: 1.05;
+    gap: 2px 3px;
+  }
+  .hud3d-title span[id$="-stage-pill"] {
+    font-size: 7.5px;
+    padding: 0.5px 3px;
   }
   .hud3d-btn {
-    padding: 2px 5px;
+    padding: 1.5px 4px;
     font-size: 8px;
-  }
-  .hud3d-scrubber span {
-    font-size: 8.5px;
   }
 }
 `;
