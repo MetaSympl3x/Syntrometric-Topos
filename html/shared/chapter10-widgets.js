@@ -528,3 +528,1358 @@
     initChapter10();
   }
 })();
+
+// =========================================================================
+// CHAPTER 10: 60FPS 3D INTERACTIVE METRONIC LATTICE, DEC HODGE & UV CUTOFF ENGINE
+// =========================================================================
+
+const CH10_3D_STYLE = `#ch10-3d-hud {
+
+  position: fixed;
+
+  right: 20px;
+
+  bottom: 20px;
+
+  width: 445px;
+
+  background: linear-gradient(145deg, rgba(7, 10, 19, 0.96) 0%, rgba(14, 21, 38, 0.98) 100%);
+
+  border: 1.5px solid rgba(255, 215, 0, 0.65);
+
+  border-radius: 14px;
+
+  padding: 10px 14px 12px 14px;
+
+  z-index: 9999;
+
+  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.86), 0 0 28px rgba(65, 105, 225, 0.34);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+  font-family: "Libertinus Sans", "Inter", system-ui, sans-serif;
+
+  color: #e8ecf2;
+
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+
+              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+  user-select: none;
+
+}
+
+
+
+#ch10-3d-hud.spotlight {
+
+  right: 50%;
+
+  bottom: 50%;
+
+  transform: translate(50%, 50%);
+
+  width: min(920px, 95vw);
+
+  border-color: #FFD700;
+
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
+
+}
+
+
+
+#ch10-3d-hud.minimized {
+
+  width: 285px;
+
+  padding: 7px 12px;
+
+}
+
+
+
+#ch10-3d-hud.minimized .ch10-hud-body {
+
+  display: none;
+
+}
+
+
+
+.ch10-hud-header {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(65, 105, 225, 0.45);
+
+  padding-bottom: 6px;
+
+  margin-bottom: 8px;
+
+}
+
+
+
+.ch10-hud-title {
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+
+  color: #FFD700;
+
+  text-transform: uppercase;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+}
+
+
+
+.ch10-hud-controls {
+
+  display: flex;
+
+  gap: 5px;
+
+}
+
+
+
+.ch10-hud-btn {
+
+  background: #172033;
+
+  color: #cbd5e1;
+
+  border: 1px solid #3b4963;
+
+  border-radius: 5px;
+
+  padding: 2px 8px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.15s ease;
+
+}
+
+
+
+.ch10-hud-btn:hover, .ch10-hud-btn.active {
+
+  background: #FFD700;
+
+  color: #000;
+
+  border-color: #FFD700;
+
+}
+
+
+
+.ch10-canvas-wrap {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 265px;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  border: 1px solid #2d3748;
+
+  background: radial-gradient(circle at 50% 55%, #111b30 0%, #05070e 100%);
+
+  cursor: grab;
+
+}
+
+
+
+.ch10-canvas-wrap:active {
+
+  cursor: grabbing;
+
+}
+
+
+
+#ch10-3d-hud.spotlight .ch10-canvas-wrap {
+
+  height: 500px;
+
+}
+
+
+
+#ch10-3d-canvas {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+}
+
+
+
+.ch10-overlay-bar {
+
+  position: absolute;
+
+  top: 7px;
+
+  left: 9px;
+
+  right: 9px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  pointer-events: none;
+
+  font-family: "Libertinus Mono", monospace;
+
+  font-size: 10px;
+
+  gap: 6px;
+
+}
+
+
+
+.ch10-telemetry {
+
+  background: rgba(6, 9, 17, 0.84);
+
+  border: 1px solid rgba(65, 105, 225, 0.55);
+
+  border-radius: 5px;
+
+  padding: 2px 7px;
+
+  color: #82aaff;
+
+  white-space: nowrap;
+
+}
+
+
+
+#ch10-node-inspector {
+
+  background: rgba(6, 9, 17, 0.88);
+
+  border: 1px solid rgba(255, 215, 0, 0.6);
+
+  border-radius: 5px;
+
+  padding: 2px 8px;
+
+  color: #FFD700;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+}
+
+
+
+.ch10-scrubber {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 8px;
+
+  font-size: 11px;
+
+}
+
+
+
+.ch10-scrubber input[type="range"] {
+
+  flex: 1;
+
+  accent-color: #FFD700;
+
+  height: 5px;
+
+  cursor: pointer;
+
+}
+
+
+
+#ch10-caption {
+
+  margin-top: 6px;
+
+  padding: 6px 9px;
+
+  background: rgba(4, 7, 14, 0.9);
+
+  border-left: 3px solid #20B2AA;
+
+  border-radius: 5px;
+
+  font-family: "Libertinus Mono", monospace;
+
+  font-size: 10.5px;
+
+  line-height: 1.38;
+
+  color: #5eead4;
+
+}
+
+
+
+@media (max-width: 900px) {
+
+  #ch10-3d-hud {
+
+    right: 8px;
+
+    bottom: 8px;
+
+    width: calc(100vw - 16px);
+
+    max-width: 385px;
+
+  }
+
+}`;
+
+const CH10_3D_HTML = `
+<div class="ch10-hud-header">
+
+    <div class="ch10-hud-title">
+
+      <span>🧊 Ch 10 · 3D Metronic DEC Engine</span>
+
+      <span id="ch10-stage-pill" style="background:#4169E1; color:#fff; padding:1px 7px; border-radius:4px; font-size:9.5px;">Stage 1.0 / 10</span>
+
+    </div>
+
+    <div class="ch10-hud-controls">
+
+      <button class="ch10-hud-btn active" id="ch10-btn-orbit" onclick="toggleCh10Orbit()">⟳ Orbit</button>
+
+      <button class="ch10-hud-btn" onclick="toggleCh10Spotlight()">⛶ Spotlight</button>
+
+      <button class="ch10-hud-btn" id="ch10-btn-min" onclick="toggleCh10Minimize()">—</button>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="ch10-hud-body">
+
+    <div class="ch10-canvas-wrap" id="ch10-canvas-wrap">
+
+      <canvas id="ch10-3d-canvas"></canvas>
+
+      <div class="ch10-overlay-bar">
+
+        <div class="ch10-telemetry" id="ch10-telemetry">𝕄_τ^n = ⨁ √τ ℤ | d_τ² ≡ 0</div>
+
+        <div id="ch10-node-inspector">Drag to Orbit 3D · Click Node to Inspect</div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="ch10-scrubber">
+
+      <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
+
+      <input type="range" id="ch10-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh10Stage(this.value)">
+
+      <button class="ch10-hud-btn active" id="ch10-btn-sync" onclick="enableCh10Sync()">Auto-Sync</button>
+
+    </div>
+
+
+
+    <div id="ch10-caption">
+
+      <b>Stage 1 (§10.1.1 — SM-63 &amp; Thm. 10.1):</b> Elementary Metron cell τ with p(p−1) = 6 spin-oriented boundary 2-surfaces in R₃.
+
+    </div>
+
+  </div>
+`;
+
+function injectCh103DHUD() {
+  if (document.getElementById('ch10-3d-hud')) return;
+  const styleEl = document.createElement('style');
+  styleEl.textContent = CH10_3D_STYLE;
+  document.head.appendChild(styleEl);
+
+  const hudEl = document.createElement('div');
+  hudEl.id = 'ch10-3d-hud';
+  hudEl.innerHTML = CH10_3D_HTML;
+  document.body.appendChild(hudEl);
+}
+
+(function() {
+  if (window.__ch10_3d_engine_loaded) return;
+  window.__ch10_3d_engine_loaded = true;
+
+  function runCh10Engine() {
+    injectCh103DHUD();
+    if (window.__ch10_3d_engine_initialized) return;
+    window.__ch10_3d_engine_initialized = true;
+
+const canvas = document.getElementById('ch10-3d-canvas');
+
+  const wrap = document.getElementById('ch10-canvas-wrap');
+
+  if (!canvas || !wrap) return;
+
+  const ctx = canvas.getContext('2d');
+
+
+
+  let targetStage = 1.0;
+
+  let curStage = 1.0;
+
+  let autoSync = true;
+
+  let autoOrbit = true;
+
+  let camYaw = -0.50;
+
+  let camPitch = 0.36;
+
+  let camZoom = 1.0;
+
+  let isDragging = false;
+
+  let lastX = 0, lastY = 0;
+
+  let timeSec = 0;
+
+  let hitNodes = [];
+
+  let selectedId = null;
+
+
+
+  const STAGE_CAPTIONS = {
+
+    1: "<b>Stage 1 (§10.1.1 — SM-63 &amp; Thm. 10.1):</b> Elementary Metron cell τ in R₃ with N_surfaces(3) = 3(2) = 6 spin-oriented boundary faces.",
+
+    2: "<b>Stage 2 (§10.1.2 — SM-67–68b Discrete Extremwerttheorie):</b> Backward difference ∇φ(n), osculating circles &amp; inflection node w=6.",
+
+    3: "<b>Stage 3 (§10.1.3 — SM-67a–71 Metronintegral Staircase):</b> Telescoping sum 𝒮_{n₁}^{n₂}φ = Φ(n₂) − Φ(n₁−1) canceling interior risers.",
+
+    4: "<b>Stage 4 (§10.1.4 — SM-73a Commutativity &amp; Thm. 10.2 Wronskian):</b> Commuting shifts F_k F_l = F_l F_k &amp; discrete Wronskian D(n) ≠ 0.",
+
+    5: "<b>Stage 5 (§10.1.5 &amp; §10.2 — Def. 10.4 Lattice 𝕄_τ^n &amp; Stencil):</b> Backward shift stencil ∇_i = I − E_i⁻¹ (‖∇_i‖_op ≤ 2) on ℓ^∞(𝕄_τ^n).",
+
+    6: "<b>Stage 6 (§10.2 — Defs. 10.5–10.6 Primal K &amp; Voronoi Dual K*):</b> Discrete Hodge star *_τ intertwining primal faces σ₂ with dual edges σ₁*!",
+
+    7: "<b>Stage 7 (§10.3 — Thms. 10.7–10.8 Monomials &amp; Honeycomb Vortex):</b> Triangular area quantum τ = (√3/4)ℓ_P², rotor ŝ &amp; ∇^γ n^γ ≡ γ!.",
+
+    8: "<b>Stage 8 (§10.3 — Thm. 10.12 Discrete Leibniz Cross-Term):</b> 3D product decomposition ∇(uv) = (∇u)v + u(∇v) − (∇u)(∇v) (SM-68a).",
+
+    9: "<b>Stage 9 (§10.3 — Thm. 10.17 3D Discrete Gauss–Stokes Flux Cube):</b> Interior divergence cancels pairwise, leaving exact 6-facet boundary flux!",
+
+    10: "<b>Stage 10 (§10.3–10.6 — Thm. 10.21 Brillouin UV Cutoff &amp; Stage VI):</b> Sine-squared dispersion λ(k) = (4/τ²)∑sin²(k_iτ/2) bounded by Λ_UV = 4/√τ!"
+
+  };
+
+
+
+  const STAGE_TELEMETRY = {
+
+    1: "x_i = N_i χ_i τ^{1/p} (SM-63) | N_surf = p(p−1)",
+
+    2: "∇φ(n) = φ(n)−φ(n−1) | ∇²φ(w)∇²φ(w+1) < 0",
+
+    3: "𝒮_{n₁}^{n₂} φ = Φ(n₂) − Φ(n₁−1) (SM-67a)",
+
+    4: "F_k F_l φ = F_l F_k φ | det[∇^{γ−1}y_k] ≠ 0",
+
+    5: "∇_i = I − E_i⁻¹ ∈ ℬ(ℓ^∞(𝕄_τ^n)) | ‖∇_i‖ ≤ 2",
+
+    6: "d_K ∘ d_K ≡ 0 | *_{K*} ∘ *_K = (−1)^{k(n−k)+s}",
+
+    7: "∇^γ n^γ = γ! | τ = (√3/4)ℓ_P² ≈ 1.13e−70 m²",
+
+    8: "∇_i(uv) = (∇_i u)v + u(∇_i v) − (∇_i u)(∇_i v)",
+
+    9: "∑_{Ω} DIV_n A = ∑_i τ_i⁻¹ (Flux_{b_i} − Flux_{a_i−1})",
+
+    10: "λ(k) = ∑ (4/τ_i²) sin²(k_i τ_i / 2) ≤ 16/τ²"
+
+  };
+
+
+
+  function resize() {
+
+    const r = wrap.getBoundingClientRect();
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = r.width * dpr;
+
+    canvas.height = r.height * dpr;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  }
+
+
+
+  function proj(x, y, z, w, h) {
+
+    const cy = Math.cos(camYaw), sy = Math.sin(camYaw);
+
+    const x1 = x * cy - y * sy;
+
+    const y1 = x * sy + y * cy;
+
+    const cp = Math.cos(camPitch), sp = Math.sin(camPitch);
+
+    const y2 = y1 * cp - z * sp;
+
+    const z2 = y1 * sp + z * cp;
+
+    const fov = Math.min(w, h) * 0.43 * camZoom;
+
+    const sc = fov / Math.max(0.85, 4.6 - y2 * 0.45);
+
+    return { sx: w * 0.5 + x1 * sc, sy: h * 0.53 - z2 * sc, depth: y2, sc: sc / 100 };
+
+  }
+
+
+
+  function drawLine3D(p1, p2, col, lw, dash) {
+
+    ctx.save();
+
+    ctx.beginPath();
+
+    if (dash) ctx.setLineDash(dash);
+
+    ctx.strokeStyle = col;
+
+    ctx.lineWidth = lw || 2;
+
+    ctx.moveTo(p1.sx, p1.sy);
+
+    ctx.lineTo(p2.sx, p2.sy);
+
+    ctx.stroke();
+
+    ctx.restore();
+
+  }
+
+
+
+  function drawNode3D(id, x, y, z, r, fill, stroke, label, info, w, h) {
+
+    const p = proj(x, y, z, w, h);
+
+    hitNodes.push({ id, p, r, info });
+
+    const isSel = (selectedId === id);
+
+    ctx.save();
+
+    ctx.beginPath();
+
+    ctx.fillStyle = isSel ? "#ffffff" : fill;
+
+    ctx.strokeStyle = isSel ? "#FFD700" : (stroke || "#ffffff");
+
+    ctx.lineWidth = isSel ? 3.0 : 1.6;
+
+    ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+
+    ctx.fill();
+
+    ctx.stroke();
+
+    if (label) {
+
+      ctx.fillStyle = "#ffffff";
+
+      ctx.font = "bold 9.5px sans-serif";
+
+      ctx.textAlign = "center";
+
+      ctx.fillText(label, p.sx, p.sy - r - 4);
+
+    }
+
+    ctx.restore();
+
+    return p;
+
+  }
+
+
+
+  function drawCubeWireframe(cx, cy, cz, s, col, lw, dash, w, h) {
+
+    const v = [];
+
+    for (let dx of [-s, s]) for (let dy of [-s, s]) for (let dz of [-s, s]) {
+
+      v.push(proj(cx + dx, cy + dy, cz + dz, w, h));
+
+    }
+
+    const edges = [[0,1],[2,3],[4,5],[6,7],[0,2],[1,3],[4,6],[5,7],[0,4],[1,5],[2,6],[3,7]];
+
+    edges.forEach(e => drawLine3D(v[e[0]], v[e[1]], col, lw, dash));
+
+  }
+
+
+
+  // =========================================================================
+
+  // STAGE RENDERERS (STAGES 1 TO 10)
+
+  // =========================================================================
+
+
+
+  // Stage 1: Elementary Metron Cell \tau & 6 Spin-Oriented Boundary 2-Surfaces (Thm. 10.1)
+
+  function renderStage1(w, h) {
+
+    drawCubeWireframe(0, 0, 0, 0.85, "#4169E1", 2.0, null, w, h);
+
+    const faces = [
+
+      { id: "F_xp", x:  0.85, y: 0, z: 0, col: "#20B2AA", lbl: "+ŝ_{yz}" },
+
+      { id: "F_xm", x: -0.85, y: 0, z: 0, col: "#20B2AA", lbl: "−ŝ_{yz}" },
+
+      { id: "F_yp", x: 0, y:  0.85, z: 0, col: "#FFA500", lbl: "+ŝ_{xz}" },
+
+      { id: "F_ym", x: 0, y: -0.85, z: 0, col: "#FFA500", lbl: "−ŝ_{xz}" },
+
+      { id: "F_zp", x: 0, y: 0, z:  0.85, col: "#FFD700", lbl: "+ŝ_{xy}" },
+
+      { id: "F_zm", x: 0, y: 0, z: -0.85, col: "#FFD700", lbl: "−ŝ_{xy}" }
+
+    ];
+
+    faces.forEach(f => {
+
+      drawNode3D(f.id, f.x, f.y, f.z, 7, f.col, "#fff", f.lbl, `Spin-Oriented Metron Boundary Surface ${f.lbl}: N_surfaces(p) = 2C(p,2) = p(p−1) = 6 (Thm. 10.1)`, w, h);
+
+    });
+
+    drawNode3D("Met_Center", 0, 0, 0, 9.5, "#FFD700", "#DC143C", "τ ≈ 1.13×10⁻⁷⁰ m²", "Indivisible Quantum of Geometric Area τ = (√3/4)ℓ_P² (Televarianzbedingung SM-63)", w, h);
+
+  }
+
+
+
+  // Stage 2: Metrondifferentiale \nabla\phi & Discrete Osculating Extremwerttheorie (Fig. 10.1)
+
+  function renderStage2(w, h) {
+
+    let prev = null;
+
+    for (let n = 0; n <= 10; n++) {
+
+      const x = (n - 5) * 0.28;
+
+      const z = 0.78 * Math.sin((n - 1.5) * 0.62);
+
+      const isMax = (n === 4), isInf = (n === 6), isMin = (n === 9);
+
+      const col = isMax ? "#20B2AA" : (isInf ? "#FFD700" : (isMin ? "#FFA500" : "#4169E1"));
+
+      const lbl = isMax ? "Max (∇²φ<0)" : (isInf ? "Wendepunkt w" : (isMin ? "Min (∇²φ>0)" : ""));
+
+      const p = drawNode3D(
+
+        "Osc_" + n, x, 0, z, (isMax || isInf || isMin) ? 8.5 : 5, col, "#fff", lbl,
+
+        isInf ? "Discrete Inflection Node w=6: ∇²φ(w)·∇²φ(w+1) < 0 (SM Eq. 68b)" : `Lattice Node n=${n}: φ(n) = ${z.toFixed(2)}`, w, h
+
+      );
+
+      if (prev) drawLine3D(prev, p, "#20B2AA", 2.4);
+
+      prev = p;
+
+    }
+
+  }
+
+
+
+  // Stage 3: Metronintegral Telescoping Staircase \mathcal{S}_{n_1}^{n_2}\phi = \Phi(n_2) - \Phi(n_1-1) (SM-67a)
+
+  function renderStage3(w, h) {
+
+    for (let j = 1; j <= 5; j++) {
+
+      const x = (j - 3) * 0.58;
+
+      const zBot = -0.95;
+
+      const zPrev = -0.95 + ((j - 1) * (j - 1)) * 0.075;
+
+      const zCurr = -0.95 + (j * j) * 0.075;
+
+      const isEnd = (j === 5);
+
+      const pBot  = proj(x, 0, zBot, w, h);
+
+      const pPrev = proj(x, 0, zPrev, w, h);
+
+      const pCurr = drawNode3D(
+
+        "Stair_" + j, x, 0, zCurr, isEnd ? 9.5 : 6.5,
+
+        isEnd ? "#FFD700" : "#20B2AA", "#fff",
+
+        isEnd ? "Φ(n₂) = N²" : `Φ(${j})`,
+
+        `Primitive Sequence Φ(${j}) = ${j*j}: Riser ∇Φ(${j}) = Φ(${j})−Φ(${j-1}) = ${2*j-1} telescopes!`, w, h
+
+      );
+
+      drawLine3D(pBot, pPrev, "rgba(65,105,225,0.45)", 4.0);
+
+      drawLine3D(pPrev, pCurr, "#FFD700", 5.5);
+
+    }
+
+  }
+
+
+
+  // Stage 4 & 5: Commuting Shifts F_k F_l = F_l F_k, Discrete Wronskian & 3D Stencil \nabla_i = I - E_i^{-1}
+
+  function renderStage4And5(w, h, st) {
+
+    const isStage5 = (st >= 4.5);
+
+    // 3x3x2 Lattice Grid \mathbb{M}_\tau^3 showing backward stencil around central node n
+
+    for (let ix = -1; ix <= 1; ix++) {
+
+      for (let iy = -1; iy <= 1; iy++) {
+
+        const p = proj(ix * 0.85, iy * 0.85, -0.35, w, h);
+
+        if (ix < 1) drawLine3D(p, proj((ix + 1) * 0.85, iy * 0.85, -0.35, w, h), "rgba(65,105,225,0.35)", 1.3);
+
+        if (iy < 1) drawLine3D(p, proj(ix * 0.85, (iy + 1) * 0.85, -0.35, w, h), "rgba(65,105,225,0.35)", 1.3);
+
+      }
+
+    }
+
+    const pCenter = drawNode3D("St_n", 0, 0, -0.35, 10, "#FFD700", "#DC143C", "Node n ∈ 𝕄_τ^n", "Primary Lattice Node n: Backward Difference ∇_i φ(n) = φ(n) − φ(n − e_i)", w, h);
+
+    const pEx = drawNode3D("St_ex", -0.85, 0, -0.35, 8, "#4169E1", "#fff", "E₁⁻¹ n (n−e₁)", "Backward Shift along Axis 1: E₁⁻¹ φ(n) = φ(n₁−1, n₂, n₃)", w, h);
+
+    const pEy = drawNode3D("St_ey", 0, -0.85, -0.35, 8, "#20B2AA", "#fff", "E₂⁻¹ n (n−e₂)", "Backward Shift along Axis 2: E₂⁻¹ φ(n) = φ(n₁, n₂−1, n₃)", w, h);
+
+    const pEz = drawNode3D("St_ez", 0, 0, 0.65, 8, "#FFA500", "#fff", isStage5 ? "E₃⁻¹ n (‖∇_i‖≤2)" : "Wronskian D(n) ≠ 0", isStage5 ? "Def. 10.4 Bounded Operator ∇_i = I − E_i⁻¹ on ℓ^∞(𝕄_τ^n)" : "Thm. 10.2 Discrete Wronskian Determinant det[∇^{γ−1}y_k(n)] ≠ 0 (SM-82)", w, h);
+
+
+
+    drawLine3D(pEx, pCenter, "#4169E1", 3.2);
+
+    drawLine3D(pEy, pCenter, "#20B2AA", 3.2);
+
+    drawLine3D(pCenter, pEz, "#FFA500", 3.2);
+
+  }
+
+
+
+  // Stage 6: DEC Primal Cubical Complex K & Circumcentric Voronoi Dual Complex K* (*_\tau Hodge Star)
+
+  function renderStage6(w, h) {
+
+    // Primal Cube K centered at (-0.35, -0.35, -0.35) (Blue)
+
+    drawCubeWireframe(-0.32, -0.32, -0.25, 0.68, "#4169E1", 2.2, null, w, h);
+
+    // Circumcentric Voronoi Dual Cube K* shifted by (+0.64, +0.64, +0.50) (Gold dashed)
+
+    drawCubeWireframe(0.32, 0.32, 0.25, 0.68, "#FFD700", 2.0, [4, 3], w, h);
+
+
+
+    // Highlight Primal 2-Face \sigma_2 pierced orthogonally by Dual 1-Edge \sigma_1^* = *_K \sigma_2
+
+    const pFace = drawNode3D("Primal_Sig2", 0.36, -0.32, -0.25, 8.5, "#20B2AA", "#fff", "Primal Face σ₂ ∈ K", "Primal 2-Cell σ₂: Coboundary d_K ω(σ₂) = ∮_{∂σ₂} ω satisfies d_K² ≡ 0 (Def. 10.6)", w, h);
+
+    const pDual = drawNode3D("Dual_Sig1", 0.36, 0.32, 0.25, 8.5, "#FFD700", "#DC143C", "Dual Edge σ₁* = *_K σ₂", "Voronoi Dual Cell σ_{n−k}^* ∈ K*: (*_K ω)(σ*) = (|σ*|/|σ|) ω(σ) (Def. 10.5)", w, h);
+
+    drawLine3D(proj(-0.32, -0.32, -0.25, w, h), pDual, "#FFD700", 3.4);
+
+  }
+
+
+
+  // Stage 7: Hexagonal Metronic Honeycomb (\tau = \frac{\sqrt{3}}{4}\ell_P^2), Spin Rotor \hat{s} & \nabla^\gamma n^\gamma = \gamma!
+
+  function renderStage7(w, h) {
+
+    const hex = [];
+
+    for (let k = 0; k < 6; k++) {
+
+      const a = timeSec * 0.4 + (k / 6) * Math.PI * 2;
+
+      const x = 1.15 * Math.cos(a), y = 1.15 * Math.sin(a);
+
+      hex.push(drawNode3D("Hex_" + k, x, y, -0.45, 6.5, "#20B2AA", "#fff", k === 0 ? "ℓ_P" : "", "Equilateral Metronic Triangle Vertex: Area τ = (√3/4)ℓ_P² ≈ 1.13115×10⁻⁷⁰ m²", w, h));
+
+    }
+
+    const pHub = drawNode3D("Hex_Hub", 0, 0, -0.45, 8.5, "#4169E1", "#fff", "τ = (√3/4)ℓ_P²", "Honeycomb Center Node: Minimum non-singular radius r_min ≥ √τ (Fig. 10.4)", w, h);
+
+    for (let k = 0; k < 6; k++) {
+
+      drawLine3D(hex[k], hex[(k + 1) % 6], "#20B2AA", 2.4);
+
+      drawLine3D(pHub, hex[k], "rgba(65,105,225,0.65)", 1.8);
+
+    }
+
+    // Vertical Spin Rotor Vector \hat{s} = ROT_N \widehat{\Phi}
+
+    const pSpin = drawNode3D("Spin_s", 0, 0, 0.95, 10, "#FFD700", "#DC143C", "ŝ = ROT_N Φ̂ | ∇^γ n^γ = γ!", "Discrete Spin Rotor Eigenvalue (ŝ; n)_{n=1} = τ̂ & Thm. 10.8 Monomial Identity ∇^γ n^γ = γ!", w, h);
+
+    drawLine3D(pHub, pSpin, "#FFD700", 3.5);
+
+  }
+
+
+
+  // Stage 8: Discrete Leibniz Product Cross-Term Box \nabla(uv) = u\nabla v + v\nabla u - (\nabla u)(\nabla v) (Thm. 10.12)
+
+  function renderStage8(w, h) {
+
+    // Main Product Block u(n) v(n) + Crimson Corner Discreteness Cross-Term -(\nabla u)(\nabla v)
+
+    drawCubeWireframe(-0.25, -0.25, -0.15, 0.65, "#4169E1", 2.0, null, w, h);
+
+    drawCubeWireframe( 0.62,  0.62,  0.52, 0.32, "#DC143C", 2.8, null, w, h);
+
+
+
+    drawNode3D("Lb_u", -0.9, 0, -0.15, 8, "#4169E1", "#fff", "(∇_i u) v", "First Classical Leibniz Summand (∇_i u)v", w, h);
+
+    drawNode3D("Lb_v", 0, -0.9, -0.15, 8, "#20B2AA", "#fff", "u (∇_i v)", "Second Classical Leibniz Summand u(∇_i v)", w, h);
+
+    drawNode3D("Lb_Cross", 0.62, 0.62, 0.52, 9.5, "#DC143C", "#FFD700", "−(∇_i u)(∇_i v) (SM-68a)", "Thm. 10.12 Non-Linear Discreteness Signature: Scales as O(τ²) → 0 as τ → 0⁺!", w, h);
+
+  }
+
+
+
+  // Stage 9: 3D Discrete Gauss-Stokes Divergence Flux Cube (Thm. 10.17, SM-80)
+
+  function renderStage9(w, h) {
+
+    drawCubeWireframe(0, 0, 0, 0.78, "#20B2AA", 2.2, null, w, h);
+
+    const normals = [
+
+      { id: "Fl_xp", dx:  1, dy:  0, dz:  0, lbl: "+Flux_{b₁}" },
+
+      { id: "Fl_xm", dx: -1, dy:  0, dz:  0, lbl: "−Flux_{a₁−1}" },
+
+      { id: "Fl_yp", dx:  0, dy:  1, dz:  0, lbl: "+Flux_{b₂}" },
+
+      { id: "Fl_ym", dx:  0, dy: -1, dz:  0, lbl: "−Flux_{a₂−1}" },
+
+      { id: "Fl_zp", dx:  0, dy:  0, dz:  1, lbl: "+Flux_{b₃}" },
+
+      { id: "Fl_zm", dx:  0, dy:  0, dz: -1, lbl: "−Flux_{a₃−1}" }
+
+    ];
+
+    const pulse = 1.18 + 0.15 * Math.sin(timeSec * 3);
+
+    normals.forEach(nm => {
+
+      const pFace = proj(nm.dx * 0.78, nm.dy * 0.78, nm.dz * 0.78, w, h);
+
+      const pTip  = drawNode3D(nm.id, nm.dx * pulse, nm.dy * pulse, nm.dz * pulse, 6.5, "#FFD700", "#DC143C", nm.lbl, `Thm. 10.17 Discrete Gauss Facet Flux ${nm.lbl}: Interior differences telescope to ∂Ω!`, w, h);
+
+      drawLine3D(pFace, pTip, "#FFD700", 3.0);
+
+    });
+
+    drawNode3D("GS_Core", 0, 0, 0, 8.5, "#20B2AA", "#fff", "∑_Ω DIV_n A", "Interior Volume Divergence Sum equals Net Boundary Flux across all 2n = 6 facets (SM-80)", w, h);
+
+  }
+
+
+
+  // Stage 10: 3D Brillouin Zone UV Dispersion Surface \lambda(k) = (4/\tau^2)\sum\sin^2(k_i\tau/2) & Stage VI Polarimeter
+
+  function renderStage10(w, h) {
+
+    // 3D Sine-Squared Brillouin Dispersion Dome over [-\pi/\tau, +\pi/\tau]^2
+
+    for (let u = -1.35; u <= 1.36; u += 0.34) {
+
+      ctx.beginPath();
+
+      ctx.strokeStyle = "#FFA500";
+
+      ctx.lineWidth = 1.8;
+
+      for (let v = -1.35; v <= 1.36; v += 0.17) {
+
+        const ku = (u / 1.35) * (Math.PI * 0.5);
+
+        const kv = (v / 1.35) * (Math.PI * 0.5);
+
+        const lam = -0.85 + 0.92 * (Math.pow(Math.sin(ku), 2) + Math.pow(Math.sin(kv), 2));
+
+        const p = proj(u, v, lam, w, h);
+
+        if (v === -1.35) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+
+      }
+
+      ctx.stroke();
+
+    }
+
+    drawNode3D("UV_Zero", 0, 0, -0.85, 8.5, "#20B2AA", "#fff", "k = 0 (IR Continuum)", "Long-Wavelength Continuum Limit: λ(k) ≈ |k|² + O(τ²|k|⁴) (Thm. 10.21)", w, h);
+
+    drawNode3D("UV_Max", 1.35, 1.35, 0.99, 10, "#FFD700", "#DC143C", "Λ_UV = 4/√τ (Brillouin Corner)", "Thm. 10.21 Intrinsic Ultraviolet Cutoff at Brillouin Zone Boundary k_i = ±π/τ!", w, h);
+
+  }
+
+
+
+  // Master 60fps Loop
+
+  function renderLoop() {
+
+    timeSec += 0.016;
+
+    curStage += (targetStage - curStage) * 0.14;
+
+    if (autoOrbit && !isDragging) camYaw += 0.0055;
+
+
+
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+
+    if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
+
+      resize();
+
+    }
+
+    ctx.clearRect(0, 0, w, h);
+
+    hitNodes = [];
+
+
+
+    const stInt = Math.round(curStage);
+
+    if (stInt === 1) renderStage1(w, h);
+
+    else if (stInt === 2) renderStage2(w, h);
+
+    else if (stInt === 3) renderStage3(w, h);
+
+    else if (stInt === 4 || stInt === 5) renderStage4And5(w, h, curStage);
+
+    else if (stInt === 6) renderStage6(w, h);
+
+    else if (stInt === 7) renderStage7(w, h);
+
+    else if (stInt === 8) renderStage8(w, h);
+
+    else if (stInt === 9) renderStage9(w, h);
+
+    else renderStage10(w, h);
+
+
+
+    requestAnimationFrame(renderLoop);
+
+  }
+
+
+
+  // UI & Slide Sync Controllers
+
+  window.setCh10Stage = function(val, manual) {
+
+    targetStage = Math.max(1.0, Math.min(10.0, parseFloat(val)));
+
+    const stInt = Math.round(targetStage);
+
+
+
+    const sl = document.getElementById('ch10-slider');
+
+    if (sl && Math.abs(parseFloat(sl.value) - targetStage) > 0.02) sl.value = targetStage;
+
+
+
+    const pill = document.getElementById('ch10-stage-pill');
+
+    if (pill) pill.innerText = `Stage ${targetStage.toFixed(1)} / 10`;
+
+
+
+    const cap = document.getElementById('ch10-caption');
+
+    if (cap) cap.innerHTML = STAGE_CAPTIONS[stInt] || STAGE_CAPTIONS[1];
+
+
+
+    const tel = document.getElementById('ch10-telemetry');
+
+    if (tel) tel.innerText = STAGE_TELEMETRY[stInt] || STAGE_TELEMETRY[1];
+
+
+
+    if (manual) {
+
+      autoSync = false;
+
+      const b = document.getElementById('ch10-btn-sync');
+
+      if (b) { b.classList.remove('active'); b.innerText = "Manual"; }
+
+    }
+
+  };
+
+
+
+  window.scrubCh10Stage = function(val) { window.setCh10Stage(val, true); };
+
+
+
+  window.enableCh10Sync = function() {
+
+    autoSync = true;
+
+    const b = document.getElementById('ch10-btn-sync');
+
+    if (b) { b.classList.add('active'); b.innerText = "Auto-Sync"; }
+
+    syncCh10WithDeck();
+
+  };
+
+
+
+  window.toggleCh10Orbit = function() {
+
+    autoOrbit = !autoOrbit;
+
+    const b = document.getElementById('ch10-btn-orbit');
+
+    if (b) b.classList.toggle('active', autoOrbit);
+
+  };
+
+
+
+  window.toggleCh10Spotlight = function() {
+
+    const hud = document.getElementById('ch10-3d-hud');
+
+    if (hud) {
+
+      hud.classList.remove('minimized');
+
+      hud.classList.toggle('spotlight');
+
+      setTimeout(resize, 360);
+
+    }
+
+  };
+
+
+
+  window.toggleCh10Minimize = function() {
+
+    const hud = document.getElementById('ch10-3d-hud');
+
+    const b = document.getElementById('ch10-btn-min');
+
+    if (hud) {
+
+      hud.classList.remove('spotlight');
+
+      hud.classList.toggle('minimized');
+
+      if (b) b.innerText = hud.classList.contains('minimized') ? "+" : "—";
+
+      setTimeout(resize, 360);
+
+    }
+
+  };
+
+
+
+  function syncCh10WithDeck() {
+    if (!autoSync) return;
+    const isMegaDeck = !!document.getElementById('syntrix-3d-hud') || document.querySelectorAll('h1').length > 5;
+    const ch10Hud = document.getElementById('ch10-3d-hud');
+    if (isMegaDeck && ch10Hud && window.Reveal && window.Reveal.getCurrentSlide) {
+      const currentSlide = window.Reveal.getCurrentSlide();
+      const inCh10 = currentSlide ? !!currentSlide.closest('#chapter-10, section[data-chapter="10"]') : true;
+      ch10Hud.style.display = inCh10 ? '' : 'none';
+      if (!inCh10) return;
+    }
+    const vp = document.querySelector('.reveal-viewport');
+
+    const isScroll = vp && vp.classList.contains('reveal-scroll');
+
+    if (isScroll) {
+
+      const scEl = vp.scrollHeight > vp.clientHeight ? vp : document.documentElement;
+
+      const top = vp.scrollTop || window.scrollY || document.documentElement.scrollTop || 0;
+
+      const max = Math.max(1, (scEl.scrollHeight || document.body.scrollHeight) - window.innerHeight);
+
+      window.setCh10Stage(1.0 + Math.min(1, Math.max(0, top / max)) * 9.0, false);
+
+    } else if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
+
+      const idx = window.Reveal.getIndices();
+
+      const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 13);
+
+      const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
+
+      const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
+
+      window.setCh10Stage(1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0, false);
+
+    }
+
+  }
+
+
+
+  // 3D Orbit Drag, Wheel Zoom & Node Click Hit-Testing
+
+  wrap.addEventListener('mousedown', e => {
+
+    e.stopPropagation();
+
+    isDragging = true;
+
+    lastX = e.clientX;
+
+    lastY = e.clientY;
+
+  });
+
+
+
+  window.addEventListener('mousemove', e => {
+
+    if (!isDragging) return;
+
+    camYaw += (e.clientX - lastX) * 0.012;
+
+    camPitch = Math.max(-0.85, Math.min(1.15, camPitch + (e.clientY - lastY) * 0.012));
+
+    lastX = e.clientX;
+
+    lastY = e.clientY;
+
+  });
+
+
+
+  wrap.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      lastX = e.touches[0].clientX;
+      lastY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', e => {
+    if (!isDragging || e.touches.length !== 1) return;
+    const dx = e.touches[0].clientX - lastX;
+    const dy = e.touches[0].clientY - lastY;
+    lastX = e.touches[0].clientX;
+    lastY = e.touches[0].clientY;
+    camYaw += dx * 0.012;
+    camPitch = Math.max(-0.85, Math.min(1.15, camPitch + dy * 0.012));
+  }, { passive: true });
+
+  window.addEventListener('touchend', () => { isDragging = false; });
+
+  window.addEventListener('mouseup', () => { isDragging = false; });
+
+
+
+  wrap.addEventListener('click', e => {
+
+    e.stopPropagation();
+
+    const rect = canvas.getBoundingClientRect();
+
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+
+    let hit = null;
+
+    for (let i = hitNodes.length - 1; i >= 0; i--) {
+
+      const n = hitNodes[i];
+
+      if (Math.hypot(mx - n.p.sx, my - n.p.sy) <= n.r + 6) { hit = n; break; }
+
+    }
+
+    const insp = document.getElementById('ch10-node-inspector');
+
+    if (hit && insp) {
+
+      selectedId = hit.id;
+
+      insp.innerText = hit.info;
+
+    } else if (insp) {
+
+      selectedId = null;
+
+      insp.innerText = "Drag to Orbit 3D · Click Node to Inspect";
+
+    }
+
+  });
+
+
+
+  wrap.addEventListener('wheel', e => {
+
+    e.preventDefault();
+
+    e.stopPropagation();
+
+    camZoom = Math.max(0.65, Math.min(1.65, camZoom - e.deltaY * 0.001));
+
+  }, { passive: false });
+
+
+
+  function init() {
+
+    resize();
+
+    syncCh10WithDeck();
+
+    requestAnimationFrame(renderLoop);
+
+    window.addEventListener('resize', resize);
+
+    window.addEventListener('scroll', syncCh10WithDeck, { passive: true });
+
+    const vp = document.querySelector('.reveal-viewport');
+
+    if (vp) vp.addEventListener('scroll', syncCh10WithDeck, { passive: true });
+
+    if (window.Reveal) {
+
+      window.Reveal.on('ready', syncCh10WithDeck);
+
+      window.Reveal.on('slidechanged', syncCh10WithDeck);
+
+      window.Reveal.on('fragmentshown', syncCh10WithDeck);
+
+      window.Reveal.on('fragmenthidden', syncCh10WithDeck);
+
+    }
+
+    const hud = document.getElementById('ch10-3d-hud');
+
+    if (hud) {
+
+      hud.querySelectorAll('input, button').forEach(el => {
+
+        el.addEventListener('keydown', e => e.stopPropagation());
+
+        el.addEventListener('mousedown', e => e.stopPropagation());
+
+        el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+
+      });
+
+    }
+
+  }
+
+
+
+  init();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runCh10Engine);
+  } else {
+    runCh10Engine();
+  }
+})();
