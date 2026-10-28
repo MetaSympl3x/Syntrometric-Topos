@@ -564,3 +564,737 @@ window.showGenericTab = window.showGenericTab || function(prefix, idx, maxIdx, b
     initChapter11();
   }
 })();
+
+
+// =========================================================================
+// CHAPTER 11 3D ENGINE INJECTOR & RUNNER
+// =========================================================================
+const CH11_3D_STYLE = `#ch11-3d-hud {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 445px;
+  background: linear-gradient(145deg, rgba(7, 10, 19, 0.96) 0%, rgba(14, 21, 38, 0.98) 100%);
+  border: 1.5px solid rgba(255, 215, 0, 0.65);
+  border-radius: 14px;
+  padding: 10px 14px 12px 14px;
+  z-index: 9999;
+  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.86), 0 0 28px rgba(65, 105, 225, 0.34);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: "Libertinus Sans", "Inter", system-ui, sans-serif;
+  color: #e8ecf2;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  user-select: none;
+}
+
+#ch11-3d-hud.spotlight {
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+  width: min(920px, 95vw);
+  border-color: #FFD700;
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.96), 0 0 58px rgba(255, 215, 0, 0.44);
+}
+
+#ch11-3d-hud.minimized {
+  width: 285px;
+  padding: 7px 12px;
+}
+
+#ch11-3d-hud.minimized .ch11-hud-body {
+  display: none;
+}
+
+.ch11-hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(65, 105, 225, 0.45);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.ch11-hud-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  color: #FFD700;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.ch11-hud-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.ch11-hud-btn {
+  background: #172033;
+  color: #cbd5e1;
+  border: 1px solid #3b4963;
+  border-radius: 5px;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ch11-hud-btn:hover, .ch11-hud-btn.active {
+  background: #FFD700;
+  color: #000;
+  border-color: #FFD700;
+}
+
+.ch11-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 265px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #2d3748;
+  background: radial-gradient(circle at 50% 55%, #111b30 0%, #05070e 100%);
+  cursor: grab;
+}
+
+.ch11-canvas-wrap:active {
+  cursor: grabbing;
+}
+
+#ch11-3d-hud.spotlight .ch11-canvas-wrap {
+  height: 500px;
+}
+
+#ch11-3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ch11-overlay-bar {
+  position: absolute;
+  top: 7px;
+  left: 9px;
+  right: 9px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 10px;
+  gap: 6px;
+}
+
+.ch11-telemetry {
+  background: rgba(6, 9, 17, 0.84);
+  border: 1px solid rgba(65, 105, 225, 0.55);
+  border-radius: 5px;
+  padding: 2px 7px;
+  color: #82aaff;
+  white-space: nowrap;
+}
+
+#ch11-node-inspector {
+  background: rgba(6, 9, 17, 0.88);
+  border: 1px solid rgba(255, 215, 0, 0.6);
+  border-radius: 5px;
+  padding: 2px 8px;
+  color: #FFD700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ch11-scrubber {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 11px;
+}
+
+.ch11-scrubber input[type="range"] {
+  flex: 1;
+  accent-color: #FFD700;
+  height: 5px;
+  cursor: pointer;
+}
+
+#ch11-caption {
+  margin-top: 6px;
+  padding: 6px 9px;
+  background: rgba(4, 7, 14, 0.9);
+  border-left: 3px solid #20B2AA;
+  border-radius: 5px;
+  font-family: "Libertinus Mono", monospace;
+  font-size: 10.5px;
+  line-height: 1.38;
+  color: #5eead4;
+}
+
+@media (max-width: 900px) {
+  #ch11-3d-hud {
+    right: 8px;
+    bottom: 8px;
+    width: calc(100vw - 16px);
+    max-width: 385px;
+  }
+}`;
+
+const CH11_3D_HTML = `<div class="ch11-hud-header">
+    <div class="ch11-hud-title">
+      <span>⚛️ Ch 11 · 3D Selector &amp; Mass Engine</span>
+      <span id="ch11-stage-pill" style="background:#4169E1; color:#fff; padding:1px 7px; border-radius:4px; font-size:9.5px;">Stage 1.0 / 10</span>
+    </div>
+    <div class="ch11-hud-controls">
+      <button class="ch11-hud-btn active" id="ch11-btn-orbit" onclick="toggleCh11Orbit()">⟳ Orbit</button>
+      <button class="ch11-hud-btn" onclick="toggleCh11Spotlight()">⛶ Spotlight</button>
+      <button class="ch11-hud-btn" id="ch11-btn-min" onclick="toggleCh11Minimize()">—</button>
+    </div>
+  </div>
+
+  <div class="ch11-hud-body">
+    <div class="ch11-canvas-wrap" id="ch11-canvas-wrap">
+      <canvas id="ch11-3d-canvas"></canvas>
+      <div class="ch11-overlay-bar">
+        <div class="ch11-telemetry" id="ch11-telemetry">Sel Ψ = λΨ | ⁴F = 0 on R₁₂</div>
+        <div id="ch11-node-inspector">Drag to Orbit 3D · Click Node to Inspect</div>
+      </div>
+    </div>
+
+    <div class="ch11-scrubber">
+      <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
+      <input type="range" id="ch11-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh11Stage(this.value)">
+      <button class="ch11-hud-btn active" id="ch11-btn-sync" onclick="enableCh11Sync()">Auto-Sync</button>
+    </div>
+
+    <div id="ch11-caption">
+      <b>Stage 1 (§11.1.1 — SM-99–100):</b> Strukturkompressor ⁴ζ = d_τ Γ + [Γ ∧ Γ] filtering primitive fields into Tensorion eigenstates.
+    </div>
+  </div>`;
+
+function injectCh113DHUD() {
+  if (document.getElementById('ch11-3d-hud')) return;
+  const styleEl = document.createElement('style');
+  styleEl.textContent = CH11_3D_STYLE;
+  document.head.appendChild(styleEl);
+
+  const hudEl = document.createElement('div');
+  hudEl.id = 'ch11-3d-hud';
+  hudEl.innerHTML = CH11_3D_HTML;
+  document.body.appendChild(hudEl);
+}
+
+(function() {
+  if (window.__ch11_3d_engine_loaded) return;
+  window.__ch11_3d_engine_loaded = true;
+
+  function runCh11Engine() {
+    injectCh113DHUD();
+    if (window.__ch11_3d_engine_initialized) return;
+    window.__ch11_3d_engine_initialized = true;
+
+const canvas = document.getElementById('ch11-3d-canvas');
+  const wrap = document.getElementById('ch11-canvas-wrap');
+  if (!canvas || !wrap) return;
+  const ctx = canvas.getContext('2d');
+
+  let targetStage = 1.0;
+  let curStage = 1.0;
+  let autoSync = true;
+  let autoOrbit = true;
+  let camYaw = -0.48;
+  let camPitch = 0.36;
+  let camZoom = 1.0;
+  let isDragging = false;
+  let lastX = 0, lastY = 0;
+  let timeSec = 0;
+  let hitNodes = [];
+  let selectedId = null;
+
+  const STAGE_CAPTIONS = {
+    1: "<b>Stage 1 (§11.1.1 — SM-99 Strukturkompressor ⁴ζ):</b> 4-sector stress decomposition ⁴ς̄(α)+⁴q̄(α)+⁴C̄(α)+⁴D̄(α) locking Null-Stability ⁴F̄ = 0.",
+    2: "<b>Stage 2 (§11.1.2 — SM-87 Spinselektor ŝ &amp; SM-93a):</b> Metron cell plaquette circulation ŝ = ROT_N Φ̂ = (∇₁Φ₂−∇₂Φ₁)/√τ fixing spin Q = 2J.",
+    3: "<b>Stage 3 (§11.1.3 — Fig. 11.1 Resonant Geometric Soliton):</b> Core I₆, standing-wave nodal shells λ_k, Null-Stability shell ⁴F=0 &amp; 1/r tail.",
+    4: "<b>Stage 4 (§11.2 — Assump. 11.1 Capacity Balance N=6 &amp; Thm. 11.12):</b> N⁴/16 = (N³+3N²)/4 selects unique positive root N = 6 (ω=3) &amp; Div(6).",
+    5: "<b>Stage 5 (§11.2.1 — Def. 11.3 12D Fibration R₁₂ ≅ R₄ × S² × 𝕋⁶):</b> Spacetime R₄, organizational sphere S² &amp; compact internal torus 𝕋⁶.",
+    6: "<b>Stage 6 (§11.3 — Thm. 11.8 Discrete Real Spectrum on K₈):</b> Self-adjoint selector Sel on L²(K₈,E) &amp; conjectural 3-generation Dirac index.",
+    7: "<b>Stage 7 (§11.3 &amp; §B.5 — Def. 11.9 &amp; Prop. B.9 Verlet Geodesic):</b> Symplectic Verlet precessing rosette orbit on 𝕄_τ⁴ (r_min ≥ √τ cutoff!).",
+    8: "<b>Stage 8 (§11.3 — Thm. 11.11 63-Channel Binomial Crown):</b> L_p = C(6,p) = (6, 15, 20, 15, 6, 1) peaking at baryonic nucleons L₃ = 20!",
+    9: "<b>Stage 9 (App. B §B.1–B.3 — Proton–Neutron 3-Flux Splitting &amp; Krawczyk):</b> p⁺ (938.272 MeV) vs. n⁰ (939.565 MeV, Δm = +1.293 MeV) &amp; Alg. D.4.",
+    10: "<b>Stage 10 (App. B §B.4, §B.6 — Thm. B.6 FCC α_met⁻¹ &amp; GRB 090510):</b> Maximal FCC sphere packing (0.74048) ⇒ α_met⁻¹ = 137.036036 &amp; E_QG = 1.52 M_P!"
+  };
+
+  const STAGE_TELEMETRY = {
+    1: "⁴F̄(ς_{klm}^i, λ_m Γ_{kl}^i) = ⁴0̄ (SM Eq. 100)",
+    2: "ŝ = ROT_N Φ̂ | (ŝ ; n)_{n=1} = τ̂ (SM-87)",
+    3: "N̄ = 𝒮 K̄ δ̄n (SM-91) | m = m₀ (L_p/L₁) ∏ λ_k",
+    4: "N²(N − 6)(N + 2) = 0 ⇒ N = 6 | Div(6)={1,2,3,6}",
+    5: "R₁₂ ≅ R₄ × K₈ ≅ R₄ × S² × 𝕋⁶ (∂K₈ = ∅)",
+    6: "λ_{ℓ,m,α} = ℓ(ℓ+1)/R_S² + ∑ 4π²m_a²/L_a² + μ_α",
+    7: "Δφ = 6πGM/[c²a(1−e²)] = 42.98''/cy (r_min ≥ √τ)",
+    8: "∑_{p=1}^6 C(6,p) = 2⁶ − 1 = 63 Channels",
+    9: "m_p = 938.272 MeV | m_n = 939.565 MeV (ε̄ < 0.012%)",
+    10: "α_met⁻¹ = 137.036036 | E_QG = 1.855×10¹⁹ GeV"
+  };
+
+  function resize() {
+    const r = wrap.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = r.width * dpr;
+    canvas.height = r.height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function proj(x, y, z, w, h) {
+    const cy = Math.cos(camYaw), sy = Math.sin(camYaw);
+    const x1 = x * cy - y * sy;
+    const y1 = x * sy + y * cy;
+    const cp = Math.cos(camPitch), sp = Math.sin(camPitch);
+    const y2 = y1 * cp - z * sp;
+    const z2 = y1 * sp + z * cp;
+    const fov = Math.min(w, h) * 0.43 * camZoom;
+    const sc = fov / Math.max(0.85, 4.6 - y2 * 0.45);
+    return { sx: w * 0.5 + x1 * sc, sy: h * 0.53 - z2 * sc, depth: y2, sc: sc / 100 };
+  }
+
+  function drawLine3D(p1, p2, col, lw, dash) {
+    ctx.save();
+    ctx.beginPath();
+    if (dash) ctx.setLineDash(dash);
+    ctx.strokeStyle = col;
+    ctx.lineWidth = lw || 2;
+    ctx.moveTo(p1.sx, p1.sy);
+    ctx.lineTo(p2.sx, p2.sy);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawNode3D(id, x, y, z, r, fill, stroke, label, info, w, h) {
+    const p = proj(x, y, z, w, h);
+    hitNodes.push({ id, p, r, info });
+    const isSel = (selectedId === id);
+    ctx.save();
+    ctx.beginPath();
+    ctx.fillStyle = isSel ? "#ffffff" : fill;
+    ctx.strokeStyle = isSel ? "#FFD700" : (stroke || "#ffffff");
+    ctx.lineWidth = isSel ? 3.0 : 1.6;
+    ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    if (label) {
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 9.5px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(label, p.sx, p.sy - r - 4);
+    }
+    ctx.restore();
+    return p;
+  }
+
+  // =========================================================================
+  // STAGE RENDERERS (STAGES 1 TO 10)
+  // =========================================================================
+
+  // Stage 1: Strukturkompressor ^4\zeta (SM-99) & 4-Component Decomposition (Prop. 11.6)
+  function renderStage1(w, h) {
+    const pCore = drawNode3D("Null_F", 0, 0, 0, 11.5, "#FFD700", "#20B2AA", "⁴F̄(ς, λ_m Γ) = ⁴0̄", "Null-Stability Eigenstate (SM-100): Sel(Ψ) = λ_m Ψ with perfect internal stress cancellation!", w, h);
+    const sectors = [
+      { id: "Sec_S", x: -1.15, y: -0.65, z:  0.65, col: "#4169E1", lbl: "⁴ς̄(α) (Intrinsic)" },
+      { id: "Sec_Q", x:  1.15, y: -0.65, z:  0.65, col: "#20B2AA", lbl: "⁴q̄(α) (Coupling)" },
+      { id: "Sec_C", x: -1.15, y:  0.65, z: -0.65, col: "#FFA500", lbl: "⁴C̄(α) (Cross-Channel)" },
+      { id: "Sec_D", x:  1.15, y:  0.65, z: -0.65, col: "#9370DB", lbl: "⁴D̄(α) (Mixed Conn)" }
+    ];
+    sectors.forEach(s => {
+      const pS = drawNode3D(s.id, s.x, s.y, s.z, 8, s.col, "#fff", s.lbl, `Prop. 11.6 Curvature-Compression Sector ${s.lbl} (SM Eq. 99a)`, w, h);
+      drawLine3D(pS, pCore, s.col, 2.6, [4, 2]);
+    });
+  }
+
+  // Stage 2: Metronische Hyperstrukturen & Spinselektor Plaquette \hat{s} = ROT_N \widehat{\Phi} (SM-87)
+  function renderStage2(w, h) {
+    const s = 0.95;
+    const corners = [
+      drawNode3D("Pl_00", -s, -s, -0.45, 6.5, "#4169E1", "#fff", "n", "Plaquette Base Node n ∈ 𝕄_τ^n (Gitterselektor C_k / Hyperselektor χ_k)", w, h),
+      drawNode3D("Pl_10",  s, -s, -0.45, 6.5, "#4169E1", "#fff", "n+e₁", "Link Φ̂₁(n)", w, h),
+      drawNode3D("Pl_11",  s,  s, -0.45, 6.5, "#4169E1", "#fff", "n+e₁+e₂", "Link Φ̂₂(n+e₁)", w, h),
+      drawNode3D("Pl_01", -s,  s, -0.45, 6.5, "#4169E1", "#fff", "n+e₂", "Link −Φ̂₁(n+e₂)", w, h)
+    ];
+    for (let i = 0; i < 4; i++) {
+      drawLine3D(corners[i], corners[(i + 1) % 4], "#20B2AA", 3.0);
+    }
+    // Vertical Spin Rotor Vector \hat{s} = (\nabla_1 \Phi_2 - \nabla_2 \Phi_1)/\sqrt{\tau}
+    const pCent = proj(0, 0, -0.45, w, h);
+    const pSpin = drawNode3D("Spin_Vec", 0, 0, 1.05, 10.5, "#FFD700", "#DC143C", "ŝ = ROT_N Φ̂ (Q = 2J)", "SM Eq. 87 Spinselektor Matrix: (ŝ ; n)_{n=1} = τ̂ fixing intrinsic spin Q = 2J!", w, h);
+    drawLine3D(pCent, pSpin, "#FFD700", 3.8);
+  }
+
+  // Stage 3: Resonant Geometric Soliton (Fig. 11.1, SM-91, SM-100a)
+  function renderStage3(w, h) {
+    const shells = [
+      { r: 0.38, col: "#9370DB", id: "Sol_Core", lbl: "Core I₆", info: "Compact Internal Gauge Core I₆ inside the Resonant Geometric Soliton" },
+      { r: 0.78, col: "#20B2AA", id: "Sol_Lam",  lbl: "Nodal Shells λ_k", info: "Standing-Wave Eigenvalue Nodal Surfaces λ₁, λ₂, λ₃ of Self-Adjoint Selector Sel" },
+      { r: 1.18, col: "#FFD700", id: "Sol_Null", lbl: "Null-Stability Shell ⁴F = 0", info: "Boundary Shell where Curvature Compressor ⁴F̄ vanishes identically (SM-100)" }
+    ];
+    shells.forEach((sh, idx) => {
+      ctx.beginPath();
+      ctx.strokeStyle = sh.col;
+      ctx.lineWidth = idx === 2 ? 2.8 : 1.8;
+      for (let i = 0; i <= 44; i++) {
+        const a = (i / 44) * Math.PI * 2;
+        const p = proj(sh.r * Math.cos(a), sh.r * Math.sin(a), 0.22 * Math.sin(a * 3 + timeSec * 2), w, h);
+        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+      }
+      ctx.stroke();
+      drawNode3D(sh.id, sh.r * Math.cos(idx * 2.0), sh.r * Math.sin(idx * 2.0), 0, idx === 2 ? 9.5 : 7.5, sh.col, "#fff", sh.lbl, sh.info, w, h);
+    });
+  }
+
+  // Stage 4: Capacity Balance N^4/16 = (N^3+3N^2)/4 => N = 6 (Assump. 11.1) & Div(6) = {1,2,3,6}
+  function renderStage4(w, h) {
+    // Plot 3D Capacity Curves Z_\omega(N) and Z_k(N) for N \in [1, 7]
+    ["omega", "k"].forEach(mode => {
+      ctx.beginPath();
+      ctx.strokeStyle = mode === "omega" ? "#FFD700" : "#20B2AA";
+      ctx.lineWidth = 2.8;
+      for (let N = 1.0; N <= 6.8; N += 0.2) {
+        const x = (N - 4.0) * 0.44;
+        const val = mode === "omega" ? Math.pow(N, 4) / 16.0 : (Math.pow(N, 3) + 3 * N * N) / 4.0;
+        const z = -0.95 + (val / 81.0) * 1.65;
+        const p = proj(x, mode === "omega" ? -0.25 : 0.25, z, w, h);
+        if (N === 1.0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+      }
+      ctx.stroke();
+    });
+    // Unique Positive Intersection at N = 6 (Z = 81)
+    const x6 = (6.0 - 4.0) * 0.44;
+    drawNode3D("Root_N6", x6, 0, -0.95 + 1.65, 11, "#FFD700", "#DC143C", "N = 6 (Z_ω = Z_k = 81)", "Assump. 11.1 Unique Positive Root of N²(N − 6)(N + 2) = 0 locking condensation onto R₆!", w, h);
+    // 4 Divisor Pillars Div(6) = {1, 2, 3, 6} (Thm. 11.12)
+    [1, 2, 3, 6].forEach(d => {
+      const xd = (d - 4.0) * 0.44;
+      drawNode3D("Div_" + d, xd, -0.85, -0.85, 6.5, "#4169E1", "#fff", `p=${d}∈Div(6)`, `Thm. 11.12 Allowed Metron Divisor p = ${d} (6 = p·M, SM Eqs. 65–65a)`, w, h);
+    });
+  }
+
+  // Stage 5 & 6: 12D Fibration R_{12} \cong R_4 \times S^2 \times \mathbb{T}^6 & K_8 Eigenvalue Spectrum
+  function renderStage5And6(w, h, st) {
+    const isStage6 = (st >= 5.5);
+    // 3D Torus Wireframe representing K_8 = S^2 \times \mathbb{T}^6
+    const R = 0.92, r = 0.36;
+    for (let u = 0; u < 12; u++) {
+      const a = (u / 12) * Math.PI * 2;
+      ctx.beginPath();
+      ctx.strokeStyle = "rgba(32, 178, 170, 0.55)";
+      ctx.lineWidth = 1.4;
+      for (let v = 0; v <= 24; v++) {
+        const b = (v / 24) * Math.PI * 2;
+        const x = (R + r * Math.cos(b)) * Math.cos(a);
+        const y = (R + r * Math.cos(b)) * Math.sin(a);
+        const z = r * Math.sin(b) + 0.25;
+        const p = proj(x, y, z, w, h);
+        if (v === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+      }
+      ctx.stroke();
+    }
+    drawNode3D("Base_R4", 0, 0, -1.05, 9, "#4169E1", "#fff", "R₄(x₁..x₄) Spacetime", "Observable 4D Lorentzian Spacetime Base Bundle R₄", w, h);
+    drawNode3D("Fib_K8", 0, 0, 0.25, 10.5, "#FFD700", "#20B2AA", isStage6 ? "Spec(Sel) = {λ_k} ⊂ ℝ" : "K₈ = S²(x₅,x₆) × 𝕋⁶(x₇..x₁₂)", isStage6 ? "Thm. 11.8 Purely Discrete Real Eigenvalue Spectrum on compact boundaryless K₈ (∂K₈ = ∅)!" : "Def. 11.3 Compact 8D Internal Sub-Bundle K₈ = S² × 𝕋⁶ condensing onto R₆ = R₄ × S₂", w, h);
+
+    if (isStage6) {
+      // 3 Chiral Generation Modes (e^-, \mu^-, \tau^-)
+      ["ν=1 (e⁻)", "ν=2 (μ⁻)", "ν=3 (τ⁻)"].forEach((lbl, idx) => {
+        const a = timeSec * 1.2 + (idx / 3) * Math.PI * 2;
+        drawNode3D("Gen_" + idx, R * Math.cos(a), R * Math.sin(a), 0.25, 7, "#FFA500", "#fff", lbl, `Radial Multiplet / Generation Mode ${lbl} on K₈ (Carnap Scholium 11.2, c_GEN3)`, w, h);
+      });
+    }
+  }
+
+  // Stage 7: Symplectic Verlet Precessing Rosette Geodesic on \mathbb{M}_\tau^4 (Def. 11.9, Prop. B.9)
+  function renderStage7(w, h) {
+    // Precessing Relativistic Rosette Orbit around Schwarzschild-Heim Center with r_min >= \sqrt{\tau}
+    ctx.beginPath();
+    ctx.strokeStyle = "#20B2AA";
+    ctx.lineWidth = 2.4;
+    for (let i = 0; i <= 160; i++) {
+      const s = (i / 160) * Math.PI * 8;
+      const rad = 0.88 / (1.0 + 0.34 * Math.cos(0.86 * s));
+      const p = proj(rad * Math.cos(s), rad * Math.sin(s), 0.15 * Math.sin(s), w, h);
+      if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+    }
+    ctx.stroke();
+
+    const sNow = (timeSec * 2.2) % (Math.PI * 8);
+    const rNow = 0.88 / (1.0 + 0.34 * Math.cos(0.86 * sNow));
+    drawNode3D("Verlet_Pt", rNow * Math.cos(sNow), rNow * Math.sin(sNow), 0.15 * Math.sin(sNow), 7.5, "#FFD700", "#000", "n^i(m+1) Verlet", "Def. 11.9 & Prop. B.9 Symplectic Verlet Lattice Geodesic: Δφ = 42.98''/cy", w, h);
+    drawNode3D("Rmin_Core", 0, 0, 0, 10, "#DC143C", "#FFD700", "r_min ≥ √τ (No Singularity)", "Minimum Metronic Cell Cutoff eliminates r → 0 continuum singularity!", w, h);
+  }
+
+  // Stage 8: 63-Channel Boolean Hypercube Crown L_p = \binom{6}{p} = (6, 15, 20, 15, 6, 1) (Thm. 11.11)
+  function renderStage8(w, h) {
+    const Lp = [6, 15, 20, 15, 6, 1];
+    const names = ["p=1: Leptons (6)", "p=2: Mesons (15)", "p=3: Baryons (20)", "p=4: Heavy (15)", "p=5: Hyper (6)", "p=6: Top (1)"];
+    Lp.forEach((L, idx) => {
+      const x = (idx - 2.5) * 0.52;
+      const zTop = -0.85 + (L / 20.0) * 1.85;
+      const isBaryon = (idx === 2);
+      const col = isBaryon ? "#FFD700" : (idx < 2 ? "#20B2AA" : "#4169E1");
+      const pBot = proj(x, 0, -0.85, w, h);
+      const pTop = drawNode3D(
+        "Chan_" + (idx + 1), x, 0, zTop, isBaryon ? 10.5 : 7.5, col, "#fff",
+        isBaryon ? "L₃ = C(6,3) = 20" : `L_${idx+1}=${L}`,
+        `${names[idx]}: Multiplier L_p/L₁ = ${L}/6 = ${(L/6).toFixed(3)} (Total ∑ C(6,p) = 63)`, w, h
+      );
+      drawLine3D(pBot, pTop, col, isBaryon ? 6.5 : 4.0);
+    });
+  }
+
+  // Stage 9: Proton-Neutron 3-Flux Splitting (\Delta m = +1.293 MeV) & Interval Newton-Krawczyk Box (Alg. D.4)
+  function renderStage9(w, h) {
+    // 3-Flux Baryonic Trefoil Ring (k = 3, L_3 = 20)
+    ctx.beginPath();
+    ctx.strokeStyle = "#20B2AA";
+    ctx.lineWidth = 2.8;
+    for (let i = 0; i <= 90; i++) {
+      const t = (i / 90) * Math.PI * 2;
+      const r = 0.85 + 0.28 * Math.cos(3 * t + timeSec * 2);
+      const p = proj(r * Math.cos(t), r * Math.sin(t), 0.32 * Math.sin(3 * t + timeSec * 2), w, h);
+      if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+    }
+    ctx.stroke();
+
+    const pProt = drawNode3D("Part_p", -0.85, 0, -0.25, 9.5, "#4169E1", "#FFD700", "Proton p⁺ (938.272 MeV)", "q_x = +1: Coulomb self-energy −κ₁ q_x² = −0.000543 on x₅ (Rel. Error −0.000008%)", w, h);
+    const pNeut = drawNode3D("Part_n",  0.85, 0,  0.35, 9.5, "#FFA500", "#FFD700", "Neutron n⁰ (939.565 MeV)", "q_x = 0: Isospin bias +κ_n(1−|q_x|) = +0.001378 lifts m_n > m_p by +1.293 MeV!", w, h);
+    const pKraw = drawNode3D("Kraw_Box", 0, 0, 0.95, 8.5, "#FFD700", "#DC143C", "Krawczyk 𝕂(X) ⊂ int(X)", "Alg. D.4 Brouwer Fixed-Point Mass Enclosure certifying unique eigenvalue λ ∈ [m_min, m_max]", w, h);
+    drawLine3D(pProt, pNeut, "#FFD700", 2.6, [4, 2]);
+  }
+
+  // Stage 10: FCC Sphere-Packing \alpha_{met}^{-1} = 137.036036 (Thm. B.6) & GRB 090510 LIV Cutoff
+  function renderStage10(w, h) {
+    // 3D Face-Centered Cubic (FCC) Close-Packed Sphere Cluster (f_pack = \pi / (3\sqrt{2}) \approx 0.74048)
+    const fcc = [
+      [0, 0, 0], [0.75, 0.75, 0], [-0.75, 0.75, 0], [0.75, -0.75, 0], [-0.75, -0.75, 0],
+      [0.75, 0, 0.75], [-0.75, 0, 0.75], [0, 0.75, -0.75], [0, -0.75, -0.75]
+    ];
+    fcc.forEach((c, idx) => {
+      const isCent = (idx === 0);
+      drawNode3D(
+        "FCC_" + idx, c[0], c[1], c[2], isCent ? 11.5 : 8.5,
+        isCent ? "#FFD700" : "#20B2AA", "#fff",
+        isCent ? "α_met⁻¹ = 137.036036" : (idx === 1 ? "f_pack = 0.74048" : ""),
+        isCent
+          ? "Thm. B.6 FCC Rotor Packing: α_met⁻¹ = 137.000 · η_cell = 137.036036 (2.7×10⁻⁷ match)!"
+          : "Scholium B.10 LIV Cutoff: E_QG = m₀c² = 1.855×10¹⁹ GeV = 1.52 M_Planck > 1.22 M_Planck (GRB 090510)", w, h
+      );
+    });
+  }
+
+  // Master 60fps Loop
+  function renderLoop() {
+    timeSec += 0.016;
+    curStage += (targetStage - curStage) * 0.14;
+    if (autoOrbit && !isDragging) camYaw += 0.0055;
+
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+    if (w > 0 && h > 0 && (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2)) {
+      resize();
+    }
+    ctx.clearRect(0, 0, w, h);
+    hitNodes = [];
+
+    const stInt = Math.round(curStage);
+    if (stInt === 1) renderStage1(w, h);
+    else if (stInt === 2) renderStage2(w, h);
+    else if (stInt === 3) renderStage3(w, h);
+    else if (stInt === 4) renderStage4(w, h);
+    else if (stInt === 5 || stInt === 6) renderStage5And6(w, h, curStage);
+    else if (stInt === 7) renderStage7(w, h);
+    else if (stInt === 8) renderStage8(w, h);
+    else if (stInt === 9) renderStage9(w, h);
+    else renderStage10(w, h);
+
+    requestAnimationFrame(renderLoop);
+  }
+
+  // UI & Slide Sync Controllers
+  window.setCh11Stage = function(val, manual) {
+    targetStage = Math.max(1.0, Math.min(10.0, parseFloat(val)));
+    const stInt = Math.round(targetStage);
+
+    const sl = document.getElementById('ch11-slider');
+    if (sl && Math.abs(parseFloat(sl.value) - targetStage) > 0.02) sl.value = targetStage;
+
+    const pill = document.getElementById('ch11-stage-pill');
+    if (pill) pill.innerText = `Stage ${targetStage.toFixed(1)} / 10`;
+
+    const cap = document.getElementById('ch11-caption');
+    if (cap) cap.innerHTML = STAGE_CAPTIONS[stInt] || STAGE_CAPTIONS[1];
+
+    const tel = document.getElementById('ch11-telemetry');
+    if (tel) tel.innerText = STAGE_TELEMETRY[stInt] || STAGE_TELEMETRY[1];
+
+    if (manual) {
+      autoSync = false;
+      const b = document.getElementById('ch11-btn-sync');
+      if (b) { b.classList.remove('active'); b.innerText = "Manual"; }
+    }
+  };
+
+  window.scrubCh11Stage = function(val) { window.setCh11Stage(val, true); };
+
+  window.enableCh11Sync = function() {
+    autoSync = true;
+    const b = document.getElementById('ch11-btn-sync');
+    if (b) { b.classList.add('active'); b.innerText = "Auto-Sync"; }
+    syncCh11WithDeck();
+  };
+
+  window.toggleCh11Orbit = function() {
+    autoOrbit = !autoOrbit;
+    const b = document.getElementById('ch11-btn-orbit');
+    if (b) b.classList.toggle('active', autoOrbit);
+  };
+
+  window.toggleCh11Spotlight = function() {
+    const hud = document.getElementById('ch11-3d-hud');
+    if (hud) {
+      hud.classList.remove('minimized');
+      hud.classList.toggle('spotlight');
+      setTimeout(resize, 360);
+    }
+  };
+
+  window.toggleCh11Minimize = function() {
+    const hud = document.getElementById('ch11-3d-hud');
+    const b = document.getElementById('ch11-btn-min');
+    if (hud) {
+      hud.classList.remove('spotlight');
+      hud.classList.toggle('minimized');
+      if (b) b.innerText = hud.classList.contains('minimized') ? "+" : "—";
+      setTimeout(resize, 360);
+    }
+  };
+
+  function syncCh11WithDeck() {
+    if (!autoSync) return;
+    const isMegaDeck = !!document.getElementById('syntrix-3d-hud') || document.querySelectorAll('h1').length > 5;
+    const chHud = document.getElementById('ch11-3d-hud');
+    if (isMegaDeck && chHud && window.Reveal && window.Reveal.getCurrentSlide) {
+      const currentSlide = window.Reveal.getCurrentSlide();
+      const inCh = currentSlide ? !!currentSlide.closest('#chapter-11, section[data-chapter="11"]') : true;
+      chHud.style.display = inCh ? '' : 'none';
+      if (!inCh) return;
+    }
+    const vp = document.querySelector('.reveal-viewport');
+    const isScroll = vp && vp.classList.contains('reveal-scroll');
+    if (isScroll) {
+      const scEl = vp.scrollHeight > vp.clientHeight ? vp : document.documentElement;
+      const top = vp.scrollTop || window.scrollY || document.documentElement.scrollTop || 0;
+      const max = Math.max(1, (scEl.scrollHeight || document.body.scrollHeight) - window.innerHeight);
+      window.setCh11Stage(1.0 + Math.min(1, Math.max(0, top / max)) * 9.0, false);
+    } else if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
+      const idx = window.Reveal.getIndices();
+      const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 13);
+      const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
+      const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
+      window.setCh11Stage(1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0, false);
+    }
+  }
+
+  // 3D Orbit Drag, Wheel Zoom & Node Click Hit-Testing
+  wrap.addEventListener('mousedown', e => {
+    e.stopPropagation();
+    isDragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    camYaw += (e.clientX - lastX) * 0.012;
+    camPitch = Math.max(-0.85, Math.min(1.15, camPitch + (e.clientY - lastY) * 0.012));
+    lastX = e.clientX;
+    lastY = e.clientY;
+  });
+
+  window.addEventListener('mouseup', () => { isDragging = false; });
+
+  wrap.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      lastX = e.touches[0].clientX;
+      lastY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', e => {
+    if (!isDragging || e.touches.length !== 1) return;
+    const dx = e.touches[0].clientX - lastX;
+    const dy = e.touches[0].clientY - lastY;
+    lastX = e.touches[0].clientX;
+    lastY = e.touches[0].clientY;
+    camYaw += dx * 0.012;
+    camPitch = Math.max(-0.85, Math.min(1.15, camPitch + dy * 0.012));
+  }, { passive: true });
+
+  window.addEventListener('touchend', () => { isDragging = false; });
+
+  wrap.addEventListener('click', e => {
+    e.stopPropagation();
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    let hit = null;
+    for (let i = hitNodes.length - 1; i >= 0; i--) {
+      const n = hitNodes[i];
+      if (Math.hypot(mx - n.p.sx, my - n.p.sy) <= n.r + 6) { hit = n; break; }
+    }
+    const insp = document.getElementById('ch11-node-inspector');
+    if (hit && insp) {
+      selectedId = hit.id;
+      insp.innerText = hit.info;
+    } else if (insp) {
+      selectedId = null;
+      insp.innerText = "Drag to Orbit 3D · Click Node to Inspect";
+    }
+  });
+
+  wrap.addEventListener('wheel', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    camZoom = Math.max(0.65, Math.min(1.65, camZoom - e.deltaY * 0.001));
+  }, { passive: false });
+
+  function init() {
+    resize();
+    syncCh11WithDeck();
+    requestAnimationFrame(renderLoop);
+    window.addEventListener('resize', resize);
+    window.addEventListener('scroll', syncCh11WithDeck, { passive: true });
+    const vp = document.querySelector('.reveal-viewport');
+    if (vp) vp.addEventListener('scroll', syncCh11WithDeck, { passive: true });
+    if (window.Reveal) {
+      window.Reveal.on('ready', syncCh11WithDeck);
+      window.Reveal.on('slidechanged', syncCh11WithDeck);
+      window.Reveal.on('fragmentshown', syncCh11WithDeck);
+      window.Reveal.on('fragmenthidden', syncCh11WithDeck);
+    }
+    const hud = document.getElementById('ch11-3d-hud');
+    if (hud) {
+      hud.querySelectorAll('input, button').forEach(el => {
+        el.addEventListener('keydown', e => e.stopPropagation());
+        el.addEventListener('mousedown', e => e.stopPropagation());
+        el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+      });
+    }
+  }
+
+  init();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runCh11Engine);
+  } else {
+    runCh11Engine();
+  }
+})();

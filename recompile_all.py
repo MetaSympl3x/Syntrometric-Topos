@@ -1,7 +1,23 @@
 import subprocess
 import sys
 import shutil
+import time
 from pathlib import Path
+
+def safe_copy2(src, dst):
+    for attempt in range(5):
+        try:
+            shutil.copyfile(src, dst)
+            return
+        except PermissionError:
+            time.sleep(0.5)
+    try:
+        with open(src, 'rb') as fsrc:
+            c = fsrc.read()
+        with open(dst, 'wb') as fdst:
+            fdst.write(c)
+    except Exception as e:
+        print(f'Warning: safe_copy2 failed {src} -> {dst}: {e}')
 
 root = Path(r"c:\Users\lutin\Manim")
 html_dir = root / "html"
@@ -42,7 +58,7 @@ else:
 # 4. Sync deliverables to root directory for GitHub Pages
 print("\n4. Syncing deliverables to root directory for GitHub Pages...")
 for f in html_dir.glob("*.html"):
-    shutil.copy2(f, root / f.name)
+    safe_copy2(f, root / f.name)
 for d in html_dir.iterdir():
     if d.is_dir() and d.name.endswith("_files"):
         dest = root / d.name
@@ -53,12 +69,12 @@ if (root / "shared").exists():
     shutil.copytree(root / "shared", html_dir / "shared", dirs_exist_ok=True)
 for f in ["sw.js", "manifest.json"]:
     if (root / f).exists():
-        shutil.copy2(root / f, html_dir / f)
+        safe_copy2(root / f, html_dir / f)
     elif (html_dir / f).exists():
-        shutil.copy2(html_dir / f, root / f)
+        safe_copy2(html_dir / f, root / f)
 if (root / "media" / "icon.svg").exists():
     (html_dir / "media").mkdir(exist_ok=True)
-    shutil.copy2(root / "media" / "icon.svg", html_dir / "media" / "icon.svg")
+    safe_copy2(root / "media" / "icon.svg", html_dir / "media" / "icon.svg")
 print("  Synced deliverables to root successfully.")
 
 print("\n==========================================")
