@@ -7,7 +7,7 @@
 #syn-monograph-fab {
   position: fixed;
   left: 20px;
-  bottom: 20px;
+  bottom: var(--syn-bottom-offset, 64px) !important;
   background: linear-gradient(135deg, #111a2e 0%, #1e293b 100%);
   color: #FFD700;
   border: 1.5px solid #FFD700;
@@ -277,6 +277,13 @@
     min-width: 130px;
   }
 }
+
+@media (min-width: 901px) {
+  #syn-monograph-fab {
+    bottom: var(--syn-bottom-offset, 64px) !important;
+  }
+}
+
 </style>
 
 <!-- Floating Launcher Button (Bottom-Left) -->
