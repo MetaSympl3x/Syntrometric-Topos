@@ -352,7 +352,8 @@ $code-block-border-color:   rgba($syn-blue, 0.4);
 
 .band-dot-p {
   position: absolute;
-  top: -3px;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
   width: 14px;
   height: 28px;
   background: $syn-gold;
@@ -370,7 +371,8 @@ $code-block-border-color:   rgba($syn-blue, 0.4);
 
 .band-dot-d {
   position: absolute;
-  top: -3px;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
   width: 14px;
   height: 28px;
   background: #ffffff;

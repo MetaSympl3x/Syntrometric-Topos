@@ -412,52 +412,139 @@ window.addEventListener('message', (event) => {
 
 <style id="syn-mobile-interactive-styles">
 @media (max-width: 900px) {
+  /* Slider row keeps sliders horizontally aligned with their band track */
+  .reveal .slider-row,
+  .reveal-viewport.reveal-scroll .slider-row,
+  .slider-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 6px 0 !important;
+  }
+
+  .reveal .slider-row input[type="range"],
+  .reveal-viewport.reveal-scroll .slider-row input[type="range"],
+  .slider-row input[type="range"] {
+    flex: 1 1 0% !important;
+    width: auto !important;
+    min-width: 40px !important;
+    max-width: 100% !important;
+  }
+
+  .reveal .slider-row span,
+  .reveal-viewport.reveal-scroll .slider-row span,
+  .slider-row span {
+    flex-shrink: 0 !important;
+    font-size: 0.85em !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+  }
+
+  /* Range input element */
   .reveal input[type="range"],
   .reveal-viewport.reveal-scroll input[type="range"],
   input[type="range"] {
-    width: 100% !important;
-    min-height: 44px !important;
-    touch-action: pan-x !important;
-    cursor: pointer;
+    -webkit-appearance: none !important;
+    appearance: none !important;
     background: transparent !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    touch-action: none !important;
+    cursor: pointer !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
   }
 
+  /* WebKit Slider Track */
   .reveal input[type="range"]::-webkit-slider-runnable-track,
   .reveal-viewport.reveal-scroll input[type="range"]::-webkit-slider-runnable-track,
   input[type="range"]::-webkit-slider-runnable-track {
-    height: 8px !important;
+    height: 6px !important;
     background: #1e293b !important;
-    border-radius: 4px !important;
     border: 1px solid #334155 !important;
+    border-radius: 3px !important;
+    box-sizing: border-box !important;
   }
 
+  /* WebKit Slider Thumb - centered exactly on 6px track ((6 - 22)/2 = -8px) */
   .reveal input[type="range"]::-webkit-slider-thumb,
   .reveal-viewport.reveal-scroll input[type="range"]::-webkit-slider-thumb,
   input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none !important;
     appearance: none !important;
-    width: 28px !important;
-    height: 28px !important;
+    width: 22px !important;
+    height: 22px !important;
     border-radius: 50% !important;
     background: #FFD700 !important;
     border: 2px solid #000 !important;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.75) !important;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.75) !important;
     cursor: pointer !important;
-    margin-top: -10px !important;
+    margin-top: -8px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Firefox Slider Track & Thumb */
+  .reveal input[type="range"]::-moz-range-track,
+  .reveal-viewport.reveal-scroll input[type="range"]::-moz-range-track,
+  input[type="range"]::-moz-range-track {
+    height: 6px !important;
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    border-radius: 3px !important;
+    box-sizing: border-box !important;
   }
 
   .reveal input[type="range"]::-moz-range-thumb,
   .reveal-viewport.reveal-scroll input[type="range"]::-moz-range-thumb,
   input[type="range"]::-moz-range-thumb {
-    width: 28px !important;
-    height: 28px !important;
+    width: 22px !important;
+    height: 22px !important;
     border-radius: 50% !important;
     background: #FFD700 !important;
     border: 2px solid #000 !important;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.75) !important;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.75) !important;
     cursor: pointer !important;
+    box-sizing: border-box !important;
   }
 
+  /* Band Track below sliders (e.g. Chapter 1) */
+  .reveal .band-track,
+  .reveal-viewport.reveal-scroll .band-track,
+  .band-track {
+    position: relative !important;
+    height: 20px !important;
+    background: #1e2436 !important;
+    border-radius: 10px !important;
+    margin-top: 6px !important;
+    margin-bottom: 8px !important;
+    border: 1px solid #3b4560 !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Band pins vertically centered on the band track */
+  .reveal .band-dot-p,
+  .reveal .band-dot-d,
+  .reveal-viewport.reveal-scroll .band-dot-p,
+  .reveal-viewport.reveal-scroll .band-dot-d,
+  .band-dot-p,
+  .band-dot-d {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 14px !important;
+    height: 24px !important;
+    border-radius: 4px !important;
+  }
+
+  /* Buttons, Tabs, Toggles */
   .reveal .syn-btn,
   .reveal .subsys-toggle,
   .reveal .tab-btn,

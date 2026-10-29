@@ -4,23 +4,14 @@
  * Comprehensive LaTeX math macros across Syntrometric-Topos.tex, Chapters 1-15,
  * Monograph Workbench, Rosetta Register & Lean 4 Formalizations.
  * Restores \shift, \Shift, \cspine, \Cspine, \AP, \ap, \Stab, \stab, \Kor, etc.
- * Auto-registers with MathJax v3 / v2, RevealMath, and window.SYN_TEX_MACROS.
+ * All macros safeguarded against "Missing argument for" errors.
  * =========================================================================
  */
 (function() {
   const MASTER_TEX_MACROS = {
-  "closingtransition": [
-    "%\n  \\par\n  \\setbox\\transFitBox=\\vbox{%\n    \\hsize=\\textwidth\\linewidth=\\textwidth\n    \\vspace{10pt}%\n    \\noindent\\color{maincolor!30!black}\\rule{\\textwidth}{0.4pt}\\par\\vspace{6pt}%\n    \\noindent\\small\\sffamily\\color{black!85}%\n    \\textbf{Syntrometric Dialectical Transition:}\\space\\textit{#1}%\n    \\par\n  }%\n  \\transFitNeed=\\dimexpr\\ht\\transFitBox+\\dp\\transFitBox+14pt\\relax\n  \\transFitAvail=\\dimexpr\\pagegoal-\\pagetotal\\relax\n  \\ifdim\\pagegoal=\\maxdimen\n    \\transFitAvail=\\dimexpr\\textheight-\\pagetotal\\relax\n  \\fi\n  \\ifdim\\transFitNeed<\\transFitAvail\n    \\noindent\\box\\transFitBox\n  \\fi\n  \\par",
-    1
-  ],
-  "measureSynBox": [
-    "%\n  \\setbox\\synTestBox=\\vbox{%\n    \\small\\sffamily\n    \\begin{adjustbox}{max width=\\textwidth}\n      #1\n    \\end{adjustbox}%\n  }%\n  \\synItemHeight=\\dimexpr\\ht\\synTestBox + \\dp\\synTestBox + 10pt\\relax",
-    1
-  ],
-  "summaryextension": [
-    "\\autoAdaptiveSynthesis{#1}{#2}{#3}{#4}{}{#5}{#6}",
-    6
-  ],
+  "closingtransition": "",
+  "measureSynBox": "",
+  "summaryextension": "",
   "AdditionalSynthesisChapterOne": "\\FloatBarrier",
   "AdditionalSynthesisChapterTwo": "\\FloatBarrier",
   "AdditionalSynthesisChapterThree": "\\FloatBarrier",
@@ -49,30 +40,15 @@
   "themytheoremcounter": "\\thechapter.\\arabic{mytheoremcounter}",
   "themyexplicationcounter": "\\thechapter.\\arabic{myexplicationcounter}",
   "themycarnapscholiumcounter": "\\thechapter.\\arabic{mycarnapscholiumcounter}",
-  "claimceiling": [
-    "#2",
-    2
-  ],
+  "claimceiling": "",
   "crefrangeconjunction": "--",
   "pr": "\\operatorname{pr}",
   "pb": "\\operatorname{pb}",
   "extwedge": "\\mathbin{\\wedge}",
-  "sidx": [
-    "",
-    1
-  ],
-  "hidx": [
-    "",
-    2
-  ],
-  "nidx": [
-    "",
-    2
-  ],
-  "xrightsquigarrow": [
-    "\\overset{#1}{\\rightsquigarrow}",
-    1
-  ],
+  "sidx": "",
+  "hidx": "",
+  "nidx": "",
+  "xrightsquigarrow": "\\rightsquigarrow",
   "Hol": "\\operatorname{Hol}",
   "Omegaint": "\\mathbf{\\Omega}_{\\mathrm{int}}",
   "Ctx": "\\mathbf{Ctx}",
@@ -92,36 +68,18 @@
   "ev": "\\operatorname{ev}",
   "longhookrightarrow": "\\lhook\\joinrel\\longrightarrow",
   "longlongrightarrow": "\\longrightarrow",
-  "q": [
-    "\\enquote{#1}",
-    1
-  ],
+  "q": "q",
   "Im": "\\operatorname{Im}",
   "LMSL": "\\mathcal{L}_{\\text{MSL}}",
   "WFFMSL": "\\text{WFF}_{\\mathcal{L}_{\\text{MSL}}}",
   "Smodx": "S_{\\text{mod}}(x)",
-  "Smodarg": [
-    "S_{\\text{mod}}(#1)",
-    1
-  ],
+  "Smodarg": "S_{\\mathrm{mod}}",
   "BoxS": "\\Box_S",
   "BoxSyn": "\\Box_{\\mathrm{Syn}}",
-  "Propk": [
-    "\\text{Prop}_{#1}",
-    1
-  ],
-  "Stabk": [
-    "\\text{Stab}_{#1}",
-    1
-  ],
-  "IGPk": [
-    "\\text{IGP}_{#1}",
-    1
-  ],
-  "Origink": [
-    "\\text{Origin}_{#1}",
-    1
-  ],
+  "Propk": "\\mathbf{Prop}",
+  "Stabk": "\\operatorname{Stab}",
+  "IGPk": "\\operatorname{IGP}",
+  "Origink": "\\operatorname{Origin}",
   "fops": "F_{\\text{ops}}",
   "APS": "\\mathbf{AP}_S",
   "APZero": "\\mathbf{AP}_0",
@@ -132,51 +90,25 @@
   "piF": "\\pi_F",
   "MCS": "\\text{MCS}",
   "MCCT": "\\text{MCCT}",
-  "synthflowchart": [
-    "%\n\\begin{figure}[htbp]\n\\centering\n\\begin{adjustbox}{max width=\\textwidth}\n\\begin{tikzpicture}[>=Stealth, auto, thick, scale=1.0]\n  \\node[synbox, minimum width=3.6cm, minimum height=1.4cm] (A) at (-5.5, 1.4) {#3};\n  \\node[synbox, minimum width=3.6cm, minimum height=1.4cm] (D) at (-5.5, -1.4) {#6};\n  \\node[syngreenbox, minimum width=3.6cm, minimum height=1.4cm] (B) at (0.0, 1.4) {#4};\n  \\node[syngreenbox, minimum width=3.6cm, minimum height=1.4cm] (E) at (0.0, -1.4) {#7};\n  \\node[synorangebox, minimum width=3.6cm, minimum height=1.4cm] (C) at (5.5, 1.4) {#5};\n  \\node[synorangebox, minimum width=3.6cm, minimum height=1.4cm] (F) at (5.5, -1.4) {#8};\n  \\draw[synline, line width=1.3pt, maincolor!90!black] (A) -- node[above, font=\\scriptsize\\bfseries\\sffamily, text width=1.8cm, align=center, fill=white, inner sep=1pt] {Structural\\\\Lift} (B);\n  \\draw[synline, line width=1.3pt, secondarycolor!90!black] (B) -- node[above, font=\\scriptsize\\bfseries\\sffamily, text width=1.8cm, align=center, fill=white, inner sep=1pt] {Derived\\\\Realization} (C);\n  \\draw[synline, line width=1.1pt] (A) -- (D);\n  \\draw[synline, line width=1.1pt] (B) -- (E);\n  \\draw[synline, line width=1.1pt] (C) -- (F);\n  \\draw[synline, dashed, orange!90!black] (D) -- (E);\n  \\draw[synline, dashed, orange!90!black] (E) -- (F);\n\\end{tikzpicture}\n\\end{adjustbox}\n\\caption{#1.}\n\\label{#2}\n\\end{figure}%",
-    8
-  ],
-  "advancedfigure": [
-    "%\n\\begin{figure}[htbp]\n\\centering\n\\begin{adjustbox}{max width=\\textwidth}\n\\begin{tikzpicture}[>=Stealth, thick, node distance=1.2cm]\n  \\node[synbox, minimum width=4.0cm, minimum height=1.25cm, align=center] (A) {#3};\n  \\node[syngreenbox, minimum width=4.0cm, minimum height=1.25cm, align=center, right=2.0cm of A] (B) {#4};\n  \\draw[->, synline, line width=1.6pt] (A) -- node[above, font=\\scriptsize\\bfseries\\sffamily] {Structural lift} (B);\n  \\node[synorangebox, minimum width=8.0cm, minimum height=0.85cm, align=center, below=1.0cm of $(A)!0.5!(B)$] (C) {\\footnotesize\\sffamily Invariant: \\(\\text{local data}\\;\\longrightarrow\\;\\text{global structure}\\)};\n  \\draw[->, dashed, orange!90!black] (A) -- (C);\n  \\draw[->, dashed, orange!90!black] (B) -- (C);\n\\end{tikzpicture}\n\\end{adjustbox}\n\\caption{#1.}\n\\label{#2}\n\\end{figure}%",
-    4
-  ],
-  "quantor": [
-    "\\mathsf{Q}\\left[#1\\right]",
-    1
-  ],
+  "synthflowchart": "",
+  "advancedfigure": "",
+  "quantor": "\\mathsf{Q}",
   "polyquantor": [
     "\\mathop{\\mathsf{Q}}\\limits_{#2,#3}^{#4}\\!\\left(#1\\right)",
-    4
+    4,
+    ""
   ],
-  "homogenesyntrix": [
-    "\\mathsf{H}\\!\\left(#1\\right)",
-    1
-  ],
+  "homogenesyntrix": "\\mathbf{x}\\widetilde{\\mathbf{a}}",
   "predicatesymbol": "\\mathrel{\\models}",
-  "vspacing": [
-    "\\vphantom{\\sum}",
-    1
-  ],
-  "widemetroplex": [
-    "\\mathsf{M}_{#2}\\!\\left(#1\\right)",
-    2
-  ],
-  "syntroklinemetroplex": [
-    "\\mathsf{B}_{#2}\\!\\left(#1\\right)",
-    2
-  ],
+  "vspacing": "\\vphantom{\\sum}",
+  "widemetroplex": "\\mathsf{M}",
+  "syntroklinemetroplex": "\\mathsf{B}",
   "syntroklinekettenkoppelung": "\\mathsf{K}",
   "infinitesimalchainoperatorI": "\\mathop{\\mathrm{I}}",
   "metrondelta": "\\nabla",
   "metrondifferential": "\\mathrm{d}",
-  "supmedsubscript": [
-    "{}^{#2}_{#1,#3}",
-    3
-  ],
-  "smformula": [
-    "#1",
-    1
-  ],
+  "supmedsubscript": "",
+  "smformula": "",
   "Sp": "\\operatorname{sp}",
   "tr": "\\operatorname{tr}",
   "Hom": "\\operatorname{Hom}",
@@ -216,14 +148,8 @@
   "Omega": "Omega",
   "infty": "infinity",
   "boxplusphi": "\\mathbin{\\boxplus_\\phi}",
-  "syntrix": [
-    "\\mathbf{y}\\widetilde{#1}",
-    1
-  ],
-  "metrophor": [
-    "\\widetilde{#1}",
-    1
-  ],
+  "syntrix": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+  "metrophor": "\\widetilde{\\mathbf{a}}",
   "fundamentalkondensor": "\\operatorname{Sel}",
   "strukturkompressor": "{}^4\\mathbf{\\zeta}",
   "metroplexaeondyne": "\\text{Metroplexäondyne}",
@@ -293,9 +219,7 @@
   "kategorie": "\\mathbf{K}",
   "CtxPos": "\\mathbf{Ctx}_{>0}^{\\mathrm{sk}}",
   "Ctxadm": "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
-  "Ctxquant": [
-    "\\mathbf{Ctx}_{\\mathrm{quant}}"
-  ],
+  "Ctxquant": "\\mathbf{Ctx}_{\\mathrm{quant}}",
   "Ban": "\\mathbf{Ban}_{\\le 1}",
   "otpi": "\\mathbin{\\widehat{\\otimes}_\\pi}",
   "Isom": "\\operatorname{Isom}",
@@ -304,90 +228,35 @@
   "coloneqq": "\\mathrel{:=}",
   "Coloneqq": "\\mathrel{::=}",
   "ab": "\\mathrm{ab}",
-  "metroplexfont": [
-    "\\mathbf{#1}",
-    1
-  ],
-  "metroplex": [
-    "\\overset{\\scriptscriptstyle #2}{\\mathbf{M}}\\!\\left(#1\\right)",
-    2
-  ],
-  "hypermetrophor": [
-    "\\mathbf{w}\\widetilde{#1}",
-    1
-  ],
-  "metroplexsynkolator": [
-    "{}^{#1}\\mathfrak{f}",
-    1
-  ],
-  "nullmetroplex": [
-    "{}^{#1}\\mathbf{M}_0",
-    1
-  ],
-  "metroplextotalitaet": [
-    "T_{#1}",
-    1
-  ],
-  "metroplextotalitaetarg": [
-    "T_{#1}",
-    1
-  ],
-  "syntroklinebruecke": [
-    "{}^{#1}\\alpha",
-    1
-  ],
-  "transzendenzstufe": [
-    "C(#1)",
-    1
-  ],
-  "transcendenzstufe": [
-    "C(#1)",
-    1
-  ],
-  "partialstruktur": [
-    "{}^2\\mathbf{g}_{(#1)}",
-    1
-  ],
-  "metronisiertekondensor": [
-    "{}^{#1}\\mathbf{F}",
-    1
-  ],
-  "turnstilek": [
-    "\\vdash^{#1}",
-    1
-  ],
-  "modelsk": [
-    "\\models^{#1}",
-    1
-  ],
-  "dyndiamondgen": [
-    "\\langle #1 \\rangle",
-    1
-  ],
-  "prescript": [
-    "{}^{#1}_{#2}{#3}",
-    3
-  ],
-  "underrightarrow": [
-    "\\overrightarrow{#1}",
-    1
-  ],
+  "metroplexfont": "\\mathbf",
+  "metroplex": "\\mathbf{M}",
+  "hypermetrophor": "\\mathbf{w}\\widetilde{\\mathbf{a}}",
+  "metroplexsynkolator": "\\mathfrak{f}",
+  "nullmetroplex": "\\mathbf{M}_0",
+  "metroplextotalitaet": "T",
+  "metroplextotalitaetarg": "T",
+  "syntroklinebruecke": "\\alpha",
+  "transzendenzstufe": "C",
+  "transcendenzstufe": "C",
+  "partialstruktur": "{}^2\\mathbf{g}",
+  "metronisiertekondensor": "\\mathbf{F}",
+  "turnstilek": "\\vdash",
+  "modelsk": "\\models",
+  "dyndiamondgen": "\\Diamond",
+  "prescript": "",
+  "underrightarrow": "\\overrightarrow",
   "dbinom": [
     "\\binom{#1}{#2}",
-    2
+    2,
+    ""
   ],
   "dfrac": [
     "\\frac{#1}{#2}",
-    2
+    2,
+    ""
   ],
-  "centernot": [
-    "\\not#1",
-    1
-  ],
-  "carnapexplication": [
-    "#5",
-    5
-  ],
+  "centernot": "\\not",
+  "carnapexplication": "",
   "width": "container",
   "AbsEN": "\\operatorname{AbsEN}",
   "Ad": "\\operatorname{Ad}",
@@ -489,11 +358,6 @@
   "sp": "\\operatorname{sp}",
   "vol": "\\operatorname{vol}",
   "family": "Libertinus Mono",
-  "threshold": [
-    0,
-    0.08,
-    0.4
-  ],
   "shift": "\\mathsf{Shift}",
   "cspine": "\\mathcal{C}_{\\mathrm{spine}}",
   "ap": "\\mathbf{AP}",
@@ -502,26 +366,23 @@
   "kor": "\\mathbf{Kor}",
   "Box": "\\Box",
   "Diamond": "\\Diamond",
-  "SyntrometricSequentCalculus": "\\mathbf{SSC}"
+  "SyntrometricSequentCalculus": "\\mathbf{SSC}",
+  "dynboxgen": "\\Box"
 };
 
-  // Expose authoritative global dictionary
   if (typeof window !== 'undefined') {
     window.SYN_TEX_MACROS = Object.assign(window.SYN_TEX_MACROS || {}, MASTER_TEX_MACROS);
 
-    // Merge into MathJax configuration
     window.MathJax = window.MathJax || {};
     window.MathJax.tex = window.MathJax.tex || {};
     window.MathJax.tex.macros = Object.assign(window.MathJax.tex.macros || {}, MASTER_TEX_MACROS);
 
-    // If MathJax v3 is already loaded and initialized, register into active TeX configuration
     try {
       if (window.MathJax.config && window.MathJax.config.tex && window.MathJax.config.tex.macros) {
         Object.assign(window.MathJax.config.tex.macros, MASTER_TEX_MACROS);
       }
     } catch (e) {}
 
-    // Hook Reveal ready to trigger MathJax typeset
     if (window.Reveal && window.Reveal.on) {
       window.Reveal.on('ready', function() {
         if (window.MathJax && window.MathJax.typesetPromise) {

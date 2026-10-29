@@ -1477,6 +1477,71 @@ window.MathJax = {
     '.chapter-jump-select', '.tex-search-input'
   ].join(', ');
 
+  // Dedicated Global Window Drag Engine for all Range Sliders
+  var activeSlider = null;
+  var activeTouchId = null;
+
+  function updateSliderFromTouch(el, touch) {
+    if (!el || !touch) return;
+    var rect = el.getBoundingClientRect();
+    if (rect.width <= 0) return;
+    var ratio = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+    var min = parseFloat(el.min !== '' ? el.min : '0');
+    var max = parseFloat(el.max !== '' ? el.max : '100');
+    var step = parseFloat(el.step && el.step !== 'any' ? el.step : '1');
+    var rawVal = min + ratio * (max - min);
+    if (step > 0) {
+      rawVal = Math.round((rawVal - min) / step) * step + min;
+    }
+    var clamped = Math.max(min, Math.min(max, rawVal));
+    var precision = step < 1 ? (step.toString().split('.')[1] || '').length : 2;
+    var formatted = clamped.toFixed(Math.min(precision, 4));
+    if (parseFloat(el.value) !== parseFloat(formatted)) {
+      el.value = formatted;
+      if (typeof el.oninput === 'function') {
+        try { el.oninput.call(el, new Event('input')); } catch(e) {}
+      }
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  }
+
+  function handleSliderTouchStart(e) {
+    if (!e.touches || e.touches.length === 0) return;
+    var touch = e.touches[0];
+    activeSlider = this;
+    activeTouchId = touch.identifier;
+    e.stopPropagation();
+    updateSliderFromTouch(activeSlider, touch);
+  }
+
+  window.addEventListener('touchmove', function(e) {
+    if (!activeSlider) return;
+    for (var i = 0; i < e.touches.length; i++) {
+      if (e.touches[i].identifier === activeTouchId) {
+        e.preventDefault();
+        e.stopPropagation();
+        updateSliderFromTouch(activeSlider, e.touches[i]);
+        break;
+      }
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener('touchend', function(e) {
+    if (!activeSlider) return;
+    if (typeof activeSlider.onchange === 'function') {
+      try { activeSlider.onchange.call(activeSlider, new Event('change')); } catch(err) {}
+    }
+    activeSlider.dispatchEvent(new Event('change', { bubbles: true }));
+    activeSlider = null;
+    activeTouchId = null;
+  }, { passive: true, capture: true });
+
+  window.addEventListener('touchcancel', function(e) {
+    activeSlider = null;
+    activeTouchId = null;
+  }, { passive: true, capture: true });
+
   function isolateInteractiveElement(el) {
     if (!el || el.nodeType !== 1) return;
 
@@ -1492,64 +1557,14 @@ window.MathJax = {
     if (el.dataset.synMobileTouchInit) return;
     el.dataset.synMobileTouchInit = '1';
 
-    // Direct Smooth Touch Dragging for Range Sliders
     if (el.tagName === 'INPUT' && el.type === 'range') {
-      el.style.touchAction = 'pan-x';
-
-      var isTouching = false;
-      var updateSliderFromTouch = function(touchEvent) {
-        var touch = touchEvent.touches ? touchEvent.touches[0] : touchEvent;
-        if (!touch) return;
-        var rect = el.getBoundingClientRect();
-        if (rect.width <= 0) return;
-        var ratio = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
-        var min = parseFloat(el.min !== '' ? el.min : '0');
-        var max = parseFloat(el.max !== '' ? el.max : '100');
-        var step = parseFloat(el.step && el.step !== 'any' ? el.step : '1');
-        var rawVal = min + ratio * (max - min);
-        if (step > 0) {
-          rawVal = Math.round((rawVal - min) / step) * step + min;
-        }
-        var clamped = Math.max(min, Math.min(max, rawVal));
-        var precision = step < 1 ? (step.toString().split('.')[1] || '').length : 2;
-        var formatted = clamped.toFixed(Math.min(precision, 4));
-        if (parseFloat(el.value) !== parseFloat(formatted)) {
-          el.value = formatted;
-          el.dispatchEvent(new Event('input', { bubbles: true }));
-          el.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-      };
-
-      el.addEventListener('touchstart', function(e) {
-        e.stopPropagation();
-        isTouching = true;
-        updateSliderFromTouch(e);
-      }, { passive: true });
-
-      el.addEventListener('touchmove', function(e) {
-        e.stopPropagation();
-        if (isTouching) {
-          updateSliderFromTouch(e);
-        }
-      }, { passive: true });
-
-      el.addEventListener('touchend', function(e) {
-        e.stopPropagation();
-        if (isTouching) {
-          isTouching = false;
-          el.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-      }, { passive: true });
-
+      el.style.touchAction = 'none';
+      el.addEventListener('touchstart', handleSliderTouchStart, { passive: true });
       el.addEventListener('pointerdown', function(e) { e.stopPropagation(); }, { passive: true });
-      el.addEventListener('pointermove', function(e) {
-        if (e.buttons > 0) e.stopPropagation();
-      }, { passive: true });
       el.addEventListener('mousedown', function(e) { e.stopPropagation(); });
       return;
     }
 
-    // Buttons, Toggles, Tabs: Ensure click is never suppressed by micro-jitter
     if (el.tagName === 'BUTTON' || el.tagName === 'SELECT' || el.classList.contains('syn-btn') || el.classList.contains('tab-btn')) {
       el.style.touchAction = 'manipulation';
       el.addEventListener('pointerdown', function(e) { e.stopPropagation(); }, { passive: true });
@@ -1559,7 +1574,6 @@ window.MathJax = {
       return;
     }
 
-    // 3D Canvas & Wrappers
     if (el.tagName === 'CANVAS' || (el.id && el.id.indexOf('-3d-wrap') !== -1) || el.classList.contains('syntrix-3d-canvas')) {
       el.style.touchAction = 'none';
       el.addEventListener('pointerdown', function(e) { e.stopPropagation(); }, { passive: true });
@@ -1567,7 +1581,6 @@ window.MathJax = {
       return;
     }
 
-    // General interactive elements
     el.addEventListener('pointerdown', function(e) {
       if (el.tagName !== 'SECTION') e.stopPropagation();
     }, { passive: true });
@@ -1582,7 +1595,6 @@ window.MathJax = {
     } catch (e) {}
   }
 
-  // Capture-phase safety net on window
   function capturePhaseGuard(e) {
     var t = e.target;
     if (!t || t.nodeType !== 1) return;
@@ -1605,7 +1617,6 @@ window.MathJax = {
   window.addEventListener('touchmove', capturePhaseGuard, { capture: true, passive: true });
   window.addEventListener('pointerdown', capturePhaseGuard, { capture: true, passive: true });
 
-  // DOM MutationObserver
   try {
     var observer = new MutationObserver(function(mutations) {
       for (var i = 0; i < mutations.length; i++) {
@@ -1636,52 +1647,139 @@ window.MathJax = {
 
 <style id="syn-mobile-interactive-styles">
 @media (max-width: 900px) {
+  /* Slider row keeps sliders horizontally aligned with their band track */
+  .reveal .slider-row,
+  .reveal-viewport.reveal-scroll .slider-row,
+  .slider-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 6px 0 !important;
+  }
+
+  .reveal .slider-row input[type="range"],
+  .reveal-viewport.reveal-scroll .slider-row input[type="range"],
+  .slider-row input[type="range"] {
+    flex: 1 1 0% !important;
+    width: auto !important;
+    min-width: 40px !important;
+    max-width: 100% !important;
+  }
+
+  .reveal .slider-row span,
+  .reveal-viewport.reveal-scroll .slider-row span,
+  .slider-row span {
+    flex-shrink: 0 !important;
+    font-size: 0.85em !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+  }
+
+  /* Range input element */
   .reveal input[type="range"],
   .reveal-viewport.reveal-scroll input[type="range"],
   input[type="range"] {
-    width: 100% !important;
-    min-height: 44px !important;
-    touch-action: pan-x !important;
-    cursor: pointer;
+    -webkit-appearance: none !important;
+    appearance: none !important;
     background: transparent !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    touch-action: none !important;
+    cursor: pointer !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
   }
 
+  /* WebKit Slider Track */
   .reveal input[type="range"]::-webkit-slider-runnable-track,
   .reveal-viewport.reveal-scroll input[type="range"]::-webkit-slider-runnable-track,
   input[type="range"]::-webkit-slider-runnable-track {
-    height: 8px !important;
+    height: 6px !important;
     background: #1e293b !important;
-    border-radius: 4px !important;
     border: 1px solid #334155 !important;
+    border-radius: 3px !important;
+    box-sizing: border-box !important;
   }
 
+  /* WebKit Slider Thumb - centered exactly on 6px track ((6 - 22)/2 = -8px) */
   .reveal input[type="range"]::-webkit-slider-thumb,
   .reveal-viewport.reveal-scroll input[type="range"]::-webkit-slider-thumb,
   input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none !important;
     appearance: none !important;
-    width: 28px !important;
-    height: 28px !important;
+    width: 22px !important;
+    height: 22px !important;
     border-radius: 50% !important;
     background: #FFD700 !important;
     border: 2px solid #000 !important;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.75) !important;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.75) !important;
     cursor: pointer !important;
-    margin-top: -10px !important;
+    margin-top: -8px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Firefox Slider Track & Thumb */
+  .reveal input[type="range"]::-moz-range-track,
+  .reveal-viewport.reveal-scroll input[type="range"]::-moz-range-track,
+  input[type="range"]::-moz-range-track {
+    height: 6px !important;
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    border-radius: 3px !important;
+    box-sizing: border-box !important;
   }
 
   .reveal input[type="range"]::-moz-range-thumb,
   .reveal-viewport.reveal-scroll input[type="range"]::-moz-range-thumb,
   input[type="range"]::-moz-range-thumb {
-    width: 28px !important;
-    height: 28px !important;
+    width: 22px !important;
+    height: 22px !important;
     border-radius: 50% !important;
     background: #FFD700 !important;
     border: 2px solid #000 !important;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.75) !important;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.75) !important;
     cursor: pointer !important;
+    box-sizing: border-box !important;
   }
 
+  /* Band Track below sliders (e.g. Chapter 1) */
+  .reveal .band-track,
+  .reveal-viewport.reveal-scroll .band-track,
+  .band-track {
+    position: relative !important;
+    height: 20px !important;
+    background: #1e2436 !important;
+    border-radius: 10px !important;
+    margin-top: 6px !important;
+    margin-bottom: 8px !important;
+    border: 1px solid #3b4560 !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Band pins vertically centered on the band track */
+  .reveal .band-dot-p,
+  .reveal .band-dot-d,
+  .reveal-viewport.reveal-scroll .band-dot-p,
+  .reveal-viewport.reveal-scroll .band-dot-d,
+  .band-dot-p,
+  .band-dot-d {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 14px !important;
+    height: 24px !important;
+    border-radius: 4px !important;
+  }
+
+  /* Buttons, Tabs, Toggles */
   .reveal .syn-btn,
   .reveal .subsys-toggle,
   .reveal .tab-btn,
