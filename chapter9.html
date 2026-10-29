@@ -18,6 +18,46 @@
   <link rel="stylesheet" href="chapter9_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="chapter9_files/libs/revealjs/dist/reveal.css">
   <style>
+
+/* Desktop Presentation Mode: Strict 16:9 side-by-side columns */
+@media (min-width: 901px) {
+  .reveal .stratum-badge,
+  .stratum-badge {
+    display: block !important;
+    float: none !important;
+    clear: both !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+  }
+  .reveal:not(.reveal-scroll) .columns,
+  .reveal .columns {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 24px !important;
+    width: 100% !important;
+    clear: both !important;
+    box-sizing: border-box !important;
+  }
+  .reveal:not(.reveal-scroll) .columns > .column,
+  .reveal .columns > .column {
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .reveal:not(.reveal-scroll) .grid-2,
+  .reveal .grid-2,
+  .reveal:not(.reveal-scroll) .video-grid-2,
+  .reveal .video-grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
@@ -943,62 +983,469 @@
 
   </script>
 
-<style id="syn-mobile-latex-rules">
-/* Universal Mobile LaTeX Optimization */
-.reveal .MathJax_Display,
-.reveal mjx-container[display="true"],
-.reveal .math.display,
-.reveal-viewport.reveal-scroll .MathJax_Display,
-.reveal-viewport.reveal-scroll mjx-container[display="true"] {
-  max-width: 100% !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  -webkit-overflow-scrolling: touch !important;
-  touch-action: pan-x pan-y !important;
-  padding: 4px 2px !important;
-  margin: 0.5em 0 !important;
-  box-sizing: border-box !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: rgba(255, 215, 0, 0.4) transparent !important;
-}
 
-.reveal .MathJax_Display::-webkit-scrollbar,
-.reveal mjx-container[display="true"]::-webkit-scrollbar {
-  height: 3px !important;
-}
-.reveal .MathJax_Display::-webkit-scrollbar-thumb,
-.reveal mjx-container[display="true"]::-webkit-scrollbar-thumb {
-  background: rgba(255, 215, 0, 0.5) !important;
-  border-radius: 3px !important;
-}
+<script id="mathjax-hub-bridge">
+// MathJax v3 Production Bridge & Reveal.js Math Guard
+(function() {
+  function typesetRevealMath(target) {
+    if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+      window.MathJax.startup.promise.then(() => {
+        if (typeof window.MathJax.typesetPromise === 'function') {
+          return window.MathJax.typesetPromise(target ? [target] : undefined);
+        }
+      }).catch(function(err) {});
+    } else if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+      window.MathJax.typesetPromise(target ? [target] : undefined).catch(function(err) {});
+    }
+  }
+  window.typesetMath = typesetRevealMath;
 
-@media (max-width: 768px) {
-  .reveal .MathJax_Display,
-  .reveal mjx-container[display="true"],
-  .reveal-viewport.reveal-scroll .MathJax_Display,
-  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
-    font-size: 0.84em !important;
-    line-height: 1.25 !important;
-  }
-  .reveal mjx-container:not([display="true"]),
-  .reveal-viewport.reveal-scroll mjx-container:not([display="true"]) {
-    font-size: 0.90em !important;
-  }
-}
+  // Protect RevealMath global so legacy math.js never injects duplicate scripts or crashes
+  const bridgePlugin = function() {
+    return {
+      id: 'mathjax-bridge',
+      init: function(deck) {
+        if (window.typesetMath) window.typesetMath();
+        deck.on('slidechanged', function() { if (window.typesetMath) window.typesetMath(); });
+      }
+    };
+  };
+  bridgePlugin.KaTeX = function() { return { id: 'katex', init: function() {} }; };
+  bridgePlugin.MathJax2 = function() { return { id: 'mathjax2', init: function() {} }; };
+  bridgePlugin.MathJax3 = function() { return { id: 'mathjax3', init: function() {} }; };
 
-@media (max-width: 480px) {
-  .reveal .MathJax_Display,
-  .reveal mjx-container[display="true"],
-  .reveal-viewport.reveal-scroll .MathJax_Display,
-  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
-    font-size: 0.76em !important;
+  try {
+    Object.defineProperty(window, 'RevealMath', {
+      configurable: false,
+      writable: false,
+      value: bridgePlugin
+    });
+  } catch (e) {
+    window.RevealMath = bridgePlugin;
   }
-  .reveal mjx-container:not([display="true"]),
-  .reveal-viewport.reveal-scroll mjx-container:not([display="true"]) {
-    font-size: 0.84em !important;
+
+  // Define Hub shim for any legacy callers
+  window.MathJax = window.MathJax || {};
+  window.MathJax.Hub = {
+    Config: function() {},
+    Queue: function() { typesetRevealMath(); },
+    Typeset: function(el) { typesetRevealMath(el); }
+  };
+
+  function hookReveal() {
+    if (window.Reveal) {
+      window.Reveal.on('ready', () => setTimeout(() => typesetRevealMath(), 150));
+      window.Reveal.on('slidechanged', () => setTimeout(() => typesetRevealMath(), 80));
+    } else {
+      setTimeout(hookReveal, 100);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hookReveal);
+  } else {
+    hookReveal();
+  }
+})();
+</script>
+<script id="mathjax-config">
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    macros: {
+  "syntrix": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+  "homogeneoussyntrix": "\\mathbf{x}\\widetilde{\\mathbf{a}}",
+  "metrophor": "\\widetilde{\\mathbf{a}}",
+  "synkolator": "\\mathfrak{f}",
+  "synkolationsstufe": "m",
+  "syndrom": "F",
+  "conceptualsyndrome": "a",
+  "universalquantor": "\\mathbf{U}",
+  "aspektivsystem": "P",
+  "funktor": "\\mathbf{F}",
+  "subjektiveraspekt": "S",
+  "pradikatrix": "P_n",
+  "dialektik": "D_n",
+  "koordination": "K_n",
+  "nullsyntrix": "\\mathbf{ys}\\widetilde{\\mathbf{c}}",
+  "elementarstruktur": "\\mathbf{y}\\widetilde{\\mathbf{a}}_{(j)}",
+  "konzenter": "\\text{Konzenter}",
+  "exzenter": "\\text{Exzenter}",
+  "konflexivsyntrix": "\\mathbf{y}\\widetilde{\\mathbf{c}}",
+  "syntropode": "\\text{Syntropode}",
+  "korporatorkette": "\\mathord{\\llcorner}",
+  "enyphaniegrad": "g_E",
+  "syntrixtotalitaet": "T_0",
+  "generative": "G",
+  "syntrixspeicher": "\\text{Syntrixspeicher}",
+  "korporatorsimplex": "Q",
+  "protyposis": "\\text{Protyposis}",
+  "syntrixfeld": "\\text{Syntrixfeld}",
+  "diskreteEnyphansyntrix": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+  "kontinuierlicheEnyphansyntrix": "YC",
+  "enyphane": "E",
+  "syntrometrischesGebilde": "\\text{Gebilde}",
+  "holoform": "\\text{Holoform}",
+  "syntrixraum": "\\mathcal{M}_{\\text{syn}}",
+  "syntrometrik": "g^{\\text{syn}}",
+  "korporatorfeld": "\\mathbf{X}_{\\text{kor}}",
+  "syntrixfunktor": "YF",
+  "zeitkorn": "\\delta t_i",
+  "affinitaetssyndrom": "S",
+  "metroplexfont": [
+    "\\mathbf{#1}",
+    1
+  ],
+  "metroplex": [
+    "\\overset{\\scriptscriptstyle #1}{\\mathbf{M}}",
+    1
+  ],
+  "hypersyntrix": "\\overset{\\scriptscriptstyle 1}{\\mathbf{M}}",
+  "hypermetrophor": [
+    "{}^{#1}\\mathbf{w}\\widetilde{\\mathbf{a}}",
+    1
+  ],
+  "metroplexsynkolator": [
+    "{}^{#1}\\mathfrak{f}",
+    1
+  ],
+  "nullmetroplex": [
+    "{}^{#1}\\mathbf{M}_0",
+    1
+  ],
+  "metroplextotalitaet": [
+    "T_{#1}",
+    1
+  ],
+  "metroplextotalitaetarg": [
+    "T_{#1}",
+    1
+  ],
+  "metroplexfunktor": "S",
+  "metroplexfunktorcommand": "S",
+  "syntroklinebruecke": [
+    "{}^{#1}\\alpha",
+    1
+  ],
+  "metroplexaeondyne": "\\text{Metroplex\u00e4ondyne}",
+  "telezentrum": "T_z",
+  "aeonischearea": "\\mathrm{AR}_q",
+  "transzendenzstufe": [
+    "C(#1)",
+    1
+  ],
+  "transcendenzstufe": [
+    "C(#1)",
+    1
+  ],
+  "transzendenzsynkolator": "\\Gamma_i",
+  "quantitaetsaspekt": "\\text{Quantit\u00e4tsaspekt}",
+  "qualitaetsaspekt": "\\text{Qualit\u00e4tsaspekt}",
+  "quantitaetssyntrix": "\\mathbf{y}\\mathbf{R}_n",
+  "zahlenkoerper": "\\text{Zahlenk\u00f6rper}",
+  "semantischermetrophor": "R_n",
+  "semantischeriterator": "S_n",
+  "funktionaloperator": "\\mathfrak{f}",
+  "synkolatorraum": "\\text{Synkolatorraum}",
+  "aeondynechaptereight": "\\widetilde{\\mathbf{a}}(x_i)_1^n",
+  "kompositionsfeld": "{}^2\\bar{\\mathrm{g}}",
+  "partialstruktur": [
+    "{}^2\\mathbf{g}_{(#1)}",
+    1
+  ],
+  "fundamentalkondensor": "{}^3\\mathbf{\\Gamma}",
+  "korrelationstensor": "\\mathbf{f}",
+  "koppelungstensor": "\\mathbf{Q}",
+  "kaskadenstufe": "\\alpha",
+  "metron": "\\tau",
+  "metronischegitter": "\\text{Metronische Gitter}",
+  "metrondifferential": "\\bar{\\delta}",
+  "metronbar": "\\bar{\\delta}",
+  "metrondelta": "\\nabla",
+  "metronintegral": "\\mathrm{S}",
+  "metronenfunktion": "\\phi(n)",
+  "metronenziffer": "n",
+  "metrischesieboperator": "S(\\gamma)",
+  "strukturkompressor": "{}^4\\mathbf{\\zeta}",
+  "metronischerstrukturkompressor": "{}^4\\mathbf{\\psi}",
+  "metronisiertekondensor": [
+    "{}^{#1}\\mathbf{F}",
+    1
+  ],
+  "turnstilek": [
+    "\\vdash^{#1}",
+    1
+  ],
+  "modelsk": [
+    "\\models^{#1}",
+    1
+  ],
+  "dynboxgen": [
+    "[#1]",
+    1
+  ],
+  "dyndiamondgen": [
+    "\\langle #1 \\rangle",
+    1
+  ],
+  "kategorie": "\\mathbf{K}",
+  "Ctx": "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+  "CtxPos": "\\mathbf{Ctx}_{>0}^{\\mathrm{sk}}",
+  "Ctxadm": "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+  "Ctxquant": "\\mathbf{Ctx}_{\\mathrm{quant}}",
+  "Ban": "\\mathbf{Ban}_{\\le 1}",
+  "FinBan": "\\mathbf{FinBan}_{\\le 1}",
+  "Esyn": "\\mathcal{E}_{\\mathrm{syn}}",
+  "Jsyn": "J_{\\mathrm{syn}}",
+  "Ksyn": "\\mathcal{K}_{\\mathrm{syn}}",
+  "Xsyn": "\\mathcal{X}_{\\mathrm{syn}}",
+  "Osyn": "\\mathcal{O}_{\\mathrm{syn}}",
+  "otpi": "\\mathbin{\\widehat{\\otimes}_\\pi}",
+  "Hol": "\\mathsf{Hol}",
+  "Def": "\\operatorname{Def}",
+  "Isom": "\\operatorname{Isom}",
+  "Hom": "\\operatorname{Hom}",
+  "Sub": "\\operatorname{Sub}",
+  "Colim": "\\operatorname{colim}",
+  "hocolim": "\\operatorname{hocolim}",
+  "Spec": "\\operatorname{Spec}",
+  "Div": "\\operatorname{div}",
+  "Grad": "\\operatorname{grad}",
+  "Rot": "\\operatorname{rot}",
+  "Eq": "\\operatorname{Eq}",
+  "id": "\\operatorname{id}",
+  "rk": "\\operatorname{rk}",
+  "Aut": "\\operatorname{Aut}",
+  "Bil": "\\operatorname{Bil}",
+  "Cov": "\\operatorname{Cov}",
+  "Lie": "\\operatorname{Lie}",
+  "Map": "\\operatorname{Map}",
+  "IntCat": "\\operatorname{IntCat}",
+  "PSh": "\\operatorname{PSh}",
+  "Sh": "\\operatorname{Sh}",
+  "Free": "\\operatorname{Free}",
+  "Sym": "\\operatorname{Sym}",
+  "Frag": "\\operatorname{Frag}",
+  "Der": "\\operatorname{Der}",
+  "Orb": "\\operatorname{Orb}",
+  "Epi": "\\operatorname{Epi}",
+  "Pro": "\\operatorname{Pro}",
+  "LMSL": "\\mathcal{L}_{\\text{MSL}}",
+  "WFFMSL": "\\text{WFF}_{\\mathcal{L}_{\\text{MSL}}}",
+  "Smodx": "S_{\\text{mod}}(x)",
+  "Smodarg": [
+    "S_{\\text{mod}}(#1)",
+    1
+  ],
+  "BoxS": "\\Box_S",
+  "BoxSyn": "\\Box_{\\text{Syn}}",
+  "DiaS": "\\Diamond_S",
+  "Propk": [
+    "\\text{Prop}_{#1}",
+    1
+  ],
+  "Stabk": [
+    "\\text{Stab}_{#1}",
+    1
+  ],
+  "IGPk": [
+    "\\text{IGP}_{#1}",
+    1
+  ],
+  "Origink": [
+    "\\text{Origin}_{#1}",
+    1
+  ],
+  "fops": "F_{\\text{ops}}",
+  "APS": "\\mathbf{AP}_S",
+  "APZero": "\\mathbf{AP}_0",
+  "APSigma": "\\mathbf{AP}_\\Sigma",
+  "ProgZero": "\\mathbf{Prog}_0",
+  "Kmax": "K_{\\text{max}}",
+  "Mexp": "M_{\\text{exp}}",
+  "piF": "\\pi_F",
+  "MCS": "\\text{MCS}",
+  "MCCT": "\\text{MCCT}",
+  "Kor": "\\mathbf{Kor}",
+  "polyquantor": [
+    "\\mathop{\\mathsf{Q}}\\limits_{#2,#3}^{#4}\\!\\left(#1\\right)",
+    4
+  ],
+  "quantor": [
+    "\\mathsf{Q}\\left[#1\\right]",
+    1
+  ],
+  "homogenesyntrix": [
+    "\\mathsf{H}\\!\\left(#1\\right)",
+    1
+  ],
+  "widemetroplex": [
+    "\\mathsf{M}_{#2}\\!\\left(#1\\right)",
+    2
+  ],
+  "syntroklinemetroplex": [
+    "\\mathsf{B}_{#2}\\!\\left(#1\\right)",
+    2
+  ],
+  "syntroklinekettenkoppelung": "\\mathsf{K}",
+  "infinitesimalchainoperatorI": "\\mathop{\\mathrm{I}}",
+  "predicatesymbol": "\\mathrel{\\models}",
+  "supmedsubscript": [
+    "{}^{#2}_{#1,#3}",
+    3
+  ],
+  "prescript": [
+    "{}^{#1}_{#2}{#3}",
+    3
+  ],
+  "smformula": [
+    "#1",
+    1
+  ],
+  "xrightsquigarrow": [
+    "\\overset{#1}{\\rightsquigarrow}",
+    1
+  ],
+  "underrightarrow": [
+    "\\overrightarrow{#1}",
+    1
+  ],
+  "dbinom": [
+    "\\binom{#1}{#2}",
+    2
+  ],
+  "dfrac": [
+    "\\frac{#1}{#2}",
+    2
+  ],
+  "coloneqq": "\\mathrel{:=}",
+  "Coloneqq": "\\mathrel{::=}",
+  "centernot": [
+    "\\not#1",
+    1
+  ],
+  "llbracket": "\\mathopen{[\\mkern-3mu[}",
+  "rrbracket": "\\mathclose{]\\mkern-3mu]}",
+  "longhookrightarrow": "\\lhook\\joinrel\\longrightarrow",
+  "sidx": [
+    "",
+    1
+  ],
+  "hidx": [
+    "",
+    2
+  ],
+  "nidx": [
+    "",
+    2
+  ],
+  "claimceiling": [
+    "#2",
+    2
+  ],
+  "carnapexplication": [
+    "#5",
+    5
+  ],
+  "vspacing": [
+    "\\vphantom{\\sum}",
+    0
+  ],
+  "ab": "\\mathrm{ab}"
+}
+  },
+  chtml: {
+    scale: 0.95
+  }
+};
+</script>
+<script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style id="syn-desktop-layout-fix">
+@media (min-width: 901px) {
+  .reveal .stratum-badge,
+  .stratum-badge {
+    display: block !important;
+    float: none !important;
+    clear: both !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+  }
+  .reveal .columns,
+  .reveal-viewport.reveal-scroll .columns,
+  .reveal:not(.reveal-scroll) .columns {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    clear: both !important;
+  }
+  .reveal .columns > .column,
+  .reveal .columns > div,
+  .reveal-viewport.reveal-scroll .columns > .column,
+  .reveal-viewport.reveal-scroll .columns > div,
+  .reveal:not(.reveal-scroll) .columns > .column,
+  .reveal:not(.reveal-scroll) .columns > div {
+    flex: 1 1 0% !important;
+    width: auto !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: visible !important;
+  }
+  .reveal .columns > .column[style*="width: 52%"],
+  .reveal .columns > .column[style*="width:52%"] {
+    flex: 1.1 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 48%"],
+  .reveal .columns > .column[style*="width:48%"] {
+    flex: 1 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 60%"],
+  .reveal .columns > .column[style*="width:60%"] {
+    flex: 1.5 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 40%"],
+  .reveal .columns > .column[style*="width:40%"] {
+    flex: 1 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 70%"],
+  .reveal .columns > .column[style*="width:70%"] {
+    flex: 2.3 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 30%"],
+  .reveal .columns > .column[style*="width:30%"] {
+    flex: 1 1 0% !important;
+  }
+  .reveal .column .MathJax_Display,
+  .reveal .column mjx-container[display="true"],
+  .reveal-viewport.reveal-scroll .column mjx-container[display="true"] {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    box-sizing: border-box !important;
+  }
+  .reveal .grid-2,
+  .reveal .video-grid-2,
+  .reveal:not(.reveal-scroll) .grid-2,
+  .reveal:not(.reveal-scroll) .video-grid-2,
+  .reveal-viewport.reveal-scroll .grid-2,
+  .reveal-viewport.reveal-scroll .video-grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 }
 </style>
+
 </head>
 <body class="quarto-dark">
   <div class="reveal">
@@ -2097,7 +2544,7 @@ Manim Act XII (Fig. 9.7): Chapter 9 Synthesis Flowchart &amp; Dialectical Ascent
         maxScale: 1.5,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

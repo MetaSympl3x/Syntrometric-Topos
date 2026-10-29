@@ -1036,17 +1036,98 @@ $code-block-border-color:   rgba($syn-blue, 0.4);
     text-shadow: 0 2px 14px rgba($syn-gold, 0.18);
   }
 
+  // Desktop Presentation Mode: Strict 16:9 side-by-side columns
   html:not(.print-pdf) .reveal .stratum-badge,
   .reveal .stratum-badge,
   .stratum-badge {
+    display: block !important;
+    float: none !important;
+    clear: both !important;
+    width: fit-content !important;
+    max-width: 100% !important;
     margin-top: 0 !important;
     margin-bottom: 8px !important;
     padding: 3px 10px !important;
   }
 
-  html:not(.print-pdf) .reveal .columns,
-  .reveal .columns {
-    margin-top: 4px !important;
+    .reveal:not(.reveal-scroll) .columns,
+  .reveal .columns,
+  html:not(.print-pdf) .reveal .columns {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 6px !important;
+    align-items: stretch !important;
+    box-sizing: border-box !important;
+    clear: both !important;
+  }
+
+  .reveal:not(.reveal-scroll) .column,
+  .reveal .columns > .column,
+  .reveal .columns > div {
+    flex: 1 1 0% !important;
+    width: auto !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: visible !important;
+  }
+
+  .reveal .columns > .column[style*="width: 52%"],
+  .reveal .columns > .column[style*="width:52%"] {
+    flex: 1.1 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 48%"],
+  .reveal .columns > .column[style*="width:48%"] {
+    flex: 1 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 60%"],
+  .reveal .columns > .column[style*="width:60%"] {
+    flex: 1.5 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 40%"],
+  .reveal .columns > .column[style*="width:40%"] {
+    flex: 1 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 70%"],
+  .reveal .columns > .column[style*="width:70%"] {
+    flex: 2.3 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 30%"],
+  .reveal .columns > .column[style*="width:30%"] {
+    flex: 1 1 0% !important;
+  }
+
+  .reveal:not(.reveal-scroll) .grid-2,
+  .reveal:not(.reveal-scroll) .video-grid-2,
+  .reveal .grid-2,
+  .reveal .video-grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+    width: 100% !important;
+    margin-top: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  .reveal:not(.reveal-scroll) .stat-grid-3,
+  .reveal .stat-grid-3 {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px !important;
+    width: 100% !important;
+    margin-top: 10px !important;
+  }
+
+  .reveal:not(.reveal-scroll) .stat-grid-4,
+  .reveal .stat-grid-4 {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin-top: 10px !important;
   }
 
   .reveal .slides section p {
