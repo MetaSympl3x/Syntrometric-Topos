@@ -1018,15 +1018,17 @@ window.addEventListener('message', (event) => {
   .reveal-viewport.reveal-scroll .band-track,
   .band-track {
     position: relative !important;
-    height: 20px !important;
+    height: 24px !important;
     background: #1e2436 !important;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     margin-top: 6px !important;
     margin-bottom: 8px !important;
     border: 1px solid #3b4560 !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    touch-action: none !important;
+    cursor: pointer !important;
   }
 
   /* Band pins vertically centered on the band track */
@@ -1040,8 +1042,10 @@ window.addEventListener('message', (event) => {
     top: 50% !important;
     transform: translate(-50%, -50%) !important;
     width: 14px !important;
-    height: 24px !important;
+    height: 28px !important;
     border-radius: 4px !important;
+    z-index: 5 !important;
+    pointer-events: none !important;
   }
 
   /* Buttons, Tabs, Toggles */

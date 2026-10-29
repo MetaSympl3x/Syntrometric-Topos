@@ -2533,7 +2533,8 @@ window.addEventListener('message', (event) => {
      ========================================================================= -->
 <script id="syn-mobile-interactivity-engine">
 (function() {
-  if (window.__SYN_MOBILE_INTERACTIVITY_ENGINE__) return;
+  if (window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V2__) return;
+  window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V2__ = true;
   window.__SYN_MOBILE_INTERACTIVITY_ENGINE__ = true;
 
   var INTERACTIVE_SELECTORS = [
@@ -2547,6 +2548,79 @@ window.addEventListener('message', (event) => {
     '.chapter-jump-select', '.tex-search-input'
   ].join(', ');
 
+  // Range Slider Drag Logic
+  var activeSlider = null;
+  var activeTouchId = null;
+
+  function updateSliderFromCoords(el, clientX) {
+    if (!el) return;
+    var rect = el.getBoundingClientRect();
+    if (rect.width <= 0) return;
+    var ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    var min = parseFloat(el.min !== '' ? el.min : '0');
+    var max = parseFloat(el.max !== '' ? el.max : '100');
+    var step = parseFloat(el.step && el.step !== 'any' ? el.step : '1');
+    var rawVal = min + ratio * (max - min);
+    if (step > 0) {
+      rawVal = Math.round((rawVal - min) / step) * step + min;
+    }
+    var clamped = Math.max(min, Math.min(max, rawVal));
+    var precision = step < 1 ? (step.toString().split('.')[1] || '').length : 2;
+    var formatted = clamped.toFixed(Math.min(precision, 4));
+    if (parseFloat(el.value) !== parseFloat(formatted)) {
+      el.value = formatted;
+      if (typeof el.oninput === 'function') {
+        try { el.oninput.call(el, new Event('input')); } catch(err) {}
+      }
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  }
+
+  // Band Track Interaction Logic (Directly draggable / tappable colored bar)
+  function updateBandTrackFromCoords(trackEl, clientX) {
+    if (!trackEl) return;
+    var rect = trackEl.getBoundingClientRect();
+    if (rect.width <= 0) return;
+    var ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    var val = -2.0 + ratio * 4.0;
+    val = Math.round(val / 0.05) * 0.05;
+    val = Math.max(-2.0, Math.min(2.0, val));
+    var formatted = val.toFixed(2);
+
+    if (trackEl.id === 'p-track') {
+      var slA = document.getElementById('sl-a');
+      var slF = document.getElementById('sl-f');
+      var slB = document.getElementById('sl-b');
+      if (slF) {
+        slF.value = formatted;
+        if (slA && parseFloat(slA.value) > val) slA.value = formatted;
+        if (slB && parseFloat(slB.value) < val) slB.value = formatted;
+        if (typeof slF.oninput === 'function') {
+          try { slF.oninput.call(slF, new Event('input')); } catch(e) {}
+        }
+        slF.dispatchEvent(new Event('input', { bubbles: true }));
+        slF.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      if (typeof window.updateBands === 'function') window.updateBands();
+    } else if (trackEl.id === 'd-track') {
+      var slAl = document.getElementById('sl-al');
+      var slD = document.getElementById('sl-d');
+      var slBe = document.getElementById('sl-be');
+      if (slD) {
+        slD.value = formatted;
+        if (slAl && parseFloat(slAl.value) > val) slAl.value = formatted;
+        if (slBe && parseFloat(slBe.value) < val) slBe.value = formatted;
+        if (typeof slD.oninput === 'function') {
+          try { slD.oninput.call(slD, new Event('input')); } catch(e) {}
+        }
+        slD.dispatchEvent(new Event('input', { bubbles: true }));
+        slD.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      if (typeof window.updateBands === 'function') window.updateBands();
+    }
+  }
+
   function isolateInteractiveElement(el) {
     if (!el || el.nodeType !== 1) return;
 
@@ -2559,77 +2633,122 @@ window.addEventListener('message', (event) => {
       panel.setAttribute('data-prevent-swipe', 'true');
     }
 
-    if (el.dataset.synMobileTouchInit) return;
-    el.dataset.synMobileTouchInit = '1';
+    if (el.dataset.synMobileTouchInitV2) return;
+    el.dataset.synMobileTouchInitV2 = '1';
 
-    // Direct Smooth Touch Dragging for Range Sliders
+    // 1. Range Sliders: Pointer Events + Touch Events + Pointer Capture
     if (el.tagName === 'INPUT' && el.type === 'range') {
-      el.style.touchAction = 'pan-x';
+      el.style.touchAction = 'none';
 
-      var isTouching = false;
-      var updateSliderFromTouch = function(touchEvent) {
-        var touch = touchEvent.touches ? touchEvent.touches[0] : touchEvent;
-        if (!touch) return;
-        var rect = el.getBoundingClientRect();
-        if (rect.width <= 0) return;
-        var ratio = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
-        var min = parseFloat(el.min !== '' ? el.min : '0');
-        var max = parseFloat(el.max !== '' ? el.max : '100');
-        var step = parseFloat(el.step && el.step !== 'any' ? el.step : '1');
-        var rawVal = min + ratio * (max - min);
-        if (step > 0) {
-          rawVal = Math.round((rawVal - min) / step) * step + min;
+      // Pointer events with pointer capture (Chrome, Safari 13+, Firefox)
+      var pointerActive = false;
+      el.addEventListener('pointerdown', function(e) {
+        if (e.button && e.button !== 0) return;
+        pointerActive = true;
+        try { el.setPointerCapture(e.pointerId); } catch(err) {}
+        e.preventDefault();
+        e.stopPropagation();
+        updateSliderFromCoords(el, e.clientX);
+      }, { passive: false });
+
+      el.addEventListener('pointermove', function(e) {
+        if (pointerActive) {
+          e.preventDefault();
+          e.stopPropagation();
+          updateSliderFromCoords(el, e.clientX);
         }
-        var clamped = Math.max(min, Math.min(max, rawVal));
-        var precision = step < 1 ? (step.toString().split('.')[1] || '').length : 2;
-        var formatted = clamped.toFixed(Math.min(precision, 4));
-        if (parseFloat(el.value) !== parseFloat(formatted)) {
-          el.value = formatted;
-          el.dispatchEvent(new Event('input', { bubbles: true }));
+      }, { passive: false });
+
+      function endPointer(e) {
+        if (pointerActive) {
+          pointerActive = false;
+          try { el.releasePointerCapture(e.pointerId); } catch(err) {}
+          e.preventDefault();
+          e.stopPropagation();
+          updateSliderFromCoords(el, e.clientX);
+          if (typeof el.onchange === 'function') {
+            try { el.onchange.call(el, new Event('change')); } catch(err) {}
+          }
           el.dispatchEvent(new Event('change', { bubbles: true }));
         }
-      };
+      }
+      el.addEventListener('pointerup', endPointer, { passive: false });
+      el.addEventListener('pointercancel', endPointer, { passive: false });
+
+      // Touch events fallback (older iOS WebKit touch tracking)
+      el.addEventListener('touchstart', function(e) {
+        if (!e.touches || e.touches.length === 0) return;
+        activeSlider = el;
+        activeTouchId = e.touches[0].identifier;
+        e.preventDefault();
+        e.stopPropagation();
+        updateSliderFromCoords(el, e.touches[0].clientX);
+      }, { passive: false });
+
+      return;
+    }
+
+    // 2. Band Tracks: Make #p-track, #d-track, .band-track directly interactive
+    if (el.classList.contains('band-track') || el.id === 'p-track' || el.id === 'd-track') {
+      el.style.touchAction = 'none';
+      el.style.cursor = 'pointer';
+
+      var trackPointerActive = false;
+      el.addEventListener('pointerdown', function(e) {
+        if (e.button && e.button !== 0) return;
+        trackPointerActive = true;
+        try { el.setPointerCapture(e.pointerId); } catch(err) {}
+        e.preventDefault();
+        e.stopPropagation();
+        updateBandTrackFromCoords(el, e.clientX);
+      }, { passive: false });
+
+      el.addEventListener('pointermove', function(e) {
+        if (trackPointerActive) {
+          e.preventDefault();
+          e.stopPropagation();
+          updateBandTrackFromCoords(el, e.clientX);
+        }
+      }, { passive: false });
+
+      function endTrackPointer(e) {
+        if (trackPointerActive) {
+          trackPointerActive = false;
+          try { el.releasePointerCapture(e.pointerId); } catch(err) {}
+          e.preventDefault();
+          e.stopPropagation();
+          updateBandTrackFromCoords(el, e.clientX);
+        }
+      }
+      el.addEventListener('pointerup', endTrackPointer, { passive: false });
+      el.addEventListener('pointercancel', endTrackPointer, { passive: false });
 
       el.addEventListener('touchstart', function(e) {
+        if (!e.touches || e.touches.length === 0) return;
+        e.preventDefault();
         e.stopPropagation();
-        isTouching = true;
-        updateSliderFromTouch(e);
-      }, { passive: true });
+        updateBandTrackFromCoords(el, e.touches[0].clientX);
+      }, { passive: false });
 
       el.addEventListener('touchmove', function(e) {
+        if (!e.touches || e.touches.length === 0) return;
+        e.preventDefault();
         e.stopPropagation();
-        if (isTouching) {
-          updateSliderFromTouch(e);
-        }
-      }, { passive: true });
+        updateBandTrackFromCoords(el, e.touches[0].clientX);
+      }, { passive: false });
 
-      el.addEventListener('touchend', function(e) {
-        e.stopPropagation();
-        if (isTouching) {
-          isTouching = false;
-          el.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-      }, { passive: true });
-
-      el.addEventListener('pointerdown', function(e) { e.stopPropagation(); }, { passive: true });
-      el.addEventListener('pointermove', function(e) {
-        if (e.buttons > 0) e.stopPropagation();
-      }, { passive: true });
-      el.addEventListener('mousedown', function(e) { e.stopPropagation(); });
       return;
     }
 
-    // Buttons, Toggles, Tabs: Ensure click is never suppressed by micro-jitter
-    if (el.tagName === 'BUTTON' || el.tagName === 'SELECT' || el.classList.contains('syn-btn') || el.classList.contains('tab-btn')) {
+    // 3. Buttons, Tabs, Toggles
+    if (el.tagName === 'BUTTON' || el.tagName === 'SELECT' || el.classList.contains('syn-btn') || el.classList.contains('tab-btn') || el.classList.contains('subsys-toggle') || el.classList.contains('syn-tab-btn')) {
       el.style.touchAction = 'manipulation';
       el.addEventListener('pointerdown', function(e) { e.stopPropagation(); }, { passive: true });
-      el.addEventListener('mousedown', function(e) { e.stopPropagation(); });
       el.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: true });
-      el.addEventListener('touchend', function(e) { e.stopPropagation(); }, { passive: true });
       return;
     }
 
-    // 3D Canvas & Wrappers
+    // 4. 3D Canvas & Wrappers
     if (el.tagName === 'CANVAS' || (el.id && el.id.indexOf('-3d-wrap') !== -1) || el.classList.contains('syntrix-3d-canvas')) {
       el.style.touchAction = 'none';
       el.addEventListener('pointerdown', function(e) { e.stopPropagation(); }, { passive: true });
@@ -2637,11 +2756,43 @@ window.addEventListener('message', (event) => {
       return;
     }
 
-    // General interactive elements
     el.addEventListener('pointerdown', function(e) {
       if (el.tagName !== 'SECTION') e.stopPropagation();
     }, { passive: true });
   }
+
+  // Global window listeners for Touch Event drag fallback
+  window.addEventListener('touchmove', function(e) {
+    if (!activeSlider) return;
+    for (var i = 0; i < e.touches.length; i++) {
+      if (e.touches[i].identifier === activeTouchId) {
+        e.preventDefault();
+        e.stopPropagation();
+        updateSliderFromCoords(activeSlider, e.touches[i].clientX);
+        break;
+      }
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener('touchend', function(e) {
+    if (!activeSlider) return;
+    for (var i = 0; i < e.changedTouches.length; i++) {
+      if (e.changedTouches[i].identifier === activeTouchId) {
+        if (typeof activeSlider.onchange === 'function') {
+          try { activeSlider.onchange.call(activeSlider, new Event('change')); } catch(err) {}
+        }
+        activeSlider.dispatchEvent(new Event('change', { bubbles: true }));
+        activeSlider = null;
+        activeTouchId = null;
+        break;
+      }
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener('touchcancel', function(e) {
+    activeSlider = null;
+    activeTouchId = null;
+  }, { passive: true, capture: true });
 
   function scanAndIsolate() {
     try {
@@ -2649,10 +2800,10 @@ window.addEventListener('message', (event) => {
       for (var i = 0; i < els.length; i++) {
         isolateInteractiveElement(els[i]);
       }
-    } catch (e) {}
+    } catch(e) {}
   }
 
-  // Capture-phase safety net on window
+  // Capture phase guard: immediately isolate any touched element
   function capturePhaseGuard(e) {
     var t = e.target;
     if (!t || t.nodeType !== 1) return;
@@ -2665,17 +2816,13 @@ window.addEventListener('message', (event) => {
       if (panel && !panel.hasAttribute('data-prevent-swipe')) {
         panel.setAttribute('data-prevent-swipe', 'true');
       }
-      if (e.type === 'pointerdown' || e.type === 'touchstart') {
-        isolateInteractiveElement(interactive);
-      }
+      isolateInteractiveElement(interactive);
     }
   }
 
   window.addEventListener('touchstart', capturePhaseGuard, { capture: true, passive: true });
-  window.addEventListener('touchmove', capturePhaseGuard, { capture: true, passive: true });
   window.addEventListener('pointerdown', capturePhaseGuard, { capture: true, passive: true });
 
-  // DOM MutationObserver
   try {
     var observer = new MutationObserver(function(mutations) {
       for (var i = 0; i < mutations.length; i++) {
@@ -2686,7 +2833,7 @@ window.addEventListener('message', (event) => {
       }
     });
     observer.observe(document.documentElement, { childList: true, subtree: true });
-  } catch (e) {}
+  } catch(e) {}
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', scanAndIsolate);
