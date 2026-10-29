@@ -493,10 +493,6 @@ window.ch13_updateAscLab = function() {
       el.dataset.synBound = '1';
       el.setAttribute('data-prevent-swipe', 'true');
       el.addEventListener('keydown', e => e.stopPropagation());
-      el.addEventListener('mousedown', e => e.stopPropagation());
-      el.addEventListener('pointerdown', e => e.stopPropagation(), { passive: true });
-      el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
-      el.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
     });
   }
 
@@ -1845,10 +1841,6 @@ const canvas = document.getElementById('ch13-3d-canvas');
 
         el.setAttribute('data-prevent-swipe', 'true');
       el.addEventListener('keydown', e => e.stopPropagation());
-      el.addEventListener('mousedown', e => e.stopPropagation());
-      el.addEventListener('pointerdown', e => e.stopPropagation(), { passive: true });
-      el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
-      el.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
 
       });
 

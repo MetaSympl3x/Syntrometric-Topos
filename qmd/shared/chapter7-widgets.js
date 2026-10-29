@@ -558,10 +558,8 @@ window.showGenericTab = window.showGenericTab || function(prefix, idx, maxIdx, b
     document.querySelectorAll('input[type="range"], select, button').forEach(el => {
       if (el.dataset.synBound) return;
       el.dataset.synBound = '1';
-      el.addEventListener('keydown', e => e.stopPropagation());
-      el.addEventListener('mousedown', e => e.stopPropagation());
-      el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
-    });
+      el.setAttribute('data-prevent-swipe', 'true');
+    el.addEventListener('keydown', e => e.stopPropagation());});
   }
 
   let ch7Initialised = false;

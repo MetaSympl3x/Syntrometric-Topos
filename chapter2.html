@@ -1503,24 +1503,12 @@ window.MathJax = {
      ========================================================================= -->
 <script id="syn-mobile-interactivity-engine">
 (function() {
-  if (window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V2__) return;
+  if (window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V3__) return;
+  window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V3__ = true;
   window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V2__ = true;
   window.__SYN_MOBILE_INTERACTIVITY_ENGINE__ = true;
 
-  var INTERACTIVE_SELECTORS = [
-    'input', 'button', 'select', 'textarea', 'label', 'canvas', 'svg',
-    '.interactive-panel', '.slider-row', '.band-track', '.anim-hud-tray',
-    '.animation-hud', '#syntrix-3d-hud', '[id$="-3d-hud"]', '[id$="-3d-wrap"]',
-    '#syn-monograph-fab', '#syn-monograph-drawer', '.mdrawer-tab', '.mdrawer-header',
-    '.mdrawer-body', '.mdrawer-pane', '.rosetta-card', '.rosetta-list',
-    '#monograph-tex-viewer', '.syn-btn', '.subsys-toggle', '.tab-btn',
-    '.syn-tab-btn', '.m3d-btn', '.pdf-cite-badge', '.ch1-hud-btn',
-    '.chapter-jump-select', '.tex-search-input'
-  ].join(', ');
-
-  // Range Slider Drag Logic
-  var activeSlider = null;
-  var activeTouchId = null;
+  var activeDrag = null; // { el: HTMLElement, type: 'slider' | 'track' }
 
   function updateSliderFromCoords(el, clientX) {
     if (!el) return;
@@ -1537,17 +1525,14 @@ window.MathJax = {
     var clamped = Math.max(min, Math.min(max, rawVal));
     var precision = step < 1 ? (step.toString().split('.')[1] || '').length : 2;
     var formatted = clamped.toFixed(Math.min(precision, 4));
-    if (parseFloat(el.value) !== parseFloat(formatted)) {
-      el.value = formatted;
-      if (typeof el.oninput === 'function') {
-        try { el.oninput.call(el, new Event('input')); } catch(err) {}
-      }
-      el.dispatchEvent(new Event('input', { bubbles: true }));
-      el.dispatchEvent(new Event('change', { bubbles: true }));
+
+    el.value = formatted;
+    if (typeof el.oninput === 'function') {
+      try { el.oninput.call(el, new Event('input')); } catch(err) {}
     }
+    el.dispatchEvent(new Event('input', { bubbles: true }));
   }
 
-  // Band Track Interaction Logic (Directly draggable / tappable colored bar)
   function updateBandTrackFromCoords(trackEl, clientX) {
     if (!trackEl) return;
     var rect = trackEl.getBoundingClientRect();
@@ -1564,13 +1549,20 @@ window.MathJax = {
       var slB = document.getElementById('sl-b');
       if (slF) {
         slF.value = formatted;
-        if (slA && parseFloat(slA.value) > val) slA.value = formatted;
-        if (slB && parseFloat(slB.value) < val) slB.value = formatted;
+        if (slA && parseFloat(slA.value) > val) {
+          slA.value = formatted;
+          if (typeof slA.oninput === 'function') try { slA.oninput.call(slA, new Event('input')); } catch(e) {}
+          slA.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        if (slB && parseFloat(slB.value) < val) {
+          slB.value = formatted;
+          if (typeof slB.oninput === 'function') try { slB.oninput.call(slB, new Event('input')); } catch(e) {}
+          slB.dispatchEvent(new Event('input', { bubbles: true }));
+        }
         if (typeof slF.oninput === 'function') {
           try { slF.oninput.call(slF, new Event('input')); } catch(e) {}
         }
         slF.dispatchEvent(new Event('input', { bubbles: true }));
-        slF.dispatchEvent(new Event('change', { bubbles: true }));
       }
       if (typeof window.updateBands === 'function') window.updateBands();
     } else if (trackEl.id === 'd-track') {
@@ -1579,17 +1571,100 @@ window.MathJax = {
       var slBe = document.getElementById('sl-be');
       if (slD) {
         slD.value = formatted;
-        if (slAl && parseFloat(slAl.value) > val) slAl.value = formatted;
-        if (slBe && parseFloat(slBe.value) < val) slBe.value = formatted;
+        if (slAl && parseFloat(slAl.value) > val) {
+          slAl.value = formatted;
+          if (typeof slAl.oninput === 'function') try { slAl.oninput.call(slAl, new Event('input')); } catch(e) {}
+          slAl.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        if (slBe && parseFloat(slBe.value) < val) {
+          slBe.value = formatted;
+          if (typeof slBe.oninput === 'function') try { slBe.oninput.call(slBe, new Event('input')); } catch(e) {}
+          slBe.dispatchEvent(new Event('input', { bubbles: true }));
+        }
         if (typeof slD.oninput === 'function') {
           try { slD.oninput.call(slD, new Event('input')); } catch(e) {}
         }
         slD.dispatchEvent(new Event('input', { bubbles: true }));
-        slD.dispatchEvent(new Event('change', { bubbles: true }));
       }
       if (typeof window.updateBands === 'function') window.updateBands();
     }
   }
+
+  function handleDragMove(clientX) {
+    if (!activeDrag) return;
+    if (activeDrag.type === 'slider') {
+      updateSliderFromCoords(activeDrag.el, clientX);
+    } else if (activeDrag.type === 'track') {
+      updateBandTrackFromCoords(activeDrag.el, clientX);
+    }
+  }
+
+  function handleDragEnd(clientX) {
+    if (!activeDrag) return;
+    if (clientX !== undefined) handleDragMove(clientX);
+    if (activeDrag.type === 'slider') {
+      if (typeof activeDrag.el.onchange === 'function') {
+        try { activeDrag.el.onchange.call(activeDrag.el, new Event('change')); } catch(err) {}
+      }
+      activeDrag.el.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    activeDrag = null;
+  }
+
+  // GLOBAL MOVE AND UP LISTENERS ON WINDOW IN CAPTURE PHASE
+  window.addEventListener('pointermove', function(e) {
+    if (activeDrag) {
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+      handleDragMove(e.clientX);
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener('pointerup', function(e) {
+    if (activeDrag) {
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+      handleDragEnd(e.clientX);
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener('pointercancel', function(e) {
+    if (activeDrag) {
+      handleDragEnd();
+    }
+  }, { passive: true, capture: true });
+
+  window.addEventListener('touchmove', function(e) {
+    if (activeDrag && e.touches && e.touches.length > 0) {
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+      handleDragMove(e.touches[0].clientX);
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener('touchend', function(e) {
+    if (activeDrag) {
+      var cx = e.changedTouches && e.changedTouches.length > 0 ? e.changedTouches[0].clientX : undefined;
+      handleDragEnd(cx);
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener('touchcancel', function(e) {
+    if (activeDrag) {
+      handleDragEnd();
+    }
+  }, { passive: true, capture: true });
+
+  var INTERACTIVE_SELECTORS = [
+    'input', 'button', 'select', 'textarea', 'label', 'canvas', 'svg',
+    '.interactive-panel', '.slider-row', '.band-track', '.anim-hud-tray',
+    '.animation-hud', '#syntrix-3d-hud', '[id$="-3d-hud"]', '[id$="-3d-wrap"]',
+    '#syn-monograph-fab', '#syn-monograph-drawer', '.mdrawer-tab', '.mdrawer-header',
+    '.mdrawer-body', '.mdrawer-pane', '.rosetta-card', '.rosetta-list',
+    '#monograph-tex-viewer', '.syn-btn', '.subsys-toggle', '.tab-btn',
+    '.syn-tab-btn', '.m3d-btn', '.pdf-cite-badge', '.ch1-hud-btn',
+    '.chapter-jump-select', '.tex-search-input'
+  ].join(', ');
 
   function isolateInteractiveElement(el) {
     if (!el || el.nodeType !== 1) return;
@@ -1603,56 +1678,27 @@ window.MathJax = {
       panel.setAttribute('data-prevent-swipe', 'true');
     }
 
-    if (el.dataset.synMobileTouchInitV2) return;
-    el.dataset.synMobileTouchInitV2 = '1';
+    if (el.dataset.synMobileTouchInitV3) return;
+    el.dataset.synMobileTouchInitV3 = '1';
 
-    // 1. Range Sliders: Pointer Events + Touch Events + Pointer Capture
+    // 1. Range Sliders
     if (el.tagName === 'INPUT' && el.type === 'range') {
       el.style.touchAction = 'none';
 
-      // Pointer events with pointer capture (Chrome, Safari 13+, Firefox)
-      var pointerActive = false;
       el.addEventListener('pointerdown', function(e) {
         if (e.button && e.button !== 0) return;
-        pointerActive = true;
-        try { el.setPointerCapture(e.pointerId); } catch(err) {}
-        e.preventDefault();
+        activeDrag = { el: el, type: 'slider' };
+        if (e.cancelable) e.preventDefault();
         e.stopPropagation();
-        updateSliderFromCoords(el, e.clientX);
+        handleDragMove(e.clientX);
       }, { passive: false });
 
-      el.addEventListener('pointermove', function(e) {
-        if (pointerActive) {
-          e.preventDefault();
-          e.stopPropagation();
-          updateSliderFromCoords(el, e.clientX);
-        }
-      }, { passive: false });
-
-      function endPointer(e) {
-        if (pointerActive) {
-          pointerActive = false;
-          try { el.releasePointerCapture(e.pointerId); } catch(err) {}
-          e.preventDefault();
-          e.stopPropagation();
-          updateSliderFromCoords(el, e.clientX);
-          if (typeof el.onchange === 'function') {
-            try { el.onchange.call(el, new Event('change')); } catch(err) {}
-          }
-          el.dispatchEvent(new Event('change', { bubbles: true }));
-        }
-      }
-      el.addEventListener('pointerup', endPointer, { passive: false });
-      el.addEventListener('pointercancel', endPointer, { passive: false });
-
-      // Touch events fallback (older iOS WebKit touch tracking)
       el.addEventListener('touchstart', function(e) {
         if (!e.touches || e.touches.length === 0) return;
-        activeSlider = el;
-        activeTouchId = e.touches[0].identifier;
-        e.preventDefault();
+        activeDrag = { el: el, type: 'slider' };
+        if (e.cancelable) e.preventDefault();
         e.stopPropagation();
-        updateSliderFromCoords(el, e.touches[0].clientX);
+        handleDragMove(e.touches[0].clientX);
       }, { passive: false });
 
       return;
@@ -1663,48 +1709,20 @@ window.MathJax = {
       el.style.touchAction = 'none';
       el.style.cursor = 'pointer';
 
-      var trackPointerActive = false;
       el.addEventListener('pointerdown', function(e) {
         if (e.button && e.button !== 0) return;
-        trackPointerActive = true;
-        try { el.setPointerCapture(e.pointerId); } catch(err) {}
-        e.preventDefault();
+        activeDrag = { el: el, type: 'track' };
+        if (e.cancelable) e.preventDefault();
         e.stopPropagation();
-        updateBandTrackFromCoords(el, e.clientX);
+        handleDragMove(e.clientX);
       }, { passive: false });
-
-      el.addEventListener('pointermove', function(e) {
-        if (trackPointerActive) {
-          e.preventDefault();
-          e.stopPropagation();
-          updateBandTrackFromCoords(el, e.clientX);
-        }
-      }, { passive: false });
-
-      function endTrackPointer(e) {
-        if (trackPointerActive) {
-          trackPointerActive = false;
-          try { el.releasePointerCapture(e.pointerId); } catch(err) {}
-          e.preventDefault();
-          e.stopPropagation();
-          updateBandTrackFromCoords(el, e.clientX);
-        }
-      }
-      el.addEventListener('pointerup', endTrackPointer, { passive: false });
-      el.addEventListener('pointercancel', endTrackPointer, { passive: false });
 
       el.addEventListener('touchstart', function(e) {
         if (!e.touches || e.touches.length === 0) return;
-        e.preventDefault();
+        activeDrag = { el: el, type: 'track' };
+        if (e.cancelable) e.preventDefault();
         e.stopPropagation();
-        updateBandTrackFromCoords(el, e.touches[0].clientX);
-      }, { passive: false });
-
-      el.addEventListener('touchmove', function(e) {
-        if (!e.touches || e.touches.length === 0) return;
-        e.preventDefault();
-        e.stopPropagation();
-        updateBandTrackFromCoords(el, e.touches[0].clientX);
+        handleDragMove(e.touches[0].clientX);
       }, { passive: false });
 
       return;
@@ -1731,46 +1749,13 @@ window.MathJax = {
     }, { passive: true });
   }
 
-  // Global window listeners for Touch Event drag fallback
-  window.addEventListener('touchmove', function(e) {
-    if (!activeSlider) return;
-    for (var i = 0; i < e.touches.length; i++) {
-      if (e.touches[i].identifier === activeTouchId) {
-        e.preventDefault();
-        e.stopPropagation();
-        updateSliderFromCoords(activeSlider, e.touches[i].clientX);
-        break;
-      }
-    }
-  }, { passive: false, capture: true });
-
-  window.addEventListener('touchend', function(e) {
-    if (!activeSlider) return;
-    for (var i = 0; i < e.changedTouches.length; i++) {
-      if (e.changedTouches[i].identifier === activeTouchId) {
-        if (typeof activeSlider.onchange === 'function') {
-          try { activeSlider.onchange.call(activeSlider, new Event('change')); } catch(err) {}
-        }
-        activeSlider.dispatchEvent(new Event('change', { bubbles: true }));
-        activeSlider = null;
-        activeTouchId = null;
-        break;
-      }
-    }
-  }, { passive: false, capture: true });
-
-  window.addEventListener('touchcancel', function(e) {
-    activeSlider = null;
-    activeTouchId = null;
-  }, { passive: true, capture: true });
-
   function scanAndIsolate() {
     try {
       var els = document.querySelectorAll(INTERACTIVE_SELECTORS);
       for (var i = 0; i < els.length; i++) {
         isolateInteractiveElement(els[i]);
       }
-    } catch(e) {}
+    } catch (e) {}
   }
 
   // Capture phase guard: immediately isolate any touched element
@@ -1803,7 +1788,7 @@ window.MathJax = {
       }
     });
     observer.observe(document.documentElement, { childList: true, subtree: true });
-  } catch(e) {}
+  } catch (e) {}
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', scanAndIsolate);

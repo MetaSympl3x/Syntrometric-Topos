@@ -3,6 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
+      - Syntrometric-Topos
       - Syntrometry-Topos
       - main
   workflow_dispatch:

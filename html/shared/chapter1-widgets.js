@@ -391,10 +391,6 @@ function bindControlsOnce() {
     // Keep Reveal's keyboard/touch navigation from hijacking widget interaction.
     el.setAttribute('data-prevent-swipe', 'true');
     el.addEventListener('keydown', e => e.stopPropagation());
-    el.addEventListener('mousedown', e => e.stopPropagation());
-    el.addEventListener('pointerdown', e => e.stopPropagation(), { passive: true });
-    el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
-    el.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
   });
 }
 
