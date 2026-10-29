@@ -43,7 +43,7 @@
   };
 
   // Comprehensive Syntrometric & Heim Historical Math Macros for MathJax
-  const SYN_MATH_MACROS = {
+  const SYN_MATH_MACROS = Object.assign({}, (typeof window !== "undefined" && window.SYN_TEX_MACROS) || {}, {
   "syntrix": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
   "homogeneoussyntrix": "\\mathbf{x}\\widetilde{\\mathbf{a}}",
   "metrophor": "\\widetilde{\\mathbf{a}}",
@@ -343,7 +343,7 @@
     0
   ],
   "ab": "\\mathrm{ab}"
-};
+});
 
   // Curated Highlights of the 100-Equation Master Register with exact LaTeX
   const FALLBACK_ROSETTA = [
