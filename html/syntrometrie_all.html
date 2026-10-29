@@ -5086,6 +5086,273 @@ window.MathJax = {
 }
 </style>
 
+
+
+<!-- =========================================================================
+     UNIVERSAL MOBILE TOUCH & INTERACTIVITY SHIELD
+     Prevents Reveal.js from hijacking touch gestures on sliders, buttons,
+     canvases, tabs, 3D HUDs, and monograph workbench panels on mobile.
+     ========================================================================= -->
+<script id="syn-mobile-interactivity-engine">
+(function() {
+  if (window.__SYN_MOBILE_INTERACTIVITY_ENGINE__) return;
+  window.__SYN_MOBILE_INTERACTIVITY_ENGINE__ = true;
+
+  var INTERACTIVE_SELECTORS = [
+    'input', 'button', 'select', 'textarea', 'label', 'canvas', 'svg',
+    '.interactive-panel', '.slider-row', '.band-track', '.anim-hud-tray',
+    '.animation-hud', '#syntrix-3d-hud', '[id$="-3d-hud"]', '[id$="-3d-wrap"]',
+    '#syn-monograph-fab', '#syn-monograph-drawer', '.mdrawer-tab', '.mdrawer-header',
+    '.mdrawer-body', '.mdrawer-pane', '.rosetta-card', '.rosetta-list',
+    '#monograph-tex-viewer', '.syn-btn', '.subsys-toggle', '.tab-btn',
+    '.syn-tab-btn', '.m3d-btn', '.pdf-cite-badge', '.ch1-hud-btn',
+    '.chapter-jump-select', '.tex-search-input'
+  ].join(', ');
+
+  function isolateInteractiveElement(el) {
+    if (!el || el.nodeType !== 1) return;
+
+    if (!el.hasAttribute('data-prevent-swipe')) {
+      el.setAttribute('data-prevent-swipe', 'true');
+    }
+
+    var panel = el.closest('.interactive-panel, .anim-hud-tray, #syntrix-3d-hud, [id$="-3d-hud"], [id$="-3d-wrap"], #syn-monograph-drawer, .slider-row, .band-track');
+    if (panel && !panel.hasAttribute('data-prevent-swipe')) {
+      panel.setAttribute('data-prevent-swipe', 'true');
+    }
+
+    if (el.dataset.synMobileTouchInit) return;
+    el.dataset.synMobileTouchInit = '1';
+
+    // Direct Smooth Touch Dragging for Range Sliders
+    if (el.tagName === 'INPUT' && el.type === 'range') {
+      el.style.touchAction = 'pan-x';
+
+      var isTouching = false;
+      var updateSliderFromTouch = function(touchEvent) {
+        var touch = touchEvent.touches ? touchEvent.touches[0] : touchEvent;
+        if (!touch) return;
+        var rect = el.getBoundingClientRect();
+        if (rect.width <= 0) return;
+        var ratio = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+        var min = parseFloat(el.min !== '' ? el.min : '0');
+        var max = parseFloat(el.max !== '' ? el.max : '100');
+        var step = parseFloat(el.step && el.step !== 'any' ? el.step : '1');
+        var rawVal = min + ratio * (max - min);
+        if (step > 0) {
+          rawVal = Math.round((rawVal - min) / step) * step + min;
+        }
+        var clamped = Math.max(min, Math.min(max, rawVal));
+        var precision = step < 1 ? (step.toString().split('.')[1] || '').length : 2;
+        var formatted = clamped.toFixed(Math.min(precision, 4));
+        if (parseFloat(el.value) !== parseFloat(formatted)) {
+          el.value = formatted;
+          el.dispatchEvent(new Event('input', { bubbles: true }));
+          el.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      };
+
+      el.addEventListener('touchstart', function(e) {
+        e.stopPropagation();
+        isTouching = true;
+        updateSliderFromTouch(e);
+      }, { passive: true });
+
+      el.addEventListener('touchmove', function(e) {
+        e.stopPropagation();
+        if (isTouching) {
+          updateSliderFromTouch(e);
+        }
+      }, { passive: true });
+
+      el.addEventListener('touchend', function(e) {
+        e.stopPropagation();
+        if (isTouching) {
+          isTouching = false;
+          el.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }, { passive: true });
+
+      el.addEventListener('pointerdown', function(e) { e.stopPropagation(); }, { passive: true });
+      el.addEventListener('pointermove', function(e) {
+        if (e.buttons > 0) e.stopPropagation();
+      }, { passive: true });
+      el.addEventListener('mousedown', function(e) { e.stopPropagation(); });
+      return;
+    }
+
+    // Buttons, Toggles, Tabs: Ensure click is never suppressed by micro-jitter
+    if (el.tagName === 'BUTTON' || el.tagName === 'SELECT' || el.classList.contains('syn-btn') || el.classList.contains('tab-btn')) {
+      el.style.touchAction = 'manipulation';
+      el.addEventListener('pointerdown', function(e) { e.stopPropagation(); }, { passive: true });
+      el.addEventListener('mousedown', function(e) { e.stopPropagation(); });
+      el.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: true });
+      el.addEventListener('touchend', function(e) { e.stopPropagation(); }, { passive: true });
+      return;
+    }
+
+    // 3D Canvas & Wrappers
+    if (el.tagName === 'CANVAS' || (el.id && el.id.indexOf('-3d-wrap') !== -1) || el.classList.contains('syntrix-3d-canvas')) {
+      el.style.touchAction = 'none';
+      el.addEventListener('pointerdown', function(e) { e.stopPropagation(); }, { passive: true });
+      el.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: true });
+      return;
+    }
+
+    // General interactive elements
+    el.addEventListener('pointerdown', function(e) {
+      if (el.tagName !== 'SECTION') e.stopPropagation();
+    }, { passive: true });
+  }
+
+  function scanAndIsolate() {
+    try {
+      var els = document.querySelectorAll(INTERACTIVE_SELECTORS);
+      for (var i = 0; i < els.length; i++) {
+        isolateInteractiveElement(els[i]);
+      }
+    } catch (e) {}
+  }
+
+  // Capture-phase safety net on window
+  function capturePhaseGuard(e) {
+    var t = e.target;
+    if (!t || t.nodeType !== 1) return;
+    var interactive = t.closest(INTERACTIVE_SELECTORS);
+    if (interactive) {
+      if (!interactive.hasAttribute('data-prevent-swipe')) {
+        interactive.setAttribute('data-prevent-swipe', 'true');
+      }
+      var panel = interactive.closest('.interactive-panel, .anim-hud-tray, #syntrix-3d-hud, [id$="-3d-hud"], [id$="-3d-wrap"], #syn-monograph-drawer');
+      if (panel && !panel.hasAttribute('data-prevent-swipe')) {
+        panel.setAttribute('data-prevent-swipe', 'true');
+      }
+      if (e.type === 'pointerdown' || e.type === 'touchstart') {
+        isolateInteractiveElement(interactive);
+      }
+    }
+  }
+
+  window.addEventListener('touchstart', capturePhaseGuard, { capture: true, passive: true });
+  window.addEventListener('touchmove', capturePhaseGuard, { capture: true, passive: true });
+  window.addEventListener('pointerdown', capturePhaseGuard, { capture: true, passive: true });
+
+  // DOM MutationObserver
+  try {
+    var observer = new MutationObserver(function(mutations) {
+      for (var i = 0; i < mutations.length; i++) {
+        if (mutations[i].addedNodes && mutations[i].addedNodes.length) {
+          scanAndIsolate();
+          break;
+        }
+      }
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  } catch (e) {}
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scanAndIsolate);
+  } else {
+    scanAndIsolate();
+  }
+
+  if (window.Reveal && window.Reveal.on) {
+    window.Reveal.on('ready', scanAndIsolate);
+    window.Reveal.on('slidechanged', scanAndIsolate);
+    window.Reveal.on('fragmentshown', scanAndIsolate);
+  }
+})();
+</script>
+
+
+
+<style id="syn-mobile-interactive-styles">
+@media (max-width: 900px) {
+  .reveal input[type="range"],
+  .reveal-viewport.reveal-scroll input[type="range"],
+  input[type="range"] {
+    width: 100% !important;
+    min-height: 44px !important;
+    touch-action: pan-x !important;
+    cursor: pointer;
+    background: transparent !important;
+  }
+
+  .reveal input[type="range"]::-webkit-slider-runnable-track,
+  .reveal-viewport.reveal-scroll input[type="range"]::-webkit-slider-runnable-track,
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 8px !important;
+    background: #1e293b !important;
+    border-radius: 4px !important;
+    border: 1px solid #334155 !important;
+  }
+
+  .reveal input[type="range"]::-webkit-slider-thumb,
+  .reveal-viewport.reveal-scroll input[type="range"]::-webkit-slider-thumb,
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    background: #FFD700 !important;
+    border: 2px solid #000 !important;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.75) !important;
+    cursor: pointer !important;
+    margin-top: -10px !important;
+  }
+
+  .reveal input[type="range"]::-moz-range-thumb,
+  .reveal-viewport.reveal-scroll input[type="range"]::-moz-range-thumb,
+  input[type="range"]::-moz-range-thumb {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    background: #FFD700 !important;
+    border: 2px solid #000 !important;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.75) !important;
+    cursor: pointer !important;
+  }
+
+  .reveal .syn-btn,
+  .reveal .subsys-toggle,
+  .reveal .tab-btn,
+  .reveal .syn-tab-btn,
+  .reveal .ch1-hud-btn,
+  .reveal .m3d-btn,
+  .reveal button,
+  .reveal-viewport.reveal-scroll .syn-btn,
+  .reveal-viewport.reveal-scroll .subsys-toggle,
+  .reveal-viewport.reveal-scroll .tab-btn,
+  .reveal-viewport.reveal-scroll .syn-tab-btn,
+  .reveal-viewport.reveal-scroll .ch1-hud-btn,
+  .reveal-viewport.reveal-scroll .m3d-btn,
+  .reveal-viewport.reveal-scroll button {
+    min-height: 44px !important;
+    padding: 9px 16px !important;
+    font-size: 0.88em !important;
+    border-radius: 8px !important;
+    touch-action: manipulation !important;
+    user-select: none !important;
+    -webkit-tap-highlight-color: rgba(255, 215, 0, 0.25) !important;
+  }
+
+  .reveal canvas,
+  .reveal [id$="-3d-wrap"],
+  .reveal .syntrix-3d-canvas,
+  [id$="-3d-wrap"] {
+    touch-action: none !important;
+  }
+
+  .reveal .interactive-panel,
+  .reveal-viewport.reveal-scroll .interactive-panel,
+  .interactive-panel {
+    touch-action: pan-y !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+</style>
+
 </head><body class="quarto-dark">\n
 
 

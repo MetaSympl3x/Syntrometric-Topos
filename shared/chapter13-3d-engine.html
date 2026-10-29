@@ -1205,23 +1205,28 @@
 
   window.addEventListener('mouseup', () => { isDragging = false; });
 
+  wrap.setAttribute('data-prevent-swipe', 'true');
+  wrap.style.touchAction = 'none';
   wrap.addEventListener('touchstart', e => {
     if (e.touches.length === 1) {
       isDragging = true;
       lastX = e.touches[0].clientX;
       lastY = e.touches[0].clientY;
+      e.stopPropagation();
     }
   }, { passive: true });
 
   window.addEventListener('touchmove', e => {
     if (!isDragging || e.touches.length !== 1) return;
+    e.preventDefault();
+    e.stopPropagation();
     const dx = e.touches[0].clientX - lastX;
     const dy = e.touches[0].clientY - lastY;
     lastX = e.touches[0].clientX;
     lastY = e.touches[0].clientY;
     camYaw += dx * 0.012;
     camPitch = Math.max(-0.85, Math.min(1.15, camPitch + dy * 0.012));
-  }, { passive: true });
+  }, { passive: false });
 
   window.addEventListener('touchend', () => { isDragging = false; });
 

@@ -671,9 +671,12 @@
     document.querySelectorAll('input[type="range"], select, button').forEach(el => {
       if (el.dataset.synBound) return;
       el.dataset.synBound = '1';
+      el.setAttribute('data-prevent-swipe', 'true');
       el.addEventListener('keydown', e => e.stopPropagation());
       el.addEventListener('mousedown', e => e.stopPropagation());
+      el.addEventListener('pointerdown', e => e.stopPropagation(), { passive: true });
       el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+      el.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
     });
   }
 
@@ -1824,11 +1827,12 @@ const canvas = document.getElementById('ch14-3d-canvas');
 
       hud.querySelectorAll('input, button').forEach(el => {
 
-        el.addEventListener('keydown', e => e.stopPropagation());
-
-        el.addEventListener('mousedown', e => e.stopPropagation());
-
-        el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+        el.setAttribute('data-prevent-swipe', 'true');
+      el.addEventListener('keydown', e => e.stopPropagation());
+      el.addEventListener('mousedown', e => e.stopPropagation());
+      el.addEventListener('pointerdown', e => e.stopPropagation(), { passive: true });
+      el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+      el.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
 
       });
 

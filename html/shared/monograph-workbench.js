@@ -831,13 +831,13 @@
 
   const DRAWER_HTML = `
 <!-- Floating Launcher Button (Bottom-Left) -->
-<button id="syn-monograph-fab" onclick="window.toggleMonographDrawer()" title="Open Synchronized Monograph PDF, Raw TeX & 100-Equation Rosetta Register (Shortcut: M)">
+<button id="syn-monograph-fab" data-prevent-swipe="true" onclick="window.toggleMonographDrawer()" title="Open Synchronized Monograph PDF, Raw TeX & 100-Equation Rosetta Register (Shortcut: M)">
   <span>📖 Monograph PDF &amp; TeX</span>
   <span id="fab-page-pill" style="background:#4169E1; color:#fff; padding:1px 6px; border-radius:4px; font-size:10.5px;">p. 11</span>
 </button>
 
 <!-- Slide-Over Monograph & TeX Workbench Drawer -->
-<div id="syn-monograph-drawer" aria-label="Monograph Workbench Drawer">
+<div id="syn-monograph-drawer" data-prevent-swipe="true" aria-label="Monograph Workbench Drawer">
   <div class="mdrawer-header">
     <div class="mdrawer-title">
       <span>🏛️ Syntrometric Monograph Workbench</span>
