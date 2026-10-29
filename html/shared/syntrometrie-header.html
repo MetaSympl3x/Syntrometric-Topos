@@ -36,12 +36,91 @@ window.MathJax = {
       Stable: "\\operatorname{Stable}",
       Gen: "\\operatorname{Gen}",
       Prop: "\\mathbf{Prop}",
-      AP: "\\mathbf{AP}"
+      AP: "\\mathbf{AP}",
+      quantor: ["\\mathsf{Q}\\left[#1\\right]", 1],
+      polyquantor: ["\\mathop{\\mathsf{Q}}\\limits_{#2,#3}^{#4}\\!\\left(#1\\right)", 4],
+      homogenesyntrix: ["\\mathsf{H}\\!\\left(#1\\right)", 1],
+      predicatesymbol: "\\mathrel{\\models}",
+      widemetroplex: ["\\mathsf{M}_{#2}\\!\\left(#1\\right)", 2],
+      syntroklinemetroplex: ["\\mathsf{B}_{#2}\\!\\left(#1\\right)", 2],
+      syntroklinekettenkoppelung: "\\mathsf{K}",
+      infinitesimalchainoperatorI: "\\mathop{\\mathrm{I}}",
+      metrondelta: "\\nabla",
+      metrondifferential: "\\mathrm{d}",
+      metronintegral: "\\mathrm{S}",
+      metroplex: ["\\mathbf{M}^{#1}", 1],
+      hypermetrophor: ["{}^{#1}\\mathbf{w}\\widetilde{\\mathbf{a}}", 1],
+      korporatorkette: "\\mathord{\\llcorner}",
+      supmedsubscript: ["{}^{#2}_{#1,#3}", 3],
+      syntrix: "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+      metrophor: "\\widetilde{\\mathbf{a}}",
+      prescript: ["{}^{#1}_{#2}{#3}", 3],
+      vspacing: ["\\vphantom{\\sum}", 0],
+      ab: "\\mathrm{ab}",
+      underrightarrow: ["\\overrightarrow{#1}", 1],
+      dbinom: ["\\binom{#1}{#2}", 2],
+      dfrac: ["\\frac{#1}{#2}", 2]
     }
   }
 };
 </script>
 <style>
+
+/* Universal Mobile LaTeX Optimization */
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"],
+.reveal .math.display,
+.reveal-viewport.reveal-scroll .MathJax_Display,
+.reveal-viewport.reveal-scroll mjx-container[display="true"] {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x pan-y !important;
+  padding: 4px 2px !important;
+  margin: 0.5em 0 !important;
+  box-sizing: border-box !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 215, 0, 0.4) transparent !important;
+}
+
+.reveal .MathJax_Display::-webkit-scrollbar,
+.reveal mjx-container[display="true"]::-webkit-scrollbar {
+  height: 3px !important;
+}
+.reveal .MathJax_Display::-webkit-scrollbar-thumb,
+.reveal mjx-container[display="true"]::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.5) !important;
+  border-radius: 3px !important;
+}
+
+@media (max-width: 768px) {
+  .reveal .MathJax_Display,
+  .reveal mjx-container[display="true"],
+  .reveal-viewport.reveal-scroll .MathJax_Display,
+  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
+    font-size: 0.84em !important;
+    line-height: 1.25 !important;
+  }
+  .reveal mjx-container:not([display="true"]),
+  .reveal-viewport.reveal-scroll mjx-container:not([display="true"]) {
+    font-size: 0.90em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .reveal .MathJax_Display,
+  .reveal mjx-container[display="true"],
+  .reveal-viewport.reveal-scroll .MathJax_Display,
+  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
+    font-size: 0.76em !important;
+  }
+  .reveal mjx-container:not([display="true"]),
+  .reveal-viewport.reveal-scroll mjx-container:not([display="true"]) {
+    font-size: 0.84em !important;
+  }
+}
+
 @media (max-width: 900px) {
   .reveal-viewport.reveal-scroll .slide-background,
   .reveal-viewport.reveal-scroll section {
@@ -432,3 +511,4 @@ window.addEventListener('message', (event) => {
   }
 })();
 </script>
+<script src="shared/monograph-workbench.js"></script>

@@ -113,6 +113,7 @@ window.MathJax = {
       Xkor: "\\mathbf{X}_{\\mathrm{kor}}",
       Xsyn: "\\mathcal{X}_{\\mathrm{syn}}",
       YF: "YF_{\\mathrm{model}}",
+      ab: "\\mathrm{ab}",
       ad: "\\operatorname{ad}",
       aeondynechaptereight: "\\widetilde{\\mathbf{a}}(x_i)_1^n",
       background: rgba(65, 105, 225, 0.25);,
@@ -126,8 +127,10 @@ window.MathJax = {
       color: #e2e8f0;,
       cursor: pointer;,
       dCSeg: "\\operatorname{dCSeg}",
+      dbinom: ["\\binom{#1}{#2}", 2],
       deg: "\\operatorname{deg}",
       detail: {,
+      dfrac: ["\\frac{#1}{#2}", 2],
       diam: "\\operatorname{diam}",
       display: block !important;,
       dist: "\\operatorname{dist}",
@@ -194,6 +197,7 @@ window.MathJax = {
       polyquantor: ["\\mathop{\\mathsf{Q}}\\limits_{#2,#3}^{#4}\\!\\left(#1\\right)", 4],
       position: sticky;,
       predicatesymbol: "\\mathrel{\\models}",
+      prescript: ["{}^{#1}_{#2}{#3}", 3],
       protyposis: "\\text{Protyposis}",
       qualitaetsaspekt: "\\text{Qualitätsaspekt}",
       quantitaetsaspekt: "\\text{Quantitätsaspekt}",
@@ -220,6 +224,7 @@ window.MathJax = {
       top: 0;,
       tr: "\\operatorname{tr}",
       transition: all 0.18s ease;,
+      underrightarrow: ["\\overrightarrow{#1}", 1],
       vol: "\\operatorname{vol}",
       vspacing: ["\\vphantom{\\sum}", 1],
       widemetroplex: ["\\mathsf{M}_{#2}\\!\\left(#1\\right)", 2],
@@ -230,6 +235,61 @@ window.MathJax = {
 };
 </script>
 <style>
+/* Universal Mobile LaTeX Optimization */
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"],
+.reveal .math.display,
+.reveal-viewport.reveal-scroll .MathJax_Display,
+.reveal-viewport.reveal-scroll mjx-container[display="true"] {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x pan-y !important;
+  padding: 4px 2px !important;
+  margin: 0.5em 0 !important;
+  box-sizing: border-box !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 215, 0, 0.4) transparent !important;
+}
+
+.reveal .MathJax_Display::-webkit-scrollbar,
+.reveal mjx-container[display="true"]::-webkit-scrollbar {
+  height: 3px !important;
+}
+.reveal .MathJax_Display::-webkit-scrollbar-thumb,
+.reveal mjx-container[display="true"]::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.5) !important;
+  border-radius: 3px !important;
+}
+
+@media (max-width: 768px) {
+  .reveal .MathJax_Display,
+  .reveal mjx-container[display="true"],
+  .reveal-viewport.reveal-scroll .MathJax_Display,
+  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
+    font-size: 0.84em !important;
+    line-height: 1.25 !important;
+  }
+  .reveal mjx-container:not([display="true"]),
+  .reveal-viewport.reveal-scroll mjx-container:not([display="true"]) {
+    font-size: 0.90em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .reveal .MathJax_Display,
+  .reveal mjx-container[display="true"],
+  .reveal-viewport.reveal-scroll .MathJax_Display,
+  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
+    font-size: 0.76em !important;
+  }
+  .reveal mjx-container:not([display="true"]),
+  .reveal-viewport.reveal-scroll mjx-container:not([display="true"]) {
+    font-size: 0.84em !important;
+  }
+}
+
 @media (max-width: 900px) {
   .reveal-viewport.reveal-scroll .slide-background,
   .reveal-viewport.reveal-scroll section {
@@ -2222,4 +2282,5 @@ window.addEventListener('message', (event) => {
     initRevealHooks();
   });
 })();
-</script>\n
+</script>
+<script src="shared/monograph-workbench.js"></script>

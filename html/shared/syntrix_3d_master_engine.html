@@ -1,9 +1,11 @@
 <!-- =========================================================================
      UPGRADED SYNTROMETRIC MONOGRAPH WORKBENCH (CH 1–15 + APPENDICES A–E)
      Auto-Parses Syntrometric-Topos.tex for Theorems, SM Eqs. 1–100a & Lean 4
+     With Mobile-Optimized Real-Time LaTeX Math Rendering & Formula Inspector
      Shortcut: Press 'M' on keyboard or click '📖 Monograph PDF & TeX'
      ========================================================================= -->
 <style>
+/* Universal Mobile LaTeX & Monograph Workbench Styling */
 #syn-monograph-fab {
   position: fixed;
   left: 20px;
@@ -188,25 +190,109 @@
   padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+  box-sizing: border-box;
 }
 
 .rosetta-card {
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.90);
   border: 1px solid #334155;
   border-left: 4px solid #4169E1;
-  border-radius: 7px;
-  padding: 9px 13px;
+  border-radius: 8px;
+  padding: 11px 14px;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.15s ease;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
 }
 
 .rosetta-card:hover {
   border-color: #FFD700;
-  background: rgba(65, 105, 225, 0.16);
+  background: rgba(22, 33, 58, 0.94);
   transform: translateX(2px);
+}
+
+.rosetta-formula-box {
+  margin: 4px 0;
+  padding: 8px 11px;
+  background: rgba(6, 9, 16, 0.88);
+  border: 1px solid rgba(65, 105, 225, 0.35);
+  border-radius: 6px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.rosetta-formula-label {
+  font-size: 9.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #FFD700;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rosetta-formula-math {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  padding: 4px 0 6px 0;
+  font-size: 13.5px;
+  color: #f8fafc;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 215, 0, 0.4) transparent;
+}
+
+.rosetta-formula-math::-webkit-scrollbar,
+.thm-math-preview::-webkit-scrollbar {
+  height: 3px;
+}
+.rosetta-formula-math::-webkit-scrollbar-thumb,
+.thm-math-preview::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.5);
+  border-radius: 3px;
+}
+
+.rosetta-recon-box {
+  font-size: 11.8px;
+  color: #5eead4;
+  line-height: 1.46;
+  padding-top: 2px;
+}
+
+.thm-math-preview {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  padding: 4px 0 6px 0;
+  font-size: 12.2px;
+  color: #cbd5e1;
+  line-height: 1.48;
+}
+
+.thm-code-block {
+  margin: 4px 0 0 0;
+  padding: 7px 10px;
+  background: #05070d;
+  border: 1px solid #1e293b;
+  border-radius: 5px;
+  font-family: "Libertinus Mono", "Fira Code", monospace;
+  font-size: 11px;
+  color: #a78bfa;
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 .m3d-btn {
@@ -232,6 +318,23 @@
   color: #FFD700;
 }
 
+.tex-peek-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid #334155;
+  border-radius: 4px;
+  color: #94a3b8;
+  padding: 1px 6px;
+  font-size: 9.5px;
+  font-family: "Libertinus Mono", monospace;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.tex-peek-btn:hover {
+  background: #FFD700;
+  color: #000;
+  border-color: #FFD700;
+}
+
 .pdf-cite-badge {
   display: inline-flex;
   align-items: center;
@@ -255,6 +358,23 @@
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.35);
 }
 
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"],
+.reveal-viewport.reveal-scroll .MathJax_Display,
+.reveal-viewport.reveal-scroll mjx-container[display="true"],
+.rosetta-card mjx-container[display="true"] {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x pan-y !important;
+  padding: 4px 2px !important;
+  margin: 6px 0 !important;
+  box-sizing: border-box !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 215, 0, 0.4) transparent !important;
+}
+
 @media (max-width: 768px) {
   #syn-monograph-fab {
     left: 10px;
@@ -275,6 +395,45 @@
   }
   .tex-search-input {
     min-width: 130px;
+  }
+  .rosetta-formula-math {
+    font-size: 12px;
+  }
+  .thm-math-preview {
+    font-size: 11.5px;
+  }
+  .rosetta-card {
+    padding: 9px 11px;
+  }
+  .rosetta-list {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  .reveal .MathJax_Display,
+  .reveal mjx-container[display="true"],
+  .reveal-viewport.reveal-scroll .MathJax_Display,
+  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
+    font-size: 0.84em !important;
+  }
+  .reveal mjx-container:not([display="true"]),
+  .reveal-viewport.reveal-scroll mjx-container:not([display="true"]) {
+    font-size: 0.90em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .reveal .MathJax_Display,
+  .reveal mjx-container[display="true"],
+  .reveal-viewport.reveal-scroll .MathJax_Display,
+  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
+    font-size: 0.76em !important;
+  }
+  .reveal mjx-container:not([display="true"]),
+  .reveal-viewport.reveal-scroll mjx-container:not([display="true"]) {
+    font-size: 0.84em !important;
+  }
+  .rosetta-formula-math {
+    font-size: 11px;
   }
 }
 </style>
@@ -336,32 +495,28 @@
   </div>
 
   <div class="mdrawer-body">
-    <!-- PANE 1: Synchronized Embedded PDF -->
     <div class="mdrawer-pane active" id="mpane-pdf">
       <iframe id="monograph-pdf-frame" src="Syntrometric-Topos.pdf#page=11&view=FitH"></iframe>
     </div>
 
-    <!-- PANE 2: Live Raw LaTeX Source Explorer -->
     <div class="mdrawer-pane" id="mpane-tex">
       <div class="tex-toolbar">
-        <input type="text" id="tex-search-box" class="tex-search-input" placeholder="Search Syntrometric-Topos.tex (e.g., thm:exact_descent_holoform, zombie_impossibility, \\SyntrometricSequentCalculus)..." oninput="window.searchRawTeX(this.value)">
+        <input type="text" id="tex-search-box" class="tex-search-input" placeholder="Search Syntrometric-Topos.tex (e.g., thm:exact_descent_holoform, zombie_impossibility, \\SyntrometricSequentCalculus)..." oninput="window.debounceTeXSearch(this.value)">
         <button class="m3d-btn" onclick="window.copyCurrentTeXSnippet()">📋 Copy TeX</button>
       </div>
       <pre id="monograph-tex-viewer">Loading Syntrometric-Topos.tex source...</pre>
     </div>
 
-    <!-- PANE 3: Auto-Extracted Theorem, Definition & Lean 4 Index -->
     <div class="mdrawer-pane" id="mpane-thm">
       <div class="tex-toolbar">
-        <input type="text" id="thm-search" class="tex-search-input" placeholder="Filter 380+ Theorems, Definitions, Scholia & Lean 4 blocks parsed from Syntrometric-Topos.tex..." oninput="window.filterTheoremIndex(this.value)">
+        <input type="text" id="thm-search" class="tex-search-input" placeholder="Filter 380+ Theorems, Definitions, Scholia & Lean 4 blocks (with rendered LaTeX math)..." oninput="window.debounceTheoremSearch(this.value)">
       </div>
       <div class="rosetta-list" id="thm-cards-container"></div>
     </div>
 
-    <!-- PANE 4: Interactive 100-Equation Rosetta Register -->
     <div class="mdrawer-pane" id="mpane-rosetta">
       <div class="tex-toolbar">
-        <input type="text" id="rosetta-search" class="tex-search-input" placeholder="Filter all SM Equations 1–100a (e.g., SM Eq. 1, SM Eq. 11, SM Eq. 64, SM Eq. 100a)..." oninput="window.filterRosettaRegister(this.value)">
+        <input type="text" id="rosetta-search" class="tex-search-input" placeholder="Filter all SM Equations 1–100a with live rendered math (e.g., SM Eq. 1, SM Eq. 11, Hermetry)..." oninput="window.debounceRosettaSearch(this.value)">
       </div>
       <div class="rosetta-list" id="rosetta-cards-container"></div>
     </div>

@@ -967,6 +967,62 @@
 
   </script>
 
+<style id="syn-mobile-latex-rules">
+/* Universal Mobile LaTeX Optimization */
+.reveal .MathJax_Display,
+.reveal mjx-container[display="true"],
+.reveal .math.display,
+.reveal-viewport.reveal-scroll .MathJax_Display,
+.reveal-viewport.reveal-scroll mjx-container[display="true"] {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x pan-y !important;
+  padding: 4px 2px !important;
+  margin: 0.5em 0 !important;
+  box-sizing: border-box !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 215, 0, 0.4) transparent !important;
+}
+
+.reveal .MathJax_Display::-webkit-scrollbar,
+.reveal mjx-container[display="true"]::-webkit-scrollbar {
+  height: 3px !important;
+}
+.reveal .MathJax_Display::-webkit-scrollbar-thumb,
+.reveal mjx-container[display="true"]::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.5) !important;
+  border-radius: 3px !important;
+}
+
+@media (max-width: 768px) {
+  .reveal .MathJax_Display,
+  .reveal mjx-container[display="true"],
+  .reveal-viewport.reveal-scroll .MathJax_Display,
+  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
+    font-size: 0.84em !important;
+    line-height: 1.25 !important;
+  }
+  .reveal mjx-container:not([display="true"]),
+  .reveal-viewport.reveal-scroll mjx-container:not([display="true"]) {
+    font-size: 0.90em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .reveal .MathJax_Display,
+  .reveal mjx-container[display="true"],
+  .reveal-viewport.reveal-scroll .MathJax_Display,
+  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
+    font-size: 0.76em !important;
+  }
+  .reveal mjx-container:not([display="true"]),
+  .reveal-viewport.reveal-scroll mjx-container:not([display="true"]) {
+    font-size: 0.84em !important;
+  }
+}
+</style>
 </head>
 <body class="quarto-dark">
   <div class="reveal">
