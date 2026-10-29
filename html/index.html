@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Syntrometrische Maximentelezentrik</title>
   <style>
+    
+    :root {
+      --syn-bottom-offset: 26px;
+    }
+    @media (min-width: 901px) {
+      #syn-monograph-fab {
+        bottom: var(--syn-bottom-offset, 26px) !important;
+        transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s ease, background 0.2s ease !important;
+      }
+    }
     :root {
       --bg-deep: #060911;
       --bg-bar: rgba(11, 15, 25, 0.95);
@@ -913,7 +923,35 @@
       }
     }
 
+    broadcastTrayOffset();
     initFromHash();
+
+    function broadcastTrayOffset() {
+      let offset = 26;
+      try {
+        const s = window.screen;
+        if (s) {
+          const screenH = s.height || 0;
+          const taskbarH = Math.max(0, screenH - (s.availTop + s.availHeight));
+          const isFullscreen = !!(document.fullscreenElement || window.innerHeight >= screenH - 5);
+          const winY = typeof window.screenY === 'number' ? window.screenY : (window.screenTop || 0);
+          const winBottom = winY + (window.outerHeight || window.innerHeight);
+          const distFromBottom = screenH - winBottom;
+
+          if (isFullscreen) offset = 38;
+          else if (distFromBottom <= 20) offset = Math.max(30, taskbarH > 0 ? Math.min(taskbarH + 12, 64) : 34);
+          else offset = 26;
+        }
+      } catch (e) {}
+      document.documentElement.style.setProperty('--syn-bottom-offset', offset + 'px');
+      const frame = document.getElementById('chapter-frame');
+      if (frame && frame.contentWindow) {
+        try { frame.contentWindow.postMessage({ type: 'syn-bottom-offset-change', offset: offset }, '*'); } catch (e) {}
+      }
+    }
+    window.addEventListener('resize', broadcastTrayOffset, { passive: true });
+    window.addEventListener('fullscreenchange', broadcastTrayOffset, { passive: true });
+
     handleWindowResize();
   </script>
   <script src="shared/monograph-workbench.js"></script>

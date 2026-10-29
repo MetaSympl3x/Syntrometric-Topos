@@ -375,7 +375,7 @@
 #syn-monograph-fab {
   position: fixed;
   left: 20px;
-  bottom: 20px;
+  bottom: var(--syn-bottom-offset, 24px);
   background: linear-gradient(135deg, #111a2e 0%, #1e293b 100%);
   color: #FFD700;
   border: 1.5px solid #FFD700;
@@ -394,6 +394,28 @@
   transition: all 0.2s ease;
   user-select: none;
   box-sizing: border-box;
+}
+
+/* Dynamic Avoidance of Windows System Tray & Taskbar for Desktop Trays */
+@media (min-width: 901px) {
+  #syn-monograph-fab {
+    bottom: var(--syn-bottom-offset, 26px) !important;
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s ease, background 0.2s ease !important;
+  }
+  
+  [id$="-3d-hud"],
+  #syntrix-3d-hud,
+  .anim-hud-tray,
+  .animation-hud {
+    bottom: var(--syn-bottom-offset, 26px) !important;
+    max-height: calc(100vh - var(--syn-bottom-offset, 26px) - 32px) !important;
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1), width 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  [id$="-3d-hud"].spotlight,
+  #syntrix-3d-hud.spotlight {
+    bottom: 50% !important;
+  }
 }
 
 #syn-monograph-fab:hover {
@@ -1501,7 +1523,66 @@
     }
   });
 
+
+  // Dynamic Windows Taskbar / System Tray Avoidance Engine for Desktop Trays
+  function updateWindowsTrayAvoidance() {
+    if (typeof window === 'undefined') return;
+
+    if (window.innerWidth < 901) {
+      document.documentElement.style.setProperty('--syn-bottom-offset', '12px');
+      return;
+    }
+
+    let offset = 26; // Default desktop clearance
+    try {
+      const s = window.screen;
+      if (s) {
+        const screenH = s.height || 0;
+        const availH = s.availHeight || 0;
+        const availTop = s.availTop || 0;
+        const taskbarH = Math.max(0, screenH - (availTop + availH));
+        
+        const isFullscreen = !!(document.fullscreenElement || window.innerHeight >= screenH - 5);
+        const winY = typeof window.screenY === 'number' ? window.screenY : (window.screenTop || 0);
+        const winBottom = winY + (window.outerHeight || window.innerHeight);
+        const distFromBottom = screenH - winBottom;
+
+        if (isFullscreen) {
+          // In fullscreen mode, Windows Taskbar sensor triggers within ~15px of bottom edge.
+          // Maintain a 38px clearance so hovering or clicking trays never triggers taskbar unhide.
+          offset = 38;
+        } else if (distFromBottom <= 20) {
+          // Window is maximized or flush against the screen bottom / taskbar.
+          const taskbarClearance = taskbarH > 0 ? Math.min(taskbarH + 12, 64) : 34;
+          offset = Math.max(30, taskbarClearance);
+        } else {
+          offset = 26;
+        }
+      }
+    } catch (e) {}
+
+    document.documentElement.style.setProperty('--syn-bottom-offset', offset + 'px');
+
+    // Notify parent window or child iframes of offset change
+    try {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'syn-bottom-offset-change', offset: offset }, '*');
+      }
+    } catch (e) {}
+  }
+
+  window.addEventListener('resize', updateWindowsTrayAvoidance, { passive: true });
+  window.addEventListener('fullscreenchange', updateWindowsTrayAvoidance, { passive: true });
+  window.addEventListener('webkitfullscreenchange', updateWindowsTrayAvoidance, { passive: true });
+  window.addEventListener('focus', updateWindowsTrayAvoidance, { passive: true });
+  window.addEventListener('message', e => {
+    if (e.data && e.data.type === 'syn-bottom-offset-change' && typeof e.data.offset === 'number') {
+      document.documentElement.style.setProperty('--syn-bottom-offset', e.data.offset + 'px');
+    }
+  });
+
   function initMonographWorkbench() {
+    updateWindowsTrayAvoidance();
     injectDOM();
     window.filterRosettaRegister("");
     syncMonographPageWithSlide();

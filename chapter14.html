@@ -1492,6 +1492,32 @@ window.MathJax = {
 </script>
 <script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style id="syn-desktop-layout-fix">
+
+:root {
+  --syn-bottom-offset: 26px;
+}
+
+@media (min-width: 901px) {
+  #syn-monograph-fab {
+    bottom: var(--syn-bottom-offset, 26px) !important;
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s ease, background 0.2s ease !important;
+  }
+  
+  [id$="-3d-hud"],
+  #syntrix-3d-hud,
+  .anim-hud-tray,
+  .animation-hud {
+    bottom: var(--syn-bottom-offset, 26px) !important;
+    max-height: calc(100vh - var(--syn-bottom-offset, 26px) - 32px) !important;
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1), width 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  [id$="-3d-hud"].spotlight,
+  #syntrix-3d-hud.spotlight {
+    bottom: 50% !important;
+  }
+}
+
 @media (min-width: 901px) {
   .reveal .stratum-badge,
   .stratum-badge {
