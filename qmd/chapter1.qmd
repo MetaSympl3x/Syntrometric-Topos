@@ -25,6 +25,7 @@ format:
     include-after-body:
       text: |
         <script src="shared/chapter1-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 ## Methodological Architecture: The Epistemic Firewall {.smaller transition="convex"}

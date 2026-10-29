@@ -25,6 +25,7 @@ format:
     include-after-body:
       text: |
         <script src="shared/chapter13-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 ## §13.1.1: Metric-Affine Qualia Geometry &amp; Non-Abelian Stokes–Wilson Holonomy {.smaller transition="convex"}

@@ -25,6 +25,7 @@ format:
     include-after-body:
       text: |
         <script src="shared/chapter6-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 ## §6.1.1: *Metroplexäondyne*, *Mono-/Polydromie* & *Area* (SM-27) {.smaller transition="convex"}

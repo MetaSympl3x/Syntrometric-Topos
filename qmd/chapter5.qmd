@@ -25,6 +25,7 @@ format:
     include-after-body:
       text: |
         <script src="shared/chapter5-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 ## §5.1.1: The *Hypersyntrix* ($\overset{\scriptscriptstyle 1}{\mathbf{M}}$) & Multi-Scale Encapsulation {.smaller transition="convex"}

@@ -25,6 +25,7 @@ format:
     include-after-body:
       text: |
         <script src="shared/chapter11-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 ## §11.1.1: *Metrische Selektortheorie*, *Strukturkompressor* (${}^4\zeta$) & *Tensorien* (SM-99) {.smaller transition="convex"}

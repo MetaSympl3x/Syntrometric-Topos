@@ -555,7 +555,8 @@
       <button class="action-btn" onclick="stepChapter(1)" title="Next Chapter (Alt + →)"><span class="btn-text">Next </span>▶</button>
       <button class="action-btn" id="scroll-toggle-btn" onclick="toggleScrollView()" title="Toggle Continuous Scroll Mode (Shortcut: R)">📜<span class="btn-text"> Scroll View</span></button>
       <button class="action-btn" onclick="selectMegaDeck()" id="mega-btn" title="Switch to Unified 2D Grid Mega-Deck">⊞<span class="btn-text"> 2D Deck</span></button>
-      <button class="action-btn" onclick="toggleOverview()" title="Chapter Atlas Grid (Shortcut: M)">☰<span class="btn-text"> Atlas</span></button>
+      <button class="action-btn" onclick="toggleOverview()" title="Chapter Atlas Grid (Shortcut: A)">☰<span class="btn-text"> Atlas</span></button>
+      <button class="action-btn" id="monograph-btn" onclick="window.toggleMonographDrawer ? window.toggleMonographDrawer() : null" title="Open Synchronized Monograph PDF, Raw LaTeX &amp; Theorems (Shortcut: M)">📖<span class="btn-text"> Monograph</span></button>
       <a id="standalone-link" class="action-btn" href="chapter1.html" target="_blank" title="Open in new tab">↗<span class="btn-text"> Tab</span></a>
       <button class="action-btn" onclick="toggleZenMode()" title="Toggle Zen / Fullscreen (Hide Bar)">⛶<span class="btn-text"> Zen</span></button>
     </div>
@@ -696,6 +697,7 @@
 
       // Prefetch adjacent chapters on idle
       scheduleIdlePrefetch(ch);
+      if (typeof window.jumpToMonographChapter === "function") window.jumpToMonographChapter("ch" + ch);
     }
 
     function stepChapter(delta) {
@@ -714,6 +716,7 @@
       const standalone = document.getElementById('standalone-link');
       if (standalone) standalone.setAttribute('href', 'syntrometrie_all.html');
       history.replaceState(null, '', '#all');
+      if (typeof window.jumpToMonographChapter === 'function') window.jumpToMonographChapter('ch1');
       setTimeout(() => {
         if (frame && frame.contentWindow) frame.contentWindow.focus();
       }, 120);
@@ -883,6 +886,14 @@
         }
       } else if (e.key === 'm' || e.key === 'M') {
         if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+          if (typeof window.toggleMonographDrawer === 'function') {
+            window.toggleMonographDrawer();
+          } else {
+            toggleOverview();
+          }
+        }
+      } else if (e.key === 'a' || e.key === 'A' || e.key === 'o' || e.key === 'O') {
+        if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
           toggleOverview();
         }
       } else if (e.key === 'Escape') {
@@ -906,5 +917,6 @@
     initFromHash();
     handleWindowResize();
   </script>
+  <script src="shared/monograph-workbench.js"></script>
 </body>
 </html>

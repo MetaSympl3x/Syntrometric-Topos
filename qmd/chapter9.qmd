@@ -25,6 +25,7 @@ format:
     include-after-body:
       text: |
         <script src="shared/chapter9-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 ## §9.1.1: The Cascade Principle, *Partialkomposition* & Sieve States (SM-59a, SM-60) {.smaller transition="convex"}

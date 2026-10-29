@@ -25,6 +25,7 @@ format:
     include-after-body:
       text: |
         <script src="shared/chapter14-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 ## §14.1 The Structural Architecture of the Master Translation Register {.smaller transition="convex"}

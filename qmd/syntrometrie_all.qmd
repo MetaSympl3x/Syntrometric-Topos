@@ -39,6 +39,7 @@ format:
         <script src="shared/chapter13-widgets.js"></script>
         <script src="shared/chapter14-widgets.js"></script>
         <script src="shared/chapter15-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 # Chapter 1: The Topos of Subjective Experience {transition="zoom"}

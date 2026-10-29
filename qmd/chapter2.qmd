@@ -25,6 +25,7 @@ format:
     include-after-body:
       text: |
         <script src="shared/chapter2-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 ## §2.1.1: The Quest for Universality & The Syntrix Triad {.smaller transition="convex"}

@@ -25,6 +25,7 @@ format:
     include-after-body:
       text: |
         <script src="shared/chapter4-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 ## §4.1.1–4.1.2 Stratum D: Enyphanie, Protyposis & 4-Store Tetrahedron {transition="convex"}

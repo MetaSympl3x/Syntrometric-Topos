@@ -25,6 +25,7 @@ format:
     include-after-body:
       text: |
         <script src="shared/chapter12-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 ## §12.1.1–12.1.2: The Mystery of Representational Discontinuity &amp; The 4 Mechanisms {.smaller transition="convex"}

@@ -25,6 +25,7 @@ format:
     include-after-body:
       text: |
         <script src="shared/chapter3-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 ## §3.1.1–3.1.2 Stratum D: Inversion Principle & Syntrixkorporationen {transition="convex"}

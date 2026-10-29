@@ -25,6 +25,7 @@ format:
     include-after-body:
       text: |
         <script src="shared/chapter7-widgets.js"></script>
+        <script src="shared/monograph-workbench.js"></script>
 ---
 
 ## §7.1.1: The Anthropomorphic Pivot &amp; Cognitive Pluralism {.smaller transition="convex"}
