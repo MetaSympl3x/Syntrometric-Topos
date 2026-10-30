@@ -1371,25 +1371,62 @@ function inject3DHUD() {
     }
   };
 
-  function sync3DWithDeck() {
+    function sync3DWithDeck() {
     if (!autoSync) return;
-    const viewport = document.querySelector('.reveal-viewport');
-    const isScrollMode = viewport && viewport.classList.contains('reveal-scroll');
 
-    if (isScrollMode) {
-      const scrollEl = viewport.scrollHeight > viewport.clientHeight ? viewport : document.documentElement;
-      const scrollTop = viewport.scrollTop || window.scrollY || document.documentElement.scrollTop || 0;
-      const maxScroll = Math.max(1, (scrollEl.scrollHeight || document.body.scrollHeight) - window.innerHeight);
-      const frac = Math.min(1.0, Math.max(0.0, scrollTop / maxScroll));
-      window.set3DStage(1.0 + frac * 9.0, false);
-    } else if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
-      const idx = window.Reveal.getIndices();
-      const totalSlides = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 9);
-      const slideIndex = (idx && typeof idx.h === 'number') ? idx.h : 0;
-      const fragOffset = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
-      const st = 1.0 + ((slideIndex + fragOffset) / Math.max(1, totalSlides - 1)) * 9.0;
-      window.set3DStage(st, false);
+    const isMegaDeck = !!document.getElementById('syntrix-3d-hud') || document.querySelectorAll('h1').length > 5;
+    const chHud = document.getElementById('syntrix-3d-hud');
+    if (isMegaDeck && chHud && window.Reveal && window.Reveal.getCurrentSlide) {
+    const currentSlide = window.Reveal.getCurrentSlide();
+    const inCh = currentSlide ? !!currentSlide.closest('#chapter-2, section[data-chapter="2"]') : true;
+    chHud.style.display = inCh ? '' : 'none';
+    if (!inCh) return;
     }
+
+    const rev = document.querySelector('.reveal');
+    const vp = document.querySelector('.reveal-viewport');
+    const isScroll = (window.Reveal && typeof window.Reveal.isScrollView === 'function' && window.Reveal.isScrollView())
+      || (vp && vp.classList.contains('reveal-scroll'))
+      || (rev && rev.classList.contains('reveal-scroll'))
+      || (rev && rev.scrollHeight > rev.clientHeight + 100)
+      || window.innerWidth <= 768;
+
+    let stageVal = null;
+
+    if (isScroll) {
+      const top = (rev && typeof rev.scrollTop === 'number' && rev.scrollTop > 0) ? rev.scrollTop
+        : ((vp && typeof vp.scrollTop === 'number' && vp.scrollTop > 0) ? vp.scrollTop
+        : (window.scrollY || document.documentElement.scrollTop || 0));
+
+      let max = 1;
+      if (rev && rev.scrollHeight > rev.clientHeight + 10) {
+        max = rev.scrollHeight - rev.clientHeight;
+      } else if (vp && vp.scrollHeight > vp.clientHeight + 10) {
+        max = vp.scrollHeight - vp.clientHeight;
+      } else {
+        const docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+        max = Math.max(1, docH - window.innerHeight);
+      }
+
+      const frac = Math.min(1.0, Math.max(0.0, top / max));
+      stageVal = 1.0 + frac * 9.0;
+    }
+
+    if (stageVal === null && window.Reveal && typeof window.Reveal.getIndices === 'function') {
+      const idx = window.Reveal.getIndices();
+      const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 12);
+      const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
+      const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
+      stageVal = 1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0;
+    }
+
+    if (typeof stageVal === 'number' && !isNaN(stageVal)) {
+      window.set3DStage(stageVal, false);
+    }
+  }
+
+  if (typeof window !== 'undefined') {
+    window.sync3DWithDeck = sync3DWithDeck;
   }
 
   function init3DEngine() {
@@ -1472,15 +1509,34 @@ function inject3DHUD() {
     requestAnimationFrame(renderFrame);
 
     window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('scroll', sync3DWithDeck, { passive: true });
-    const vp = document.querySelector('.reveal-viewport');
-    if (vp) vp.addEventListener('scroll', sync3DWithDeck, { passive: true });
+        // Universal multi-target scroll and touch listeners for mobile & desktop morph stage sync
+    const synBindSync_sync3DWithDeck = () => {
+      sync3DWithDeck();
+    };
+
+    window.addEventListener('scroll', synBindSync_sync3DWithDeck, { capture: true, passive: true });
+    document.addEventListener('scroll', synBindSync_sync3DWithDeck, { capture: true, passive: true });
+    window.addEventListener('touchmove', synBindSync_sync3DWithDeck, { passive: true });
+    document.addEventListener('touchmove', synBindSync_sync3DWithDeck, { passive: true });
+
+    const revEl_sync3DWithDeck = document.querySelector('.reveal');
+    if (revEl_sync3DWithDeck) {
+      revEl_sync3DWithDeck.addEventListener('scroll', synBindSync_sync3DWithDeck, { passive: true });
+      revEl_sync3DWithDeck.addEventListener('touchmove', synBindSync_sync3DWithDeck, { passive: true });
+    }
+    const vpEl_sync3DWithDeck = document.querySelector('.reveal-viewport');
+    if (vpEl_sync3DWithDeck) {
+      vpEl_sync3DWithDeck.addEventListener('scroll', synBindSync_sync3DWithDeck, { passive: true });
+      vpEl_sync3DWithDeck.addEventListener('touchmove', synBindSync_sync3DWithDeck, { passive: true });
+    }
 
     if (window.Reveal) {
-      window.Reveal.on('ready', sync3DWithDeck);
-      window.Reveal.on('slidechanged', sync3DWithDeck);
-      window.Reveal.on('fragmentshown', sync3DWithDeck);
-      window.Reveal.on('fragmenthidden', sync3DWithDeck);
+      window.Reveal.on('ready', synBindSync_sync3DWithDeck);
+      window.Reveal.on('slidechanged', synBindSync_sync3DWithDeck);
+      window.Reveal.on('fragmentshown', synBindSync_sync3DWithDeck);
+      window.Reveal.on('fragmenthidden', synBindSync_sync3DWithDeck);
+      window.Reveal.on('scroll-view-activated', synBindSync_sync3DWithDeck);
+      window.Reveal.on('scroll-view-deactivated', synBindSync_sync3DWithDeck);
     }
 
     const hud = document.getElementById('syntrix-3d-hud');

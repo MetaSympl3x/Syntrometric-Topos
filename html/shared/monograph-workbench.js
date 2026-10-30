@@ -1785,3 +1785,49 @@ body.mdrawer-open .anim-hud-tray {
     initMonographWorkbench();
   }
 })();
+
+// Universal Reveal & Mobile Scroll Monitor for Morph Stage Trays
+if (typeof window !== 'undefined' && !window.__syn_morph_stage_monitor_initialized) {
+  window.__syn_morph_stage_monitor_initialized = true;
+
+  const triggerMorphStageSync = () => {
+    for (let ch = 1; ch <= 15; ch++) {
+      const fnName = ch === 2 ? 'sync3DWithDeck' : `syncCh${ch}WithDeck`;
+      if (typeof window[fnName] === 'function') {
+        try { window[fnName](); } catch (_) {}
+      }
+    }
+  };
+
+  window.addEventListener('scroll', triggerMorphStageSync, { capture: true, passive: true });
+  document.addEventListener('scroll', triggerMorphStageSync, { capture: true, passive: true });
+  window.addEventListener('touchmove', triggerMorphStageSync, { passive: true });
+  document.addEventListener('touchmove', triggerMorphStageSync, { passive: true });
+
+  const hookRevealScroll = () => {
+    const rev = document.querySelector('.reveal');
+    if (rev && !rev.__syn_morph_stage_hooked) {
+      rev.__syn_morph_stage_hooked = true;
+      rev.addEventListener('scroll', triggerMorphStageSync, { passive: true });
+      rev.addEventListener('touchmove', triggerMorphStageSync, { passive: true });
+    }
+    const vp = document.querySelector('.reveal-viewport');
+    if (vp && !vp.__syn_morph_stage_hooked) {
+      vp.__syn_morph_stage_hooked = true;
+      vp.addEventListener('scroll', triggerMorphStageSync, { passive: true });
+      vp.addEventListener('touchmove', triggerMorphStageSync, { passive: true });
+    }
+  };
+
+  hookRevealScroll();
+  document.addEventListener('DOMContentLoaded', hookRevealScroll);
+  window.addEventListener('load', hookRevealScroll);
+  if (window.Reveal) {
+    window.Reveal.on('ready', () => { hookRevealScroll(); triggerMorphStageSync(); });
+    window.Reveal.on('slidechanged', triggerMorphStageSync);
+    window.Reveal.on('fragmentshown', triggerMorphStageSync);
+    window.Reveal.on('fragmenthidden', triggerMorphStageSync);
+    window.Reveal.on('scroll-view-activated', () => { hookRevealScroll(); triggerMorphStageSync(); });
+    window.Reveal.on('scroll-view-deactivated', () => { hookRevealScroll(); triggerMorphStageSync(); });
+  }
+}

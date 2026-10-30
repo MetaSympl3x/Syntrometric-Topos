@@ -1614,44 +1614,62 @@ const canvas = document.getElementById('ch5-3d-canvas');
 
 
 
-  function syncCh5WithDeck() {
+    function syncCh5WithDeck() {
     if (!autoSync) return;
-    const isMegaDeck = !!document.getElementById('syntrix-3d-hud') || document.querySelectorAll('h1').length > 5;
-    const ch5Hud = document.getElementById('ch5-3d-hud');
-    if (isMegaDeck && ch5Hud && window.Reveal && window.Reveal.getCurrentSlide) {
-      const currentSlide = window.Reveal.getCurrentSlide();
-      const inCh5 = currentSlide ? !!currentSlide.closest('#chapter-5, section[data-chapter="5"]') : true;
-      ch5Hud.style.display = inCh5 ? '' : 'none';
-      if (!inCh5) return;
-    }
-    const vp = document.querySelector('.reveal-viewport');
 
-    const isScroll = vp && vp.classList.contains('reveal-scroll');
+    const isMegaDeck = !!document.getElementById('syntrix-3d-hud') || document.querySelectorAll('h1').length > 5;
+    const chHud = document.getElementById('ch5-3d-hud');
+    if (isMegaDeck && chHud && window.Reveal && window.Reveal.getCurrentSlide) {
+    const currentSlide = window.Reveal.getCurrentSlide();
+    const inCh = currentSlide ? !!currentSlide.closest('#chapter-5, section[data-chapter="5"]') : true;
+    chHud.style.display = inCh ? '' : 'none';
+    if (!inCh) return;
+    }
+
+    const rev = document.querySelector('.reveal');
+    const vp = document.querySelector('.reveal-viewport');
+    const isScroll = (window.Reveal && typeof window.Reveal.isScrollView === 'function' && window.Reveal.isScrollView())
+      || (vp && vp.classList.contains('reveal-scroll'))
+      || (rev && rev.classList.contains('reveal-scroll'))
+      || (rev && rev.scrollHeight > rev.clientHeight + 100)
+      || window.innerWidth <= 768;
+
+    let stageVal = null;
 
     if (isScroll) {
+      const top = (rev && typeof rev.scrollTop === 'number' && rev.scrollTop > 0) ? rev.scrollTop
+        : ((vp && typeof vp.scrollTop === 'number' && vp.scrollTop > 0) ? vp.scrollTop
+        : (window.scrollY || document.documentElement.scrollTop || 0));
 
-      const scEl = vp.scrollHeight > vp.clientHeight ? vp : document.documentElement;
+      let max = 1;
+      if (rev && rev.scrollHeight > rev.clientHeight + 10) {
+        max = rev.scrollHeight - rev.clientHeight;
+      } else if (vp && vp.scrollHeight > vp.clientHeight + 10) {
+        max = vp.scrollHeight - vp.clientHeight;
+      } else {
+        const docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+        max = Math.max(1, docH - window.innerHeight);
+      }
 
-      const top = vp.scrollTop || window.scrollY || document.documentElement.scrollTop || 0;
-
-      const max = Math.max(1, (scEl.scrollHeight || document.body.scrollHeight) - window.innerHeight);
-
-      window.setCh5Stage(1.0 + Math.min(1, Math.max(0, top / max)) * 9.0, false);
-
-    } else if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
-
-      const idx = window.Reveal.getIndices();
-
-      const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 12);
-
-      const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
-
-      const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
-
-      window.setCh5Stage(1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0, false);
-
+      const frac = Math.min(1.0, Math.max(0.0, top / max));
+      stageVal = 1.0 + frac * 9.0;
     }
 
+    if (stageVal === null && window.Reveal && typeof window.Reveal.getIndices === 'function') {
+      const idx = window.Reveal.getIndices();
+      const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 12);
+      const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
+      const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
+      stageVal = 1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0;
+    }
+
+    if (typeof stageVal === 'number' && !isNaN(stageVal)) {
+      window.setCh5Stage(stageVal, false);
+    }
+  }
+
+  if (typeof window !== 'undefined') {
+    window.syncCh5WithDeck = syncCh5WithDeck;
   }
 
 
@@ -1772,22 +1790,34 @@ const canvas = document.getElementById('ch5-3d-canvas');
 
     window.addEventListener('resize', resize);
 
-    window.addEventListener('scroll', syncCh5WithDeck, { passive: true });
+        // Universal multi-target scroll and touch listeners for mobile & desktop morph stage sync
+    const synBindSync_syncCh5WithDeck = () => {
+      syncCh5WithDeck();
+    };
 
-    const vp = document.querySelector('.reveal-viewport');
+    window.addEventListener('scroll', synBindSync_syncCh5WithDeck, { capture: true, passive: true });
+    document.addEventListener('scroll', synBindSync_syncCh5WithDeck, { capture: true, passive: true });
+    window.addEventListener('touchmove', synBindSync_syncCh5WithDeck, { passive: true });
+    document.addEventListener('touchmove', synBindSync_syncCh5WithDeck, { passive: true });
 
-    if (vp) vp.addEventListener('scroll', syncCh5WithDeck, { passive: true });
+    const revEl_syncCh5WithDeck = document.querySelector('.reveal');
+    if (revEl_syncCh5WithDeck) {
+      revEl_syncCh5WithDeck.addEventListener('scroll', synBindSync_syncCh5WithDeck, { passive: true });
+      revEl_syncCh5WithDeck.addEventListener('touchmove', synBindSync_syncCh5WithDeck, { passive: true });
+    }
+    const vpEl_syncCh5WithDeck = document.querySelector('.reveal-viewport');
+    if (vpEl_syncCh5WithDeck) {
+      vpEl_syncCh5WithDeck.addEventListener('scroll', synBindSync_syncCh5WithDeck, { passive: true });
+      vpEl_syncCh5WithDeck.addEventListener('touchmove', synBindSync_syncCh5WithDeck, { passive: true });
+    }
 
     if (window.Reveal) {
-
-      window.Reveal.on('ready', syncCh5WithDeck);
-
-      window.Reveal.on('slidechanged', syncCh5WithDeck);
-
-      window.Reveal.on('fragmentshown', syncCh5WithDeck);
-
-      window.Reveal.on('fragmenthidden', syncCh5WithDeck);
-
+      window.Reveal.on('ready', synBindSync_syncCh5WithDeck);
+      window.Reveal.on('slidechanged', synBindSync_syncCh5WithDeck);
+      window.Reveal.on('fragmentshown', synBindSync_syncCh5WithDeck);
+      window.Reveal.on('fragmenthidden', synBindSync_syncCh5WithDeck);
+      window.Reveal.on('scroll-view-activated', synBindSync_syncCh5WithDeck);
+      window.Reveal.on('scroll-view-deactivated', synBindSync_syncCh5WithDeck);
     }
 
     const hud = document.getElementById('ch5-3d-hud');

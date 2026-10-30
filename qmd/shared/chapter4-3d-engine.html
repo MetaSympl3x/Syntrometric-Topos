@@ -784,32 +784,54 @@
     }
   };
 
-  function syncCh4WithDeck() {
+    function syncCh4WithDeck() {
     if (!autoSync) return;
 
-    const isMegaDeck = !!document.getElementById('syntrix-3d-hud') || document.querySelectorAll('h1').length > 5;
-    const ch4Hud = document.getElementById('ch4-3d-hud');
-    if (isMegaDeck && ch4Hud && window.Reveal && window.Reveal.getCurrentSlide) {
-      const currentSlide = window.Reveal.getCurrentSlide();
-      const inCh4 = currentSlide ? !!currentSlide.closest('#chapter-4, section[data-chapter="4"]') : true;
-      ch4Hud.style.display = inCh4 ? '' : 'none';
-      if (!inCh4) return;
+    const rev = (window.parent && window.parent.document.querySelector('.reveal')) || document.querySelector('.reveal');
+    const vp = (window.parent && window.parent.document.querySelector('.reveal-viewport')) || document.querySelector('.reveal-viewport');
+    const R = (window.parent && window.parent.Reveal) || window.Reveal;
+    const isScroll = (R && typeof R.isScrollView === 'function' && R.isScrollView())
+      || (vp && vp.classList.contains('reveal-scroll'))
+      || (rev && rev.classList.contains('reveal-scroll'))
+      || (rev && rev.scrollHeight > rev.clientHeight + 100)
+      || window.innerWidth <= 768;
+
+    let stageVal = null;
+
+    if (isScroll) {
+      const top = (rev && typeof rev.scrollTop === 'number' && rev.scrollTop > 0) ? rev.scrollTop
+        : ((vp && typeof vp.scrollTop === 'number' && vp.scrollTop > 0) ? vp.scrollTop
+        : ((window.parent ? window.parent.scrollY : window.scrollY) || document.documentElement.scrollTop || 0));
+
+      let max = 1;
+      if (rev && rev.scrollHeight > rev.clientHeight + 10) {
+        max = rev.scrollHeight - rev.clientHeight;
+      } else if (vp && vp.scrollHeight > vp.clientHeight + 10) {
+        max = vp.scrollHeight - vp.clientHeight;
+      } else {
+        const docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+        max = Math.max(1, docH - window.innerHeight);
+      }
+
+      const frac = Math.min(1.0, Math.max(0.0, top / max));
+      stageVal = 1.0 + frac * 9.0;
     }
 
-    const vp = document.querySelector('.reveal-viewport');
-    const isScroll = vp && vp.classList.contains('reveal-scroll');
-    if (isScroll) {
-      const scEl = vp.scrollHeight > vp.clientHeight ? vp : document.documentElement;
-      const top = vp.scrollTop || window.scrollY || document.documentElement.scrollTop || 0;
-      const max = Math.max(1, (scEl.scrollHeight || document.body.scrollHeight) - window.innerHeight);
-      window.setCh4Stage(1.0 + Math.min(1, Math.max(0, top / max)) * 9.0, false);
-    } else if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
-      const idx = window.Reveal.getIndices();
-      const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 12);
+    if (stageVal === null && R && typeof R.getIndices === 'function') {
+      const idx = R.getIndices();
+      const tot = Math.max(1, R.getTotalSlides ? R.getTotalSlides() : 12);
       const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
       const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
-      window.setCh4Stage(1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0, false);
+      stageVal = 1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0;
     }
+
+    if (typeof stageVal === 'number' && !isNaN(stageVal)) {
+      window.setCh4Stage(stageVal, false);
+    }
+  }
+
+  if (typeof window !== 'undefined') {
+    window.syncCh4WithDeck = syncCh4WithDeck;
   }
 
   wrap.addEventListener('mousedown', e => {
@@ -878,14 +900,47 @@
     syncCh4WithDeck();
     requestAnimationFrame(renderLoop);
     window.addEventListener('resize', resize);
-    window.addEventListener('scroll', syncCh4WithDeck, { passive: true });
-    const vp = document.querySelector('.reveal-viewport');
-    if (vp) vp.addEventListener('scroll', syncCh4WithDeck, { passive: true });
-    if (window.Reveal) {
-      window.Reveal.on('ready', syncCh4WithDeck);
-      window.Reveal.on('slidechanged', syncCh4WithDeck);
-      window.Reveal.on('fragmentshown', syncCh4WithDeck);
-      window.Reveal.on('fragmenthidden', syncCh4WithDeck);
+        // Universal multi-target scroll and touch listeners for mobile & desktop morph stage sync
+    const synBindSync_syncCh4WithDeck = () => {
+      syncCh4WithDeck();
+    };
+
+    window.addEventListener('scroll', synBindSync_syncCh4WithDeck, { capture: true, passive: true });
+    document.addEventListener('scroll', synBindSync_syncCh4WithDeck, { capture: true, passive: true });
+    window.addEventListener('touchmove', synBindSync_syncCh4WithDeck, { passive: true });
+    document.addEventListener('touchmove', synBindSync_syncCh4WithDeck, { passive: true });
+
+    if (window.parent && window.parent !== window) {
+      try {
+        window.parent.addEventListener('scroll', synBindSync_syncCh4WithDeck, { capture: true, passive: true });
+        window.parent.addEventListener('touchmove', synBindSync_syncCh4WithDeck, { passive: true });
+        const pRev = window.parent.document.querySelector('.reveal');
+        if (pRev) {
+          pRev.addEventListener('scroll', synBindSync_syncCh4WithDeck, { passive: true });
+          pRev.addEventListener('touchmove', synBindSync_syncCh4WithDeck, { passive: true });
+        }
+      } catch (_) {}
+    }
+
+    const revEl_syncCh4WithDeck = document.querySelector('.reveal');
+    if (revEl_syncCh4WithDeck) {
+      revEl_syncCh4WithDeck.addEventListener('scroll', synBindSync_syncCh4WithDeck, { passive: true });
+      revEl_syncCh4WithDeck.addEventListener('touchmove', synBindSync_syncCh4WithDeck, { passive: true });
+    }
+    const vpEl_syncCh4WithDeck = document.querySelector('.reveal-viewport');
+    if (vpEl_syncCh4WithDeck) {
+      vpEl_syncCh4WithDeck.addEventListener('scroll', synBindSync_syncCh4WithDeck, { passive: true });
+      vpEl_syncCh4WithDeck.addEventListener('touchmove', synBindSync_syncCh4WithDeck, { passive: true });
+    }
+
+    const R = (window.parent && window.parent.Reveal) || window.Reveal;
+    if (R) {
+      R.on('ready', synBindSync_syncCh4WithDeck);
+      R.on('slidechanged', synBindSync_syncCh4WithDeck);
+      R.on('fragmentshown', synBindSync_syncCh4WithDeck);
+      R.on('fragmenthidden', synBindSync_syncCh4WithDeck);
+      R.on('scroll-view-activated', synBindSync_syncCh4WithDeck);
+      R.on('scroll-view-deactivated', synBindSync_syncCh4WithDeck);
     }
     const hud = document.getElementById('ch4-3d-hud');
     if (hud) {
