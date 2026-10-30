@@ -1615,6 +1615,34 @@ input[type="range"] {
         pointer-events: none !important;
         visibility: hidden !important;
       }
+
+      /* When 3D animation panel is expanded on mobile, hide the monograph panel & FAB */
+      @media (max-width: 900px) {
+        body.syn-3d-expanded #syn-bottom-dock #syn-monograph-fab,
+        body.syn-3d-expanded #syn-monograph-fab,
+        body.syn-3d-expanded #syn-monograph-drawer,
+        body:has([id$="-3d-hud"]:not(.minimized)) #syn-bottom-dock #syn-monograph-fab,
+        body:has(#syntrix-3d-hud:not(.minimized)) #syn-bottom-dock #syn-monograph-fab,
+        body:has(.anim-hud-tray:not(.minimized)) #syn-bottom-dock #syn-monograph-fab,
+        body:has(.spotlight) #syn-bottom-dock #syn-monograph-fab,
+        body:has([id$="-3d-hud"]:not(.minimized)) #syn-monograph-fab,
+        body:has(#syntrix-3d-hud:not(.minimized)) #syn-monograph-fab,
+        body:has(.anim-hud-tray:not(.minimized)) #syn-monograph-fab,
+        body:has(.spotlight) #syn-monograph-fab,
+        body:has([id$="-3d-hud"]:not(.minimized)) #syn-monograph-drawer,
+        body:has(#syntrix-3d-hud:not(.minimized)) #syn-monograph-drawer,
+        body:has(.anim-hud-tray:not(.minimized)) #syn-monograph-drawer,
+        body:has(.spotlight) #syn-monograph-drawer,
+        #syn-bottom-dock:has([id$="-3d-hud"]:not(.minimized)) #syn-monograph-fab,
+        #syn-bottom-dock:has(#syntrix-3d-hud:not(.minimized)) #syn-monograph-fab,
+        #syn-bottom-dock:has(.anim-hud-tray:not(.minimized)) #syn-monograph-fab,
+        #syn-bottom-dock:has(.spotlight) #syn-monograph-fab {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
+        }
+      }
       @media (max-width: 900px) {
         #syn-monograph-drawer {
           width: 100vw !important;

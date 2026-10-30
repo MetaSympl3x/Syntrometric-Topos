@@ -1214,6 +1214,42 @@ body.mdrawer-open .anim-hud-tray {
     return dock;
   }
 
+  function checkHUDExtendedState() {
+    const huds = document.querySelectorAll('[id$="-3d-hud"], #syntrix-3d-hud, .anim-hud-tray, .animation-hud');
+    let hasExpanded = false;
+    huds.forEach(hud => {
+      if (hud && (!hud.classList.contains('minimized') || hud.classList.contains('spotlight'))) {
+        hasExpanded = true;
+      }
+    });
+
+    document.body.classList.toggle('syn-3d-expanded', hasExpanded);
+
+    if (window.parent && window.parent !== window && window.parent.document && window.parent.document.body) {
+      try {
+        window.parent.document.body.classList.toggle('syn-3d-expanded', hasExpanded);
+      } catch (_) {}
+    }
+
+    // On mobile, if a 3D panel is expanded, automatically close the monograph drawer if open
+    if (hasExpanded && window.innerWidth <= 900) {
+      const drawer = document.getElementById('syn-monograph-drawer');
+      if (drawer && drawer.classList.contains('open')) {
+        drawer.classList.remove('open');
+        document.body.classList.remove('mdrawer-open');
+      }
+      try {
+        if (window.parent && window.parent.document) {
+          const pDrawer = window.parent.document.getElementById('syn-monograph-drawer');
+          if (pDrawer && pDrawer.classList.contains('open')) {
+            pDrawer.classList.remove('open');
+            window.parent.document.body.classList.remove('mdrawer-open');
+          }
+        }
+      } catch (_) {}
+    }
+  }
+
   function dockAnimationHUDs() {
     const dock = document.getElementById('syn-bottom-dock');
     if (!dock) return;
@@ -1223,6 +1259,7 @@ body.mdrawer-open .anim-hud-tray {
         dock.appendChild(hud);
       }
     });
+    checkHUDExtendedState();
   }
 
   function injectDOM() {
@@ -1280,11 +1317,15 @@ body.mdrawer-open .anim-hud-tray {
       dock.insertBefore(fab, dock.firstChild);
     }
 
-    // Dock existing animation HUDs and watch for dynamically injected ones
+    // Dock existing animation HUDs and watch for dynamically injected ones & expand/collapse
     dockAnimationHUDs();
+    checkHUDExtendedState();
     if ('MutationObserver' in window) {
-      const obs = new MutationObserver(() => dockAnimationHUDs());
-      obs.observe(document.body, { childList: true, subtree: false });
+      const obs = new MutationObserver(() => {
+        dockAnimationHUDs();
+        checkHUDExtendedState();
+      });
+      obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style'] });
     }
 
     // Stop propagation on inputs inside drawer so Reveal doesn't capture keystrokes
