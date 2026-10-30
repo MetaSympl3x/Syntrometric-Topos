@@ -2183,7 +2183,7 @@ window.addEventListener('message', (event) => {
 
   var INTERACTIVE_SELECTORS = [
     'input', 'button', 'select', 'textarea', 'label', 'canvas', 'svg',
-    '.interactive-panel', '.slider-row', '.band-track', '.anim-hud-tray',
+    '.interactive-panel', '.slider-row', '.band-track', '#syn-bottom-dock', '.anim-hud-tray',
     '.animation-hud', '#syntrix-3d-hud', '[id$="-3d-hud"]', '[id$="-3d-wrap"]',
     '#syn-monograph-fab', '#syn-monograph-drawer', '.mdrawer-tab', '.mdrawer-header',
     '.mdrawer-body', '.mdrawer-pane', '.rosetta-card', '.rosetta-list',
@@ -2199,7 +2199,7 @@ window.addEventListener('message', (event) => {
       el.setAttribute('data-prevent-swipe', 'true');
     }
 
-    var panel = el.closest('.interactive-panel, .anim-hud-tray, #syntrix-3d-hud, [id$="-3d-hud"], [id$="-3d-wrap"], #syn-monograph-drawer, .slider-row, .band-track');
+    var panel = el.closest('#syn-bottom-dock, .interactive-panel, .anim-hud-tray, #syntrix-3d-hud, [id$="-3d-hud"], [id$="-3d-wrap"], #syn-monograph-drawer, .slider-row, .band-track');
     if (panel && !panel.hasAttribute('data-prevent-swipe')) {
       panel.setAttribute('data-prevent-swipe', 'true');
     }

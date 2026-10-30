@@ -372,6 +372,23 @@
    UNIVERSAL MOBILE LATEX & MONOGRAPH WORKBENCH STYLING
    ========================================================================= */
 
+/* =========================================================================
+   SYN BOTTOM CONTROLS FLEX DOCK
+   Flex-boxes the Monograph Drawer trigger and Animation HUDs/Buttons
+   so they never collide or overlap on any device.
+   ========================================================================= */
+#syn-bottom-dock {
+  position: fixed !important;
+  pointer-events: none !important;
+  z-index: 10000 !important;
+  display: flex !important;
+  box-sizing: border-box !important;
+}
+
+#syn-bottom-dock > * {
+  pointer-events: auto !important;
+}
+
 #syn-monograph-fab {
   position: fixed;
   left: 20px;
@@ -394,6 +411,97 @@
   transition: all 0.2s ease;
   user-select: none;
   box-sizing: border-box;
+}
+
+/* Mobile Viewports (<= 900px): Vertical Flexbox Column Dock */
+@media (max-width: 900px) {
+  #syn-bottom-dock {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: calc(var(--syn-bottom-offset, 8px) + env(safe-area-inset-bottom, 0px)) !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    max-width: calc(100vw - 16px) !important;
+  }
+
+  #syn-bottom-dock #syn-monograph-fab {
+    position: static !important;
+    margin: 0 !important;
+    align-self: flex-start !important;
+    max-width: calc(100vw - 16px) !important;
+    padding: 6px 11px !important;
+    font-size: 11px !important;
+    border-radius: 8px !important;
+  }
+
+  #syn-bottom-dock [id$="-3d-hud"],
+  #syn-bottom-dock #syntrix-3d-hud,
+  #syn-bottom-dock .anim-hud-tray,
+  #syn-bottom-dock .animation-hud {
+    position: static !important;
+    margin: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Desktop Viewports (>= 901px): Horizontal Flexbox with Desktop Taskbar Avoidance */
+@media (min-width: 901px) {
+  #syn-bottom-dock {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: var(--syn-bottom-offset, 64px) !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    gap: 20px !important;
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  #syn-bottom-dock #syn-monograph-fab {
+    position: static !important;
+    align-self: flex-end !important;
+  }
+
+  #syn-bottom-dock [id$="-3d-hud"],
+  #syn-bottom-dock #syntrix-3d-hud,
+  #syn-bottom-dock .anim-hud-tray,
+  #syn-bottom-dock .animation-hud {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: auto !important;
+    max-width: min(480px, 45vw) !important;
+  }
+}
+
+/* Spotlight HUD centered on screen */
+#syn-bottom-dock [id$="-3d-hud"].spotlight,
+#syn-bottom-dock #syntrix-3d-hud.spotlight {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  bottom: auto !important;
+  right: auto !important;
+  z-index: 100005 !important;
+}
+
+/* When Monograph Drawer is OPEN: Hide bottom dock / animation HUD to avoid distraction */
+body.mdrawer-open #syn-bottom-dock [id$="-3d-hud"],
+body.mdrawer-open #syn-bottom-dock #syntrix-3d-hud,
+body.mdrawer-open #syn-bottom-dock .anim-hud-tray,
+body.mdrawer-open [id$="-3d-hud"],
+body.mdrawer-open #syntrix-3d-hud,
+body.mdrawer-open .anim-hud-tray {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
 }
 
 /* Dynamic Avoidance of Windows System Tray & Taskbar for Desktop Trays */
@@ -431,10 +539,12 @@
   left: 0;
   width: min(880px, 96vw);
   height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   background: linear-gradient(160deg, rgba(7, 10, 18, 0.98) 0%, rgba(13, 19, 34, 0.99) 100%);
   border-right: 2px solid #FFD700;
   box-shadow: 20px 0 65px rgba(0, 0, 0, 0.92);
-  z-index: 10001;
+  z-index: 100001 !important;
   transform: translateX(-104%);
   transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
   display: flex;
@@ -1093,7 +1203,63 @@
   // Pre-register all syntrometric macros into existing MathJax instance if already loaded
   registerRuntimeMacros();
 
+  function ensureBottomDock() {
+    let dock = document.getElementById('syn-bottom-dock');
+    if (!dock) {
+      dock = document.createElement('div');
+      dock.id = 'syn-bottom-dock';
+      dock.setAttribute('data-prevent-swipe', 'true');
+      document.body.appendChild(dock);
+    }
+    return dock;
+  }
+
+  function dockAnimationHUDs() {
+    const dock = document.getElementById('syn-bottom-dock');
+    if (!dock) return;
+    const huds = document.querySelectorAll('[id$="-3d-hud"], #syntrix-3d-hud, .anim-hud-tray, .animation-hud');
+    huds.forEach(hud => {
+      if (hud && hud.parentElement !== dock) {
+        dock.appendChild(hud);
+      }
+    });
+  }
+
   function injectDOM() {
+    // 1. If running inside an iframe whose parent already has the monograph workbench,
+    // do NOT inject a duplicate drawer or FAB inside the iframe.
+    try {
+      if (window.parent && window.parent !== window && window.parent.document) {
+        if (window.parent.document.getElementById('syn-monograph-drawer') || window.parent.document.getElementById('syn-monograph-fab')) {
+          window.toggleMonographDrawer = function() {
+            if (typeof window.parent.toggleMonographDrawer === 'function') {
+              window.parent.toggleMonographDrawer();
+            }
+          };
+          window.openMonographAtPage = function(page, query) {
+            if (typeof window.parent.openMonographAtPage === 'function') {
+              window.parent.openMonographAtPage(page, query);
+            }
+          };
+          return;
+        }
+      }
+    } catch (e) {}
+
+    // 2. Strict deduplication guard: eliminate any duplicate drawers or FABs in DOM
+    const existingDrawers = document.querySelectorAll('#syn-monograph-drawer');
+    if (existingDrawers.length > 1) {
+      for (let i = 1; i < existingDrawers.length; i++) existingDrawers[i].remove();
+    }
+    const existingFabs = document.querySelectorAll('#syn-monograph-fab');
+    if (existingFabs.length > 1) {
+      for (let i = 1; i < existingFabs.length; i++) existingFabs[i].remove();
+    }
+    const existingMounts = document.querySelectorAll('#syn-monograph-mount');
+    if (existingMounts.length > 1) {
+      for (let i = 1; i < existingMounts.length; i++) existingMounts[i].remove();
+    }
+
     if (document.getElementById('syn-monograph-drawer')) return;
 
     const styleEl = document.createElement('style');
@@ -1101,10 +1267,25 @@
     styleEl.textContent = STYLES;
     document.head.appendChild(styleEl);
 
+    const dock = ensureBottomDock();
+
     const container = document.createElement('div');
     container.id = 'syn-monograph-mount';
     container.innerHTML = DRAWER_HTML;
     document.body.appendChild(container);
+
+    // Place the FAB inside the bottom dock so flexbox coordinates it with animation HUDs
+    const fab = document.getElementById('syn-monograph-fab');
+    if (fab && dock) {
+      dock.insertBefore(fab, dock.firstChild);
+    }
+
+    // Dock existing animation HUDs and watch for dynamically injected ones
+    dockAnimationHUDs();
+    if ('MutationObserver' in window) {
+      const obs = new MutationObserver(() => dockAnimationHUDs());
+      obs.observe(document.body, { childList: true, subtree: false });
+    }
 
     // Stop propagation on inputs inside drawer so Reveal doesn't capture keystrokes
     const dr = document.getElementById('syn-monograph-drawer');
@@ -1127,10 +1308,16 @@
   }
 
   window.toggleMonographDrawer = function() {
+    if (window.parent && window.parent !== window && typeof window.parent.toggleMonographDrawer === 'function') {
+      window.parent.toggleMonographDrawer();
+      return;
+    }
     const dr = document.getElementById('syn-monograph-drawer');
     if (dr) {
-      dr.classList.toggle('open');
-      if (dr.classList.contains('open')) {
+      const willOpen = !dr.classList.contains('open');
+      dr.classList.toggle('open', willOpen);
+      document.body.classList.toggle('mdrawer-open', willOpen);
+      if (willOpen) {
         if (!rawTeXCache) {
           loadRawTeXFile();
         } else {
@@ -1519,6 +1706,7 @@
       const dr = document.getElementById('syn-monograph-drawer');
       if (dr && dr.classList.contains('open')) {
         dr.classList.remove('open');
+        document.body.classList.remove('mdrawer-open');
       }
     }
   });

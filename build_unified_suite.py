@@ -73,7 +73,7 @@ all_header_html = (
 print(f"Wrote shared/all-headers.html with {len(macros)} MathJax macros.")
 
 # 3. Create syntrometrie_all.qmd with all 15 chapters
-script_tags = "\n".join([f'        <script src="shared/chapter{ch}-widgets.js"></script>' for ch in range(1, 16)]) + '\n        <script src="shared/monograph-workbench.js"></script>'
+script_tags = "\n".join([f'        <script src="shared/chapter{ch}-widgets.js"></script>' for ch in range(1, 16)])
 
 sections = []
 for ch, title, subtitle in chapters_meta:

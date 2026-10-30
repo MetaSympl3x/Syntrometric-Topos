@@ -1833,3 +1833,217 @@ input[type="range"] {
     box-sizing: border-box !important;
   }
 }
+
+
+/* =========================================================================
+   SYN BOTTOM CONTROLS FLEX DOCK
+   Flex-boxes the Monograph Drawer trigger and Animation HUDs/Buttons
+   so they never collide or overlap on any device.
+   ========================================================================= */
+#syn-bottom-dock {
+  position: fixed !important;
+  pointer-events: none !important;
+  z-index: 10000 !important;
+  display: flex !important;
+  box-sizing: border-box !important;
+}
+
+#syn-bottom-dock > * {
+  pointer-events: auto !important;
+}
+
+@media (max-width: 900px) {
+  #syn-bottom-dock {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: calc(var(--syn-bottom-offset, 8px) + env(safe-area-inset-bottom, 0px)) !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    max-width: calc(100vw - 16px) !important;
+  }
+
+  #syn-bottom-dock #syn-monograph-fab {
+    position: static !important;
+    margin: 0 !important;
+    align-self: flex-start !important;
+    max-width: calc(100vw - 16px) !important;
+    padding: 6px 11px !important;
+    font-size: 11px !important;
+    border-radius: 8px !important;
+  }
+
+  #syn-bottom-dock [id$="-3d-hud"],
+  #syn-bottom-dock #syntrix-3d-hud,
+  #syn-bottom-dock .anim-hud-tray,
+  #syn-bottom-dock .animation-hud {
+    position: static !important;
+    margin: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 901px) {
+  #syn-bottom-dock {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: var(--syn-bottom-offset, 64px) !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    gap: 20px !important;
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  #syn-bottom-dock #syn-monograph-fab {
+    position: static !important;
+    align-self: flex-end !important;
+  }
+
+  #syn-bottom-dock [id$="-3d-hud"],
+  #syn-bottom-dock #syntrix-3d-hud,
+  #syn-bottom-dock .anim-hud-tray,
+  #syn-bottom-dock .animation-hud {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: auto !important;
+    max-width: min(480px, 45vw) !important;
+  }
+}
+
+body.mdrawer-open #syn-bottom-dock [id$="-3d-hud"],
+body.mdrawer-open #syn-bottom-dock #syntrix-3d-hud,
+body.mdrawer-open #syn-bottom-dock .anim-hud-tray,
+body.mdrawer-open [id$="-3d-hud"],
+body.mdrawer-open #syntrix-3d-hud,
+body.mdrawer-open .anim-hud-tray {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+@media (max-width: 900px) {
+  #syn-monograph-drawer {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    z-index: 100001 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+
+
+/* =========================================================================
+   SYN BOTTOM CONTROLS FLEX DOCK
+   Flex-boxes the Monograph Drawer trigger and Animation HUDs/Buttons
+   so they never collide or overlap on any device.
+   ========================================================================= */
+#syn-bottom-dock {
+  position: fixed !important;
+  pointer-events: none !important;
+  z-index: 10000 !important;
+  display: flex !important;
+  box-sizing: border-box !important;
+}
+
+#syn-bottom-dock > * {
+  pointer-events: auto !important;
+}
+
+@media (max-width: 900px) {
+  #syn-bottom-dock {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: calc(var(--syn-bottom-offset, 8px) + env(safe-area-inset-bottom, 0px)) !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    max-width: calc(100vw - 16px) !important;
+  }
+
+  #syn-bottom-dock #syn-monograph-fab {
+    position: static !important;
+    margin: 0 !important;
+    align-self: flex-start !important;
+    max-width: calc(100vw - 16px) !important;
+    padding: 6px 11px !important;
+    font-size: 11px !important;
+    border-radius: 8px !important;
+  }
+
+  #syn-bottom-dock [id$="-3d-hud"],
+  #syn-bottom-dock #syntrix-3d-hud,
+  #syn-bottom-dock .anim-hud-tray,
+  #syn-bottom-dock .animation-hud {
+    position: static !important;
+    margin: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 901px) {
+  #syn-bottom-dock {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: var(--syn-bottom-offset, 64px) !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    gap: 20px !important;
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  #syn-bottom-dock #syn-monograph-fab {
+    position: static !important;
+    align-self: flex-end !important;
+  }
+
+  #syn-bottom-dock [id$="-3d-hud"],
+  #syn-bottom-dock #syntrix-3d-hud,
+  #syn-bottom-dock .anim-hud-tray,
+  #syn-bottom-dock .animation-hud {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: auto !important;
+    max-width: min(480px, 45vw) !important;
+  }
+}
+
+body.mdrawer-open #syn-bottom-dock [id$="-3d-hud"],
+body.mdrawer-open #syn-bottom-dock #syntrix-3d-hud,
+body.mdrawer-open #syn-bottom-dock .anim-hud-tray,
+body.mdrawer-open [id$="-3d-hud"],
+body.mdrawer-open #syntrix-3d-hud,
+body.mdrawer-open .anim-hud-tray {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+@media (max-width: 900px) {
+  #syn-monograph-drawer {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    z-index: 100001 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}

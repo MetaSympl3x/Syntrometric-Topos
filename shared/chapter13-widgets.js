@@ -457,23 +457,73 @@ window.ch13_updateAscLab = function() {
   function prepareVideos() {
     document.querySelectorAll('video').forEach(v => {
       v.muted = true;
+      v.defaultMuted = true;
       v.playsInline = true;
       v.loop = true;
-      v.removeAttribute('autoplay');
-      v.preload = 'metadata';
+      v.preload = 'auto';
+      v.setAttribute('playsinline', '');
+      v.setAttribute('webkit-playsinline', '');
+      v.setAttribute('muted', '');
+      v.setAttribute('loop', '');
+      v.setAttribute('preload', 'auto');
     });
   }
 
   function syncVideosToSlide() {
+    const isScroll = (window.Reveal && typeof window.Reveal.isScrollView === 'function' && window.Reveal.isScrollView())
+      || document.querySelector('.reveal-viewport.reveal-scroll, .reveal.reveal-scroll') !== null
+      || window.innerWidth <= 768;
+
     const current = window.Reveal && window.Reveal.getCurrentSlide ? window.Reveal.getCurrentSlide() : null;
+    const winH = window.innerHeight || document.documentElement.clientHeight;
+    const winW = window.innerWidth || document.documentElement.clientWidth;
+
     document.querySelectorAll('video').forEach(v => {
-      const visible = current ? current.contains(v) : true;
-      if (visible) {
-        v.play().catch(() => {});
+      let shouldPlay = false;
+      if (isScroll) {
+        const rect = v.getBoundingClientRect();
+        const inView = (rect.top <= winH + 150) && (rect.bottom >= -150) && (rect.left <= winW + 60) && (rect.right >= -60);
+        shouldPlay = inView;
+      } else {
+        shouldPlay = current ? current.contains(v) : true;
+      }
+
+      if (shouldPlay) {
+        v.muted = true;
+        v.playsInline = true;
+        const p = v.play();
+        if (p !== undefined) {
+          p.catch(() => {});
+        }
       } else if (!v.paused) {
         v.pause();
       }
     });
+  }
+
+  // Ensure continuous sync on mobile scroll and touch gestures
+  if (typeof window !== 'undefined') {
+    window.__syn_video_sync_handlers = window.__syn_video_sync_handlers || [];
+    window.__syn_video_sync_handlers.push(syncVideosToSlide);
+    if (!window.__syn_video_scroll_hooked) {
+      window.__syn_video_scroll_hooked = true;
+      const runSync = () => {
+        (window.__syn_video_sync_handlers || []).forEach(fn => {
+          try { fn(); } catch (_) {}
+        });
+      };
+      window.addEventListener('scroll', runSync, { passive: true });
+      window.addEventListener('touchmove', runSync, { passive: true });
+      window.addEventListener('resize', runSync, { passive: true });
+      let synMediaUnlocked = false;
+      function synUnlockMedia() {
+        if (synMediaUnlocked) return;
+        synMediaUnlocked = true;
+        runSync();
+      }
+      document.addEventListener('touchstart', synUnlockMedia, { passive: true, once: true });
+      document.addEventListener('click', synUnlockMedia, { passive: true, once: true });
+    }
   }
 
   function renderAllCh13Widgets() {

@@ -3,6 +3,7 @@
  * SYNTROMETRIC MONOGRAPH WORKBENCH (CH 1–15 + APPENDICES A–E)
  * Live Slide-Synchronized Monograph PDF, Raw LaTeX & 100-Eq. Rosetta Register
  * Auto-Parses Syntrometric-Topos.tex for 380+ Theorems, Definitions & Lean 4
+ * With Mobile-Optimized Real-Time LaTeX Math Rendering & Formula Inspector
  * Shortcut: Press 'M' on keyboard or click '📖 Monograph PDF & TeX'
  * =========================================================================
  */
@@ -41,33 +42,357 @@
     appE:  { basePage: 360, texAnchor: "\\label{app:master_concordance}" }
   };
 
-  // Curated Highlights of the 100-Equation Master Register (Chapter 14)
+  // Comprehensive Syntrometric & Heim Historical Math Macros for MathJax
+  const SYN_MATH_MACROS = Object.assign({}, (typeof window !== "undefined" && window.SYN_TEX_MACROS) || {}, {
+  "syntrix": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+  "homogeneoussyntrix": "\\mathbf{x}\\widetilde{\\mathbf{a}}",
+  "metrophor": "\\widetilde{\\mathbf{a}}",
+  "synkolator": "\\mathfrak{f}",
+  "synkolationsstufe": "m",
+  "syndrom": "F",
+  "conceptualsyndrome": "a",
+  "universalquantor": "\\mathbf{U}",
+  "aspektivsystem": "P",
+  "funktor": "\\mathbf{F}",
+  "subjektiveraspekt": "S",
+  "pradikatrix": "P_n",
+  "dialektik": "D_n",
+  "koordination": "K_n",
+  "nullsyntrix": "\\mathbf{ys}\\widetilde{\\mathbf{c}}",
+  "elementarstruktur": "\\mathbf{y}\\widetilde{\\mathbf{a}}_{(j)}",
+  "konzenter": "\\text{Konzenter}",
+  "exzenter": "\\text{Exzenter}",
+  "konflexivsyntrix": "\\mathbf{y}\\widetilde{\\mathbf{c}}",
+  "syntropode": "\\text{Syntropode}",
+  "korporatorkette": "\\mathord{\\llcorner}",
+  "enyphaniegrad": "g_E",
+  "syntrixtotalitaet": "T_0",
+  "generative": "G",
+  "syntrixspeicher": "\\text{Syntrixspeicher}",
+  "korporatorsimplex": "Q",
+  "protyposis": "\\text{Protyposis}",
+  "syntrixfeld": "\\text{Syntrixfeld}",
+  "diskreteEnyphansyntrix": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+  "kontinuierlicheEnyphansyntrix": "YC",
+  "enyphane": "E",
+  "syntrometrischesGebilde": "\\text{Gebilde}",
+  "holoform": "\\text{Holoform}",
+  "syntrixraum": "\\mathcal{M}_{\\text{syn}}",
+  "syntrometrik": "g^{\\text{syn}}",
+  "korporatorfeld": "\\mathbf{X}_{\\text{kor}}",
+  "syntrixfunktor": "YF",
+  "zeitkorn": "\\delta t_i",
+  "affinitaetssyndrom": "S",
+  "metroplexfont": [
+    "\\mathbf{#1}",
+    1
+  ],
+  "metroplex": [
+    "\\overset{\\scriptscriptstyle #1}{\\mathbf{M}}",
+    1
+  ],
+  "hypersyntrix": "\\overset{\\scriptscriptstyle 1}{\\mathbf{M}}",
+  "hypermetrophor": [
+    "{}^{#1}\\mathbf{w}\\widetilde{\\mathbf{a}}",
+    1
+  ],
+  "metroplexsynkolator": [
+    "{}^{#1}\\mathfrak{f}",
+    1
+  ],
+  "nullmetroplex": [
+    "{}^{#1}\\mathbf{M}_0",
+    1
+  ],
+  "metroplextotalitaet": [
+    "T_{#1}",
+    1
+  ],
+  "metroplextotalitaetarg": [
+    "T_{#1}",
+    1
+  ],
+  "metroplexfunktor": "S",
+  "metroplexfunktorcommand": "S",
+  "syntroklinebruecke": [
+    "{}^{#1}\\alpha",
+    1
+  ],
+  "metroplexaeondyne": "\\text{Metroplex\u00e4ondyne}",
+  "telezentrum": "T_z",
+  "aeonischearea": "\\mathrm{AR}_q",
+  "transzendenzstufe": [
+    "C(#1)",
+    1
+  ],
+  "transcendenzstufe": [
+    "C(#1)",
+    1
+  ],
+  "transzendenzsynkolator": "\\Gamma_i",
+  "quantitaetsaspekt": "\\text{Quantit\u00e4tsaspekt}",
+  "qualitaetsaspekt": "\\text{Qualit\u00e4tsaspekt}",
+  "quantitaetssyntrix": "\\mathbf{y}\\mathbf{R}_n",
+  "zahlenkoerper": "\\text{Zahlenk\u00f6rper}",
+  "semantischermetrophor": "R_n",
+  "semantischeriterator": "S_n",
+  "funktionaloperator": "\\mathfrak{f}",
+  "synkolatorraum": "\\text{Synkolatorraum}",
+  "aeondynechaptereight": "\\widetilde{\\mathbf{a}}(x_i)_1^n",
+  "kompositionsfeld": "{}^2\\bar{\\mathrm{g}}",
+  "partialstruktur": [
+    "{}^2\\mathbf{g}_{(#1)}",
+    1
+  ],
+  "fundamentalkondensor": "{}^3\\mathbf{\\Gamma}",
+  "korrelationstensor": "\\mathbf{f}",
+  "koppelungstensor": "\\mathbf{Q}",
+  "kaskadenstufe": "\\alpha",
+  "metron": "\\tau",
+  "metronischegitter": "\\text{Metronische Gitter}",
+  "metrondifferential": "\\bar{\\delta}",
+  "metronbar": "\\bar{\\delta}",
+  "metrondelta": "\\nabla",
+  "metronintegral": "\\mathrm{S}",
+  "metronenfunktion": "\\phi(n)",
+  "metronenziffer": "n",
+  "metrischesieboperator": "S(\\gamma)",
+  "strukturkompressor": "{}^4\\mathbf{\\zeta}",
+  "metronischerstrukturkompressor": "{}^4\\mathbf{\\psi}",
+  "metronisiertekondensor": [
+    "{}^{#1}\\mathbf{F}",
+    1
+  ],
+  "turnstilek": [
+    "\\vdash^{#1}",
+    1
+  ],
+  "modelsk": [
+    "\\models^{#1}",
+    1
+  ],
+  "dynboxgen": [
+    "[#1]",
+    1
+  ],
+  "dyndiamondgen": [
+    "\\langle #1 \\rangle",
+    1
+  ],
+  "kategorie": "\\mathbf{K}",
+  "Ctx": "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+  "CtxPos": "\\mathbf{Ctx}_{>0}^{\\mathrm{sk}}",
+  "Ctxadm": "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+  "Ctxquant": "\\mathbf{Ctx}_{\\mathrm{quant}}",
+  "Ban": "\\mathbf{Ban}_{\\le 1}",
+  "FinBan": "\\mathbf{FinBan}_{\\le 1}",
+  "Esyn": "\\mathcal{E}_{\\mathrm{syn}}",
+  "Jsyn": "J_{\\mathrm{syn}}",
+  "Ksyn": "\\mathcal{K}_{\\mathrm{syn}}",
+  "Xsyn": "\\mathcal{X}_{\\mathrm{syn}}",
+  "Osyn": "\\mathcal{O}_{\\mathrm{syn}}",
+  "otpi": "\\mathbin{\\widehat{\\otimes}_\\pi}",
+  "Hol": "\\mathsf{Hol}",
+  "Def": "\\operatorname{Def}",
+  "Isom": "\\operatorname{Isom}",
+  "Hom": "\\operatorname{Hom}",
+  "Sub": "\\operatorname{Sub}",
+  "Colim": "\\operatorname{colim}",
+  "hocolim": "\\operatorname{hocolim}",
+  "Spec": "\\operatorname{Spec}",
+  "Div": "\\operatorname{div}",
+  "Grad": "\\operatorname{grad}",
+  "Rot": "\\operatorname{rot}",
+  "Eq": "\\operatorname{Eq}",
+  "id": "\\operatorname{id}",
+  "rk": "\\operatorname{rk}",
+  "Aut": "\\operatorname{Aut}",
+  "Bil": "\\operatorname{Bil}",
+  "Cov": "\\operatorname{Cov}",
+  "Lie": "\\operatorname{Lie}",
+  "Map": "\\operatorname{Map}",
+  "IntCat": "\\operatorname{IntCat}",
+  "PSh": "\\operatorname{PSh}",
+  "Sh": "\\operatorname{Sh}",
+  "Free": "\\operatorname{Free}",
+  "Sym": "\\operatorname{Sym}",
+  "Frag": "\\operatorname{Frag}",
+  "Der": "\\operatorname{Der}",
+  "Orb": "\\operatorname{Orb}",
+  "Epi": "\\operatorname{Epi}",
+  "Pro": "\\operatorname{Pro}",
+  "LMSL": "\\mathcal{L}_{\\text{MSL}}",
+  "WFFMSL": "\\text{WFF}_{\\mathcal{L}_{\\text{MSL}}}",
+  "Smodx": "S_{\\text{mod}}(x)",
+  "Smodarg": [
+    "S_{\\text{mod}}(#1)",
+    1
+  ],
+  "BoxS": "\\Box_S",
+  "BoxSyn": "\\Box_{\\text{Syn}}",
+  "DiaS": "\\Diamond_S",
+  "Propk": [
+    "\\text{Prop}_{#1}",
+    1
+  ],
+  "Stabk": [
+    "\\text{Stab}_{#1}",
+    1
+  ],
+  "IGPk": [
+    "\\text{IGP}_{#1}",
+    1
+  ],
+  "Origink": [
+    "\\text{Origin}_{#1}",
+    1
+  ],
+  "fops": "F_{\\text{ops}}",
+  "APS": "\\mathbf{AP}_S",
+  "APZero": "\\mathbf{AP}_0",
+  "APSigma": "\\mathbf{AP}_\\Sigma",
+  "ProgZero": "\\mathbf{Prog}_0",
+  "Kmax": "K_{\\text{max}}",
+  "Mexp": "M_{\\text{exp}}",
+  "piF": "\\pi_F",
+  "MCS": "\\text{MCS}",
+  "MCCT": "\\text{MCCT}",
+  "Kor": "\\mathbf{Kor}",
+  "polyquantor": [
+    "\\mathop{\\mathsf{Q}}\\limits_{#2,#3}^{#4}\\!\\left(#1\\right)",
+    4
+  ],
+  "quantor": [
+    "\\mathsf{Q}\\left[#1\\right]",
+    1
+  ],
+  "homogenesyntrix": [
+    "\\mathsf{H}\\!\\left(#1\\right)",
+    1
+  ],
+  "widemetroplex": [
+    "\\mathsf{M}_{#2}\\!\\left(#1\\right)",
+    2
+  ],
+  "syntroklinemetroplex": [
+    "\\mathsf{B}_{#2}\\!\\left(#1\\right)",
+    2
+  ],
+  "syntroklinekettenkoppelung": "\\mathsf{K}",
+  "infinitesimalchainoperatorI": "\\mathop{\\mathrm{I}}",
+  "predicatesymbol": "\\mathrel{\\models}",
+  "supmedsubscript": [
+    "{}^{#2}_{#1,#3}",
+    3
+  ],
+  "prescript": [
+    "{}^{#1}_{#2}{#3}",
+    3
+  ],
+  "smformula": [
+    "#1",
+    1
+  ],
+  "xrightsquigarrow": [
+    "\\overset{#1}{\\rightsquigarrow}",
+    1
+  ],
+  "underrightarrow": [
+    "\\overrightarrow{#1}",
+    1
+  ],
+  "dbinom": [
+    "\\binom{#1}{#2}",
+    2
+  ],
+  "dfrac": [
+    "\\frac{#1}{#2}",
+    2
+  ],
+  "coloneqq": "\\mathrel{:=}",
+  "Coloneqq": "\\mathrel{::=}",
+  "centernot": [
+    "\\not#1",
+    1
+  ],
+  "llbracket": "\\mathopen{[\\mkern-3mu[}",
+  "rrbracket": "\\mathclose{]\\mkern-3mu]}",
+  "longhookrightarrow": "\\lhook\\joinrel\\longrightarrow",
+  "sidx": [
+    "",
+    1
+  ],
+  "hidx": [
+    "",
+    2
+  ],
+  "nidx": [
+    "",
+    2
+  ],
+  "claimceiling": [
+    "#2",
+    2
+  ],
+  "carnapexplication": [
+    "#5",
+    5
+  ],
+  "vspacing": [
+    "\\vphantom{\\sum}",
+    0
+  ],
+  "ab": "\\mathrm{ab}"
+});
+
+  // Curated Highlights of the 100-Equation Master Register with exact LaTeX
   const FALLBACK_ROSETTA = [
-    { eq: "SM Eq. 1 / SM-4", ch: "Ch 1", page: 15, tex: "eq:sm_4", d: "S ≡ ⌈D_nn × K_n × P_nn⌉ (Subjektiver Aspekt)", r: "Context U = (D^U, P^U, C^U, K^U, z^U, ζ^U) ∈ Ctx_adm^sk with K^U : D^U ⊗̂_π P^U → C^U" },
-    { eq: "SM Eq. 4", ch: "Ch 1", page: 17, tex: "prop:quantor_degeneration_hierarchy", d: "Continuous & Discrete Polyquantor Hierarchy Q_poly", r: "Product-slice Kripke–Joyal forcing ∏ V_i ⊩ φ & right-adjoint Universalquantor ∀_f" },
-    { eq: "SM Eq. 5", ch: "Ch 2", page: 35, tex: "eq:heim_syntrix_eq5", d: "yã ≡ ⟨f, ã, m⟩ ∨ F₁ ≡ f(a_k)₁^m (Syntrix Triad)", r: "Free algebra over completed colored Banach operad O_syn on profile (γ,…,γ; γ+1)" },
-    { eq: "SM Eq. 5a", ch: "Ch 2", page: 36, tex: "eq:heim_homogeneous_eq5a", d: "x yã ≡ ⟨⟨f, ã⟩ m⟩ (Homogeneous Syntrix & Spaltbarkeit)", r: "Boardman–Vogt tensor O_pyr ⊗_BV O_frag & Beck Distributive Law λ̂ : T̄_pyr T̄_frag ⇒ T̄_frag T̄_pyr" },
-    { eq: "SM Eq. 8", ch: "Ch 2", page: 37, tex: "def:piecewise_colored_operad", d: "(f̲, m̲) ≡ ∫ (f_γ, m_γ) (Komplexsynkolator & Syndromabschluß)", r: "Piecewise-color filtered operad algebra with m_K > dim F ⇒ C(dim F, m_K) = 0" },
-    { eq: "SM Eqs. 9, 9a", ch: "Ch 2", page: 51, tex: "thm:aeondyne_fibration_strict", d: "S̲ ≡ ⟨f, (ã), m⟩ (Primigene & Ganzläufige Äondyne)", r: "Cartesian fiber section in Grothendieck fibration π : ∫_Ctx Syn → Ctx" },
-    { eq: "SM Eq. 11", ch: "Ch 3", page: 58, tex: "eq:original_universal_korporator_matrix_ch3", d: "2 × 2 Universal Korporator Matrix {K_s, C_s; K_m, C_m}", r: "Corporate pairing functor Kor_{r,Σ}: Span pushout P_a ⊞_φ P_b (p+q-λ) & 9 Mixed / 6 Pure classes" },
-    { eq: "SM Eq. 11a", ch: "Ch 3", page: 59, tex: "prop:zero_object_syn", d: "ys c̃ ≡ ⟨f̄ c̃ m̄⟩ (Nullsyntrix)", r: "Initial & terminal zero object 0_Syn ∈ Obj(Syn)" },
-    { eq: "SM Eq. 13", ch: "Ch 3", page: 60, tex: "def:conflexivity_index", d: "Mehrgliedrige Konflexivsyntrix & Syntropod Chain", r: "Tree colimit varinjlim D with Presentation Conflexivity Index ConfIndex_pres(G_S) = |E_K| + 1" },
-    { eq: "SM Eq. 14", ch: "Ch 4", page: 79, tex: "thm:slice_site_equivalence_ch4", d: "Generative G_gen & 4D Syntrixtotalität T0", r: "Slice sheaf topos Sh(Ctx_{/U_G}, J_{/U_G}) ≃ E_syn / y(U_G) over P^{U_G} ≅ ℝ¹²" },
-    { eq: "SM Eqs. 16a, 17", ch: "Ch 4", page: 80, tex: "thm:relative_interaction_curvature_decomp", d: "Continuous Enyphane E, Inverse E⁻¹ & Enyphanie Eν", r: "Boundary-tangent corner flow Φ_t^X & Non-Abelian Interaction Curvature Ω_int^D = ∑[a_i, a_j] + …" },
-    { eq: "SM Eq. 18", ch: "Ch 4", page: 94, tex: "def:discrete_chronometry_clock_ch4", d: "Syntrixfunktor YF & Elementary Zeitkorn δt_i", r: "Pushout endofunctor YF_model(f) = B ⨿_{C₀} f^{⊗r} & discrete clock difference δt_n = τ(n+1) - τ(n)" },
-    { eq: "SM Eqs. 20–25a", ch: "Ch 5", page: 103, tex: "def:complete_segal_objects_ch5", d: "Hypersyntrix M¹ & Metroplex M^n", r: "Dendroidal Complete Segal Spaces dCSeg(X_syn) & change-of-operad adjunction (φ)_! ⊣ (φ)*" },
-    { eq: "SM Eq. 27", ch: "Ch 6", page: 123, tex: "thm:final_coalgebra_existence_ch6", d: "Äonische Area AR_q & Telezentrum T_z", r: "Final Telecentric Coalgebra (ν𝒯, ζ ≅) via Lambek's Lemma & Lyapunov basin V̇ ≤ -γV" },
-    { eq: "SM Eqs. 28–35a", ch: "Ch 7–8", page: 144, tex: "thm:nuclear_variable_separation", d: "Quantitätssyntrix yR_n & Separation der Variablen", r: "Quantitative Topos E_quant, Seeley extension E^{(n)} & Grothendieck nuclearity 𝒮((ℝ_≥0)^m)" },
-    { eq: "SM Eqs. 37, 53, 64", ch: "Ch 9", page: 182, tex: "def:hermetry_matrix_36", d: "36-Component Non-Hermitian Hermetry ²ḡ & Übergangskriterium", r: "21 symmetric + 15 skew potentials on R₆, Palatini Q_{(μγ)} & Sobolev fixed point ²ḡ_∞" },
-    { eq: "SM Eqs. 67–80", ch: "Ch 10", page: 205, tex: "thm:discrete_leibniz_rules", d: "Metrondifferential ∇φ, Product Rule & Metronintegral S", r: "Backward difference ∇_i = I - E_i⁻¹, non-linear cross-term -(∇u)(∇v), DEC d_τ² ≡ 0 & FEEC" },
-    { eq: "SM Eqs. 99, 100, 100a", ch: "Ch 11", page: 228, tex: "thm:mass_eigenvalue_formula_ch11", d: "Strukturkompressor ⁴ζ, Null-Stability ⁴F = 0 & L_p = C(6,p)", r: "Self-adjoint selector spectrum on K₈ = S² × 𝕋⁶ across 63 channels L_p = C(6,p) fixing particle masses" }
+    { eq: "SM Eq. 1 / SM-4", ch: "Ch 1", page: 15, tex: "eq:sm_4", d: "S \\equiv \\left\\lceil D_{nn} \\times K_n \\times P_{nn} \\right\\rceil \\equiv \\left\\lceil \\zeta_n,\\; \\left[\\begin{pmatrix} \\alpha \\\\ d \\\\ \\beta \\end{pmatrix}_{q}\\right]_n \\times \\dots \\right\\rceil", r: "Context \\(U = (D^U, P^U, C^U, K^U, z^U, \\zeta^U) \\in \\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}\\) with contraction \\(K^U : D^U \\widehat{\\otimes}_\\pi P^U \\to C^U\\)" },
+    { eq: "SM Eq. 4", ch: "Ch 1", page: 17, tex: "prop:quantor_degeneration_hierarchy", d: "(\\cdot)_{\\rho}, \\polyquantor{A_\\rho}{\\underrightarrow{f_\\rho}}{1}{r}, (\\cdot)_\\rho \\quad (\\text{Polyquantor-Hierarchie})", r: "Product-slice Kripke–Joyal forcing \\(\\prod V_i \\Vdash \\phi\\) and right-adjoint universal quantifier \\(\\forall_f\\)" },
+    { eq: "SM Eq. 5", ch: "Ch 2", page: 35, tex: "eq:heim_syntrix_eq5", d: "\\syntrix{\\metrophor{a}} \\equiv \\langle f, \\metrophor{a}, m\\rangle \\lor F_1 \\equiv f(a_k)_1^m \\quad (\\text{Syntrix Triad})", r: "Free algebra over completed colored Banach operad \\(\\mathcal{O}_{\\mathrm{syn}}\\) on profile \\((\\gamma,\\dots,\\gamma; \\gamma+1)\\)" },
+    { eq: "SM Eq. 5a", ch: "Ch 2", page: 36, tex: "eq:heim_homogeneous_eq5a", d: "\\mathbf{x}\\syntrix{\\metrophor{a}} \\equiv \\langle\\langle f, \\metrophor{a}\\rangle m\\rangle \\quad (\\text{Homogeneous Syntrix & Spaltbarkeit})", r: "Boardman–Vogt tensor \\(\\mathcal{O}_{\\mathrm{pyr}} \\otimes_{\\mathrm{BV}} \\mathcal{O}_{\\mathrm{frag}}\\) and Beck Distributive Law \\(\\widehat{\\lambda} : \\overline{T}_{\\mathrm{pyr}} \\overline{T}_{\\mathrm{frag}} \\Rightarrow \\overline{T}_{\\mathrm{frag}} \\overline{T}_{\\mathrm{pyr}}\\)" },
+    { eq: "SM Eq. 8", ch: "Ch 2", page: 37, tex: "def:piecewise_colored_operad", d: "(\\underline{f}, \\underline{m}) \\equiv \\int (f_\\gamma, m_\\gamma) \\quad (\\text{Komplexsynkolator})", r: "Piecewise-color filtered operad algebra with \\(m_K > \\dim F \\implies C(\\dim F, m_K) = 0\\)" },
+    { eq: "SM Eqs. 9, 9a", ch: "Ch 2", page: 51, tex: "thm:aeondyne_fibration_strict", d: "\\underline{S} \\equiv \\langle f, (\\metrophor{a}), m\\rangle \\lor \\overline{S} \\equiv \\langle(f), \\metrophor{a}, m\\rangle", r: "Cartesian fiber section in Grothendieck fibration \\(\\pi : \\int_{\\mathbf{Ctx}} \\mathbf{Syn} \\to \\mathbf{Ctx}\\)" },
+    { eq: "SM Eq. 11", ch: "Ch 3", page: 58, tex: "eq:original_universal_korporator_matrix_ch3", d: "\\begin{pmatrix} K_s & C_s \\\\ K_m & C_m \\end{pmatrix} \\quad (2 \\times 2 \\; \\text{Universal Korporator Matrix})", r: "Corporate pairing functor \\(\\mathbf{Kor}_{r,\\Sigma}\\): Span pushout \\(P_a \\boxplus_\\phi P_b\\) and 9 Mixed / 6 Pure classes" },
+    { eq: "SM Eq. 11a", ch: "Ch 3", page: 59, tex: "prop:zero_object_syn", d: "\\mathbf{ys}\\,\\widetilde{c} \\equiv \\langle\\overline{f}\\,\\widetilde{c}\\,\\overline{m}\\rangle \\quad (\\text{Nullsyntrix})", r: "Initial & terminal zero object \\(0_{\\mathbf{Syn}} \\in \\mathrm{Obj}(\\mathbf{Syn})\\)" },
+    { eq: "SM Eq. 13", ch: "Ch 3", page: 60, tex: "def:conflexivity_index", d: "\\mathbf{y}\\widetilde{a}_{\\mathrm{conf}} \\equiv \\prod_{i=1}^k \\mathbf{S}_i \\quad (\\text{Konflexivsyntrix})", r: "Tree colimit \\(\\varinjlim D\\) with Presentation Conflexivity Index \\(\\mathrm{ConfIndex}_{\\mathrm{pres}}(G_S) = |E_K| + 1\\)" },
+    { eq: "SM Eq. 14", ch: "Ch 4", page: 79, tex: "thm:slice_site_equivalence_ch4", d: "G_{\\mathrm{gen}} \\equiv \\left[ P_i \\big\\vert_1^4 \\{\\dots\\}_{(j)} \\big\\vert_1^Q \\right] \\quad (\\text{Generative & 4D Syntrixtotalit\\\"at})", r: "Slice sheaf topos \\(\\mathrm{Sh}(\\mathbf{Ctx}_{/U_G}, J_{/U_G}) \\simeq \\mathcal{E}_{\\mathrm{syn}} / y(U_G)\\) over \\(P^{U_G} \\cong \\mathbb{R}^{12}\\)" },
+    { eq: "SM Eqs. 16a, 17", ch: "Ch 4", page: 80, tex: "thm:relative_interaction_curvature_decomp", d: "E, \\; E^{-1}, \\; E_\\nu \\quad (\\text{Continuous Enyphane & Enyphanie})", r: "Boundary-tangent corner flow \\(\\Phi_t^X\\) and Non-Abelian Interaction Curvature \\(\\Omega_{\\mathrm{int}}^D = \\sum [a_i, a_j] + \\dots\\)" },
+    { eq: "SM Eq. 18", ch: "Ch 4", page: 94, tex: "def:discrete_chronometry_clock_ch4", d: "\\mathrm{YF}(\\delta t_i) \\quad (\\text{Syntrixfunktor & Zeitkorn})", r: "Pushout endofunctor \\(\\mathrm{YF}_{\\mathrm{model}}(f) = B \\amalg_{C_0} f^{\\otimes r}\\) and discrete clock difference \\(\\delta t_n = \\tau(n+1) - \\tau(n)\\)" },
+    { eq: "SM Eqs. 20--25a", ch: "Ch 5", page: 103, tex: "def:complete_segal_objects_ch5", d: "\\mathsf{M}^1, \\; \\mathsf{M}^n, \\; {}^{n+N}\\alpha \\quad (\\text{Hypersyntrix & Metroplex})", r: "Dendroidal Complete Segal Spaces \\(\\mathrm{dCSeg}(\\mathcal{X}_{\\mathrm{syn}})\\) and change-of-operad adjunction \\((\\phi)_! \\dashv (\\phi)^*\\)" },
+    { eq: "SM Eq. 27", ch: "Ch 6", page: 123, tex: "thm:final_coalgebra_existence_ch6", d: "\\mathrm{AR}_q, \\; T_z \\quad (\\text{\\\"Aonische Area & Telezentrum})", r: "Final Telecentric Coalgebra \\((\\nu \\mathcal{T}, \\zeta \\cong)\\) via Lambek's Lemma and Lyapunov basin \\(\\dot{V} \\leq -\\gamma V\\)" },
+    { eq: "SM Eqs. 28--35a", ch: "Ch 7--8", page: 144, tex: "thm:nuclear_variable_separation", d: "\\mathbf{y}R_n \\equiv \\langle f, R_n, m\\rangle \\quad (\\text{Quantit\\\"atssyntrix})", r: "Quantitative Topos \\(\\mathcal{E}_{\\mathrm{quant}}\\), Seeley extension \\(E^{(n)}\\) and Grothendieck nuclearity \\(\\mathcal{S}((\\mathbb{R}_{\\geq 0})^m)\\)" },
+    { eq: "SM Eqs. 37, 53, 64", ch: "Ch 9", page: 182, tex: "def:hermetry_matrix_36", d: "{}^2\\bar{g} = {}^2\\bar{g}_+ + {}^2\\bar{g}_- \\quad (36\\text{-Component Hermetry})", r: "21 symmetric + 15 skew potentials on \\(R_6\\), Palatini \\(Q_{(\\mu\\gamma)}\\) and Sobolev fixed point \\({}^2\\bar{g}_\\infty\\)" },
+    { eq: "SM Eqs. 67--80", ch: "Ch 10", page: 205, tex: "thm:discrete_leibniz_rules", d: "\\metrondelta\\varphi = \\varphi(n) - \\varphi(n-1), \\quad \\nabla(uv) = u\\nabla v + v\\nabla u - (\\nabla u)(\\nabla v), \\quad \\mathrm{S}", r: "Backward difference \\(\\nabla_i = I - E_i^{-1}\\), DEC \\(d_\\tau^2 \\equiv 0\\) and Finite Element Exterior Calculus" },
+    { eq: "SM Eqs. 99, 100, 100a", ch: "Ch 11", page: 228, tex: "thm:mass_eigenvalue_formula_ch11", d: "{}^4\\zeta, \\quad {}^4F = 0, \\quad L_p = C(6,p) \\quad (\\text{Strukturkompressor & Masses})", r: "Self-adjoint selector spectrum on \\(K_8 = S^2 \\times \\mathbb{T}^6\\) across 63 channels fixing elementary particle masses" }
   ];
 
   const STYLES = `
+/* =========================================================================
+   UNIVERSAL MOBILE LATEX & MONOGRAPH WORKBENCH STYLING
+   ========================================================================= */
+
+/* =========================================================================
+   SYN BOTTOM CONTROLS FLEX DOCK
+   Flex-boxes the Monograph Drawer trigger and Animation HUDs/Buttons
+   so they never collide or overlap on any device.
+   ========================================================================= */
+#syn-bottom-dock {
+  position: fixed !important;
+  pointer-events: none !important;
+  z-index: 10000 !important;
+  display: flex !important;
+  box-sizing: border-box !important;
+}
+
+#syn-bottom-dock > * {
+  pointer-events: auto !important;
+}
+
 #syn-monograph-fab {
   position: fixed;
   left: 20px;
-  bottom: 20px;
+  bottom: var(--syn-bottom-offset, 64px);
   background: linear-gradient(135deg, #111a2e 0%, #1e293b 100%);
   color: #FFD700;
   border: 1.5px solid #FFD700;
@@ -88,6 +413,119 @@
   box-sizing: border-box;
 }
 
+/* Mobile Viewports (<= 900px): Vertical Flexbox Column Dock */
+@media (max-width: 900px) {
+  #syn-bottom-dock {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: calc(var(--syn-bottom-offset, 8px) + env(safe-area-inset-bottom, 0px)) !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    max-width: calc(100vw - 16px) !important;
+  }
+
+  #syn-bottom-dock #syn-monograph-fab {
+    position: static !important;
+    margin: 0 !important;
+    align-self: flex-start !important;
+    max-width: calc(100vw - 16px) !important;
+    padding: 6px 11px !important;
+    font-size: 11px !important;
+    border-radius: 8px !important;
+  }
+
+  #syn-bottom-dock [id$="-3d-hud"],
+  #syn-bottom-dock #syntrix-3d-hud,
+  #syn-bottom-dock .anim-hud-tray,
+  #syn-bottom-dock .animation-hud {
+    position: static !important;
+    margin: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Desktop Viewports (>= 901px): Horizontal Flexbox with Desktop Taskbar Avoidance */
+@media (min-width: 901px) {
+  #syn-bottom-dock {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: var(--syn-bottom-offset, 64px) !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    gap: 20px !important;
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  #syn-bottom-dock #syn-monograph-fab {
+    position: static !important;
+    align-self: flex-end !important;
+  }
+
+  #syn-bottom-dock [id$="-3d-hud"],
+  #syn-bottom-dock #syntrix-3d-hud,
+  #syn-bottom-dock .anim-hud-tray,
+  #syn-bottom-dock .animation-hud {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: auto !important;
+    max-width: min(480px, 45vw) !important;
+  }
+}
+
+/* Spotlight HUD centered on screen */
+#syn-bottom-dock [id$="-3d-hud"].spotlight,
+#syn-bottom-dock #syntrix-3d-hud.spotlight {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  bottom: auto !important;
+  right: auto !important;
+  z-index: 100005 !important;
+}
+
+/* When Monograph Drawer is OPEN: Hide bottom dock / animation HUD to avoid distraction */
+body.mdrawer-open #syn-bottom-dock [id$="-3d-hud"],
+body.mdrawer-open #syn-bottom-dock #syntrix-3d-hud,
+body.mdrawer-open #syn-bottom-dock .anim-hud-tray,
+body.mdrawer-open [id$="-3d-hud"],
+body.mdrawer-open #syntrix-3d-hud,
+body.mdrawer-open .anim-hud-tray {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+/* Dynamic Avoidance of Windows System Tray & Taskbar for Desktop Trays */
+@media (min-width: 901px) {
+  #syn-monograph-fab {
+    bottom: var(--syn-bottom-offset, 64px) !important;
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s ease, background 0.2s ease !important;
+  }
+  
+  [id$="-3d-hud"],
+  #syntrix-3d-hud,
+  .anim-hud-tray,
+  .animation-hud {
+    bottom: var(--syn-bottom-offset, 64px) !important;
+    max-height: calc(100vh - var(--syn-bottom-offset, 64px) - 32px) !important;
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1), width 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  [id$="-3d-hud"].spotlight,
+  #syntrix-3d-hud.spotlight {
+    bottom: 50% !important;
+  }
+}
+
 #syn-monograph-fab:hover {
   background: #FFD700;
   color: #000;
@@ -101,10 +539,12 @@
   left: 0;
   width: min(880px, 96vw);
   height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   background: linear-gradient(160deg, rgba(7, 10, 18, 0.98) 0%, rgba(13, 19, 34, 0.99) 100%);
   border-right: 2px solid #FFD700;
   box-shadow: 20px 0 65px rgba(0, 0, 0, 0.92);
-  z-index: 10001;
+  z-index: 100001 !important;
   transform: translateX(-104%);
   transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
   display: flex;
@@ -248,25 +688,110 @@
   padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+  box-sizing: border-box;
 }
 
 .rosetta-card {
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.90);
   border: 1px solid #334155;
   border-left: 4px solid #4169E1;
-  border-radius: 7px;
-  padding: 9px 13px;
+  border-radius: 8px;
+  padding: 11px 14px;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.15s ease;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
 }
 
 .rosetta-card:hover {
   border-color: #FFD700;
-  background: rgba(65, 105, 225, 0.16);
+  background: rgba(22, 33, 58, 0.94);
   transform: translateX(2px);
+}
+
+/* Formula Containers with High-Performance Mobile Horizontal Scroll */
+.rosetta-formula-box {
+  margin: 4px 0;
+  padding: 8px 11px;
+  background: rgba(6, 9, 16, 0.88);
+  border: 1px solid rgba(65, 105, 225, 0.35);
+  border-radius: 6px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.rosetta-formula-label {
+  font-size: 9.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #FFD700;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rosetta-formula-math {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  padding: 4px 0 6px 0;
+  font-size: 13.5px;
+  color: #f8fafc;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 215, 0, 0.4) transparent;
+}
+
+.rosetta-formula-math::-webkit-scrollbar,
+.thm-math-preview::-webkit-scrollbar {
+  height: 3px;
+}
+.rosetta-formula-math::-webkit-scrollbar-thumb,
+.thm-math-preview::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.5);
+  border-radius: 3px;
+}
+
+.rosetta-recon-box {
+  font-size: 11.8px;
+  color: #5eead4;
+  line-height: 1.46;
+  padding-top: 2px;
+}
+
+.thm-math-preview {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  padding: 4px 0 6px 0;
+  font-size: 12.2px;
+  color: #cbd5e1;
+  line-height: 1.48;
+}
+
+.thm-code-block {
+  margin: 4px 0 0 0;
+  padding: 7px 10px;
+  background: #05070d;
+  border: 1px solid #1e293b;
+  border-radius: 5px;
+  font-family: "Libertinus Mono", "Fira Code", monospace;
+  font-size: 11px;
+  color: #a78bfa;
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 .m3d-btn {
@@ -292,6 +817,23 @@
   color: #FFD700;
 }
 
+.tex-peek-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid #334155;
+  border-radius: 4px;
+  color: #94a3b8;
+  padding: 1px 6px;
+  font-size: 9.5px;
+  font-family: "Libertinus Mono", monospace;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.tex-peek-btn:hover {
+  background: #FFD700;
+  color: #000;
+  border-color: #FFD700;
+}
+
 .pdf-cite-badge {
   display: inline-flex;
   align-items: center;
@@ -315,6 +857,25 @@
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.35);
 }
 
+/* =========================================================================
+   MOBILE LATEX DISPLAY OPTIMIZATION RULES (MATCHES REVEAL & CARDS)
+   ========================================================================= */
+
+.rosetta-card mjx-container[display="true"],
+.thm-card mjx-container[display="true"],
+.rosetta-formula-math mjx-container {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x pan-y !important;
+  padding: 4px 2px !important;
+  margin: 6px 0 !important;
+  box-sizing: border-box !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 215, 0, 0.4) transparent !important;
+}
+
 @media (max-width: 768px) {
   #syn-monograph-fab {
     left: 10px;
@@ -336,18 +897,57 @@
   .tex-search-input {
     min-width: 130px;
   }
+  .rosetta-formula-math {
+    font-size: 12px;
+  }
+  .thm-math-preview {
+    font-size: 11.5px;
+  }
+  .rosetta-card {
+    padding: 9px 11px;
+  }
+  .rosetta-list {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  .reveal .MathJax_Display,
+  .reveal mjx-container[display="true"],
+  .reveal-viewport.reveal-scroll .MathJax_Display,
+  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
+    font-size: 0.84em !important;
+  }
+  .reveal mjx-container:not([display="true"]),
+  .reveal-viewport.reveal-scroll mjx-container:not([display="true"]) {
+    font-size: 0.90em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .reveal .MathJax_Display,
+  .reveal mjx-container[display="true"],
+  .reveal-viewport.reveal-scroll .MathJax_Display,
+  .reveal-viewport.reveal-scroll mjx-container[display="true"] {
+    font-size: 0.76em !important;
+  }
+  .reveal mjx-container:not([display="true"]),
+  .reveal-viewport.reveal-scroll mjx-container:not([display="true"]) {
+    font-size: 0.84em !important;
+  }
+  .rosetta-formula-math {
+    font-size: 11px;
+  }
 }
 `;
 
   const DRAWER_HTML = `
 <!-- Floating Launcher Button (Bottom-Left) -->
-<button id="syn-monograph-fab" onclick="window.toggleMonographDrawer()" title="Open Synchronized Monograph PDF, Raw TeX & 100-Equation Rosetta Register (Shortcut: M)">
+<button id="syn-monograph-fab" data-prevent-swipe="true" onclick="window.toggleMonographDrawer()" title="Open Synchronized Monograph PDF, Raw TeX & 100-Equation Rosetta Register (Shortcut: M)">
   <span>📖 Monograph PDF &amp; TeX</span>
   <span id="fab-page-pill" style="background:#4169E1; color:#fff; padding:1px 6px; border-radius:4px; font-size:10.5px;">p. 11</span>
 </button>
 
 <!-- Slide-Over Monograph & TeX Workbench Drawer -->
-<div id="syn-monograph-drawer" aria-label="Monograph Workbench Drawer">
+<div id="syn-monograph-drawer" data-prevent-swipe="true" aria-label="Monograph Workbench Drawer">
   <div class="mdrawer-header">
     <div class="mdrawer-title">
       <span>🏛️ Syntrometric Monograph Workbench</span>
@@ -405,7 +1005,7 @@
     <!-- PANE 2: Live Raw LaTeX Source Explorer -->
     <div class="mdrawer-pane" id="mpane-tex">
       <div class="tex-toolbar">
-        <input type="text" id="tex-search-box" class="tex-search-input" placeholder="Search Syntrometric-Topos.tex (e.g., thm:exact_descent_holoform, zombie_impossibility, \\SyntrometricSequentCalculus)..." oninput="window.searchRawTeX(this.value)">
+        <input type="text" id="tex-search-box" class="tex-search-input" placeholder="Search Syntrometric-Topos.tex (e.g., thm:exact_descent_holoform, zombie_impossibility, \\SyntrometricSequentCalculus)..." oninput="window.debounceTeXSearch(this.value)">
         <button class="m3d-btn" onclick="window.copyCurrentTeXSnippet()">📋 Copy TeX</button>
       </div>
       <pre id="monograph-tex-viewer">Loading Syntrometric-Topos.tex source...</pre>
@@ -414,7 +1014,7 @@
     <!-- PANE 3: Auto-Extracted Theorem, Definition & Lean 4 Index -->
     <div class="mdrawer-pane" id="mpane-thm">
       <div class="tex-toolbar">
-        <input type="text" id="thm-search" class="tex-search-input" placeholder="Filter 380+ Theorems, Definitions, Scholia & Lean 4 blocks parsed from Syntrometric-Topos.tex..." oninput="window.filterTheoremIndex(this.value)">
+        <input type="text" id="thm-search" class="tex-search-input" placeholder="Filter 380+ Theorems, Definitions, Scholia & Lean 4 blocks (with rendered LaTeX math)..." oninput="window.debounceTheoremSearch(this.value)">
       </div>
       <div class="rosetta-list" id="thm-cards-container"></div>
     </div>
@@ -422,7 +1022,7 @@
     <!-- PANE 4: Interactive 100-Equation Rosetta Register -->
     <div class="mdrawer-pane" id="mpane-rosetta">
       <div class="tex-toolbar">
-        <input type="text" id="rosetta-search" class="tex-search-input" placeholder="Filter all SM Equations 1–100a (e.g., SM Eq. 1, SM Eq. 11, SM Eq. 64, SM Eq. 100a)..." oninput="window.filterRosettaRegister(this.value)">
+        <input type="text" id="rosetta-search" class="tex-search-input" placeholder="Filter all SM Equations 1–100a with live rendered math (e.g., SM Eq. 1, SM Eq. 11, Hermetry)..." oninput="window.debounceRosettaSearch(this.value)">
       </div>
       <div class="rosetta-list" id="rosetta-cards-container"></div>
     </div>
@@ -430,7 +1030,236 @@
 </div>
 `;
 
+  // Dynamic MathJax Availability & Safe Typesetting Queue Guard
+  const typesetQueue = new Set();
+  let typesetDraining = false;
+  let mathJaxLoading = false;
+  const mathJaxCallbacks = [];
+
+  // Pre-configure MathJax immediately with all 179 syntrometric macros before any script loads
+  window.MathJax = window.MathJax || {};
+  window.MathJax.tex = window.MathJax.tex || {};
+  window.MathJax.tex.inlineMath = window.MathJax.tex.inlineMath || [['$', '$'], ['\(', '\)']];
+  window.MathJax.tex.displayMath = window.MathJax.tex.displayMath || [['', ''], ['\[', '\]']];
+  window.MathJax.tex.processEscapes = true;
+  window.MathJax.tex.macros = Object.assign(window.MathJax.tex.macros || {}, SYN_MATH_MACROS);
+  window.MathJax.chtml = window.MathJax.chtml || { scale: 0.95 };
+
+  function registerRuntimeMacros() {
+    if (typeof window === 'undefined' || !window.MathJax) return;
+    if (window.MathJax.config && window.MathJax.config.tex) {
+      window.MathJax.config.tex.macros = Object.assign(window.MathJax.config.tex.macros || {}, SYN_MATH_MACROS);
+    }
+    if (window.MathJax.tex) {
+      window.MathJax.tex.macros = Object.assign(window.MathJax.tex.macros || {}, SYN_MATH_MACROS);
+    }
+    try {
+      const doc = window.MathJax.startup && window.MathJax.startup.document;
+      if (doc && doc.inputJax) {
+        const texJax = doc.inputJax.find(j => j.name === 'tex');
+        if (texJax && texJax.parseOptions && texJax.parseOptions.options) {
+          texJax.parseOptions.options.macros = Object.assign(texJax.parseOptions.options.macros || {}, SYN_MATH_MACROS);
+          const cm = window.MathJax._ && window.MathJax._.input && window.MathJax._.input.tex &&
+                     window.MathJax._.input.tex.configmacros &&
+                     window.MathJax._.input.tex.configmacros.ConfigMacrosConfiguration &&
+                     (window.MathJax._.input.tex.configmacros.ConfigMacrosConfiguration.ConfigMacrosConfiguration ||
+                      window.MathJax._.input.tex.configmacros.ConfigMacrosConfiguration);
+          if (cm && typeof cm.config === 'function') {
+            cm.config({}, texJax);
+          }
+        }
+      }
+    } catch (e) {}
+  }
+
+  function ensureMathJaxAvailable(callback) {
+    registerRuntimeMacros();
+
+    if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+      if (callback) setTimeout(callback, 0);
+      return;
+    }
+    if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+      window.MathJax.startup.promise.then(() => {
+        registerRuntimeMacros();
+        if (callback) setTimeout(callback, 0);
+      }).catch(() => {
+        if (callback) setTimeout(callback, 0);
+      });
+      return;
+    }
+    if (callback) mathJaxCallbacks.push(callback);
+    if (mathJaxLoading) return;
+    mathJaxLoading = true;
+
+    // If no MathJax script tag exists in document, inject mathjax@3 production build immediately!
+    if (!document.getElementById('syn-monograph-mathjax') && !document.getElementById('mathjax-script')) {
+      window.MathJax = window.MathJax || {};
+      window.MathJax.tex = window.MathJax.tex || {};
+      window.MathJax.tex.inlineMath = window.MathJax.tex.inlineMath || [['$', '$'], ['\(', '\)']];
+      window.MathJax.tex.displayMath = window.MathJax.tex.displayMath || [['', ''], ['\[', '\]']];
+      window.MathJax.tex.processEscapes = true;
+      window.MathJax.tex.macros = Object.assign(window.MathJax.tex.macros || {}, SYN_MATH_MACROS);
+      window.MathJax.chtml = window.MathJax.chtml || { scale: 0.95 };
+
+      const script = document.createElement('script');
+      script.id = 'syn-monograph-mathjax';
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+      script.async = true;
+      script.onload = () => {
+        const flush = () => {
+          registerRuntimeMacros();
+          mathJaxLoading = false;
+          while (mathJaxCallbacks.length > 0) {
+            const cb = mathJaxCallbacks.shift();
+            try { cb(); } catch (e) {}
+          }
+        };
+        if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+          window.MathJax.startup.promise.then(flush).catch(flush);
+        } else {
+          flush();
+        }
+      };
+      document.head.appendChild(script);
+      return;
+    }
+
+    // Otherwise, check for existing page MathJax to finish startup
+    let attempts = 0;
+    const checker = setInterval(() => {
+      attempts++;
+      if (window.MathJax && (typeof window.MathJax.typesetPromise === 'function' || (window.MathJax.startup && window.MathJax.startup.promise))) {
+        clearInterval(checker);
+        mathJaxLoading = false;
+        const flush = () => {
+          registerRuntimeMacros();
+          while (mathJaxCallbacks.length > 0) {
+            const cb = mathJaxCallbacks.shift();
+            try { cb(); } catch (e) {}
+          }
+        };
+        if (window.MathJax.startup && window.MathJax.startup.promise) {
+          window.MathJax.startup.promise.then(flush).catch(flush);
+        } else {
+          flush();
+        }
+        return;
+      }
+      if (attempts > 30) {
+        clearInterval(checker);
+        mathJaxLoading = false;
+      }
+    }, 50);
+  }
+
+  function safeTypeset(element) {
+    if (!element) return;
+    typesetQueue.add(element);
+    scheduleTypesetDrain();
+  }
+
+  function scheduleTypesetDrain() {
+    if (typesetDraining) return;
+    setTimeout(drainTypesetQueue, 35);
+  }
+
+  function drainTypesetQueue() {
+    if (typesetDraining || typesetQueue.size === 0) return;
+
+    if (!window.MathJax || (!window.MathJax.typesetPromise && (!window.MathJax.startup || !window.MathJax.startup.promise))) {
+      ensureMathJaxAvailable(() => scheduleTypesetDrain());
+      return;
+    }
+
+    const elements = Array.from(typesetQueue);
+    typesetQueue.clear();
+    typesetDraining = true;
+
+    const runPromise = (window.MathJax.startup && window.MathJax.startup.promise)
+      ? window.MathJax.startup.promise
+      : Promise.resolve();
+
+    runPromise.then(() => {
+      registerRuntimeMacros();
+      if (typeof window.MathJax.typesetPromise === 'function') {
+        try {
+          if (typeof window.MathJax.typesetClear === 'function') {
+            window.MathJax.typesetClear(elements);
+          }
+        } catch (e) {}
+        return window.MathJax.typesetPromise(elements);
+      }
+    }).catch(err => {
+      // Non-fatal typesetting warning
+    }).finally(() => {
+      typesetDraining = false;
+      if (typesetQueue.size > 0) {
+        setTimeout(drainTypesetQueue, 35);
+      }
+    });
+  }
+
+  // Pre-register all syntrometric macros into existing MathJax instance if already loaded
+  registerRuntimeMacros();
+
+  function ensureBottomDock() {
+    let dock = document.getElementById('syn-bottom-dock');
+    if (!dock) {
+      dock = document.createElement('div');
+      dock.id = 'syn-bottom-dock';
+      dock.setAttribute('data-prevent-swipe', 'true');
+      document.body.appendChild(dock);
+    }
+    return dock;
+  }
+
+  function dockAnimationHUDs() {
+    const dock = document.getElementById('syn-bottom-dock');
+    if (!dock) return;
+    const huds = document.querySelectorAll('[id$="-3d-hud"], #syntrix-3d-hud, .anim-hud-tray, .animation-hud');
+    huds.forEach(hud => {
+      if (hud && hud.parentElement !== dock) {
+        dock.appendChild(hud);
+      }
+    });
+  }
+
   function injectDOM() {
+    // 1. If running inside an iframe whose parent already has the monograph workbench,
+    // do NOT inject a duplicate drawer or FAB inside the iframe.
+    try {
+      if (window.parent && window.parent !== window && window.parent.document) {
+        if (window.parent.document.getElementById('syn-monograph-drawer') || window.parent.document.getElementById('syn-monograph-fab')) {
+          window.toggleMonographDrawer = function() {
+            if (typeof window.parent.toggleMonographDrawer === 'function') {
+              window.parent.toggleMonographDrawer();
+            }
+          };
+          window.openMonographAtPage = function(page, query) {
+            if (typeof window.parent.openMonographAtPage === 'function') {
+              window.parent.openMonographAtPage(page, query);
+            }
+          };
+          return;
+        }
+      }
+    } catch (e) {}
+
+    // 2. Strict deduplication guard: eliminate any duplicate drawers or FABs in DOM
+    const existingDrawers = document.querySelectorAll('#syn-monograph-drawer');
+    if (existingDrawers.length > 1) {
+      for (let i = 1; i < existingDrawers.length; i++) existingDrawers[i].remove();
+    }
+    const existingFabs = document.querySelectorAll('#syn-monograph-fab');
+    if (existingFabs.length > 1) {
+      for (let i = 1; i < existingFabs.length; i++) existingFabs[i].remove();
+    }
+    const existingMounts = document.querySelectorAll('#syn-monograph-mount');
+    if (existingMounts.length > 1) {
+      for (let i = 1; i < existingMounts.length; i++) existingMounts[i].remove();
+    }
+
     if (document.getElementById('syn-monograph-drawer')) return;
 
     const styleEl = document.createElement('style');
@@ -438,10 +1267,25 @@
     styleEl.textContent = STYLES;
     document.head.appendChild(styleEl);
 
+    const dock = ensureBottomDock();
+
     const container = document.createElement('div');
     container.id = 'syn-monograph-mount';
     container.innerHTML = DRAWER_HTML;
     document.body.appendChild(container);
+
+    // Place the FAB inside the bottom dock so flexbox coordinates it with animation HUDs
+    const fab = document.getElementById('syn-monograph-fab');
+    if (fab && dock) {
+      dock.insertBefore(fab, dock.firstChild);
+    }
+
+    // Dock existing animation HUDs and watch for dynamically injected ones
+    dockAnimationHUDs();
+    if ('MutationObserver' in window) {
+      const obs = new MutationObserver(() => dockAnimationHUDs());
+      obs.observe(document.body, { childList: true, subtree: false });
+    }
 
     // Stop propagation on inputs inside drawer so Reveal doesn't capture keystrokes
     const dr = document.getElementById('syn-monograph-drawer');
@@ -464,11 +1308,22 @@
   }
 
   window.toggleMonographDrawer = function() {
+    if (window.parent && window.parent !== window && typeof window.parent.toggleMonographDrawer === 'function') {
+      window.parent.toggleMonographDrawer();
+      return;
+    }
     const dr = document.getElementById('syn-monograph-drawer');
     if (dr) {
-      dr.classList.toggle('open');
-      if (dr.classList.contains('open') && !rawTeXCache) {
-        loadRawTeXFile();
+      const willOpen = !dr.classList.contains('open');
+      dr.classList.toggle('open', willOpen);
+      document.body.classList.toggle('mdrawer-open', willOpen);
+      if (willOpen) {
+        if (!rawTeXCache) {
+          loadRawTeXFile();
+        } else {
+          if (activeTab === 'rosetta') window.filterRosettaRegister("");
+          else if (activeTab === 'thm') window.filterTheoremIndex("");
+        }
       }
     }
   };
@@ -479,8 +1334,16 @@
       document.getElementById('mtab-' + t)?.classList.toggle('active', t === tab);
       document.getElementById('mpane-' + t)?.classList.toggle('active', t === tab);
     });
-    if ((tab === 'tex' || tab === 'thm' || tab === 'rosetta') && !rawTeXCache) {
+    if (!rawTeXCache) {
       loadRawTeXFile();
+    } else {
+      if (tab === 'rosetta') {
+        const cont = document.getElementById('rosetta-cards-container');
+        safeTypeset(cont);
+      } else if (tab === 'thm') {
+        const cont = document.getElementById('thm-cards-container');
+        safeTypeset(cont);
+      }
     }
   };
 
@@ -571,7 +1434,7 @@
     return rawTeXCache;
   }
 
-  // Precompute chapter offsets in TeX string for page interpolation
+  // Precompute chapter offsets in TeX string for smooth page interpolation
   let chapterOffsets = null;
   function getInterpolatedPage(texIndex, texLength) {
     if (!chapterOffsets && rawTeXCache) {
@@ -604,20 +1467,30 @@
   // Dynamically parses all Theorems, Definitions, Scholia, Lean 4 Boxes & SM Eqs. 1-100a
   function parseMonographTeX(tex) {
     parsedTheorems = [];
-    chapterOffsets = null; // reset to compute with loaded tex
+    chapterOffsets = null;
 
     const envRegex = /\\begin\{(mytheorem|mydefinition|myproposition|mylemma|mycorollary|myscholium|mycarnapscholium|myexplication|leanbox|pythonbox)\}(?:\[([^\]]*)\])?([\s\S]*?)\\end\{\1\}/g;
     let m;
     while ((m = envRegex.exec(tex)) !== null) {
       const envType = m[1];
-      const title = (m[2] || "")
+      const rawTitle = (m[2] || "").trim();
+      const title = rawTitle
         .replace(/\\texorpdfstring\{([^}]*)\}\{[^}]*\}/g, "$1")
-        .replace(/[{}]/g, "")
+        .replace(/^title=\{?(.*?)\}?$/, "$1")
         .trim();
       const body = m[3] || "";
       const labelMatch = body.match(/\\label\{([^}]+)\}/);
       const label = labelMatch ? labelMatch[1] : "";
       const approxPage = getInterpolatedPage(m.index, tex.length);
+
+      // Clean LaTeX clutter from preview while preserving math formulas
+      let cleanBody = body
+        .replace(/\\label\{[^}]+\}/g, "")
+        .replace(/\\(?:sidx|hidx|nidx)\{[^}]*\}\%?/g, "")
+        .replace(/%.*$/gm, "")
+        .trim();
+
+      const isCode = (envType === 'leanbox' || envType === 'pythonbox');
 
       parsedTheorems.push({
         env: envType,
@@ -625,7 +1498,8 @@
         label: label,
         page: approxPage,
         anchor: label ? `\\label{${label}}` : m[0].slice(0, 60),
-        preview: body.replace(/\\label\{[^}]+\}/g, "").trim().slice(0, 240)
+        preview: cleanBody.slice(0, 320),
+        isCode: isCode
       });
     }
 
@@ -635,17 +1509,36 @@
     let sm;
     while ((sm = smRegex.exec(tex)) !== null) {
       const eqName = sm[2].replace("~", " ");
-      const rawFormula = sm[3].replace(/\s+/g, " ").trim();
+      const rawFormula = sm[3].replace(/%.*$/gm, "").replace(/\s+/g, " ").trim();
       parsedSMEquations.push({
         eq: eqName,
         ch: "Ch 14 Register",
         page: 284,
         tex: `sm-source-eq-${sm[1]}`,
-        d: rawFormula.slice(0, 240),
+        d: rawFormula,
         r: `Canonical historical formula ${eqName} transcribed from Heim (2000). Click to view LaTeX and sync PDF.`
       });
     }
   }
+
+  // Debounced input handlers for ultra-responsive search on mobile devices
+  let rosettaTimer = null;
+  window.debounceRosettaSearch = function(q) {
+    clearTimeout(rosettaTimer);
+    rosettaTimer = setTimeout(() => window.filterRosettaRegister(q), 150);
+  };
+
+  let thmTimer = null;
+  window.debounceTheoremSearch = function(q) {
+    clearTimeout(thmTimer);
+    thmTimer = setTimeout(() => window.filterTheoremIndex(q), 150);
+  };
+
+  let texTimer = null;
+  window.debounceTeXSearch = function(q) {
+    clearTimeout(texTimer);
+    texTimer = setTimeout(() => window.searchRawTeX(q), 150);
+  };
 
   window.filterTheoremIndex = function(q) {
     const cont = document.getElementById('thm-cards-container');
@@ -661,7 +1554,7 @@
       t.label.toLowerCase().includes(filter) ||
       t.env.toLowerCase().includes(filter) ||
       t.preview.toLowerCase().includes(filter)
-    ).slice(0, 100);
+    ).slice(0, 80);
 
     cont.innerHTML = list.map(t => {
       const cleanEnv = t.env.replace('my', '').toUpperCase();
@@ -670,15 +1563,31 @@
                          t.env.includes('python') ? '#38bdf8' :
                          t.env.includes('definition') ? '#5eead4' : '#82aaff';
       const escapedAnchor = t.anchor.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+
+      let previewMarkup = '';
+      if (t.isCode) {
+        previewMarkup = `<pre class="thm-code-block">${t.preview.replace(/</g, '&lt;')}...</pre>`;
+      } else {
+        const hasDelims = (t.preview.includes('$') || t.preview.includes('\\(') || t.preview.includes('\\[')) || t.preview.includes('\\begin{');
+        const formattedPreview = hasDelims ? t.preview : t.preview.replace(/</g, '&lt;');
+        previewMarkup = `<div class="thm-math-preview">${formattedPreview}...</div>`;
+      }
+
       return `
       <div class="rosetta-card" onclick="window.openMonographAtPage(${t.page}, '${escapedAnchor}')">
-        <div style="display:flex; justify-content:space-between; align-items:center; color:#FFD700; font-weight:bold; margin-bottom:4px; gap:8px;">
-          <span><span style="color:${badgeColor}; font-size:10.5px; border:1px solid ${badgeColor}; padding:1px 5px; border-radius:3px; margin-right:6px;">${cleanEnv}</span>${t.title}</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; color:#FFD700; font-weight:bold; margin-bottom:2px; gap:8px;">
+          <span>
+            <span style="color:${badgeColor}; font-size:10px; border:1px solid ${badgeColor}; padding:1px 5px; border-radius:3px; margin-right:6px; letter-spacing:0.4px;">${cleanEnv}</span>
+            <span>${t.title}</span>
+          </span>
           <span style="color:#82aaff; font-size:11px; white-space:nowrap;">${t.label ? `<code>${t.label}</code> · ` : ''}~p. ${t.page} →</span>
         </div>
-        <div style="color:#cbd5e1; font-family:'Libertinus Mono',monospace; font-size:11px;">${t.preview.replace(/</g,'&lt;')}...</div>
+        ${previewMarkup}
       </div>`;
     }).join("");
+
+    // Render LaTeX mathematics with MathJax
+    safeTypeset(cont);
   };
 
   window.searchRawTeX = function(query) {
@@ -718,19 +1627,38 @@
       item.ch.toLowerCase().includes(filter) ||
       item.d.toLowerCase().includes(filter) ||
       item.r.toLowerCase().includes(filter)
-    );
+    ).slice(0, 80);
+
     cont.innerHTML = items.map(it => {
       const escapedTex = it.tex.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+      const isAlreadyWrapped = it.d.startsWith('\\(') || it.d.startsWith('$$');
+      const mathContent = isAlreadyWrapped ? it.d : `\\(\\displaystyle ${it.d} \\)`;
+
       return `
       <div class="rosetta-card" onclick="window.openMonographAtPage(${it.page}, '${escapedTex}')">
-        <div style="display:flex; justify-content:space-between; color:#FFD700; font-weight:bold; margin-bottom:4px;">
-          <span>${it.eq} (${it.ch})</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; color:#FFD700; font-weight:bold; margin-bottom:2px;">
+          <span>${it.eq} <span style="color:#94a3b8; font-weight:normal; font-size:11px;">(${it.ch})</span></span>
           <span style="color:#82aaff; font-size:11px;">📄 PDF p. ${it.page} &amp; TeX →</span>
         </div>
-        <div style="color:#cbd5e1; font-size:11.5px; font-family:'Libertinus Mono',monospace;"><b>Source (D):</b> ${it.d.replace(/</g,'&lt;')}</div>
-        <div style="color:#5eead4; font-size:11.5px; margin-top:3px;"><b>Reconstruction (ℛ):</b> ${it.r}</div>
+        
+        <!-- Rendered LaTeX Formula Box (with Mobile Touch Scroll) -->
+        <div class="rosetta-formula-box">
+          <div class="rosetta-formula-label">
+            <span>Stratum D (Historical Formula):</span>
+            <button class="tex-peek-btn" onclick="event.stopPropagation(); window.openMonographAtPage(${it.page}, '${escapedTex}')" title="Inspect raw LaTeX source">TeX Code</button>
+          </div>
+          <div class="rosetta-formula-math">${mathContent}</div>
+        </div>
+
+        <div class="rosetta-recon-box">
+          <span style="color:#FFD700; font-weight:bold; font-size:11px;">Reconstruction (ℛ):</span>
+          <span>${it.r}</span>
+        </div>
       </div>`;
     }).join("");
+
+    // Render LaTeX mathematics with MathJax
+    safeTypeset(cont);
   };
 
   function detectActiveChKey() {
@@ -778,11 +1706,71 @@
       const dr = document.getElementById('syn-monograph-drawer');
       if (dr && dr.classList.contains('open')) {
         dr.classList.remove('open');
+        document.body.classList.remove('mdrawer-open');
       }
     }
   });
 
+
+  // Dynamic Windows Taskbar / System Tray Avoidance Engine for Desktop Trays
+  function updateWindowsTrayAvoidance() {
+    if (typeof window === 'undefined') return;
+
+    if (window.innerWidth < 901) {
+      document.documentElement.style.setProperty('--syn-bottom-offset', '12px');
+      return;
+    }
+
+    let offset = 64; // Default desktop clearance
+    try {
+      const s = window.screen;
+      if (s) {
+        const screenH = s.height || 0;
+        const availH = s.availHeight || 0;
+        const availTop = s.availTop || 0;
+        const taskbarH = Math.max(0, screenH - (availTop + availH));
+        
+        const isFullscreen = !!(document.fullscreenElement || window.innerHeight >= screenH - 5);
+        const winY = typeof window.screenY === 'number' ? window.screenY : (window.screenTop || 0);
+        const winBottom = winY + (window.outerHeight || window.innerHeight);
+        const distFromBottom = screenH - winBottom;
+
+        if (isFullscreen) {
+          // In fullscreen mode, Windows Taskbar sensor triggers within ~15px of bottom edge.
+          // Maintain a 38px clearance so hovering or clicking trays never triggers taskbar unhide.
+          offset = 72;
+        } else if (distFromBottom <= 20) {
+          // Window is maximized or flush against the screen bottom / taskbar.
+          const taskbarClearance = taskbarH > 0 ? Math.min(taskbarH + 20, 84) : 68;
+          offset = Math.max(64, taskbarClearance);
+        } else {
+          offset = 64;
+        }
+      }
+    } catch (e) {}
+
+    document.documentElement.style.setProperty('--syn-bottom-offset', offset + 'px');
+
+    // Notify parent window or child iframes of offset change
+    try {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'syn-bottom-offset-change', offset: offset }, '*');
+      }
+    } catch (e) {}
+  }
+
+  window.addEventListener('resize', updateWindowsTrayAvoidance, { passive: true });
+  window.addEventListener('fullscreenchange', updateWindowsTrayAvoidance, { passive: true });
+  window.addEventListener('webkitfullscreenchange', updateWindowsTrayAvoidance, { passive: true });
+  window.addEventListener('focus', updateWindowsTrayAvoidance, { passive: true });
+  window.addEventListener('message', e => {
+    if (e.data && e.data.type === 'syn-bottom-offset-change' && typeof e.data.offset === 'number') {
+      document.documentElement.style.setProperty('--syn-bottom-offset', e.data.offset + 'px');
+    }
+  });
+
   function initMonographWorkbench() {
+    updateWindowsTrayAvoidance();
     injectDOM();
     window.filterRosettaRegister("");
     syncMonographPageWithSlide();
