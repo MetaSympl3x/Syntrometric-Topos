@@ -132,9 +132,11 @@ window.QuartoSupport = function () {
       if (deck.isScrollView()) { return }
       const revealParent = deck.getRevealElement();
       const slideNumberEl = revealParent.querySelector(".slide-number");
+      if (!ev || !ev.currentSlide) return;
       const slideBackground = Reveal.getSlideBackground(ev.currentSlide);
-      const onDarkBackground = slideBackground.classList.contains('has-dark-background')
-      const onLightBackground = slideBackground.classList.contains('has-light-background')
+      if (!slideBackground) return;
+      const onDarkBackground = slideBackground.classList.contains('has-dark-background');
+      const onLightBackground = slideBackground.classList.contains('has-light-background');
       toggleBackgroundTheme(slideNumberEl, onDarkBackground, onLightBackground);
     })
   }
@@ -146,9 +148,11 @@ window.QuartoSupport = function () {
     // Set per slide footer if any defined, 
     // or show default unless data-footer="false" for no footer on this slide
     const setSlideFooter = (ev, defaultFooterDiv) => {
+      if (!ev || !ev.currentSlide) return;
       const currentSlideFooter = ev.currentSlide.querySelector(".footer");
-      const onDarkBackground = deck.getSlideBackground(ev.currentSlide).classList.contains('has-dark-background')
-      const onLightBackground = deck.getSlideBackground(ev.currentSlide).classList.contains('has-light-background')
+      const bg = deck.getSlideBackground(ev.currentSlide);
+      const onDarkBackground = bg ? bg.classList.contains('has-dark-background') : false;
+      const onLightBackground = bg ? bg.classList.contains('has-light-background') : false;
       if (currentSlideFooter) {
         defaultFooterDiv.style.display = "none";
         const slideFooter = currentSlideFooter.cloneNode(true);

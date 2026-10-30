@@ -1417,6 +1417,127 @@ window.MathJax = {
 <script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style id="syn-desktop-layout-fix">
 
+/* =========================================================================
+   DEFINITIVE MOBILE TOUCH, INTERACTIVITY & OVERLAY IMMUNITY (V4)
+   ========================================================================= */
+
+/* 1. Prevent Reveal.js scroll view snap points, triggers and backgrounds from blocking touch input */
+.scroll-snap-point,
+.reveal .scroll-snap-point,
+.reveal-viewport.reveal-scroll .scroll-snap-point,
+.reveal-viewport.reveal-scroll .backgrounds,
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll .scroll-page-content > .slide-background {
+  pointer-events: none !important;
+}
+
+/* 2. In Reveal Scroll View and mobile views, ensure all slides and page wrappers allow pointer events */
+.reveal-viewport.reveal-scroll .slides section,
+.reveal-viewport.reveal-scroll .slides section.slide,
+.reveal-viewport.reveal-scroll .scroll-page section,
+.reveal-viewport.reveal-scroll .scroll-page,
+.reveal-viewport.reveal-scroll .scroll-page-sticky,
+.reveal-viewport.reveal-scroll .scroll-page-content,
+.reveal .slides section.present {
+  pointer-events: auto !important;
+}
+
+/* 3. Ensure all interactive panels, widgets, inputs, buttons, tracks, and selects are fully responsive */
+.reveal .interactive-panel,
+.reveal-viewport.reveal-scroll .interactive-panel,
+.interactive-panel,
+.interactive-panel *,
+.slider-row,
+.slider-row *,
+input[type="range"],
+.band-track,
+.syn-btn,
+.subsys-toggle,
+.syn-tab-btn,
+.tab-btn,
+.m3d-btn,
+.ch1-hud-btn,
+button,
+select,
+input {
+  pointer-events: auto !important;
+}
+
+input[type="range"] {
+  touch-action: none !important;
+}
+
+.band-track {
+  touch-action: none !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.band-dot-p,
+.band-dot-d,
+.band-fill-p,
+.band-fill-d {
+  pointer-events: none !important;
+}
+
+/* 4. Mobile screen responsiveness (<=900px): prevent horizontal blowout & align tracks and sliders */
+@media (max-width: 900px) {
+  .interactive-panel [style*="grid-template-columns"],
+  .reveal [style*="grid-template-columns"],
+  .reveal-viewport.reveal-scroll [style*="grid-template-columns"],
+  [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .interactive-panel [style*="grid-template-columns"] > *,
+  .reveal [style*="grid-template-columns"] > *,
+  .reveal-viewport.reveal-scroll [style*="grid-template-columns"] > *,
+  [style*="grid-template-columns"] > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .interactive-panel,
+  .reveal .interactive-panel,
+  .reveal-viewport.reveal-scroll .interactive-panel,
+  .interactive-panel .band-track,
+  .reveal .band-track,
+  .reveal-viewport.reveal-scroll .band-track,
+  .band-track,
+  .interactive-panel .slider-row,
+  .reveal .slider-row,
+  .reveal-viewport.reveal-scroll .slider-row,
+  .slider-row {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .interactive-panel svg,
+  svg#compass-svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .reveal .columns > .column,
+  .reveal .columns > div,
+  .reveal-viewport.reveal-scroll .columns > .column,
+  .reveal-viewport.reveal-scroll .columns > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
+    box-sizing: border-box !important;
+  }
+}
+
+
 :root {
   --syn-bottom-offset: 64px;
 }
@@ -1539,6 +1660,71 @@ window.MathJax = {
   window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V3__ = true;
   window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V2__ = true;
   window.__SYN_MOBILE_INTERACTIVITY_ENGINE__ = true;
+  window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V4__ = true;
+
+  // Inject pointer-events & touch shield stylesheet dynamically
+  (function() {
+    var styleId = 'syn-mobile-pointer-shield-v4';
+    if (document.getElementById(styleId)) return;
+    var s = document.createElement('style');
+    s.id = styleId;
+    s.textContent = `
+      .scroll-snap-point, .reveal .scroll-snap-point, .reveal-viewport.reveal-scroll .scroll-snap-point,
+      .reveal-viewport.reveal-scroll .backgrounds, .reveal-viewport.reveal-scroll .slide-background,
+      .reveal-viewport.reveal-scroll .scroll-page-content > .slide-background {
+        pointer-events: none !important;
+      }
+      .reveal-viewport.reveal-scroll .slides section, .reveal-viewport.reveal-scroll .slides section.slide,
+      .reveal-viewport.reveal-scroll .scroll-page section, .reveal-viewport.reveal-scroll .scroll-page,
+      .reveal-viewport.reveal-scroll .scroll-page-sticky, .reveal-viewport.reveal-scroll .scroll-page-content,
+      .reveal .slides section.present {
+        pointer-events: auto !important;
+      }
+      .reveal .interactive-panel, .reveal-viewport.reveal-scroll .interactive-panel,
+      .interactive-panel, .interactive-panel *, .slider-row, .slider-row *,
+      input[type="range"], .band-track, .syn-btn, .subsys-toggle, .syn-tab-btn, button, select, input {
+        pointer-events: auto !important;
+      }
+      input[type="range"], .band-track { touch-action: none !important; }
+      .band-dot-p, .band-dot-d, .band-fill-p, .band-fill-d { pointer-events: none !important; }
+      @media (max-width: 900px) {
+        .interactive-panel [style*="grid-template-columns"], [style*="grid-template-columns"] {
+          grid-template-columns: 1fr !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .interactive-panel [style*="grid-template-columns"] > *, [style*="grid-template-columns"] > * {
+          min-width: 0 !important;
+          max-width: 100% !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .interactive-panel .band-track, .band-track, .interactive-panel .slider-row, .slider-row {
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .interactive-panel svg, svg#compass-svg {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+        .reveal .columns > .column, .reveal .columns > div,
+        .reveal-viewport.reveal-scroll .columns > .column, .reveal-viewport.reveal-scroll .columns > div {
+          width: 100% !important;
+          max-width: 100% !important;
+          flex: 1 1 auto !important;
+          box-sizing: border-box !important;
+        }
+      }
+    `;
+    if (document.head) {
+      document.head.appendChild(s);
+    } else {
+      document.addEventListener('DOMContentLoaded', function() { if (document.head) document.head.appendChild(s); });
+    }
+  })();
+
 
   var activeDrag = null; // { el: HTMLElement, type: 'slider' | 'track' }
 
