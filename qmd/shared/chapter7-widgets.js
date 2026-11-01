@@ -609,7 +609,8 @@ window.showGenericTab = window.showGenericTab || function(prefix, idx, maxIdx, b
       if (el.dataset.synBound) return;
       el.dataset.synBound = '1';
       el.setAttribute('data-prevent-swipe', 'true');
-    el.addEventListener('keydown', e => e.stopPropagation());});
+      el.addEventListener('keydown', e => e.stopPropagation());
+    });
   }
 
   let ch7Initialised = false;
@@ -2027,11 +2028,8 @@ const canvas = document.getElementById('ch7-3d-canvas');
 
       hud.querySelectorAll('input, button').forEach(el => {
 
-        el.addEventListener('keydown', e => e.stopPropagation());
-
-        el.addEventListener('mousedown', e => e.stopPropagation());
-
-        el.addEventListener('touchstart', e => e.stopPropagation(), { passive: true });
+        el.setAttribute('data-prevent-swipe', 'true');
+      el.addEventListener('keydown', e => e.stopPropagation());
 
       });
 

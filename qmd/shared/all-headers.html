@@ -1,235 +1,777 @@
-<script>
-window.MathJax = {
-  "HTML-CSS": { linebreaks: { automatic: true, width: "container" } },
-  CommonHTML: { linebreaks: { automatic: true, width: "container" } },
-  SVG: { linebreaks: { automatic: true, width: "container" } },
-  tex: {
-    macros: {
-      AP: "\\mathbf{AP}",
-      AbsEN: "\\operatorname{AbsEN}",
-      Ad: "\\operatorname{Ad}",
-      Ahat: "\\widehat{A}",
-      Alg: "\\operatorname{Alg}",
-      At: "\\operatorname{At}",
-      Aut: "\\operatorname{Aut}",
-      Ban: "\\mathbf{Ban}_{\\le 1}",
-      Bil: "\\operatorname{Bil}",
-      BoxS: "\\Box_S",
-      BoxSyn: "\\Box_{\\mathrm{Syn}}",
-      BunConn: "\\mathbf{BunConn}_G^{\\mathrm{contr}}",
-      CSL: "\\mathcal{C}_{\\mathrm{SL}}",
-      CSeg: "\\operatorname{CSeg}",
-      Coalg: "\\mathbf{Coalg}",
-      Codisc: "\\operatorname{Codisc}",
-      Coeff: "\\mathbf{Coeff}",
-      Col: "\\mathbf{Col}",
-      Coloneqq: "\\mathrel{::=}",
-      CommonHTML: {,
-      ConfIndex: "\\operatorname{ConfIndex}_{\\mathrm{pres}}",
-      Conn: "\\operatorname{Conn}",
-      Crit: "\\operatorname{Crit}",
-      Cspine: "\\mathcal{C}_{\\mathrm{spine}}",
-      Ctx: "\\mathbf{Ctx}",
-      CtxPos: "\\mathbf{Ctx}_{>0}^{\\mathrm{sk}}",
-      Ctxadm: "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
-      Ctxquant: "\\mathbf{Ctx}_{\\mathrm{quant}}",
-      DIV: "\\operatorname{DIV}",
-      DKor: "\\mathbb{K}\\mathbf{or}",
-      Def: "\\operatorname{Def}",
-      Dext: "\\mathcal{D}_{\\mathrm{ext}}",
-      DiaS: "\\Diamond_S",
-      DimField: "\\mathbf{DimField}_{\\Lambda}",
-      Disc: "\\operatorname{Disc}",
-      Div: "\\operatorname{Div}",
-      Dom: "\\operatorname{Dom}",
-      End: "\\operatorname{End}",
-      Equant: "\\mathcal{E}_{\\mathrm{quant}}",
-      Esyn: "\\mathcal{E}_{\\mathrm{syn}}",
-      Face: "\\operatorname{Face}",
-      Fext: "\\mathcal{F}_{\\mathrm{ext}}",
-      Ffree: "\\mathcal{F}_{\\mathrm{free}}",
-      FinBan: "\\mathbf{FinBan}",
-      Free: "\\operatorname{Free}",
-      Fsyn: "\\mathfrak{F}_{\\mathrm{syn}}",
-      GRAD: "\\operatorname{GRAD}",
-      Gen: "\\operatorname{Gen}",
-      Ggen: "\\mathsf{G}_{\\mathrm{gen}}",
-      Gnabla: "\\mathfrak{G}_\\nabla",
-      Hess: "\\operatorname{Hess}",
-      Hol: "\\operatorname{Hol}",
-      Hom: "\\operatorname{Hom}",
-      HypMet: "\\operatorname{HypMet}",
-      IGP: "\\operatorname{IGP}",
-      Im: "\\operatorname{Im}",
-      Ind: "\\operatorname{Index}",
-      Isom: "\\operatorname{Isom}",
-      Izero: "\\mathrm{I}_{\\mathbf{0}}",
-      Jproof: "J_{\\mathrm{proof}}",
-      Jquant: "J_{\\mathrm{quant}}",
-      Jsyn: "J_{\\mathrm{syn}}",
-      Kor: "\\mathbf{Kor}",
-      Ksyn: "K_{\\mathrm{syn}}",
-      LiMSL: "\\mathcal{L}_{\\mathrm{iMSL}}",
-      MAR: "\\mathcal{M}_{\\mathfrak{AR}}",
-      Manparam: "\\mathbf{Man}_{\\mathrm{param}}",
-      Map: "\\operatorname{Map}",
-      Match: "\\mathsf{Match}_{\\mathcal{U}}",
-      Met: "\\operatorname{Met}",
-      Msyn: "\\mathcal{M}_{\\mathrm{syn}}",
-      Mtau: "\\mathbb{M}_{\\tau}",
-      Obj: "\\operatorname{Obj}",
-      Ofrag: "\\mathcal{O}_{\\mathrm{frag}}",
-      Ohom: "\\mathcal{O}_{\\mathrm{hom}}",
-      Oisom: "\\mathcal{O}_{\\mathrm{isom}}",
-      Omegaint: "\\mathbf{\\Omega}_{\\mathrm{int}}",
-      On: "\\mathcal{O}_n",
-      Opyr: "\\mathcal{O}_{\\mathrm{pyr}}",
-      Oquant: "\\mathcal{O}_{\\mathrm{quant}}",
-      Osyn: "\\mathcal{O}_{\\mathrm{syn}}",
-      Pol: "\\operatorname{Pol}",
-      Prop: "\\mathbf{Prop}",
-      RBan: "\\mathfrak{R}_{\\mathrm{Ban}}",
-      ROT: "\\operatorname{ROT}",
-      Rbar: "{}^2\\bar{\\mathbf{R}}",
-      Rresyn: "\\mathcal{R}_{\\mathrm{resyn}}",
-      SVG: {,
-      Sel: "\\operatorname{Sel}",
-      Sh: "\\mathbf{Sh}",
-      Shift: "\\mathsf{Shift}",
-      Spec: "\\operatorname{Spec}",
-      Ssum: "\\mathcal{S}",
-      Stab: "\\operatorname{Stab}",
-      Stable: "\\operatorname{Stable}",
-      Sub: "\\operatorname{Sub}",
-      Sym: "\\operatorname{Sym}",
-      SynCat: "\\mathbf{Syn}(\\mathcal{L}_{\\mathrm{iMSL}})",
-      SynEN: "\\operatorname{SynEN}",
-      Synquant: "\\mathbf{Syn}_{\\mathrm{quant}}",
-      Tect: "\\operatorname{Tect}",
-      UG: "U_{\\mathsf{G}}",
-      Valfact: "\\operatorname{Val}_{\\mathrm{fact}}",
-      WFFiMSL: "\\mathbf{WFF}_{\\mathrm{iMSL}}",
-      XAR: "X_{\\mathfrak{AR}}",
-      Xkor: "\\mathbf{X}_{\\mathrm{kor}}",
-      Xsyn: "\\mathcal{X}_{\\mathrm{syn}}",
-      YF: "YF_{\\mathrm{model}}",
-      ad: "\\operatorname{ad}",
-      aeondynechaptereight: "\\widetilde{\\mathbf{a}}(x_i)_1^n",
-      background: rgba(65, 105, 225, 0.25);,
-      border: 1.5px solid #334155;,
-      boxplusphi: "\\mathbin{\\boxplus_\\phi}",
-      centernot: "\\not",
-      ch: "\\operatorname{ch}",
-      cl: "\\operatorname{cl}",
-      colim: "\\operatorname*{colim}",
-      coloneqq: "\\mathrel{:=}",
-      color: #e2e8f0;,
-      cursor: pointer;,
-      dCSeg: "\\operatorname{dCSeg}",
-      deg: "\\operatorname{deg}",
-      detail: {,
-      diam: "\\operatorname{diam}",
-      display: block !important;,
-      dist: "\\operatorname{dist}",
-      divg: "\\operatorname{div}_{\\bar{g}}",
-      dtilde: "\\tilde{\\mathrm{d}}|",
-      elementarstruktur: "\\mathbf{y}\\widetilde{\\mathbf{a}}_{(j)}",
-      ev: "\\operatorname{ev}",
-      filter: brightness(1.25);,
-      fundamentalkondensor: "\\operatorname{Sel}",
-      funktionaloperator: "\\mathfrak{f}",
-      gAR: "g_{\\mathfrak{AR}}",
-      gap: 5px;,
-      gbar: "{}^2\\bar{\\mathbf{g}}",
-      gbarinf: "{}^2\\bar{\\mathbf{g}}_\\infty",
-      gbarminus: "{}^2\\bar{\\mathbf{g}}_-",
-      gbarplus: "{}^2\\bar{\\mathbf{g}}_+",
-      grad: "\\operatorname{grad}",
-      gsyn: "g^{\\mathrm{syn}}",
-      height: window.innerHeight,
-      holoform: "\\text{Holoform}",
-      homogenesyntrix: ["\\mathsf{H}\\!\\left(#1\\right)", 1],
-      homsyntrix: "\\mathbf{x}\\widetilde{\\mathbf{a}}",
-      hypermetrophor: ["\\mathbf{w}\\widetilde{#1}", 1],
-      id: "\\operatorname{id}",
-      im: "\\operatorname{im}",
-      ind: "\\operatorname{ind}",
-      infinitesimalchainoperatorI: "\\mathop{\\mathrm{I}}",
-      isScroll: window.Reveal && typeof window.Reveal.isScrollView === 'function' ? window.Reveal.isScrollView() : false,
-      kaskadenstufe: "\\alpha",
-      kompositionsfeld: "{}^2\\bar{\\mathbf{g}}",
-      konflexiv: "\\mathbf{y}\\widetilde{\\mathbf{c}}",
-      konflexivsyntrix: "\\mathbf{y}\\widetilde{\\mathbf{c}}",
-      koppelungstensor: "\\mathbf{Q}",
-      korporatorkette: "\\mathord{\\llcorner}",
-      korrelationstensor: "\\mathbf{f}",
-      linebreaks: { automatic: true, width: "container" },
-      llbracket: "\\mathopen{[\\mkern-3mu[}",
-      longhookrightarrow: "\\lhook\\joinrel\\longrightarrow",
-      longlongrightarrow: "\\longrightarrow",
-      lvl: "\\operatorname{lvl}",
-      margin: 4px 0;,
-      metrischesieboperator: "S(\\gamma)",
-      metron: "\\tau",
-      metronbar: "\\bar{\\delta}",
-      metrondelta: "\\nabla",
-      metrondifferential: "\\mathrm{d}",
-      metronenfunktion: "\\phi(n)",
-      metronenziffer: "n",
-      metronintegral: "\\mathrm{S}",
-      metronischegitter: "\\text{Metronische Gitter}",
-      metrophor: ["\\widetilde{#1}", 1],
-      metroplex: ["\\overset{\\scriptscriptstyle #2}{\\mathbf{M}}\\!\\left(#1\\right)", 2],
-      midpt: "\\operatorname{mid}",
-      mouseWheel: true,
-      nullsyntrix: "\\mathbf{ys}\\widetilde{\\mathbf{c}}",
-      op: "\\mathrm{op}",
-      opacity: 0.92;,
-      or: "\\operatorname{or}",
-      otBV: "\\mathbin{\\otimes_{\\mathrm{BV}}}",
-      oteps: "\\mathbin{\\widehat{\\otimes}_\\varepsilon}",
-      otpi: "\\mathbin{\\widehat{\\otimes}_\\pi}",
-      padding: 3px 6px;,
-      parttilde: "\\tilde{\\partial}",
-      polyquantor: ["\\mathop{\\mathsf{Q}}\\limits_{#2,#3}^{#4}\\!\\left(#1\\right)", 4],
-      position: sticky;,
-      predicatesymbol: "\\mathrel{\\models}",
-      protyposis: "\\text{Protyposis}",
-      qualitaetsaspekt: "\\text{Qualitätsaspekt}",
-      quantitaetsaspekt: "\\text{Quantitätsaspekt}",
-      quantitaetssyntrix: "\\mathbf{y}\\mathbf{R}_n",
-      quantor: ["\\mathsf{Q}\\left[#1\\right]", 1],
-      rank: "\\operatorname{rank}",
-      rk: "\\operatorname{rk}",
-      rootMargin: '30px 0px 30px 0px',
-      rrbracket: "\\mathclose{]\\mkern-3mu]}",
-      sBRST: "s_{\\mathrm{BRST}}",
-      scale: scale,
-      semantischermetrophor: "R_n",
-      sp: "\\operatorname{sp}",
-      stroke: #FFD700;,
-      strukturkompressor: "{}^4\\mathbf{\\zeta}",
-      supmedsubscript: ["{}^{#2}_{#1,#3}", 3],
-      syndrom: "F",
-      synkolationsstufe: "m",
-      synkolator: "\\mathfrak{f}",
-      syntrix: ["\\mathbf{y}\\widetilde{#1}", 1],
-      syntroklinekettenkoppelung: "\\mathsf{K}",
-      syntroklinemetroplex: ["\\mathsf{B}_{#2}\\!\\left(#1\\right)", 2],
-      threshold: [0, 0.08, 0.4],
-      top: 0;,
-      tr: "\\operatorname{tr}",
-      transition: all 0.18s ease;,
-      vol: "\\operatorname{vol}",
-      vspacing: ["\\vphantom{\\sum}", 1],
-      widemetroplex: ["\\mathsf{M}_{#2}\\!\\left(#1\\right)", 2],
-      width: window.innerWidth,
-      zahlenkoerper: "\\text{Zahlenkörper}"
+
+<script id="mathjax-hub-bridge">
+// MathJax v3 Production Bridge & Reveal.js Math Guard
+(function() {
+  function typesetRevealMath(target) {
+    if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+      window.MathJax.startup.promise.then(() => {
+        if (typeof window.MathJax.typesetPromise === 'function') {
+          return window.MathJax.typesetPromise(target ? [target] : undefined);
+        }
+      }).catch(function(err) {});
+    } else if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+      window.MathJax.typesetPromise(target ? [target] : undefined).catch(function(err) {});
     }
+  }
+  window.typesetMath = typesetRevealMath;
+
+  // Protect RevealMath global so legacy math.js never injects duplicate scripts or crashes
+  const bridgePlugin = function() {
+    return {
+      id: 'mathjax-bridge',
+      init: function(deck) {
+        if (window.typesetMath) window.typesetMath();
+        deck.on('slidechanged', function() { if (window.typesetMath) window.typesetMath(); });
+      }
+    };
+  };
+  bridgePlugin.KaTeX = function() { return { id: 'katex', init: function() {} }; };
+  bridgePlugin.MathJax2 = function() { return { id: 'mathjax2', init: function() {} }; };
+  bridgePlugin.MathJax3 = function() { return { id: 'mathjax3', init: function() {} }; };
+
+  try {
+    Object.defineProperty(window, 'RevealMath', {
+      configurable: false,
+      writable: false,
+      value: bridgePlugin
+    });
+  } catch (e) {
+    window.RevealMath = bridgePlugin;
+  }
+
+  // Define Hub shim for any legacy callers
+  window.MathJax = window.MathJax || {};
+  window.MathJax.Hub = {
+    Config: function() {},
+    Queue: function() { typesetRevealMath(); },
+    Typeset: function(el) { typesetRevealMath(el); }
+  };
+
+  function hookReveal() {
+    if (window.Reveal) {
+      window.Reveal.on('ready', () => setTimeout(() => typesetRevealMath(), 150));
+      window.Reveal.on('slidechanged', () => setTimeout(() => typesetRevealMath(), 80));
+    } else {
+      setTimeout(hookReveal, 100);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', hookReveal);
+  } else {
+    hookReveal();
+  }
+})();
+</script>
+<script id="mathjax-config">
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    macros: {
+  "syntrix": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+  "homogeneoussyntrix": "\\mathbf{x}\\widetilde{\\mathbf{a}}",
+  "metrophor": "\\widetilde{\\mathbf{a}}",
+  "synkolator": "\\mathfrak{f}",
+  "synkolationsstufe": "m",
+  "syndrom": "F",
+  "conceptualsyndrome": "a",
+  "universalquantor": "\\mathbf{U}",
+  "aspektivsystem": "P",
+  "funktor": "\\mathbf{F}",
+  "subjektiveraspekt": "S",
+  "pradikatrix": "P_n",
+  "dialektik": "D_n",
+  "koordination": "K_n",
+  "nullsyntrix": "\\mathbf{y}\\widetilde{\\overline{\\mathbf{c}}}",
+  "elementarstruktur": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+  "konzenter": "\\text{Konzenter}",
+  "exzenter": "\\text{Exzenter}",
+  "konflexivsyntrix": "\\mathbf{y}\\widetilde{\\mathbf{c}}",
+  "syntropode": "\\text{Syntropode}",
+  "korporatorkette": "\\mathord{\\llcorner}",
+  "enyphaniegrad": "g_E",
+  "syntrixtotalitaet": "T_0",
+  "generative": "G",
+  "syntrixspeicher": "\\text{Syntrixspeicher}",
+  "korporatorsimplex": "Q",
+  "protyposis": "\\text{Protyposis}",
+  "syntrixfeld": "\\text{Syntrixfeld}",
+  "diskreteEnyphansyntrix": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+  "kontinuierlicheEnyphansyntrix": "YC",
+  "enyphane": "E",
+  "syntrometrischesGebilde": "\\text{Gebilde}",
+  "holoform": "\\text{Holoform}",
+  "syntrixraum": "\\mathcal{M}_{\\text{syn}}",
+  "syntrometrik": "g^{\\text{syn}}",
+  "korporatorfeld": "\\mathbf{X}_{\\text{kor}}",
+  "syntrixfunktor": "YF",
+  "zeitkorn": "\\delta t_i",
+  "affinitaetssyndrom": "S",
+  "metroplexfont": [
+    "\\mathbf{#1}",
+    1
+  ],
+  "metroplex": [
+    "\\overset{\\scriptscriptstyle #1}{\\mathbf{M}}",
+    1
+  ],
+  "hypersyntrix": "\\overset{\\scriptscriptstyle 1}{\\mathbf{M}}",
+  "hypermetrophor": [
+    "{}^{#1}\\mathbf{w}\\widetilde{\\mathbf{a}}",
+    1
+  ],
+  "metroplexsynkolator": [
+    "{}^{#1}\\mathfrak{f}",
+    1
+  ],
+  "nullmetroplex": [
+    "{}^{#1}\\mathbf{M}_0",
+    1
+  ],
+  "metroplextotalitaet": [
+    "T_{#1}",
+    1
+  ],
+  "metroplextotalitaetarg": [
+    "T_{#1}",
+    1
+  ],
+  "metroplexfunktor": "S",
+  "metroplexfunktorcommand": "S",
+  "syntroklinebruecke": [
+    "{}^{#1}\\alpha",
+    1
+  ],
+  "metroplexaeondyne": "\\text{Metroplex\u00e4ondyne}",
+  "telezentrum": "T_z",
+  "aeonischearea": "\\mathrm{AR}_q",
+  "transzendenzstufe": [
+    "C(#1)",
+    1
+  ],
+  "transcendenzstufe": [
+    "C(#1)",
+    1
+  ],
+  "transzendenzsynkolator": "\\Gamma_i",
+  "quantitaetsaspekt": "\\text{Quantit\u00e4tsaspekt}",
+  "qualitaetsaspekt": "\\text{Qualit\u00e4tsaspekt}",
+  "quantitaetssyntrix": "\\mathbf{y}\\widetilde{\\mathbf{R}}_n",
+  "zahlenkoerper": "\\text{Zahlenk\u00f6rper}",
+  "semantischermetrophor": "R_n",
+  "semantischeriterator": "S_n",
+  "funktionaloperator": "\\mathfrak{f}",
+  "synkolatorraum": "\\text{Synkolatorraum}",
+  "aeondynechaptereight": "\\widetilde{\\mathbf{a}}(x_i)_1^n",
+  "kompositionsfeld": "{}^2\\bar{\\mathrm{g}}",
+  "partialstruktur": [
+    "{}^2\\mathbf{g}_{(#1)}",
+    1
+  ],
+  "fundamentalkondensor": "{}^3\\mathbf{\\Gamma}",
+  "korrelationstensor": "\\mathbf{f}",
+  "koppelungstensor": "\\mathbf{Q}",
+  "kaskadenstufe": "\\alpha",
+  "metron": "\\tau",
+  "metronischegitter": "\\text{Metronische Gitter}",
+  "metrondifferential": "\\bar{\\delta}",
+  "metronbar": "\\bar{\\delta}",
+  "metrondelta": "\\nabla",
+  "metronintegral": "\\mathrm{S}",
+  "metronenfunktion": "\\phi(n)",
+  "metronenziffer": "n",
+  "metrischesieboperator": "S(\\gamma)",
+  "strukturkompressor": "{}^4\\mathbf{\\zeta}",
+  "metronischerstrukturkompressor": "{}^4\\mathbf{\\psi}",
+  "metronisiertekondensor": [
+    "{}^{#1}\\mathbf{F}",
+    1
+  ],
+  "turnstilek": [
+    "\\vdash^{#1}",
+    1
+  ],
+  "modelsk": [
+    "\\models^{#1}",
+    1
+  ],
+  "dynboxgen": [
+    "[#1]",
+    1
+  ],
+  "dyndiamondgen": [
+    "\\langle #1 \\rangle",
+    1
+  ],
+  "kategorie": "\\mathbf{K}",
+  "Ctx": "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+  "CtxPos": "\\mathbf{Ctx}_{>0}^{\\mathrm{sk}}",
+  "Ctxadm": "\\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}",
+  "Ctxquant": "\\mathbf{Ctx}_{\\mathrm{quant}}",
+  "Ban": "\\mathbf{Ban}_{\\le 1}",
+  "FinBan": "\\mathbf{FinBan}_{\\le 1}",
+  "Esyn": "\\mathcal{E}_{\\mathrm{syn}}",
+  "Jsyn": "J_{\\mathrm{syn}}",
+  "Ksyn": "\\mathcal{K}_{\\mathrm{syn}}",
+  "Xsyn": "\\mathcal{X}_{\\mathrm{syn}}",
+  "Osyn": "\\mathcal{O}_{\\mathrm{syn}}",
+  "otpi": "\\mathbin{\\widehat{\\otimes}_\\pi}",
+  "Hol": "\\mathsf{Hol}",
+  "Def": "\\operatorname{Def}",
+  "Isom": "\\operatorname{Isom}",
+  "Hom": "\\operatorname{Hom}",
+  "Sub": "\\operatorname{Sub}",
+  "Colim": "\\operatorname{colim}",
+  "hocolim": "\\operatorname{hocolim}",
+  "Spec": "\\operatorname{Spec}",
+  "Div": "\\operatorname{div}",
+  "Grad": "\\operatorname{grad}",
+  "Rot": "\\operatorname{rot}",
+  "Eq": "\\operatorname{Eq}",
+  "id": "\\operatorname{id}",
+  "rk": "\\operatorname{rk}",
+  "Aut": "\\operatorname{Aut}",
+  "Bil": "\\operatorname{Bil}",
+  "Cov": "\\operatorname{Cov}",
+  "Lie": "\\operatorname{Lie}",
+  "Map": "\\operatorname{Map}",
+  "IntCat": "\\operatorname{IntCat}",
+  "PSh": "\\operatorname{PSh}",
+  "Sh": "\\operatorname{Sh}",
+  "Free": "\\operatorname{Free}",
+  "Sym": "\\operatorname{Sym}",
+  "Frag": "\\operatorname{Frag}",
+  "Der": "\\operatorname{Der}",
+  "Orb": "\\operatorname{Orb}",
+  "Epi": "\\operatorname{Epi}",
+  "Pro": "\\operatorname{Pro}",
+  "LMSL": "\\mathcal{L}_{\\text{MSL}}",
+  "WFFMSL": "\\text{WFF}_{\\mathcal{L}_{\\text{MSL}}}",
+  "Smodx": "S_{\\text{mod}}(x)",
+  "Smodarg": [
+    "S_{\\text{mod}}(#1)",
+    1
+  ],
+  "BoxS": "\\Box_S",
+  "BoxSyn": "\\Box_{\\text{Syn}}",
+  "DiaS": "\\Diamond_S",
+  "Propk": [
+    "\\text{Prop}_{#1}",
+    1
+  ],
+  "Stabk": [
+    "\\text{Stab}_{#1}",
+    1
+  ],
+  "IGPk": [
+    "\\text{IGP}_{#1}",
+    1
+  ],
+  "Origink": [
+    "\\text{Origin}_{#1}",
+    1
+  ],
+  "fops": "F_{\\text{ops}}",
+  "APS": "\\mathbf{AP}_S",
+  "APZero": "\\mathbf{AP}_0",
+  "APSigma": "\\mathbf{AP}_\\Sigma",
+  "ProgZero": "\\mathbf{Prog}_0",
+  "Kmax": "K_{\\text{max}}",
+  "Mexp": "M_{\\text{exp}}",
+  "piF": "\\pi_F",
+  "MCS": "\\text{MCS}",
+  "MCCT": "\\text{MCCT}",
+  "Kor": "\\mathbf{Kor}",
+  "polyquantor": [
+    "\\left.{}^{#2}_{|}\\overline{\\left|#1\\right|}\\right.^{#4}_{#3}",
+    4
+  ],
+  "quantor": [
+    "\\overline{\\left|#1\\right|}",
+    1
+  ],
+  "homogenesyntrix": [
+    "\\mathbf{x}#1",
+    1
+  ],
+  "widemetroplex": [
+    "\\mathsf{M}_{#2}\\!\\left(#1\\right)",
+    2
+  ],
+  "syntroklinemetroplex": [
+    "\\mathsf{B}_{#2}\\!\\left(#1\\right)",
+    2
+  ],
+  "syntroklinekettenkoppelung": "\\mathsf{K}",
+  "infinitesimalchainoperatorI": "\\mathop{\\mathrm{I}}",
+  "predicatesymbol": "\\mathrel{\\overline{||}}",
+  "supmedsubscript": [
+    "{}^{#2}_{#1,#3}",
+    3
+  ],
+  "prescript": [
+    "{}^{#1}_{#2}{#3}",
+    3
+  ],
+  "smformula": [
+    "#1",
+    1
+  ],
+  "xrightsquigarrow": [
+    "\\overset{#1}{\\rightsquigarrow}",
+    1
+  ],
+  "underrightarrow": [
+    "\\overrightarrow{#1}",
+    1
+  ],
+  "dbinom": [
+    "\\binom{#1}{#2}",
+    2
+  ],
+  "dfrac": [
+    "\\frac{#1}{#2}",
+    2
+  ],
+  "coloneqq": "\\mathrel{:=}",
+  "Coloneqq": "\\mathrel{::=}",
+  "centernot": [
+    "\\not#1",
+    1
+  ],
+  "llbracket": "\\mathopen{[\\mkern-3mu[}",
+  "rrbracket": "\\mathclose{]\\mkern-3mu]}",
+  "longhookrightarrow": "\\lhook\\joinrel\\longrightarrow",
+  "sidx": [
+    "",
+    1
+  ],
+  "hidx": [
+    "",
+    2
+  ],
+  "nidx": [
+    "",
+    2
+  ],
+  "claimceiling": [
+    "#2",
+    2
+  ],
+  "carnapexplication": [
+    "#5",
+    5
+  ],
+  "vspacing": [
+    "\\vphantom{\\sum}",
+    0
+  ],
+  "ab": "\\mathrm{ab}"
+}
+  },
+  chtml: {
+    scale: 0.95
   }
 };
 </script>
+<script src="shared/syntrometric-tex-macros.js"></script>
+<script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style id="syn-desktop-layout-fix">
+
+/* =========================================================================
+   DEFINITIVE MOBILE TOUCH, INTERACTIVITY & OVERLAY IMMUNITY (V4)
+   ========================================================================= */
+
+/* 1. Prevent Reveal.js scroll view snap points, triggers and backgrounds from blocking touch input */
+.scroll-snap-point,
+.reveal .scroll-snap-point,
+.reveal-viewport.reveal-scroll .scroll-snap-point,
+.reveal-viewport.reveal-scroll .backgrounds,
+.reveal-viewport.reveal-scroll .slide-background,
+.reveal-viewport.reveal-scroll .scroll-page-content > .slide-background {
+  pointer-events: none !important;
+}
+
+/* 2. In Reveal Scroll View and mobile views, ensure all slides and page wrappers allow pointer events */
+.reveal-viewport.reveal-scroll .slides section,
+.reveal-viewport.reveal-scroll .slides section.slide,
+.reveal-viewport.reveal-scroll .scroll-page section,
+.reveal-viewport.reveal-scroll .scroll-page,
+.reveal-viewport.reveal-scroll .scroll-page-sticky,
+.reveal-viewport.reveal-scroll .scroll-page-content,
+.reveal .slides section.present {
+  pointer-events: auto !important;
+}
+
+/* 3. Ensure all interactive panels, widgets, inputs, buttons, tracks, and selects are fully responsive */
+.reveal .interactive-panel,
+.reveal-viewport.reveal-scroll .interactive-panel,
+.interactive-panel,
+.interactive-panel *,
+.slider-row,
+.slider-row *,
+input[type="range"],
+.band-track,
+.syn-btn,
+.subsys-toggle,
+.syn-tab-btn,
+.tab-btn,
+.m3d-btn,
+.ch1-hud-btn,
+button,
+select,
+input {
+  pointer-events: auto !important;
+}
+
+input[type="range"] {
+  touch-action: none !important;
+}
+
+.band-track {
+  touch-action: none !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.band-dot-p,
+.band-dot-d,
+.band-fill-p,
+.band-fill-d {
+  pointer-events: none !important;
+}
+
+/* 4. Mobile screen responsiveness (<=900px): prevent horizontal blowout & align tracks and sliders */
+@media (max-width: 900px) {
+  .interactive-panel [style*="grid-template-columns"],
+  .reveal [style*="grid-template-columns"],
+  .reveal-viewport.reveal-scroll [style*="grid-template-columns"],
+  [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .interactive-panel [style*="grid-template-columns"] > *,
+  .reveal [style*="grid-template-columns"] > *,
+  .reveal-viewport.reveal-scroll [style*="grid-template-columns"] > *,
+  [style*="grid-template-columns"] > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .interactive-panel,
+  .reveal .interactive-panel,
+  .reveal-viewport.reveal-scroll .interactive-panel,
+  .interactive-panel .band-track,
+  .reveal .band-track,
+  .reveal-viewport.reveal-scroll .band-track,
+  .band-track,
+  .interactive-panel .slider-row,
+  .reveal .slider-row,
+  .reveal-viewport.reveal-scroll .slider-row,
+  .slider-row {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .interactive-panel svg,
+  svg#compass-svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .reveal .columns > .column,
+  .reveal .columns > div,
+  .reveal-viewport.reveal-scroll .columns > .column,
+  .reveal-viewport.reveal-scroll .columns > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
+    box-sizing: border-box !important;
+  }
+
+      #syn-bottom-dock {
+        position: fixed !important;
+        pointer-events: none !important;
+        z-index: 10000 !important;
+        display: flex !important;
+        box-sizing: border-box !important;
+      }
+      #syn-bottom-dock > * {
+        pointer-events: auto !important;
+      }
+      @media (max-width: 900px) {
+        #syn-bottom-dock {
+          left: 8px !important;
+          right: 8px !important;
+          bottom: calc(var(--syn-bottom-offset, 8px) + env(safe-area-inset-bottom, 0px)) !important;
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          gap: 6px !important;
+          max-width: calc(100vw - 16px) !important;
+        }
+        #syn-bottom-dock #syn-monograph-fab {
+          position: static !important;
+          margin: 0 !important;
+          align-self: flex-start !important;
+          max-width: calc(100vw - 16px) !important;
+          padding: 6px 11px !important;
+          font-size: 11px !important;
+          border-radius: 8px !important;
+        }
+        #syn-bottom-dock [id$="-3d-hud"],
+        #syn-bottom-dock #syntrix-3d-hud,
+        #syn-bottom-dock .anim-hud-tray,
+        #syn-bottom-dock .animation-hud {
+          position: static !important;
+          margin: 0 !important;
+          left: auto !important;
+          right: auto !important;
+          bottom: auto !important;
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+      }
+      @media (min-width: 901px) {
+        #syn-bottom-dock {
+          left: 20px !important;
+          right: 20px !important;
+          bottom: var(--syn-bottom-offset, 64px) !important;
+          flex-direction: row !important;
+          justify-content: space-between !important;
+          align-items: flex-end !important;
+          gap: 20px !important;
+          transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+        #syn-bottom-dock #syn-monograph-fab {
+          position: static !important;
+          align-self: flex-end !important;
+        }
+        #syn-bottom-dock [id$="-3d-hud"],
+        #syn-bottom-dock #syntrix-3d-hud,
+        #syn-bottom-dock .anim-hud-tray,
+        #syn-bottom-dock .animation-hud {
+          position: static !important;
+          left: auto !important;
+          right: auto !important;
+          bottom: auto !important;
+          width: auto !important;
+          max-width: min(480px, 45vw) !important;
+        }
+      }
+      body.mdrawer-open #syn-bottom-dock [id$="-3d-hud"],
+      body.mdrawer-open #syn-bottom-dock #syntrix-3d-hud,
+      body.mdrawer-open #syn-bottom-dock .anim-hud-tray,
+      body.mdrawer-open [id$="-3d-hud"],
+      body.mdrawer-open #syntrix-3d-hud,
+      body.mdrawer-open .anim-hud-tray {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        visibility: hidden !important;
+      }
+
+      /* When 3D animation panel is expanded on mobile, hide the monograph panel & FAB */
+      @media (max-width: 900px) {
+        body.syn-3d-expanded #syn-bottom-dock #syn-monograph-fab,
+        body.syn-3d-expanded #syn-monograph-fab,
+        body.syn-3d-expanded #syn-monograph-drawer,
+        body:has([id$="-3d-hud"]:not(.minimized)) #syn-bottom-dock #syn-monograph-fab,
+        body:has(#syntrix-3d-hud:not(.minimized)) #syn-bottom-dock #syn-monograph-fab,
+        body:has(.anim-hud-tray:not(.minimized)) #syn-bottom-dock #syn-monograph-fab,
+        body:has(.spotlight) #syn-bottom-dock #syn-monograph-fab,
+        body:has([id$="-3d-hud"]:not(.minimized)) #syn-monograph-fab,
+        body:has(#syntrix-3d-hud:not(.minimized)) #syn-monograph-fab,
+        body:has(.anim-hud-tray:not(.minimized)) #syn-monograph-fab,
+        body:has(.spotlight) #syn-monograph-fab,
+        body:has([id$="-3d-hud"]:not(.minimized)) #syn-monograph-drawer,
+        body:has(#syntrix-3d-hud:not(.minimized)) #syn-monograph-drawer,
+        body:has(.anim-hud-tray:not(.minimized)) #syn-monograph-drawer,
+        body:has(.spotlight) #syn-monograph-drawer,
+        #syn-bottom-dock:has([id$="-3d-hud"]:not(.minimized)) #syn-monograph-fab,
+        #syn-bottom-dock:has(#syntrix-3d-hud:not(.minimized)) #syn-monograph-fab,
+        #syn-bottom-dock:has(.anim-hud-tray:not(.minimized)) #syn-monograph-fab,
+        #syn-bottom-dock:has(.spotlight) #syn-monograph-fab {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
+        }
+      }
+      @media (max-width: 900px) {
+        #syn-monograph-drawer {
+          width: 100vw !important;
+          max-width: 100vw !important;
+          height: 100vh !important;
+          height: 100dvh !important;
+          max-height: 100dvh !important;
+          z-index: 100001 !important;
+          display: flex !important;
+          flex-direction: column !important;
+        }
+      }
+
+}
+
+@media (min-width: 901px) {
+  .reveal .stratum-badge,
+  .stratum-badge {
+    display: block !important;
+    float: none !important;
+    clear: both !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+  }
+  .reveal .columns,
+  .reveal-viewport.reveal-scroll .columns,
+  .reveal:not(.reveal-scroll) .columns {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    clear: both !important;
+  }
+  .reveal .columns > .column,
+  .reveal .columns > div,
+  .reveal-viewport.reveal-scroll .columns > .column,
+  .reveal-viewport.reveal-scroll .columns > div,
+  .reveal:not(.reveal-scroll) .columns > .column,
+  .reveal:not(.reveal-scroll) .columns > div {
+    flex: 1 1 0% !important;
+    width: auto !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: visible !important;
+  }
+  .reveal .columns > .column[style*="width: 52%"],
+  .reveal .columns > .column[style*="width:52%"] {
+    flex: 1.1 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 48%"],
+  .reveal .columns > .column[style*="width:48%"] {
+    flex: 1 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 60%"],
+  .reveal .columns > .column[style*="width:60%"] {
+    flex: 1.5 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 40%"],
+  .reveal .columns > .column[style*="width:40%"] {
+    flex: 1 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 70%"],
+  .reveal .columns > .column[style*="width:70%"] {
+    flex: 2.3 1 0% !important;
+  }
+  .reveal .columns > .column[style*="width: 30%"],
+  .reveal .columns > .column[style*="width:30%"] {
+    flex: 1 1 0% !important;
+  }
+  .reveal .column .MathJax_Display,
+  .reveal .column mjx-container[display="true"],
+  .reveal-viewport.reveal-scroll .column mjx-container[display="true"] {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    box-sizing: border-box !important;
+  }
+  .reveal .grid-2,
+  .reveal .video-grid-2,
+  .reveal:not(.reveal-scroll) .grid-2,
+  .reveal:not(.reveal-scroll) .video-grid-2,
+  .reveal-viewport.reveal-scroll .grid-2,
+  .reveal-viewport.reveal-scroll .video-grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Dynamic Windows Tray & Taskbar Avoidance for Bottom Trays */
+:root {
+  --syn-bottom-offset: 26px;
+}
+
+@media (min-width: 901px) {
+  #syn-monograph-fab {
+    bottom: var(--syn-bottom-offset, 26px) !important;
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s ease, background 0.2s ease !important;
+  }
+  
+  [id$="-3d-hud"],
+  #syntrix-3d-hud,
+  .anim-hud-tray,
+  .animation-hud {
+    bottom: var(--syn-bottom-offset, 26px) !important;
+    max-height: calc(100vh - var(--syn-bottom-offset, 26px) - 32px) !important;
+    transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1), width 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  [id$="-3d-hud"].spotlight,
+  #syntrix-3d-hud.spotlight {
+    bottom: 50% !important;
+  }
+}
+
+</style>
+
 <style>
+
+/* Desktop Presentation Mode: Strict 16:9 side-by-side columns */
+@media (min-width: 901px) {
+  .reveal .stratum-badge,
+  .stratum-badge {
+    display: block !important;
+    float: none !important;
+    clear: both !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+  }
+  .reveal:not(.reveal-scroll) .columns,
+  .reveal .columns {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 24px !important;
+    width: 100% !important;
+    clear: both !important;
+    box-sizing: border-box !important;
+  }
+  .reveal:not(.reveal-scroll) .columns > .column,
+  .reveal .columns > .column {
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .reveal:not(.reveal-scroll) .grid-2,
+  .reveal .grid-2,
+  .reveal:not(.reveal-scroll) .video-grid-2,
+  .reveal .video-grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
 @media (max-width: 900px) {
   .reveal-viewport.reveal-scroll .slide-background,
   .reveal-viewport.reveal-scroll section {
@@ -2224,3 +2766,378 @@ window.addEventListener('message', (event) => {
 })();
 </script>
 <script src="shared/monograph-workbench.js"></script>
+
+
+<!-- =========================================================================
+     UNIVERSAL MOBILE TOUCH & INTERACTIVITY SHIELD
+     Prevents Reveal.js from hijacking touch gestures on sliders, buttons,
+     canvases, tabs, 3D HUDs, and monograph workbench panels on mobile.
+     ========================================================================= -->
+<script id="syn-mobile-interactivity-engine">
+(function() {
+  if (window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V3__) return;
+  window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V3__ = true;
+  window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V2__ = true;
+  window.__SYN_MOBILE_INTERACTIVITY_ENGINE__ = true;
+  window.__SYN_MOBILE_INTERACTIVITY_ENGINE_V4__ = true;
+
+  // Inject pointer-events & touch shield stylesheet dynamically
+  (function() {
+    var styleId = 'syn-mobile-pointer-shield-v4';
+    if (document.getElementById(styleId)) return;
+    var s = document.createElement('style');
+    s.id = styleId;
+    s.textContent = `
+      .scroll-snap-point, .reveal .scroll-snap-point, .reveal-viewport.reveal-scroll .scroll-snap-point,
+      .reveal-viewport.reveal-scroll .backgrounds, .reveal-viewport.reveal-scroll .slide-background,
+      .reveal-viewport.reveal-scroll .scroll-page-content > .slide-background {
+        pointer-events: none !important;
+      }
+      .reveal-viewport.reveal-scroll .slides section, .reveal-viewport.reveal-scroll .slides section.slide,
+      .reveal-viewport.reveal-scroll .scroll-page section, .reveal-viewport.reveal-scroll .scroll-page,
+      .reveal-viewport.reveal-scroll .scroll-page-sticky, .reveal-viewport.reveal-scroll .scroll-page-content,
+      .reveal .slides section.present {
+        pointer-events: auto !important;
+      }
+      .reveal .interactive-panel, .reveal-viewport.reveal-scroll .interactive-panel,
+      .interactive-panel, .interactive-panel *, .slider-row, .slider-row *,
+      input[type="range"], .band-track, .syn-btn, .subsys-toggle, .syn-tab-btn, button, select, input {
+        pointer-events: auto !important;
+      }
+      input[type="range"], .band-track { touch-action: none !important; }
+      .band-dot-p, .band-dot-d, .band-fill-p, .band-fill-d { pointer-events: none !important; }
+      @media (max-width: 900px) {
+        .interactive-panel [style*="grid-template-columns"], [style*="grid-template-columns"] {
+          grid-template-columns: 1fr !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .interactive-panel [style*="grid-template-columns"] > *, [style*="grid-template-columns"] > * {
+          min-width: 0 !important;
+          max-width: 100% !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .interactive-panel .band-track, .band-track, .interactive-panel .slider-row, .slider-row {
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .interactive-panel svg, svg#compass-svg {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+        .reveal .columns > .column, .reveal .columns > div,
+        .reveal-viewport.reveal-scroll .columns > .column, .reveal-viewport.reveal-scroll .columns > div {
+          width: 100% !important;
+          max-width: 100% !important;
+          flex: 1 1 auto !important;
+          box-sizing: border-box !important;
+        }
+      }
+    `;
+    if (document.head) {
+      document.head.appendChild(s);
+    } else {
+      document.addEventListener('DOMContentLoaded', function() { if (document.head) document.head.appendChild(s); });
+    }
+  })();
+
+
+  var activeDrag = null; // { el: HTMLElement, type: 'slider' | 'track' }
+
+  function updateSliderFromCoords(el, clientX) {
+    if (!el) return;
+    var rect = el.getBoundingClientRect();
+    if (rect.width <= 0) return;
+    var ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    var min = parseFloat(el.min !== '' ? el.min : '0');
+    var max = parseFloat(el.max !== '' ? el.max : '100');
+    var step = parseFloat(el.step && el.step !== 'any' ? el.step : '1');
+    var rawVal = min + ratio * (max - min);
+    if (step > 0) {
+      rawVal = Math.round((rawVal - min) / step) * step + min;
+    }
+    var clamped = Math.max(min, Math.min(max, rawVal));
+    var precision = step < 1 ? (step.toString().split('.')[1] || '').length : 2;
+    var formatted = clamped.toFixed(Math.min(precision, 4));
+
+    el.value = formatted;
+    if (typeof el.oninput === 'function') {
+      try { el.oninput.call(el, new Event('input')); } catch(err) {}
+    }
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+
+  function updateBandTrackFromCoords(trackEl, clientX) {
+    if (!trackEl) return;
+    var rect = trackEl.getBoundingClientRect();
+    if (rect.width <= 0) return;
+    var ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    var val = -2.0 + ratio * 4.0;
+    val = Math.round(val / 0.05) * 0.05;
+    val = Math.max(-2.0, Math.min(2.0, val));
+    var formatted = val.toFixed(2);
+
+    if (trackEl.id === 'p-track') {
+      var slA = document.getElementById('sl-a');
+      var slF = document.getElementById('sl-f');
+      var slB = document.getElementById('sl-b');
+      if (slF) {
+        slF.value = formatted;
+        if (slA && parseFloat(slA.value) > val) {
+          slA.value = formatted;
+          if (typeof slA.oninput === 'function') try { slA.oninput.call(slA, new Event('input')); } catch(e) {}
+          slA.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        if (slB && parseFloat(slB.value) < val) {
+          slB.value = formatted;
+          if (typeof slB.oninput === 'function') try { slB.oninput.call(slB, new Event('input')); } catch(e) {}
+          slB.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        if (typeof slF.oninput === 'function') {
+          try { slF.oninput.call(slF, new Event('input')); } catch(e) {}
+        }
+        slF.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      if (typeof window.updateBands === 'function') window.updateBands();
+    } else if (trackEl.id === 'd-track') {
+      var slAl = document.getElementById('sl-al');
+      var slD = document.getElementById('sl-d');
+      var slBe = document.getElementById('sl-be');
+      if (slD) {
+        slD.value = formatted;
+        if (slAl && parseFloat(slAl.value) > val) {
+          slAl.value = formatted;
+          if (typeof slAl.oninput === 'function') try { slAl.oninput.call(slAl, new Event('input')); } catch(e) {}
+          slAl.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        if (slBe && parseFloat(slBe.value) < val) {
+          slBe.value = formatted;
+          if (typeof slBe.oninput === 'function') try { slBe.oninput.call(slBe, new Event('input')); } catch(e) {}
+          slBe.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        if (typeof slD.oninput === 'function') {
+          try { slD.oninput.call(slD, new Event('input')); } catch(e) {}
+        }
+        slD.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      if (typeof window.updateBands === 'function') window.updateBands();
+    }
+  }
+
+  function handleDragMove(clientX) {
+    if (!activeDrag) return;
+    if (activeDrag.type === 'slider') {
+      updateSliderFromCoords(activeDrag.el, clientX);
+    } else if (activeDrag.type === 'track') {
+      updateBandTrackFromCoords(activeDrag.el, clientX);
+    }
+  }
+
+  function handleDragEnd(clientX) {
+    if (!activeDrag) return;
+    if (clientX !== undefined) handleDragMove(clientX);
+    if (activeDrag.type === 'slider') {
+      if (typeof activeDrag.el.onchange === 'function') {
+        try { activeDrag.el.onchange.call(activeDrag.el, new Event('change')); } catch(err) {}
+      }
+      activeDrag.el.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    activeDrag = null;
+  }
+
+  // GLOBAL MOVE AND UP LISTENERS ON WINDOW IN CAPTURE PHASE
+  window.addEventListener('pointermove', function(e) {
+    if (activeDrag) {
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+      handleDragMove(e.clientX);
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener('pointerup', function(e) {
+    if (activeDrag) {
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+      handleDragEnd(e.clientX);
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener('pointercancel', function(e) {
+    if (activeDrag) {
+      handleDragEnd();
+    }
+  }, { passive: true, capture: true });
+
+  window.addEventListener('touchmove', function(e) {
+    if (activeDrag && e.touches && e.touches.length > 0) {
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+      handleDragMove(e.touches[0].clientX);
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener('touchend', function(e) {
+    if (activeDrag) {
+      var cx = e.changedTouches && e.changedTouches.length > 0 ? e.changedTouches[0].clientX : undefined;
+      handleDragEnd(cx);
+    }
+  }, { passive: false, capture: true });
+
+  window.addEventListener('touchcancel', function(e) {
+    if (activeDrag) {
+      handleDragEnd();
+    }
+  }, { passive: true, capture: true });
+
+  var INTERACTIVE_SELECTORS = [
+    'input', 'button', 'select', 'textarea', 'label', 'canvas', 'svg',
+    '.interactive-panel', '.slider-row', '.band-track', '#syn-bottom-dock', '.anim-hud-tray',
+    '.animation-hud', '#syntrix-3d-hud', '[id$="-3d-hud"]', '[id$="-3d-wrap"]',
+    '#syn-monograph-fab', '#syn-monograph-drawer', '.mdrawer-tab', '.mdrawer-header',
+    '.mdrawer-body', '.mdrawer-pane', '.rosetta-card', '.rosetta-list',
+    '#monograph-tex-viewer', '.syn-btn', '.subsys-toggle', '.tab-btn',
+    '.syn-tab-btn', '.m3d-btn', '.pdf-cite-badge', '.ch1-hud-btn',
+    '.chapter-jump-select', '.tex-search-input'
+  ].join(', ');
+
+  function isolateInteractiveElement(el) {
+    if (!el || el.nodeType !== 1) return;
+
+    if (!el.hasAttribute('data-prevent-swipe')) {
+      el.setAttribute('data-prevent-swipe', 'true');
+    }
+
+    var panel = el.closest('#syn-bottom-dock, .interactive-panel, .anim-hud-tray, #syntrix-3d-hud, [id$="-3d-hud"], [id$="-3d-wrap"], #syn-monograph-drawer, .slider-row, .band-track');
+    if (panel && !panel.hasAttribute('data-prevent-swipe')) {
+      panel.setAttribute('data-prevent-swipe', 'true');
+    }
+
+    if (el.dataset.synMobileTouchInitV3) return;
+    el.dataset.synMobileTouchInitV3 = '1';
+
+    // 1. Range Sliders
+    if (el.tagName === 'INPUT' && el.type === 'range') {
+      el.style.touchAction = 'none';
+
+      el.addEventListener('pointerdown', function(e) {
+        if (e.button && e.button !== 0) return;
+        activeDrag = { el: el, type: 'slider' };
+        if (e.cancelable) e.preventDefault();
+        e.stopPropagation();
+        handleDragMove(e.clientX);
+      }, { passive: false });
+
+      el.addEventListener('touchstart', function(e) {
+        if (!e.touches || e.touches.length === 0) return;
+        activeDrag = { el: el, type: 'slider' };
+        if (e.cancelable) e.preventDefault();
+        e.stopPropagation();
+        handleDragMove(e.touches[0].clientX);
+      }, { passive: false });
+
+      return;
+    }
+
+    // 2. Band Tracks: Make #p-track, #d-track, .band-track directly interactive
+    if (el.classList.contains('band-track') || el.id === 'p-track' || el.id === 'd-track') {
+      el.style.touchAction = 'none';
+      el.style.cursor = 'pointer';
+
+      el.addEventListener('pointerdown', function(e) {
+        if (e.button && e.button !== 0) return;
+        activeDrag = { el: el, type: 'track' };
+        if (e.cancelable) e.preventDefault();
+        e.stopPropagation();
+        handleDragMove(e.clientX);
+      }, { passive: false });
+
+      el.addEventListener('touchstart', function(e) {
+        if (!e.touches || e.touches.length === 0) return;
+        activeDrag = { el: el, type: 'track' };
+        if (e.cancelable) e.preventDefault();
+        e.stopPropagation();
+        handleDragMove(e.touches[0].clientX);
+      }, { passive: false });
+
+      return;
+    }
+
+    // 3. Buttons, Tabs, Toggles
+    if (el.tagName === 'BUTTON' || el.tagName === 'SELECT' || el.classList.contains('syn-btn') || el.classList.contains('tab-btn') || el.classList.contains('subsys-toggle') || el.classList.contains('syn-tab-btn')) {
+      el.style.touchAction = 'manipulation';
+      el.addEventListener('pointerdown', function(e) { e.stopPropagation(); }, { passive: true });
+      el.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: true });
+      return;
+    }
+
+    // 4. 3D Canvas & Wrappers
+    if (el.tagName === 'CANVAS' || (el.id && el.id.indexOf('-3d-wrap') !== -1) || el.classList.contains('syntrix-3d-canvas')) {
+      el.style.touchAction = 'none';
+      el.addEventListener('pointerdown', function(e) { e.stopPropagation(); }, { passive: true });
+      el.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: true });
+      return;
+    }
+
+    el.addEventListener('pointerdown', function(e) {
+      if (el.tagName !== 'SECTION') e.stopPropagation();
+    }, { passive: true });
+  }
+
+  function scanAndIsolate() {
+    try {
+      var els = document.querySelectorAll(INTERACTIVE_SELECTORS);
+      for (var i = 0; i < els.length; i++) {
+        isolateInteractiveElement(els[i]);
+      }
+    } catch (e) {}
+  }
+
+  // Capture phase guard: immediately isolate any touched element
+  function capturePhaseGuard(e) {
+    var t = e.target;
+    if (!t || t.nodeType !== 1) return;
+    var interactive = t.closest(INTERACTIVE_SELECTORS);
+    if (interactive) {
+      if (!interactive.hasAttribute('data-prevent-swipe')) {
+        interactive.setAttribute('data-prevent-swipe', 'true');
+      }
+      var panel = interactive.closest('.interactive-panel, .anim-hud-tray, #syntrix-3d-hud, [id$="-3d-hud"], [id$="-3d-wrap"], #syn-monograph-drawer');
+      if (panel && !panel.hasAttribute('data-prevent-swipe')) {
+        panel.setAttribute('data-prevent-swipe', 'true');
+      }
+      isolateInteractiveElement(interactive);
+    }
+  }
+
+  window.addEventListener('touchstart', capturePhaseGuard, { capture: true, passive: true });
+  window.addEventListener('pointerdown', capturePhaseGuard, { capture: true, passive: true });
+
+  try {
+    var observer = new MutationObserver(function(mutations) {
+      for (var i = 0; i < mutations.length; i++) {
+        if (mutations[i].addedNodes && mutations[i].addedNodes.length) {
+          scanAndIsolate();
+          break;
+        }
+      }
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  } catch (e) {}
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scanAndIsolate);
+  } else {
+    scanAndIsolate();
+  }
+
+  if (window.Reveal && window.Reveal.on) {
+    window.Reveal.on('ready', scanAndIsolate);
+    window.Reveal.on('slidechanged', scanAndIsolate);
+    window.Reveal.on('fragmentshown', scanAndIsolate);
+  }
+})();
+</script>
+

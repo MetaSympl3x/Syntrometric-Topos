@@ -464,7 +464,8 @@ function bindControlsOnce() {
     if (el.dataset.synBound) return;
     el.dataset.synBound = '1';
     el.setAttribute('data-prevent-swipe', 'true');
-    el.addEventListener('keydown', e => e.stopPropagation());});
+    el.addEventListener('keydown', e => e.stopPropagation());
+  });
 }
 
 let synInitialised = false;

@@ -58,8 +58,8 @@
   "pradikatrix": "P_n",
   "dialektik": "D_n",
   "koordination": "K_n",
-  "nullsyntrix": "\\mathbf{ys}\\widetilde{\\mathbf{c}}",
-  "elementarstruktur": "\\mathbf{y}\\widetilde{\\mathbf{a}}_{(j)}",
+  "nullsyntrix": "\\mathbf{y}\\widetilde{\\overline{\\mathbf{c}}}",
+  "elementarstruktur": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
   "konzenter": "\\text{Konzenter}",
   "exzenter": "\\text{Exzenter}",
   "konflexivsyntrix": "\\mathbf{y}\\widetilde{\\mathbf{c}}",
@@ -132,7 +132,7 @@
   "transzendenzsynkolator": "\\Gamma_i",
   "quantitaetsaspekt": "\\text{Quantit\u00e4tsaspekt}",
   "qualitaetsaspekt": "\\text{Qualit\u00e4tsaspekt}",
-  "quantitaetssyntrix": "\\mathbf{y}\\mathbf{R}_n",
+  "quantitaetssyntrix": "\\mathbf{y}\\widetilde{\\mathbf{R}}_n",
   "zahlenkoerper": "\\text{Zahlenk\u00f6rper}",
   "semantischermetrophor": "R_n",
   "semantischeriterator": "S_n",
@@ -259,15 +259,15 @@
   "MCCT": "\\text{MCCT}",
   "Kor": "\\mathbf{Kor}",
   "polyquantor": [
-    "\\mathop{\\mathsf{Q}}\\limits_{#2,#3}^{#4}\\!\\left(#1\\right)",
+    "\\left.{}^{#2}_{|}\\overline{\\left|#1\\right|}\\right.^{#4}_{#3}",
     4
   ],
   "quantor": [
-    "\\mathsf{Q}\\left[#1\\right]",
+    "\\overline{\\left|#1\\right|}",
     1
   ],
   "homogenesyntrix": [
-    "\\mathsf{H}\\!\\left(#1\\right)",
+    "\\mathbf{x}#1",
     1
   ],
   "widemetroplex": [
@@ -280,7 +280,7 @@
   ],
   "syntroklinekettenkoppelung": "\\mathsf{K}",
   "infinitesimalchainoperatorI": "\\mathop{\\mathrm{I}}",
-  "predicatesymbol": "\\mathrel{\\models}",
+  "predicatesymbol": "\\mathrel{\\overline{||}}",
   "supmedsubscript": [
     "{}^{#2}_{#1,#3}",
     3
@@ -354,14 +354,14 @@
     { eq: "SM Eq. 8", ch: "Ch 2", page: 37, tex: "def:piecewise_colored_operad", d: "(\\underline{f}, \\underline{m}) \\equiv \\int (f_\\gamma, m_\\gamma) \\quad (\\text{Komplexsynkolator})", r: "Piecewise-color filtered operad algebra with \\(m_K > \\dim F \\implies C(\\dim F, m_K) = 0\\)" },
     { eq: "SM Eqs. 9, 9a", ch: "Ch 2", page: 51, tex: "thm:aeondyne_fibration_strict", d: "\\underline{S} \\equiv \\langle f, (\\metrophor{a}), m\\rangle \\lor \\overline{S} \\equiv \\langle(f), \\metrophor{a}, m\\rangle", r: "Cartesian fiber section in Grothendieck fibration \\(\\pi : \\int_{\\mathbf{Ctx}} \\mathbf{Syn} \\to \\mathbf{Ctx}\\)" },
     { eq: "SM Eq. 11", ch: "Ch 3", page: 58, tex: "eq:original_universal_korporator_matrix_ch3", d: "\\begin{pmatrix} K_s & C_s \\\\ K_m & C_m \\end{pmatrix} \\quad (2 \\times 2 \\; \\text{Universal Korporator Matrix})", r: "Corporate pairing functor \\(\\mathbf{Kor}_{r,\\Sigma}\\): Span pushout \\(P_a \\boxplus_\\phi P_b\\) and 9 Mixed / 6 Pure classes" },
-    { eq: "SM Eq. 11a", ch: "Ch 3", page: 59, tex: "prop:zero_object_syn", d: "\\mathbf{ys}\\,\\widetilde{c} \\equiv \\langle\\overline{f}\\,\\widetilde{c}\\,\\overline{m}\\rangle \\quad (\\text{Nullsyntrix})", r: "Initial & terminal zero object \\(0_{\\mathbf{Syn}} \\in \\mathrm{Obj}(\\mathbf{Syn})\\)" },
+    { eq: "SM Eq. 11a", ch: "Ch 3", page: 59, tex: "prop:zero_object_syn", d: "\\mathbf{y}\\widetilde{\\overline{\\mathbf{c}}} \\equiv \\langle\\overline{f}\\,\\widetilde{c}\\,\\overline{m}\\rangle \\quad (\\text{Nullsyntrix})", r: "Initial & terminal zero object \\(0_{\\mathbf{Syn}} \\in \\mathrm{Obj}(\\mathbf{Syn})\\)" },
     { eq: "SM Eq. 13", ch: "Ch 3", page: 60, tex: "def:conflexivity_index", d: "\\mathbf{y}\\widetilde{a}_{\\mathrm{conf}} \\equiv \\prod_{i=1}^k \\mathbf{S}_i \\quad (\\text{Konflexivsyntrix})", r: "Tree colimit \\(\\varinjlim D\\) with Presentation Conflexivity Index \\(\\mathrm{ConfIndex}_{\\mathrm{pres}}(G_S) = |E_K| + 1\\)" },
     { eq: "SM Eq. 14", ch: "Ch 4", page: 79, tex: "thm:slice_site_equivalence_ch4", d: "G_{\\mathrm{gen}} \\equiv \\left[ P_i \\big\\vert_1^4 \\{\\dots\\}_{(j)} \\big\\vert_1^Q \\right] \\quad (\\text{Generative & 4D Syntrixtotalit\\\"at})", r: "Slice sheaf topos \\(\\mathrm{Sh}(\\mathbf{Ctx}_{/U_G}, J_{/U_G}) \\simeq \\mathcal{E}_{\\mathrm{syn}} / y(U_G)\\) over \\(P^{U_G} \\cong \\mathbb{R}^{12}\\)" },
     { eq: "SM Eqs. 16a, 17", ch: "Ch 4", page: 80, tex: "thm:relative_interaction_curvature_decomp", d: "E, \\; E^{-1}, \\; E_\\nu \\quad (\\text{Continuous Enyphane & Enyphanie})", r: "Boundary-tangent corner flow \\(\\Phi_t^X\\) and Non-Abelian Interaction Curvature \\(\\Omega_{\\mathrm{int}}^D = \\sum [a_i, a_j] + \\dots\\)" },
     { eq: "SM Eq. 18", ch: "Ch 4", page: 94, tex: "def:discrete_chronometry_clock_ch4", d: "\\mathrm{YF}(\\delta t_i) \\quad (\\text{Syntrixfunktor & Zeitkorn})", r: "Pushout endofunctor \\(\\mathrm{YF}_{\\mathrm{model}}(f) = B \\amalg_{C_0} f^{\\otimes r}\\) and discrete clock difference \\(\\delta t_n = \\tau(n+1) - \\tau(n)\\)" },
     { eq: "SM Eqs. 20--25a", ch: "Ch 5", page: 103, tex: "def:complete_segal_objects_ch5", d: "\\mathsf{M}^1, \\; \\mathsf{M}^n, \\; {}^{n+N}\\alpha \\quad (\\text{Hypersyntrix & Metroplex})", r: "Dendroidal Complete Segal Spaces \\(\\mathrm{dCSeg}(\\mathcal{X}_{\\mathrm{syn}})\\) and change-of-operad adjunction \\((\\phi)_! \\dashv (\\phi)^*\\)" },
     { eq: "SM Eq. 27", ch: "Ch 6", page: 123, tex: "thm:final_coalgebra_existence_ch6", d: "\\mathrm{AR}_q, \\; T_z \\quad (\\text{\\\"Aonische Area & Telezentrum})", r: "Final Telecentric Coalgebra \\((\\nu \\mathcal{T}, \\zeta \\cong)\\) via Lambek's Lemma and Lyapunov basin \\(\\dot{V} \\leq -\\gamma V\\)" },
-    { eq: "SM Eqs. 28--35a", ch: "Ch 7--8", page: 144, tex: "thm:nuclear_variable_separation", d: "\\mathbf{y}R_n \\equiv \\langle f, R_n, m\\rangle \\quad (\\text{Quantit\\\"atssyntrix})", r: "Quantitative Topos \\(\\mathcal{E}_{\\mathrm{quant}}\\), Seeley extension \\(E^{(n)}\\) and Grothendieck nuclearity \\(\\mathcal{S}((\\mathbb{R}_{\\geq 0})^m)\\)" },
+    { eq: "SM Eqs. 28--35a", ch: "Ch 7--8", page: 144, tex: "thm:nuclear_variable_separation", d: "\\mathbf{y}\\widetilde{\\mathbf{R}}_n \\equiv \\langle f, R_n, m\\rangle \\quad (\\text{Quantit\\\"atssyntrix})", r: "Quantitative Topos \\(\\mathcal{E}_{\\mathrm{quant}}\\), Seeley extension \\(E^{(n)}\\) and Grothendieck nuclearity \\(\\mathcal{S}((\\mathbb{R}_{\\geq 0})^m)\\)" },
     { eq: "SM Eqs. 37, 53, 64", ch: "Ch 9", page: 182, tex: "def:hermetry_matrix_36", d: "{}^2\\bar{g} = {}^2\\bar{g}_+ + {}^2\\bar{g}_- \\quad (36\\text{-Component Hermetry})", r: "21 symmetric + 15 skew potentials on \\(R_6\\), Palatini \\(Q_{(\\mu\\gamma)}\\) and Sobolev fixed point \\({}^2\\bar{g}_\\infty\\)" },
     { eq: "SM Eqs. 67--80", ch: "Ch 10", page: 205, tex: "thm:discrete_leibniz_rules", d: "\\metrondelta\\varphi = \\varphi(n) - \\varphi(n-1), \\quad \\nabla(uv) = u\\nabla v + v\\nabla u - (\\nabla u)(\\nabla v), \\quad \\mathrm{S}", r: "Backward difference \\(\\nabla_i = I - E_i^{-1}\\), DEC \\(d_\\tau^2 \\equiv 0\\) and Finite Element Exterior Calculus" },
     { eq: "SM Eqs. 99, 100, 100a", ch: "Ch 11", page: 228, tex: "thm:mass_eigenvalue_formula_ch11", d: "{}^4\\zeta, \\quad {}^4F = 0, \\quad L_p = C(6,p) \\quad (\\text{Strukturkompressor & Masses})", r: "Self-adjoint selector spectrum on \\(K_8 = S^2 \\times \\mathbb{T}^6\\) across 63 channels fixing elementary particle masses" }

@@ -438,8 +438,10 @@ function bindControlsOnce() {
   document.querySelectorAll('input[type="range"], select, button').forEach(el => {
     if (el.dataset.synBound) return;
     el.dataset.synBound = '1';
+    // Keep Reveal's keyboard/touch navigation from hijacking widget interaction.
     el.setAttribute('data-prevent-swipe', 'true');
-    el.addEventListener('keydown', e => e.stopPropagation());});
+    el.addEventListener('keydown', e => e.stopPropagation());
+  });
 }
 
 let synInitialised = false;

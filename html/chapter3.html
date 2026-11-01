@@ -225,7 +225,7 @@
 
         homsyntrix: "\\mathbf{x}\\widetilde{\\mathbf{a}}",
 
-        nullsyntrix: "\\mathbf{ys}\\widetilde{\\mathbf{c}}",
+        nullsyntrix: "\\mathbf{y}\\widetilde{\\overline{\\mathbf{c}}}",
 
         konflexiv: "\\mathbf{y}\\widetilde{\\mathbf{c}}",
 
@@ -1074,8 +1074,8 @@ window.MathJax = {
   "pradikatrix": "P_n",
   "dialektik": "D_n",
   "koordination": "K_n",
-  "nullsyntrix": "\\mathbf{ys}\\widetilde{\\mathbf{c}}",
-  "elementarstruktur": "\\mathbf{y}\\widetilde{\\mathbf{a}}_{(j)}",
+  "nullsyntrix": "\\mathbf{y}\\widetilde{\\overline{\\mathbf{c}}}",
+  "elementarstruktur": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
   "konzenter": "\\text{Konzenter}",
   "exzenter": "\\text{Exzenter}",
   "konflexivsyntrix": "\\mathbf{y}\\widetilde{\\mathbf{c}}",
@@ -1148,7 +1148,7 @@ window.MathJax = {
   "transzendenzsynkolator": "\\Gamma_i",
   "quantitaetsaspekt": "\\text{Quantit\u00e4tsaspekt}",
   "qualitaetsaspekt": "\\text{Qualit\u00e4tsaspekt}",
-  "quantitaetssyntrix": "\\mathbf{y}\\mathbf{R}_n",
+  "quantitaetssyntrix": "\\mathbf{y}\\widetilde{\\mathbf{R}}_n",
   "zahlenkoerper": "\\text{Zahlenk\u00f6rper}",
   "semantischermetrophor": "R_n",
   "semantischeriterator": "S_n",
@@ -1275,15 +1275,15 @@ window.MathJax = {
   "MCCT": "\\text{MCCT}",
   "Kor": "\\mathbf{Kor}",
   "polyquantor": [
-    "\\mathop{\\mathsf{Q}}\\limits_{#2,#3}^{#4}\\!\\left(#1\\right)",
+    "\\left.{}^{#2}_{|}\\overline{\\left|#1\\right|}\\right.^{#4}_{#3}",
     4
   ],
   "quantor": [
-    "\\mathsf{Q}\\left[#1\\right]",
+    "\\overline{\\left|#1\\right|}",
     1
   ],
   "homogenesyntrix": [
-    "\\mathsf{H}\\!\\left(#1\\right)",
+    "\\mathbf{x}#1",
     1
   ],
   "widemetroplex": [
@@ -1296,7 +1296,7 @@ window.MathJax = {
   ],
   "syntroklinekettenkoppelung": "\\mathsf{K}",
   "infinitesimalchainoperatorI": "\\mathop{\\mathrm{I}}",
-  "predicatesymbol": "\\mathrel{\\models}",
+  "predicatesymbol": "\\mathrel{\\overline{||}}",
   "supmedsubscript": [
     "{}^{#2}_{#1,#3}",
     3
