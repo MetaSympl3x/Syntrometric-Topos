@@ -963,7 +963,13 @@ delim_2 "\\dotfill "
 \providecommand{\AP}{\mathbf{AP}}
 \providecommand{\Alg}{\operatorname{Alg}}
 \providecommand{\ev}{\operatorname{ev}}
+\providecommand{\joinrel}{\mathrel{\mkern-3mu}}
+\providecommand{\relbar}{\mathrel{-}}
+\providecommand{\Relbar}{\mathrel{=}}
+\ifdefined\lhook\else\providecommand{\lhook}{\mathrel{\hookleftarrow}}\fi
+\ifdefined\rhook\else\providecommand{\rhook}{\mathrel{\hookrightarrow}}\fi
 \providecommand{\longhookrightarrow}{\lhook\joinrel\longrightarrow}
+\providecommand{\longhookleftarrow}{\longleftarrow\joinrel\rhook}
 \providecommand{\longlongrightarrow}{\longrightarrow}
 \providecommand{\xrightrightarrows}[2][]{\rightrightarrows}
 \newcommand{\q}[1]{\enquote{#1}}
