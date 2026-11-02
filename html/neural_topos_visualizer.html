@@ -1,0 +1,2570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Operadic Neural Topos — Cortical Feature Abstraction & Predictive Coding</title>
+
+  <!-- Typography: Modern Aerospace & AAA Game Engine Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@600;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- KaTeX for Rigorous Mathematical Formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+          onload="if(window.renderMathInElement) renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true},{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+
+  <!-- Three.js & OrbitControls -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!-- Standalone Operadic Neural Topos Architecture Engine -->
+  <script src="OperadicNeuralTopos.js"></script>
+  <script>
+    // Bulletproof fallback: ensure engine is available even if external script is blocked by local file:// policy
+    if (typeof OperadicNeuralTopos === 'undefined') {
+/**
+ * ============================================================================
+ * OPERADIC NEURAL TOPOS ENGINE (v2.2.0 - Cortical Abstraction Edition)
+ * ============================================================================
+ * Standalone Reference Implementation of the 5-Tier Cortical Feature Abstraction
+ * and Predictive Coding Architecture formalized in "Syntrometric-Topos.tex".
+ *
+ * Core Neuro-Mathematical Architecture:
+ *  - Tier 0: 2D Retinal Visual Transduction (16x16 Pixel Grid -> Spatial Receptors)
+ *  - Tier 1: Unimodal Cortical Columns & Tripartite Context Stalks
+ *            (V1 Horizontal, Vertical, Diagonal, and Circle/Surround Receptive Fields
+ *            with Predicate Bands [a, f, b], Diatrope Nuances [alpha, d, beta],
+ *            and Cech Consensus Descent via discrete Laplacian relaxation)
+ *  - Tier 2: Operadic Feature Abstraction (Episyllogismus coinvariant quotient on
+ *            Sym^2(F_gamma) actively annihilating alternating phase/position syntax
+ *            Lambda^2(F_gamma), coupled with Beck's Distributive Law T_frag o T_pyr,
+ *            and Carrier Pushout junction binding)
+ *  - Tier 3: Invariant Association Cortex Prototypes (IT / STG Attractor Tokens:
+ *            Horizontal Line, Vertical Line, Diagonal Stroke, Circle/Loop, Cross/Junction, Complex Gestalt)
+ *  - Tier 4: Cortical Abstraction Workspace & Predictive Coding Core
+ *            (32D Recurrent population dynamics integrated via 2-stage Symplectic
+ *            Velocity-Verlet with dendritic Christoffel drag, 36-component Hermetry
+ *            metric tensor, and top-down predictive reconstruction minimizing prediction error)
+ *
+ * Zero external dependencies. Standalone UMD module (Node.js, Browser, Worker).
+ * ============================================================================
+ */
+
+(function (root, factory) {
+  const exported = factory();
+  if (typeof define === 'function' && define.amd) {
+    define([], function () { return exported; });
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = exported;
+  }
+  if (root) {
+    root.OperadicNeuralTopos = exported;
+  }
+}(typeof globalThis !== 'undefined' ? globalThis : (typeof self !== 'undefined' ? self : this), function () {
+  'use strict';
+
+  // ==========================================================================
+  // 1. BANACH SPACE FOUNDATIONS (FinBan_<=1) & RECEPTIVE FIELD GEOMETRY
+  // ==========================================================================
+  class BanachSpace {
+    constructor(name, dim, pNorm = 2) {
+      this.name = name || 'V';
+      this.dim = Math.max(1, dim | 0);
+      this.pNorm = pNorm;
+    }
+
+    norm(x, p = this.pNorm) {
+      if (!x || x.length === 0) return 0;
+      if (p === 'inf' || p === Infinity) {
+        let max = 0;
+        for (let i = 0; i < x.length; i++) {
+          const abs = Math.abs(x[i]);
+          if (abs > max) max = abs;
+        }
+        return max;
+      }
+      if (p === 1) {
+        let sum = 0;
+        for (let i = 0; i < x.length; i++) sum += Math.abs(x[i]);
+        return sum;
+      }
+      if (p === 2) {
+        let sumSq = 0;
+        for (let i = 0; i < x.length; i++) sumSq += x[i] * x[i];
+        return Math.sqrt(sumSq);
+      }
+      let sumP = 0;
+      for (let i = 0; i < x.length; i++) sumP += Math.pow(Math.abs(x[i]), p);
+      return Math.pow(sumP, 1 / p);
+    }
+
+    normalize(x, p = this.pNorm) {
+      const n = this.norm(x, p);
+      if (n <= 1e-12) return new Float64Array(x.length);
+      const out = new Float64Array(x.length);
+      const inv = 1 / n;
+      for (let i = 0; i < x.length; i++) out[i] = x[i] * inv;
+      return out;
+    }
+
+    generateUnitSphereGeometry(subdivisions = 32, p = this.pNorm) {
+      const vertices = [];
+      const normals = [];
+      const uvs = [];
+      const indices = [];
+
+      const pVal = (p === 'inf' || p === Infinity) ? 28.0 : (p < 1 ? 1.0 : Number(p));
+
+      for (let lat = 0; lat <= subdivisions; lat++) {
+        const theta = (lat * Math.PI) / subdivisions - Math.PI / 2;
+        const sinT = Math.sin(theta);
+        const cosT = Math.cos(theta);
+
+        for (let lon = 0; lon <= subdivisions; lon++) {
+          const phi = (lon * 2 * Math.PI) / subdivisions;
+          const sinP = Math.sin(phi);
+          const cosP = Math.cos(phi);
+
+          const x0 = cosT * cosP;
+          const y0 = sinT;
+          const z0 = cosT * sinP;
+
+          const absX = Math.abs(x0);
+          const absY = Math.abs(y0);
+          const absZ = Math.abs(z0);
+
+          let r;
+          if (p === 'inf' || p === Infinity) {
+            r = Math.max(absX, absY, absZ);
+          } else {
+            r = Math.pow(
+              Math.pow(absX, pVal) + Math.pow(absY, pVal) + Math.pow(absZ, pVal),
+              1.0 / pVal
+            );
+          }
+          r = Math.max(r, 1e-6);
+
+          const x = x0 / r;
+          const y = y0 / r;
+          const z = z0 / r;
+
+          vertices.push(x, y, z);
+
+          let nx, ny, nz;
+          if (pVal <= 2.0) {
+            nx = Math.sign(x) * Math.pow(Math.abs(x), Math.max(0, pVal - 1));
+            ny = Math.sign(y) * Math.pow(Math.abs(y), Math.max(0, pVal - 1));
+            nz = Math.sign(z) * Math.pow(Math.abs(z), Math.max(0, pVal - 1));
+          } else {
+            const pNormGrad = Math.min(6.0, pVal - 1);
+            nx = Math.sign(x) * Math.pow(Math.abs(x), pNormGrad);
+            ny = Math.sign(y) * Math.pow(Math.abs(y), pNormGrad);
+            nz = Math.sign(z) * Math.pow(Math.abs(z), pNormGrad);
+          }
+          const nLen = Math.hypot(nx, ny, nz) || 1;
+          normals.push(nx / nLen, ny / nLen, nz / nLen);
+
+          uvs.push(lon / subdivisions, lat / subdivisions);
+        }
+      }
+
+      for (let lat = 0; lat < subdivisions; lat++) {
+        for (let lon = 0; lon < subdivisions; lon++) {
+          const first = lat * (subdivisions + 1) + lon;
+          const second = first + subdivisions + 1;
+
+          indices.push(first, second, first + 1);
+          indices.push(second, second + 1, first + 1);
+        }
+      }
+
+      return {
+        vertices: new Float32Array(vertices),
+        normals: new Float32Array(normals),
+        uvs: new Float32Array(uvs),
+        indices: new Uint32Array(indices)
+      };
+    }
+  }
+
+  // ==========================================================================
+  // 2. PROJECTIVE TENSOR PRODUCTS & SELECTION FUNCTORS (Def 12.16)
+  // ==========================================================================
+  class ProjectiveTensorProduct {
+    static tensor(v, w) {
+      const n = v.length;
+      const m = w.length;
+      const out = new Float64Array(n * m);
+      for (let i = 0; i < n; i++) {
+        const vi = v[i];
+        const row = i * m;
+        for (let j = 0; j < m; j++) {
+          out[row + j] = vi * w[j];
+        }
+      }
+      return out;
+    }
+
+    static evaluateSelectionFunctors(v) {
+      const n = v.length;
+      const results = {};
+      results.sel4_dim = n * n;
+      results.sel4_asym = this.tensor(v, v);
+
+      const symFull = new Float64Array(n * n);
+      const alt = new Float64Array(n * n);
+
+      for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+          const idx1 = i * n + j;
+          const idx2 = j * n + i;
+          symFull[idx1] = 0.5 * (results.sel4_asym[idx1] + results.sel4_asym[idx2]);
+          alt[idx1] = 0.5 * (results.sel4_asym[idx1] - results.sel4_asym[idx2]);
+        }
+      }
+
+      results.sel3_sym = symFull;
+      results.sel3_dim = (n * (n + 1)) / 2;
+      results.sel1_alt = alt;
+      results.kernelDim = results.sel4_dim - results.sel3_dim;
+      return results;
+    }
+  }
+
+  // ==========================================================================
+  // 3. CONTEXT TRIPARTITE STRUCTURE & CORTICAL RECEPTIVE FIELDS (Def 1.4 & 1.11)
+  // ==========================================================================
+  class TripartiteContext {
+    constructor(name, dim = 14, filterType = 'horiz') {
+      this.name = name || 'CorticalStalk';
+      this.dim = dim;
+      this.filterType = filterType;
+
+      this.a_bounds = new Float64Array(dim).fill(-1.0);
+      this.b_bounds = new Float64Array(dim).fill(1.0);
+      this.focal_p = new Float64Array(dim);
+
+      this.alpha_bounds = new Float64Array(dim).fill(0.0);
+      this.beta_bounds = new Float64Array(dim).fill(1.0);
+      this.focal_d = new Float64Array(dim).fill(0.90);
+
+      this.z_cipher = new Float64Array(dim);
+      this.zeta_cipher = new Float64Array(dim);
+      for (let i = 0; i < dim; i++) {
+        this.z_cipher[i] = Math.cos(i * 0.45);
+        this.zeta_cipher[i] = Math.sin(i * 0.45);
+      }
+
+      this.coordinationStrengths = new Float64Array(dim);
+      this.coordinatedState = new Float64Array(dim);
+
+      // 16x16 Zero-Mean Normalized Spatial Receptive Field Kernel
+      this.spatialFilter = new Float32Array(16 * 16);
+      this.initSpatialFilter(filterType);
+    }
+
+    initSpatialFilter(type) {
+      let sum = 0;
+      for (let y = 0; y < 16; y++) {
+        for (let x = 0; x < 16; x++) {
+          const idx = y * 16 + x;
+          const dx = x - 7.5;
+          const dy = y - 7.5;
+          const r = Math.hypot(dx, dy);
+
+          let raw = 0;
+          if (type === 'horiz') {
+            raw = Math.cos(dy * 1.0) * Math.exp(-(dx * dx + dy * dy) / 36.0);
+          } else if (type === 'vert') {
+            raw = Math.cos(dx * 1.0) * Math.exp(-(dx * dx + dy * dy) / 36.0);
+          } else if (type === 'diag') {
+            raw = Math.cos((dx - dy) * 0.8) * Math.exp(-(dx * dx + dy * dy) / 36.0);
+          } else if (type === 'circle') {
+            raw = Math.exp(-Math.pow(r - 5.0, 2) / 3.5) - 0.6 * Math.exp(-(r * r) / 8.0);
+          }
+          this.spatialFilter[idx] = raw;
+          sum += raw;
+        }
+      }
+
+      // Zero-mean and unit variance normalization (eliminates background DC shift)
+      const mean = sum / 256.0;
+      let normSq = 0;
+      for (let i = 0; i < 256; i++) {
+        this.spatialFilter[i] -= mean;
+        normSq += this.spatialFilter[i] * this.spatialFilter[i];
+      }
+      const std = Math.sqrt(normSq) || 1.0;
+      for (let i = 0; i < 256; i++) {
+        this.spatialFilter[i] /= std;
+      }
+    }
+
+    /**
+     * Filters 2D retinal pixel array through the zero-mean receptive field kernel.
+     */
+    convolveRetina(pixelArray, width = 16, height = 16) {
+      const len = Math.min(pixelArray.length, this.spatialFilter.length);
+      const output = new Float64Array(this.dim);
+
+      let totalDot = 0;
+      for (let idx = 0; idx < len; idx++) {
+        totalDot += pixelArray[idx] * this.spatialFilter[idx];
+      }
+      const baseResponse = Math.tanh(totalDot * 0.45);
+
+      for (let q = 0; q < this.dim; q++) {
+        const subPhase = (q - 6.5) * 0.18;
+        output[q] = Math.tanh(baseResponse * (1.0 + 0.12 * Math.cos(subPhase)));
+      }
+      return output;
+    }
+
+    update(rawReceptiveInput, dt = 0.016, topDownPrior = 0.0) {
+      for (let q = 0; q < this.dim; q++) {
+        const inputVal = (rawReceptiveInput[q] || 0) - topDownPrior;
+        const targetP = Math.tanh(inputVal);
+        this.focal_p[q] = this.focal_p[q] * 0.70 + targetP * 0.30;
+
+        const confSignal = 0.85 + 0.15 * Math.cos(dt * (q + 1) * 2.0);
+        this.focal_d[q] = Math.max(0.0, Math.min(1.0, confSignal));
+
+        const salienceP = Math.abs(this.z_cipher[q]) * Math.abs(this.focal_p[q]);
+        const salienceD = Math.abs(this.zeta_cipher[q]) * this.focal_d[q];
+        const chi = Math.max(0.0, salienceD + salienceP - 1.0);
+        this.coordinationStrengths[q] = chi;
+
+        this.coordinatedState[q] = this.focal_p[q] * (0.6 + 0.4 * chi);
+      }
+      return this.coordinatedState;
+    }
+  }
+
+  // ==========================================================================
+  // 4. CARRIER PUSHOUT & MULTI-MODAL JUNCTION BINDING (Thm 3.3, Def 3.16)
+  // ==========================================================================
+  class CarrierPushout {
+    static computePushout(stateA, stateB, couplingStrength = 0.65) {
+      const p = stateA.length;
+      const q = stateB.length;
+      const coproductDim = p + q;
+
+      const maxOverlap = Math.min(p, q);
+      const rankDelta = Math.max(1, Math.min(maxOverlap, Math.round(couplingStrength * maxOverlap)));
+      const pushoutDim = coproductDim - rankDelta;
+      const confIndex = rankDelta > 0 ? 2 : 1;
+
+      const amalgamated = new Float64Array(Math.max(p, q));
+      let discrepancyNorm = 0;
+
+      for (let i = 0; i < amalgamated.length; i++) {
+        const valA = i < p ? stateA[i] : 0;
+        const valB = i < q ? stateB[i] : 0;
+        if (i < rankDelta) {
+          amalgamated[i] = 0.5 * (valA + valB);
+          discrepancyNorm += Math.abs(valA - valB);
+        } else {
+          amalgamated[i] = valA + valB;
+        }
+      }
+
+      return {
+        coproductDim,
+        pushoutDim,
+        confIndex,
+        amalgamatedVector: amalgamated,
+        overlapDiscrepancy: discrepancyNorm / Math.max(1, rankDelta)
+      };
+    }
+  }
+
+  // ==========================================================================
+  // 5. OPERADIC FEATURE ABSTRACTION ENGINE (Episyllogismus - Thm 12.3 & Thm 2.11)
+  // ==========================================================================
+  class EpisyllogismusEngine {
+    constructor(inputDim = 56, outputDim = 24) {
+      this.inputDim = inputDim;
+      this.outputDim = outputDim;
+
+      this.weights = new Float64Array(outputDim * inputDim);
+      this.bilinearWeights = new Float64Array(outputDim * inputDim);
+      this.fragmentMemory = new Float64Array(outputDim);
+
+      this.initContractiveWeights();
+
+      this.lastErasureKernelDim = 0;
+      this.lastErasureRatio = 0;
+      this.lastAlternatingNullEnergy = 0;
+      this.lastSymmetricPassEnergy = 0;
+    }
+
+    initContractiveWeights() {
+      for (let o = 0; o < this.outputDim; o++) {
+        for (let i = 0; i < this.inputDim; i++) {
+          const idx = o * this.inputDim + i;
+          this.weights[idx] = (Math.sin(idx * 1.618) * Math.cos(idx * 0.707)) / Math.sqrt(this.inputDim);
+          this.bilinearWeights[idx] = (Math.cos(idx * 2.718) * 0.5) / Math.sqrt(this.inputDim);
+        }
+      }
+    }
+
+    /**
+     * Consumes 56D unimodal cortical stalk signals, projects onto the symmetric
+     * coinvariant quotient Sym^2(F_gamma), actively eliminates the alternating
+     * phase/position-sensitive nullspace Lambda^2(F_gamma), and applies Beck's
+     * Distributive Law coupling feedforward features with contextual memory.
+     */
+    consume(stalkVector) {
+      const inLen = Math.min(stalkVector.length, this.inputDim);
+      const quotient = new Float64Array(this.outputDim);
+
+      const half = inLen >> 1;
+      let altEnergySq = 0;
+      let symEnergySq = 0;
+
+      for (let i = 0; i < half; i++) {
+        const xa = stalkVector[i];
+        const xb = stalkVector[i + half];
+        const j = (i + 1) % half;
+        const ya = stalkVector[j];
+        const yb = stalkVector[j + half];
+
+        const symTerm = 0.5 * (xa * yb + xb * ya);
+        const altTerm = 0.5 * (xa * yb - xb * ya); // Annihilated phase syntax
+        symEnergySq += symTerm * symTerm;
+        altEnergySq += altTerm * altTerm;
+      }
+      this.lastAlternatingNullEnergy = Math.sqrt(altEnergySq);
+      this.lastSymmetricPassEnergy = Math.sqrt(symEnergySq);
+
+      for (let o = 0; o < this.outputDim; o++) {
+        let linearAcc = 0;
+        let bilinearAcc = 0;
+        const row = o * this.inputDim;
+
+        for (let i = 0; i < inLen; i++) {
+          const xi = stalkVector[i];
+          const xPair = stalkVector[(i + 14) % inLen];
+          const symPair = 0.5 * (xi + xPair) + 0.25 * (xi * xPair);
+          linearAcc += symPair * this.weights[row + i];
+          bilinearAcc += (xi * xPair) * this.bilinearWeights[row + i];
+        }
+
+        const pyrVal = Math.tanh(linearAcc + 0.35 * bilinearAcc);
+        const homVal = 0.78 * pyrVal + 0.22 * this.fragmentMemory[o];
+        this.fragmentMemory[o] = homVal;
+        quotient[o] = homVal;
+      }
+
+      const totalEnergy = this.lastSymmetricPassEnergy + this.lastAlternatingNullEnergy;
+      this.lastErasureRatio = totalEnergy > 1e-9 ? this.lastAlternatingNullEnergy / totalEnergy : 0.0;
+      this.lastErasureKernelDim = (inLen * (inLen - 1)) / 2;
+
+      return {
+        quotientVector: quotient,
+        symmetricEnergy: this.lastSymmetricPassEnergy,
+        alternatingNullEnergy: this.lastAlternatingNullEnergy,
+        erasureRatio: this.lastErasureRatio,
+        theoreticalKerDim: this.lastErasureKernelDim
+      };
+    }
+  }
+
+  // ==========================================================================
+  // 6. INVARIANT ASSOCIATION CORTEX PROTOTYPES (IT / STG Tokens - Thm 12.5)
+  // ==========================================================================
+  class ProtosimplexEngine {
+    constructor() {
+      // 6 Invariant Visual Shape Prototypes (Categorical Attractors):
+      this.atoms = [
+        { id: 'P_horiz', label: 'Horizontal Line/Bar', vector: new Float64Array(6), energy: 0.0 },
+        { id: 'P_vert', label: 'Vertical Line/Bar', vector: new Float64Array(6), energy: 0.0 },
+        { id: 'P_diag', label: 'Diagonal Stroke', vector: new Float64Array(6), energy: 0.0 },
+        { id: 'P_circle', label: 'Circle / Closed Loop', vector: new Float64Array(6), energy: 0.0 },
+        { id: 'P_cross', label: 'Cross / Junction', vector: new Float64Array(6), energy: 0.0 },
+        { id: 'P_gestalt', label: 'Complex Gestalt', vector: new Float64Array(6), energy: 0.0 }
+      ];
+
+      this.winningPrototype = this.atoms[0];
+      this.confidence = 0.0;
+    }
+
+    /**
+     * Matches stalk column profiles & operadic coinvariants against shape prototypes.
+     */
+    match(stalks, coinvariantQuotient) {
+      let hVal = 0, vVal = 0, dVal = 0, cVal = 0;
+      for (let i = 0; i < 14; i++) {
+        hVal += stalks[0][i];
+        vVal += stalks[1][i];
+        dVal += stalks[2][i];
+        cVal += stalks[3][i];
+      }
+      hVal /= 14;
+      vVal /= 14;
+      dVal /= 14;
+      cVal /= 14;
+
+      const scores = new Float64Array(6);
+
+      // 1. Cross: Both H and V are strongly positive simultaneously!
+      const crossDetector = Math.max(0, Math.min(hVal, vVal) * 1.8);
+
+      // 2. Horiz: Strong H, weak or negative V
+      scores[0] = Math.max(0, hVal - 0.6 * Math.max(0, vVal) - 0.4 * Math.max(0, dVal));
+
+      // 3. Vert: Strong V, weak or negative H
+      scores[1] = Math.max(0, vVal - 0.6 * Math.max(0, hVal) - 0.4 * Math.max(0, dVal));
+
+      // 4. Diag: Strong D, weak H and V
+      scores[2] = Math.max(0, dVal - 0.4 * (Math.max(0, hVal) + Math.max(0, vVal)));
+
+      // 5. Circle: Strong C
+      scores[3] = Math.max(0, cVal - 0.2 * (Math.max(0, hVal) + Math.max(0, vVal)));
+
+      // 6. Cross: Orthogonal intersection
+      scores[4] = crossDetector;
+
+      // 7. Gestalt: Mixed activation
+      scores[5] = 0.25 * (Math.abs(hVal) + Math.abs(vVal) + Math.abs(dVal) + Math.abs(cVal));
+
+      // If cross is active, suppress pure horiz/vert
+      if (scores[4] > 0.3) {
+        scores[0] *= 0.4;
+        scores[1] *= 0.4;
+      }
+
+      let maxScore = -1;
+      let bestIdx = 0;
+
+      for (let a = 0; a < this.atoms.length; a++) {
+        const atom = this.atoms[a];
+        atom.energy = atom.energy * 0.70 + scores[a] * 0.30;
+        for (let k = 0; k < 6; k++) {
+          atom.vector[k] = coinvariantQuotient[(a * 4 + k) % coinvariantQuotient.length] || 0;
+        }
+
+        if (atom.energy > maxScore) {
+          maxScore = atom.energy;
+          bestIdx = a;
+        }
+      }
+
+      this.winningPrototype = this.atoms[bestIdx];
+      this.confidence = Math.min(1.0, maxScore * 1.8);
+
+      return {
+        atoms: this.atoms,
+        winningPrototype: this.winningPrototype,
+        confidence: this.confidence
+      };
+    }
+  }
+
+  // ==========================================================================
+  // 7. CORTICAL COLUMN SHEAF TOPOS & CECH CONSENSUS (Ch. 1)
+  // ==========================================================================
+  class SheafToposEngine {
+    constructor() {
+      // 4 Unimodal Cortical Column Stalks with Orientation-Tuned Receptive Fields:
+      // U0: Horizontal, U1: Vertical, U2: Diagonal, U3: Circle/Surround DoG
+      this.contexts = [
+        new TripartiteContext('U0_Horizontal_V1', 14, 'horiz'),
+        new TripartiteContext('U1_Vertical_V1', 14, 'vert'),
+        new TripartiteContext('U2_Diagonal_V1', 14, 'diag'),
+        new TripartiteContext('U3_Circle_V1', 14, 'circle')
+      ];
+
+      this.stalks = [
+        this.contexts[0].coordinatedState,
+        this.contexts[1].coordinatedState,
+        this.contexts[2].coordinatedState,
+        this.contexts[3].coordinatedState
+      ];
+
+      this.splitWeights = new Float64Array([0.28, 0.26, 0.24, 0.22]);
+      this.holoformSection = new Float64Array(14);
+      this.cechDefectNorm = 0.0;
+      this.cechDefectMatrix = [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+      ];
+      this.sublationCount = 0;
+    }
+
+    /**
+     * Transduces a 2D retinal pixel array through oriented receptive fields,
+     * updates each tripartite stalk, computes Cech 0-coboundary prediction error,
+     * and executes lateral Laplacian sublation (Aufhebung).
+     */
+    update(pixelArray, width = 16, height = 16, dt = 0.016, topDownPrior = null) {
+      for (let c = 0; c < 4; c++) {
+        const filtered = this.contexts[c].convolveRetina(pixelArray, width, height);
+        const prior = topDownPrior ? (topDownPrior[c] || 0) * 0.15 : 0.0;
+        this.contexts[c].update(filtered, dt, prior);
+      }
+
+      // Compute Cech 0-Coboundary Defect between overlapping column receptive fields
+      let totalDefectSq = 0;
+      let count = 0;
+      for (let i = 0; i < 4; i++) {
+        for (let j = i + 1; j < 4; j++) {
+          let diffSum = 0;
+          for (let k = 0; k < 14; k++) {
+            const d = this.stalks[i][k] - this.stalks[j][k];
+            diffSum += d * d;
+          }
+          const defect = Math.sqrt(diffSum);
+          this.cechDefectMatrix[i][j] = defect;
+          this.cechDefectMatrix[j][i] = defect;
+          totalDefectSq += diffSum;
+          count++;
+        }
+      }
+      this.cechDefectNorm = Math.sqrt(totalDefectSq / Math.max(1, count));
+
+      // Global Holoform Amalgamation Gamma = sum sigma_i*(s_i)
+      for (let k = 0; k < 14; k++) {
+        this.holoformSection[k] =
+          this.splitWeights[0] * this.stalks[0][k] +
+          this.splitWeights[1] * this.stalks[1][k] +
+          this.splitWeights[2] * this.stalks[2][k] +
+          this.splitWeights[3] * this.stalks[3][k];
+      }
+
+      // Lateral Cortical Sublation (Aufhebung via Cech Laplacian)
+      if (this.cechDefectNorm > 0.40) {
+        this.sublationCount++;
+        const laplacianRate = 0.12;
+        for (let s = 0; s < 4; s++) {
+          for (let k = 0; k < 14; k++) {
+            let laplacianDiff = 0;
+            for (let j = 0; j < 4; j++) {
+              if (j !== s) laplacianDiff += (this.stalks[s][k] - this.stalks[j][k]);
+            }
+            this.stalks[s][k] -= laplacianRate * laplacianDiff;
+          }
+        }
+      }
+
+      const unifiedStalks = new Float64Array(56);
+      for (let s = 0; s < 4; s++) {
+        unifiedStalks.set(this.stalks[s], s * 14);
+      }
+      return unifiedStalks;
+    }
+  }
+
+  // ==========================================================================
+  // 8. CORTICAL ABSTRACTION & PREDICTIVE CODING CORE (Tier 4)
+  // ==========================================================================
+  class CorticalAbstractionCore {
+    constructor() {
+      this.hiddenDim = 32;
+      this.h = new Float64Array(32);
+      this.v = new Float64Array(32);
+
+      // 12D Invariant Multimodal Representation Vector z*
+      this.invariantRepresentation = new Float64Array(12);
+
+      // Reconstructed 16x16 Retinal Image from Top-Down Generative Feedback
+      this.predictedRetina = new Float32Array(16 * 16);
+
+      // 36-Component Non-Hermitian Metric Tensor field on R_6 = R_4 x S_2 (Def 9.2)
+      this.hermetryMatrix6x6 = new Float64Array(36);
+      this.symmetricEnergy21 = 0.0;
+      this.skewVorticity15 = 0.0;
+
+      // Lyapunov Recurrent Free Energy V(h) and Dissipation Rate dV/dt <= 0
+      this.lyapunovPotential = 0.0;
+      this.lyapunovDerivative = 0.0;
+
+      // Predictive coding error ||x - x_pred||
+      this.predictionError = 0.0;
+      this.featureInvarianceScore = 1.0;
+
+      // Backward-compatible aliases
+      this.qualiaRepresentation = this.invariantRepresentation;
+      this.qualiaCoherence = 1.0;
+      this.egoApex = this.invariantRepresentation;
+      this.egoConvergence = 1.0;
+    }
+
+    computeAcceleration(hState, vState, coinvariantQuotient, winningAtom) {
+      const qLen = coinvariantQuotient.length;
+      const a = new Float64Array(this.hiddenDim);
+
+      for (let i = 0; i < this.hiddenDim; i++) {
+        const qVal = coinvariantQuotient[i % qLen] || 0;
+        const atomVal = winningAtom ? winningAtom.vector[i % 6] : 0;
+
+        // Non-linear dendritic geodesic coupling -Gamma^i_{kl} v^k v^l (SM Eq. 93a)
+        const vNext = vState[(i + 1) % this.hiddenDim];
+        const christoffelDrag = -0.08 * Math.sin(hState[i]) * vState[i] * vNext;
+        const damping = -0.42 * vState[i];
+        const restoring = -0.28 * hState[i];
+        const driving = 0.55 * qVal + 0.35 * atomVal;
+
+        a[i] = restoring + damping + christoffelDrag + driving;
+      }
+      return a;
+    }
+
+    step(coinvariantQuotient, winningAtom, rawInputRetina, dt = 0.016) {
+      const a0 = this.computeAcceleration(this.h, this.v, coinvariantQuotient, winningAtom);
+
+      const dtSqHalf = 0.5 * dt * dt;
+      const hNext = new Float64Array(this.hiddenDim);
+      const vHalf = new Float64Array(this.hiddenDim);
+
+      for (let i = 0; i < this.hiddenDim; i++) {
+        hNext[i] = Math.tanh(this.h[i] + this.v[i] * dt + a0[i] * dtSqHalf);
+        vHalf[i] = this.v[i] + 0.5 * a0[i] * dt;
+      }
+
+      const a1 = this.computeAcceleration(hNext, vHalf, coinvariantQuotient, winningAtom);
+
+      let vEnergy = 0;
+      let vDissip = 0;
+      for (let i = 0; i < this.hiddenDim; i++) {
+        this.h[i] = hNext[i];
+        this.v[i] = vHalf[i] + 0.5 * a1[i] * dt;
+        vEnergy += 0.5 * (0.28 * this.h[i] * this.h[i] + this.v[i] * this.v[i]);
+        vDissip += -0.42 * this.v[i] * this.v[i];
+      }
+      this.lyapunovPotential = vEnergy;
+      this.lyapunovDerivative = vDissip;
+
+      // 36-Component Metric Tensor on R_6 (21 Symmetric Potentials + 15 Skew Attentional Vorticity)
+      let symEnergySq = 0;
+      let skewEnergySq = 0;
+      for (let r = 0; r < 6; r++) {
+        for (let c = 0; c < 6; c++) {
+          const rawRC = this.h[(r * 5 + c) % this.hiddenDim];
+          const rawCR = this.h[(c * 5 + r) % this.hiddenDim];
+          const gPlus = (r === c ? 1.0 : 0.0) + 0.15 * (rawRC + rawCR);
+          const gMinus = (r !== c) ? 0.15 * (rawRC - rawCR) : 0.0;
+          this.hermetryMatrix6x6[r * 6 + c] = gPlus + gMinus;
+          if (r <= c) symEnergySq += (gPlus - (r === c ? 1.0 : 0.0)) ** 2;
+          if (r < c) skewEnergySq += gMinus * gMinus;
+        }
+      }
+      this.symmetricEnergy21 = Math.sqrt(symEnergySq);
+      this.skewVorticity15 = Math.sqrt(skewEnergySq);
+
+      // Synthesize 12D Invariant Latent Representation z*
+      let representationDrift = 0;
+      for (let k = 0; k < 12; k++) {
+        const oldVal = this.invariantRepresentation[k];
+        const atomVal = winningAtom ? (winningAtom.vector[k % 6] || 0) : 0;
+        const targetVal = Math.tanh(0.6 * this.h[k] + 0.4 * atomVal);
+        const newVal = 0.8 * oldVal + 0.2 * targetVal;
+        this.invariantRepresentation[k] = newVal;
+        representationDrift += Math.abs(newVal - oldVal);
+      }
+      this.featureInvarianceScore = 1.0 - Math.min(1.0, representationDrift);
+      this.qualiaCoherence = this.featureInvarianceScore;
+      this.egoConvergence = this.featureInvarianceScore;
+
+      // Top-Down Generative Predictive Coding: reconstruct predicted 16x16 visual field
+      let errSum = 0;
+      const len = Math.min(rawInputRetina.length, this.predictedRetina.length);
+
+      for (let idx = 0; idx < len; idx++) {
+        const y = Math.floor(idx / 16);
+        const x = idx % 16;
+        const dx = x - 7.5;
+        const dy = y - 7.5;
+
+        let pred = 0;
+        if (winningAtom && winningAtom.id === 'P_horiz') {
+          pred = Math.exp(-(dy * dy) / 3.0) * (Math.abs(dx) <= 6.0 ? 1.0 : 0.0);
+        } else if (winningAtom && winningAtom.id === 'P_vert') {
+          pred = Math.exp(-(dx * dx) / 3.0) * (Math.abs(dy) <= 6.0 ? 1.0 : 0.0);
+        } else if (winningAtom && winningAtom.id === 'P_diag') {
+          const d = Math.abs(dx - dy);
+          pred = Math.exp(-(d * d) / 3.0) * (Math.hypot(dx, dy) <= 6.5 ? 1.0 : 0.0);
+        } else if (winningAtom && winningAtom.id === 'P_circle') {
+          const r = Math.hypot(dx, dy);
+          pred = Math.exp(-Math.pow(r - 5.0, 2) / 3.0);
+        } else if (winningAtom && winningAtom.id === 'P_cross') {
+          const horizStroke = Math.exp(-(dy * dy) / 3.0) * (Math.abs(dx) <= 6.0 ? 1.0 : 0.0);
+          const vertStroke = Math.exp(-(dx * dx) / 3.0) * (Math.abs(dy) <= 6.0 ? 1.0 : 0.0);
+          pred = Math.max(horizStroke, vertStroke);
+        } else {
+          pred = Math.abs(this.invariantRepresentation[idx % 12]) * 0.5;
+        }
+
+        const confidenceGain = winningAtom ? Math.min(1.0, winningAtom.energy * 2.0) : 0.5;
+        this.predictedRetina[idx] = Math.max(0.0, Math.min(1.0, pred * confidenceGain));
+        const diff = rawInputRetina[idx] - this.predictedRetina[idx];
+        errSum += diff * diff;
+      }
+
+      this.predictionError = Math.sqrt(errSum / Math.max(1, len));
+
+      return {
+        invariantRepresentation: this.invariantRepresentation,
+        predictedRetina: this.predictedRetina,
+        predictionError: this.predictionError,
+        featureInvarianceScore: this.featureInvarianceScore,
+        symmetricEnergy21: this.symmetricEnergy21,
+        skewVorticity15: this.skewVorticity15,
+        lyapunovPotential: this.lyapunovPotential,
+        lyapunovDerivative: this.lyapunovDerivative
+      };
+    }
+  }
+
+  // ==========================================================================
+  // 9. UNIFIED OPERADIC NEURAL TOPOS ENGINE (v2.2.0)
+  // ==========================================================================
+  class OperadicNeuralTopos {
+    constructor() {
+      this.banachSpaces = {
+        l1: new BanachSpace('ell_1', 3, 1),
+        l2: new BanachSpace('ell_2', 3, 2),
+        l4: new BanachSpace('ell_4', 3, 4),
+        lInf: new BanachSpace('ell_inf', 3, 'inf')
+      };
+
+      this.sheaf = new SheafToposEngine();
+      this.episyllogismus = new EpisyllogismusEngine(56, 24);
+      this.protosimplex = new ProtosimplexEngine();
+      this.core = new CorticalAbstractionCore();
+      this.owm = this.core; // Alias
+
+      this.stepCounter = 0;
+      this.simTime = 0.0;
+
+      // 16x16 Retinal Visual Input Buffer
+      this.retinaWidth = 16;
+      this.retinaHeight = 16;
+      this.currentRetina = new Float32Array(16 * 16);
+
+      this.telemetry = {
+        step: 0,
+        simTime: 0,
+        predictionError: 0,
+        featureInvariance: 1.0,
+        qualiaCoherence: 1.0, // Alias
+        winningPrototypeId: 'P_horiz',
+        winningPrototypeLabel: 'Horizontal Line/Bar',
+        prototypeConfidence: 0,
+        erasureRatio: 0,
+        alternatingNullEnergy: 0,
+        cechDefectNorm: 0,
+        conflexivityIndex: 2,
+        symmetricHermetry21: 0,
+        skewHermetry15: 0,
+        lyapunovPotential: 0,
+        lyapunovDerivative: 0,
+        sublationCount: 0
+      };
+    }
+
+    /**
+     * Accepts either a 2D 16x16 pixel array (256 numbers in [0, 1]),
+     * or a fallback 13D array, and executes one full hierarchical cycle.
+     */
+    step(inputRetinaArray, dt = 0.016) {
+      this.stepCounter++;
+      this.simTime += dt;
+
+      if (inputRetinaArray && inputRetinaArray.length >= 256) {
+        this.currentRetina.set(inputRetinaArray.subarray(0, 256));
+      } else if (inputRetinaArray && inputRetinaArray.length === 13) {
+        for (let i = 0; i < 256; i++) {
+          this.currentRetina[i] = Math.abs(inputRetinaArray[i % 13] || 0);
+        }
+      }
+
+      // Tier 0 -> Tier 1: Receptive field filtering & Cech descent
+      const stalkVector = this.sheaf.update(
+        this.currentRetina,
+        this.retinaWidth,
+        this.retinaHeight,
+        dt,
+        this.core.invariantRepresentation
+      );
+
+      // Tier 1 -> Tier 2: Operadic syntax erasure on Sym^2(F_gamma)
+      const consumption = this.episyllogismus.consume(stalkVector);
+
+      // Multi-modal junction pushout
+      const pushout = CarrierPushout.computePushout(
+        this.sheaf.stalks[0],
+        this.sheaf.stalks[1],
+        0.75
+      );
+
+      // Tier 2 -> Tier 3: Invariant shape prototype matching
+      const protoMatch = this.protosimplex.match(
+        this.sheaf.stalks,
+        consumption.quotientVector
+      );
+
+      // Tier 3 -> Tier 4: Invariant feature synthesis & Predictive Coding reconstruction
+      const coreStep = this.core.step(
+        consumption.quotientVector,
+        protoMatch.winningPrototype,
+        this.currentRetina,
+        dt
+      );
+
+      const t = this.telemetry;
+      t.step = this.stepCounter;
+      t.simTime = this.simTime;
+      t.predictionError = coreStep.predictionError;
+      t.featureInvariance = coreStep.featureInvarianceScore;
+      t.qualiaCoherence = coreStep.featureInvarianceScore;
+      t.winningPrototypeId = protoMatch.winningPrototype.id;
+      t.winningPrototypeLabel = protoMatch.winningPrototype.label;
+      t.prototypeConfidence = protoMatch.confidence;
+      t.erasureRatio = consumption.erasureRatio;
+      t.alternatingNullEnergy = consumption.alternatingNullEnergy;
+      t.cechDefectNorm = this.sheaf.cechDefectNorm;
+      t.conflexivityIndex = pushout.confIndex;
+      t.symmetricHermetry21 = coreStep.symmetricEnergy21;
+      t.skewHermetry15 = coreStep.skewVorticity15;
+      t.lyapunovPotential = coreStep.lyapunovPotential;
+      t.lyapunovDerivative = coreStep.lyapunovDerivative;
+      t.sublationCount = this.sheaf.sublationCount;
+
+      return {
+        retina: this.currentRetina,
+        stalkVector,
+        consumption,
+        pushout,
+        protoMatch,
+        coreStep,
+        telemetry: t
+      };
+    }
+
+    generate3DGraphLayout() {
+      const nodes = [];
+      const links = [];
+
+      // Tier 0: Retinal Receptors (16 sample nodes at y = -7.0)
+      for (let i = 0; i < 16; i++) {
+        const angle = (i / 16) * Math.PI * 2;
+        nodes.push({
+          id: `retina_${i}`,
+          tier: 0,
+          label: `Retinal Receptor r_${i}`,
+          pos: [Math.cos(angle) * 5.2, -7.0, Math.sin(angle) * 5.2],
+          color: 0x38bdf8,
+          radius: 0.20,
+          voltage: Math.abs(this.currentRetina[i * 16] || 0)
+        });
+      }
+
+      // Tier 1: 4 Cortical Column Stalks (14 nodes each, y = -3.5)
+      const clusterCenters = [
+        [-4.5, -3.5, -3.5], // Horizontal
+        [4.5, -3.5, -3.5],  // Vertical
+        [4.5, -3.5, 4.5],   // Diagonal
+        [-4.5, -3.5, 4.5]   // Circle / Surround
+      ];
+      const clusterNames = ['V1_Horizontal', 'V1_Vertical', 'V1_Diagonal', 'V1_Circle'];
+      const clusterColors = [0x38bdf8, 0x10b981, 0xf59e0b, 0xc084fc];
+
+      for (let c = 0; c < 4; c++) {
+        const [cx, cy, cz] = clusterCenters[c];
+        for (let i = 0; i < 14; i++) {
+          const subAngle = (i / 14) * Math.PI * 2;
+          const nid = `stalk_${c}_${i}`;
+          const volt = Math.abs(this.sheaf.stalks[c][i] || 0);
+          nodes.push({
+            id: nid,
+            tier: 1,
+            cluster: c,
+            label: `${clusterNames[c]} Column ${i}`,
+            pos: [cx + Math.cos(subAngle) * 1.8, cy + (i % 2 === 0 ? 0.3 : -0.3), cz + Math.sin(subAngle) * 1.8],
+            color: clusterColors[c],
+            radius: 0.18 + 0.08 * volt,
+            voltage: volt
+          });
+
+          const rIdx = (c * 4 + i) % 16;
+          links.push({
+            source: `retina_${rIdx}`,
+            target: nid,
+            type: 'sensory_to_stalk',
+            color: 0x38bdf8,
+            opacity: 0.25 + 0.35 * volt
+          });
+        }
+      }
+
+      // Lateral Cech overlap links
+      for (let c1 = 0; c1 < 4; c1++) {
+        for (let c2 = c1 + 1; c2 < 4; c2++) {
+          const defect = this.sheaf.cechDefectMatrix[c1][c2] || 0;
+          links.push({
+            source: `stalk_${c1}_0`,
+            target: `stalk_${c2}_0`,
+            type: 'cech_overlap',
+            color: defect > 0.40 ? 0xf43f5e : 0x10b981,
+            opacity: Math.min(0.9, 0.3 + defect)
+          });
+        }
+      }
+
+      // Tier 2: Operadic Feature Abstraction (24 Coinvariant Nodes, y = 0.5)
+      for (let i = 0; i < 24; i++) {
+        const angle = (i / 24) * Math.PI * 2;
+        const nid = `operadic_${i}`;
+        const volt = Math.abs(this.episyllogismus.fragmentMemory[i] || 0);
+        nodes.push({
+          id: nid,
+          tier: 2,
+          label: `Abstracted Coinvariant F_${i}`,
+          pos: [Math.cos(angle) * 3.6, 0.5, Math.sin(angle) * 3.6],
+          color: 0xc084fc,
+          radius: 0.25 + 0.1 * volt,
+          voltage: volt
+        });
+
+        const stalkCluster = i % 4;
+        const stalkIdx = (i * 2) % 14;
+        links.push({
+          source: `stalk_${stalkCluster}_${stalkIdx}`,
+          target: nid,
+          type: 'operadic_consumption',
+          color: 0xc084fc,
+          opacity: 0.3 + 0.4 * volt
+        });
+      }
+
+      // Tier 3: Invariant Association Cortex Prototypes (6 Prototype Nodes, y = 4.0)
+      for (let i = 0; i < 6; i++) {
+        const angle = (i / 6) * Math.PI * 2;
+        const nid = `proto_${i}`;
+        const atom = this.protosimplex.atoms[i];
+        nodes.push({
+          id: nid,
+          tier: 3,
+          label: atom.label,
+          pos: [Math.cos(angle) * 2.4, 4.0, Math.sin(angle) * 2.4],
+          color: 0x10b981,
+          radius: 0.38 + 0.15 * atom.energy,
+          voltage: atom.energy
+        });
+
+        for (let j = 0; j < i; j++) {
+          links.push({
+            source: `proto_${j}`,
+            target: nid,
+            type: 'prototype_cross_link',
+            color: 0x10b981,
+            opacity: 0.45
+          });
+        }
+      }
+
+      // Tier 4: Cortical Abstraction Workspace Apex (Central Gestalt Hub, y = 7.5)
+      nodes.push({
+        id: 'invariant_apex',
+        tier: 4,
+        label: 'Invariant Feature Workspace Apex (Predictive Generative Hub)',
+        pos: [0, 7.5, 0],
+        color: 0xf59e0b,
+        radius: 0.58,
+        voltage: this.core.featureInvarianceScore
+      });
+
+      for (let q = 0; q < 6; q++) {
+        const qAngle = (q / 6) * Math.PI * 2;
+        const qid = `feature_dim_${q}`;
+        const qVolt = Math.abs(this.core.invariantRepresentation[q] || 0);
+        nodes.push({
+          id: qid,
+          tier: 4,
+          label: `Invariant Feature Axis z*_${q}`,
+          pos: [Math.cos(qAngle) * 1.45, 7.5, Math.sin(qAngle) * 1.45],
+          color: 0xfbbf24,
+          radius: 0.28 + 0.12 * qVolt,
+          voltage: qVolt
+        });
+
+        links.push({
+          source: `proto_${q}`,
+          target: qid,
+          type: 'prototype_to_feature',
+          color: 0xf59e0b,
+          opacity: 0.65
+        });
+
+        links.push({
+          source: qid,
+          target: 'invariant_apex',
+          type: 'apex_binding',
+          color: 0xf59e0b,
+          opacity: 0.8
+        });
+      }
+
+      // Top-Down Predictive Coding Feedback links from Apex to Tier 1 stalks
+      for (let c = 0; c < 4; c++) {
+        links.push({
+          source: 'invariant_apex',
+          target: `stalk_${c}_0`,
+          type: 'predictive_coding_prior',
+          color: 0x38bdf8,
+          opacity: 0.6
+        });
+      }
+
+      return { nodes, links };
+    }
+  }
+
+  OperadicNeuralTopos.BanachSpace = BanachSpace;
+  OperadicNeuralTopos.ProjectiveTensorProduct = ProjectiveTensorProduct;
+  OperadicNeuralTopos.TripartiteContext = TripartiteContext;
+  OperadicNeuralTopos.CarrierPushout = CarrierPushout;
+  OperadicNeuralTopos.EpisyllogismusEngine = EpisyllogismusEngine;
+  OperadicNeuralTopos.ProtosimplexEngine = ProtosimplexEngine;
+  OperadicNeuralTopos.SheafToposEngine = SheafToposEngine;
+  OperadicNeuralTopos.CorticalAbstractionCore = CorticalAbstractionCore;
+  OperadicNeuralTopos.CorticalQualiaCore = CorticalAbstractionCore;
+  OperadicNeuralTopos.OWMRecurrentCore = CorticalAbstractionCore;
+  OperadicNeuralTopos.OperadicNeuralTopos = OperadicNeuralTopos;
+
+  return OperadicNeuralTopos;
+}));
+
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #040711;
+      --panel-bg: rgba(8, 14, 26, 0.85);
+      --panel-card: rgba(7, 10, 19, 0.75);
+      --panel-border: rgba(255, 255, 255, 0.09);
+      --panel-highlight: rgba(56, 189, 248, 0.20);
+      
+      --cyan: #38bdf8;
+      --cyan-glow: rgba(56, 189, 248, 0.4);
+      --purple: #c084fc;
+      --purple-glow: rgba(192, 132, 252, 0.35);
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --rose: #f43f5e;
+      --gold: #FFD700;
+      
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --font-display: 'Orbitron', sans-serif;
+      --font-ui: 'Rajdhani', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+
+    html, body {
+      width: 100%; height: 100%; overflow: hidden;
+      background: var(--bg);
+      font-family: var(--font-ui);
+      color: var(--text);
+    }
+
+    #app-container {
+      position: relative; width: 100vw; height: 100vh; overflow: hidden;
+    }
+
+    #webgl-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; outline: none; cursor: crosshair;
+    }
+
+    /* Glassmorphic Panels */
+    .glass-panel {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 8px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    }
+
+    /* ------------------------------------------------------------- */
+    /* TOP NAVIGATION & MODE TABS                                    */
+    /* ------------------------------------------------------------- */
+    #top-bar {
+      position: absolute; top: 12px; left: 16px; right: 16px; z-index: 20;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      pointer-events: none;
+    }
+    #top-bar > * { pointer-events: auto; }
+
+    .brand-title-group {
+      display: flex; align-items: center; gap: 12px;
+      padding: 7px 14px;
+    }
+    .brand-glyph {
+      width: 28px; height: 28px; border-radius: 6px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 14px; font-weight: 900; color: #040711;
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+    .brand-text { display: flex; flex-direction: column; }
+    .brand-name {
+      font-family: var(--font-display); font-size: 12.5px; font-weight: 700;
+      letter-spacing: 1.4px; text-transform: uppercase; color: var(--text);
+    }
+    .brand-sub {
+      font-size: 9.5px; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 0.4px;
+    }
+
+    /* View Mode Switcher Pills */
+    .mode-tabs {
+      display: flex; gap: 4px; padding: 4px; background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--panel-border); border-radius: 8px;
+    }
+    .mode-tab-btn {
+      background: transparent; border: 1px solid transparent; color: var(--text-muted);
+      font-family: var(--font-ui); font-size: 11.5px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; padding: 5px 12px; border-radius: 6px; cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mode-tab-btn:hover { color: var(--text); background: rgba(255, 255, 255, 0.05); }
+    .mode-tab-btn.active {
+      color: #040711; background: var(--cyan); border-color: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan-glow);
+    }
+
+    /* Top Right Telemetry & Actions */
+    .top-actions {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .status-pill {
+      display: flex; align-items: center; gap: 8px; padding: 6px 12px;
+      font-family: var(--font-mono); font-size: 11px;
+    }
+    .pulse-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--emerald);
+      box-shadow: 0 0 8px var(--emerald); animation: statusPulse 2s infinite ease-in-out;
+    }
+    @keyframes statusPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.85); } }
+
+    .action-btn {
+      background: rgba(15, 23, 42, 0.8); border: 1px solid var(--panel-border);
+      color: var(--text); padding: 6px 11px; border-radius: 6px; cursor: pointer;
+      font-family: var(--font-ui); font-size: 11.5px; font-weight: 600; letter-spacing: 0.5px;
+      transition: all 0.15s ease;
+    }
+    .action-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+    .action-btn.active { background: rgba(16, 185, 129, 0.25); border-color: var(--emerald); color: var(--emerald); }
+
+    /* ------------------------------------------------------------- */
+    /* LEFT SIDEBAR: RETINAL INPUT STUDIO & V1 FEATURE MAPS          */
+    /* ------------------------------------------------------------- */
+    #left-hud {
+      position: absolute; top: 68px; bottom: 120px; left: 16px; width: 310px; z-index: 10;
+      display: flex; flex-direction: column; gap: 10px; overflow-y: auto; padding: 12px;
+      scrollbar-width: thin; scrollbar-color: var(--cyan) transparent;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #left-hud::-webkit-scrollbar { width: 4px; }
+    #left-hud::-webkit-scrollbar-thumb { background: var(--panel-border); border-radius: 2px; }
+
+    .hud-card {
+      padding: 10px 12px; display: flex; flex-direction: column; gap: 8px;
+    }
+    .hud-header {
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 5px;
+    }
+    .hud-title {
+      font-family: var(--font-display); font-size: 10.5px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; color: var(--cyan);
+    }
+    .hud-badge {
+      font-family: var(--font-mono); font-size: 9px; padding: 2px 6px;
+      border-radius: 4px; background: rgba(56, 189, 248, 0.12); color: var(--cyan);
+    }
+
+    .retina-box {
+      display: flex; flex-direction: column; align-items: center;
+      background: var(--panel-card); border: 1px solid var(--panel-border);
+      border-radius: 8px; padding: 8px;
+    }
+    #retina-canvas {
+      background: #000; border: 1.5px solid var(--cyan); border-radius: 6px;
+      cursor: crosshair; image-rendering: pixelated; touch-action: none;
+    }
+    .canvas-caption {
+      font-size: 9.5px; color: var(--cyan); margin-top: 5px; font-weight: 600; text-align: center;
+    }
+
+    .preset-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5px; width: 100%;
+    }
+    .btn-preset {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text); font-size: 10px; font-weight: 600; padding: 5px 6px;
+      border-radius: 5px; cursor: pointer; transition: all 0.15s ease; text-align: center;
+    }
+    .btn-preset:hover { background: rgba(56, 189, 248, 0.2); border-color: var(--cyan); color: #fff; }
+    .btn-preset.active { background: var(--gold); color: #040711; border-color: var(--gold); font-weight: 700; }
+
+    /* V1 Feature Maps 2x2 Grid */
+    .fmap-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: 100%;
+    }
+    .fmap-card {
+      background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px; padding: 5px; display: flex; flex-direction: column; align-items: center;
+    }
+    .fmap-card canvas {
+      width: 48px; height: 48px; background: #000; border: 1px solid #334155;
+      border-radius: 4px; image-rendering: pixelated;
+    }
+    .fmap-label {
+      font-size: 8.5px; color: var(--text-muted); margin-top: 3px; font-weight: 600;
+    }
+
+    /* Comparison Retinas */
+    .compare-wrap {
+      display: flex; justify-content: space-around; align-items: center; width: 100%; padding: 4px 0;
+    }
+    .compare-card { display: flex; flex-direction: column; align-items: center; }
+    .compare-card canvas {
+      width: 58px; height: 58px; border-radius: 5px; image-rendering: pixelated;
+    }
+
+    /* ------------------------------------------------------------- */
+    /* RIGHT SIDEBAR: REAL-TIME TELEMETRY & INVARIANT PROTOTYPES     */
+    /* ------------------------------------------------------------- */
+    #right-hud {
+      position: absolute; top: 68px; bottom: 120px; right: 16px; width: 310px; z-index: 10;
+      display: flex; flex-direction: column; gap: 10px; overflow-y: auto; padding: 12px;
+      scrollbar-width: thin; scrollbar-color: var(--cyan) transparent;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #right-hud::-webkit-scrollbar { width: 4px; }
+    #right-hud::-webkit-scrollbar-thumb { background: var(--panel-border); border-radius: 2px; }
+
+    .telemetry-row {
+      display: flex; justify-content: space-between; align-items: center; font-size: 11.5px;
+    }
+    .telemetry-label { color: var(--text-muted); font-size: 10.5px; }
+    .telemetry-val { font-family: var(--font-mono); font-weight: 700; color: var(--text); }
+    .telemetry-val.highlight-cyan { color: var(--cyan); text-shadow: 0 0 8px var(--cyan-glow); }
+    .telemetry-val.highlight-purple { color: var(--purple); text-shadow: 0 0 8px var(--purple-glow); }
+    .telemetry-val.highlight-emerald { color: var(--emerald); }
+    .telemetry-val.highlight-amber { color: var(--amber); }
+    .telemetry-val.highlight-rose { color: var(--rose); }
+
+    .progress-bar-bg {
+      width: 100%; height: 5px; background: rgba(255, 255, 255, 0.08); border-radius: 3px; overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%; background: var(--cyan); width: 0%;
+      transition: width 0.12s ease-out;
+    }
+
+    /* Banach Norm Selector */
+    .norm-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5px; width: 100%;
+    }
+    .norm-btn {
+      background: rgba(15, 23, 42, 0.7); border: 1px solid var(--panel-border);
+      border-radius: 5px; padding: 6px 6px; color: var(--text);
+      font-family: var(--font-ui); font-size: 10px; font-weight: 600; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .norm-btn:hover { background: rgba(56, 189, 248, 0.15); border-color: var(--cyan); color: var(--cyan); }
+    .norm-btn.active {
+      background: rgba(56, 189, 248, 0.25); border-color: var(--cyan); color: #fff;
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    /* Shape Prototypes List */
+    .proto-item { margin-bottom: 5px; }
+    .proto-header {
+      display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 2px;
+    }
+    .proto-name { font-weight: 600; color: var(--text); }
+    .proto-val { font-family: var(--font-mono); font-weight: 700; color: var(--emerald); }
+
+    /* Node Inspector */
+    #inspection-card {
+      border: 1px solid rgba(192, 132, 252, 0.3); background: rgba(18, 12, 34, 0.85);
+    }
+
+    /* ------------------------------------------------------------- */
+    /* BOTTOM OSCILLOSCOPE DOCK                                      */
+    /* ------------------------------------------------------------- */
+    #bottom-dock {
+      position: absolute; bottom: 12px; left: 16px; right: 16px; height: 96px; z-index: 20;
+      display: flex; align-items: center; gap: 14px; padding: 8px 16px;
+    }
+
+    .osc-channel-info {
+      display: flex; flex-direction: column; gap: 4px; min-width: 140px;
+    }
+    .osc-badge {
+      display: flex; align-items: center; gap: 6px; font-size: 10.5px; font-family: var(--font-mono);
+    }
+    .osc-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+    #osc-canvas {
+      flex: 1; height: 72px; width: 100%; border-radius: 4px;
+      background: rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .playback-controls {
+      display: flex; align-items: center; gap: 8px; min-width: 160px; justify-content: flex-end;
+    }
+
+    /* Floating Tooltip */
+    #node-tooltip {
+      position: absolute; z-index: 100; pointer-events: none; opacity: 0;
+      background: rgba(8, 14, 26, 0.95); border: 1px solid var(--cyan);
+      border-radius: 6px; padding: 8px 12px; font-size: 11px; font-family: var(--font-mono);
+      color: #fff; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+      transition: opacity 0.15s ease;
+    }
+
+    /* Responsive Mobile Layout */
+    #mobile-nav {
+      display: none; position: absolute; top: 0; left: 0; right: 0; height: 42px;
+      background: rgba(8, 14, 26, 0.96); border-bottom: 1px solid var(--panel-border);
+      z-index: 50; align-items: center; justify-content: space-around; padding: 4px 8px;
+    }
+    .m-tab-btn {
+      flex: 1; height: 30px; margin: 0 3px; background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 5px; color: var(--text-muted);
+      font-size: 10px; font-weight: 700; cursor: pointer; text-align: center; line-height: 28px;
+    }
+    .m-tab-btn.active {
+      background: rgba(56, 189, 248, 0.2); border-color: var(--cyan); color: var(--cyan);
+    }
+
+    @media (max-width: 960px) {
+      #mobile-nav { display: flex; }
+      #top-bar { top: 48px; }
+      .brand-sub { display: none; }
+      #left-hud, #right-hud {
+        position: absolute; top: 92px; bottom: 108px; width: 100%; max-width: 100%; left: 0; right: 0;
+        transform: translateY(120%); z-index: 30; background: rgba(8, 14, 26, 0.95);
+      }
+      #left-hud.tab-active, #right-hud.tab-active { transform: translateY(0); }
+      #bottom-dock { height: 86px; padding: 6px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app-container">
+    <!-- WebGL Canvas -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Mobile Navigation Switcher -->
+    <div id="mobile-nav">
+      <div class="m-tab-btn" data-panel="left">🎨 Retina Studio</div>
+      <div class="m-tab-btn active" data-panel="center">🌐 3D Viewport</div>
+      <div class="m-tab-btn" data-panel="right">📊 Telemetry</div>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <header id="top-bar">
+      <!-- Title & Brand -->
+      <div class="glass-panel brand-title-group">
+        <div class="brand-glyph">&Phi;</div>
+        <div class="brand-text">
+          <span class="brand-name">Operadic Neural Topos</span>
+          <span class="brand-sub">Cortical Feature Abstraction &middot; Predictive Coding &middot; Banach Functors</span>
+        </div>
+      </div>
+
+      <!-- 3D Perspective Mode Tabs -->
+      <nav class="mode-tabs">
+        <button class="mode-tab-btn active" data-mode="topos_5tier" onclick="switchPerspective('topos_5tier')">
+          5-Tier Funnel
+        </button>
+        <button class="mode-tab-btn" data-mode="banach_unit_ball" onclick="switchPerspective('banach_unit_ball')">
+          Banach Unit Ball
+        </button>
+        <button class="mode-tab-btn" data-mode="operadic_tree" onclick="switchPerspective('operadic_tree')">
+          Operadic Tree
+        </button>
+        <button class="mode-tab-btn" data-mode="quotient_vortex" onclick="switchPerspective('quotient_vortex')">
+          Quotient Vortex
+        </button>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="top-actions">
+        <div class="glass-panel status-pill">
+          <span class="pulse-dot"></span>
+          <span id="top-fps">60 FPS</span>
+          <span style="color:var(--text-dim)">&vert;</span>
+          <span id="top-time">0.00s</span>
+        </div>
+        <button class="action-btn" id="btn-auto-orbit" onclick="toggleAutoRotate()">Auto Orbit</button>
+        <button class="action-btn" onclick="resetCameraView()">Reset Cam</button>
+      </div>
+    </header>
+
+    <!-- Left Sidebar: Retinal Visual Input Studio & V1 Feature Maps -->
+    <aside id="left-hud">
+      <!-- Drawing Retina Canvas -->
+      <div class="glass-panel hud-card">
+        <div class="hud-header">
+          <span class="hud-title">Visual Input Retina</span>
+          <span class="hud-badge">16 &times; 16 Grid</span>
+        </div>
+        <div class="retina-box">
+          <canvas id="retina-canvas" width="144" height="144"></canvas>
+          <div class="canvas-caption">Click / Drag / Touch to Draw Stimulus</div>
+        </div>
+        <div class="preset-grid">
+          <button class="btn-preset active" data-preset="horiz">&horbar; Horizontal</button>
+          <button class="btn-preset" data-preset="vert">&vert; Vertical</button>
+          <button class="btn-preset" data-preset="diag">/ Diagonal</button>
+          <button class="btn-preset" data-preset="circle">&cir; Circle / Loop</button>
+          <button class="btn-preset" data-preset="cross">+ Cross Junction</button>
+          <button class="btn-preset" data-preset="clear" style="color:var(--rose);">&times; Clear Canvas</button>
+        </div>
+      </div>
+
+      <!-- V1 Receptive Field Feature Maps -->
+      <div class="glass-panel hud-card">
+        <div class="hud-header">
+          <span class="hud-title">V1 Receptive Field Maps</span>
+          <span class="hud-badge">Tier 1</span>
+        </div>
+        <div class="fmap-grid">
+          <div class="fmap-card">
+            <canvas id="fmap-0" width="16" height="16"></canvas>
+            <span class="fmap-label">0&deg; Horizontal</span>
+          </div>
+          <div class="fmap-card">
+            <canvas id="fmap-1" width="16" height="16"></canvas>
+            <span class="fmap-label">90&deg; Vertical</span>
+          </div>
+          <div class="fmap-card">
+            <canvas id="fmap-2" width="16" height="16"></canvas>
+            <span class="fmap-label">45&deg; Diagonal</span>
+          </div>
+          <div class="fmap-card">
+            <canvas id="fmap-3" width="16" height="16"></canvas>
+            <span class="fmap-label">Surround DoG</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top-Down Predictive Coding Comparison -->
+      <div class="glass-panel hud-card">
+        <div class="hud-header">
+          <span class="hud-title">Predictive Coding Loop</span>
+          <span class="hud-badge" style="color:var(--gold); border-color:var(--gold);">Active Inference</span>
+        </div>
+        <div class="compare-wrap">
+          <div class="compare-card">
+            <canvas id="input-thumb" width="16" height="16" style="border:1.5px solid var(--cyan);"></canvas>
+            <span style="font-size:9.5px; color:var(--cyan); margin-top:3px; font-weight:600;">Input Field</span>
+          </div>
+          <div style="font-size:14px; color:var(--gold);">&rlarr;</div>
+          <div class="compare-card">
+            <canvas id="pred-thumb" width="16" height="16" style="border:1.5px solid var(--amber);"></canvas>
+            <span style="font-size:9.5px; color:var(--amber); margin-top:3px; font-weight:600;">Reconstruction</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right Sidebar: Predictive Coding Telemetry & Invariant Prototypes -->
+    <aside id="right-hud">
+      <!-- Banach Norm Selector -->
+      <div class="glass-panel hud-card">
+        <div class="hud-header">
+          <span class="hud-title">Banach Norm ||&middot;||_p</span>
+          <span class="hud-badge">FinBan_&le;1</span>
+        </div>
+        <div class="norm-grid">
+          <button class="norm-btn" id="btn-norm-1" onclick="setBanachNorm(1)">
+            &ell;_1 Cross-Polytope
+          </button>
+          <button class="norm-btn active" id="btn-norm-2" onclick="setBanachNorm(2)">
+            &ell;_2 Hilbertian
+          </button>
+          <button class="norm-btn" id="btn-norm-4" onclick="setBanachNorm(4)">
+            &ell;_4 Superquadric
+          </button>
+          <button class="norm-btn" id="btn-norm-inf" onclick="setBanachNorm('inf')">
+            &ell;_&infin; Chebyshev Cube
+          </button>
+        </div>
+      </div>
+
+      <!-- Predictive Coding Telemetry -->
+      <div class="glass-panel hud-card">
+        <div class="hud-header">
+          <span class="hud-title">Feature Abstraction Metrics</span>
+          <span class="hud-badge" id="tele-step">STEP 0</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">Prediction Error &Vert;x &minus; x̂&Vert;:</span>
+          <span class="telemetry-val highlight-rose" id="val-pred-err">0.0000</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="bar-pred-err" style="background:var(--rose);"></div>
+        </div>
+
+        <div class="telemetry-row">
+          <span class="telemetry-label">Feature Invariance Score:</span>
+          <span class="telemetry-val highlight-emerald" id="val-invariance">1.0000</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="bar-invariance" style="background:var(--emerald); width:100%;"></div>
+        </div>
+
+        <div class="telemetry-row">
+          <span class="telemetry-label">Syntax Erasure (Sym&sup2; vs &Lambda;&sup2;):</span>
+          <span class="telemetry-val highlight-purple" id="val-erasure">0.0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="bar-erasure" style="background:linear-gradient(90deg, var(--purple), var(--rose));"></div>
+        </div>
+
+        <div class="telemetry-row">
+          <span class="telemetry-label">&Ccaron;ech Consensus Defect &Vert;&delta;&sup0;&Vert;:</span>
+          <span class="telemetry-val highlight-cyan" id="val-cech-defect">0.0000</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="bar-cech-defect" style="background:var(--cyan);"></div>
+        </div>
+      </div>
+
+      <!-- Invariant Association Cortex Prototypes (IT Attractors) -->
+      <div class="glass-panel hud-card">
+        <div class="hud-header">
+          <span class="hud-title">Shape Prototypes (IT Cortex)</span>
+          <span class="hud-badge" style="color:var(--emerald);">Tier 3</span>
+        </div>
+        <div class="proto-item">
+          <div class="proto-header"><span class="proto-name">Horizontal Line</span><span class="proto-val" id="p-val-0">0.00</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="p-bar-0" style="background:var(--cyan);"></div></div>
+        </div>
+        <div class="proto-item">
+          <div class="proto-header"><span class="proto-name">Vertical Line</span><span class="proto-val" id="p-val-1">0.00</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="p-bar-1" style="background:var(--emerald);"></div></div>
+        </div>
+        <div class="proto-item">
+          <div class="proto-header"><span class="proto-name">Diagonal Stroke</span><span class="proto-val" id="p-val-2">0.00</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="p-bar-2" style="background:var(--amber);"></div></div>
+        </div>
+        <div class="proto-item">
+          <div class="proto-header"><span class="proto-name">Circle / Closed Loop</span><span class="proto-val" id="p-val-3">0.00</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="p-bar-3" style="background:var(--purple);"></div></div>
+        </div>
+        <div class="proto-item">
+          <div class="proto-header"><span class="proto-name">Cross / Junction</span><span class="proto-val" id="p-val-4">0.00</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="p-bar-4" style="background:var(--gold);"></div></div>
+        </div>
+        <div class="proto-item">
+          <div class="proto-header"><span class="proto-name">Complex Gestalt</span><span class="proto-val" id="p-val-5">0.00</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="p-bar-5" style="background:var(--rose);"></div></div>
+        </div>
+      </div>
+
+      <!-- Hermetry Tensor Partition -->
+      <div class="glass-panel hud-card">
+        <div class="hud-header">
+          <span class="hud-title">Hermetry Tensor Partition</span>
+          <span class="hud-badge">36 Components</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">21 Symmetric Potentials:</span>
+          <span class="telemetry-val highlight-emerald" id="val-sym21">0.0000</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">15 Skew Vorticity:</span>
+          <span class="telemetry-val highlight-rose" id="val-skew15">0.0000</span>
+        </div>
+      </div>
+
+      <!-- Active Node Inspection -->
+      <div class="glass-panel hud-card" id="inspection-card">
+        <div class="hud-header">
+          <span class="hud-title">Active Node Inspection</span>
+          <span class="hud-badge" id="insp-badge">Hover / Click</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">Node:</span>
+          <span class="telemetry-val highlight-cyan" id="insp-id">Hover a node</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">Tier:</span>
+          <span class="telemetry-val" id="insp-tier">-</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">Activation:</span>
+          <span class="telemetry-val highlight-purple" id="insp-voltage">0.0000</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Bottom Dock: Real-Time 3-Channel Oscilloscope & Signal Strip -->
+    <footer id="bottom-dock" class="glass-panel">
+      <div class="osc-channel-info">
+        <div class="osc-badge">
+          <span class="osc-dot" style="background:var(--rose); box-shadow:0 0 6px var(--rose);"></span>
+          <span>Prediction Error</span>
+        </div>
+        <div class="osc-badge">
+          <span class="osc-dot" style="background:var(--purple); box-shadow:0 0 6px var(--purple);"></span>
+          <span>Syntax Erasure</span>
+        </div>
+        <div class="osc-badge">
+          <span class="osc-dot" style="background:var(--cyan); box-shadow:0 0 6px var(--cyan);"></span>
+          <span>&Ccaron;ech Consensus</span>
+        </div>
+      </div>
+
+      <canvas id="osc-canvas"></canvas>
+
+      <div class="playback-controls">
+        <button class="action-btn active" id="btn-play-pause" onclick="togglePlayPause()">Pause</button>
+        <button class="action-btn" onclick="stepSimulation()">Step &rarr;</button>
+      </div>
+    </footer>
+
+    <!-- Hover Tooltip -->
+    <div id="node-tooltip"></div>
+  </div>
+
+  <script>
+    /* ========================================================================
+     * UNIFIED ARCHITECTURE CONTROLLER (THREE.JS + RETINA + OSCILLOSCOPE)
+     * ======================================================================== */
+    let toposEngine;
+    let scene, camera, renderer, controls;
+    let currentMode = 'topos_5tier';
+    let currentBanachNorm = 2;
+    let isRunning = true;
+    let autoRotate = false;
+
+    // Visual Groups
+    let group5Tier, groupBanach, groupTree, groupVortex;
+    let nodeMeshes = [], linkMeshes = [], sparkParticles;
+    let banachMesh, banachWireframe;
+    let vortexParticles;
+
+    // Raycasting & Interaction
+    let raycaster, mouse;
+    let hoveredNode = null;
+
+    // Oscilloscope Buffers
+    const OSC_LEN = 180;
+    const oscPredErr = new Float32Array(OSC_LEN);
+    const oscErasure = new Float32Array(OSC_LEN);
+    const oscCech = new Float32Array(OSC_LEN);
+    let oscIdx = 0;
+
+    // Sparks data
+    const MAX_SPARKS = 48;
+    const sparkData = [];
+
+    // 16x16 Retina Drawing Canvas State
+    const retinaGrid = new Float32Array(16 * 16);
+    let isDrawing = false;
+    let retinaCanvas, retinaCtx;
+    let inputThumbCtx, predThumbCtx;
+    let fmapCanvases = [];
+
+    function init() {
+      // 1. Resolve Engine Constructor Bulletproof
+      const EngineClass = (typeof OperadicNeuralTopos === 'function')
+        ? OperadicNeuralTopos
+        : (window.OperadicNeuralTopos && window.OperadicNeuralTopos.OperadicNeuralTopos
+           ? window.OperadicNeuralTopos.OperadicNeuralTopos
+           : window.OperadicNeuralTopos);
+
+      if (!EngineClass) {
+        console.error('Fatal: OperadicNeuralTopos constructor not resolved.');
+        return;
+      }
+
+      toposEngine = new EngineClass();
+
+      // 2. Setup Three.js WebGL Canvas
+      const canvas = document.getElementById('webgl-canvas');
+      renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.25;
+
+      // 3. Scene & Camera
+      scene = new THREE.Scene();
+      scene.fog = new THREE.FogExp2(0x040711, 0.018);
+
+      camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.set(0, 1.5, 24);
+
+      controls = new THREE.OrbitControls(camera, canvas);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.06;
+      controls.maxDistance = 60;
+      controls.minDistance = 3;
+
+      // 4. Lighting
+      const ambient = new THREE.AmbientLight(0xffffff, 0.70);
+      scene.add(ambient);
+
+      const dirLight1 = new THREE.DirectionalLight(0x38bdf8, 1.2);
+      dirLight1.position.set(12, 18, 12);
+      scene.add(dirLight1);
+
+      const dirLight2 = new THREE.DirectionalLight(0xc084fc, 1.0);
+      dirLight2.position.set(-12, -10, -12);
+      scene.add(dirLight2);
+
+      // 5. Build Sub-Scenes
+      build5TierScene();
+      buildBanachScene();
+      buildOperadicTreeScene();
+      buildQuotientVortexScene();
+
+      // Activate Initial 5-Tier Mode
+      switchPerspective('topos_5tier');
+
+      // 6. Raycaster
+      raycaster = new THREE.Raycaster();
+      mouse = new THREE.Vector2();
+
+      // 7. Setup Retina Drawing Studio
+      initRetinaStudio();
+
+      // 8. Event Listeners
+      window.addEventListener('resize', onWindowResize);
+      window.addEventListener('mousemove', onMouseMove);
+
+      // 9. Oscilloscope Canvas Init
+      initOscilloscope();
+
+      // 10. Initial Simulation Step & Render Loop
+      setPreset('horiz');
+      requestAnimationFrame(animate);
+    }
+
+    // ------------------------------------------------------------------------
+    // RETINA DRAWING & V1 RECEPTIVE FIELD CANVASES
+    // ------------------------------------------------------------------------
+    function initRetinaStudio() {
+      retinaCanvas = document.getElementById('retina-canvas');
+      retinaCtx = retinaCanvas.getContext('2d');
+
+      inputThumbCtx = document.getElementById('input-thumb').getContext('2d');
+      predThumbCtx = document.getElementById('pred-thumb').getContext('2d');
+
+      fmapCanvases = [
+        document.getElementById('fmap-0').getContext('2d'),
+        document.getElementById('fmap-1').getContext('2d'),
+        document.getElementById('fmap-2').getContext('2d'),
+        document.getElementById('fmap-3').getContext('2d')
+      ];
+
+      // Drawing Event Listeners (Pointer Events for Mouse + Touch)
+      function handleDraw(e) {
+        const rect = retinaCanvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+        const gx = Math.floor((mx / rect.width) * 16);
+        const gy = Math.floor((my / rect.height) * 16);
+
+        if (gx >= 0 && gx < 16 && gy >= 0 && gy < 16) {
+          retinaGrid[gy * 16 + gx] = 1.0;
+          if (gx > 0) retinaGrid[gy * 16 + (gx - 1)] = Math.max(retinaGrid[gy * 16 + (gx - 1)], 0.45);
+          if (gx < 15) retinaGrid[gy * 16 + (gx + 1)] = Math.max(retinaGrid[gy * 16 + (gx + 1)], 0.45);
+          if (gy > 0) retinaGrid[(gy - 1) * 16 + gx] = Math.max(retinaGrid[(gy - 1) * 16 + gx], 0.45);
+          if (gy < 15) retinaGrid[(gy + 1) * 16 + gx] = Math.max(retinaGrid[(gy + 1) * 16 + gx], 0.45);
+
+          renderRetinaCanvas();
+          runSimulationStep(0.016);
+        }
+      }
+
+      retinaCanvas.addEventListener('pointerdown', (e) => {
+        isDrawing = true;
+        try { retinaCanvas.setPointerCapture(e.pointerId); } catch (_) {}
+        document.querySelectorAll('.btn-preset').forEach(b => b.classList.remove('active'));
+        handleDraw(e);
+      });
+
+      retinaCanvas.addEventListener('pointermove', (e) => {
+        if (isDrawing) handleDraw(e);
+      });
+
+      const stopDrawing = (e) => {
+        isDrawing = false;
+        try { retinaCanvas.releasePointerCapture(e.pointerId); } catch (_) {}
+      };
+      retinaCanvas.addEventListener('pointerup', stopDrawing);
+      retinaCanvas.addEventListener('pointercancel', stopDrawing);
+      window.addEventListener('pointerup', () => { isDrawing = false; });
+
+      // Preset Buttons
+      document.querySelectorAll('.btn-preset').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.btn-preset').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          setPreset(btn.getAttribute('data-preset'));
+        });
+      });
+
+      // Mobile Navigation Tab Switcher
+      document.querySelectorAll('.m-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.m-tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const panel = btn.getAttribute('data-panel');
+          const leftHud = document.getElementById('left-hud');
+          const rightHud = document.getElementById('right-hud');
+
+          if (panel === 'left') {
+            leftHud.classList.add('tab-active');
+            rightHud.classList.remove('tab-active');
+          } else if (panel === 'right') {
+            rightHud.classList.add('tab-active');
+            leftHud.classList.remove('tab-active');
+          } else {
+            leftHud.classList.remove('tab-active');
+            rightHud.classList.remove('tab-active');
+          }
+        });
+      });
+    }
+
+    function renderRetinaCanvas() {
+      retinaCtx.fillStyle = '#070a13';
+      retinaCtx.fillRect(0, 0, retinaCanvas.width, retinaCanvas.height);
+
+      const cellW = retinaCanvas.width / 16;
+      const cellH = retinaCanvas.height / 16;
+
+      // Grid Lines
+      retinaCtx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
+      retinaCtx.lineWidth = 0.5;
+      for (let i = 1; i < 16; i++) {
+        retinaCtx.beginPath();
+        retinaCtx.moveTo(i * cellW, 0); retinaCtx.lineTo(i * cellW, retinaCanvas.height);
+        retinaCtx.stroke();
+        retinaCtx.beginPath();
+        retinaCtx.moveTo(0, i * cellH); retinaCtx.lineTo(retinaCanvas.width, i * cellH);
+        retinaCtx.stroke();
+      }
+
+      // Pixels
+      for (let y = 0; y < 16; y++) {
+        for (let x = 0; x < 16; x++) {
+          const v = retinaGrid[y * 16 + x];
+          if (v > 0.01) {
+            const b = Math.floor(v * 255);
+            retinaCtx.fillStyle = 'rgb(' + b + ',' + b + ',' + b + ')';
+            retinaCtx.fillRect(x * cellW + 0.5, y * cellH + 0.5, cellW - 1, cellH - 1);
+          }
+        }
+      }
+    }
+
+    function setPreset(type) {
+      retinaGrid.fill(0);
+      for (let y = 0; y < 16; y++) {
+        for (let x = 0; x < 16; x++) {
+          const idx = y * 16 + x;
+          const dx = x - 7.5;
+          const dy = y - 7.5;
+
+          if (type === 'horiz') {
+            if (Math.abs(dy) <= 1.2 && Math.abs(dx) <= 6.0) retinaGrid[idx] = 1.0;
+          } else if (type === 'vert') {
+            if (Math.abs(dx) <= 1.2 && Math.abs(dy) <= 6.0) retinaGrid[idx] = 1.0;
+          } else if (type === 'diag') {
+            if (Math.abs(dx - dy) <= 1.2 && Math.hypot(dx, dy) <= 6.5) retinaGrid[idx] = 1.0;
+          } else if (type === 'circle') {
+            const r = Math.hypot(dx, dy);
+            if (Math.abs(r - 5.0) <= 1.2) retinaGrid[idx] = 1.0;
+          } else if (type === 'cross') {
+            if ((Math.abs(dx) <= 1.2 && Math.abs(dy) <= 6.0) || (Math.abs(dy) <= 1.2 && Math.abs(dx) <= 6.0)) {
+              retinaGrid[idx] = 1.0;
+            }
+          }
+        }
+      }
+      renderRetinaCanvas();
+      runSimulationStep(0.016);
+    }
+
+    // ------------------------------------------------------------------------
+    // BUILD SCENE 1: 5-TIER NEURAL TOPOS HIERARCHY
+    // ------------------------------------------------------------------------
+    function build5TierScene() {
+      group5Tier = new THREE.Group();
+      scene.add(group5Tier);
+
+      const layout = toposEngine.generate3DGraphLayout();
+      const sphereGeo = new THREE.SphereGeometry(1, 18, 18);
+
+      layout.nodes.forEach(n => {
+        const mat = new THREE.MeshStandardMaterial({
+          color: n.color,
+          roughness: 0.25,
+          metalness: 0.75,
+          emissive: n.color,
+          emissiveIntensity: 0.35
+        });
+        const mesh = new THREE.Mesh(sphereGeo, mat);
+        mesh.scale.setScalar(n.radius);
+        mesh.position.set(...n.pos);
+        mesh.userData = n;
+
+        // Outer glow halo
+        const haloGeo = new THREE.SphereGeometry(1.35, 12, 12);
+        const haloMat = new THREE.MeshBasicMaterial({
+          color: n.color,
+          transparent: true,
+          opacity: 0.15,
+          wireframe: true
+        });
+        const haloMesh = new THREE.Mesh(haloGeo, haloMat);
+        mesh.add(haloMesh);
+
+        group5Tier.add(mesh);
+        nodeMeshes.push(mesh);
+      });
+
+      // Links
+      const nodeMap = new Map();
+      nodeMeshes.forEach(m => nodeMap.set(m.userData.id, m));
+
+      const lineMat = new THREE.LineBasicMaterial({
+        color: 0x38bdf8,
+        transparent: true,
+        opacity: 0.22,
+        blending: THREE.AdditiveBlending
+      });
+
+      const lineGeo = new THREE.BufferGeometry();
+      const linePositions = [];
+
+      layout.links.forEach(link => {
+        const sNode = nodeMap.get(link.source);
+        const tNode = nodeMap.get(link.target);
+        if (sNode && tNode) {
+          linePositions.push(
+            sNode.position.x, sNode.position.y, sNode.position.z,
+            tNode.position.x, tNode.position.y, tNode.position.z
+          );
+
+          if (sparkData.length < MAX_SPARKS) {
+            sparkData.push({
+              source: sNode.position,
+              target: tNode.position,
+              progress: Math.random(),
+              speed: 0.008 + Math.random() * 0.016,
+              color: link.color || 0x38bdf8
+            });
+          }
+        }
+      });
+
+      lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+      const lineSegments = new THREE.LineSegments(lineGeo, lineMat);
+      group5Tier.add(lineSegments);
+
+      // Sparks (Point Cloud)
+      const sparkGeo = new THREE.BufferGeometry();
+      const sparkPositions = new Float32Array(MAX_SPARKS * 3);
+      const sparkColors = new Float32Array(MAX_SPARKS * 3);
+      sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPositions, 3));
+      sparkGeo.setAttribute('color', new THREE.BufferAttribute(sparkColors, 3));
+
+      const sparkMat = new THREE.PointsMaterial({
+        size: 0.35,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.95,
+        blending: THREE.AdditiveBlending
+      });
+      sparkParticles = new THREE.Points(sparkGeo, sparkMat);
+      group5Tier.add(sparkParticles);
+    }
+
+    // ------------------------------------------------------------------------
+    // BUILD SCENE 2: BANACH UNIT BALL
+    // ------------------------------------------------------------------------
+    function buildBanachScene() {
+      groupBanach = new THREE.Group();
+      scene.add(groupBanach);
+
+      const bSpace = toposEngine.banachSpaces.l2;
+      const geoData = bSpace.generateUnitSphereGeometry(32, 2);
+
+      const bufferGeo = new THREE.BufferGeometry();
+      bufferGeo.setAttribute('position', new THREE.BufferAttribute(geoData.vertices, 3));
+      bufferGeo.setAttribute('normal', new THREE.BufferAttribute(geoData.normals, 3));
+      bufferGeo.setAttribute('uv', new THREE.BufferAttribute(geoData.uvs, 2));
+      bufferGeo.setIndex(new THREE.BufferAttribute(geoData.indices, 1));
+
+      const banachMat = new THREE.MeshStandardMaterial({
+        color: 0x38bdf8,
+        roughness: 0.15,
+        metalness: 0.6,
+        transparent: true,
+        opacity: 0.85,
+        side: THREE.DoubleSide
+      });
+      banachMesh = new THREE.Mesh(bufferGeo, banachMat);
+      banachMesh.scale.setScalar(4.5);
+      groupBanach.add(banachMesh);
+
+      const wireMat = new THREE.MeshBasicMaterial({
+        color: 0xffffff,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.25
+      });
+      banachWireframe = new THREE.Mesh(bufferGeo, wireMat);
+      banachWireframe.scale.setScalar(4.51);
+      groupBanach.add(banachWireframe);
+
+      const axes = new THREE.AxesHelper(6.5);
+      groupBanach.add(axes);
+    }
+
+    function updateBanachGeometry(p) {
+      currentBanachNorm = p;
+      const bSpace = toposEngine.banachSpaces.l2;
+      const geoData = bSpace.generateUnitSphereGeometry(32, p);
+
+      banachMesh.geometry.dispose();
+      const nextGeo = new THREE.BufferGeometry();
+      nextGeo.setAttribute('position', new THREE.BufferAttribute(geoData.vertices, 3));
+      nextGeo.setAttribute('normal', new THREE.BufferAttribute(geoData.normals, 3));
+      nextGeo.setAttribute('uv', new THREE.BufferAttribute(geoData.uvs, 2));
+      nextGeo.setIndex(new THREE.BufferAttribute(geoData.indices, 1));
+
+      banachMesh.geometry = nextGeo;
+      banachWireframe.geometry = nextGeo;
+
+      if (p === 1) banachMesh.material.color.setHex(0xf59e0b);
+      else if (p === 2) banachMesh.material.color.setHex(0x38bdf8);
+      else if (p === 4) banachMesh.material.color.setHex(0x10b981);
+      else banachMesh.material.color.setHex(0xc084fc);
+    }
+
+    function setBanachNorm(p) {
+      document.querySelectorAll('#right-hud .norm-btn').forEach(b => b.classList.remove('active'));
+      const id = p === 'inf' ? 'btn-norm-inf' : `btn-norm-${p}`;
+      const btn = document.getElementById(id);
+      if (btn) btn.classList.add('active');
+
+      updateBanachGeometry(p);
+      if (currentMode !== 'banach_unit_ball') switchPerspective('banach_unit_ball');
+    }
+
+    // ------------------------------------------------------------------------
+    // BUILD SCENE 3: OPERADIC TREE DENDROGRAM
+    // ------------------------------------------------------------------------
+    function buildOperadicTreeScene() {
+      groupTree = new THREE.Group();
+      scene.add(groupTree);
+
+      const treeMat = new THREE.LineBasicMaterial({ color: 0xc084fc, transparent: true, opacity: 0.65 });
+      const treeNodeGeo = new THREE.SphereGeometry(0.25, 12, 12);
+      const treeNodeMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+
+      function createBranch(startX, startY, startZ, endX, endY, endZ, depth) {
+        const points = [
+          new THREE.Vector3(startX, startY, startZ),
+          new THREE.Vector3(endX, endY, endZ)
+        ];
+        const geo = new THREE.BufferGeometry().setFromPoints(points);
+        const line = new THREE.Line(geo, treeMat);
+        groupTree.add(line);
+
+        const node = new THREE.Mesh(treeNodeGeo, treeNodeMat);
+        node.position.set(endX, endY, endZ);
+        groupTree.add(node);
+
+        if (depth > 0) {
+          const spread = depth * 1.8;
+          createBranch(endX, endY, endZ, endX - spread, endY - 2.5, endZ - spread * 0.5, depth - 1);
+          createBranch(endX, endY, endZ, endX + spread, endY - 2.5, endZ + spread * 0.5, depth - 1);
+        }
+      }
+
+      createBranch(0, 4, 0, 0, 2, 0, 2);
+    }
+
+    // ------------------------------------------------------------------------
+    // BUILD SCENE 4: COINVARIANT QUOTIENT VORTEX
+    // ------------------------------------------------------------------------
+    function buildQuotientVortexScene() {
+      groupVortex = new THREE.Group();
+      scene.add(groupVortex);
+
+      const particleCount = 600;
+      const vortexGeo = new THREE.BufferGeometry();
+      const pos = new Float32Array(particleCount * 3);
+      const col = new Float32Array(particleCount * 3);
+
+      for (let i = 0; i < particleCount; i++) {
+        const angle = i * 0.12;
+        const radius = 6.0 * (1 - i / particleCount);
+        const y = 5.0 - (i / particleCount) * 10.0;
+
+        pos[i * 3] = Math.cos(angle) * radius;
+        pos[i * 3 + 1] = y;
+        pos[i * 3 + 2] = Math.sin(angle) * radius;
+
+        col[i * 3] = 0.95 - (i / particleCount) * 0.5;
+        col[i * 3 + 1] = 0.2 + (i / particleCount) * 0.7;
+        col[i * 3 + 2] = 0.8;
+      }
+
+      vortexGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      vortexGeo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+
+      const vortexMat = new THREE.PointsMaterial({
+        size: 0.25,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.85,
+        blending: THREE.AdditiveBlending
+      });
+      vortexParticles = new THREE.Points(vortexGeo, vortexMat);
+      groupVortex.add(vortexParticles);
+    }
+
+    // ------------------------------------------------------------------------
+    // PERSPECTIVE SWITCHER
+    // ------------------------------------------------------------------------
+    function switchPerspective(mode) {
+      currentMode = mode;
+
+      document.querySelectorAll('.mode-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-mode') === mode);
+      });
+
+      group5Tier.visible = (mode === 'topos_5tier');
+      groupBanach.visible = (mode === 'banach_unit_ball');
+      groupTree.visible = (mode === 'operadic_tree');
+      groupVortex.visible = (mode === 'quotient_vortex');
+
+      if (mode === 'topos_5tier') {
+        camera.position.set(0, 1.5, 24);
+      } else if (mode === 'banach_unit_ball') {
+        camera.position.set(0, 0, 13);
+      } else if (mode === 'operadic_tree') {
+        camera.position.set(0, 0, 15);
+      } else if (mode === 'quotient_vortex') {
+        camera.position.set(0, 2, 18);
+      }
+      controls.target.set(0, 0, 0);
+    }
+
+    function toggleAutoRotate() {
+      autoRotate = !autoRotate;
+      const btn = document.getElementById('btn-auto-orbit');
+      if (btn) btn.classList.toggle('active', autoRotate);
+    }
+
+    function resetCameraView() {
+      switchPerspective(currentMode);
+    }
+
+    function togglePlayPause() {
+      isRunning = !isRunning;
+      const btn = document.getElementById('btn-play-pause');
+      btn.textContent = isRunning ? 'Pause' : 'Play';
+      btn.classList.toggle('active', isRunning);
+    }
+
+    function stepSimulation() {
+      runSimulationStep(0.032);
+    }
+
+    // ------------------------------------------------------------------------
+    // SIMULATION STEP & HUD UPDATES
+    // ------------------------------------------------------------------------
+    function runSimulationStep(dt = 0.016) {
+      const res = toposEngine.step(retinaGrid, dt);
+      const t = res.telemetry;
+
+      // Update Top HUD
+      document.getElementById('top-time').textContent = t.simTime.toFixed(2) + 's';
+      document.getElementById('tele-step').textContent = 'STEP ' + t.step;
+
+      // Telemetry Cards
+      document.getElementById('val-pred-err').textContent = t.predictionError.toFixed(4);
+      document.getElementById('bar-pred-err').style.width = Math.min(100, Math.round(t.predictionError * 150)) + '%';
+
+      document.getElementById('val-invariance').textContent = t.featureInvariance.toFixed(4);
+      document.getElementById('bar-invariance').style.width = Math.round(t.featureInvariance * 100) + '%';
+
+      document.getElementById('val-erasure').textContent = (t.erasureRatio * 100).toFixed(1) + '%';
+      document.getElementById('bar-erasure').style.width = Math.min(100, Math.round(t.erasureRatio * 100)) + '%';
+
+      document.getElementById('val-cech-defect').textContent = t.cechDefectNorm.toFixed(4);
+      document.getElementById('bar-cech-defect').style.width = Math.min(100, Math.round(t.cechDefectNorm * 100)) + '%';
+
+      document.getElementById('val-sym21').textContent = t.symmetricHermetry21.toFixed(4);
+      document.getElementById('val-skew15').textContent = t.skewHermetry15.toFixed(4);
+
+      // Shape Prototype Bars
+      const atoms = toposEngine.protosimplex.atoms;
+      for (let a = 0; a < atoms.length; a++) {
+        const valEl = document.getElementById('p-val-' + a);
+        const barEl = document.getElementById('p-bar-' + a);
+        if (valEl && barEl) {
+          valEl.textContent = atoms[a].energy.toFixed(2);
+          barEl.style.width = Math.min(100, Math.round(atoms[a].energy * 100)) + '%';
+        }
+      }
+
+      // Draw Comparison Thumbnails
+      inputThumbCtx.clearRect(0, 0, 16, 16);
+      predThumbCtx.clearRect(0, 0, 16, 16);
+
+      const inImgData = inputThumbCtx.createImageData(16, 16);
+      const predImgData = predThumbCtx.createImageData(16, 16);
+
+      for (let i = 0; i < 256; i++) {
+        const inVal = Math.floor(retinaGrid[i] * 255);
+        inImgData.data[i * 4] = inVal;
+        inImgData.data[i * 4 + 1] = inVal;
+        inImgData.data[i * 4 + 2] = inVal;
+        inImgData.data[i * 4 + 3] = 255;
+
+        const predVal = Math.min(255, Math.floor(toposEngine.core.predictedRetina[i] * 255));
+        predImgData.data[i * 4] = predVal;
+        predImgData.data[i * 4 + 1] = Math.floor(predVal * 0.85);
+        predImgData.data[i * 4 + 2] = Math.floor(predVal * 0.40);
+        predImgData.data[i * 4 + 3] = 255;
+      }
+      inputThumbCtx.putImageData(inImgData, 0, 0);
+      predThumbCtx.putImageData(predImgData, 0, 0);
+
+      // Draw 4 V1 Receptive Field Feature Maps
+      for (let c = 0; c < 4; c++) {
+        const ctxF = fmapCanvases[c];
+        ctxF.clearRect(0, 0, 16, 16);
+        const fImg = ctxF.createImageData(16, 16);
+        const filterKernel = toposEngine.sheaf.contexts[c].spatialFilter;
+        for (let i = 0; i < 256; i++) {
+          const act = Math.abs(filterKernel[i]) * (0.3 + 0.7 * retinaGrid[i]);
+          const b = Math.min(255, Math.floor(act * 255));
+          fImg.data[i * 4] = c === 0 ? b : (c === 2 ? Math.floor(b * 0.95) : 0);
+          fImg.data[i * 4 + 1] = (c === 1 || c === 0) ? b : (c === 2 ? Math.floor(b * 0.6) : 0);
+          fImg.data[i * 4 + 2] = (c === 2 || c === 3) ? b : 0;
+          fImg.data[i * 4 + 3] = 255;
+        }
+        ctxF.putImageData(fImg, 0, 0);
+      }
+
+      // Update Oscilloscope Buffers
+      oscPredErr[oscIdx] = t.predictionError;
+      oscErasure[oscIdx] = t.erasureRatio;
+      oscCech[oscIdx] = t.cechDefectNorm;
+      oscIdx = (oscIdx + 1) % OSC_LEN;
+    }
+
+    // ------------------------------------------------------------------------
+    // OSCILLOSCOPE
+    // ------------------------------------------------------------------------
+    function initOscilloscope() {
+      const oscCanvas = document.getElementById('osc-canvas');
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = oscCanvas.getBoundingClientRect();
+      oscCanvas.width = Math.max(200, Math.floor(rect.width * dpr));
+      oscCanvas.height = Math.max(50, Math.floor(rect.height * dpr));
+    }
+
+    function drawOscilloscope() {
+      const oscCanvas = document.getElementById('osc-canvas');
+      const ctx = oscCanvas.getContext('2d');
+      const w = oscCanvas.width;
+      const h = oscCanvas.height;
+
+      ctx.clearRect(0, 0, w, h);
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+      ctx.lineWidth = 1;
+      for (let y = 0; y < h; y += 18) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      function drawTrace(buf, color) {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (let i = 0; i < OSC_LEN; i++) {
+          const idx = (oscIdx + i) % OSC_LEN;
+          const x = (i / (OSC_LEN - 1)) * w;
+          const val = Math.max(0, Math.min(1, buf[idx]));
+          const y = h - val * (h - 8) - 4;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+
+      drawTrace(oscPredErr, '#f43f5e'); // Rose: Prediction Error
+      drawTrace(oscErasure, '#c084fc'); // Purple: Syntax Erasure
+      drawTrace(oscCech, '#38bdf8');    // Cyan: Cech Consensus Defect
+    }
+
+    // ------------------------------------------------------------------------
+    // RAYCASTING & INTERACTION
+    // ------------------------------------------------------------------------
+    function onMouseMove(event) {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      const tooltip = document.getElementById('node-tooltip');
+
+      if (currentMode === 'topos_5tier') {
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(nodeMeshes);
+
+        if (intersects.length > 0) {
+          const hit = intersects[0].object;
+          hoveredNode = hit.userData;
+
+          tooltip.style.opacity = '1';
+          tooltip.style.left = (event.clientX + 14) + 'px';
+          tooltip.style.top = (event.clientY + 14) + 'px';
+          tooltip.innerHTML = `<strong>${hoveredNode.label}</strong><br>Tier: Tier ${hoveredNode.tier}<br>Activation: ${(hoveredNode.voltage || 0).toFixed(4)}`;
+
+          document.getElementById('insp-id').textContent = hoveredNode.label;
+          document.getElementById('insp-tier').textContent = `Tier ${hoveredNode.tier}`;
+          document.getElementById('insp-voltage').textContent = (hoveredNode.voltage || 0).toFixed(4);
+          document.getElementById('insp-badge').textContent = 'ACTIVE';
+          return;
+        }
+      }
+
+      tooltip.style.opacity = '0';
+      hoveredNode = null;
+    }
+
+    // ------------------------------------------------------------------------
+    // MAIN ANIMATION LOOP
+    // ------------------------------------------------------------------------
+    let lastTime = performance.now();
+    let frameCount = 0;
+    let fpsTime = lastTime;
+
+    function animate(now) {
+      requestAnimationFrame(animate);
+
+      const dt = Math.min(0.05, (now - lastTime) / 1000);
+      lastTime = now;
+
+      frameCount++;
+      if (now - fpsTime >= 500) {
+        const fps = Math.round((frameCount * 1000) / (now - fpsTime));
+        document.getElementById('top-fps').textContent = fps + ' FPS';
+        frameCount = 0;
+        fpsTime = now;
+      }
+
+      if (isRunning) {
+        runSimulationStep(dt);
+      }
+
+      controls.autoRotate = autoRotate;
+      controls.autoRotateSpeed = 1.2;
+      controls.update();
+
+      if (currentMode === 'topos_5tier') {
+        update5TierAnimation(dt);
+      } else if (currentMode === 'banach_unit_ball') {
+        banachMesh.rotation.y += 0.005;
+        banachMesh.rotation.x += 0.003;
+        banachWireframe.rotation.copy(banachMesh.rotation);
+      } else if (currentMode === 'quotient_vortex') {
+        vortexParticles.rotation.y += 0.015;
+      }
+
+      drawOscilloscope();
+      renderer.render(scene, camera);
+    }
+
+    function update5TierAnimation(dt) {
+      // Sparks
+      const positions = sparkParticles.geometry.attributes.position.array;
+      const colors = sparkParticles.geometry.attributes.color.array;
+
+      for (let i = 0; i < sparkData.length; i++) {
+        const sp = sparkData[i];
+        sp.progress += sp.speed;
+        if (sp.progress >= 1.0) sp.progress = 0.0;
+
+        const x = sp.source.x + (sp.target.x - sp.source.x) * sp.progress;
+        const y = sp.source.y + (sp.target.y - sp.source.y) * sp.progress;
+        const z = sp.source.z + (sp.target.z - sp.source.z) * sp.progress;
+
+        positions[i * 3] = x;
+        positions[i * 3 + 1] = y;
+        positions[i * 3 + 2] = z;
+
+        const c = new THREE.Color(sp.color);
+        colors[i * 3] = c.r;
+        colors[i * 3 + 1] = c.g;
+        colors[i * 3 + 2] = c.b;
+      }
+      sparkParticles.geometry.attributes.position.needsUpdate = true;
+      sparkParticles.geometry.attributes.color.needsUpdate = true;
+
+      // Pulse nodes with real-time voltages
+      nodeMeshes.forEach(mesh => {
+        const u = mesh.userData;
+        if (u.tier === 0) {
+          const idx = parseInt(u.id.split('_')[1], 10) || 0;
+          u.voltage = Math.abs(retinaGrid[idx * 16] || 0.1);
+        } else if (u.tier === 1) {
+          const cluster = u.cluster || 0;
+          const col = parseInt(u.id.split('_')[2], 10) || 0;
+          u.voltage = Math.abs(toposEngine.sheaf.stalks[cluster][col] || 0.2);
+        } else if (u.tier === 2) {
+          const idx = parseInt(u.id.split('_')[1], 10) || 0;
+          u.voltage = Math.abs(toposEngine.episyllogismus.fragmentMemory[idx] || 0.25);
+        } else if (u.tier === 3) {
+          const idx = parseInt(u.id.split('_')[1], 10) || 0;
+          u.voltage = (toposEngine.protosimplex.atoms[idx] && toposEngine.protosimplex.atoms[idx].energy) || 0.3;
+        } else if (u.tier === 4) {
+          u.voltage = toposEngine.core.featureInvarianceScore;
+        }
+        mesh.material.emissiveIntensity = 0.2 + u.voltage * 0.8;
+      });
+    }
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      initOscilloscope();
+    }
+
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

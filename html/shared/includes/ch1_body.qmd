@@ -1,4 +1,3 @@
-
 ## Methodological Architecture: The Epistemic Firewall {.smaller transition="convex"}
 
 <div class="stratum-badge badge-firewall">FRONTMATTER &amp; MASTER EPISTEMIC FIREWALL (MSC 2020: 18F20, 18M60, 03B45, 53C07)</div>

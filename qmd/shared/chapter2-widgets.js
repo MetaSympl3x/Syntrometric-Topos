@@ -860,7 +860,9 @@ const HUD_3D_HTML = `
 
     <div class="hud3d-scrubber">
       <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
+      <button class="hud3d-btn" title="Previous Stage" onclick="window.set3DStage(Math.round(parseFloat(document.getElementById('hud3d-slider').value)) - 1, true)">◀</button>
       <input type="range" id="hud3d-slider" min="1" max="10" step="0.05" value="1" oninput="scrub3DStage(this.value)">
+      <button class="hud3d-btn" title="Next Stage" onclick="window.set3DStage(Math.round(parseFloat(document.getElementById('hud3d-slider').value)) + 1, true)">▶</button>
       <button class="hud3d-btn active" id="btn-sync-3d" onclick="enable3DAutoSync()">Auto-Sync</button>
     </div>
 

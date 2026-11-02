@@ -30,7 +30,12 @@
   "llbracket": "\\mathopen{[\\mkern-3mu[}",
   "rrbracket": "\\mathclose{]\\mkern-3mu]}",
   "arraystretch": "1.3",
-  "ggg": "\\mathrel{\\ggg}",
+  "ggg": "\\mathrel{>\\!\\!>\\!\\!>}",
+  "xrightrightarrows": [
+    "\\underset{#1}{\\overset{#2}{\\rightrightarrows}}",
+    2,
+    ""
+  ],
   "topfraction": "0.95",
   "bottomfraction": "0.95",
   "textfraction": "0.05",
@@ -114,7 +119,10 @@
     "\\widetilde{\\mathbf{a}}"
   ],
   "predicatesymbol": "\\mathrel{\\overline{||}}",
-  "vspacing": "\\vphantom{\\sum}",
+  "vspacing": [
+    "\\rule{0pt}{#1}",
+    1
+  ],
   "widemetroplex": "\\mathsf{M}",
   "syntroklinemetroplex": "\\mathsf{B}",
   "syntroklinekettenkoppelung": "\\mathsf{K}",

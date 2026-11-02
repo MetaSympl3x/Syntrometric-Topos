@@ -508,7 +508,7 @@ window.MathJax = {
     displayMath: [['$$', '$$'], ['\\[', '\\]']],
     processEscapes: true,
     macros: {
-  "syntrix": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
+  "syntrix": "\\mathbf{y}\\widetilde{\\mathbf{a}}", "ggg": "\\ggg", "xrightrightarrows": ["\\substack{\\xrightarrow{#1} \\\\[-0.6em] \\xrightarrow[#2]{}}", 2], "vspacing": "\\vphantom{\\int_0^1}",
   "homogeneoussyntrix": "\\mathbf{x}\\widetilde{\\mathbf{a}}",
   "metrophor": "\\widetilde{\\mathbf{a}}",
   "synkolator": "\\mathfrak{f}",
@@ -522,7 +522,7 @@ window.MathJax = {
   "pradikatrix": "P_n",
   "dialektik": "D_n",
   "koordination": "K_n",
-  "nullsyntrix": "\\mathbf{ys}\\widetilde{\\mathbf{c}}",
+  "nullsyntrix": "\\mathbf{y}\\widetilde{\\overline{\\mathbf{c}}}",
   "elementarstruktur": "\\mathbf{y}\\widetilde{\\mathbf{a}}_{(j)}",
   "konzenter": "\\text{Konzenter}",
   "exzenter": "\\text{Exzenter}",
@@ -803,8 +803,8 @@ window.MathJax = {
     5
   ],
   "vspacing": [
-    "\\vphantom{\\sum}",
-    0
+    "\\rule{0pt}{#1}",
+    1
   ],
   "ab": "\\mathrm{ab}"
 }

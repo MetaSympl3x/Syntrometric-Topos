@@ -4975,8 +4975,8 @@ window.MathJax = {
     5
   ],
   "vspacing": [
-    "\\vphantom{\\sum}",
-    0
+    "\\rule{0pt}{#1}",
+    1
   ],
   "ab": "\\mathrm{ab}"
 }
@@ -5897,6 +5897,32 @@ input[type="range"] {
 
 
 <script src="shared/syntrometric-tex-macros.js"></script>
+
+<style id="syn-synth-mechanism-boxes">
+.reveal .synth-box, .synth-box {
+  background: linear-gradient(135deg, rgba(13, 25, 43, 0.94) 0%, rgba(15, 34, 56, 0.92) 100%);
+  border-left: 4px solid #38bdf8;
+  border-top: 1px solid rgba(56, 189, 248, 0.28);
+  padding: 0.42em 0.78em;
+  margin: 0.28em 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.72em;
+  line-height: 1.38;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.38);
+}
+.reveal .mechanism-box, .mechanism-box {
+  background: linear-gradient(135deg, rgba(20, 28, 46, 0.94) 0%, rgba(15, 23, 42, 0.92) 100%);
+  border-left: 4px solid #10b981;
+  border-top: 1px solid rgba(16, 185, 129, 0.28);
+  padding: 0.42em 0.78em;
+  margin: 0.28em 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.72em;
+  line-height: 1.38;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.38);
+}
+</style>
+
 </head><body class="quarto-dark">\n
 
 
@@ -7932,7 +7958,7 @@ STRATUM B: LEVELED STRUCTURES (DEFS. 2.11–2.17), PROP. 2.14 PROOF &amp; LEMMA 
 </div>
 <div class="proof-box fragment fade-up">
 <p><strong>Proposition 2.14 (Functoriality of <span class="math inline">\(\Shift\)</span>) &amp; 3-Step Proof:</strong> <span class="math inline">\(\Shift(\operatorname{id}_{\mathbf{L}}) = \operatorname{id}_{\Shift(\mathbf{L})}\)</span> and <span class="math inline">\(\Shift(h \circ g) = \Shift(h) \circ \Shift(g)\)</span>.</p>
-<p><em>Proof:</em> (1) <span class="math inline">\((\Shift(\operatorname{id}_{\mathbf{L}}))_k = (\operatorname{id}_{\mathbf{L}})_{k+1} = \operatorname{id}_{P_{k+1}}\)</span>. (2) <span class="math inline">\((\Shift(h \circ g))_k = (h \circ g)_{k+1} = h_{k+1} \circ g_{k+1} = (\Shift(h) \circ \Shift(g))_k\)</span>. (3) For <span class="math inline">\((X,Y) \in I_k^{\Shift(\mathbf{L})} = I_{k+1}^{\mathbf{L}}\)</span>, <span class="math inline">\(((g_k(X), g_{k+1}(Y))) \in I_{k+1}^{\mathbf{M}} = I_k^{\Shift(\mathbf{M})}\)</span>, preserving IGP, stability, and origin at index <span class="math inline">\(k+1\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
+<p><em>Proof:</em> (1) <span class="math inline">\((\Shift(\operatorname{id}_{\mathbf{L}}))_k = (\operatorname{id}_{\mathbf{L}})_{k+1} = \operatorname{id}_{P_{k+1}}\)</span>. (2) <span class="math inline">\((\Shift(h \circ g))_k = (h \circ g)_{k+1} = h_{k+1} \circ g_{k+1} = (\Shift(h) \circ \Shift(g))_k\)</span>. (3) For <span class="math inline">\((X,Y) \in I_k^{+\Shift(\mathbf{L})} = I_{k+1}^{+\mathbf{L}}\)</span>, <span class="math inline">\(((g_k(X), g_{k+1}(Y))) \in I_{k+1}^{\mathbf{M}} = I_k^{\Shift(\mathbf{M})}\)</span>, preserving IGP, stability, and origin at index <span class="math inline">\(k+1\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
 </div>
 </div><div class="column" style="width:48%;">
 <div class="thm-box">
@@ -21455,6 +21481,7 @@ Manim Act XII (App. D §D.1–D.2, Fig. 47): Interval Newton–Krawczyk Contract
     <script src="shared/chapter9-widgets.js"></script>
     <script src="shared/chapter10-widgets.js"></script>
     <script src="shared/chapter11-widgets.js"></script>
+    <script src="shared/OperadicNeuralTopos.js"></script>
     <script src="shared/chapter12-widgets.js"></script>
     <script src="shared/chapter13-widgets.js"></script>
     <script src="shared/chapter14-widgets.js"></script>

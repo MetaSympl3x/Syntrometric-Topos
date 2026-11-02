@@ -405,7 +405,7 @@ Stage 0: $T_0(X) = X$ (atoms $a_i$); Stage 1: $T_1(X) = X \oplus (X \otpi X)$ (f
 :::
 
 ::: {.proof-box .fragment .fade-up}
-**Def. 2.9, Theorem 2.10 (Bar–Cobar Duality $\Omega_{\mathrm{cobar}} \dashv B_{\mathrm{bar}}$) & Proof:**
+**Def. 2.9, Theorem 2.10 (Bar–Cobar Duality $\Omega_{\mathrm{cobar}} \dashv B_{\mathrm{bar}} \colon \mathbf{dgCoop}_{\mathbf{Col}}^{\mathrm{conil}} \rightleftarrows \mathbf{dgOp}_{\mathbf{Col}}^{\mathrm{aug}}$) & Proof:**
 The **Prosyllogistic Bar Cooperad** $B(\Osyn) \coloneqq \mathbb{F}^c(s\overline{\Osyn})$ acts by **tree de-grafting** $\Delta_{\mathrm{prosyl}}$ ($k\downarrow$), extracting ancestral lineage via $\delta_{k\downarrow} \colon F_\gamma \to \bigoplus B(\Osyn)(\vec{\gamma};\gamma) \otpi \bigotimes F_{\gamma_i}$.
 
 *Proof of Thm 2.10 & Koszul Criterion Remark:* Morphisms $\Omega_{\mathrm{cobar}}(\mathcal{C}) = \mathbb{F}(s^{-1}\overline{\mathcal{C}}) \to \mathcal{O}$ correspond bijectively to degree-$-1$ twisting morphisms $\alpha \in \operatorname{Tw}(\mathcal{C}, \mathcal{O})$ satisfying the Maurer–Cartan equation $\partial(\alpha) + \alpha \star \alpha = 0$ in the pre-Lie convolution algebra $\Hom_\Sigma(\mathcal{C}, \mathcal{O})$, and hence to cooperad morphisms $\mathcal{C} \to B_{\mathrm{bar}}(\mathcal{O})$ (Loday & Vallette 2012). Filtering finite colored trees by vertex weight proves the counit $\epsilon_{\mathcal{O}} \colon \Omega_{\mathrm{cobar}}(B_{\mathrm{bar}}(\Osyn)) \xrightarrow{\sim} \Osyn$ is a quasi-isomorphism! $\blacksquare$
@@ -453,7 +453,7 @@ While the free tree monad T_P formalizes the upward constructive Episyllogismus,
 **Proposition 2.14 (Functoriality of $\Shift$) & 3-Step Proof:**
 $\Shift(\operatorname{id}_{\mathbf{L}}) = \operatorname{id}_{\Shift(\mathbf{L})}$ and $\Shift(h \circ g) = \Shift(h) \circ \Shift(g)$.
 
-*Proof:* (1) $(\Shift(\operatorname{id}_{\mathbf{L}}))_k = (\operatorname{id}_{\mathbf{L}})_{k+1} = \operatorname{id}_{P_{k+1}}$. (2) $(\Shift(h \circ g))_k = (h \circ g)_{k+1} = h_{k+1} \circ g_{k+1} = (\Shift(h) \circ \Shift(g))_k$. (3) For $(X,Y) \in I_k^{\Shift(\mathbf{L})} = I_{k+1}^{\mathbf{L}}$, $((g_k(X), g_{k+1}(Y))) \in I_{k+1}^{\mathbf{M}} = I_k^{\Shift(\mathbf{M})}$, preserving IGP, stability, and origin at index $k+1$. $\blacksquare$
+*Proof:* (1) $(\Shift(\operatorname{id}_{\mathbf{L}}))_k = (\operatorname{id}_{\mathbf{L}})_{k+1} = \operatorname{id}_{P_{k+1}}$. (2) $(\Shift(h \circ g))_k = (h \circ g)_{k+1} = h_{k+1} \circ g_{k+1} = (\Shift(h) \circ \Shift(g))_k$. (3) For $(X,Y) \in I_k^{+\Shift(\mathbf{L})} = I_{k+1}^{+\mathbf{L}}$, $(g_k(X), g_{k+1}(Y)) \in I_{k+1}^{+\mathbf{M}} = I_k^{+\Shift(\mathbf{M})}$, preserving IGP, stability, and origin at index $k+1$. $\blacksquare$
 :::
 
 :::

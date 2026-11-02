@@ -1,4 +1,3 @@
-
 ## §14.1 The Structural Architecture of the Master Translation Register {.smaller transition="convex"}
 
 <div class="stratum-badge badge-firewall">STRATUM C: THE COMPLETE HEIM-TO-TOPOS RECONSTRUCTION MAP (SM EQS. 1–100a)</div>
@@ -179,7 +178,7 @@ $$
 $$
 * **SM-11 (Konflexionsfeld Pushout):** $P_a \boxplus_\phi P_b \coloneqq P_a \oplus P_b / \overline{\operatorname{im}(i_a - \phi \circ i_b)}$.
 * **SM-12 &amp; 13 (Konzenter &amp; Exzenter Coupling):** Determinant of Gram matrix $\Delta_{\mathrm{disc}}(K)$.
-* **SM-13a (Eindeutigkeitssatz):** Unique universal factorization arrow $\exists!\, u \colon P_a \boxplus_\phi P_b \to W$.
+* **SM-13a (Eindeutigkeitssatz — Corporate Determinacy):** $\left(\mathbf{y}\widetilde{\mathbf{a}}\,\mathbf{Kor}\,\mathbf{z}\widetilde{\mathbf{b}}\right)_{ab} \equiv \mathbf{x}\widetilde{\mathbf{c}}_c \iff$ Unique universal pushout factorization $\exists!\, u \colon P_a \boxplus_\phi P_b \to W$.
 
 ::: {.proof-box .fragment .glow-pulse}
 **Categorical Pushout Lemma**

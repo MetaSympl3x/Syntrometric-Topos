@@ -1138,7 +1138,9 @@ const CH14_3D_HTML = `<div class="ch14-hud-header">
 
       <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
 
+      <button class="ch14-hud-btn" title="Previous Stage" onclick="window.setCh14Stage(Math.round( parseFloat(document.getElementById('ch14-slider').value) ) - 1, true)">◀</button>
       <input type="range" id="ch14-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh14Stage(this.value)">
+      <button class="ch14-hud-btn" title="Next Stage" onclick="window.setCh14Stage(Math.round( parseFloat(document.getElementById('ch14-slider').value) ) + 1, true)">▶</button>
 
       <button class="ch14-hud-btn active" id="ch14-btn-sync" onclick="enableCh14Sync()">Auto-Sync</button>
 
@@ -1559,14 +1561,29 @@ const canvas = document.getElementById('ch14-3d-canvas');
 
 
 
-    const stInt = Math.round(curStage);
-
-    if (stInt <= 9) renderConcordanceRing(w, h, stInt);
+    function dispatchStageCrossFade(stInt, stArg) {
+      if (stInt <= 9) renderConcordanceRing(w, h, stInt);
 
     else renderStage10(w, h);
-
-
-
+    }
+    const stLow = Math.max(1, Math.min(10, Math.floor(curStage)));
+    const stHigh = Math.max(1, Math.min(10, Math.ceil(curStage)));
+    const frac = curStage - stLow;
+    if (stLow === stHigh || frac < 0.02) {
+      ctx.save();
+      ctx.globalAlpha = 1.0;
+      dispatchStageCrossFade(Math.round(curStage), curStage);
+      ctx.restore();
+    } else {
+      ctx.save();
+      ctx.globalAlpha = 1.0 - frac * 0.82;
+      dispatchStageCrossFade(stLow, stLow);
+      ctx.restore();
+      ctx.save();
+      ctx.globalAlpha = frac;
+      dispatchStageCrossFade(stHigh, stHigh);
+      ctx.restore();
+    }
     requestAnimationFrame(renderLoop);
 
   }

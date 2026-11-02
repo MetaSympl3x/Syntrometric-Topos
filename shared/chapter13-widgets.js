@@ -958,7 +958,9 @@ const CH13_3D_HTML = `<div class="ch13-hud-header">
 
       <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
 
+      <button class="ch13-hud-btn" title="Previous Stage" onclick="window.setCh13Stage(Math.round( parseFloat(document.getElementById('ch13-slider').value) ) - 1, true)">◀</button>
       <input type="range" id="ch13-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh13Stage(this.value)">
+      <button class="ch13-hud-btn" title="Next Stage" onclick="window.setCh13Stage(Math.round( parseFloat(document.getElementById('ch13-slider').value) ) + 1, true)">▶</button>
 
       <button class="ch13-hud-btn active" id="ch13-btn-sync" onclick="enableCh13Sync()">Auto-Sync</button>
 
@@ -1046,13 +1048,13 @@ const canvas = document.getElementById('ch13-3d-canvas');
 
     6: "<b>Stage 6 (§13.3.1–13.3.2 — Thms. 13.13–13.14 6D Phenomenal Field R₆):</b> N²(N−6)(N+2)=0 ⇒ R₆ = R₄ × S₂ (21 Sym + 15 Skew Affective Hermetry).",
 
-    7: "<b>Stage 7 (§13.3.3–13.3.6 — Thms. 13.18–13.20 K₈ Harmonics &amp; DEC):</b> Orthonormal eigenmodes Sel(Ψ_k)=λ_kΨ_k on K₈ &amp; Stokes–Cartan d_h∘ℛ_h = ℛ_h∘d.",
+    7: "<b>Stage 7 (§13.3.3–13.3.6 — Thms. 13.18–13.20 K₈ Harmonics &amp; DEC):</b> Orthonormal eigenmodes Sel(Ψ_k)=λ_kΨ_k on K₈ &amp; Stokes–Cartan d_τ∘ℛ_τ = ℛ_τ∘d.",
 
     8: "<b>Stage 8 (§13.4–13.5 — Def. 13.21 &amp; Thm. 13.22 Topos Φ_topos vs. IIT 4.0):</b> Polynomial O(N²) 3-node su(2) curvature triad vs. O(2^N) MIP explosion!",
 
     9: "<b>Stage 9 (§13.6.1 — Thm. 13.24 Lawvere Ego Fixed-Point Theorem):</b> Diagonal self-reflection Δ_A induces invariant Ego Token e* : 1 → A (f∘y* = y*)!",
 
-    10: "<b>Stage 10 (§13.6.2–13.10 — Thm. 13.25 Active Inference &amp; Def. 13.26 REBUS):</b> Psychedelic de-encapsulation 𝔇_relax(𝒫) &amp; Lean 4 Import Firewall DAG!"
+    10: "<b>Stage 10 (§13.6.2–13.10 — Thm. 13.25 Active Inference &amp; Def. 13.26 REBUS):</b> Psychedelic de-encapsulation 𝔇_relax(𝒫), AST Firewall Auditor &amp; Appraisal Matrix!"
 
   };
 
@@ -1072,7 +1074,7 @@ const canvas = document.getElementById('ch13-3d-canvas');
 
     6: "R₆ = R₄ × S₂ | div_ḡ[Γ_(−)^(6,6)(G)] = 0",
 
-    7: "d_h ∘ ℛ_h^k = ℛ_h^{k+1} ∘ d | Λ_UV = 4/√τ",
+    7: "d_τ ∘ ℛ_τ^k = ℛ_τ^{k+1} ∘ d | Λ_UV = 2√n/√τ | Λ_UV = 4/√τ",
 
     8: "Φ_topos = ‖Ω_int^𝒟‖_{L²} exp(−‖Def_U‖²/2σ²)",
 
@@ -1422,7 +1424,7 @@ const canvas = document.getElementById('ch13-3d-canvas');
 
     }
 
-    drawNode3D("R6_Core", 0, 0, 0, 11, "#FFD700", "#DC143C", isStage7 ? "Sel(Ψ_k) = λ_k Ψ_k on K₈" : "R₆ = R₄ × S₂ (N=6 Root)", isStage7 ? "Thm. 13.18 Discrete Orthonormal Eigenbasis on Compact K₈ & Thm. 13.19 Stokes–Cartan d_h∘ℛ_h = ℛ_h∘d" : "Thm. 13.13 Phenomenal Condensation N²(N−6)(N+2)=0 ⇒ 36 = 21 Sym + 15 Skew Hermetry", w, h);
+    drawNode3D("R6_Core", 0, 0, 0, 11, "#FFD700", "#DC143C", isStage7 ? "Sel(Ψ_k) = λ_k Ψ_k on K₈" : "R₆ = R₄ × S₂ (N=6 Root)", isStage7 ? "Thm. 13.18 Discrete Orthonormal Eigenbasis on Compact K₈ & Thm. 13.19 Stokes–Cartan d_τ∘ℛ_τ = ℛ_τ∘d" : "Thm. 13.13 Phenomenal Condensation N²(N−6)(N+2)=0 ⇒ 36 = 21 Sym + 15 Skew Hermetry", w, h);
 
     drawNode3D("S2_Val", 1.15, 0, 0, 7.5, "#FFA500", "#fff", "x₅ Valence (Negentropy)", "Entelechial Valence Axis: ℒ_{X₅} S_therm ≤ −γV < 0", w, h);
 
@@ -1563,26 +1565,41 @@ const canvas = document.getElementById('ch13-3d-canvas');
 
 
 
-    const stInt = Math.round(curStage);
-
-    if (stInt === 1) renderStage1(w, h);
+    function dispatchStageCrossFade(stInt, stArg) {
+      if (stInt === 1) renderStage1(w, h);
 
     else if (stInt === 2) renderStage2(w, h);
 
-    else if (stInt === 3 || stInt === 4) renderStage3And4(w, h, curStage);
+    else if (stInt === 3 || stInt === 4) renderStage3And4(w, h, stArg);
 
     else if (stInt === 5) renderStage5(w, h);
 
-    else if (stInt === 6 || stInt === 7) renderStage6And7(w, h, curStage);
+    else if (stInt === 6 || stInt === 7) renderStage6And7(w, h, stArg);
 
     else if (stInt === 8) renderStage8(w, h);
 
     else if (stInt === 9) renderStage9(w, h);
 
     else renderStage10(w, h);
-
-
-
+    }
+    const stLow = Math.max(1, Math.min(10, Math.floor(curStage)));
+    const stHigh = Math.max(1, Math.min(10, Math.ceil(curStage)));
+    const frac = curStage - stLow;
+    if (stLow === stHigh || frac < 0.02) {
+      ctx.save();
+      ctx.globalAlpha = 1.0;
+      dispatchStageCrossFade(Math.round(curStage), curStage);
+      ctx.restore();
+    } else {
+      ctx.save();
+      ctx.globalAlpha = 1.0 - frac * 0.82;
+      dispatchStageCrossFade(stLow, stLow);
+      ctx.restore();
+      ctx.save();
+      ctx.globalAlpha = frac;
+      dispatchStageCrossFade(stHigh, stHigh);
+      ctx.restore();
+    }
     requestAnimationFrame(renderLoop);
 
   }
@@ -1939,3 +1956,20 @@ const canvas = document.getElementById('ch13-3d-canvas');
     runCh13Engine();
   }
 })();
+
+
+  function initCh13InlineMount() {
+    document.querySelectorAll('.ch13-3d-Mount').forEach(el => {
+      if (el.dataset.mounted === '1') return;
+      el.dataset.mounted = '1';
+      el.innerHTML = `<div style="background:rgba(10,15,28,0.92); border:1px solid rgba(255,215,0,0.45); border-radius:10px; padding:10px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+        <div style="font-size:0.66em; color:#cbd5e1;">
+          <b style="color:#FFD700;">👁️ Interactive 10-Stage 3D Qualia, Φ_topos &amp; Lawvere Ego Engine</b><br>
+          <span>Synchronized across all 14 slides — inspect Stokes–Wilson holonomy, 6D R₆ Hermetry, and REBUS de-encapsulation in 3D.</span>
+        </div>
+        <button class="syn-btn" style="background:#FFD700; color:#000; font-weight:bold; white-space:nowrap;" onclick="if(window.toggleCh13Spotlight) window.toggleCh13Spotlight();">⛶ Launch 3D Spotlight</button>
+      </div>`;
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initCh13InlineMount);
+  else initCh13InlineMount();

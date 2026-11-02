@@ -267,6 +267,11 @@
       rulePair = "([π_F]-Unstep) + ([π_F]-Step) Principal Cut on [π_F]θ";
       newRankStr = `Level-shifted cut at k+1=${kLvl+1} on θ (rk=${rkA} < rk([π_F]θ) = ${rkCut}) followed by ([π_F]-Unstep)`;
       treeAfter = "[π_F]-Unstep( Cut_{k+1}(D_{1a}: Ext(Γ) ⊢ θ,  D_{2a}: Ext(Δ),θ ⊢ φ₀) )";
+    } else if (conn === 'dia') {
+      rkCut = rkA + 1;
+      rulePair = "(◇_S-Ref) + (FS-Int) Dual Principal Cut on ◇_S θ";
+      newRankStr = `Dualizes across □_S Γ₀, θ ⊢^k ◇_S φ with strictly smaller cut rank rk(θ) = ${rkA} < rk(◇_S θ) = ${rkCut}`;
+      treeAfter = "◇_S-Ref( Cut_k(D_{1a}: Γ₀ ⊢^k θ,  D_{2a}: □_S Δ₀, θ ⊢^k ◇_S χ) )";
     } else {
       rkCut = Math.pow(2, kLvl) + rkA + 2;
       rulePair = `(Stab_${kLvl} R) + (Stab L₁/L₂) Principal Cut on Stable_${kLvl}(P)`;
@@ -926,7 +931,9 @@ const CH15_3D_HTML = `<div class="ch15-hud-header">
 
       <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
 
+      <button class="ch15-hud-btn" title="Previous Stage" onclick="window.setCh15Stage(Math.round( parseFloat(document.getElementById('ch15-slider').value) ) - 1, true)">◀</button>
       <input type="range" id="ch15-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh15Stage(this.value)">
+      <button class="ch15-hud-btn" title="Next Stage" onclick="window.setCh15Stage(Math.round( parseFloat(document.getElementById('ch15-slider').value) ) + 1, true)">▶</button>
 
       <button class="ch15-hud-btn active" id="ch15-btn-sync" onclick="enableCh15Sync()">Auto-Sync</button>
 
@@ -1489,26 +1496,41 @@ const canvas = document.getElementById('ch15-3d-canvas');
 
 
 
-    const stInt = Math.round(curStage);
-
-    if (stInt === 1) renderStage1(w, h);
+    function dispatchStageCrossFade(stInt, stArg) {
+      if (stInt === 1) renderStage1(w, h);
 
     else if (stInt === 2) renderStage2(w, h);
 
-    else if (stInt === 3 || stInt === 4) renderStage3And4(w, h, curStage);
+    else if (stInt === 3 || stInt === 4) renderStage3And4(w, h, stArg);
 
     else if (stInt === 5) renderStage5(w, h);
 
-    else if (stInt === 6 || stInt === 7) renderStage6And7(w, h, curStage);
+    else if (stInt === 6 || stInt === 7) renderStage6And7(w, h, stArg);
 
     else if (stInt === 8) renderStage8(w, h);
 
     else if (stInt === 9) renderStage9(w, h);
 
     else renderStage10(w, h);
-
-
-
+    }
+    const stLow = Math.max(1, Math.min(10, Math.floor(curStage)));
+    const stHigh = Math.max(1, Math.min(10, Math.ceil(curStage)));
+    const frac = curStage - stLow;
+    if (stLow === stHigh || frac < 0.02) {
+      ctx.save();
+      ctx.globalAlpha = 1.0;
+      dispatchStageCrossFade(Math.round(curStage), curStage);
+      ctx.restore();
+    } else {
+      ctx.save();
+      ctx.globalAlpha = 1.0 - frac * 0.82;
+      dispatchStageCrossFade(stLow, stLow);
+      ctx.restore();
+      ctx.save();
+      ctx.globalAlpha = frac;
+      dispatchStageCrossFade(stHigh, stHigh);
+      ctx.restore();
+    }
     requestAnimationFrame(renderLoop);
 
   }

@@ -1,4 +1,3 @@
-
 ## §13.1.1: Metric-Affine Qualia Geometry &amp; Non-Abelian Stokes–Wilson Holonomy {.smaller transition="convex"}
 
 <div class="stratum-badge badge-a">STRATA A &amp; B: METRIC-AFFINE CURVATURE DECOMPOSITION &amp; WILSON HOLONOMY (DEF. 13.1 – THM. 13.2)</div>
@@ -277,7 +276,7 @@ Let $\mathcal{M}$ be a compact smooth $n$-manifold ($\partial\mathcal{M}=\emptys
 $$
 \mathcal{T}(g)_{ij} \;\coloneqq\; -2R_{ij}(g) + \nabla_i V_j + \nabla_j V_i, \qquad V^k \coloneqq g^{pq}\!\left(\Gamma_{pq}^k(g) - \widetilde{\Gamma}_{pq}^k\right)
 $$
-For Sobolev index $s > \frac{n}{2} + 2$, the heat-smoothed cascade operator $\mathbf{\Phi}_{\mathrm{apex}} \coloneqq e^{-\tau_M(\Delta_g + c_0 I)} \circ \mathcal{T}$ is a **strict contraction** on $\mathbf{B}_{H^s}(g_0, \delta) \subset H^s(\mathcal{M}, \Sym^2(T^*\mathcal{M}))$:
+For Sobolev index $s > \frac{n}{2} + 2$, the heat-smoothed cascade operator $\mathbf{\Phi}_{\mathrm{apex}} \coloneqq e^{-\tau_M(\Delta_{g_0} + c_0 I)} \circ \mathcal{T}$ is a **strict contraction** on $\mathbf{B}_{H^s}(g_0, \delta) \subset H^s(\mathcal{M}, \Sym^2(T^*\mathcal{M}))$:
 $$
 \|\mathbf{\Phi}_{\mathrm{apex}}(g_1) - \mathbf{\Phi}_{\mathrm{apex}}(g_2)\|_{H^s} \;\le\; k_M \|g_1 - g_2\|_{H^s} \quad (k_M < 1)
 $$
@@ -289,7 +288,7 @@ converging uniquely to a smooth stationary apex metric ${}^2\bar{\mathbf{g}}_\in
 
 1. **Strong Ellipticity:** The DeTurck term kills diffeomorphism gauge degeneracy; principal symbol $\sigma_\xi(\mathcal{T}(g))h_{ij} = g^{ab}\xi_a\xi_b h_{ij} = \|\xi\|_g^2 h_{ij}$ maps $H^s(\mathcal{M}) \to H^{s-2}(\mathcal{M})$.
 2. **Banach Algebra Lipschitz Bound:** Since $s > n/2 + 2$, $H^s(\mathcal{M}) \hookrightarrow C^2(\mathcal{M})$ is a Banach algebra, giving $\|\mathcal{T}(g_1) - \mathcal{T}(g_2)\|_{H^{s-2}} \le C_{\mathrm{geom}}(\delta)\|g_1 - g_2\|_{H^s}$.
-3. **Parabolic Smoothing:** $\|e^{-\tau_M(\Delta_g + c_0 I)}\|_{\mathcal{B}(H^{s-2}, H^s)} \le C_{\mathrm{heat}} \frac{e^{-c_0\tau_M}}{\tau_M} \implies k_M \coloneqq C_{\mathrm{heat}}C_{\mathrm{geom}}(\delta)\frac{e^{-c_0\tau_M}}{\tau_M} < 1$ for large $\tau_M$.
+3. **Parabolic Smoothing:** $\|e^{-\tau_M(\Delta_{g_0} + c_0 I)}\|_{\mathcal{B}(H^{s-2}, H^s)} \le C_{\mathrm{heat}} \frac{e^{-c_0\tau_M}}{\tau_M} \implies k_M \coloneqq C_{\mathrm{heat}}C_{\mathrm{geom}}(\delta)\frac{e^{-c_0\tau_M}}{\tau_M} < 1$ for large $\tau_M$.
 4. **Banach Fixed Point &amp; Bootstrapping:** $g^{(n+1)} = \mathbf{\Phi}_{\mathrm{apex}}(g^{(n)}) \to {}^2\bar{\mathbf{g}}_\infty \in C^\infty(\mathcal{M})$ by elliptic regularity. $\blacksquare$
 :::
 
@@ -352,7 +351,7 @@ Slide 4 covers §13.2.1: Theorem 13.9 (Morse Separatrices $\mathcal{D}_{\mathrm{
 
 ::: {.thm-box}
 **Theorem 13.11 (Universal Coalgebraic Dynamics &amp; *Telezentralenrelativität*):**
-The continuous trajectory functor $\mathcal{T}_{\mathbb{R}}(M) \coloneqq C^0([0, \epsilon], M) \amalg \mathbf{1}$ possesses a final coalgebra $(\nu\mathcal{T}_{\mathbb{R}}, \zeta)$ equipped with the Lambek isomorphism:
+The basepoint-preserving trajectory functor $\mathcal{T}_{\mathbb{R}}(M) \coloneqq (M \times C^\infty([0, \epsilon], M))_{\operatorname{ev}_0 = \operatorname{pr}_1} \amalg \mathbf{1}$ possesses a final coalgebra $(\nu\mathcal{T}_{\mathbb{R}}, \zeta)$ equipped with the Lambek isomorphism:
 $$
 \zeta \colon \nu\mathcal{T}_{\mathbb{R}} \xrightarrow{\;\sim\;} \mathcal{T}_{\mathbb{R}}(\nu\mathcal{T}_{\mathbb{R}}), \qquad \exists! \; !_\alpha \colon (S, \alpha) \longrightarrow (\nu\mathcal{T}_{\mathbb{R}}, \zeta)
 $$
@@ -563,26 +562,26 @@ Slide 7 covers §13.3.3 (Definition 13.15: Isocline Submersion Foliation $\mathf
 
 ::: {.thm-box}
 **Theorem 13.19 (Commutativity of the Stokes–Cartan Discretization Functor):**
-Let $K$ be a regular cubical cell complex discretizing smooth orientable manifold $\mathcal{M}_n$ at scale $h > 0$. The de Rham integration projection $(\mathcal{R}_h^k \omega)(\sigma_k) \coloneqq \int_{\sigma_k} \omega$ commutes strictly with the discrete coboundary $d_h$ in $\mathbf{Ch}_{\ge 0}(\mathbf{Vect}_{\mathbb{R}})$:
+Let $K$ be a regular cubical cell complex discretizing smooth orientable manifold $\mathcal{M}_n$ at linear mesh spacing $\sqrt{\tau} > 0$. The de Rham integration projection $(\mathcal{R}_\tau^k \omega)(\sigma_k) \coloneqq \int_{\sigma_k} \omega$ commutes strictly with the discrete coboundary $d_\tau$ in $\mathbf{Ch}_{\ge 0}(\mathbf{Vect}_{\mathbb{R}})$:
 $$
-d_h \circ \mathcal{R}_h^k \;=\; \mathcal{R}_h^{k+1} \circ d, \qquad \|\Pi_h^k \alpha - \alpha\|_{L^2} \;\le\; C_{\mathrm{approx}}\, h^s \|\alpha\|_{H^s} \;\; (0 < s \le 1)
+d_\tau \circ \mathcal{R}_\tau^k \;=\; \mathcal{R}_\tau^{k+1} \circ d, \qquad \|\Pi_\tau^k \alpha - \alpha\|_{L^2} \;\le\; C_{\mathrm{approx}}\, \tau^{s/2} \|\alpha\|_{H^s} \;\; (0 < s \le 1)
 $$
 **3-Step Proof:** For $(k+1)$-cell $\sigma_{k+1}$ with boundary $\partial\sigma_{k+1} = \sum_j (-1)^j \operatorname{Face}_j(\sigma_{k+1})$:
-(1) $((\mathcal{R}_h^{k+1}\circ d)\omega)(\sigma_{k+1}) = \int_{\sigma_{k+1}} d\omega$;
-(2) $((d_h \circ \mathcal{R}_h^k)\omega)(\sigma_{k+1}) = (\mathcal{R}_h^k\omega)(\partial\sigma_{k+1}) = \int_{\partial\sigma_{k+1}}\omega$;
+(1) $((\mathcal{R}_\tau^{k+1}\circ d)\omega)(\sigma_{k+1}) = \int_{\sigma_{k+1}} d\omega$;
+(2) $((d_\tau \circ \mathcal{R}_\tau^k)\omega)(\sigma_{k+1}) = (\mathcal{R}_\tau^k\omega)(\partial\sigma_{k+1}) = \int_{\partial\sigma_{k+1}}\omega$;
 (3) Classical Stokes' Theorem $\int_{\sigma_{k+1}} d\omega = \int_{\partial\sigma_{k+1}}\omega$ equates both paths. $\blacksquare$
 :::
 
 ::: {.thm-box .fragment .fade-up}
-**Theorem 13.20 (Metronic Lattice Momentum Dispersion &amp; UV Cutoff):**
-On the uniform discrete metronic lattice $\mathbb{M}_\tau^n = \bigoplus_{i=1}^n \tau_i\mathbb{Z}$:
+**Corollary 13.20 (Metronic Lattice Momentum Dispersion &amp; UV Cutoff):**
+On the uniform discrete metronic lattice $\mathbb{M}_\tau^n = \bigoplus_{i=1}^n \tau_i\mathbb{Z}$ ($\tau_i^2 = \tau$):
 
 1. **Fourier Diagonalization:** $\mathcal{F}(\nabla_i\phi)(\mathbf{k}) = (1 - e^{-\mathrm{i}k_i\tau_i})\widehat{\phi}(\mathbf{k})$ and $\mathcal{F}(\nabla_i^*\phi) = (e^{\mathrm{i}k_i\tau_i}-1)\widehat{\phi}(\mathbf{k})$.
 2. **DEC 0-Laplacian Dispersion ($\Delta_\tau = \sum_i \tau_i^{-2}\nabla_i^*\nabla_i$):**
 $$
 \lambda(\mathbf{k}) \;=\; \sum_{i=1}^n \frac{2}{\tau_i^2}\!\left(1 - \cos(k_i\tau_i)\right) \;=\; \sum_{i=1}^n \frac{4}{\tau_i^2}\sin^2\!\left(\frac{k_i\tau_i}{2}\right) \;\ge\; 0
 $$
-3. **UV Cutoff &amp; Torus IR Gap:** On $\mathbb{Z}^4$, $\sigma(\Delta_\tau) = [0, 16/\tau^2]$ gives ultraviolet cutoff $\Lambda_{\mathrm{UV}} = 4/\sqrt{\tau}$; on a finite periodic $N$-torus ($k_i = \frac{2\pi m_i}{N\tau_i}$), the lowest non-zero mode $\mathbf{m}=(1,0,\dots,0)$ has strictly positive gap $\Delta E_{\min} = \frac{4}{\tau_1^2}\sin^2(\pi/N) > 0$.
+3. **UV Cutoff &amp; Torus IR Gap:** On $\mathbb{M}_\tau^n$, $\sigma(\Delta_\tau) = [0, 4n/\tau]$ gives ultraviolet cutoff $\Lambda_{\mathrm{UV}} = 2\sqrt{n}/\sqrt{\tau}$ ($4/\sqrt{\tau}$ for $n=4$); on a finite periodic $N$-torus ($k_i = \frac{2\pi m_i}{N\tau_i}$), the lowest non-zero mode $\mathbf{m}=(1,0,\dots,0)$ has strictly positive gap $\Delta E_{\min} = \frac{4}{\tau}\sin^2(\pi/N) > 0$.
 4. **Intrinsic Mass Gap:** Requires non-vanishing mass term in $V_{\mathrm{gauge}}$ or compact holonomy. $\blacksquare$
 :::
 
@@ -953,16 +952,16 @@ Slide 12 covers §13.6.2 (Theorem 13.25: Active Inference Sheaf Descent Theorem 
 
 ---
 
-## §13.8: Lean 4 Formal Verification Blueprint &amp; Zombie Impossibility {.smaller transition="convex"}
+## §13.8: Lean 4 Formal Verification Blueprint &amp; Epistemic Firewall {.smaller transition="convex"}
 
-<div class="stratum-badge badge-a">STRATA A, B &amp; C: ENFORCED LEAN 4 IMPORT DAG &amp; KERNEL-CHECKED ZOMBIE IMPOSSIBILITY THEOREM</div>
+<div class="stratum-badge badge-a">STRATA A, B &amp; C: ENFORCED LEAN 4 IMPORT DAG, CONTRACTION CATEGORY &amp; METATHEORETIC AST AUDITOR</div>
 
 :::: {.columns}
 
 ::: {.column width="46%"}
 
 ::: {.firewall-box}
-**Enforced Lean 4 Module Import DAG &amp; Epistemic Firewall (Fig. 13.7):**
+**Enforced Lean 4 Module Import DAG &amp; Epistemic Firewall (§13.8 &amp; App. C):**
 $$
 \underbrace{\texttt{Topos.lean}, \texttt{Operads.lean}}_{\text{Stratum A } (\mathbf{S}_2\text{ Kernel Checked})} \;\longrightarrow\; \underbrace{\texttt{DEC.lean}, \texttt{Sequents.lean}}_{\text{Stratum B } (\mathbf{S}_2\text{ Kernel Checked})} \;\longrightarrow\; \underbrace{\texttt{CognitiveArchitecture.lean}}_{\text{Stratum C (Cognitive Realizations)}} \;\dashrightarrow\; \underbrace{\texttt{HeimCorpus.lean}}_{\text{Stratum D (Exegesis)}}
 $$
@@ -970,14 +969,8 @@ $$
 :::
 
 ::: {.thm-box .fragment .fade-up}
-**Formal Zombie Impossibility Theorem (`zombie_impossibility`):**
-In `Syntrometrie.CognitiveArchitecture`, a `CognitiveAgent` $N$ has:
-
-* `AccessConsciousness : Prop`, `InteractionCurvature : ℝ`, `CechDescentDefect : ℝ`
-* `access_requires_cross_coupling : AccessConsciousness → InteractionCurvature > 0`
-* `PhilosophicalZombie N : Prop := N.AccessConsciousness ∧ N.InteractionCurvature = 0`
-
-Because global functional access across multimodal streams requires non-Abelian cross-modal coupling ($\Omegaint > 0$), a `PhilosophicalZombie` (functional access with zero phenomenal curvature) is **formally contradictory (`False`)** by `linarith`!
+**Metatheoretic AST Firewall Auditor (`checkTransitiveFirewall`, App. C §C.10):**
+As established in **Theorem 12.3(3)**, the non-existence of philosophical zombies is a conditional Stratum B bridge theorem (`Zombie = ⊥` under Axiom 12.3), whereas §13.8 and Appendix C verify the unconditional **Stratum A/B contraction category** `ContextObject` and enforce the **Recursive AST Expression Auditor** (`constantsInExpr`), mechanically guaranteeing zero `sorryAx` tokens and zero Stratum D namespace leaks across the transitive closure of every foundational declaration.
 :::
 
 :::
@@ -985,17 +978,16 @@ Because global functional access across multimodal streams requires non-Abelian 
 ::: {.column width="54%"}
 
 <div class="interactive-panel">
-  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Compile-Ready Lean 4 Verification Module (`Syntrometrie.CognitiveArchitecture`)</h4>
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Compile-Ready Lean 4 Verification Module (`Syntrometrie.CognitiveArchitecture` &amp; `Audit`)</h4>
   <div class="syn-tabs">
   <button class="syn-tab-btn active" onclick="window.showGenericTab('ch13-lean-pane', 1, 3, this)">1. ContextObject &amp; Contractions</button>
   <button class="syn-tab-btn" onclick="window.showGenericTab('ch13-lean-pane', 2, 3, this)">2. Category Instance Proof</button>
-  <button class="syn-tab-btn" onclick="window.showGenericTab('ch13-lean-pane', 3, 3, this)">3. Zombie Impossibility Proof</button>
+  <button class="syn-tab-btn" onclick="window.showGenericTab('ch13-lean-pane', 3, 3, this)">3. Transitive AST Firewall Auditor</button>
   </div>
   <div id="ch13-lean-pane-1" class="syn-tab-pane active">
 <pre class="lean-code-card">import Mathlib
 open CategoryTheory
 namespace Syntrometrie.CognitiveArchitecture
-
 structure ContextObject where
   D : Type
   P : Type
@@ -1007,7 +999,6 @@ structure ContextObject where
   K_contr : ‖K‖ ≤ 1
   z : P ≃ₗᵢ[ℝ] P
   zeta : D ≃ₗᵢ[ℝ] D
-
 structure ContextHom (U V : ContextObject) where
   alpha_D : U.D →L[ℝ] V.D
   alpha_D_contractive : ‖alpha_D‖ ≤ 1
@@ -1029,7 +1020,6 @@ structure ContextHom (U V : ContextObject) where
   calc ‖g.comp f‖ ≤ ‖g‖ * ‖f‖ := ContinuousLinearMap.opNorm_comp_le g f
     _ ≤ 1 * 1 := mul_le_mul hg hf (norm_nonneg f) zero_le_one
     _ = 1 := mul_one 1
-
 instance : Category ContextObject where
   Hom U V := ContextHom U V
   id U := {
@@ -1051,30 +1041,29 @@ instance : Category ContextObject where
   }</pre>
   </div>
   <div id="ch13-lean-pane-3" class="syn-tab-pane">
-<pre class="lean-code-card">/-- Multi-Modal Cognitive Agent Structure. -/
-structure CognitiveAgent where
-  Carrier : ContextObject
-  AccessConsciousness : Prop
-  InteractionCurvature : ℝ
-  CechDescentDefect : ℝ
-  access_requires_cross_coupling :
-    AccessConsciousness → InteractionCurvature &gt; 0
-  coupling_forces_descent :
-    InteractionCurvature &gt; 0 → CechDescentDefect = 0
-  access_requires_global_section :
-    AccessConsciousness → CechDescentDefect = 0
-
-def PhilosophicalZombie (N : CognitiveAgent) : Prop :=
-  N.AccessConsciousness ∧ N.InteractionCurvature = 0
-
-/-- Theorem: Impossibility of Philosophical Zombies. -/
-theorem zombie_impossibility (N : CognitiveAgent) :
-    PhilosophicalZombie N → False := by
-  intro ⟨hAccess, hZeroCurv⟩
-  have hCurvPos := N.access_requires_cross_coupling hAccess
-  linarith
-
-end Syntrometrie.CognitiveArchitecture</pre>
+<pre class="lean-code-card">partial def constantsInExpr (e : Expr) : List Name :=
+  match e with
+  | .const n _ =&gt; [n]
+  | .app f a =&gt; constantsInExpr f ++ constantsInExpr a
+  | .lam _ t b _ =&gt; constantsInExpr t ++ constantsInExpr b
+  | .forallE _ t b _ =&gt; constantsInExpr t ++ constantsInExpr b
+  | .letE _ t v b _ =&gt; constantsInExpr t ++ constantsInExpr v ++ constantsInExpr b
+  | .mdata _ b =&gt; constantsInExpr b
+  | .proj _ _ b =&gt; constantsInExpr b
+  | _ =&gt; []
+def isForbiddenConstant (n : Name) : Bool :=
+  let s := n.toString
+  s == "sorryAx" || s.startsWith "StratumC" || s.startsWith "StratumD"
+partial def checkTransitiveFirewall (env : Environment) (root : Name) : MetaM Unit := do
+  let mut visited : NameSet := {}
+  let mut queue : List Name := [root]
+  while !queue.isEmpty do
+    let curr := queue.head!
+    queue := queue.tail!
+    if !visited.contains curr then
+      visited := visited.insert curr
+      if isForbiddenConstant curr then
+        throwError s!"EPISTEMIC FIREWALL VIOLATION: {root} depends on {curr}"</pre>
   </div>
 </div>
 
@@ -1083,48 +1072,45 @@ end Syntrometrie.CognitiveArchitecture</pre>
 ::::
 
 ::: {.notes}
-Slide 13 presents §13.8: the enforced Lean 4 Module Import DAG with the Epistemic Import Firewall ($\mathbf{D} \not\to \mathbf{A}, \mathbf{B}, \mathbf{C}$) and the complete compile-ready Lean 4 verification module `Syntrometrie.CognitiveArchitecture`, proving `ContextObject` category laws and `theorem zombie_impossibility`.
+Slide 13 presents §13.8 and Appendix C: the enforced Lean 4 Module Import DAG with the Epistemic Import Firewall, the verified `ContextObject` contraction category, and the metatheoretic `checkTransitiveFirewall` AST auditor ensuring zero `sorryAx` or Stratum C/D dependencies in foundational theorems.
 :::
 
 ---
 
-## §13.9–13.10: Methodological Appraisal Matrix, Synthesis &amp; Bridge {.smaller transition="zoom"}
+## §13.9–13.10: Methodological Appraisal, Asymptotic Reductions &amp; Synthesis {.smaller transition="zoom"}
 
-<div class="stratum-badge badge-c">CHAPTER 13 SYNTHESIS: METHODOLOGICAL BOUNDARIES (TABLE 13.3) &amp; BRIDGE TO CHAPTER 14</div>
+<div class="stratum-badge badge-c">CHAPTER 13 SYNTHESIS: METHODOLOGICAL APPRAISAL (TABLE 13.3), ASYMPTOTIC LIMITS &amp; BRIDGE TO CH. 14</div>
 
 :::: {.columns}
 
 ::: {.column width="52%"}
 
-<h3 style="color:#93c5fd; margin-top:0;">Methodological Appraisal Matrix (Table 13.3)</h3>
+<h3 style="color:#93c5fd; margin-top:0;">Methodological Appraisal (Table 13.3) &amp; Asymptotic Limits (§13.10)</h3>
 
-| **Syntrometric Mechanism** | **Pure Geometric Formulation (Strata A/B)** | **Cognitive Boundary &amp; Claim Ceiling (Stratum C)** |
+| **Syntrometric Construct** | **Limit / Regime** | **Classical Reduction / Cognitive Boundary** |
 | :--- | :--- | :--- |
-| **Autopsychological Site ($\Ctx, \Jsyn$)** | Subcanonical Grothendieck topos with Heyting classifier $\Omega$. | Real cortex has synaptic noise; $\FinBan_{\le 1}$ is an idealized normative framework. |
-| **Operadic Consumption ($\Osyn$)** | Completed colored Banach operads erasing lower coordinates in coinvariants. | Discrete colors $\mathbb{N}_0$ approximate continuous cortical depth laminar gradients. |
-| **Protosimplex Encapsulation** | Subobject-minimal algebras in slice toposes lifting to 0D Segal atoms $\mathcal{P}$. | Biological attractor basins exhibit non-stationary drift and chaotic perturbations. |
-| **Qualia as Gauge Holonomy ($\Omegaint$)** | Non-Abelian Lie bracket curvature residual on principal context bundles. | Connection group $G$ must be modeled empirically via MEG/EEG causal modeling. |
+| **Non-Abelian Holonomy ($\Omegaint$)** | $[a_1, a_2] = 0 \implies \Omegaint = 0$ | **Abelian Decoupling:** Reduces $F_A$ to independent additive feature channels $\sum d a_k$ (unconscious parallel processing). |
+| **Čech Cohomological Gluing** | $\Def_{\mathcal{U}}(\{s_i\}) = 0 \implies H^0(U,\mathbf{P}) \ne \emptyset$ | **Vanishing Descent Defect:** Classical global section consensus without perceptual multistability or frustration. |
+| **Autopsychological Site ($\Ctx$)** | Normative $\FinBan_{\le 1}$ limit | Idealized upper bound on noisy biological cortex with non-stationary synaptic drift. |
+| **Protosimplex Encapsulation** | Subobject-minimal slice algebra $\mathcal{P}$ | Lifts distributed neural attractors into atomic 0D Segal pointers; resolves the Explanatory Gap. |
 
-::: {.thm-box .fragment .fade-up}
-**Resolving the Explanatory Gap (§13.9):**
-The Explanatory Gap reflects the categorical transition from local relational syntax to global topological invariants: operadic evaluation ($\Osyn$) consumes low-level sensory syntax, Protosimplex encapsulation lifts distributed attractors into atomic conceptual pointers ($\mathcal{P}$), and non-Abelian interaction curvature ($\Omegaint$) generates the qualitative phenomenal gestalts experienced as **Qualia**.
+::: {.synth-box .fragment .fade-up}
+**Cross-Disciplinary Interpretation Matrix (§13.10):**
+
+* **Differential Geometry:** Principal fiber bundle curvature $F_A = \sum \mathcal{F}_k + \Omegaint$, non-Abelian Wilson loops $\Hol_{\mathbf{A}}(\mathcal{C})$, and DeTurck parabolic smoothing $\mathbf{\Phi}_{\mathrm{apex}}$.
+* **Category &amp; Topos Theory:** Sheaf cohomology $H^1(\mathcal{U}, \mathbf{P})$, Lawvere fixed-point diagonal $e^* \colon \mathbf{1} \to A$, and Topos Integrated Information $\Phi_{\mathrm{topos}}(\mathcal{U}, \mathbf{P})$.
+* **Computational Neuroscience:** Multimodal feature binding, active inference prediction-error minimization ($\dot{V} \le -\gamma V$), and psychedelic REBUS precision relaxation $\mathfrak{D}_{\mathrm{relax}}$.
 :::
 
 :::
 
 ::: {.column width="48%"}
 
-::: {.carnap-box}
-**Chapter 13 Synthesis Flowchart &amp; Deliverables (§13.10):**
+<div class="ch13-3d-Mount" style="margin-bottom:8px;"></div>
 
-* **Structural Lift:** Multi-Modal Bundle $\mathbf{A} = A_0 + \sum a_k + a_{\mathrm{int}}$ $\longrightarrow$ Wilson Loop Holonomy $\Hol_{\mathbf{A}}(\mathcal{C}) = \mathcal{P}\exp(-\oint\mathbf{A})$ $\longrightarrow$ Topos Integration $\Phi_{\mathrm{topos}}(\mathcal{U}, \mathbf{P})$.
-* **Reflexive Closure:** Functorial *Zeitkorn* $\delta t_n = \tau(n+1)-\tau(n)$ $\longrightarrow$ Lawvere Diagonal Ego Token $e^* \colon \mathbf{1} \to A$ $\longrightarrow$ Active Inference $\dot{V} \le -\gamma V, \; \alpha \colon U \to U'$.
-* **Bridge to Chapter 14:** Having completed the mathematical and cognitive reconstruction across Chapters 1–13, **Chapter 14** compiles the exhaustive **100-Equation Master Translation Register (SM Eqs. 1–100a)** mapping every original Heimian formula to its exact modern categorical, differential-geometric, and spectral counterpart.
-:::
-
-<div class="video-container fragment fade-left" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch13_Act12_Cognitive_Synthesis_Zombie.mp4" style="max-height:205px;"></video>
-  <div class="video-caption">Manim Act XII: Chapter 13 Master Synthesis — Non-Abelian Qualia Holonomy, Φ_topos, Lawvere Ego &amp; Zombie Impossibility</div>
+<div class="video-container fragment fade-left" style="margin-top:6px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch13_Act12_Cognitive_Synthesis_Zombie.mp4" style="max-height:165px;"></video>
+  <div class="video-caption">Manim Act XII: Chapter 13 Master Synthesis — Non-Abelian Qualia Holonomy, Φ_topos &amp; Lawvere Ego</div>
 </div>
 
 :::
@@ -1132,5 +1118,5 @@ The Explanatory Gap reflects the categorical transition from local relational sy
 ::::
 
 ::: {.notes}
-Slide 14 concludes Chapter 13 with the Methodological Appraisal Matrix (Table 13.3), the synthesis of the Explanatory Gap resolution, the 6-node Chapter 13 Synthesis Flowchart, and the transition bridge to Chapter 14 (the 100-Equation Master Translation Register).
+Slide 14 concludes Chapter 13 with the Methodological Appraisal Matrix (Table 13.3), the Asymptotic Limits & Degeneracy Reductions (Abelian Decoupling $[a_1,a_2]=0$ and Vanishing Descent Defect $\operatorname{Def}_{\mathcal{U}}=0$), the Cross-Disciplinary Interpretation Matrix, the interactive 10-stage 3D Morph Engine, and the transition bridge to Chapter 14.
 :::

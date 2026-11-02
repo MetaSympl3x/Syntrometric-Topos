@@ -805,7 +805,9 @@ const CH4_3D_HTML = `
 
     <div class="ch4-scrubber">
       <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
+      <button class="ch4-hud-btn" title="Previous Stage" onclick="window.setCh4Stage(Math.round( parseFloat(document.getElementById('ch4-slider').value) ) - 1, true)">◀</button>
       <input type="range" id="ch4-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh4Stage(this.value)">
+      <button class="ch4-hud-btn" title="Next Stage" onclick="window.setCh4Stage(Math.round( parseFloat(document.getElementById('ch4-slider').value) ) + 1, true)">▶</button>
       <button class="ch4-hud-btn active" id="ch4-btn-sync" onclick="enableCh4Sync()">Auto-Sync</button>
     </div>
 
@@ -1165,18 +1167,36 @@ function injectCh43DHUD() {
       ctx.clearRect(0, 0, w, h);
       hitNodes = [];
 
-      const stInt = Math.round(curStage);
+      function dispatchStageCrossFade(stInt, stArg) {
       if (stInt === 1) renderStage1(w, h);
       else if (stInt === 2) renderStage2(w, h);
       else if (stInt === 3) renderStage3(w, h);
       else if (stInt === 4) renderStage4(w, h);
       else if (stInt === 5) renderStage5(w, h);
-      else if (stInt === 6 || stInt === 7) renderStage6And7(w, h, curStage);
+      else if (stInt === 6 || stInt === 7) renderStage6And7(w, h, stArg);
       else if (stInt === 8) renderStage8(w, h);
       else if (stInt === 9) renderStage9(w, h);
       else renderStage10(w, h);
-
-      requestAnimationFrame(renderLoop);
+    }
+    const stLow = Math.max(1, Math.min(10, Math.floor(curStage)));
+    const stHigh = Math.max(1, Math.min(10, Math.ceil(curStage)));
+    const frac = curStage - stLow;
+    if (stLow === stHigh || frac < 0.02) {
+      ctx.save();
+      ctx.globalAlpha = 1.0;
+      dispatchStageCrossFade(Math.round(curStage), curStage);
+      ctx.restore();
+    } else {
+      ctx.save();
+      ctx.globalAlpha = 1.0 - frac * 0.82;
+      dispatchStageCrossFade(stLow, stLow);
+      ctx.restore();
+      ctx.save();
+      ctx.globalAlpha = frac;
+      dispatchStageCrossFade(stHigh, stHigh);
+      ctx.restore();
+    }
+    requestAnimationFrame(renderLoop);
     }
 
     // Window controller handlers

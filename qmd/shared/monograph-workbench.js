@@ -345,8 +345,8 @@
     5
   ],
   "vspacing": [
-    "\\vphantom{\\sum}",
-    0
+    "\\rule{0pt}{#1}",
+    1
   ],
   "ab": "\\mathrm{ab}"
 });

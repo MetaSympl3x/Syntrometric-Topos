@@ -569,7 +569,7 @@ Under Itô Langevin dynamics $dx_t = -\grad\Psi\,dt + \sqrt{2\varepsilon_{\mathr
 $$
 \frac{d}{dt}\Ffree[\rho_t] \;=\; -\int_{\MAR} \big\|\grad_{\gAR}(\Psi + \varepsilon_{\mathrm{fluct}}\ln\rho_t)\big\|_{\gAR}^2 \rho_t\,d\operatorname{vol}_g \;\le\; 0
 $$
-Laplace saddle-point asymptotics on the Dirichlet form across lowest index-$1$ saddle $p^* \in \Dext$ yields the Eyring–Kramers survival time $\tau_{\mathrm{surv}} \simeq \frac{2\pi}{|\lambda_1(p^*)|}\sqrt{\frac{|\det\Hess\Psi(p^*)|}{\det\Hess\Psi(\mathcal{A})}}\exp(\Delta E_{\mathrm{barrier}}/\varepsilon_{\mathrm{fluct}})$, triggering $\Rresyn \colon (\mathcal{O}_{\mathrm{syn}}, \Psi) \mapsto (\mathcal{O}'_{\mathrm{syn}}, \Psi')$ when $\Delta E_{\mathrm{barrier}} < \varepsilon_{\mathrm{fluct}}\ln(\tau_{\min}/\tau_0)$. $\blacksquare$
+Laplace saddle-point asymptotics on the Dirichlet form across lowest index-$1$ saddle $p^* \in \Dext$ yields the Eyring–Kramers survival time $\tau_{\mathrm{surv}} \simeq \frac{2\pi}{|\lambda_1(p^*)|}\sqrt{\frac{\det_\perp\Hess\Psi(p^*)}{\det\Hess\Psi(\mathcal{A})}}\exp(\Delta E_{\mathrm{barrier}}/\varepsilon_{\mathrm{fluct}}) \quad (\det_\perp\Hess\Psi(p^*) \coloneqq \prod_{i=2}^n \lambda_i(p^*))$, triggering $\Rresyn \colon (\mathcal{O}_{\mathrm{syn}}, \Psi) \mapsto (\mathcal{O}'_{\mathrm{syn}}, \Psi')$ when $\Delta E_{\mathrm{barrier}} < \varepsilon_{\mathrm{fluct}}\ln(\tau_{\min}/\tau_0)$. $\blacksquare$
 :::
 
 <div class="video-container fragment fade-left" style="margin-top:6px;">

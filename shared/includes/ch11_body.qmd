@@ -1,4 +1,3 @@
-
 ## §11.1.1: *Metrische Selektortheorie*, *Strukturkompressor* (${}^4\zeta$) & *Tensorien* (SM-99) {.smaller transition="convex"}
 
 <div class="stratum-badge badge-d">STRATUM D: HISTORICAL EXEGESIS OF SELECTOR THEORY (SM §8.5, PP. 253–260, EQ. 99) &amp; DESY VIGNETTE</div>
@@ -116,7 +115,7 @@ Introduce Chapter 11 by framing the DESY 1982 computations under the Epistemic F
   2. **Hyperselektor ($\chi_k$, SM, p. 264):** Generalized coordinate selector for curved Riemannian configurations where ${}^2\bar{\gamma};n = {}^2\bar{\mathbf{g}} \ne \text{const}$, establishing discrete geodesic mesh lines.
   3. **Spinselektoren ($\hat{s}, \hat{t}, \hat{\Phi}, {}^2\rho$, SM, pp. 265–266, Eq. 87):** Define intrinsic angular momentum and internal quantum symmetries:
 $$
-\hat{\mathrm{s}} = \ROT_N \widehat{\Phi} = \frac{\nabla_1 \Phi_2 - \nabla_2 \Phi_1}{\sqrt{\tau}}, \qquad (\hat{\mathrm{s}} ; \mathrm{n})_{\mathrm{n}=1} = \hat{\tau} \tag{SM-87}
+\hat{\mathrm{s}} = \ROT_N \widehat{\Phi} = \frac{\nabla_1 \Phi_2}{\tau_1} - \frac{\nabla_2 \Phi_1}{\tau_2} = \frac{\nabla_1 \Phi_2 - \nabla_2 \Phi_1}{\sqrt{\tau}}, \qquad (\hat{\mathrm{s}} ; \mathrm{n})_{\mathrm{n}=1} = \hat{\tau} \tag{SM-87}
 $$
 where $\hat{s}$ is the discrete spin rotor matrix fixing intrinsic spin $Q = 2J$ and ${}^2\rho$ is the metric selector governing spin-compatible symmetries.
 
@@ -387,7 +386,7 @@ comprising intrinsic curvature-compression ${}^4\bar{\boldsymbol{\varsigma}}(\al
 **Definition 11.7 (Lattice Discretization Functor $\mathfrak{D}_\tau$):**
 For a discrete lattice sampling $\mathbb{M}_\tau^n \subset \mathcal{M}$, the **Lattice Discretization Map** is the bounded linear projection:
 $$
-\mathfrak{D}_\tau \colon C_c^\infty(\mathcal{M}, E) \longrightarrow \ell^2(\mathbb{M}_\tau^n, E), \qquad (\mathfrak{D}_\tau \Psi)(\mathbf{n}) \coloneqq \Psi\!\left(\sum_{i=1}^n n_i \tau_i e_i\right) \cdot \tau^{1/2}
+\mathfrak{D}_\tau \colon C_c^\infty(\mathcal{M}, E) \longrightarrow \ell^2(\mathbb{M}_\tau^n, E), \qquad (\mathfrak{D}_\tau \Psi)(\mathbf{n}) \coloneqq \Psi\!\left(\sum_{i=1}^n n_i \tau_i e_i\right) \cdot \sqrt{\Delta V_\tau} \quad (\Delta V_\tau = \tau^{n/2})
 $$
 satisfying exact isometric continuum recovery $\lim_{\tau \to 0} \|\mathfrak{D}_\tau \Psi\|_{\ell^2} = \|\Psi\|_{L^2}$.
 :::
@@ -598,7 +597,7 @@ $$
 \frac{m(p, \hat{s})}{m_{\mathrm{ref}}} \;=\; \frac{\binom{6}{p}}{\binom{6}{p_{\mathrm{ref}}}} \cdot \prod_{k=1}^3 \left( \frac{\lambda_k(p, \hat{s})}{\lambda_k(p_{\mathrm{ref}}, \hat{s}_{\mathrm{ref}})} \right) \cdot \frac{\mathcal{C}(q_x, C, \nu)}{\mathcal{C}(q_{x,\mathrm{ref}}, C_{\mathrm{ref}}, \nu_{\mathrm{ref}})} \tag{SM-100a}
 $$
 which is strictly non-circular and independent of the proton Compton wavelength $\ell_{\text{hadron}}$.
-2. **Bridge Hypothesis ($\mathbf{C}$):** The absolute physical mass scale is parameterized by the single global geometric ratio $\xi_{\text{scale}} \coloneqq \sqrt{\tau} / \ell_{\text{ref}}$.
+2. **Bridge Hypothesis ($\mathbf{C}$):** The absolute physical mass scale is parameterized by the effective hadronic scale $m_0^{\mathrm{eff}} \coloneqq m_0(\sqrt{\tau} / \ell_{\mathrm{hadron}}) \approx 173.92\,\mathrm{MeV}/c^2$ (single anchor calibration vs. 16 non-circular relative mass ratios).
 :::
 
 ::: {.proof-box .fragment .fade-right}

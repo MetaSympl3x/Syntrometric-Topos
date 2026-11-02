@@ -1,4 +1,3 @@
-
 ## §3.1.1–3.1.2 Stratum D: Inversion Principle & Syntrixkorporationen {transition="convex"}
 
 <div style="margin-bottom:6px;">
@@ -173,7 +172,7 @@ Let $U_\emptyset \in \mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}$ be the terminal 
 <div class="proof-title">Proof of Proposition 3.2 (Initiality and Terminality of $0_{\mathbf{Syn}}$)</div>
 <ol>
 <li><b>Step 1 (Initiality):</b> For any $\mathcal{S} = (U, \mathbf{F}, \theta, \iota) \in \mathbf{Syn}$, there is a unique terminal context morphism $!_U \colon U \to U_\emptyset$ in $\mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}$ (contravariantly inducing $0 \to \mathfrak{R}(U)$) and unique zero linear maps $0_\gamma \colon \{0\} \to F_\gamma$ for each $\gamma \ge 0$, which trivially commute with $\theta$ and $\iota$.</li>
-<li><b>Step 2 (Terminality):</b> Conversely, the unique zero maps $F_\gamma \to \{0\}$ are contractive ($\|0\|_{\mathrm{op}} = 0 \le 1$) and intertwine the zero evaluation map on $0_{\mathbf{Syn}}$. Thus $\operatorname{Hom}_{\mathbf{Syn}}(0_{\mathbf{Syn}}, \mathcal{S}) \cong \{*\} \cong \operatorname{Hom}_{\mathbf{Syn}}(\mathcal{S}, 0_{\mathbf{Syn}})$. Furthermore, $F_\gamma \oplus_1 \{0\} \cong F_\gamma$ isometrically at every grade $\gamma$. $\blacksquare$</li>
+<li><b>Step 2 (Terminality &amp; Demarcation Remark):</b> Conversely, the unique zero maps $F_\gamma \to \{0\}$ are contractive ($\|0\|_{\mathrm{op}} = 0 \le 1$) and intertwine the zero evaluation map on $0_{\mathbf{Syn}}$, so $\operatorname{Hom}_{\mathbf{Syn}}(0_{\mathbf{Syn}}, \mathcal{S}) \cong \{*\} \cong \operatorname{Hom}_{\mathbf{Syn}}(\mathcal{S}, 0_{\mathbf{Syn}})$ and $F_\gamma \oplus_1 \{0\} \cong F_\gamma$. <i>Remark:</i> The categorical zero object $0_{\mathbf{Syn}} \in \mathbf{Syn}$ (neutrality identity for corporate composition) is distinct from the dynamical extinction sink $\nullsyntrix$ in the coalgebraic phase space of Chapter 6. $\blacksquare$</li>
 </ol>
 </div>
 
