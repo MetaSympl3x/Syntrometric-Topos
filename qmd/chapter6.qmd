@@ -633,15 +633,16 @@ Laplace saddle-point asymptotics on the Dirichlet form across lowest index-$1$ s
 
 ::::
 
+
 ---
 
-## §6.6: Chapter 6 Synthesis, Deliverables & Pivot to *Teil B* {.smaller transition="zoom"}
+## §6.6: Chapter 6 Synthesis, Deliverables & The Anthropomorphic Pivot {.smaller transition="zoom"}
 
-<div class="stratum-badge badge-c">COMPLETION OF TEIL A: DELIVERABLES, ASYMPTOTIC LIMITS &amp; ANTHROPOMORPHIC PIVOT TO CHAPTER 7</div>
+<div class="stratum-badge badge-c">COMPLETION OF TEIL A: DELIVERABLES &amp; ANTHROPOMORPHIC PIVOT TO CHAPTER 7</div>
 
 :::: {.columns}
 
-::: {.column width="52%"}
+::: {.column width="50%"}
 
 ::: {.deliverables-box .fragment .zoom-in}
 **Chapter 6 Deliverables: Telecentric Coalgebras & Completion of *Teil A***
@@ -650,35 +651,83 @@ Laplace saddle-point asymptotics on the Dirichlet form across lowest index-$1$ s
 * **Relativity of Purpose:** Adjacent transcendence strata exchange terminal attractors and initial building blocks through left-adjoint liftings ($\Gamma_m(\nu\mathcal{T}_m) \cong \HypMet_{m+1} \not\cong \nu\mathcal{T}_{m+1}$).
 :::
 
-### Asymptotic Limits & Degeneracy Reductions
-
-| Regime / Boundary Limit | Mathematical Operation | Physical & Logical Reduction |
-|:---|:---|:---|
-| **Unpolarized Flat Limit** | $\grad\Psi \equiv 0 \implies \XAR = 0$ | Flow is identity $\Phi_t = \operatorname{id}$; phase space becomes an unpolarized projective panorama lacking telecentric attractors. |
-| **Deterministic Zero-Noise Limit** | $\varepsilon_{\mathrm{fluct}} \to 0^+$ in $W_2$-flow | Fokker–Planck flow reduces to deterministic gradient descent; Kramers survival $\tau_{\mathrm{surv}} \to \infty$ inside $\mathcal{B}(\mathcal{A})$. |
-| **Single-Attractor Limit** | $K = 1 \implies \mathcal{B}(\mathcal{A}) = \MAR$ | Polydromie and $\Dext$ vanish; reduces to globally stable **Monodromie**. |
-
-### Cross-Disciplinary Interpretation Matrix
-
-| Categorical & Topos Logic | Theoretical Physics & Geometry | Cognitive Science & Epistemology |
-|:---|:---|:---|
-| Final coalgebras $(\nu\mathcal{T}, \zeta)$ with unique universal mediating arrow $!_\alpha \colon S \to \nu\mathcal{T}$. | Asymptotically stable attractors $\mathcal{A}$, Lyapunov flows $\dot{V} \le -\gamma V$, and separatrices $\Dext$. | *Telezentrik* & Active Inference (Friston/Clark): Non-retrocausal goal-directed behavior and self-organizing purpose. |
+::: {.thm-box .fragment .fade-up style="margin-top:8px;"}
+**The Formal Telecentric Invariant Architecture:**
+$$\boxed{\begin{array}{rcl}
+\text{Initial Observer State } S &\xrightarrow{\quad !_\alpha \quad}& \text{Terminal Coalgebra } \nu\mathcal{T}_{\mathbb{R}} \;\cong\; \mathcal{T}_{\mathbb{R}}(\nu\mathcal{T}_{\mathbb{R}}) \\[4pt]
+\text{Televariant Basin } \mathcal{B}(\mathcal{A}) &\xrightarrow{\quad \Phi_t \quad}& \text{Asymptotic Attractor } \mathcal{A} \quad (\dot{V} \le -2\mu_{\mathrm{PL}}V) \\[4pt]
+\text{Saddle Boundary } \mathcal{D}_{\mathrm{ext}} &\xrightarrow{\quad \mathcal{R}_{\mathrm{resyn}} \quad}& \text{Escape Time } \tau_{\mathrm{surv}} \propto \sqrt{\det_\perp\Hess\Psi(p^*)} \exp(\Delta\Psi/\varepsilon)
+\end{array}}$$
+:::
 
 :::
 
-::: {.column width="48%"}
+::: {.column width="50%"}
 
 <div class="video-container">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch6_Act12_Synthesis.mp4" style="max-height:245px;"></video>
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch6_Act12_Synthesis.mp4" style="max-height:235px;"></video>
   <div class="video-caption">Manim Act XII (Fig. 6.5): Synthesis of Telecentric Coalgebras, Separatrices &amp; Stratum Relativity</div>
 </div>
 
-::: {.firewall-box .fragment .glow-pulse}
+::: {.firewall-box .fragment .glow-pulse style="margin-top:8px;"}
 **The Epistemological Obstruction: Empirical Intractability of Pure Logic**
 With Chapter 6, the universal categorical logic of **Teil A** is complete. Yet pure categorical logic produces structural invariants without numerical coordinates, physical units of length or mass, differential field tensors, or laboratory predictions.
 
 **The Functorial Ascent to Chapter 7 (*Teil B*): The Anthropomorphic Pivot to Number Fields**
 To interface this abstract machinery with empirical science, **Chapter 7 (*Anthropomorphic Syntrometry*)** executes the **Anthropomorphic Pivot**: restricting the observer site to the algebraic number fields $\mathbf{Coeff} = [\mathbb{Q} \subseteq \mathbb{R} \subseteq \mathbb{C}]$, applying the realification functor $(V)_{\mathbb{R}}$, and clothing pure numbers with physical dimensions via the Semantic Iterator $S_n ; \widetilde{a} = R_n$ (SM Eq. 28).
+:::
+
+:::
+
+::::
+
+---
+
+## §6.6.2: Asymptotic Limits, Cross-Disciplinary Matrix & Completion of Teil A {.smaller transition="fade"}
+
+<div class="stratum-badge badge-c">METHODOLOGICAL APPRAISAL: LIMITS, DEGENERACY REDUCTIONS &amp; TRANSDISCIPLINARY MAPPINGS</div>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<div class="table-container">
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Asymptotic Limits &amp; Degeneracy Reductions (§6.6)</h4>
+
+| Regime / Boundary Limit | Mathematical Operation | Physical &amp; Logical Reduction |
+|:---|:---|:---|
+| **Unpolarized Flat Limit** | $\grad\Psi \equiv 0 \implies \XAR = 0$ | Flow is identity $\Phi_t = \operatorname{id}$; phase space becomes an unpolarized projective panorama lacking telecentric attractors. |
+| **Deterministic Zero-Noise Limit** | $\varepsilon_{\mathrm{fluct}} \to 0^+$ in $W_2$-flow | Fokker–Planck flow reduces to deterministic gradient descent; Kramers survival $\tau_{\mathrm{surv}} \to \infty$ inside $\mathcal{B}(\mathcal{A})$. |
+| **Single-Attractor Limit** | $K = 1 \implies \mathcal{B}(\mathcal{A}) = \MAR$ | Polydromie and $\Dext$ vanish; reduces to globally stable **Monodromie**. |
+| **Deep-Potential Limit** | $\Delta E_{\mathrm{barrier}} \gg \varepsilon_{\mathrm{fluct}}$ | $\tau_{\mathrm{surv}} \to \infty$; the attractor basin is dynamically quarantined against noise-induced collapse. |
+| **High-Friction Overdamped Limit** | $\gamma_{\mathrm{damp}} \to \infty$ in phase space | Second-order inertial dynamics $m\ddot{x} + \gamma\dot{x} = -\nabla\Psi$ collapse to first-order Aristotelian gradient flow. |
+
+</div>
+
+::: {.intuition-box style="margin-top:8px; font-size:0.62em;"}
+**Coalgebraic Teleology vs. Classical Determinism:**
+Unlike mechanical teleology, which postulates impossible backwards causation, coalgebriac *Telezentrik* models final causes as asymptotic terminal limits of forward-in-time dissipative dynamical systems, establishing complete mathematical consistency between purpose and physics.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+<div class="table-container">
+<h4 style="color:#20B2AA; margin-top:0; margin-bottom:4px;">Cross-Disciplinary Interpretation Matrix (§6.6)</h4>
+
+| Categorical &amp; Topos Logic | Theoretical Physics &amp; Geometry | Cognitive Science &amp; Epistemology |
+|:---|:---|:---|
+| **Final Coalgebras $(\nu\mathcal{T}, \zeta)$** with unique universal mediating arrow $!_\alpha \colon S \to \nu\mathcal{T}$. | Asymptotically stable attractors $\mathcal{A}$, Lyapunov flows $\dot{V} \le -\gamma V$, and separatrices $\Dext$. | **Active Inference (Friston/Clark):** Non-retrocausal goal-directed behavior and self-organizing purpose. |
+| **Lambek Isomorphism:** $\zeta \colon \nu\mathcal{T} \xrightarrow{\sim} \mathcal{T}(\nu\mathcal{T})$. | Invariant stationary probability distributions $\rho_\infty \in \mathcal{P}_2(\mathcal{M}_{\mathfrak{AR}})$. | **Homeostatic Equilibrium:** Unchanging baseline setpoint of an organism across environmental variation. |
+| **Coalgebraic Co-Varieties:** Sub-coalgebras and bisimulation quotients. | Stable manifolds $W^s(\mathcal{A})$ and foliation by level sets of $\Psi$. | **Behavioral Equivalence Classes:** Observational indistinguishability of cognitive strategies. |
+| **Adjunction $\Gamma_m \dashv U_{m+1}$:** Failure to preserve terminal objects $\Gamma_m(\mathbf{1}) \not\cong \mathbf{1}$. | Scale-dependent renormalization group flows and coarse-graining. | **Relativity of Goal Horizons:** Higher developmental stages sublate lower objectives into subroutines. |
+
+</div>
+
+::: {.thm-box style="margin-top:8px; font-size:0.62em; border-left-color:#38bdf8;"}
+**Summary of Teil A (Foundational Formalism):**
+Chapters 1–6 established the complete non-reductionist categorical foundation of Syntrometrie: from observer contexts in sheaf toposes ($\mathcal{E}_{\mathrm{syn}}$) and colored operadic algebras ($\mathcal{O}_{\mathrm{syn}}$), through corporate pushouts ($P_1 \boxplus_\phi P_2$), gauge enyphanen ($E\nu$), and higher metroplex towers ($\mathcal{X}_{\mathrm{syn}}$), to terminal telecentric coalgebras $(\nu\mathcal{T}, \zeta)$.
 :::
 
 :::

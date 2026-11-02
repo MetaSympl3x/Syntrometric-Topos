@@ -98,13 +98,13 @@ Chapter 14 synthesizes the entire formal apparatus of the treatise by presenting
 
 ::: {.column width="50%"}
 ### Source Formulas: Primitive Observation Contexts
-* **SM-1 (Pr&auml;dikatrix):** $P_n = [a, f, b]_n \in \mathbf{Ban}_{\le 1}$. Continuous semantic focus replacing binary valuations.
-* **SM-2 (Dialektik):** $D_n = [\alpha, d, \beta]_n \in \mathbf{Ban}_{\le 1}$. Metric boundaries of dialectical antitheses.
-* **SM-3 (Koordination):** $K_n = \langle D_n, P_n \rangle_{\zeta^U}$. Contractive bilinear evaluation form.
-* **SM-4 (Aspect Schema &amp; Quantor):**
-$$
-\mathfrak{A}_n = D_{nn} \times K_n \times P_{nn}, \qquad \mathsf{Q}\big[\mathfrak{A}_n\big] \models \phi
-$$
+
+| SM Eq. | Historical Notation (SM pp. 6–23) | Mathematical Reconstruction ($\mathcal{R}$) | Type &amp; Epistemic Stratum |
+|:---|:---|:---|:---|
+| **SM-1** | $S \equiv \lceil D_{nn} \times K_n \times P_{nn} \rceil$ | Context tuple $U = (D^U, P^U, C^U, K^U, z^U, \zeta^U)$ | Object in $\mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}$ (Stratum A) |
+| **SM-2** | $a, \overline{|AS|}_\gamma b \lor F(a_i)^p_1, \overline{|AS|}_\gamma F(b_k)^q_1$ | Aspect-indexed modal operator $\Box_S, \Diamond_S$ | Leveled Sequent in $\mathcal{L}_{\mathrm{iMSL}}$ (Stratum B) |
+| **SM-3** | $(\;)_\rho, \polyquantor{A_\rho}{\rho}{1}{r}, (\;)_\rho$ | Polyquantor evaluation across aspect fibers | Natural Transformation in $\mathbf{Sh}(\mathbf{Ctx})$ (Stratum A) |
+| **SM-4** | $(\;)_\rho, \polyquantor{A_\rho}{\underrightarrow{f_\rho}}{1}{r}, (\;)_\rho$ | Directed semantic evaluation functor $\ev_{\vec{\gamma};\gamma}$ | Contractive operadic morphism (Stratum A) |
 
 ::: {.carnap-box .fragment .blur-in}
 **Carnapian Reconstruction 14.1**
@@ -154,16 +154,15 @@ Cluster I formalizes how subjective experience is given categorical structure wi
 
 ::: {.column width="52%"}
 ### Source Formulas: Operadic Composition & Dynamic Flows
-* **SM-5 (Syntrix Triad):** $\mathbf{y}\widetilde{\mathbf{a}} = \langle \mathfrak{f}, \mathbf{a}, m \rangle$. Operadic operation tuple: functor $\mathfrak{f}$, state vector $\mathbf{a}$, arity level $m$.
-* **SM-6 (Äondyne Dynamical Vector):** $\widetilde{\mathbf{a}}(t) \in \mathcal{C}_{\mathrm{SL}}$. Time-parameterized section in leveled spine category.
-* **SM-7 &amp; 8 (Pyramidal &amp; Fragmentary Structures):**
-$$
-\mathbf{y}\widetilde{\mathbf{p}} \in \mathcal{O}_{\mathrm{pyr}}(k), \qquad \mathbf{y}\widetilde{\mathbf{f}} \in \mathcal{O}_{\mathrm{frag}}(k)
-$$
-* **SM-9 &amp; 9a (Splittability / Spaltbarkeit):**
-$$
-\widehat{\lambda} \colon \overline{T}_{\mathrm{pyr}} \overline{T}_{\mathrm{frag}} \Longrightarrow \overline{T}_{\mathrm{frag}} \overline{T}_{\mathrm{pyr}}
-$$
+
+| SM Eq. | Historical Notation (SM pp. 24–41) | Mathematical Reconstruction ($\mathcal{R}$) | Type &amp; Epistemic Stratum |
+|:---|:---|:---|:---|
+| **SM-5** | $\syntrix{\metrophor{a}} \equiv \langle \mathfrak{f}, \metrophor{a}, m \rangle$ | Syntrix operation tuple $(\mathfrak{f}, \mathbf{a}, m)$ | Generating operation in $\mathcal{O}_{\mathrm{syn}}(m)$ (Stratum A) |
+| **SM-5a** | $\homogenesyntrix{\syntrix{\metrophor{a}}} = \langle (\mathfrak{f}, \metrophor{a})_m \rangle$ | Homogeneous syntrix algebra generator | Free Monad algebra $T_{\mathsf{P}}(X)$ (Stratum A) |
+| **SM-6** | $\metrophor{a} \equiv (a_i)_n \lor n \ge 1$ | State vector in finite-dimensional Banach space | $P^U \in \operatorname{Obj}(\mathbf{FinBan}_{\le 1})$ (Stratum A) |
+| **SM-7** | $\metrophor{a} \equiv (A_i, a_i, B_i)_n$ | Graded syntrix profile with metric boundaries | Stratified colored operad profile (Stratum A) |
+| **SM-8** | $(\underline{\mathfrak{f}}, \underline{m}) \equiv \int_{\gamma=1}^\chi (\mathfrak{f}_\gamma, m_\gamma)$ | Äondyne continuous dynamical parameter flow | Section $\widetilde{\mathbf{a}}(t) \in \mathcal{C}_{\mathrm{SL}}$ (Stratum C) |
+| **SM-9a** | $\overline{T}_{\mathrm{pyr}}\overline{T}_{\mathrm{frag}} \Longrightarrow \overline{T}_{\mathrm{frag}}\overline{T}_{\mathrm{pyr}}$ | Beck distributive law between tree monads | Homotopy Coherence Law (Stratum B) |
 
 ::: {.thm-box .fragment .fade-up}
 **Reconstruction Theorem 14.2 (Beck Coherence)**
@@ -202,13 +201,15 @@ Cluster II translates Heim's Syntrix triad into colored operads and monad distri
 
 ::: {.column width="50%"}
 ### Source Formulas: Span Pushouts & Tensor Pairings
-* **SM-10 (Korporator 2x2 Matrix):** Bilinear coupling across dual observation contexts:
-$$
-\mathbf{K}_{12} = \begin{pmatrix} K_{11} & K_{12} \\ K_{21} & K_{22} \end{pmatrix} \in \mathbf{Ban}_{\le 1}(P_1 \widehat{\otimes}_\pi P_2, \mathbb{K})
-$$
-* **SM-11 (Konflexionsfeld Pushout):** $P_a \boxplus_\phi P_b \coloneqq P_a \oplus P_b / \overline{\operatorname{im}(i_a - \phi \circ i_b)}$.
-* **SM-12 &amp; 13 (Konzenter &amp; Exzenter Coupling):** Determinant of Gram matrix $\Delta_{\mathrm{disc}}(K)$.
-* **SM-13a (Eindeutigkeitssatz — Corporate Determinacy):** $\left(\mathbf{y}\widetilde{\mathbf{a}}\,\mathbf{Kor}\,\mathbf{z}\widetilde{\mathbf{b}}\right)_{ab} \equiv \mathbf{x}\widetilde{\mathbf{c}}_c \iff$ Unique universal pushout factorization $\exists!\, u \colon P_a \boxplus_\phi P_b \to W$.
+
+| SM Eq. | Historical Notation (SM pp. 42–61) | Mathematical Reconstruction ($\mathcal{R}$) | Type &amp; Epistemic Stratum |
+|:---|:---|:---|:---|
+| **SM-10** | $\metrophor{a} \begin{Bmatrix} K_s & C_s \\ K_m & C_m \end{Bmatrix} \metrophor{b}$ | Universal Korporator $2 \times 2$ rule matrix $r$ | Specification data $\Sigma_r$ (Stratum C) |
+| **SM-11** | $\langle (\underline{\mathfrak{f}}\,\metrophor{a}) \rangle \mathbf{Kor} \langle (\underline{\mathfrak{f}}\,\metrophor{b}) \rangle$ | Coupled span pushout $P_a \boxplus_\phi P_b$ | Colimit in $\mathbf{FinBan}_{\le 1}$ (Stratum A) |
+| **SM-11b** | $(\;)_i^{(k_i)} \{\;\}_i^{(l_{i+1})} (\;)_{i+1}$ | Syntropod interaction chain of length $N-1$ | Decorated tree $G_{\mathcal{S}}$ (Stratum C) |
+| **SM-12** | $\Delta_{\mathrm{disc}}(\mathbf{K}) = 0 \iff \text{Konzenter}$ | Direct sum $\ell^1$-coproduct $P_a \oplus_1 P_b$ ($C_m$) | Uncoupled aggregate (Stratum A) |
+| **SM-13** | $\Delta_{\mathrm{disc}}(\mathbf{K}) \ne 0 \iff \text{Exzenter}$ | Intrinsic pushout boundary $P_a \boxplus_\phi P_b$ ($K_m$) | Conflexionsfeld (Stratum B) |
+| **SM-13a** | $(\syntrix{\metrophor{a}}\,\mathbf{Kor}\,\mathbf{z}\metrophor{b})_{ab} \equiv \homogenesyntrix{\metrophor{c}}_c$ | Eindeutigkeitssatz (Construction Determinacy) | Universal Factorization (Stratum B) |
 
 ::: {.proof-box .fragment .glow-pulse}
 **Categorical Pushout Lemma**
@@ -257,17 +258,15 @@ Cluster III reconstructs corporate pairings as projective tensor products and Ba
 
 ::: {.column width="52%"}
 ### Source Formulas: Non-Abelian Curvature & BRST Cohomology
-* **SM-14 (Syntrixtotalit&auml;t T0):** Slice topos $\mathcal{E}_{\mathrm{syn}}/\mathbf{y}(U_{\mathsf{G}})$.
-* **SM-15 (Enyphaniegrad $g_E^{\mathcal{D}}$):** Gauge curvature norm:
-$$
-g_E^{\mathcal{D}}(x) \coloneqq \tfrac{1}{2}\|\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}}(x)\|_{g_U, \mathfrak{g}}^2
-$$
-* **SM-16 &amp; 17 (Yang–Mills Action Functional &amp; Instantons):**
-$$
-\mathcal{I}(\mathbf{A}) = \tfrac{1}{2}\int_{M_U} \|F_A\|^2\,d\operatorname{vol}, \qquad \mathcal{I}(\mathbf{A}) \ge 4\pi^2 |Q_{\mathrm{top}}|
-$$
-* **SM-18 &amp; 19 (Graded BRST Differential):** $s_{\mathrm{BRST}}^2 \equiv 0$ on extended ghost complex $\mathcal{F}_{\mathrm{ext}}$.
-* **SM-19a (Chronometrie):** Tangent vector field corner flow $\Phi_t^X \in \operatorname{Diff}(\mathcal{M})$.
+
+| SM Eq. | Historical Notation (SM pp. 62–80) | Mathematical Reconstruction ($\mathcal{R}$) | Type &amp; Epistemic Stratum |
+|:---|:---|:---|:---|
+| **SM-14** | $G \equiv [P_i |_1^4 \{\;\}_{(j)} |_1^Q]_{(A,S)}$ | Slice topos $\mathcal{E}_{\mathrm{syn}}/\mathbf{y}(U_{\mathsf{G}})$ | Topos Equivalence (Stratum A) |
+| **SM-15** | $\syntrix{\metrophor{\beta}}, \predicatesymbol, \syntrix{\metrophor{a}}, \syntrix{\metrophor{b}}$ | Non-Abelian interaction curvature $\Omegaint^{\mathcal{D}}$ | 2-Form in $\Omega^2(M_U, \operatorname{ad}P_U)$ (Stratum B) |
+| **SM-16** | $\syntrix{\metrophor{f}}, \predicatesymbol, (\syntrix{\metrophor{a}}_i \mathbf{Kor}_i \syntrix{\metrophor{a}}_{i+1})$ | Normalized Yang–Mills emergence $\mathcal{I}(\mathbf{A})$ | Variational Action (Stratum B) |
+| **SM-17** | $\syntrix{\metrophor{C}} \equiv \syntrix{\metrophor{c}}, \underline{\mathbf{Kor}}\,E$ | Atiyah Lie algebroid bracket obstruction | $0 \to \operatorname{ad}P \to \operatorname{At}(P) \to TM \to 0$ (Stratum A) |
+| **SM-18** | $\syntrix{\metrophor{f}}, (\syntrix{\metrophor{a}}_\varsigma)_1^r, \predicatesymbol, \syntrix{\metrophor{A}}$ | Graded BRST differential $s_{\mathrm{BRST}}^2 \equiv 0$ | Ghost Cohomology $H_{\mathrm{BRST}}^0$ (Stratum B) |
+| **SM-19a** | $S \equiv (\mathop{}^{\syntrix{\metrophor{a}}_i}_{m_{(\lambda)\gamma_i}})^L_{\lambda=1}$ | Discrete chronometric time slices $\delta t_i$ | Foliation $\mathfrak{f}_A$ & Flow $\Phi_t$ (Stratum C) |
 
 ::: {.def-box .fragment .fade-right}
 **Theorem 14.3 (Holoformic Gauge Identification)**
@@ -306,13 +305,15 @@ Cluster IV bridges Heim's Enyphanie to modern non-Abelian gauge theory and Yang-
 
 ::: {.column width="50%"}
 ### Source Formulas: Higher Topoi & Telecentric Coalgebras
-* **SM-20 (Metroplex Architecture):** Grade-$n$ geometric carrier:
-$$
-\overset{\scriptscriptstyle n}{\mathbf{M}}\widetilde{\mathbf{a}}(t_1, \dots, t_Q) \in \mathcal{X}_{\mathrm{syn}} \coloneqq L_{\mathrm{CSS}}\mathbf{Sh}_\infty(\mathbf{Ctx})
-$$
-* **SM-21–23 (Syntroclinic Bridge Adjunctions):** Cohesive geometric triple $(\int \dashv \flat \dashv \sharp)$.
-* **SM-24–26 (Tectonic Spectral Sequences):** Postnikov truncation tower $\tau_{\le k}$ and spectral filtration.
-* **SM-27 (Telecentric Final Coalgebra):** Terminal coalgebra $(\nu\mathcal{T}, \zeta)$ with Lambek isomorphism $\zeta \colon \nu\mathcal{T} \xrightarrow{\sim} \mathcal{T}(\nu\mathcal{T})$.
+
+| SM Eq. | Historical Notation (SM pp. 80–121) | Mathematical Reconstruction ($\mathcal{R}$) | Type &amp; Epistemic Stratum |
+|:---|:---|:---|:---|
+| **SM-20** | $\metroplex{a}{1} \equiv \langle (\underline{F}, \syntrix{\hypermetrophor{a}})\,\underline{r} \rangle$ | Hypersyntrix as dendroidal Segal object | Object in $\dCSeg(\mathcal{X}_{\mathrm{syn}})$ (Stratum A) |
+| **SM-21** | $\syntrix{\metrophor{a}} \equiv \metroplex{a}{0}$ | Grade-$0$ base single syntrix embedding | $\operatorname{Met}_0(\mathcal{X}_{\mathrm{syn}}) \cong \mathbf{Syn}$ (Stratum A) |
+| **SM-23** | $\metroplex{a}{n+N} \prescript{(l)}{}{\mathbf{B}_N^{(m)}} \metroplex{b}{n}$ | Syntroclinic bridge change-of-operad adjunction | $(\phi_{n,n+N})_! \dashv (\phi_{n,n+N})^*$ (Stratum B) |
+| **SM-24** | $\metroplex{a}{n}, \predicatesymbol, \metroplex{b}{n}(\kappa) \lor \kappa \not\equiv n$ | Postnikov $m$-truncation $\tau_{\le m}$ (Kontraktion) | Homotopy Truncation in $\mathcal{X}_{\mathrm{syn}}$ (Stratum B) |
+| **SM-26** | $\metroplex{a}{n} \mathop{\mathbf{K}}\limits_1^k \metroplex{b}{n}$ | Bisimplicial tectonic combination $\operatorname{diag}^*\Tect(\mathcal{S})$ | Total Tectonic Object (Stratum B) |
+| **SM-27** | $AR_q \equiv AR_{(T_1)}^{(T_2)} [(AR_{q-1})]_1^{P_{q-1}}$ | Final path coalgebra $(\nu\mathcal{T}_{\mathbb{R}}, \zeta)$ | Terminal Coalgebra in $\mathbf{Diff}$ (Stratum B) |
 
 ::: {.intuition-box .fragment .fade-up}
 **The Telecentric Fixed Point**
@@ -361,16 +362,15 @@ Cluster V formalizes higher geometric structures and terminal coalgebras.
 
 ::: {.column width="52%"}
 ### Source Formulas: Continua, Kondensor & Polymetric Tensors
-* **SM-28–35 (Semantic Continua $R_n$ &amp; Operators):** Nuclear Fr&eacute;chet manifolds $\mathcal{S}(\mathbb{R}^n)$ and continuous differential forms.
-* **SM-36–45 (Fundamentalkondensor ${}^3\mathbf{\Gamma}$):** 3-index metric connection tensor compressing multi-axial variations:
-$$
-{}^3\mathbf{\Gamma}^\alpha_{\beta\gamma} \coloneqq \tfrac{1}{2}g^{\alpha\mu}\big(\partial_\beta g_{\mu\gamma} + \partial_\gamma g_{\mu\beta} - \partial_\mu g_{\beta\gamma}\big)
-$$
-* **SM-46–55 (36-Component Polymetric Tensor ${}^2\bar{\mathbf{g}}$ on $R_6$):**
-$$
-ds^2 = \sum_{i,j=1}^6 g_{ij}\,dx^i\,dx^j, \qquad g_{ij} = \begin{pmatrix} g_{\mu\nu}^{(4)} & K_{\mu a} \\ K_{b\nu} & h_{ab}^{(2)} \end{pmatrix}
-$$
-* **SM-56–62 (Strukturkaskaden):** Differential metric cascading across $R_4 \hookrightarrow R_6 \hookrightarrow R_{12}$.
+
+| SM Eq. | Historical Notation (SM pp. 122–165) | Mathematical Reconstruction ($\mathcal{R}$) | Type &amp; Epistemic Stratum |
+|:---|:---|:---|:---|
+| **SM-28** | $S_n ; \metrophor{a} = R_n \lor n \ge 1$ | Dimensional Parameter Functor $S_n$ | Functor $\mathbf{Coeff} \to \mathbf{Man}$ (Stratum C) |
+| **SM-37** | ${}^2\bar{\mathbf{g}} = g_{(\mu\nu)} + g_{[\mu\nu]}$ | 36-component non-Hermitian Hermetry matrix | $21\text{ sym } + 15\text{ skew}$ on $R_6$ (Stratum B) |
+| **SM-41** | $\nabla_\lambda(\sqrt{|g|}g^{\mu\nu}) = \frac{n-2}{2}\sqrt{|g|}g^{\mu\nu}T_\lambda$ | Metric density divergence ($(n-2)$ Theorem) | Differential Identity (Stratum B) |
+| **SM-49** | $\operatorname{div}_{\bar{g}}[\Gamma_{(-)}^{(6,6)}({}^2\bar{\mathbf{R}} - \frac{1}{2}{}^2\bar{\mathbf{g}}\mathrm{R})] = \mathbf{0}$ | Conserved non-Hermitian Palatini curvature flux | Covariant Conservation (Stratum B) |
+| **SM-53** | $\Gamma_{\mu\nu}^\lambda = \widetilde{\Gamma}_{\mu\nu}^\lambda(g) + \mathbf{K}_{\mu\nu}^\lambda$ | Palatini cross-metric connection decomposition | Contortion Tensor $\mathbf{K}$ (Stratum B) |
+| **SM-61** | $\Delta V \to \text{Cell Transition Criterion}$ | Corrected geometric cell-volume transition bound | Metronic Threshold (Stratum B) |
 
 ::: {.thm-box .fragment .glow-pulse}
 **Theorem 14.4 (Polymetric Decomposition)**
@@ -409,18 +409,15 @@ Cluster VI reconstructs Heim's Fundamentalkondensor and 36-component polymetric 
 
 ::: {.column width="50%"}
 ### Source Formulas: Metron Lattice & Discrete Hodge Calculus
-* **SM-63–70 (Metron Area Quantum $\tau$):** Fundamental Planck areal discretization:
-$$
-\tau \coloneqq \tfrac{4}{\pi} L_{\mathrm{Pl}}^2 = \tfrac{4}{\pi} \frac{\hbar G}{c^3} \approx 3.32 \times 10^{-70}\ \mathrm{m}^2
-$$
-* **SM-71–76 (Backward Difference Operator $\nabla_i$):**
-$$
-\nabla_i f(x) \coloneqq \frac{f(x) - f(x - \tau e_i)}{\tau}
-$$
-* **SM-77–83 (Discrete Exterior Calculus Hodge Complex):**
-$$
-0 \longrightarrow \Omega_d^0 \xrightarrow{d_\tau} \Omega_d^1 \xrightarrow{d_\tau} \Omega_d^2 \xrightarrow{d_\tau} \dots \xrightarrow{d_\tau} \Omega_d^n \longrightarrow 0
-$$
+
+| SM Eq. | Historical Notation (SM pp. 166–210) | Mathematical Reconstruction ($\mathcal{R}$) | Type &amp; Epistemic Stratum |
+|:---|:---|:---|:---|
+| **SM-63** | $\tau \equiv \frac{\sqrt{3}\hbar G}{4 c^3} \approx 1.13115\times 10^{-70}\,\mathrm{m}^2$ | Elementary metronic lattice cell area quantum | Fundamental Scale (Stratum C) |
+| **SM-64** | $\mathbb{M}_\tau^n \coloneqq \bigoplus_{i=1}^n \tau_i\mathbb{Z}$ | Orthogonal metronic lattice manifold | Subgroup $\mathbb{M}_\tau^n \subset \mathbb{R}^n$ (Stratum A) |
+| **SM-67** | $F\phi \equiv \nabla_i\phi(x) = \phi(x) - \phi(x - \tau_i e_i)$ | Backward finite-difference operator $\nabla_i = I - E_i^{-1}$ | Operator on $\ell^\infty(\mathbb{M}_\tau^n)$ (Stratum A) |
+| **SM-68a**| $\nabla(uv) = u\nabla v + (E^{-1}v)\nabla u$ | Non-commutative discrete Leibniz product rule | Difference Identity (Stratum B) |
+| **SM-70** | $\mathcal{S}\phi(n) \coloneqq \sum_{k=n_0}^{n-1} \phi(k)$ | Discrete summation operator (Hauptsatz $\nabla\mathcal{S} = \operatorname{id}$) | Inversion Operator (Stratum A) |
+| **SM-80** | $\sum_{\partial K} \mathbf{v} \cdot \mathbf{n}_\tau = \sum_{K} \operatorname{div}_\tau \mathbf{v}$ | Discrete Gauss–Stokes lattice divergence theorem | Boundary Duality (Stratum B) |
 
 ::: {.proof-box .fragment .fade-right}
 **Discrete Stokes Theorem**
@@ -470,16 +467,14 @@ Cluster VII translates Heim's metron calculus into rigorous Discrete Exterior Ca
 
 ::: {.column width="52%"}
 ### Source Formulas: Mass Spectrum & Resonant Solitons
-* **SM-84–90 (Strukturkompressor ${}^4\mathbf{\zeta}$):** 4-index contraction selector.
-* **SM-91–95 (Null Stability Criterion):** Resonant eigenvalue selector:
-$$
-\operatorname{Sel}\Psi = \lambda \Psi, \qquad \operatorname{ker}\big({}^4\mathbf{F}\big) \ne \{0\}
-$$
-* **SM-96–100a (Universal Mass Formula):**
-$$
-m = m_0 \left(\frac{L_{\mathrm{Pl}}}{L_1}\right) \prod_{k=1}^6 \lambda_k
-$$
-* Yields sub-percent concordance across electron, proton, neutron, and meson masses.
+
+| SM Eq. | Historical Notation (SM pp. 211–265) | Mathematical Reconstruction ($\mathcal{R}$) | Type &amp; Epistemic Stratum |
+|:---|:---|:---|:---|
+| **SM-84** | ${}^4\boldsymbol{\zeta} = \sum_{k=1}^4 C_k \otimes \chi_k$ | Four-component Strukturkompressor decomposition | Spectral Selector (Stratum B) |
+| **SM-87** | $C_k = \operatorname{Proj}_{E_k}$ | Orthogonal projection onto invariant eigenspaces | Projector in $\mathcal{H}_E$ (Stratum A) |
+| **SM-93a**| $\hat{s} = \frac{\nabla_1\Phi_2}{\tau_1} - \frac{\nabla_2\Phi_1}{\tau_2}$ | Spin rotor selector from metronic flux circulation | Discrete Plaquette Spin (Stratum B) |
+| **SM-99** | $L_p = \binom{6}{p} = (6, 15, 20, 15, 6, 1)$ | Combinatorial subspace multiplicity vector $\mathbf{L}$ | Geometry of $R_6$ (Stratum B) |
+| **SM-100a**| $m = m_0 \frac{\binom{6}{p}}{6} \prod_{k=1}^3 \lambda_k [1 - \kappa_1 q_x^2 + \dots]$ | Closed-form elementary particle mass spectrum | DESY 1982 Model (Stratum C) |
 
 ::: {.firewall-box .fragment .glow-pulse}
 **Empirical Firewall Audit (Appendix B)**

@@ -201,41 +201,64 @@ window.updateSU2Lab = function() {
   }
 };
 
-// WIDGET 6: §4.3.1–4.3.3 Hodge-Laplacian & Bogomolny Bound
+// WIDGET 6A: §4.3.1 Non-Flat Hodge-Laplacian Splitting Lab
+window.updateLaplacianLab = function() {
+  const elGr = document.getElementById('lap-gr');
+  const elHa = document.getElementById('lap-ha');
+  if (!elGr || !elHa) return;
+  let gr = parseFloat(elGr.value);
+  let ha = parseFloat(elHa.value);
+
+  const elGrVal = document.getElementById('lap-gr-val');
+  const elHaVal = document.getElementById('lap-ha-val');
+  if (elGrVal) elGrVal.innerText = gr.toFixed(2);
+  if (elHaVal) elHaVal.innerText = ha.toFixed(2);
+
+  let eGr = 0.5 * (gr * gr);
+  let eHa = 0.5 * (ha * ha);
+  let eInt = eGr + eHa;
+
+  let box = document.getElementById('lap-readout');
+  if (!box) return;
+  box.style.borderLeft = "4px solid #20B2AA";
+  box.innerHTML = `<b>Theorem 4.13 Energy Orthogonality:</b> E_int^D = ½(‖Δ_{A₀}Φ_int‖² + ‖γ_harm‖²) = ½(${(gr*gr).toFixed(2)} + ${(ha*ha).toFixed(2)}) = <b style="color:#20B2AA;">${eInt.toFixed(3)}</b><br>` +
+    `<span style="color:#82aaff;"><b>Fredholm Orthogonal Decomposition:</b> Ω_int^D = Δ_{A₀}Φ_int + γ_harm with ⟨Δ_{A₀}Φ_int, γ_harm⟩_{L²} ≡ 0.</span><br>` +
+    `<span style="color:#FFA500;"><b>Claim Ceiling c_LAPLACE:</b> 2-way splitting holds for all connections A₀; 3-way Hodge splitting requires D_{A₀}² = 0.</span>`;
+};
+
+// WIDGET 6B: §4.3.3 Atiyah Lie Algebroid & Bogomolny Bound Lab
 window.updateBogomolny = function() {
   const elQ = document.getElementById('bog-q');
-  if (!elQ) return;
+  const elFl = document.getElementById('bog-fl');
+  if (!elQ || !elFl) return;
   let q = parseInt(elQ.value);
-  let fl = parseFloat(document.getElementById('bog-fl').value);
-  let gr = parseFloat(document.getElementById('bog-gr').value);
-  let ha = parseFloat(document.getElementById('bog-ha').value);
+  let fl = parseFloat(elFl.value);
 
-  document.getElementById('bog-q-val').innerText = (q >= 0 ? '+' : '') + q;
-  document.getElementById('bog-fl-val').innerText = fl.toFixed(1);
+  const elQVal = document.getElementById('bog-q-val');
+  const elFlVal = document.getElementById('bog-fl-val');
+  if (elQVal) elQVal.innerText = (q >= 0 ? '+' : '') + q;
+  if (elFlVal) elFlVal.innerText = fl.toFixed(1);
 
   let fourPiSq = 4.0 * Math.PI * Math.PI;
   let bound = fourPiSq * Math.abs(q);
   let action = bound + 0.25 * fl * fl;
-  let eInt = 0.5 * (gr * gr + ha * ha);
 
   let box = document.getElementById('bog-readout');
-  let topLine = `<b>Thm. 4.11 L² Orthogonal Energy:</b> E_int^D = ½(‖Δ_{A₀}Φ_int‖² + ‖γ_harm‖²) = ½(${(gr*gr).toFixed(2)} + ${(ha*ha).toFixed(2)}) = <b style="color:#20B2AA;">${eInt.toFixed(3)}</b><br>`;
+  if (!box) return;
 
   if (q !== 0 && fl === 0) {
     box.style.borderLeftColor = "#FFD700";
-    box.innerHTML = topLine +
-      `<span style="color:#FFD700;"><b>★ SELF-DUAL BOGOMOLNY SATURATION (*F_A = ${q > 0 ? '+' : '-'}F_A, Q_top = ${q}):</b></span> ` +
-      `Action I(A) = 4π²|Q_top| = <b>${action.toFixed(2)}</b> (Topologically locked; cannot decay to Q_top = 0!)`;
+    box.innerHTML = `<span style="color:#FFD700;"><b>★ INSTANTON SATURATION (*F_A = ${q > 0 ? '+' : '-'}F_A, Q_top = ${q}):</b></span> ` +
+      `Action I(A) = 4π²|Q_top| = <b>${action.toFixed(2)}</b> (Topologically locked Holoform; Chern–Weil invariant prevents decay to vacuum!)`;
   } else if (q !== 0) {
     box.style.borderLeftColor = "#20B2AA";
-    box.innerHTML = topLine +
-      `<b>Topological Sector Q_top = ${q}:</b> ¼‖F_A ∓ *F_A‖² + 4π²|Q_top| = <b style="color:#FFA500;">${action.toFixed(2)} ≥ ${bound.toFixed(2)}</b> (Protected Holoform)`;
+    box.innerHTML = `<b>Topological Sector Q_top = ${q}:</b> ¼‖F_A ∓ *F_A‖² + 4π²|Q_top| = <b style="color:#FFA500;">${action.toFixed(2)} ≥ ${bound.toFixed(2)}</b> (Stable Holoform, Non-Self-Dual dev = ${fl.toFixed(1)})`;
   } else {
     box.style.borderLeftColor = "#708090";
-    box.innerHTML = topLine +
-      `<b>Topologically Trivial Sector (Q_top = 0):</b> Lower bound = 0.00 | Action I(A) = <b>${action.toFixed(2)}</b> (Can relax to flat vacuum).`;
+    box.innerHTML = `<b>Topologically Trivial Sector (Q_top = 0):</b> Lower bound = 0.00 | Action I(A) = <b>${action.toFixed(2)}</b> (Can continuously relax to vacuum).`;
   }
 };
+
 
 // WIDGET 7: §4.3.5 Syntrixfunktor Combinatorics & Zeitkorn Clock
 window.zkStep = 0;
@@ -402,6 +425,7 @@ function renderAllCh4Widgets() {
   window.updateWilsonLab();
   window.updateCornerFlow();
   window.updateSU2Lab();
+  window.updateLaplacianLab();
   window.updateBogomolny();
   window.updateYFLab();
 }
