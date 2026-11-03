@@ -95,7 +95,7 @@ window.setDiabatikMode = function(mode) {
     box.innerHTML = `<b style="color:#FFA500;">Syndromatic Diabatik (γ > 0, SM p. 103):</b> Internal syndrome generation at level γ > 0 emits a tectonic coupling outward into T_{m-1}!`;
   } else {
     box.style.borderLeftColor = "#FFD700";
-    box.innerHTML = `<b style="color:#FFD700;">★ CLOSED SYNTROKLINE RÜCKKOPPELUNG (Re-Entrant Loop):</b> Combines inward Metrophoric (γ=0) and outward Syndromatic (γ>0) couplings into a self-sustaining recurrent loop!`;
+    box.innerHTML = `<b style="color:#FFD700;">★ CLOSED SYNTROKLINE RÜCKKOPPELUNG (Closed Feedback Loop):</b> Combines inward Metrophoric (γ=0) and outward Syndromatic (γ>0) couplings into a self-sustaining recurrent loop!`;
   }
 };
 
@@ -1131,7 +1131,7 @@ const canvas = document.getElementById('ch5-3d-canvas');
 
 
 
-  // Stage 2 & 3: 4-Grade Transcendence Tower S(n+1), Syntrokline Bridges & Re-Entrant Diabatik
+  // Stage 2 & 3: 4-Grade Transcendence Tower S(n+1), Syntrokline Bridges & Metroplexdiabatik
 
   function renderStage2And3(w, h, st) {
 
@@ -1177,7 +1177,7 @@ const canvas = document.getElementById('ch5-3d-canvas');
 
 
 
-    // Stage 3: Syntrokline Elevator Bridges ^{n+N}\alpha & Closed Re-Entrant Diabatik Loop
+    // Stage 3: Syntrokline Elevator Bridges ^{n+N}\alpha & Closed Diabatik Loop
 
     if (isStage3) {
 
@@ -1191,7 +1191,7 @@ const canvas = document.getElementById('ch5-3d-canvas');
 
 
 
-      // Crimson Re-Entrant Feedback Loop (Syntrokline Rückkoppelung) on right side
+      // Crimson Closed Feedback Loop (Syntrokline Rückkoppelung) on right side
 
       const pR2 = proj(0.95, 0, 0.38, w, h);
 
@@ -1199,7 +1199,7 @@ const canvas = document.getElementById('ch5-3d-canvas');
 
       drawLine3D(pR2, pR1, "#DC143C", 3.2, [4, 2]);
 
-      drawNode3D("Diab_Loop", 1.05, 0, 0.0, 7, "#DC143C", "#FFD700", "↻ Rückkoppelung", "Closed Re-Entrant Metroplexdiabatik Feedback Loop T_m ⇄ T_{m-1} (SM p. 103)", w, h);
+      drawNode3D("Diab_Loop", 1.05, 0, 0.0, 7, "#DC143C", "#FFD700", "↻ Rückkoppelung", "Closed Metroplexdiabatik Feedback Loop T_m ⇄ T_{m-1} (SM p. 103)", w, h);
 
     }
 

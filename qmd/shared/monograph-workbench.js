@@ -943,6 +943,560 @@ body.mdrawer-open .anim-hud-tray {
     font-size: 11px;
   }
 }
+
+/* =========================================================================
+   NOVEL UI UPGRADES:
+   1. OMNI-SEARCH COMMAND PALETTE (Ctrl+K)
+   2. SLIDE MINIMAP & EPISTEMIC STRATUM RADAR BAR (Shortcut: T)
+   3. SMART CALLOUT MICRO-TOOLBAR (TeX Sync, Copy LaTeX, Lecture Spotlight)
+   4. MANIM VIDEO CINEMA HUD (Play/Pause, 0.5x-2x Speed, Restart, Theater)
+   5. INTERACTIVE ARCHITECTURE & DEPENDENCY GRAPH (5th Workbench Tab)
+   ========================================================================= */
+
+/* --- 1. Omni-Search Command Palette (Ctrl+K) --- */
+#syn-cmd-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 14, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 100020 !important;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: min(10vh, 72px);
+  font-family: "Libertinus Sans", "Inter", system-ui, sans-serif;
+}
+#syn-cmd-backdrop.open {
+  display: flex;
+}
+#syn-cmd-modal {
+  width: min(780px, 94vw);
+  max-height: 80vh;
+  background: linear-gradient(160deg, rgba(11, 16, 29, 0.98), rgba(7, 10, 18, 0.99));
+  border: 1.5px solid #FFD700;
+  border-radius: 14px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.92), 0 0 35px rgba(65, 105, 225, 0.28);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #e8ecf2;
+}
+.cmd-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(65, 105, 225, 0.4);
+}
+.cmd-search-icon {
+  font-size: 16px;
+  color: #FFD700;
+}
+#syn-cmd-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 15px;
+  font-family: inherit;
+}
+#syn-cmd-input::placeholder {
+  color: #64748b;
+}
+.cmd-kbd {
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 5px;
+  padding: 2px 6px;
+  font-size: 10.5px;
+  font-family: "Libertinus Mono", monospace;
+}
+.cmd-filters {
+  display: flex;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(10, 14, 24, 0.9);
+  border-bottom: 1px solid #1e293b;
+  flex-wrap: wrap;
+}
+.cmd-filter-pill {
+  background: #151e32;
+  color: #94a3b8;
+  border: 1px solid #2d3748;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.cmd-filter-pill.active, .cmd-filter-pill:hover {
+  background: rgba(65, 105, 225, 0.32);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+#syn-cmd-results {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 56vh;
+}
+.cmd-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 12px;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid #263248;
+  border-left: 4px solid #4169E1;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.cmd-item:hover, .cmd-item.selected {
+  background: rgba(65, 105, 225, 0.22);
+  border-color: #FFD700;
+  transform: translateX(2px);
+}
+.cmd-item-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.cmd-item-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f8fafc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cmd-item-sub {
+  font-size: 11px;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cmd-item-badges {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.cmd-badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.cmd-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 16px;
+  background: rgba(7, 10, 18, 0.96);
+  border-top: 1px solid #1e293b;
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* --- 2. Slide Minimap & Epistemic Stratum Radar Bar --- */
+#syn-stratum-radar {
+  position: fixed;
+  top: 10px;
+  right: 14px;
+  z-index: 9500;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(10, 14, 24, 0.88);
+  border: 1px solid rgba(65, 105, 225, 0.5);
+  border-radius: 999px;
+  padding: 4px 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+  font-family: "Libertinus Sans", "Inter", system-ui, sans-serif;
+  user-select: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+body.zen-mode #syn-stratum-radar,
+body.mdrawer-open #syn-stratum-radar {
+  opacity: 0;
+  pointer-events: none;
+}
+#syn-radar-stratum-pill {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: rgba(65, 105, 225, 0.25);
+  border: 1px solid #4169E1;
+  color: #82aaff;
+}
+.radar-segments {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.radar-seg {
+  width: 9px;
+  height: 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: all 0.16s ease;
+  position: relative;
+}
+.radar-seg:hover {
+  opacity: 1;
+  transform: scaleY(1.35);
+}
+.radar-seg.active {
+  width: 16px;
+  opacity: 1;
+  box-shadow: 0 0 8px #FFD700;
+  outline: 1.5px solid #FFD700;
+}
+.radar-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid #334155;
+  color: #cbd5e1;
+  border-radius: 999px;
+  padding: 2px 7px;
+  font-size: 10.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.15s ease;
+}
+.radar-btn:hover, .radar-btn.active {
+  background: #FFD700;
+  color: #000;
+  border-color: #FFD700;
+}
+#syn-radar-tooltip {
+  position: fixed;
+  top: 44px;
+  right: 16px;
+  z-index: 9505;
+  background: rgba(11, 16, 29, 0.97);
+  border: 1.5px solid #FFD700;
+  border-radius: 9px;
+  padding: 8px 12px;
+  color: #f8fafc;
+  font-size: 11.5px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  display: none;
+  max-width: 340px;
+  font-family: "Libertinus Sans", "Inter", sans-serif;
+}
+#syn-radar-popover {
+  position: fixed;
+  top: 46px;
+  right: 14px;
+  width: min(420px, 92vw);
+  max-height: 74vh;
+  background: linear-gradient(160deg, rgba(11, 16, 29, 0.98), rgba(7, 10, 18, 0.99));
+  border: 1.5px solid #4169E1;
+  border-radius: 12px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.88);
+  z-index: 9502;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: "Libertinus Sans", "Inter", sans-serif;
+  color: #e8ecf2;
+}
+#syn-radar-popover.open {
+  display: flex;
+}
+.radar-pop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 12px;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid #2d3748;
+  font-size: 12px;
+  font-weight: 800;
+  color: #FFD700;
+}
+.radar-pop-filters {
+  display: flex;
+  gap: 4px;
+  padding: 6px 10px;
+  background: #090d16;
+  border-bottom: 1px solid #1e293b;
+  flex-wrap: wrap;
+}
+.radar-pop-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.radar-slide-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 9px;
+  background: rgba(21, 30, 50, 0.72);
+  border: 1px solid #263248;
+  border-left: 3.5px solid #4169E1;
+  border-radius: 6px;
+  font-size: 11.5px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.radar-slide-row:hover, .radar-slide-row.active {
+  background: rgba(65, 105, 225, 0.24);
+  border-color: #FFD700;
+}
+
+/* --- 3. Smart Callout Micro-Toolbar (.syn-box-toolbar) --- */
+.thm-box, .def-box, .prop-box, .proof-box, .carnap-box, .scholium-box, .firewall-box, .deliverables-box, .interactive-panel {
+  position: relative;
+}
+.syn-box-toolbar {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.16s ease;
+  z-index: 25;
+}
+.thm-box:hover > .syn-box-toolbar,
+.def-box:hover > .syn-box-toolbar,
+.prop-box:hover > .syn-box-toolbar,
+.proof-box:hover > .syn-box-toolbar,
+.carnap-box:hover > .syn-box-toolbar,
+.scholium-box:hover > .syn-box-toolbar,
+.firewall-box:hover > .syn-box-toolbar,
+.deliverables-box:hover > .syn-box-toolbar,
+.interactive-panel:hover > .syn-box-toolbar {
+  opacity: 1;
+  pointer-events: auto;
+}
+.syn-micro-btn {
+  background: rgba(7, 10, 18, 0.9);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 215, 0, 0.45);
+  border-radius: 5px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: "Libertinus Sans", "Inter", sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.14s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+.syn-micro-btn:hover {
+  background: #FFD700;
+  color: #000;
+  border-color: #FFD700;
+  transform: translateY(-1px);
+}
+
+/* --- 4. Manim Video Cinema HUD (.syn-video-hud) --- */
+.video-container, .video-card {
+  position: relative;
+}
+.syn-video-hud {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(7, 10, 18, 0.86);
+  border: 1px solid rgba(65, 105, 225, 0.55);
+  border-radius: 7px;
+  padding: 3px 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  z-index: 25;
+  backdrop-filter: blur(6px);
+}
+.video-container:hover .syn-video-hud,
+.video-card:hover .syn-video-hud {
+  opacity: 1;
+  pointer-events: auto;
+}
+.syn-vid-btn {
+  background: transparent;
+  color: #e8ecf2;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.syn-vid-btn:hover {
+  background: rgba(255, 215, 0, 0.22);
+  border-color: #FFD700;
+  color: #FFD700;
+}
+
+/* --- Lecture Spotlight & Cinema Lightbox Modal (#syn-spotlight-modal) --- */
+#syn-spotlight-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 14, 0.90);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 100015 !important;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: "Libertinus Sans", "Inter", sans-serif;
+}
+#syn-spotlight-modal.open {
+  display: flex;
+}
+.spotlight-card {
+  width: min(1140px, 95vw);
+  max-height: 90vh;
+  background: linear-gradient(155deg, rgba(13, 19, 34, 0.98), rgba(7, 10, 18, 0.99));
+  border: 2px solid #FFD700;
+  border-radius: 14px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 215, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #f8fafc;
+}
+.spotlight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 18px;
+  background: rgba(15, 23, 42, 0.96);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.35);
+  color: #FFD700;
+  font-weight: 800;
+  font-size: 13.5px;
+}
+#syn-spotlight-body {
+  padding: 22px 26px;
+  overflow-y: auto;
+  font-size: 1.18rem;
+  line-height: 1.55;
+}
+#syn-spotlight-body video {
+  width: 100%;
+  max-height: 70vh;
+  border-radius: 10px;
+  background: #000;
+  display: block;
+  margin: 0 auto;
+}
+
+/* --- 5. Architecture & Dependency Graph Tab (#mpane-graph) --- */
+.arch-graph-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 12px 14px;
+  gap: 10px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+.arch-svg-box {
+  background: #060911;
+  border: 1px solid #2d3748;
+  border-radius: 10px;
+  padding: 8px;
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+.arch-node {
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.arch-node:hover {
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.65));
+}
+.arch-inspector {
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid #4169E1;
+  border-left: 4px solid #FFD700;
+  border-radius: 9px;
+  padding: 12px 15px;
+  font-size: 12.2px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* --- Floating Confirmation Toast (#syn-toast) --- */
+#syn-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: linear-gradient(135deg, #151e32, #0d1322);
+  color: #FFD700;
+  border: 1.5px solid #FFD700;
+  border-radius: 999px;
+  padding: 7px 18px;
+  font-size: 12.5px;
+  font-weight: 800;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  z-index: 100050 !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  font-family: "Libertinus Sans", "Inter", sans-serif;
+}
+#syn-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 768px) {
+  #syn-stratum-radar .radar-segments {
+    display: none;
+  }
+  #syn-stratum-radar {
+    top: 6px;
+    right: 8px;
+    padding: 3px 8px;
+  }
+}
+
 `;
 
   const DRAWER_HTML = `
@@ -996,6 +1550,7 @@ body.mdrawer-open .anim-hud-tray {
     <button class="mdrawer-tab" id="mtab-tex" onclick="window.switchMonographTab('tex')">📜 Raw LaTeX (.tex)</button>
     <button class="mdrawer-tab" id="mtab-thm" onclick="window.switchMonographTab('thm')">📐 Theorems &amp; Lean 4 Index</button>
     <button class="mdrawer-tab" id="mtab-rosetta" onclick="window.switchMonographTab('rosetta')">🔍 100-Eq. Rosetta Stone</button>
+    <button class="mdrawer-tab" id="mtab-graph" onclick="window.switchMonographTab('graph')">🕸️ Architecture Graph</button>
     <div style="margin-left:auto; display:flex; align-items:center; gap:5px; font-size:11.5px;">
       <span>PDF Page:</span>
       <input type="number" id="pdf-page-input" min="1" max="380" value="11" style="width:56px; background:#070a12; color:#FFD700; border:1px solid #4169E1; border-radius:4px; padding:2px 5px; font-weight:bold;" onchange="window.jumpToPDFPage(this.value)">
@@ -1031,6 +1586,18 @@ body.mdrawer-open .anim-hud-tray {
         <input type="text" id="rosetta-search" class="tex-search-input" placeholder="Filter all SM Equations 1–100a with live rendered math (e.g., SM Eq. 1, SM Eq. 11, Hermetry)..." oninput="window.debounceRosettaSearch(this.value)">
       </div>
       <div class="rosetta-list" id="rosetta-cards-container"></div>
+    </div>
+
+    <!-- PANE 5: Interactive Architecture & Dependency Graph -->
+    <div class="mdrawer-pane" id="mpane-graph">
+      <div class="tex-toolbar" style="justify-content:space-between;">
+        <span style="font-size:11.5px; color:#cbd5e1;"><b>Syntrometric Dependency DAG:</b> Click any node (Ch 1–15, App A–E) to inspect morphisms, theorems &amp; Polarimeter stages.</span>
+        <button class="m3d-btn" onclick="window.toggleCommandPalette()">🔍 Omni-Search (Ctrl+K)</button>
+      </div>
+      <div class="arch-graph-wrap">
+        <div class="arch-svg-box" id="arch-graph-svg-mount"></div>
+        <div class="arch-inspector" id="arch-node-inspector"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -1269,8 +1836,19 @@ body.mdrawer-open .anim-hud-tray {
   }
 
   function injectDOM() {
+    // Always inject core & novel UI styles so slide-level toolbars, radar minimap, and spotlight work inside iframes too
+    if (!document.getElementById('syn-monograph-style')) {
+      const styleEl = document.createElement('style');
+      styleEl.id = 'syn-monograph-style';
+      styleEl.textContent = STYLES;
+      document.head.appendChild(styleEl);
+    }
+
+    // Initialize slide-level enhancements (Stratum Radar, Callout Micro-Toolbars, Video HUD, Spotlight Modal)
+    initSlideDeckEnhancements();
+
     // 1. If running inside an iframe whose parent already has the monograph workbench,
-    // do NOT inject a duplicate drawer or FAB inside the iframe.
+    // proxy drawer/palette actions to parent and do NOT inject a duplicate drawer or FAB inside the iframe.
     try {
       if (window.parent && window.parent !== window && window.parent.document) {
         if (window.parent.document.getElementById('syn-monograph-drawer') || window.parent.document.getElementById('syn-monograph-fab')) {
@@ -1284,6 +1862,14 @@ body.mdrawer-open .anim-hud-tray {
               window.parent.openMonographAtPage(page, query);
             }
           };
+          window.toggleCommandPalette = function(initialFilter) {
+            if (typeof window.parent.toggleCommandPalette === 'function') {
+              window.parent.toggleCommandPalette(initialFilter);
+            }
+          };
+          const dock = ensureBottomDock();
+          dockAnimationHUDs();
+          checkHUDExtendedState();
           return;
         }
       }
@@ -1305,10 +1891,7 @@ body.mdrawer-open .anim-hud-tray {
 
     if (document.getElementById('syn-monograph-drawer')) return;
 
-    const styleEl = document.createElement('style');
-    styleEl.id = 'syn-monograph-style';
-    styleEl.textContent = STYLES;
-    document.head.appendChild(styleEl);
+    // (Styles already injected at start of injectDOM)
 
     const dock = ensureBottomDock();
 
@@ -1377,10 +1960,13 @@ body.mdrawer-open .anim-hud-tray {
 
   window.switchMonographTab = function(tab) {
     activeTab = tab;
-    ['pdf', 'tex', 'thm', 'rosetta'].forEach(t => {
+    ['pdf', 'tex', 'thm', 'rosetta', 'graph'].forEach(t => {
       document.getElementById('mtab-' + t)?.classList.toggle('active', t === tab);
       document.getElementById('mpane-' + t)?.classList.toggle('active', t === tab);
     });
+    if (tab === 'graph' && typeof window.renderArchitectureGraph === 'function') {
+      window.renderArchitectureGraph();
+    }
     if (!rawTeXCache) {
       loadRawTeXFile();
     } else {
@@ -1743,18 +2329,35 @@ body.mdrawer-open .anim-hud-tray {
     window.jumpToPDFPage(base + slideOffset);
   }
 
-  // Keyboard shortcut 'M' toggles Monograph Drawer
+  // Keyboard shortcuts: 'Ctrl+K' / '/' Omni-Search, 'M' Monograph Drawer, 'T' Slide Map, 'Escape' Close Modals
   window.addEventListener('keydown', e => {
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
-    if (e.key === 'm' || e.key === 'M') {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
       e.preventDefault();
-      window.toggleMonographDrawer();
-    } else if (e.key === 'Escape') {
+      e.stopPropagation();
+      window.toggleCommandPalette();
+      return;
+    }
+    if (e.key === 'Escape') {
+      window.closeSynSpotlight && window.closeSynSpotlight();
+      document.getElementById('syn-cmd-backdrop')?.classList.remove('open');
+      document.getElementById('syn-radar-popover')?.classList.remove('open');
       const dr = document.getElementById('syn-monograph-drawer');
       if (dr && dr.classList.contains('open')) {
         dr.classList.remove('open');
         document.body.classList.remove('mdrawer-open');
       }
+      return;
+    }
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+    if (e.key === 'm' || e.key === 'M') {
+      e.preventDefault();
+      window.toggleMonographDrawer();
+    } else if (e.key === '/') {
+      e.preventDefault();
+      window.toggleCommandPalette();
+    } else if (e.key === 't' || e.key === 'T') {
+      const mapBtn = document.getElementById('syn-radar-map-btn');
+      if (mapBtn) { e.preventDefault(); mapBtn.click(); }
     }
   });
 
@@ -1815,6 +2418,739 @@ body.mdrawer-open .anim-hud-tray {
       document.documentElement.style.setProperty('--syn-bottom-offset', e.data.offset + 'px');
     }
   });
+
+
+  // =========================================================================
+  // MASTER ARCHITECTURE & CHAPTER METADATA FOR GRAPH & OMNI-SEARCH
+  // =========================================================================
+  const ARCH_NODES = [
+    { id: 'ch1',  num: 1,  part: 'A', x: 75,  y: 42,  color: '#4169E1', label: 'Ch 1: Subjective Topos',   page: 11,  polar: 'Stage I',   deps: [],               desc: 'Epistemic Firewall (Strata A–D), Admissible Site (Ctx, J_syn), Sheaf Topos E_syn, and Intuitionistic Modal Logic L_iMSL.' },
+    { id: 'ch2',  num: 2,  part: 'A', x: 205, y: 42,  color: '#20B2AA', label: 'Ch 2: Syntrix Operads',    page: 34,  polar: 'Stage II',  deps: ['ch1'],          desc: 'Colored Operad O_syn, Free Tree Monad T_O, Grothendieck Fibration ∫M, and 4 Elementary Selection Representations.' },
+    { id: 'ch3',  num: 3,  part: 'A', x: 335, y: 42,  color: '#FFA500', label: 'Ch 3: Korporationen',      page: 56,  polar: 'Stage III', deps: ['ch2'],          desc: '2×2 Korporator Matrix, Span Pushouts P_a ⊞_φ P_b, Rank-Nullity Dimension Subtraction, and Double Category Kor(Syn) with Mayer–Vietoris Homology.' },
+    { id: 'ch4',  num: 4,  part: 'A', x: 465, y: 42,  color: '#DC143C', label: 'Ch 4: Enyphansyntrizen',   page: 78,  polar: 'Stage IV',  deps: ['ch1', 'ch3'],   desc: 'Principal G-Bundles, Non-Abelian Interaction Curvature Ω_int^D, Fredholm Laplacian Splitting, Atiyah Lie Algebroid At(P_U), and Chern–Weil Bogomolny Bound.' },
+    { id: 'ch5',  num: 5,  part: 'A', x: 595, y: 42,  color: '#9370DB', label: 'Ch 5: Metroplextheorie',   page: 102, polar: null,        deps: ['ch2', 'ch4'],   desc: 'Ambient (∞,1)-Topos X_syn, Dendroidal Complete Segal Spaces, Syntroclinic Adjunctions, Lawvere–Schreiber Cohesion (∫ ⊣ ♭ ⊣ ♯), and Tectonic Spectral Sequence.' },
+    { id: 'ch6',  num: 6,  part: 'A', x: 725, y: 42,  color: '#FFD700', label: 'Ch 6: Televariante Area',  page: 122, polar: 'Stage V',   deps: ['ch4', 'ch5'],   desc: 'Final Telecentric Path Coalgebras (νT, ζ), Lambek Isomorphism, Polyak–Łojasiewicz Lyapunov Basins, Morse–Smale Separatrices, and 2-Wasserstein Resynkolation.' },
+    { id: 'ch7',  num: 7,  part: 'B', x: 110, y: 128, color: '#4169E1', label: 'Ch 7: Anthropomorphic',    page: 142, polar: 'Stage VI',  deps: ['ch1', 'ch6'],   desc: 'Quantitative Context Site Ctx_quant, Dedekind/Cauchy Internal Reals, Colored Tensor Operad O_quant, and Layered Field Cascades (SM Eq. 28).' },
+    { id: 'ch8',  num: 8,  part: 'B', x: 265, y: 128, color: '#20B2AA', label: 'Ch 8: Quantitätsaspekt',   page: 158, polar: null,        deps: ['ch3', 'ch7'],   desc: 'Cornered Parameter Manifolds M_n = (R_≥0)^n, Grothendieck Nuclear Fréchet Spaces S(M_n), Double Partial Sieve (Thm. 8.1), and 3-Class Collapse.' },
+    { id: 'ch9',  num: 9,  part: 'B', x: 420, y: 128, color: '#FFA500', label: 'Ch 9: Strukturkaskaden',   page: 174, polar: null,        deps: ['ch4', 'ch8'],   desc: 'Non-Hermitian 36-Component Hermetry Tensor, (n−2) Condensation Theorem, Palatini Contortion Decomposition, and DeTurck–Sobolev Parabolic Contraction.' },
+    { id: 'ch10', num: 10, part: 'B', x: 575, y: 128, color: '#DC143C', label: 'Ch 10: Metronik & DEC',    page: 196, polar: 'Stage VI+', deps: ['ch8', 'ch9'],   desc: 'Elementary Metron τ, Discrete Exterior Calculus (DEC), Discrete Leibniz/Gauss–Stokes, Wronskian Determinant, and Cubical FEEC Whitney–de Rham Isomorphism.' },
+    { id: 'ch11', num: 11, part: 'B', x: 725, y: 128, color: '#9370DB', label: 'Ch 11: Selektortheorie',   page: 216, polar: null,        deps: ['ch9', 'ch10'],  desc: '12D Fibration R_12 ≅ R_4 × K_8, Euclideanized Spectral Space H_E, Geometric Selector Eigenvalues, and 63-Channel Hyper-Lattice Mass Formula.' },
+    { id: 'ch12', num: 12, part: 'C', x: 150, y: 214, color: '#FFD700', label: 'Ch 12: Discontinuity',     page: 236, polar: null,        deps: ['ch4', 'ch5'],   desc: 'Representational Discontinuity, 4 Cortical Mechanisms (Operadic Erasure, Protosimplex Collapse, Non-Abelian Qualia Bipartition, 6D Affective Hermetry), Zombie Refutation.' },
+    { id: 'ch13', num: 13, part: 'C', x: 340, y: 214, color: '#4169E1', label: 'Ch 13: Qualia & Φ_topos',  page: 262, polar: null,        deps: ['ch6', 'ch12'],  desc: 'Topos Integrated Information Φ_topos vs IIT 4.0, Curry–Howard Lawvere Ego Fixed Point, Active Inference Sheaf Descent, and REBUS Protosimplex De-Encapsulation.' },
+    { id: 'ch14', num: 14, part: 'C', x: 530, y: 214, color: '#20B2AA', label: 'Ch 14: Master Register',   page: 282, polar: null,        deps: ['ch11', 'ch13'], desc: 'Complete 8-Cluster Master Translation Register (SM-1 through SM-100a) mapping historical Heimian transcriptions to modern categorical/geometric types.' },
+    { id: 'ch15', num: 15, part: 'C', x: 710, y: 214, color: '#FFD700', label: 'Ch 15: Horizon & Synthesis', page: 308, polar: null,      deps: ['ch11', 'ch13', 'ch14'], desc: 'Master Axiomatic Architecture, Five Open Conjectures, 21-Particle Empirical Mass Validation (Table B.1), Lean 4 Verification Suite, and Epistemic Closure.' }
+  ];
+
+  window.showSynToast = function(msg) {
+    let t = document.getElementById('syn-toast');
+    if (!t) {
+      t = document.createElement('div');
+      t.id = 'syn-toast';
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t.__timer);
+    t.__timer = setTimeout(() => t.classList.remove('show'), 2200);
+  };
+
+  // =========================================================================
+  // 5. INTERACTIVE ARCHITECTURE & DEPENDENCY GRAPH RENDERER
+  // =========================================================================
+  let selectedArchId = 'ch1';
+  window.renderArchitectureGraph = function(activeId) {
+    const svgMount = document.getElementById('arch-graph-svg-mount');
+    const inspMount = document.getElementById('arch-node-inspector');
+    if (!svgMount || !inspMount) return;
+
+    if (activeId) selectedArchId = activeId;
+    else selectedArchId = detectActiveChKey() || 'ch1';
+    if (!ARCH_NODES.some(n => n.id === selectedArchId)) selectedArchId = 'ch1';
+
+    const nodeMap = {};
+    ARCH_NODES.forEach(n => { nodeMap[n.id] = n; });
+    const selNode = nodeMap[selectedArchId] || ARCH_NODES[0];
+
+    let edgesSvg = '';
+    ARCH_NODES.forEach(target => {
+      target.deps.forEach(srcId => {
+        const src = nodeMap[srcId];
+        if (!src) return;
+        const isHighlighted = (target.id === selNode.id || src.id === selNode.id);
+        const stroke = isHighlighted ? '#FFD700' : 'rgba(100, 116, 139, 0.38)';
+        const width = isHighlighted ? 2.4 : 1.2;
+        const dash = isHighlighted ? '' : 'stroke-dasharray="3,3"';
+        const mx = (src.x + target.x) / 2;
+        const my = (src.y + target.y) / 2 - (src.y === target.y ? 18 : 0);
+        edgesSvg += `<path d="M ${src.x} ${src.y} Q ${mx} ${my} ${target.x} ${target.y}" fill="none" stroke="${stroke}" stroke-width="${width}" ${dash}/>`;
+      });
+    });
+
+    let nodesSvg = '';
+    ARCH_NODES.forEach(n => {
+      const isSel = n.id === selNode.id;
+      const isDep = selNode.deps.includes(n.id) || n.deps.includes(selNode.id);
+      const r = isSel ? 21 : 17;
+      const stroke = isSel ? '#FFD700' : (isDep ? '#5eead4' : n.color);
+      const sw = isSel ? 3 : 1.8;
+      const shortLbl = n.label.split(':')[0];
+      const subLbl = n.label.split(':')[1]?.trim().slice(0, 13) || '';
+      nodesSvg += `
+        <g class="arch-node" onclick="window.renderArchitectureGraph('${n.id}')">
+          <circle cx="${n.x}" cy="${n.y}" r="${r}" fill="#0b1120" stroke="${stroke}" stroke-width="${sw}"/>
+          <text x="${n.x}" y="${n.y + 4}" text-anchor="middle" fill="${isSel ? '#FFD700' : '#f8fafc'}" font-size="10.5" font-weight="bold">${shortLbl}</text>
+          <text x="${n.x}" y="${n.y + r + 12}" text-anchor="middle" fill="#cbd5e1" font-size="9.2">${subLbl}</text>
+          ${n.polar ? `<circle cx="${n.x + r - 3}" cy="${n.y - r + 3}" r="4.5" fill="#FFD700" title="${n.polar}"/>` : ''}
+        </g>`;
+    });
+
+    svgMount.innerHTML = `
+      <svg viewBox="0 0 800 255" width="100%" height="235" style="display:block;">
+        <text x="12" y="16" fill="#82aaff" font-size="10" font-weight="bold">TEIL A: CATEGORICAL &amp; TOPOS FOUNDATIONS (CH 1–6)</text>
+        <text x="12" y="102" fill="#5eead4" font-size="10" font-weight="bold">TEIL B: QUANTITATIVE, HERMETRIC &amp; METRONIC PHYSICS (CH 7–11)</text>
+        <text x="12" y="188" fill="#FFD700" font-size="10" font-weight="bold">TEIL C: DISCONTINUITY, CONSCIOUSNESS &amp; HORIZON SYNTHESIS (CH 12–15)</text>
+        ${edgesSvg}
+        ${nodesSvg}
+      </svg>`;
+
+    const upstream = selNode.deps.map(d => nodeMap[d]?.label.split(':')[0]).filter(Boolean).join(', ') || 'Foundational Axiom Base (Stratum A)';
+    const downstream = ARCH_NODES.filter(n => n.deps.includes(selNode.id)).map(n => n.label.split(':')[0]).join(', ') || 'Terminal Synthesis Horizon';
+
+    inspMount.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+        <div>
+          <span style="color:#FFD700; font-weight:800; font-size:14px;">${selNode.label}</span>
+          ${selNode.polar ? `<span style="background:rgba(255,215,0,0.18); border:1px solid #FFD700; color:#FFD700; font-size:10px; padding:1px 6px; border-radius:4px; margin-left:6px; font-weight:700;">⚡ Polarimeter ${selNode.polar}</span>` : ''}
+        </div>
+        <div style="display:flex; gap:6px;">
+          <button class="m3d-btn" onclick="window.navigateToChapterDeck(${selNode.num})">▶ Open Ch ${selNode.num} Slides</button>
+          <button class="m3d-btn" onclick="window.jumpToMonographChapter('${selNode.id}'); window.switchMonographTab('pdf');">📄 PDF p. ${selNode.page}</button>
+          <button class="m3d-btn" onclick="window.jumpToMonographChapter('${selNode.id}'); window.switchMonographTab('tex');">📜 Raw TeX</button>
+        </div>
+      </div>
+      <div style="color:#cbd5e1; line-height:1.45;">${selNode.desc}</div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; font-size:11px; color:#94a3b8; border-top:1px solid #1e293b; padding-top:6px;">
+        <span><b>⬅ Prerequisites:</b> <span style="color:#82aaff;">${upstream}</span></span>
+        <span><b>➡ Feeds Into:</b> <span style="color:#5eead4;">${downstream}</span></span>
+      </div>`;
+  };
+
+  window.navigateToChapterDeck = function(chNum, slideIdx) {
+    // Close drawer or command palette if open
+    document.getElementById('syn-monograph-drawer')?.classList.remove('open');
+    document.body.classList.remove('mdrawer-open');
+    document.getElementById('syn-cmd-backdrop')?.classList.remove('open');
+
+    const hashSuffix = typeof slideIdx === 'number' && slideIdx > 0 ? `#/${slideIdx}` : '';
+    if (typeof window.selectChapter === 'function') {
+      window.selectChapter(chNum, hashSuffix);
+    } else if (window.parent && window.parent !== window && typeof window.parent.selectChapter === 'function') {
+      window.parent.selectChapter(chNum, hashSuffix);
+    } else {
+      window.location.href = `chapter${chNum}.html${hashSuffix}`;
+    }
+  };
+
+  // =========================================================================
+  // 1. OMNI-SEARCH COMMAND PALETTE (Ctrl+K / Cmd+K)
+  // =========================================================================
+  let cmdFilterMode = 'all';
+  let cmdSelectedIdx = 0;
+  let cmdCurrentItems = [];
+
+  function ensureCommandPaletteDOM() {
+    if (document.getElementById('syn-cmd-backdrop')) return;
+    const bd = document.createElement('div');
+    bd.id = 'syn-cmd-backdrop';
+    bd.setAttribute('data-prevent-swipe', 'true');
+    bd.onclick = e => { if (e.target === bd) window.toggleCommandPalette(); };
+    bd.innerHTML = `
+      <div id="syn-cmd-modal">
+        <div class="cmd-header">
+          <span class="cmd-search-icon">🔍</span>
+          <input type="text" id="syn-cmd-input" placeholder="Omni-Search 214 Slides, 15 Chapters, 380+ Theorems, Lean 4 &amp; SM Eqs. 1–100a..." autocomplete="off">
+          <span class="cmd-kbd">ESC</span>
+        </div>
+        <div class="cmd-filters">
+          <button class="cmd-filter-pill active" data-f="all" onclick="window.setCmdFilter('all')">All</button>
+          <button class="cmd-filter-pill" data-f="slides" onclick="window.setCmdFilter('slides')">📑 Active Deck Slides</button>
+          <button class="cmd-filter-pill" data-f="chapters" onclick="window.setCmdFilter('chapters')">🏛️ Chapters 1–15</button>
+          <button class="cmd-filter-pill" data-f="thm" onclick="window.setCmdFilter('thm')">📐 Theorems &amp; Lean 4</button>
+          <button class="cmd-filter-pill" data-f="sm" onclick="window.setCmdFilter('sm')">🔍 SM Equations</button>
+          <button class="cmd-filter-pill" data-f="labs" onclick="window.setCmdFilter('labs')">⚡ Interactive Labs</button>
+        </div>
+        <div id="syn-cmd-results"></div>
+        <div class="cmd-footer">
+          <span><kbd class="cmd-kbd">↑</kbd> <kbd class="cmd-kbd">↓</kbd> Navigate &nbsp;·&nbsp; <kbd class="cmd-kbd">Enter</kbd> Jump / Open &nbsp;·&nbsp; <kbd class="cmd-kbd">Ctrl+K</kbd> Toggle</span>
+          <span id="syn-cmd-count">Ready</span>
+        </div>
+      </div>`;
+    document.body.appendChild(bd);
+
+    const inp = document.getElementById('syn-cmd-input');
+    if (inp) {
+      inp.addEventListener('input', () => renderCommandPaletteResults());
+      inp.addEventListener('keydown', e => {
+        e.stopPropagation();
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          cmdSelectedIdx = Math.min(cmdCurrentItems.length - 1, cmdSelectedIdx + 1);
+          highlightCmdSelection();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          cmdSelectedIdx = Math.max(0, cmdSelectedIdx - 1);
+          highlightCmdSelection();
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (cmdCurrentItems[cmdSelectedIdx]) cmdCurrentItems[cmdSelectedIdx].action();
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          window.toggleCommandPalette();
+        }
+      });
+    }
+  }
+
+  window.setCmdFilter = function(mode) {
+    cmdFilterMode = mode || 'all';
+    document.querySelectorAll('.cmd-filter-pill').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-f') === cmdFilterMode);
+    });
+    renderCommandPaletteResults();
+  };
+
+  window.toggleCommandPalette = function(initialFilter) {
+    ensureCommandPaletteDOM();
+    const bd = document.getElementById('syn-cmd-backdrop');
+    if (!bd) return;
+    const willOpen = !bd.classList.contains('open');
+    bd.classList.toggle('open', willOpen);
+    if (willOpen) {
+      if (!rawTeXCache) loadRawTeXFile().then(() => renderCommandPaletteResults());
+      if (initialFilter) window.setCmdFilter(initialFilter);
+      else renderCommandPaletteResults();
+      setTimeout(() => {
+        const inp = document.getElementById('syn-cmd-input');
+        if (inp) { inp.focus(); inp.select(); }
+      }, 40);
+    }
+  };
+
+  function collectActiveDeckSlides() {
+    let doc = document;
+    let revWin = window;
+    const frame = document.getElementById('chapter-frame');
+    if (frame && frame.contentDocument && frame.contentWindow) {
+      doc = frame.contentDocument;
+      revWin = frame.contentWindow;
+    }
+    const sections = Array.from(doc.querySelectorAll('.reveal .slides > section'));
+    return sections.map((sec, idx) => {
+      const h = sec.querySelector('h1, h2, h3');
+      const title = h ? h.textContent.replace(/\s+/g, ' ').trim() : `Slide ${idx + 1}`;
+      const hasLab = !!sec.querySelector('.interactive-panel, input[type="range"], .syn-tabs');
+      const hasVid = !!sec.querySelector('video');
+      const hasProof = !!sec.querySelector('.proof-box');
+      const stratum = detectSlideStratum(sec);
+      const bodySnippet = (sec.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 260);
+      return {
+        idx,
+        title,
+        stratum,
+        hasLab,
+        hasVid,
+        hasProof,
+        bodySnippet,
+        jump: () => {
+          document.getElementById('syn-cmd-backdrop')?.classList.remove('open');
+          if (revWin.Reveal && typeof revWin.Reveal.slide === 'function') {
+            revWin.Reveal.slide(idx);
+          }
+        }
+      };
+    });
+  }
+
+  function renderCommandPaletteResults() {
+    const cont = document.getElementById('syn-cmd-results');
+    const inp = document.getElementById('syn-cmd-input');
+    const countEl = document.getElementById('syn-cmd-count');
+    if (!cont) return;
+
+    const q = (inp ? inp.value : '').trim().toLowerCase();
+    const items = [];
+
+    // 1. Active Deck Slides
+    if (cmdFilterMode === 'all' || cmdFilterMode === 'slides' || cmdFilterMode === 'labs') {
+      const slides = collectActiveDeckSlides();
+      slides.forEach(s => {
+        if (cmdFilterMode === 'labs' && !s.hasLab) return;
+        if (!q || s.title.toLowerCase().includes(q) || s.bodySnippet.toLowerCase().includes(q) || s.stratum.label.toLowerCase().includes(q)) {
+          items.push({
+            color: s.stratum.color,
+            title: `Slide ${s.idx + 1}: ${s.title}`,
+            sub: `${s.stratum.label}${s.hasLab ? ' · ⚡ Interactive Lab' : ''}${s.hasVid ? ' · 🎬 Manim Video' : ''}${s.hasProof ? ' · 📐 Proof' : ''}`,
+            badge: `SLIDE ${s.idx + 1}`,
+            badgeBg: s.stratum.color,
+            action: s.jump
+          });
+        }
+      });
+    }
+
+    // 2. All 15 Chapters
+    if (cmdFilterMode === 'all' || cmdFilterMode === 'chapters' || cmdFilterMode === 'labs') {
+      ARCH_NODES.forEach(ch => {
+        if (!q || ch.label.toLowerCase().includes(q) || ch.desc.toLowerCase().includes(q) || (ch.polar && ch.polar.toLowerCase().includes(q))) {
+          items.push({
+            color: ch.color,
+            title: ch.label,
+            sub: `${ch.desc.slice(0, 115)}...`,
+            badge: `CH ${ch.num} · p.${ch.page}`,
+            badgeBg: ch.color,
+            action: () => window.navigateToChapterDeck(ch.num)
+          });
+        }
+      });
+    }
+
+    // 3. Parsed TeX Theorems & Lean 4
+    if (cmdFilterMode === 'all' || cmdFilterMode === 'thm') {
+      const thmList = parsedTheorems.slice(0, 400);
+      for (const t of thmList) {
+        if (!q || t.title.toLowerCase().includes(q) || t.label.toLowerCase().includes(q) || t.preview.toLowerCase().includes(q)) {
+          const cleanEnv = t.env.replace('my', '').toUpperCase();
+          const col = t.env.includes('lean') ? '#a78bfa' : (t.env.includes('theorem') ? '#FFD700' : '#20B2AA');
+          items.push({
+            color: col,
+            title: `${cleanEnv}: ${t.title}`,
+            sub: t.preview.replace(/\s+/g, ' ').slice(0, 110) + '...',
+            badge: `p. ${t.page}`,
+            badgeBg: col,
+            action: () => {
+              document.getElementById('syn-cmd-backdrop')?.classList.remove('open');
+              window.openMonographAtPage(t.page, t.anchor);
+            }
+          });
+          if (items.length > 75) break;
+        }
+      }
+    }
+
+    // 4. SM Equations 1-100a
+    if (cmdFilterMode === 'all' || cmdFilterMode === 'sm') {
+      const smList = parsedSMEquations.length ? [...FALLBACK_ROSETTA, ...parsedSMEquations] : FALLBACK_ROSETTA;
+      for (const sm of smList) {
+        if (!q || sm.eq.toLowerCase().includes(q) || sm.d.toLowerCase().includes(q) || sm.r.toLowerCase().includes(q)) {
+          items.push({
+            color: '#FFA500',
+            title: `${sm.eq} (${sm.ch})`,
+            sub: sm.r.slice(0, 110),
+            badge: `PDF p. ${sm.page}`,
+            badgeBg: '#FFA500',
+            action: () => {
+              document.getElementById('syn-cmd-backdrop')?.classList.remove('open');
+              window.openMonographAtPage(sm.page, sm.tex);
+            }
+          });
+          if (items.length > 90) break;
+        }
+      }
+    }
+
+    cmdCurrentItems = items.slice(0, 60);
+    cmdSelectedIdx = 0;
+    if (countEl) countEl.textContent = `${cmdCurrentItems.length} result${cmdCurrentItems.length === 1 ? '' : 's'}`;
+
+    if (!cmdCurrentItems.length) {
+      cont.innerHTML = `<div style="padding:18px; text-align:center; color:#94a3b8;">No matching slides, theorems, or SM equations found for "<b>${q.replace(/</g, '&lt;')}</b>".</div>`;
+      return;
+    }
+
+    cont.innerHTML = cmdCurrentItems.map((it, i) => `
+      <div class="cmd-item ${i === 0 ? 'selected' : ''}" data-idx="${i}" style="border-left-color:${it.color};">
+        <div class="cmd-item-main">
+          <div class="cmd-item-title">${it.title.replace(/</g, '&lt;')}</div>
+          <div class="cmd-item-sub">${it.sub.replace(/</g, '&lt;')}</div>
+        </div>
+        <div class="cmd-item-badges">
+          <span class="cmd-badge" style="background:rgba(255,255,255,0.07); border:1px solid ${it.badgeBg}; color:${it.badgeBg};">${it.badge}</span>
+        </div>
+      </div>`).join('');
+
+    cont.querySelectorAll('.cmd-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const idx = parseInt(el.getAttribute('data-idx') || '0');
+        if (cmdCurrentItems[idx]) cmdCurrentItems[idx].action();
+      });
+    });
+  }
+
+  function highlightCmdSelection() {
+    const cont = document.getElementById('syn-cmd-results');
+    if (!cont) return;
+    const rows = cont.querySelectorAll('.cmd-item');
+    rows.forEach((r, i) => {
+      const sel = i === cmdSelectedIdx;
+      r.classList.toggle('selected', sel);
+      if (sel) r.scrollIntoView({ block: 'nearest' });
+    });
+  }
+
+  // =========================================================================
+  // 2, 3, 4. SLIDE-DECK ENHANCEMENTS:
+  //    - Epistemic Stratum Radar & Slide Minimap (#syn-stratum-radar)
+  //    - Smart Callout Micro-Toolbar (.syn-box-toolbar)
+  //    - Manim Video Cinema HUD (.syn-video-hud)
+  //    - Lecture Spotlight & Cinema Modal (#syn-spotlight-modal)
+  // =========================================================================
+  function detectSlideStratum(sec) {
+    if (!sec) return { code: 'A', label: 'STRATUM A · MATH', color: '#4169E1' };
+    const html = sec.innerHTML || '';
+    if (sec.querySelector('.badge-firewall, .firewall-box') || html.includes('EPISTEMIC FIREWALL')) {
+      return { code: 'FW', label: 'FIREWALL · BOUNDARY', color: '#DC143C' };
+    }
+    if (sec.querySelector('.badge-c, .tag-c') || html.includes('STRATUM C')) {
+      return { code: 'C', label: 'STRATUM C · RECON ℛ', color: '#FFA500' };
+    }
+    if (sec.querySelector('.badge-b, .tag-b') || html.includes('STRATUM B')) {
+      return { code: 'B', label: 'STRATUM B · THEOREM', color: '#20B2AA' };
+    }
+    if (sec.querySelector('.badge-d, .tag-d') || html.includes('STRATUM D')) {
+      return { code: 'D', label: 'STRATUM D · EXEGESIS', color: '#94a3b8' };
+    }
+    if (sec.querySelector('.badge-a, .tag-a') || html.includes('STRATUM A')) {
+      return { code: 'A', label: 'STRATUM A · FOUNDATIONS', color: '#4169E1' };
+    }
+    return { code: 'SYN', label: 'SYNTHESIS & OVERVIEW', color: '#FFD700' };
+  }
+
+  function ensureSpotlightModal() {
+    let modal = document.getElementById('syn-spotlight-modal');
+    if (modal) return modal;
+    modal = document.createElement('div');
+    modal.id = 'syn-spotlight-modal';
+    modal.setAttribute('data-prevent-swipe', 'true');
+    modal.onclick = e => { if (e.target === modal) window.closeSynSpotlight(); };
+    modal.innerHTML = `
+      <div class="spotlight-card">
+        <div class="spotlight-header">
+          <span id="syn-spotlight-title">🔍 Syntrometric Lecture Spotlight</span>
+          <div style="display:flex; gap:6px;">
+            <button class="m3d-btn" id="syn-spotlight-copy-btn">📋 Copy LaTeX / Text</button>
+            <button class="m3d-btn" onclick="window.closeSynSpotlight()" style="background:#DC143C; color:#fff; border-color:#DC143C;">✕ Close (Esc)</button>
+          </div>
+        </div>
+        <div id="syn-spotlight-body"></div>
+      </div>`;
+    document.body.appendChild(modal);
+    return modal;
+  }
+
+  window.closeSynSpotlight = function() {
+    const modal = document.getElementById('syn-spotlight-modal');
+    if (modal) {
+      modal.classList.remove('open');
+      const body = document.getElementById('syn-spotlight-body');
+      if (body) body.innerHTML = '';
+    }
+  };
+
+  function extractCleanTextWithLaTeX(el) {
+    if (!el) return '';
+    const clone = el.cloneNode(true);
+    clone.querySelectorAll('.syn-box-toolbar, .syn-video-hud').forEach(t => t.remove());
+    return (clone.innerText || clone.textContent || '').replace(/\n{3,}/g, '\n\n').trim();
+  }
+
+  function initSlideDeckEnhancements() {
+    const slidesRoot = document.querySelector('.reveal .slides');
+    if (!slidesRoot) return; // Only mount inside Reveal slide decks
+
+    // A. Mount Slide Minimap & Epistemic Stratum Radar Bar
+    if (!document.getElementById('syn-stratum-radar')) {
+      const sections = Array.from(slidesRoot.querySelectorAll(':scope > section'));
+      const radar = document.createElement('div');
+      radar.id = 'syn-stratum-radar';
+      radar.setAttribute('data-prevent-swipe', 'true');
+
+      const segsHtml = sections.map((sec, idx) => {
+        const st = detectSlideStratum(sec);
+        return `<div class="radar-seg ${idx === 0 ? 'active' : ''}" data-slide="${idx}" style="background:${st.color};"></div>`;
+      }).join('');
+
+      radar.innerHTML = `
+        <span id="syn-radar-stratum-pill">STRATUM A</span>
+        <div class="radar-segments">${segsHtml}</div>
+        <button class="radar-btn" id="syn-radar-map-btn" title="Toggle Chapter Slide Map &amp; Stratum Filter (Shortcut: T)">🗺️ Map</button>
+        <button class="radar-btn" onclick="window.toggleCommandPalette('slides')" title="Omni-Search Slides, Theorems &amp; SM Equations (Ctrl+K)">🔍</button>`;
+      document.body.appendChild(radar);
+
+      const tooltip = document.createElement('div');
+      tooltip.id = 'syn-radar-tooltip';
+      document.body.appendChild(tooltip);
+
+      const pop = document.createElement('div');
+      pop.id = 'syn-radar-popover';
+      pop.setAttribute('data-prevent-swipe', 'true');
+      pop.innerHTML = `
+        <div class="radar-pop-header">
+          <span>🗺️ Slide Navigator &amp; Epistemic Stratum Filter (${sections.length} Slides)</span>
+          <button class="syn-vid-btn" id="syn-radar-pop-close">✕</button>
+        </div>
+        <div class="radar-pop-filters">
+          <button class="cmd-filter-pill active" data-rf="ALL">All (${sections.length})</button>
+          <button class="cmd-filter-pill" data-rf="A" style="color:#82aaff;">Stratum A</button>
+          <button class="cmd-filter-pill" data-rf="B" style="color:#5eead4;">Stratum B</button>
+          <button class="cmd-filter-pill" data-rf="C" style="color:#fcd34d;">Stratum C</button>
+          <button class="cmd-filter-pill" data-rf="D" style="color:#cbd5e1;">Stratum D</button>
+          <button class="cmd-filter-pill" data-rf="LAB" style="color:#FFD700;">⚡ Labs</button>
+        </div>
+        <div class="radar-pop-list" id="syn-radar-pop-list"></div>`;
+      document.body.appendChild(pop);
+
+      let activeRadarFilter = 'ALL';
+      const renderRadarPopList = () => {
+        const listEl = document.getElementById('syn-radar-pop-list');
+        if (!listEl) return;
+        const curH = (window.Reveal && typeof window.Reveal.getIndices === 'function') ? (window.Reveal.getIndices().h || 0) : 0;
+        listEl.innerHTML = sections.map((sec, idx) => {
+          const st = detectSlideStratum(sec);
+          const hasLab = !!sec.querySelector('.interactive-panel, input[type="range"]');
+          const hasVid = !!sec.querySelector('video');
+          if (activeRadarFilter === 'LAB' && !hasLab) return '';
+          if (['A', 'B', 'C', 'D'].includes(activeRadarFilter) && st.code !== activeRadarFilter) return '';
+          const h = sec.querySelector('h1, h2, h3');
+          const title = h ? h.textContent.replace(/\s+/g, ' ').trim() : `Slide ${idx + 1}`;
+          return `
+            <div class="radar-slide-row ${idx === curH ? 'active' : ''}" data-jump="${idx}" style="border-left-color:${st.color};">
+              <div style="min-width:0; flex:1;">
+                <div style="font-weight:700; color:#f8fafc; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${idx + 1}. ${title.replace(/</g, '&lt;')}</div>
+                <div style="font-size:10px; color:#94a3b8;">${st.label}</div>
+              </div>
+              <div style="display:flex; gap:4px; flex-shrink:0; font-size:11px;">
+                ${hasLab ? '<span title="Interactive Lab">⚡</span>' : ''}
+                ${hasVid ? '<span title="Manim 3D Video">🎬</span>' : ''}
+              </div>
+            </div>`;
+        }).join('');
+        listEl.querySelectorAll('.radar-slide-row').forEach(r => {
+          r.onclick = () => {
+            const idx = parseInt(r.getAttribute('data-jump') || '0');
+            if (window.Reveal && typeof window.Reveal.slide === 'function') window.Reveal.slide(idx);
+            pop.classList.remove('open');
+          };
+        });
+      };
+
+      document.getElementById('syn-radar-map-btn')?.addEventListener('click', () => {
+        const willOpen = !pop.classList.contains('open');
+        pop.classList.toggle('open', willOpen);
+        if (willOpen) renderRadarPopList();
+      });
+      document.getElementById('syn-radar-pop-close')?.addEventListener('click', () => pop.classList.remove('open'));
+      pop.querySelectorAll('.cmd-filter-pill').forEach(btn => {
+        btn.onclick = () => {
+          activeRadarFilter = btn.getAttribute('data-rf') || 'ALL';
+          pop.querySelectorAll('.cmd-filter-pill').forEach(b => b.classList.toggle('active', b === btn));
+          renderRadarPopList();
+        };
+      });
+
+      radar.querySelectorAll('.radar-seg').forEach(seg => {
+        const idx = parseInt(seg.getAttribute('data-slide') || '0');
+        seg.addEventListener('mouseenter', () => {
+          const sec = sections[idx];
+          if (!sec) return;
+          const st = detectSlideStratum(sec);
+          const h = sec.querySelector('h1, h2, h3');
+          const title = h ? h.textContent.replace(/\s+/g, ' ').trim() : `Slide ${idx + 1}`;
+          const hasLab = !!sec.querySelector('.interactive-panel, input[type="range"]');
+          const hasVid = !!sec.querySelector('video');
+          tooltip.innerHTML = `
+            <div style="color:${st.color}; font-weight:800; font-size:10px; letter-spacing:0.6px;">SLIDE ${idx + 1} / ${sections.length} · ${st.label}</div>
+            <div style="font-weight:700; margin:2px 0;">${title.replace(/</g, '&lt;')}</div>
+            <div style="font-size:10.5px; color:#94a3b8;">${hasLab ? '⚡ Interactive Lab  ' : ''}${hasVid ? '🎬 Manim Animation' : ''}</div>`;
+          tooltip.style.display = 'block';
+        });
+        seg.addEventListener('mouseleave', () => {
+          tooltip.style.display = 'none';
+        });
+        seg.addEventListener('click', () => {
+          if (window.Reveal && typeof window.Reveal.slide === 'function') window.Reveal.slide(idx);
+        });
+      });
+
+      const updateRadarActiveSlide = () => {
+        const idx = (window.Reveal && typeof window.Reveal.getIndices === 'function') ? (window.Reveal.getIndices().h || 0) : 0;
+        const sec = sections[idx];
+        const st = detectSlideStratum(sec);
+        const pill = document.getElementById('syn-radar-stratum-pill');
+        if (pill) {
+          pill.textContent = `${idx + 1}/${sections.length} · ${st.label.split('·')[0].trim()}`;
+          pill.style.borderColor = st.color;
+          pill.style.color = st.color;
+          pill.style.background = 'rgba(7, 10, 18, 0.9)';
+        }
+        radar.querySelectorAll('.radar-seg').forEach((s, i) => s.classList.toggle('active', i === idx));
+      };
+
+      if (window.Reveal) {
+        window.Reveal.on('ready', updateRadarActiveSlide);
+        window.Reveal.on('slidechanged', updateRadarActiveSlide);
+      }
+      setTimeout(updateRadarActiveSlide, 150);
+    }
+
+    // B. Enhance all Mathematical Callout Boxes & Interactive Panels with Micro-Toolbar
+    const callouts = slidesRoot.querySelectorAll('.thm-box, .def-box, .prop-box, .proof-box, .carnap-box, .scholium-box, .firewall-box, .deliverables-box, .interactive-panel');
+    callouts.forEach(box => {
+      if (box.querySelector(':scope > .syn-box-toolbar')) return;
+      const tb = document.createElement('div');
+      tb.className = 'syn-box-toolbar';
+      tb.setAttribute('data-prevent-swipe', 'true');
+
+      const isLab = box.classList.contains('interactive-panel');
+      const titleEl = box.querySelector('.box-title, .proof-title, .carnap-title, .scholium-title, .panel-title, h4, b, strong');
+      const boxTitle = titleEl ? titleEl.textContent.replace(/\s+/g, ' ').trim() : (isLab ? 'Interactive Laboratory' : 'Mathematical Callout');
+
+      if (!isLab) {
+        const texBtn = document.createElement('button');
+        texBtn.className = 'syn-micro-btn';
+        texBtn.innerHTML = '📖 TeX';
+        texBtn.title = 'Open & Sync this Theorem/Definition in Syntrometric-Topos.tex & PDF';
+        texBtn.onclick = e => {
+          e.stopPropagation();
+          const chKey = detectActiveChKey();
+          const basePage = CHAPTER_PAGE_MAP[chKey]?.basePage || 11;
+          const mSm = boxTitle.match(/SM[-\s]*(?:Eq\.?\s*)?(\d+[a-z]?)/i);
+          const query = mSm ? `SM-${mSm[1]}` : boxTitle.replace(/^(?:Theorem|Definition|Proposition|Lemma|Corollary|Carnap|Scholium)\s*[\d.]+\s*[:(]?\s*/i, '').slice(0, 38);
+          window.openMonographAtPage(basePage, query);
+        };
+        tb.appendChild(texBtn);
+
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'syn-micro-btn';
+        copyBtn.innerHTML = '📋 Copy';
+        copyBtn.title = 'Copy Theorem / Formula Statement to Clipboard';
+        copyBtn.onclick = e => {
+          e.stopPropagation();
+          const txt = extractCleanTextWithLaTeX(box);
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(txt).then(() => window.showSynToast('✓ Copied Statement & Math to Clipboard'));
+          }
+        };
+        tb.appendChild(copyBtn);
+      }
+
+      const spotBtn = document.createElement('button');
+      spotBtn.className = 'syn-micro-btn';
+      spotBtn.innerHTML = '⛶ Focus';
+      spotBtn.title = 'Expand in Full-Screen Lecture Spotlight Modal';
+      spotBtn.onclick = e => {
+        e.stopPropagation();
+        const modal = ensureSpotlightModal();
+        const hdr = document.getElementById('syn-spotlight-title');
+        const body = document.getElementById('syn-spotlight-body');
+        const cpBtn = document.getElementById('syn-spotlight-copy-btn');
+        if (hdr) hdr.textContent = `🔍 ${boxTitle}`;
+        if (body) {
+          body.innerHTML = '';
+          const clone = box.cloneNode(true);
+          clone.querySelectorAll('.syn-box-toolbar').forEach(t => t.remove());
+          clone.classList.remove('fragment', 'fade-up', 'fade-left', 'fade-right', 'zoom-in', 'blur-in');
+          clone.style.fontSize = '1.08em';
+          clone.style.margin = '0';
+          body.appendChild(clone);
+          safeTypeset(body);
+        }
+        if (cpBtn) {
+          cpBtn.onclick = () => {
+            const txt = extractCleanTextWithLaTeX(box);
+            if (navigator.clipboard) navigator.clipboard.writeText(txt).then(() => window.showSynToast('✓ Copied to Clipboard'));
+          };
+        }
+        modal.classList.add('open');
+      };
+      tb.appendChild(spotBtn);
+
+      box.appendChild(tb);
+    });
+
+    // C. Enhance all Manim Videos with Cinema HUD & Playback Speed Controls
+    const vidContainers = slidesRoot.querySelectorAll('.video-container, .video-card');
+    vidContainers.forEach(vc => {
+      if (vc.querySelector('.syn-video-hud')) return;
+      const vid = vc.querySelector('video');
+      if (!vid) return;
+
+      const hud = document.createElement('div');
+      hud.className = 'syn-video-hud';
+      hud.setAttribute('data-prevent-swipe', 'true');
+
+      const playBtn = document.createElement('button');
+      playBtn.className = 'syn-vid-btn';
+      playBtn.textContent = '⏸';
+      playBtn.title = 'Play / Pause Manim Scene';
+      playBtn.onclick = e => {
+        e.stopPropagation();
+        if (vid.paused) { vid.play(); playBtn.textContent = '⏸'; }
+        else { vid.pause(); playBtn.textContent = '▶'; }
+      };
+
+      const speeds = [0.5, 1.0, 1.5, 2.0];
+      let spIdx = 1;
+      const speedBtn = document.createElement('button');
+      speedBtn.className = 'syn-vid-btn';
+      speedBtn.textContent = '1.0×';
+      speedBtn.title = 'Cycle Playback Speed (0.5×, 1.0×, 1.5×, 2.0×)';
+      speedBtn.onclick = e => {
+        e.stopPropagation();
+        spIdx = (spIdx + 1) % speeds.length;
+        vid.playbackRate = speeds[spIdx];
+        speedBtn.textContent = `${speeds[spIdx].toFixed(1)}×`;
+        window.showSynToast(`🎬 Manim Playback Speed: ${speeds[spIdx].toFixed(1)}×`);
+      };
+
+      const restartBtn = document.createElement('button');
+      restartBtn.className = 'syn-vid-btn';
+      restartBtn.textContent = '↺';
+      restartBtn.title = 'Restart Animation from t = 0';
+      restartBtn.onclick = e => {
+        e.stopPropagation();
+        vid.currentTime = 0;
+        vid.play();
+        playBtn.textContent = '⏸';
+      };
+
+      const theaterBtn = document.createElement('button');
+      theaterBtn.className = 'syn-vid-btn';
+      theaterBtn.textContent = '⛶';
+      theaterBtn.title = 'Open Manim Scene in Cinema Theater Lightbox';
+      theaterBtn.onclick = e => {
+        e.stopPropagation();
+        const modal = ensureSpotlightModal();
+        const capEl = vc.querySelector('.video-caption, .video-label');
+        const capTxt = capEl ? capEl.textContent.trim() : 'Manim 3D Mathematical Scene';
+        const hdr = document.getElementById('syn-spotlight-title');
+        const body = document.getElementById('syn-spotlight-body');
+        if (hdr) hdr.textContent = `🎬 ${capTxt}`;
+        if (body) {
+          const src = vid.getAttribute('src') || vid.querySelector('source')?.getAttribute('src') || '';
+          body.innerHTML = `
+            <video src="${src}" autoplay loop muted playsinline controls style="width:100%; max-height:72vh; border-radius:10px; border:1px solid #4169E1;"></video>
+            <div style="text-align:center; color:#FFD700; font-size:0.95rem; font-weight:700; margin-top:10px;">${capTxt.replace(/</g, '&lt;')}</div>`;
+        }
+        modal.classList.add('open');
+      };
+
+      hud.appendChild(playBtn);
+      hud.appendChild(speedBtn);
+      hud.appendChild(restartBtn);
+      hud.appendChild(theaterBtn);
+      vc.appendChild(hud);
+    });
+  }
 
   function initMonographWorkbench() {
     updateWindowsTrayAvoidance();

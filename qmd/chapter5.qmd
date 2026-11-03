@@ -176,9 +176,9 @@ Following Marquis (2009), Zalamea (2012), and Lurie (2009), when a system of Syn
 ::: {.column width="52%"}
 
 <div class="interactive-panel">
-  <h4>Interactive Syntrokline Bridge &amp; Re-Entrant Diabatik Simulator</h4>
+  <h4>Interactive Syntrokline Bridge &amp; Metroplexdiabatik Simulator</h4>
   <p class="widget-context-note">
-  <b>Context (§5.1.4–5.1.5, SM p. 103):</b> Toggle between **Inward Metrophoric Diabatik ($\gamma = 0$)** (external coupling alters the Metroplex Idea), **Outward Syndromatic Diabatik ($\gamma > 0$)** (internal change emits coupling outward), and **Closed *Syntrokline Rückkoppelung*** (re-entrant feedback loop across floors $T_{m-1} \leftrightarrow T_m$).
+  <b>Context (§5.1.4–5.1.5, SM p. 103):</b> Toggle between **Inward Metrophoric Diabatik ($\gamma = 0$)** (external coupling alters the Metroplex Idea), **Outward Syndromatic Diabatik ($\gamma > 0$)** (internal change emits coupling outward), and **Closed *Syntrokline Rückkoppelung*** (closed feedback loop across grades $T_{m-1} \leftrightarrow T_m$).
   </p>
   <div style="display:flex; gap:6px; justify-content:center; margin-bottom:8px;">
   <button class="syn-btn" onclick="setDiabatikMode('in')">1. Metrophoric In (γ = 0)</button>
@@ -191,7 +191,7 @@ Following Marquis (2009), Zalamea (2012), and Lurie (2009), when a system of Syn
 
 <div class="video-container fragment fade-left" style="margin-top:8px;">
   <video autoplay data-autoplay loop muted playsinline src="media/Act3_Secs_514515_Syntrokline_Brcken.mp4" style="max-height:185px;"></video>
-  <div class="video-caption">Manim Act III: Syntrokline Metroplexbrücken (SM-25a), EN-Product (SM-26) &amp; Closed Re-Entrant Feedback</div>
+  <div class="video-caption">Manim Act III: Syntrokline Metroplexbrücken (SM-25a), EN-Product (SM-26) &amp; Closed Syntroclinic Feedback</div>
 </div>
 
 :::
@@ -757,19 +757,19 @@ Evaluating 0-th Postnikov truncation $\tau_{\le 0}X \simeq \underline{\pi}_0(X)$
 * **Cross-Scale Coherence:** Syntroclinic bridges are change-of-scalars adjunctions $(\phi_{n,n+N})_! \dashv (\phi_{n,n+N})^*$, dual tectonics are unified by diagonal realization $|\Tect(\mathcal{S})|_{\mathbf{\Delta}}$, and *Metroplexdiabatik* is captured by spectral differentials $d^r \ne 0$.
 :::
 
-### Asymptotic Limits & Degeneracy Reductions
+<h4 style="color:#FFA500; margin-top:8px; margin-bottom:4px;">Asymptotic Limits &amp; Degeneracy Reductions</h4>
 
 | Regime / Boundary Limit | Mathematical Operation | Physical & Logical Reduction |
 |:---|:---|:---|
 | **Grade-0 Reduction** | $n = 0 \implies \Met_0(\Xsyn) \cong \Alg_{\mathcal{O}_0}(\Xsyn)$ | Higher-order categories collapse to the single-syntrix category $\mathbf{Syn}$ without categorical nesting. |
-| **0-Truncated Set Limit** | $m = 0 \implies \tau_{\le 0}X \simeq \underline{\pi}_0(X)$ | Higher homotopy groups vanish; recovers classical 1-topos $\Esyn$. |
+| **0-Truncated Set Limit** | $m = 0 \implies \tau_{\le 0}X \simeq \underline{\pi}_0(X)$ | Higher homotopy discarded; returns the discrete sheaf of connected components $\underline{\pi}_0(X)$. |
 | **Adiabatic Scale Limit** | $d^r \equiv 0 \;\; (\forall r \ge 2)$ in $E^r_{p,q}$ | Spectral sequence degenerates at $E^2$; scales decouple without diabatic feedback. |
 
-### Cross-Disciplinary Interpretation Matrix
+<h4 style="color:#FFA500; margin-top:8px; margin-bottom:4px;">Cross-Disciplinary Interpretation Matrix</h4>
 
 | Categorical & Topos Logic | Theoretical Physics & Geometry | Cognitive Science & Epistemology |
 |:---|:---|:---|
-| Ambient $(\infty, 1)$-topos $\Xsyn$ and complete Segal objects $\dCSeg(\Xsyn)$. | Multi-scale nested field geometry and change-of-operad bridge adjunctions $(\phi)_! \dashv (\phi)^*$. | Meta-cognitive reflection, re-entrant feedback (*Rückkoppelung*), and hierarchical scale invariance. |
+| Ambient $(\infty, 1)$-topos $\Xsyn$ and complete Segal objects $\dCSeg(\Xsyn)$. | Multi-scale nested field geometry and change-of-operad bridge adjunctions $(\phi)_! \dashv (\phi)^*$. | Meta-cognitive reflection and hierarchical scale invariance. |
 
 :::
 

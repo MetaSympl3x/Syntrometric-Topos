@@ -213,7 +213,7 @@ class Act3_Secs_514515_Syntrokline_Brcken(ThreeDScene):
         loop_top = ArcBetweenPoints(m_idea.get_top(), m_synd.get_top(), angle=-0.45, color=TEAL_BRIGHT, stroke_width=3)
         loop_bot = ArcBetweenPoints(m_synd.get_bottom(), m_idea.get_bottom(), angle=-0.45, color=CRIMSON_RED, stroke_width=3.5)
         pulse_dot = Dot(m_idea.get_top(), color=HOLO_GOLD, radius=0.10)
-        loop_lbl = MathTex(r"\text{Syntrokline Rueckkoppelung (Re-Entrant Loop)}", font_size=15, color=HOLO_GOLD).move_to(dia_panel.get_bottom() + UP * 0.28)
+        loop_lbl = MathTex(r"\text{Syntrokline Rueckkoppelung (Closed Feedback Loop)}", font_size=15, color=HOLO_GOLD).move_to(dia_panel.get_bottom() + UP * 0.28)
 
         act3_foot = MathTex(
             r"\text{Exogene vs. Endogene Tektonik: }\; "
@@ -229,7 +229,7 @@ class Act3_Secs_514515_Syntrokline_Brcken(ThreeDScene):
             Write(act3_foot),
             run_time=1.8
         )
-        # Animate re-entrant diabatic signal pulse around the closed feedback loop
+        # Animate closed-loop diabatic signal pulse around the closed feedback loop
         self.play(MoveAlongPath(pulse_dot, loop_top), run_time=0.8, rate_func=rate_functions.ease_in_out_sine)
         self.play(MoveAlongPath(pulse_dot, loop_bot), run_time=0.8, rate_func=rate_functions.ease_in_out_sine)
         self.wait(0.5)

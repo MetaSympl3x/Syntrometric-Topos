@@ -169,8 +169,8 @@ window.ch8_updateSieveCalcLab = function() {
       <line x1="24" y1="${y0}" x2="195" y2="${y0}" stroke="#4169E1" stroke-width="1.8"/>
       <line x1="${x0}" y1="12" x2="${x0}" y2="104" stroke="#4169E1" stroke-width="1.8"/>
       <text x="145" y="34" fill="#FFD700" font-size="8.5" font-weight="bold">½ y² = ${exactHalfSq.toFixed(3)}</text>
-      <text x="145" y="48" fill="#20B2AA" font-size="8">_+(y,y)? (Teal)</text>
-      <text x="145" y="60" fill="#9370DB" font-size="8">^+(y,y)? (Purple)</text>
+      <text x="145" y="48" fill="#20B2AA" font-size="8">_+(y,y)ℐ (Teal)</text>
+      <text x="145" y="60" fill="#9370DB" font-size="8">^+(y,y)ℐ (Purple)</text>
     `;
   }
 
@@ -178,7 +178,7 @@ window.ch8_updateSieveCalcLab = function() {
   if (box) {
     box.innerHTML =
       `<b>SM-30 Difference Quotient (Δx = ${dx.toFixed(3)}):</b> Δ(y²)/Δx = <b>${diffQuot.toFixed(3)}</b> → d̃|(y²) = <b>${exactDeriv.toFixed(3)}</b><br>` +
-      `<b>SM-32/35a Integral Chain (N=${N}):</b> I_lower = ${sumLower.toFixed(3)} ≤ <span style="color:#FFD700;"><b>^+(_+(y,y)?,( ))? = ½y² = ${exactHalfSq.toFixed(3)}</b></span> ≤ I_upper = ${sumUpper.toFixed(3)}`;
+      `<b>SM-32/35a Integral Chain (N=${N}):</b> I_lower = ${sumLower.toFixed(3)} ≤ <span style="color:#FFD700;"><b>^+(_+(y,y)ℐ,( ))ℐ = ½y² = ${exactHalfSq.toFixed(3)}</b></span> ≤ I_upper = ${sumUpper.toFixed(3)}`;
   }
 };
 

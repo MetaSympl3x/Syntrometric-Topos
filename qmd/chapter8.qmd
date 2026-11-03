@@ -202,9 +202,9 @@ recovering primitives, definite endpoint differences (SM-33), and multiple integ
 
 ::: {.thm-box .fragment .fade-up}
 **Theorem 8.1: Double-Integral Partial Sieve Composition (SM Eqs. 35, 35a, p. 143):**
-Let ${}_+(y,z)?$ denote the *syncolatively partial integrator* (preserving the synkolator law) and ${}^+(y,z)?$ the *metrophorically partial integrator* (preserving the Metrophor, SM Eq. 35). Their composition on an identical syntrix satisfies:
+Let ${}_+(y,z)\,\mathcal{I}$ denote the *syncolatively partial integrator* (preserving the synkolator law) and ${}^+(y,z)\,\mathcal{I}$ the *metrophorically partial integrator* (preserving the Metrophor, SM Eq. 35). Their composition on an identical syntrix satisfies:
 $$
-{}^+\!\left({}_+(y,y)\,?,(\ )\right)? \;=\; \frac{1}{2}\left(\mathbf{y}\widetilde{\mathbf{y}}\right)^2 \qquad \left(\int x\,dx = \frac{1}{2}x^2 + C\right) \tag{SM-35a}
+{}^+\!\left({}_+(y,y)\,\mathcal{I},(\ )\right)\mathcal{I} \;=\; \frac{1}{2}\left(\mathbf{y}\widetilde{\mathbf{y}}\right)^2 \qquad \left(\int x\,dx = \frac{1}{2}x^2 + C\right) \tag{SM-35a}
 $$
 under the stated quadratic closure condition $\underline{f}(y_k^2)_1^p = \underline{f}^{\,2}$.
 :::
@@ -216,7 +216,7 @@ under the stated quadratic closure condition $\underline{f}(y_k^2)_1^p = \underl
 <div class="interactive-panel">
   <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Corporate Calculus &amp; Double Partial Sieve Lab (SM-30–35a)</h4>
   <p class="widget-context-note">
-  <b>Context (§8.1.3 &amp; Thm. 8.1):</b> Increase corporate chain subdivisions $N \to \infty$ ($\Delta x = y/N \to 0$) and adjust upper coordinate $y$ to see how dual partial integrators ${}_+(y,y)?$ and ${}^+(y,y)?$ partition the $y^2$ square into $\frac{1}{2}y^2$.
+  <b>Context (§8.1.3 &amp; Thm. 8.1):</b> Increase corporate chain subdivisions $N \to \infty$ ($\Delta x = y/N \to 0$) and adjust upper coordinate $y$ to see how dual partial integrators ${}_+(y,y)\,\mathcal{I}$ and ${}^+(y,y)\,\mathcal{I}$ partition the $y^2$ square into $\frac{1}{2}y^2$.
   </p>
   <div style="display:grid; grid-template-columns: 1.08fr 0.92fr; gap:10px; align-items:center;">
   <div>
