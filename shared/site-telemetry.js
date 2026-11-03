@@ -3,7 +3,8 @@
  * SYNTROMETRIE SITE TELEMETRY & LIVE VISITOR COUNTER
  * Privacy-Preserving Global Hit Badge (visitorbadge.io) + Local Session Ledger
  * Tracks: Global Visits, Device Visits, Session Time & Chapter Exploration Progress
- * Deduplicated Session Caching: Zero duplicate counts on page refresh / multi-elements
+ * Deduplicated Session Caching for Regular Browsing (Zero extra counts on refresh)
+ * Incognito/Private Mode Bypass: Incognito attempts are NEVER cached (always fresh)
  * Zero Cookies · Zero PII · GDPR & Privacy-by-Design Compliant
  * =========================================================================
  */
@@ -12,28 +13,32 @@
   window.__SYN_SITE_TELEMETRY_LOADED__ = true;
 
   // Fresh reset path starting at 1
-  const BADGE_API_URL = "https://api.visitorbadge.io/api/visitors?path=MetaSympl3x-SyntrometricTopos-v2&label=VISITS&labelColor=%230a101d&countColor=%234169E1&style=flat-square";
+  const BADGE_API_URL = "https://api.visitorbadge.io/api/visitors?path=MetaSympl3x-SyntrometricTopos-v3&label=VISITS&labelColor=%230a101d&countColor=%234169E1&style=flat-square";
 
-  // 1. Reset old inflated telemetry keys & Initialize clean V2 session
+  // 1. Reset old inflated telemetry keys & Initialize clean V3 session
   try {
-    if (localStorage.getItem('syn_local_visits') && !localStorage.getItem('syn_v2_reset_done')) {
-      localStorage.removeItem('syn_local_visits');
-      localStorage.removeItem('syn_last_known_global_visits');
-      sessionStorage.removeItem('syn_cached_visitor_badge_svg');
-      sessionStorage.removeItem('syn_cached_visitor_count');
-      sessionStorage.removeItem('syn_session_active');
-      localStorage.setItem('syn_v2_reset_done', 'true');
+    if (!localStorage.getItem('syn_v3_reset_done')) {
+      [
+        'syn_local_visits', 'syn_last_known_global_visits',
+        'syn_v2_reset_done', 'syn_v2_local_visits', 'syn_v2_session_active',
+        'syn_v2_cached_svg', 'syn_v2_cached_count', 'syn_v2_last_global',
+        'syn_visited_chapters', 'syn_all_visited_chapters'
+      ].forEach(function(k) {
+        try { localStorage.removeItem(k); } catch (e) {}
+        try { sessionStorage.removeItem(k); } catch (e) {}
+      });
+      localStorage.setItem('syn_v3_reset_done', 'true');
     }
   } catch (e) {}
 
   let deviceVisits = 1;
   try {
-    const stored = parseInt(localStorage.getItem('syn_v2_local_visits') || '0', 10);
-    const hasActiveSession = sessionStorage.getItem('syn_v2_session_active');
+    const stored = parseInt(localStorage.getItem('syn_v3_local_visits') || '0', 10);
+    const hasActiveSession = sessionStorage.getItem('syn_v3_session_active');
     if (!hasActiveSession) {
       deviceVisits = stored + 1;
-      localStorage.setItem('syn_v2_local_visits', deviceVisits.toString());
-      sessionStorage.setItem('syn_v2_session_active', Date.now().toString());
+      localStorage.setItem('syn_v3_local_visits', deviceVisits.toString());
+      sessionStorage.setItem('syn_v3_session_active', Date.now().toString());
     } else {
       deviceVisits = Math.max(1, stored);
     }
@@ -44,7 +49,7 @@
   // Session start time
   let sessionStart = Date.now();
   try {
-    const st = sessionStorage.getItem('syn_v2_session_active');
+    const st = sessionStorage.getItem('syn_v3_session_active');
     if (st) sessionStart = parseInt(st, 10);
   } catch (e) {}
 
@@ -52,15 +57,15 @@
   function recordChapterVisit(chNum) {
     if (!chNum) return;
     try {
-      let visited = JSON.parse(sessionStorage.getItem('syn_v2_visited_chapters') || '[]');
+      let visited = JSON.parse(sessionStorage.getItem('syn_v3_visited_chapters') || '[]');
       if (!visited.includes(chNum)) {
         visited.push(chNum);
-        sessionStorage.setItem('syn_v2_visited_chapters', JSON.stringify(visited));
+        sessionStorage.setItem('syn_v3_visited_chapters', JSON.stringify(visited));
       }
-      let allVisited = JSON.parse(localStorage.getItem('syn_v2_all_visited_chapters') || '[]');
+      let allVisited = JSON.parse(localStorage.getItem('syn_v3_all_visited_chapters') || '[]');
       if (!allVisited.includes(chNum)) {
         allVisited.push(chNum);
-        localStorage.setItem('syn_v2_all_visited_chapters', JSON.stringify(allVisited));
+        localStorage.setItem('syn_v3_all_visited_chapters', JSON.stringify(allVisited));
       }
     } catch (e) {}
   }
@@ -421,7 +426,7 @@
       if (modalHeroFb) modalHeroFb.style.display = 'none';
     }
 
-    // When badge image is active, hide ALL fallback text labels to prevent duplication
+    // Hide ALL fallback labels whenever the SVG image is active!
     if (dataUrl) {
       document.querySelectorAll('.syn-counter-fallback').forEach(function(fb) {
         fb.style.display = 'none';
@@ -439,21 +444,78 @@
     }
   }
 
-  // 5. Deduplicated Fetch Logic: Exactly ONE Network Request per Session!
-  // If the user refreshes, sessionStorage returns the cached SVG with 0 extra hits.
-  var cachedSvg = null;
-  var cachedCount = null;
-  try {
-    cachedSvg = sessionStorage.getItem('syn_v2_cached_svg');
-    cachedCount = sessionStorage.getItem('syn_v2_cached_count');
-  } catch (e) {}
+  // 5. Incognito / Private Mode Detection
+  function checkIncognito(callback) {
+    // Explicit bypass via query parameter
+    if (window.location.search.indexOf('incognito') !== -1 || window.location.search.indexOf('nocache') !== -1) {
+      callback(true);
+      return;
+    }
 
-  if (cachedSvg) {
-    // Session already recorded: render from memory without hitting the network
-    updateAllBadgeImages(cachedSvg, cachedCount || '1');
-  } else {
-    // Genuine new session: 1 single fetch
-    fetch(BADGE_API_URL, { mode: 'cors' })
+    // 1. Chromium check (Chrome, Edge, Opera, Brave)
+    if ('storage' in navigator && 'estimate' in navigator.storage) {
+      navigator.storage.estimate().then(function(est) {
+        var isLowQuota = est.quota && est.quota < 4000000000;
+        if (isLowQuota) {
+          callback(true);
+          return;
+        }
+        var fs = window.RequestFileSystem || window.webkitRequestFileSystem;
+        if (fs) {
+          fs(window.TEMPORARY, 100, function() {
+            callback(false);
+          }, function() {
+            callback(true);
+          });
+          return;
+        }
+        callback(false);
+      }).catch(function() {
+        callback(true);
+      });
+      return;
+    }
+
+    // 2. Safari / iOS WebKit check
+    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+      try {
+        if (window.openDatabase) {
+          window.openDatabase(null, null, null, null);
+        }
+      } catch (e) {
+        callback(true);
+        return;
+      }
+    }
+
+    // 3. Firefox check
+    if ('MozAppearance' in document.documentElement.style) {
+      if (!window.indexedDB) {
+        callback(true);
+        return;
+      }
+      try {
+        var db = window.indexedDB.open('test_incog');
+        db.onerror = function() { callback(true); };
+        db.onsuccess = function() { callback(false); };
+        return;
+      } catch (e) {
+        callback(true);
+        return;
+      }
+    }
+
+    callback(false);
+  }
+
+  // 6. Fetch Logic with Incognito Bypass
+  function fetchBadge(isIncognito) {
+    var url = BADGE_API_URL;
+    if (isIncognito) {
+      url += '&_t=' + Date.now();
+    }
+
+    fetch(url, { mode: 'cors', cache: isIncognito ? 'no-store' : 'default' })
       .then(function(res) {
         if (!res.ok) throw new Error('Status ' + res.status);
         return res.text();
@@ -464,30 +526,61 @@
                     svgText.match(/<title>[^:<]*:\s*([0-9,kK\.\+]+)<\/title>/);
         if (match) count = match[1];
 
-        try {
-          sessionStorage.setItem('syn_v2_cached_svg', svgText);
-          sessionStorage.setItem('syn_v2_cached_count', count);
-          localStorage.setItem('syn_v2_last_global', count);
-        } catch (e) {}
+        // ONLY cache in session/local storage if NOT in incognito mode
+        if (!isIncognito) {
+          try {
+            sessionStorage.setItem('syn_v3_cached_svg', svgText);
+            sessionStorage.setItem('syn_v3_cached_count', count);
+            localStorage.setItem('syn_v3_last_global', count);
+          } catch (e) {}
+        }
 
         updateAllBadgeImages(svgText, count);
       })
       .catch(function(err) {
         var fb = '1';
-        try {
-          fb = localStorage.getItem('syn_v2_last_global') || 
-               localStorage.getItem('syn_v2_local_visits') || '1';
-        } catch (e) {}
+        if (!isIncognito) {
+          try {
+            fb = localStorage.getItem('syn_v3_last_global') || 
+                 localStorage.getItem('syn_v3_local_visits') || '1';
+          } catch (e) {}
+        }
         updateAllBadgeImages(null, fb);
       });
   }
+
+  // Execute with incognito awareness
+  checkIncognito(function(isIncog) {
+    if (isIncog) {
+      // In Incognito mode: NEVER use or read from cache, perform fresh live fetch
+      try {
+        sessionStorage.removeItem('syn_v3_cached_svg');
+        sessionStorage.removeItem('syn_v3_cached_count');
+      } catch (e) {}
+      fetchBadge(true);
+    } else {
+      // Regular mode: use session cache to deduplicate reloads
+      var cachedSvg = null;
+      var cachedCount = null;
+      try {
+        cachedSvg = sessionStorage.getItem('syn_v3_cached_svg');
+        cachedCount = sessionStorage.getItem('syn_v3_cached_count');
+      } catch (e) {}
+
+      if (cachedSvg) {
+        updateAllBadgeImages(cachedSvg, cachedCount || '1');
+      } else {
+        fetchBadge(false);
+      }
+    }
+  });
 
   function syncExistingElements() {
     var svg = null;
     var count = null;
     try {
-      svg = sessionStorage.getItem('syn_v2_cached_svg');
-      count = sessionStorage.getItem('syn_v2_cached_count');
+      svg = sessionStorage.getItem('syn_v3_cached_svg');
+      count = sessionStorage.getItem('syn_v3_cached_count');
     } catch (e) {}
     if (svg) updateAllBadgeImages(svg, count);
   }
@@ -495,7 +588,7 @@
   document.addEventListener('DOMContentLoaded', syncExistingElements);
   window.addEventListener('load', syncExistingElements);
 
-  // 6. Session Stopwatch & Telemetry Updating
+  // 7. Session Stopwatch & Telemetry Updating
   let timerInterval = null;
   function updateTelemetryStats() {
     const elapsedSec = Math.floor((Date.now() - sessionStart) / 1000);
@@ -506,7 +599,7 @@
     if (timeEl) timeEl.textContent = timeStr;
 
     try {
-      const visited = JSON.parse(sessionStorage.getItem('syn_v2_visited_chapters') || '[]');
+      const visited = JSON.parse(sessionStorage.getItem('syn_v3_visited_chapters') || '[]');
       const count = Math.min(15, visited.length);
       const ratioEl = document.getElementById('syn-stat-ch-ratio');
       const progEl = document.getElementById('syn-stat-ch-progress');
