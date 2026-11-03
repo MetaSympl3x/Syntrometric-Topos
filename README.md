@@ -6,7 +6,7 @@
 [![Chapters](https://img.shields.io/badge/Chapters-1%20through%2015%20(Complete)-10B981?style=for-the-badge)](https://github.com/MetaSympl3x/Manim)
 [![Manim Scenes](https://img.shields.io/badge/Manim%20Scenes-180%20Rendered-FFD700?style=for-the-badge)](media/)
 [![MathJax](https://img.shields.io/badge/Formulas-MathJax%20Container%20Wrapping-blueviolet?style=for-the-badge)](shared/)
-[![Visitors](https://api.visitorbadge.io/api/visitors?path=MetaSympl3x-SyntrometricTopos-v3&label=VISITORS&labelColor=%230a101d&countColor=%234169E1&style=for-the-badge)](https://github.com/MetaSympl3x/Syntrometric-Topos)
+[![Visitors](https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Fapi.visitorbadge.io%2Fapi%2Fvisitors%3Fpath%3DMetaSympl3x-SyntrometricTopos-readme%26label%3D&query=%2F%2F%40aria-label&label=VISITORS&color=4169E1&style=for-the-badge&cacheSeconds=1800)](https://github.com/MetaSympl3x/Syntrometric-Topos)
 
 A modern, mathematically rigorous, interactive formalization and audiovisual exposition of Burkhard Heim's foundational 1982 treatise ***Syntrometrische Maximentelezentrik***. 
 
