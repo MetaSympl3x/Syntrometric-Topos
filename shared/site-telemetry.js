@@ -421,9 +421,15 @@
       if (modalHeroFb) modalHeroFb.style.display = 'none';
     }
 
-    const portalFb = document.getElementById('portal-counter-fallback');
-    if (portalFb && dataUrl) {
-      portalFb.style.display = 'none';
+    // When badge image is active, hide ALL fallback text labels to prevent duplication
+    if (dataUrl) {
+      document.querySelectorAll('.syn-counter-fallback').forEach(function(fb) {
+        fb.style.display = 'none';
+      });
+    } else {
+      document.querySelectorAll('.syn-counter-fallback').forEach(function(fb) {
+        fb.style.display = 'inline-block';
+      });
     }
 
     if (countStr) {

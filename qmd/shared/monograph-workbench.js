@@ -1599,7 +1599,7 @@ body.mdrawer-open #syn-stratum-radar {
       </span>
       <a href="javascript:void(0)" onclick="window.openVisitTelemetryModal ? window.openVisitTelemetryModal(event) : null" style="display:inline-flex; align-items:center; text-decoration:none; margin-left:6px;" title="Site Visit Telemetry Ledger">
         <img class="syn-counter-badge-img" alt="Visits" height="16" style="display:none;" />
-        <span class="syn-counter-fallback" style="font-size:11px; color:#60a5fa; font-weight:700;">VISITS <span class="syn-visit-count-display">1</span></span>
+        <span class="syn-counter-fallback" style="display:none; font-size:11px; color:#60a5fa; font-weight:700;">VISITS <span class="syn-visit-count-display">1</span></span>
       </a>
     </div>
     <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
@@ -2023,6 +2023,13 @@ body.mdrawer-open #syn-stratum-radar {
     container.id = 'syn-monograph-mount';
     container.innerHTML = DRAWER_HTML;
     document.body.appendChild(container);
+    try {
+      if (typeof window.updateAllTelemetryBadgeImages === 'function') {
+        var _s = sessionStorage.getItem('syn_v2_cached_svg');
+        var _c = sessionStorage.getItem('syn_v2_cached_count');
+        window.updateAllTelemetryBadgeImages(_s, _c);
+      }
+    } catch(e) {}
 
     // Place the FAB inside the bottom dock so flexbox coordinates it with animation HUDs
     const fab = document.getElementById('syn-monograph-fab');
@@ -2722,7 +2729,7 @@ body.mdrawer-open #syn-stratum-radar {
           <span style="display:flex; align-items:center; gap:8px;">
             <a href="javascript:void(0)" onclick="window.openVisitTelemetryModal ? window.openVisitTelemetryModal(event) : null" style="display:inline-flex; align-items:center; text-decoration:none;" title="Site Visit Telemetry Ledger">
               <img class="syn-counter-badge-img" alt="Visits" height="14" style="display:none;" />
-              <span class="syn-counter-fallback" style="font-size:11px; color:#60a5fa; font-weight:700;">VISITS <span class="syn-visit-count-display">1</span></span>
+              <span class="syn-counter-fallback" style="display:none; font-size:11px; color:#60a5fa; font-weight:700;">VISITS <span class="syn-visit-count-display">1</span></span>
             </a>
             <span id="syn-cmd-count">Ready</span>
           </span>
