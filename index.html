@@ -846,6 +846,11 @@ window.MathJax = {
         <div class="brand-group" onclick="toggleOverview()" title="Open Full Chapter Atlas (Shortcut: M)">
       <span class="brand-badge">Ch 1–15</span>
       <span class="brand-title"><span class="brand-long">Syntrometrische Maximentelezentrik</span><span class="brand-short">Syntrometrie</span></span>
+      <div class="syn-visit-counter-pill" id="portal-visit-counter" onclick="event.stopPropagation(); window.openVisitTelemetryModal ? window.openVisitTelemetryModal(event) : null;" title="Live Site Visits & Global Telemetry Ledger (Click for Details)">
+        <span class="syn-pulse-dot" title="Live Counter Active"></span>
+        <img class="syn-counter-badge-img" id="portal-visitor-badge-img" src="https://api.visitorbadge.io/api/visitors?path=MetaSympl3x.Syntrometric-Topos&amp;label=VISITS&amp;labelColor=%230a101d&amp;countColor=%234169E1&amp;style=flat-square" alt="Visits" width="56" height="17" loading="eager" onerror="this.style.display='none'; document.getElementById('portal-counter-fallback').style.display='inline-flex';" />
+        <span class="syn-counter-fallback" id="portal-counter-fallback">VISITS <span id="syn-local-num">1</span></span>
+      </div>
     </div>
 
     <nav class="chapter-tabs" aria-label="Chapter Navigation">
@@ -921,7 +926,19 @@ window.MathJax = {
   <div id="overview-modal" class="overview-modal" onclick="if(event.target===this) toggleOverview()">
     <div class="overview-container">
       <div class="overview-header">
-        <h2>Syntrometrische Maximentelezentrik — Master Atlas (Chapters 1–15)</h2>
+        <div>
+          <h2>Syntrometrische Maximentelezentrik — Master Atlas (Chapters 1–15)</h2>
+          <div class="overview-stats-ribbon">
+            <span class="stat-pill" onclick="event.stopPropagation(); window.openVisitTelemetryModal ? window.openVisitTelemetryModal(event) : null;" style="cursor:pointer;" title="Click for Detailed Telemetry Ledger">
+              <span class="syn-pulse-dot" style="margin-right:4px;"></span>
+              <img src="https://api.visitorbadge.io/api/visitors?path=MetaSympl3x.Syntrometric-Topos&amp;label=VISITS&amp;labelColor=%230a101d&amp;countColor=%234169E1&amp;style=flat-square" height="16" alt="Visits"/>
+            </span>
+            <span class="stat-pill">📖 15 Chapters</span>
+            <span class="stat-pill" style="color:#60a5fa; font-weight:600;">📑 244 Slides</span>
+            <span class="stat-pill">🎬 180 Manim Scenes</span>
+            <span class="stat-pill">⚡ Lean 4 Formalized</span>
+          </div>
+        </div>
         <button class="action-btn" onclick="toggleOverview()">✕ Close</button>
       </div>
       <div class="overview-grid">
@@ -931,47 +948,47 @@ window.MathJax = {
           <div class="overview-meta">12 Manim Scenes · 30 Fragments · Stage I Polarimeter</div>
         </div>
         <div class="overview-card" style="border-left-color:#20B2AA;" onclick="selectChapter(2); toggleOverview();">
-          <h3><span>Ch 2: The Syntrix Architecture</span><span class="brand-badge">15 Slides</span></h3>
+          <h3><span>Ch 2: The Syntrix Architecture</span><span class="brand-badge">18 Slides</span></h3>
           <p>Colored Operads 𝒪<sub>syn</sub>, Free Tree Monad <i>T</i><sub>𝒪</sub>, Grothendieck Fibrations ∫ℳ, 4 Elementary Selection Representations (Thms. 2.17–2.22), and Splittability (<i>Spaltbarkeit</i>).</p>
           <div class="overview-meta">12 Manim Scenes · 16 Fragments · Stage II Polarimeter</div>
         </div>
         <div class="overview-card" style="border-left-color:#FFA500;" onclick="selectChapter(3); toggleOverview();">
-          <h3><span>Ch 3: Syntrixkorporationen</span><span class="brand-badge">13 Slides</span></h3>
+          <h3><span>Ch 3: Syntrixkorporationen</span><span class="brand-badge">16 Slides</span></h3>
           <p>2 × 2 Korporator Matrix, <i>Eindeutigkeitssatz</i> (Thm. 3.16), Span Pushouts <i>P<sub>a</sub></i> ⊞<sub>ϕ</sub> <i>P<sub>b</sub></i>, Projective Tensor Products ⊗̂<sub>π</sub>, and Cayley–Menger Determinants.</p>
           <div class="overview-meta">12 Manim Scenes · 16 Fragments · Stage III Polarimeter</div>
         </div>
         <div class="overview-card" style="border-left-color:#DC143C;" onclick="selectChapter(4); toggleOverview();">
-          <h3><span>Ch 4: Enyphansyntrizen</span><span class="brand-badge">13 Slides</span></h3>
+          <h3><span>Ch 4: Enyphansyntrizen</span><span class="brand-badge">15 Slides</span></h3>
           <p>Non-Abelian Gauge Curvature <i>F<sub>A</sub> = dA + A ∧ A</i>, Yang–Mills Action &amp; BRST Cohomology (<i>s</i><sub>BRST</sub><sup>2</sup> = 0), Holoforms <i>H</i><sup>0</sup>, and Intrinsic Chronometry τ<sub>sys</sub>.</p>
           <div class="overview-meta">12 Manim Scenes · 12 Fragments · Stage IV Polarimeter</div>
         </div>
         <div class="overview-card" style="border-left-color:#9370DB;" onclick="selectChapter(5); toggleOverview();">
-          <h3><span>Ch 5: Metroplextheorie</span><span class="brand-badge">13 Slides</span></h3>
+          <h3><span>Ch 5: Metroplextheorie</span><span class="brand-badge">15 Slides</span></h3>
           <p>Ambient (∞,1)-Topos 𝒳<sub>syn</sub>, Dendroidal Complete Segal Spaces dCSeg(𝒳<sub>syn</sub>), Syntroclinic Bridge Adjunctions (ϕ)<sub>!</sub> ⊣ (ϕ)<sup>*</sup>, Postnikov τ<sub>≤m</sub>, and Tectonic Spectral Sequences.</p>
           <div class="overview-meta">12 Manim Scenes · 31 Fragments · Lawvere–Schreiber Cohesion</div>
         </div>
         <div class="overview-card" style="border-left-color:#FFD700;" onclick="selectChapter(6); toggleOverview();">
-          <h3><span>Ch 6: Die televariante äonische Area</span><span class="brand-badge">11 Slides</span></h3>
+          <h3><span>Ch 6: Die televariante äonische Area</span><span class="brand-badge">15 Slides</span></h3>
           <p>Final Telecentric Coalgebras (ν𝒯, ζ), Lambek Isomorphism, Polyak–Łojasiewicz Lyapunov Basins, Morse–Smale Separatrices, Telezentralenrelativität, and Wasserstein Resynkolation.</p>
           <div class="overview-meta">12 Manim Scenes · 23 Fragments · Stage V Polarimeter</div>
         </div>
         <div class="overview-card" style="border-left-color:#4169E1;" onclick="selectChapter(7); toggleOverview();">
-          <h3><span>Ch 7: Anthropomorphic Syntrometry</span><span class="brand-badge">13 Slides</span></h3>
+          <h3><span>Ch 7: Anthropomorphic Syntrometry</span><span class="brand-badge">15 Slides</span></h3>
           <p>Quantitative Sites (<b>Ctx</b><sub>quant</sub>), Realification, Tensor Operads, Layered Field Cascades (SM Eq. 28), and the Terminal Polarimeter Stage VI.</p>
           <div class="overview-meta">12 Manim Scenes · 28 Fragments · Stage VI Polarimeter</div>
         </div>
         <div class="overview-card" style="border-left-color:#20B2AA;" onclick="selectChapter(8); toggleOverview();">
-          <h3><span>Ch 8: Syntrometrie über dem Quantitätsaspekt</span><span class="brand-badge">14 Slides</span></h3>
+          <h3><span>Ch 8: Syntrometrie über dem Quantitätsaspekt</span><span class="brand-badge">15 Slides</span></h3>
           <p>Cornered Parameter Manifolds, Grothendieck Nuclearity, Fréchet-Nuclear Carrier Spaces, and the 3-Class Structure-Collapse (Thm. 8.16).</p>
           <div class="overview-meta">12 Manim Scenes · 26 Fragments · Fréchet-Nuclear Carrier</div>
         </div>
         <div class="overview-card" style="border-left-color:#FFA500;" onclick="selectChapter(9); toggleOverview();">
-          <h3><span>Ch 9: Strukturkaskaden</span><span class="brand-badge">13 Slides</span></h3>
+          <h3><span>Ch 9: Strukturkaskaden</span><span class="brand-badge">15 Slides</span></h3>
           <p>Non-Hermitian 36-Component Hermetry, Palatini Coupling, Sobolev Apex Convergence, and Tectonic Energy Extremization.</p>
           <div class="overview-meta">12 Manim Scenes · 40 Fragments · 36-Component Hermetry</div>
         </div>
         <div class="overview-card" style="border-left-color:#DC143C;" onclick="selectChapter(10); toggleOverview();">
-          <h3><span>Ch 10: Metronische Elementaroperationen</span><span class="brand-badge">14 Slides</span></h3>
+          <h3><span>Ch 10: Metronische Elementaroperationen</span><span class="brand-badge">16 Slides</span></h3>
           <p>Discrete Lattice Modules, Finite-Difference Algebras, Discrete Exterior Calculus, and Elementary Metron Operators.</p>
           <div class="overview-meta">12 Manim Scenes · 32 Fragments · Discrete Exterior Calculus</div>
         </div>
@@ -981,22 +998,22 @@ window.MathJax = {
           <div class="overview-meta">12 Manim Scenes · 37 Fragments · 12D Mass Spectrum Engine</div>
         </div>
         <div class="overview-card" style="border-left-color:#FFD700;" onclick="selectChapter(12); toggleOverview();">
-          <h3><span>Ch 12: Representational Discontinuity</span><span class="brand-badge">16 Slides</span></h3>
+          <h3><span>Ch 12: Representational Discontinuity</span><span class="brand-badge">15 Slides</span></h3>
           <p>Operadic Consumption, Protosimplex Encapsulation, and Category-Theoretic Bridge to Representational Continuity.</p>
           <div class="overview-meta">12 Manim Scenes · 32 Fragments · Protosimplex Dynamics</div>
         </div>
         <div class="overview-card" style="border-left-color:#4169E1;" onclick="selectChapter(13); toggleOverview();">
-          <h3><span>Ch 13: Qualia &amp; Consciousness</span><span class="brand-badge">15 Slides</span></h3>
+          <h3><span>Ch 13: Qualia &amp; Consciousness</span><span class="brand-badge">19 Slides</span></h3>
           <p>Postnikov Towers, Grothendieck Galois Groups, and IIT 4.0 Topos-Theoretic Integrated Information (Φ<sub>syn</sub>).</p>
           <div class="overview-meta">12 Manim Scenes · 34 Fragments · IIT 4.0 Topos Φ-Engine</div>
         </div>
         <div class="overview-card" style="border-left-color:#20B2AA;" onclick="selectChapter(14); toggleOverview();">
-          <h3><span>Ch 14: Synthese des Formalismus</span><span class="brand-badge">13 Slides</span></h3>
+          <h3><span>Ch 14: Synthese des Formalismus</span><span class="brand-badge">15 Slides</span></h3>
           <p>Master Translation Register (SM Eqs. 1–100a), Concordance Functor, and Complete Encyclopedic Lexicon across all 15 Chapters.</p>
           <div class="overview-meta">12 Manim Scenes · 14 Fragments · Master Concordance Functor</div>
         </div>
         <div class="overview-card" style="border-left-color:#FFD700;" onclick="selectChapter(15); toggleOverview();">
-          <h3><span>Ch 15: The Syntrometric Horizon</span><span class="brand-badge">15 Slides</span></h3>
+          <h3><span>Ch 15: The Syntrometric Horizon</span><span class="brand-badge">18 Slides</span></h3>
           <p>Master Axiomatic Architecture, Five Open Conjectures, Complete Strata A–D Synthesis &amp; Appendices A–D.</p>
           <div class="overview-meta">12 Manim Scenes · 30 Fragments · Complete Strata A–D Synthesis</div>
         </div>
@@ -1327,6 +1344,7 @@ window.MathJax = {
 
     handleWindowResize();
   </script>
+  <script src="shared/site-telemetry.js"></script>
   <script src="shared/monograph-workbench.js"></script>
 </body>
 </html>

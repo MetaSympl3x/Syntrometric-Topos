@@ -11,6 +11,16 @@
   if (window.__SYN_MONOGRAPH_WORKBENCH_LOADED__) return;
   window.__SYN_MONOGRAPH_WORKBENCH_LOADED__ = true;
 
+  // Auto-load site telemetry & visitor counter if not present
+  if (!window.__SYN_SITE_TELEMETRY_LOADED__) {
+    try {
+      const telScript = document.createElement('script');
+      telScript.src = 'shared/site-telemetry.js';
+      telScript.async = true;
+      document.head.appendChild(telScript);
+    } catch (e) {}
+  }
+
   let rawTeXCache = null;
   let parsedTheorems = [];
   let parsedSMEquations = [];
@@ -1587,6 +1597,9 @@ body.mdrawer-open #syn-stratum-radar {
       <span id="mdrawer-sync-badge" style="background:rgba(32,178,170,0.2); border:1px solid #20B2AA; color:#5eead4; padding:2px 8px; border-radius:4px; font-size:11px;">
         Ch. 1–15 + App. A–E
       </span>
+      <a href="javascript:void(0)" onclick="window.openVisitTelemetryModal ? window.openVisitTelemetryModal(event) : null" style="display:inline-flex; align-items:center; text-decoration:none; margin-left:6px;" title="Site Visit Telemetry Ledger">
+        <img src="https://api.visitorbadge.io/api/visitors?path=MetaSympl3x.Syntrometric-Topos&amp;label=VISITS&amp;labelColor=%230a101d&amp;countColor=%234169E1&amp;style=flat-square" height="16" alt="Visits"/>
+      </a>
     </div>
     <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
       <select id="monograph-chapter-select" class="chapter-jump-select" onchange="window.jumpToMonographChapter(this.value)">
@@ -2705,7 +2718,12 @@ body.mdrawer-open #syn-stratum-radar {
         <div id="syn-cmd-results"></div>
         <div class="cmd-footer">
           <span><kbd class="cmd-kbd">↑</kbd> <kbd class="cmd-kbd">↓</kbd> Navigate &nbsp;·&nbsp; <kbd class="cmd-kbd">Enter</kbd> Jump / Open &nbsp;·&nbsp; <kbd class="cmd-kbd">Ctrl+K</kbd> Toggle</span>
-          <span id="syn-cmd-count">Ready</span>
+          <span style="display:flex; align-items:center; gap:8px;">
+            <a href="javascript:void(0)" onclick="window.openVisitTelemetryModal ? window.openVisitTelemetryModal(event) : null" style="display:inline-flex; align-items:center; text-decoration:none;" title="Site Visit Telemetry Ledger">
+              <img src="https://api.visitorbadge.io/api/visitors?path=MetaSympl3x.Syntrometric-Topos&amp;label=VISITS&amp;labelColor=%230a101d&amp;countColor=%234169E1&amp;style=flat-square" height="15" alt="Visits"/>
+            </a>
+            <span id="syn-cmd-count">Ready</span>
+          </span>
         </div>
       </div>`;
     document.body.appendChild(bd);

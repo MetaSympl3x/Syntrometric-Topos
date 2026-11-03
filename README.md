@@ -6,10 +6,11 @@
 [![Chapters](https://img.shields.io/badge/Chapters-1%20through%2015%20(Complete)-10B981?style=for-the-badge)](https://github.com/MetaSympl3x/Manim)
 [![Manim Scenes](https://img.shields.io/badge/Manim%20Scenes-180%20Rendered-FFD700?style=for-the-badge)](media/)
 [![MathJax](https://img.shields.io/badge/Formulas-MathJax%20Container%20Wrapping-blueviolet?style=for-the-badge)](shared/)
+[![Visitors](https://api.visitorbadge.io/api/visitors?path=MetaSympl3x.Syntrometric-Topos&label=VISITORS&labelColor=%230a101d&countColor=%234169E1&style=for-the-badge)](https://github.com/MetaSympl3x/Syntrometric-Topos)
 
 A modern, mathematically rigorous, interactive formalization and audiovisual exposition of Burkhard Heim's foundational 1982 treatise ***Syntrometrische Maximentelezentrik***. 
 
-This repository translates the theoretical architecture of the treatise (`Topos.tex`, ~17,600+ lines) into a unified digital ecosystem: **15 interactive Quarto Reveal.js decks**, **180 procedural Manim Community mathematical animations**, **interactive JavaScript laboratory widgets**, and a **master web portal** with a continuous 231-slide 2D grid mega-deck.
+This repository translates the theoretical architecture of the treatise (`Topos.tex`, ~17,600+ lines) into a unified digital ecosystem: **15 interactive Quarto Reveal.js decks**, **180 procedural Manim Community mathematical animations**, **interactive JavaScript laboratory widgets**, and a **master web portal** with a continuous 244-slide 2D grid mega-deck.
 
 ---
 
@@ -222,7 +223,7 @@ When viewing the presentation inside the master portal:
 | `M` / `☰ Atlas` | Toggle the **15-Chapter Master Atlas Modal** with rich metadata cards. |
 | `Escape` | Close the Atlas modal or exit full screen. |
 | `⛶ Zen` | Toggle **Zen Mode** (hides top navigation chrome for distraction-free lecturing). |
-| `⊞ 2D Mega-Deck` | Switch to the unified 231-slide 2D grid (`syntrometrie_all.html`). |
+| `⊞ 2D Mega-Deck` | Switch to the unified 244-slide 2D grid (`syntrometrie_all.html`). |
 | `↗ Standalone` | Open the currently selected chapter deck in a dedicated independent tab. |
 | `F` | Toggle browser native fullscreen mode. |
 
