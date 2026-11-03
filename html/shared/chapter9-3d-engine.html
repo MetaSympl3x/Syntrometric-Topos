@@ -1065,6 +1065,15 @@
   // Master 60fps Loop
 
   function renderLoop() {
+      if (document.hidden) {
+        setTimeout(() => requestAnimationFrame(renderLoop), 250);
+        return;
+      }
+      const hudGuard = document.getElementById('ch9-3d-hud');
+      if (hudGuard && (hudGuard.classList.contains('minimized') || hudGuard.style.display === 'none')) {
+        setTimeout(() => requestAnimationFrame(renderLoop), 180);
+        return;
+      }
 
     timeSec += 0.016;
 
@@ -1426,8 +1435,14 @@
     window.addEventListener('resize', resize);
 
         // Universal multi-target scroll and touch listeners for mobile & desktop morph stage sync
+    let syncRaf_9 = false;
     const synBindSync_syncCh9WithDeck = () => {
-      syncCh9WithDeck();
+      if (syncRaf_9) return;
+      syncRaf_9 = true;
+      requestAnimationFrame(() => {
+        syncRaf_9 = false;
+        syncCh9WithDeck();
+      });
     };
 
     window.addEventListener('scroll', synBindSync_syncCh9WithDeck, { capture: true, passive: true });

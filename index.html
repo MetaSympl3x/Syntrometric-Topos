@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Syntrometrische Maximentelezentrik — Interactive 15-Chapter Mathematical Physics & Topos-Theoretic Treatise with 60fps 3D Morph Engines, 180 Manim Scenes, Lean 4 Verification & Synchronized Monograph Workbench.">
+  <meta property="og:title" content="Syntrometrische Maximentelezentrik — Interactive Treatise & 3D Topos Workbench">
+  <meta property="og:description" content="Explore 15 Chapters, 214 Interactive Slides, 180 Manim Animations, 60fps 3D Morph Engines, and Synchronized LaTeX/PDF Monograph.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="preload" href="shared/monograph-workbench.js" as="script">
   <title>Syntrometrische Maximentelezentrik</title>
   <style>
     
@@ -254,6 +262,21 @@
       border: none;
       background: var(--bg-deep);
       display: block;
+      transition: opacity 0.18s ease;
+    }
+
+    #portal-load-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 2.5px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--royal), var(--teal), var(--gold));
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+      z-index: 1050;
+      opacity: 0;
+      pointer-events: none;
+      transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
     }
 
     /* Overview Modal Grid */
@@ -890,7 +913,8 @@ window.MathJax = {
 
   <!-- Fullscreen Chapter Deck Viewport -->
   <main class="viewport-wrapper">
-    <iframe id="chapter-frame" src="chapter1.html" allow="autoplay; fullscreen" allowfullscreen onload="updateScrollBtn(); handleWindowResize();"></iframe>
+    <div id="portal-load-bar"></div>
+    <iframe id="chapter-frame" src="chapter1.html" allow="autoplay; fullscreen" allowfullscreen onload="finishPortalLoad(); updateScrollBtn(); handleWindowResize();"></iframe>
   </main>
 
   <!-- Chapter Atlas Modal -->
@@ -1002,6 +1026,7 @@ window.MathJax = {
       const targetUrl = `chapter${ch}.html${slideHash}`;
       const frame = document.getElementById('chapter-frame');
       if (frame && frame.getAttribute('src') !== targetUrl) {
+        startPortalLoad();
         frame.setAttribute('src', targetUrl);
       }
 
@@ -1046,11 +1071,32 @@ window.MathJax = {
       }, 120);
     }
 
-    // Native browser resource hints for fast responsivity
+    function startPortalLoad() {
+      const bar = document.getElementById('portal-load-bar');
+      if (bar) {
+        bar.style.transition = 'none';
+        bar.style.width = '15%';
+        bar.style.opacity = '1';
+        requestAnimationFrame(() => {
+          bar.style.transition = 'width 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease';
+          bar.style.width = '78%';
+        });
+      }
+    }
+
+    function finishPortalLoad() {
+      const bar = document.getElementById('portal-load-bar');
+      if (bar) {
+        bar.style.width = '100%';
+        setTimeout(() => { bar.style.opacity = '0'; }, 180);
+      }
+    }
+
+    // Native browser resource hints for fast responsivity (respects Data-Saver mode)
     const prefetchedUrls = new Set();
-    function prefetchChapter(chNum) {
-      const url = `chapter${chNum}.html`;
+    function prefetchUrl(url) {
       if (prefetchedUrls.has(url)) return;
+      if (navigator.connection && navigator.connection.saveData) return;
       prefetchedUrls.add(url);
       const link = document.createElement('link');
       link.rel = 'prefetch';
@@ -1058,15 +1104,27 @@ window.MathJax = {
       document.head.appendChild(link);
     }
 
+    function prefetchChapter(chNum) {
+      prefetchUrl(`chapter${chNum}.html`);
+      prefetchUrl(`shared/chapter${chNum}-widgets.js`);
+    }
+
     let idlePrefetchTimer = null;
     function scheduleIdlePrefetch(activeCh) {
       clearTimeout(idlePrefetchTimer);
       idlePrefetchTimer = setTimeout(() => {
-        const nextCh = activeCh < totalChapters ? activeCh + 1 : 1;
-        const prevCh = activeCh > 1 ? activeCh - 1 : totalChapters;
-        prefetchChapter(nextCh);
-        prefetchChapter(prevCh);
-      }, 1200);
+        const runPrefetch = () => {
+          const nextCh = activeCh < totalChapters ? activeCh + 1 : 1;
+          const prevCh = activeCh > 1 ? activeCh - 1 : totalChapters;
+          prefetchChapter(nextCh);
+          prefetchChapter(prevCh);
+        };
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(runPrefetch, { timeout: 2000 });
+        } else {
+          runPrefetch();
+        }
+      }, 900);
     }
 
     function toggleOverview() {
@@ -1226,16 +1284,16 @@ window.MathJax = {
       }
     });
 
-    // Ensure any service worker or stale cache is immediately cleaned up
+    // Clean up legacy service workers only if registered (preserve normal HTTP asset cache)
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(regs => {
-        for (const r of regs) r.unregister();
+        if (regs && regs.length > 0) {
+          for (const r of regs) r.unregister();
+          if ('caches' in window) {
+            caches.keys().then(keys => keys.forEach(k => caches.delete(k))).catch(() => {});
+          }
+        }
       }).catch(() => {});
-      if ('caches' in window) {
-        caches.keys().then(keys => {
-          keys.forEach(k => caches.delete(k));
-        }).catch(() => {});
-      }
     }
 
     broadcastTrayOffset();

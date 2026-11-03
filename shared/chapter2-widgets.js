@@ -1011,6 +1011,15 @@ function inject3DHUD() {
 
   function renderFrame(ts) {
     if (!canvas || !wrap || !ctx) return;
+    if (document.hidden) {
+      setTimeout(() => requestAnimationFrame(renderFrame), 250);
+      return;
+    }
+    const hudGuard = document.getElementById('syntrix-3d-hud');
+    if (hudGuard && (hudGuard.classList.contains('minimized') || hudGuard.style.display === 'none')) {
+      setTimeout(() => requestAnimationFrame(renderFrame), 180);
+      return;
+    }
     const dt = 0.016;
     timeSec += dt;
 
@@ -1512,8 +1521,14 @@ function inject3DHUD() {
 
     window.addEventListener('resize', resizeCanvas);
         // Universal multi-target scroll and touch listeners for mobile & desktop morph stage sync
+    let syncRaf_2 = false;
     const synBindSync_sync3DWithDeck = () => {
-      sync3DWithDeck();
+      if (syncRaf_2) return;
+      syncRaf_2 = true;
+      requestAnimationFrame(() => {
+        syncRaf_2 = false;
+        sync3DWithDeck();
+      });
     };
 
     window.addEventListener('scroll', synBindSync_sync3DWithDeck, { capture: true, passive: true });

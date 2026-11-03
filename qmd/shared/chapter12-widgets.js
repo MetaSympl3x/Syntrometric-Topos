@@ -1106,6 +1106,15 @@
     }
 
     function renderLoop() {
+      if (document.hidden) {
+        setTimeout(() => requestAnimationFrame(renderLoop), 250);
+        return;
+      }
+      const hudGuard = document.getElementById('ch12-3d-hud');
+      if (hudGuard && (hudGuard.classList.contains('minimized') || hudGuard.style.display === 'none')) {
+        setTimeout(() => requestAnimationFrame(renderLoop), 180);
+        return;
+      }
       timeSec += 0.016;
       curStage += (targetStage - curStage) * 0.14;
       if (autoOrbit && !isDragging) camYaw += 0.0055;

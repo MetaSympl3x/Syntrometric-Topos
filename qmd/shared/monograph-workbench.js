@@ -1633,7 +1633,7 @@ body.mdrawer-open #syn-stratum-radar {
   <div class="mdrawer-body">
     <!-- PANE 1: Synchronized Embedded PDF -->
     <div class="mdrawer-pane active" id="mpane-pdf">
-      <iframe id="monograph-pdf-frame" src="Syntrometric-Topos.pdf#page=11&view=FitH"></iframe>
+      <iframe id="monograph-pdf-frame" data-pdf-base="Syntrometric-Topos.pdf" src="about:blank" loading="lazy"></iframe>
     </div>
 
     <!-- PANE 2: Live Raw LaTeX Source Explorer -->
@@ -1869,11 +1869,16 @@ body.mdrawer-open #syn-stratum-radar {
       }
     });
 
-    document.body.classList.toggle('syn-3d-expanded', hasExpanded);
+    if (document.body.classList.contains('syn-3d-expanded') !== hasExpanded) {
+      document.body.classList.toggle('syn-3d-expanded', hasExpanded);
+    }
 
     if (window.parent && window.parent !== window && window.parent.document && window.parent.document.body) {
       try {
-        window.parent.document.body.classList.toggle('syn-3d-expanded', hasExpanded);
+        const pBody = window.parent.document.body;
+        if (pBody.classList.contains('syn-3d-expanded') !== hasExpanded) {
+          pBody.classList.toggle('syn-3d-expanded', hasExpanded);
+        }
       } catch (_) {}
     }
 
@@ -1894,6 +1899,38 @@ body.mdrawer-open #syn-stratum-radar {
         }
       } catch (_) {}
     }
+  }
+
+  let hudObsInitialized = false;
+  let hudCheckRaf = false;
+  function scheduleHUDCheck() {
+    if (hudCheckRaf) return;
+    hudCheckRaf = true;
+    requestAnimationFrame(() => {
+      hudCheckRaf = false;
+      dockAnimationHUDs();
+    });
+  }
+
+  function setupHUDMutationObserver() {
+    if (hudObsInitialized || !('MutationObserver' in window) || !document.body) return;
+    hudObsInitialized = true;
+    const obs = new MutationObserver(mutations => {
+      for (let i = 0; i < mutations.length; i++) {
+        const m = mutations[i];
+        if (m.type === 'childList') {
+          scheduleHUDCheck();
+          break;
+        } else if (m.type === 'attributes') {
+          const t = m.target;
+          if (t && t.id && (t.id.endsWith('-3d-hud') || t.id === 'syntrix-3d-hud')) {
+            scheduleHUDCheck();
+            break;
+          }
+        }
+      }
+    });
+    obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
   }
 
   function dockAnimationHUDs() {
@@ -1940,9 +1977,9 @@ body.mdrawer-open #syn-stratum-radar {
               window.parent.toggleCommandPalette(initialFilter);
             }
           };
-          const dock = ensureBottomDock();
+          ensureBottomDock();
           dockAnimationHUDs();
-          checkHUDExtendedState();
+          setupHUDMutationObserver();
           return;
         }
       }
@@ -1981,14 +2018,7 @@ body.mdrawer-open #syn-stratum-radar {
 
     // Dock existing animation HUDs and watch for dynamically injected ones & expand/collapse
     dockAnimationHUDs();
-    checkHUDExtendedState();
-    if ('MutationObserver' in window) {
-      const obs = new MutationObserver(() => {
-        dockAnimationHUDs();
-        checkHUDExtendedState();
-      });
-      obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style'] });
-    }
+    setupHUDMutationObserver();
 
     // Stop propagation on inputs inside drawer so Reveal doesn't capture keystrokes
     const dr = document.getElementById('syn-monograph-drawer');
@@ -2010,6 +2040,17 @@ body.mdrawer-open #syn-stratum-radar {
     });
   }
 
+  function syncPDFIfDrawerOpen() {
+    const dr = document.getElementById('syn-monograph-drawer');
+    const frame = document.getElementById('monograph-pdf-frame');
+    if (!dr || !dr.classList.contains('open') || !frame) return;
+    const baseSrc = frame.getAttribute('data-pdf-base') || 'Syntrometric-Topos.pdf';
+    const targetSrc = `${baseSrc}#page=${currentPDFPage}&view=FitH`;
+    if (frame.getAttribute('src') !== targetSrc) {
+      frame.setAttribute('src', targetSrc);
+    }
+  }
+
   window.toggleMonographDrawer = function() {
     if (window.parent && window.parent !== window && typeof window.parent.toggleMonographDrawer === 'function') {
       window.parent.toggleMonographDrawer();
@@ -2021,6 +2062,7 @@ body.mdrawer-open #syn-stratum-radar {
       dr.classList.toggle('open', willOpen);
       document.body.classList.toggle('mdrawer-open', willOpen);
       if (willOpen) {
+        syncPDFIfDrawerOpen();
         if (!rawTeXCache) {
           loadRawTeXFile();
         } else {
@@ -2037,7 +2079,9 @@ body.mdrawer-open #syn-stratum-radar {
       document.getElementById('mtab-' + t)?.classList.toggle('active', t === tab);
       document.getElementById('mpane-' + t)?.classList.toggle('active', t === tab);
     });
-    if (tab === 'graph' && typeof window.renderArchitectureGraph === 'function') {
+    if (tab === 'pdf') {
+      syncPDFIfDrawerOpen();
+    } else if (tab === 'graph' && typeof window.renderArchitectureGraph === 'function') {
       window.renderArchitectureGraph();
     }
     if (!rawTeXCache) {
@@ -2045,10 +2089,12 @@ body.mdrawer-open #syn-stratum-radar {
     } else {
       if (tab === 'rosetta') {
         const cont = document.getElementById('rosetta-cards-container');
-        safeTypeset(cont);
+        if (cont && !cont.children.length) window.filterRosettaRegister("");
+        else safeTypeset(cont);
       } else if (tab === 'thm') {
         const cont = document.getElementById('thm-cards-container');
-        safeTypeset(cont);
+        if (cont && !cont.children.length) window.filterTheoremIndex("");
+        else safeTypeset(cont);
       }
     }
   };
@@ -2059,35 +2105,39 @@ body.mdrawer-open #syn-stratum-radar {
     if (inp) inp.value = currentPDFPage;
     const pill = document.getElementById('fab-page-pill');
     if (pill) pill.innerText = `p. ${currentPDFPage}`;
-    const frame = document.getElementById('monograph-pdf-frame');
-    if (frame) {
-      const currentSrc = frame.getAttribute('src') || 'Syntrometric-Topos.pdf';
-      const baseSrc = currentSrc.split('#')[0];
-      frame.src = `${baseSrc}#page=${currentPDFPage}&view=FitH`;
-    }
+    syncPDFIfDrawerOpen();
   };
 
   window.jumpToMonographChapter = function(chKey) {
     const entry = CHAPTER_PAGE_MAP[chKey];
     if (!entry) return;
+    const sel = document.getElementById('monograph-chapter-select');
+    if (sel) sel.value = chKey;
     window.jumpToPDFPage(entry.basePage);
+    const dr = document.getElementById('syn-monograph-drawer');
     if (rawTeXCache) {
       showTeXAtAnchor(entry.texAnchor);
-    } else {
+    } else if (dr && dr.classList.contains('open')) {
       loadRawTeXFile().then(() => showTeXAtAnchor(entry.texAnchor));
     }
   };
 
   window.openMonographAtPage = function(pageNum, texQuery) {
     const dr = document.getElementById('syn-monograph-drawer');
-    if (dr && !dr.classList.contains('open')) dr.classList.add('open');
+    if (dr && !dr.classList.contains('open')) {
+      dr.classList.add('open');
+      document.body.classList.add('mdrawer-open');
+    }
     if (pageNum) window.jumpToPDFPage(pageNum);
+    syncPDFIfDrawerOpen();
     if (texQuery) {
       loadRawTeXFile().then(() => {
         window.switchMonographTab('tex');
         const sb = document.getElementById('tex-search-box');
         if (sb) { sb.value = texQuery; window.searchRawTeX(texQuery); }
       });
+    } else if (!rawTeXCache) {
+      loadRawTeXFile();
     }
   };
 
@@ -3378,7 +3428,6 @@ body.mdrawer-open #syn-stratum-radar {
   function initMonographWorkbench() {
     updateWindowsTrayAvoidance();
     injectDOM();
-    window.filterRosettaRegister("");
     syncMonographPageWithSlide();
     if (window.Reveal) {
       window.Reveal.on('slidechanged', syncMonographPageWithSlide);
@@ -3396,13 +3445,19 @@ body.mdrawer-open #syn-stratum-radar {
 if (typeof window !== 'undefined' && !window.__syn_morph_stage_monitor_initialized) {
   window.__syn_morph_stage_monitor_initialized = true;
 
+  let morphSyncRaf = false;
   const triggerMorphStageSync = () => {
-    for (let ch = 1; ch <= 15; ch++) {
-      const fnName = ch === 2 ? 'sync3DWithDeck' : `syncCh${ch}WithDeck`;
-      if (typeof window[fnName] === 'function') {
-        try { window[fnName](); } catch (_) {}
+    if (morphSyncRaf) return;
+    morphSyncRaf = true;
+    requestAnimationFrame(() => {
+      morphSyncRaf = false;
+      for (let ch = 1; ch <= 15; ch++) {
+        const fnName = ch === 2 ? 'sync3DWithDeck' : `syncCh${ch}WithDeck`;
+        if (typeof window[fnName] === 'function') {
+          try { window[fnName](); } catch (_) {}
+        }
       }
-    }
+    });
   };
 
   window.addEventListener('scroll', triggerMorphStageSync, { capture: true, passive: true });

@@ -1450,6 +1450,15 @@ const canvas = document.getElementById('ch5-3d-canvas');
   // Master 60fps Loop
 
   function renderLoop() {
+      if (document.hidden) {
+        setTimeout(() => requestAnimationFrame(renderLoop), 250);
+        return;
+      }
+      const hudGuard = document.getElementById('ch5-3d-hud');
+      if (hudGuard && (hudGuard.classList.contains('minimized') || hudGuard.style.display === 'none')) {
+        setTimeout(() => requestAnimationFrame(renderLoop), 180);
+        return;
+      }
 
     timeSec += 0.016;
 
@@ -1810,8 +1819,14 @@ const canvas = document.getElementById('ch5-3d-canvas');
     window.addEventListener('resize', resize);
 
         // Universal multi-target scroll and touch listeners for mobile & desktop morph stage sync
+    let syncRaf_5 = false;
     const synBindSync_syncCh5WithDeck = () => {
-      syncCh5WithDeck();
+      if (syncRaf_5) return;
+      syncRaf_5 = true;
+      requestAnimationFrame(() => {
+        syncRaf_5 = false;
+        syncCh5WithDeck();
+      });
     };
 
     window.addEventListener('scroll', synBindSync_syncCh5WithDeck, { capture: true, passive: true });

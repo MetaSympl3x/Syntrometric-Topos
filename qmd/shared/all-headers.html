@@ -1,17 +1,31 @@
 
 <script id="mathjax-hub-bridge">
-// MathJax v3 Production Bridge & Reveal.js Math Guard
+// MathJax v3 Production Bridge & Scoped Reveal.js Math Optimizer
 (function() {
+  let mjxChain = Promise.resolve();
+  let fullDeckTypesetDone = false;
+
   function typesetRevealMath(target) {
-    if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
-      window.MathJax.startup.promise.then(() => {
-        if (typeof window.MathJax.typesetPromise === 'function') {
-          return window.MathJax.typesetPromise(target ? [target] : undefined);
-        }
-      }).catch(function(err) {});
-    } else if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
-      window.MathJax.typesetPromise(target ? [target] : undefined).catch(function(err) {});
+    if (target && target.nodeType === 1 && target.tagName === 'SECTION') {
+      if (target.dataset.synMathDone === '1') return;
     }
+    const run = () => {
+      if (!window.MathJax || typeof window.MathJax.typesetPromise !== 'function') return Promise.resolve();
+      const elems = target ? (Array.isArray(target) ? target : [target]) : undefined;
+      return window.MathJax.typesetPromise(elems).then(() => {
+        if (target && target.nodeType === 1 && target.tagName === 'SECTION') {
+          target.dataset.synMathDone = '1';
+        } else if (!target) {
+          fullDeckTypesetDone = true;
+        }
+      }).catch(function() {});
+    };
+    mjxChain = mjxChain.then(() => {
+      if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+        return window.MathJax.startup.promise.then(run).catch(function() {});
+      }
+      return run();
+    });
   }
   window.typesetMath = typesetRevealMath;
 
@@ -20,8 +34,13 @@
     return {
       id: 'mathjax-bridge',
       init: function(deck) {
-        if (window.typesetMath) window.typesetMath();
-        deck.on('slidechanged', function() { if (window.typesetMath) window.typesetMath(); });
+        const cur = deck.getCurrentSlide ? deck.getCurrentSlide() : undefined;
+        typesetRevealMath(cur);
+        deck.on('slidechanged', function(ev) {
+          if (!fullDeckTypesetDone && ev && ev.currentSlide) {
+            typesetRevealMath(ev.currentSlide);
+          }
+        });
       }
     };
   };
@@ -43,14 +62,23 @@
   window.MathJax = window.MathJax || {};
   window.MathJax.Hub = {
     Config: function() {},
-    Queue: function() { typesetRevealMath(); },
+    Queue: function() { if (!fullDeckTypesetDone) typesetRevealMath(); },
     Typeset: function(el) { typesetRevealMath(el); }
   };
 
   function hookReveal() {
     if (window.Reveal) {
-      window.Reveal.on('ready', () => setTimeout(() => typesetRevealMath(), 150));
-      window.Reveal.on('slidechanged', () => setTimeout(() => typesetRevealMath(), 80));
+      window.Reveal.on('ready', () => {
+        const cur = window.Reveal.getCurrentSlide ? window.Reveal.getCurrentSlide() : undefined;
+        typesetRevealMath(cur);
+        const scheduleIdle = window.requestIdleCallback || function(cb) { setTimeout(cb, 500); };
+        scheduleIdle(() => { if (!fullDeckTypesetDone) typesetRevealMath(); });
+      });
+      window.Reveal.on('slidechanged', (ev) => {
+        if (!fullDeckTypesetDone && ev && ev.currentSlide) {
+          typesetRevealMath(ev.currentSlide);
+        }
+      });
     } else {
       setTimeout(hookReveal, 100);
     }
@@ -382,6 +410,7 @@ window.MathJax = {
 };
 </script>
 <script src="shared/syntrometric-tex-macros.js"></script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <script id="mathjax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style id="syn-desktop-layout-fix">
 
@@ -503,6 +532,7 @@ input[type="range"] {
     flex: 1 1 auto !important;
     box-sizing: border-box !important;
   }
+}
 
       #syn-bottom-dock {
         position: fixed !important;
@@ -520,7 +550,7 @@ input[type="range"] {
           right: 8px !important;
           bottom: calc(var(--syn-bottom-offset, 8px) + env(safe-area-inset-bottom, 0px)) !important;
           flex-direction: column !important;
-          align-items: flex-start !important;
+          align-items: flex-end !important;
           gap: 6px !important;
           max-width: calc(100vw - 16px) !important;
         }
@@ -542,9 +572,11 @@ input[type="range"] {
           left: auto !important;
           right: auto !important;
           bottom: auto !important;
-          width: 100% !important;
-          max-width: 100% !important;
-        }
+          width: auto !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    align-self: flex-end !important;
+  }
       }
       @media (min-width: 901px) {
         #syn-bottom-dock {
@@ -552,7 +584,8 @@ input[type="range"] {
           right: 20px !important;
           bottom: var(--syn-bottom-offset, 64px) !important;
           flex-direction: row !important;
-          justify-content: space-between !important;
+          flex-wrap: wrap !important;
+    justify-content: space-between !important;
           align-items: flex-end !important;
           gap: 20px !important;
           transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
@@ -571,7 +604,9 @@ input[type="range"] {
           bottom: auto !important;
           width: auto !important;
           max-width: min(480px, 45vw) !important;
-        }
+        margin-left: auto !important;
+    align-self: flex-end !important;
+  }
       }
       body.mdrawer-open #syn-bottom-dock [id$="-3d-hud"],
       body.mdrawer-open #syn-bottom-dock #syntrix-3d-hud,
@@ -623,8 +658,6 @@ input[type="range"] {
           flex-direction: column !important;
         }
       }
-
-}
 
 @media (min-width: 901px) {
   .reveal .stratum-badge,
@@ -2576,19 +2609,9 @@ window.addEventListener('message', (event) => {
   let resizeTimer = null;
 
   function performDynamicScaling() {
-    if (window.Reveal) {
-      if (typeof window.Reveal.layout === 'function') {
+      if (window.Reveal && typeof window.Reveal.layout === 'function') {
         window.Reveal.layout();
       }
-    }
-    if (window.MathJax && window.MathJax.Hub) {
-      try {
-        window.MathJax.Hub.Queue(["Rerender", window.MathJax.Hub]);
-      } catch (e) {}
-    }
-    if (typeof prepareVideosAndPanels === 'function') {
-      prepareVideosAndPanels();
-    }
     try {
       const scale = window.Reveal && typeof window.Reveal.getScale === 'function' ? window.Reveal.getScale() : 1;
       window.dispatchEvent(new CustomEvent('syntrometrie:resize', {
@@ -2626,27 +2649,30 @@ window.addEventListener('message', (event) => {
       v.muted = true;
       v.defaultMuted = true;
       v.setAttribute('loop', '');
-      v.setAttribute('preload', 'auto');
-      v.style.cursor = 'pointer';
+        if (!v.getAttribute('preload') || v.getAttribute('preload') === 'auto') {
+          v.setAttribute('preload', 'metadata');
+        }
+        v.style.cursor = 'pointer';
 
-      // Tap on touch devices to toggle play/pause
-      if (!v.dataset.touchBound) {
-        v.dataset.touchBound = 'true';
-        v.addEventListener('click', (e) => {
-          e.stopPropagation();
-          if (v.paused) {
+        if (!v.dataset.touchBound) {
+          v.dataset.touchBound = 'true';
+          v.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (v.paused) v.play().catch(() => {});
+            else v.pause();
+          });
+        }
+
+        const isScrollMode = !!document.querySelector('.reveal-viewport.reveal-scroll');
+        const slide = v.closest('section');
+        if (!isScrollMode && slide) {
+          if (slide.classList.contains('present')) {
+            v.setAttribute('preload', 'auto');
             v.play().catch(() => {});
-          } else {
+          } else if (!v.paused) {
             v.pause();
           }
-        });
-      }
-
-      // If video is in active slide or in scroll mode, start playback
-      const slide = v.closest('.present, .scroll-page, section');
-      if (slide && (slide.classList.contains('present') || document.querySelector('.reveal-viewport.reveal-scroll'))) {
-        v.play().catch(() => {});
-      }
+        }
     });
 
     // 2. Tag panels and cards with .syn-scroll-reveal for polished scroll reveals
@@ -2670,11 +2696,12 @@ window.addEventListener('message', (event) => {
 
               // Autoplay visible video or nested videos
               if (el.tagName === 'VIDEO') {
-                el.play().catch(() => {});
-              } else {
-                const innerVids = el.querySelectorAll('video');
-                innerVids.forEach(iv => iv.play().catch(() => {}));
-              }
+                  el.setAttribute('preload', 'auto');
+                  el.play().catch(() => {});
+                } else {
+                  const innerVids = el.querySelectorAll('video');
+                  innerVids.forEach(iv => { iv.setAttribute('preload', 'auto'); iv.play().catch(() => {}); });
+                }
             } else if (!entry.isIntersecting && entry.intersectionRatio === 0) {
               // Pause when completely off screen to preserve battery
               if (el.tagName === 'VIDEO') {
@@ -2687,13 +2714,22 @@ window.addEventListener('message', (event) => {
           });
         }, {
           threshold: [0, 0.08, 0.4],
-          rootMargin: '30px 0px 30px 0px'
+          rootMargin: '220px 0px 220px 0px'
         });
       }
 
-      // Observe all videos and reveal targets
-      videos.forEach(v => scrollObserver.observe(v));
-      revealTargets.forEach(rt => scrollObserver.observe(rt));
+      videos.forEach(v => {
+        if (!v.dataset.synObserved) {
+          v.dataset.synObserved = '1';
+          scrollObserver.observe(v);
+        }
+      });
+      revealTargets.forEach(rt => {
+        if (!rt.dataset.synObserved) {
+          rt.dataset.synObserved = '1';
+          scrollObserver.observe(rt);
+        }
+      });
     }
   }
   window.prepareVideos = prepareVideosAndPanels;
@@ -2771,7 +2807,6 @@ window.addEventListener('message', (event) => {
   });
 })();
 </script>
-<script src="shared/monograph-workbench.js"></script>
 
 
 <!-- =========================================================================
@@ -3122,10 +3157,19 @@ window.addEventListener('message', (event) => {
   window.addEventListener('pointerdown', capturePhaseGuard, { capture: true, passive: true });
 
   try {
+    var scanRafPending = false;
+    function scheduleScanAndIsolate() {
+      if (scanRafPending) return;
+      scanRafPending = true;
+      requestAnimationFrame(function() {
+        scanRafPending = false;
+        scanAndIsolate();
+      });
+    }
     var observer = new MutationObserver(function(mutations) {
       for (var i = 0; i < mutations.length; i++) {
         if (mutations[i].addedNodes && mutations[i].addedNodes.length) {
-          scanAndIsolate();
+          scheduleScanAndIsolate();
           break;
         }
       }

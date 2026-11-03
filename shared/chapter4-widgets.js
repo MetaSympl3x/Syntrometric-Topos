@@ -1176,6 +1176,15 @@ function injectCh43DHUD() {
     }
 
     function renderLoop() {
+      if (document.hidden) {
+        setTimeout(() => requestAnimationFrame(renderLoop), 250);
+        return;
+      }
+      const hudGuard = document.getElementById('ch4-3d-hud');
+      if (hudGuard && (hudGuard.classList.contains('minimized') || hudGuard.style.display === 'none')) {
+        setTimeout(() => requestAnimationFrame(renderLoop), 180);
+        return;
+      }
       timeSec += 0.016;
       curStage += (targetStage - curStage) * 0.14;
       if (autoOrbit && !isDragging) camYaw += 0.0055;
@@ -1406,8 +1415,14 @@ function injectCh43DHUD() {
     requestAnimationFrame(renderLoop);
     window.addEventListener('resize', resize);
         // Universal multi-target scroll and touch listeners for mobile & desktop morph stage sync
+    let syncRaf_4 = false;
     const synBindSync_syncCh4WithDeck = () => {
-      syncCh4WithDeck();
+      if (syncRaf_4) return;
+      syncRaf_4 = true;
+      requestAnimationFrame(() => {
+        syncRaf_4 = false;
+        syncCh4WithDeck();
+      });
     };
 
     window.addEventListener('scroll', synBindSync_syncCh4WithDeck, { capture: true, passive: true });
