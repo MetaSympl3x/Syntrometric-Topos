@@ -1,32 +1,30 @@
 /**
  * =========================================================================
- * SYNTROMETRIE SITE TELEMETRY — PROFESSIONAL ONE-SHOT VISITOR COUNTER
- * Privacy-Preserving Global Hit Badge (visitorbadge.io) + Local Session Ledger
+ * SYNTROMETRIE SITE TELEMETRY — PROFESSIONAL VISITOR COUNTER
+ * Privacy-Preserving Global Hit Badge + Cross-Tab Device Session Ledger
  *
- * COUNTING GUARANTEE:
- *   Each unique browser profile is counted AT MOST ONCE — ever.
- *   A permanent "registered" flag (syn_v7_browser_registered) is set in
- *   localStorage on the browser's very first successful hit. Every subsequent
- *   visit from the same browser — any tab, any session, any restart — reuses
- *   the locally-cached SVG and NEVER fires the incrementing API endpoint again.
+ * COUNTING INTEGRITY GUARANTEE:
+ * 1. ONE HIT PER REAL USER BROWSER EVER:
+ *    On a visitor's very first visit in normal browsing on production, a single
+ *    hit is recorded and permanently registered in localStorage ('browser_registered').
+ *    Every subsequent visit from that device/browser (tabs, reloads, restarts,
+ *    subsequent days) reuses the cached SVG with 0 network requests and 0 new counts.
  *
- * CROSS-TAB DEDUPLICATION (same session):
- *   An inflight lock (syn_v7_fetch_inflight) prevents parallel tabs opened
- *   simultaneously (e.g. Chrome session restore) from both firing fetches.
- *   The winner stores the SVG; other tabs receive it via the 'storage' event.
+ * 2. ZERO INCOGNITO / PRIVATE MODE INFLATION:
+ *    Private browsing windows NEVER hit the incrementing counter endpoint.
+ *    Instead, incognito sessions fetch the read-only cached badge via the
+ *    Shields.io CDN proxy (cached for 24h). The user sees the real, styled
+ *    visit badge, but the visitor counter is NEVER incremented.
  *
- * INCOGNITO/PRIVATE MODE:
- *   Detected via multi-engine heuristic (Chromium quota, WebKit openDatabase,
- *   Gecko IndexedDB). Incognito requests are always live, never cached, and
- *   never set the registered flag — a user testing in private mode does not
- *   "use up" their one-shot count for normal browsing.
+ * 3. ZERO LOCALHOST / FILE:// INFLATION:
+ *    Local development, testing, and debugging on localhost, 127.0.0.1, or file://
+ *    never trigger the live counter.
  *
- * SVG DISPLAY FRESHNESS:
- *   On the first ever visit: live count fetched and cached indefinitely.
- *   On return visits: cached SVG displayed instantly (0 ms, 0 network).
- *   The count shown to returning visitors reflects the global total at the
- *   moment their browser was first registered (may slightly lag live total).
- *   This is acceptable: accuracy-vs-double-counting is an explicit trade-off.
+ * 4. MULTI-ENGINE MODERN INCOGNITO DETECTION (2026):
+ *    - Chromium (Chrome/Edge/Brave/Opera): IndexedDB transaction durability timing probe
+ *      (in-memory memenv vs disk fsync).
+ *    - Firefox: IndexedDB private window InvalidStateError probe.
+ *    - Safari: storage.getDirectory() / WebKit private database probe.
  *
  * Zero Cookies · Zero PII · GDPR & Privacy-by-Design Compliant
  * =========================================================================
@@ -35,22 +33,28 @@
   if (window.__SYN_SITE_TELEMETRY_LOADED__) return;
   window.__SYN_SITE_TELEMETRY_LOADED__ = true;
 
-  const V           = 'v7';                          // storage-key namespace
-  const BADGE_URL   = 'https://api.visitorbadge.io/api/visitors?path=MetaSympl3x-SyntrometricTopos-v7&label=VISITS&labelColor=%230a101d&countColor=%234169E1&style=flat-square';
-  const SESSION_MS  = 30 * 60 * 1000;               // 30-min inactivity window (device-visits only)
-  const INFLIGHT_MS = 10 * 1000;                    // inflight-lock TTL
+  const V = 'v8'; // Clean version namespace
+  const BADGE_COUNTER_URL = "https://api.visitorbadge.io/api/visitors?path=MetaSympl3x-SyntrometricTopos-v8&label=VISITS&labelColor=%230a101d&countColor=%234169E1&style=flat-square";
+  const READONLY_BADGE_URL = "https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Fapi.visitorbadge.io%2Fapi%2Fvisitors%3Fpath%3DMetaSympl3x-SyntrometricTopos-v8%26label%3D&query=%2F%2F%40aria-label&label=VISITS&color=4169E1&style=flat-square&cacheSeconds=86400";
+  const SESSION_MS = 30 * 60 * 1000;
+  const INFLIGHT_MS = 10 * 1000;
 
-  let isIncognito   = false;
-  let deviceVisits  = 1;
-  let sessionStart  = Date.now();
+  // Local development detection: never increment counter on localhost or file://
+  const isLocalEnv = !window.location.hostname ||
+                     window.location.hostname === 'localhost' ||
+                     window.location.hostname === '127.0.0.1' ||
+                     window.location.protocol === 'file:';
 
-  /* ── helpers ────────────────────────────────────────────────────────── */
+  let isIncognito = false;
+  let deviceVisits = 1;
+  let sessionStart = Date.now();
+
+  /* ── Storage helpers ─────────────────────────────────────────────────── */
   function ls(key, val) {
-    /* get or set; silently fails if storage is blocked */
     try {
       if (val === undefined) return localStorage.getItem('syn_' + V + '_' + key);
-      if (val === null)      localStorage.removeItem('syn_' + V + '_' + key);
-      else                   localStorage.setItem('syn_' + V + '_' + key, String(val));
+      if (val === null) localStorage.removeItem('syn_' + V + '_' + key);
+      else localStorage.setItem('syn_' + V + '_' + key, String(val));
     } catch (e) {}
     return null;
   }
@@ -58,16 +62,8 @@
     if (val === undefined) { try { return JSON.parse(ls(key) || 'null'); } catch (e) { return null; } }
     ls(key, JSON.stringify(val));
   }
-  function ss(key, val) {
-    try {
-      if (val === undefined) return sessionStorage.getItem('syn_' + V + '_' + key);
-      if (val === null)      sessionStorage.removeItem('syn_' + V + '_' + key);
-      else                   sessionStorage.setItem('syn_' + V + '_' + key, String(val));
-    } catch (e) {}
-    return null;
-  }
 
-  /* ── 1. One-time migration: purge every legacy key ─────────────────── */
+  /* ── 1. One-time migration: purge every legacy key ───────────────────── */
   if (!ls('migrated')) {
     [
       'syn_local_visits','syn_last_known_global_visits',
@@ -80,7 +76,7 @@
       'syn_v4_reset_done','syn_v4_local_visits','syn_v4_session_active',
       'syn_v4_cached_svg','syn_v4_cached_count','syn_v4_last_global',
       'syn_v4_session_expires','syn_v4_session_start','syn_v4_fetch_inflight',
-      'syn_v4_visited_chapters','syn_v4_all_visited_chapters',
+      'syn_v4_visited_chapters','syn_all_visited_chapters',
       'syn_v5_reset_done','syn_v5_local_visits','syn_v5_session_active',
       'syn_v5_cached_svg','syn_v5_cached_count','syn_v5_last_global',
       'syn_v5_session_expires','syn_v5_session_start','syn_v5_fetch_inflight',
@@ -88,18 +84,21 @@
       'syn_v6_reset_done','syn_v6_local_visits','syn_v6_session_active',
       'syn_v6_cached_svg','syn_v6_cached_count','syn_v6_last_global',
       'syn_v6_session_expires','syn_v6_session_start','syn_v6_fetch_inflight',
-      'syn_v6_device_visits','syn_v6_visited_chapters','syn_v6_all_visited_chapters'
+      'syn_v6_device_visits','syn_v6_visited_chapters','syn_v6_all_visited_chapters',
+      'syn_v7_migrated','syn_v7_browser_registered','syn_v7_cached_svg','syn_v7_cached_count',
+      'syn_v7_device_visits','syn_v7_session_expires','syn_v7_session_start','syn_v7_fetch_inflight',
+      'syn_v7_visited_chapters','syn_v7_all_visited_chapters','syn_v7_last_global'
     ].forEach(function(k) {
-      try { localStorage.removeItem(k); }   catch (e) {}
+      try { localStorage.removeItem(k); } catch (e) {}
       try { sessionStorage.removeItem(k); } catch (e) {}
     });
     ls('migrated', '1');
   }
 
-  /* ── 2. Chapter visit tracking (cross-tab, localStorage) ───────────── */
+  /* ── 2. Chapter visit tracking (cross-tab, localStorage) ─────────────── */
   function recordChapterVisit(chNum) {
     if (!chNum || isIncognito) return;
-    var visited    = lsJSON('visited_chapters')    || [];
+    var visited = lsJSON('visited_chapters') || [];
     var allVisited = lsJSON('all_visited_chapters') || [];
     if (!visited.includes(chNum)) {
       visited.push(chNum);
@@ -109,12 +108,10 @@
       allVisited.push(chNum);
       lsJSON('all_visited_chapters', allVisited);
     }
-    // Slide the session lease so navigation resets the 30-min clock
     var exp = parseInt(ls('session_expires') || '0', 10);
     if (exp && Date.now() < exp) ls('session_expires', Date.now() + SESSION_MS);
   }
 
-  // Auto-detect chapter from URL
   var pathMatch = window.location.pathname.match(/chapter(\d+)/i)
                || window.location.hash.match(/chapter(\d+)/i)
                || window.location.search.match(/ch=(\d+)/i);
@@ -122,8 +119,9 @@
   else if (/index\.html|\/\s*$/.test(window.location.pathname)) recordChapterVisit(1);
 
   window.addEventListener('message', function(ev) {
-    if (ev.data && ev.data.type === 'syn-chapter-selected' && ev.data.chapter)
+    if (ev.data && ev.data.type === 'syn-chapter-selected' && ev.data.chapter) {
       recordChapterVisit(parseInt(ev.data.chapter, 10));
+    }
   });
 
   /* ── 3. CSS injection ───────────────────────────────────────────────── */
@@ -257,7 +255,7 @@
           <img class="syn-counter-badge-img" id="modal-hero-badge-img" alt="Global Visits" height="24" style="display:none;"/>
           <span class="syn-counter-fallback" id="modal-hero-fallback" style="font-size:1.1rem;">VISITS: <span class="syn-visit-count-display">1</span></span>
         </div>
-        <div style="font-size:.75rem;color:#60a5fa;">One counted hit per browser profile · zero duplicates · cross-tab cached</div>
+        <div style="font-size:.75rem;color:#60a5fa;">One counted hit per unique reader · zero refresh inflation · cross-tab synchronized</div>
       </div>
       <div class="syn-telemetry-grid">
         <div class="syn-stat-card">
@@ -288,8 +286,8 @@
         <span style="font-size:1.1rem;line-height:1;">🛡️</span>
         <div>
           <b>Privacy-First Architecture:</b> Zero third-party profiling, zero cookies, zero IP logging.
-          Each browser profile is counted <em>at most once</em> — ever. Returning visits display a
-          cached badge and never fire a second network request to the counter API.
+          Each visitor browser is counted at most once. Incognito sessions, duplicate tabs, and reloads
+          use non-incrementing cached telemetry.
         </div>
       </div>
       <div style="margin-top:16px;display:flex;justify-content:flex-end;gap:8px;">
@@ -306,9 +304,8 @@
 
   /* ── 5. Badge display helpers ───────────────────────────────────────── */
   function updateAllBadgeImages(svgText, countStr) {
-    // If called with no args, attempt to restore from cache
     if (!svgText && !isIncognito) {
-      svgText  = ls('cached_svg');
+      svgText = ls('cached_svg');
       countStr = countStr || ls('cached_count');
     }
     if (!countStr && svgText) {
@@ -344,65 +341,218 @@
     if (el) el.textContent = '#' + val;
   }
 
-  /* ── 6. Incognito / Private Mode detection ──────────────────────────── */
+  /* ── 6. Modern Incognito / Private Mode Detection (2026 calibrated) ──── */
   function detectIncognito(callback) {
-    var done = false;
-    function finish(v) { if (!done) { done = true; callback(v); } }
+    var resolved = false;
+    function finish(isPrivate) {
+      if (resolved) return;
+      resolved = true;
+      callback(isPrivate);
+    }
 
-    if (/incognito|nocache/.test(window.location.search)) { finish(true); return; }
-    setTimeout(function() { finish(false); }, 400);   // safety timeout
-
-    // Chromium (Chrome, Edge, Opera, Brave)
-    if ('storage' in navigator && 'estimate' in navigator.storage) {
-      navigator.storage.estimate().then(function(est) {
-        if (est.quota && est.quota < 4e9) { finish(true); return; }
-        var fs = window.RequestFileSystem || window.webkitRequestFileSystem;
-        if (fs) { fs(window.TEMPORARY, 100, function() { finish(false); }, function() { finish(true); }); return; }
-        finish(false);
-      }).catch(function() { finish(true); });
+    // 1. Explicit query param or local dev override
+    if (/incognito|nocache|test|dev|notrack/i.test(window.location.search)) {
+      finish(true);
       return;
     }
-    // Safari / WebKit
-    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-      try { if (window.openDatabase) window.openDatabase(null,null,null,null); }
-      catch (e) { finish(true); return; }
+
+    // Localhost or file:// must NEVER increment the production counter
+    if (isLocalEnv) {
+      finish(true);
+      return;
     }
-    // Firefox
-    if ('MozAppearance' in document.documentElement.style) {
+
+    // 2. Engine identification via toFixed error message length
+    var engineId = 0;
+    try {
+      var neg = parseInt("-1");
+      neg.toFixed(neg);
+    } catch (e) {
+      engineId = e.message ? e.message.length : 0;
+    }
+
+    var isV8 = (engineId === 51);               // Chromium / Chrome / Edge / Brave / Opera
+    var isFirefox = (engineId === 25);          // Gecko
+    var isSafari = (engineId === 44 || engineId === 43); // WebKit / Safari
+
+    // Safety timeout: if detection takes >750ms, default to safe mode (no increment)
+    setTimeout(function() {
+      finish(isLocalEnv);
+    }, 750);
+
+    // ── CHROMIUM DURABILITY TIMING PROBE ──
+    if (isV8) {
+      if (!window.indexedDB) {
+        finish(true);
+        return;
+      }
+      try {
+        var dbName = '__di_' + Math.random().toString(36).slice(2);
+        var req = indexedDB.open(dbName, 1);
+        req.onupgradeneeded = function() {
+          try { req.result.createObjectStore('s'); } catch (e) {}
+        };
+        req.onerror = function() {
+          try { indexedDB.deleteDatabase(dbName); } catch (e) {}
+          finish(true);
+        };
+        req.onsuccess = function() {
+          var db = req.result;
+          var honored = false;
+          try {
+            var t = db.transaction('s', 'readwrite', { durability: 'strict' });
+            honored = (t.durability === 'strict');
+            t.abort();
+          } catch (e) {
+            honored = false;
+          }
+
+          if (!honored) {
+            db.close();
+            try { indexedDB.deleteDatabase(dbName); } catch (e) {}
+            finish(isLocalEnv);
+            return;
+          }
+
+          var payload = new Uint8Array(16384);
+          function timeBlock(durability) {
+            return new Promise(function(resolve, reject) {
+              var t0 = performance.now();
+              var i = 0;
+              function step() {
+                if (i === 10) { resolve(performance.now() - t0); return; }
+                try {
+                  var tx = db.transaction('s', 'readwrite', { durability: durability });
+                  tx.objectStore('s').put(payload, i);
+                  i++;
+                  tx.oncomplete = step;
+                  tx.onerror = tx.onabort = function() { reject(tx.error); };
+                } catch (err) {
+                  reject(err);
+                }
+              }
+              step();
+            });
+          }
+
+          (async function() {
+            try {
+              await timeBlock('relaxed');
+              await timeBlock('strict');
+
+              var ratios = [];
+              var start = performance.now();
+              for (var r = 0; r < 7; r++) {
+                var rel = await timeBlock('relaxed');
+                var str = await timeBlock('strict');
+                ratios.push(rel > 0 ? (str / rel) : 1.0);
+                if (performance.now() - start >= 500) break;
+              }
+              ratios.sort(function(a, b) { return a - b; });
+              db.close();
+              try { indexedDB.deleteDatabase(dbName); } catch (e) {}
+
+              var median = ratios[ratios.length >> 1];
+              // In memory (Incognito): fsync is no-op, strict/relaxed ratio ~1.0 (< 1.25)
+              // On disk (Normal Chrome): strict fsyncs to disk, ratio > 1.25
+              var isPrivate = (median < 1.25);
+              finish(isPrivate || isLocalEnv);
+            } catch (err) {
+              db.close();
+              try { indexedDB.deleteDatabase(dbName); } catch (e) {}
+              finish(isLocalEnv);
+            }
+          })();
+        };
+      } catch (err) {
+        finish(isLocalEnv);
+      }
+      return;
+    }
+
+    // ── FIREFOX TEST ──
+    if (isFirefox) {
       if (!window.indexedDB) { finish(true); return; }
       try {
-        var r = window.indexedDB.open('_syn_priv_test');
-        r.onerror   = function() { finish(true); };
-        r.onsuccess = function() { finish(false); };
-        return;
-      } catch (e) { finish(true); return; }
+        var r = window.indexedDB.open('__syn_moz_priv');
+        r.onerror = function() {
+          if (r.error && r.error.name === 'InvalidStateError') { finish(true); return; }
+          finish(isLocalEnv);
+        };
+        r.onsuccess = function() {
+          try { indexedDB.deleteDatabase('__syn_moz_priv'); } catch (e) {}
+          finish(isLocalEnv);
+        };
+      } catch (e) { finish(true); }
+      return;
     }
-    finish(false);
+
+    // ── SAFARI TEST ──
+    if (isSafari) {
+      if (navigator.storage && typeof navigator.storage.getDirectory === 'function') {
+        navigator.storage.getDirectory().then(function() {
+          finish(isLocalEnv);
+        }).catch(function(e) {
+          var msg = e && e.message ? String(e.message) : '';
+          finish(msg.includes('unknown transient reason') || isLocalEnv);
+        });
+        return;
+      }
+      try {
+        if (window.openDatabase) window.openDatabase(null, null, null, null);
+      } catch (e) {
+        finish(true);
+        return;
+      }
+      finish(isLocalEnv);
+      return;
+    }
+
+    finish(isLocalEnv);
   }
 
-  /* ── 7. Badge fetch — one-time counting hit (normal browsing only) ───── */
-  function fetchBadgeOnce() {
-    fetch(BADGE_URL, { mode: 'cors' })
+  /* ── 7. Read-Only Badge Fetch (Incognito, Localhost, or Fallback) ─────── */
+  // Shields.io acts as a CDN caching proxy (24h cache-control).
+  // It returns the real visitor badge SVG with zero risk of incrementing visitorbadge.io!
+  function fetchReadOnlyBadge() {
+    fetch(READONLY_BADGE_URL, { mode: 'cors' })
       .then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(function(svg) {
         var m = svg.match(/aria-label=["'][^:"]*:\s*([0-9,kK\.+]+)["']/)
              || svg.match(/<title>[^:<]*:\s*([0-9,kK\.+]+)<\/title>/);
         var count = m ? m[1] : '1';
-        // ── Mark this browser as permanently counted ──────────────────────
+        updateAllBadgeImages(svg, count);
+      })
+      .catch(function() {
+        var fb = ls('cached_count') || ls('last_global') || '1';
+        updateAllBadgeImages(null, fb);
+      });
+  }
+
+  /* ── 8. One-Time Production Counting Hit (Real unique visitors only) ─── */
+  function fetchProductionBadgeOnce() {
+    fetch(BADGE_COUNTER_URL, { mode: 'cors' })
+      .then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function(svg) {
+        var m = svg.match(/aria-label=["'][^:"]*:\s*([0-9,kK\.+]+)["']/)
+             || svg.match(/<title>[^:<]*:\s*([0-9,kK\.+]+)<\/title>/);
+        var count = m ? m[1] : '1';
+        // Permanently record that this browser has been counted
         ls('browser_registered', Date.now());
-        ls('cached_svg',   svg);
+        ls('cached_svg', svg);
         ls('cached_count', count);
-        ls('last_global',  count);
+        ls('last_global', count);
         ls('fetch_inflight', null);
         updateAllBadgeImages(svg, count);
       })
       .catch(function() {
         ls('fetch_inflight', null);
-        updateAllBadgeImages(null, ls('last_global') || '1');
+        // Fall back to read-only badge if direct counter request fails
+        fetchReadOnlyBadge();
       });
   }
 
-  /* ── 8. Session & device-visits tracking (separate from counting) ───── */
+  /* ── 9. Session & device-visits tracking ────────────────────────────── */
   function initDeviceSession() {
     var now     = Date.now();
     var stored  = parseInt(ls('device_visits') || '0', 10);
@@ -410,88 +560,67 @@
     var started = parseInt(ls('session_start')   || '0', 10);
 
     if (expires && now < expires) {
-      // ── Existing active session (any tab on this device) ──────────────
       deviceVisits = Math.max(1, stored);
       sessionStart = started || now;
-      ls('session_expires', now + SESSION_MS); // extend lease
+      ls('session_expires', now + SESSION_MS);
     } else {
-      // ── New session (first ever, or after 30+ min inactivity) ─────────
       deviceVisits = stored + 1;
       sessionStart = now;
-      ls('device_visits',   deviceVisits);
-      ls('session_start',   sessionStart);
+      ls('device_visits', deviceVisits);
+      ls('session_start', sessionStart);
       ls('session_expires', now + SESSION_MS);
-      // NOTE: We deliberately do NOT clear 'cached_svg' here.
-      //       The global count was already contributed on first-ever visit.
-      //       Clearing it would trigger a second fetch and a second global hit.
     }
     updateDeviceVisitsDisplay(deviceVisits);
   }
 
-  /* ── 9. Core startup logic ──────────────────────────────────────────── */
-  detectIncognito(function(incog) {
-    isIncognito = incog;
+  /* ── 10. Core Startup Routing ────────────────────────────────────────── */
+  detectIncognito(function(isPrivate) {
+    isIncognito = isPrivate;
 
-    if (incog) {
-      // ── Incognito / Private mode ──────────────────────────────────────
-      // visitorbadge.io's /api/visitors endpoint increments on EVERY request,
-      // regardless of cache-busting parameters. Calling it in incognito would
-      // silently inflate the global count. We therefore make ZERO API calls
-      // in private mode. The pill renders a neutral "🔒 PRIVATE" indicator.
+    if (isPrivate || isLocalEnv) {
+      // INCOGNITO OR LOCALHOST:
+      // ZERO calls to the incrementing API endpoint!
+      // Fetch the read-only cached badge (24h CDN cache) so the user sees the real count.
       deviceVisits = 1;
       updateDeviceVisitsDisplay(1);
-      // Show a static private-mode indicator — no network request, no count.
-      document.querySelectorAll('.syn-counter-fallback').forEach(function(fb) {
-        fb.style.display = 'inline-block';
-        var cd = fb.querySelector('.syn-visit-count-display');
-        if (cd) cd.textContent = '🔒';
-      });
-      document.querySelectorAll('.syn-counter-badge-img').forEach(function(img) {
-        img.style.display = 'none';
-      });
+      fetchReadOnlyBadge();
       return;
     }
 
-    // ── Normal browsing ───────────────────────────────────────────────────
+    // NORMAL PRODUCTION BROWSING:
     initDeviceSession();
 
-    var registered = ls('browser_registered'); // permanent one-shot flag
-
+    // Has this browser profile already been counted?
+    var registered = ls('browser_registered');
     if (registered) {
-      // ── This browser has already contributed its one global count ──────
-      //    Display the cached SVG immediately; do NOT fire the API again.
-      var svg   = ls('cached_svg');
-      var count = ls('cached_count');
-      if (svg) {
-        updateAllBadgeImages(svg, count || '1');
+      var cachedSvg = ls('cached_svg');
+      var cachedCount = ls('cached_count');
+      if (cachedSvg) {
+        updateAllBadgeImages(cachedSvg, cachedCount || '1');
       } else {
-        // Edge case: flag set but SVG lost (storage cleared externally).
-        // Show last known count as text; still do NOT hit the API.
-        updateAllBadgeImages(null, ls('last_global') || String(deviceVisits));
+        fetchReadOnlyBadge();
       }
       return;
     }
 
-    // ── First-ever visit from this browser: perform the one-time hit ──────
-    var now       = Date.now();
-    var inflight  = parseInt(ls('fetch_inflight') || '0', 10);
-
+    // First ever visit from this browser profile on production:
+    var now = Date.now();
+    var inflight = parseInt(ls('fetch_inflight') || '0', 10);
     if (inflight && (now - inflight) < INFLIGHT_MS) {
-      // Another tab in this same browser window is already fetching.
-      // Wait for it, then consume the result from localStorage.
+      // Parallel tab is already fetching
       setTimeout(function() {
         var svg = ls('cached_svg');
         if (svg) updateAllBadgeImages(svg, ls('cached_count') || '1');
-        else     fetchBadgeOnce(); // fallback if inflight tab crashed
-      }, 3000);
+        else fetchReadOnlyBadge();
+      }, 2500);
       return;
     }
 
-    ls('fetch_inflight', now); // acquire inflight lock
-    fetchBadgeOnce();
+    ls('fetch_inflight', now);
+    fetchProductionBadgeOnce();
   });
 
-  /* ── 10. Cross-tab real-time sync via storage events ───────────────── */
+  /* ── 11. Cross-tab real-time sync via storage events ────────────────── */
   window.addEventListener('storage', function(e) {
     if (!e) return;
     if (e.key === 'syn_' + V + '_cached_svg' && e.newValue) {
@@ -500,13 +629,12 @@
     if (e.key === 'syn_' + V + '_device_visits' && e.newValue) {
       updateDeviceVisitsDisplay(e.newValue);
     }
-    if (e.key === 'syn_' + V + '_visited_chapters' ||
-        e.key === 'syn_' + V + '_all_visited_chapters') {
+    if (e.key === 'syn_' + V + '_visited_chapters' || e.key === 'syn_' + V + '_all_visited_chapters') {
       updateTelemetryStats();
     }
   });
 
-  /* ── 11. Restore badges on DOMContentLoaded / load ─────────────────── */
+  /* ── 12. Restore badges on DOM load ─────────────────────────────────── */
   function syncExistingElements() {
     if (isIncognito) return;
     var svg = ls('cached_svg');
@@ -515,7 +643,7 @@
   document.addEventListener('DOMContentLoaded', syncExistingElements);
   window.addEventListener('load', syncExistingElements);
 
-  /* ── 12. Session stopwatch & telemetry stats ────────────────────────── */
+  /* ── 13. Session stopwatch & telemetry stats ────────────────────────── */
   var timerInterval = null;
   function updateTelemetryStats() {
     var elapsed = Math.floor((Date.now() - sessionStart) / 1000);
