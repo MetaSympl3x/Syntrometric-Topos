@@ -1369,6 +1369,73 @@ body.mdrawer-open #syn-stratum-radar {
   color: #FFD700;
 }
 
+/* =========================================================================
+   6. UNIVERSAL 3D MORPH STAGE QUICK-JUMP PILL STRIP & CINEMA TOUR CONTROLS
+   ========================================================================= */
+.syn-morph-pills {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3px;
+  padding: 4px 8px;
+  background: rgba(7, 11, 20, 0.96);
+  border-top: 1px solid rgba(65, 105, 225, 0.25);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.syn-morph-pill {
+  flex: 1;
+  background: #131c31;
+  color: #94a3b8;
+  border: 1px solid #2d3b55;
+  border-radius: 4px;
+  padding: 2px 0;
+  font-size: 9.5px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+
+.syn-morph-pill:hover {
+  background: rgba(65, 105, 225, 0.35);
+  color: #fff;
+  border-color: #FFD700;
+}
+
+.syn-morph-pill.active {
+  background: #FFD700;
+  color: #000;
+  border-color: #FFD700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.45);
+}
+
+.syn-morph-slide-btn {
+  background: rgba(32, 178, 170, 0.18);
+  color: #5eead4;
+  border: 1px solid #20B2AA;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 9.5px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 3px;
+  white-space: nowrap;
+  transition: all 0.14s ease;
+}
+
+.syn-morph-slide-btn:hover {
+  background: #20B2AA;
+  color: #000;
+}
+
+.syn-morph-tour-btn.playing {
+  background: #FFD700 !important;
+  color: #000 !important;
+  border-color: #FFD700 !important;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.55);
+}
+
 /* --- Lecture Spotlight & Cinema Lightbox Modal (#syn-spotlight-modal) --- */
 #syn-spotlight-modal {
   position: fixed;
@@ -2883,6 +2950,7 @@ body.mdrawer-open #syn-stratum-radar {
         <span id="syn-radar-stratum-pill">STRATUM A</span>
         <div class="radar-segments">${segsHtml}</div>
         <button class="radar-btn" id="syn-radar-map-btn" title="Toggle Chapter Slide Map &amp; Stratum Filter (Shortcut: T)">🗺️ Map</button>
+        <button class="radar-btn" onclick="window.toggleActiveMorphSpotlight()" title="Expand / Spotlight 3D Morph Stage Engine (Shortcut: G)">🧊 3D</button>
         <button class="radar-btn" onclick="window.toggleCommandPalette('slides')" title="Omni-Search Slides, Theorems &amp; SM Equations (Ctrl+K)">🔍</button>`;
       document.body.appendChild(radar);
 
@@ -3150,6 +3218,155 @@ body.mdrawer-open #syn-stratum-radar {
       hud.appendChild(theaterBtn);
       vc.appendChild(hud);
     });
+
+    // D. Upgrade all 3D Morph Stage HUDs with Auto-Morph Cinema Tour & 10-Stage Quick-Jump Pill Strip
+    setTimeout(initMorphHUDUpgrades, 220);
+  }
+
+  window.toggleActiveMorphSpotlight = function() {
+    for (let ch = 1; ch <= 15; ch++) {
+      const hudId = ch === 2 ? 'syntrix-3d-hud' : `ch${ch}-3d-hud`;
+      const hud = document.getElementById(hudId);
+      if (hud && hud.style.display !== 'none') {
+        const spotFn = ch === 2 ? window.toggle3DSpotlight : window[`toggleCh${ch}Spotlight`];
+        if (typeof spotFn === 'function') {
+          spotFn();
+          return;
+        }
+      }
+    }
+  };
+
+  function initMorphHUDUpgrades() {
+    for (let ch = 1; ch <= 15; ch++) {
+      const hudId = ch === 2 ? 'syntrix-3d-hud' : `ch${ch}-3d-hud`;
+      const hud = document.getElementById(hudId);
+      if (!hud || hud.dataset.synUpgraded === '1') continue;
+      hud.dataset.synUpgraded = '1';
+
+      const setStageFn = ch === 2 ? window.set3DStage : window[`setCh${ch}Stage`];
+      const sliderId = ch === 2 ? 'syntrix-slider' : `ch${ch}-slider`;
+      const controls = hud.querySelector('.ch' + ch + '-hud-controls, .syntrix-hud-controls, [class*="-hud-controls"]');
+      const scrubber = hud.querySelector('.ch' + ch + '-scrubber, .syntrix-scrubber, [class*="-scrubber"]');
+
+      let tourRaf = null;
+      let tourPlaying = false;
+
+      const stopTour = () => {
+        tourPlaying = false;
+        if (tourRaf) cancelAnimationFrame(tourRaf);
+        tourRaf = null;
+        const tBtn = hud.querySelector('.syn-morph-tour-btn');
+        if (tBtn) {
+          tBtn.classList.remove('playing');
+          tBtn.textContent = '▶ Tour';
+        }
+      };
+
+      // 1. Inject ▶ Tour (Continuous 60fps Auto-Morph) Button into HUD Header Controls
+      if (controls && typeof setStageFn === 'function') {
+        const tourBtn = document.createElement('button');
+        tourBtn.className = (controls.querySelector('button')?.className.replace(/active/g, '').trim() || 'ch1-hud-btn') + ' syn-morph-tour-btn';
+        tourBtn.textContent = '▶ Tour';
+        tourBtn.title = 'Play / Pause Continuous 60fps 10-Stage 3D Morph Cinema Tour';
+        tourBtn.onclick = e => {
+          e.stopPropagation();
+          if (tourPlaying) {
+            stopTour();
+            return;
+          }
+          tourPlaying = true;
+          hud.classList.remove('minimized');
+          const minBtn = document.getElementById(ch === 2 ? 'syntrix-btn-min' : `ch${ch}-btn-min`);
+          if (minBtn) minBtn.textContent = '—';
+          tourBtn.classList.add('playing');
+          tourBtn.textContent = '⏸ Tour';
+
+          let lastTs = performance.now();
+          const stepTour = now => {
+            if (!tourPlaying) return;
+            const dt = Math.min(0.05, (now - lastTs) * 0.001);
+            lastTs = now;
+            const sl = document.getElementById(sliderId);
+            let cur = sl ? parseFloat(sl.value) || 1.0 : 1.0;
+            cur += dt * 0.68; // Smoothly traverse 1 stage every ~1.47 seconds
+            if (cur > 10.0) cur = 1.0;
+            setStageFn(cur, true);
+            updatePillHighlight(Math.round(cur));
+            tourRaf = requestAnimationFrame(stepTour);
+          };
+          tourRaf = requestAnimationFrame(stepTour);
+        };
+        controls.insertBefore(tourBtn, controls.firstChild);
+      }
+
+      // 2. Inject Interactive 10-Stage Quick-Jump Pill Strip (1..10) + 🔗 Slide Sync Button
+      if (scrubber && typeof setStageFn === 'function') {
+        const pillBar = document.createElement('div');
+        pillBar.className = 'syn-morph-pills';
+        pillBar.setAttribute('data-prevent-swipe', 'true');
+
+        for (let s = 1; s <= 10; s++) {
+          const p = document.createElement('button');
+          p.className = 'syn-morph-pill' + (s === 1 ? ' active' : '');
+          p.textContent = String(s);
+          p.title = `Jump 3D Engine to Stage ${s} / 10`;
+          p.dataset.st = String(s);
+          p.onclick = e => {
+            e.stopPropagation();
+            stopTour();
+            setStageFn(s, true);
+            updatePillHighlight(s);
+          };
+          pillBar.appendChild(p);
+        }
+
+        const jumpSlideBtn = document.createElement('button');
+        jumpSlideBtn.className = 'syn-morph-slide-btn';
+        jumpSlideBtn.textContent = '🔗 Slide';
+        jumpSlideBtn.title = 'Jump Slide Deck to Match Current 3D Morph Stage';
+        jumpSlideBtn.onclick = e => {
+          e.stopPropagation();
+          const sl = document.getElementById(sliderId);
+          const stVal = sl ? parseFloat(sl.value) || 1.0 : 1.0;
+          if (window.Reveal && typeof window.Reveal.getTotalSlides === 'function') {
+            const tot = Math.max(1, window.Reveal.getTotalSlides());
+            const targetIdx = Math.round(((stVal - 1.0) / 9.0) * (tot - 1));
+            window.Reveal.slide(targetIdx);
+            window.showSynToast(`🔗 Jumped to Slide ${targetIdx + 1} (Morph Stage ${Math.round(stVal)})`);
+          }
+        };
+        pillBar.appendChild(jumpSlideBtn);
+
+        scrubber.parentNode.insertBefore(pillBar, scrubber.nextSibling);
+
+        function updatePillHighlight(activeInt) {
+          pillBar.querySelectorAll('.syn-morph-pill').forEach(btn => {
+            btn.classList.toggle('active', parseInt(btn.dataset.st || '0') === activeInt);
+          });
+        }
+
+        const slEl = document.getElementById(sliderId);
+        if (slEl) {
+          slEl.addEventListener('input', () => {
+            stopTour();
+            updatePillHighlight(Math.round(parseFloat(slEl.value) || 1));
+          });
+        }
+
+        // Hook into setStageFn so automatic slide changes also update the active stage pill
+        const origSetStage = ch === 2 ? window.set3DStage : window[`setCh${ch}Stage`];
+        if (typeof origSetStage === 'function' && !origSetStage.__synWrapped) {
+          const wrapped = function(val, manual) {
+            origSetStage(val, manual);
+            updatePillHighlight(Math.round(parseFloat(val) || 1));
+          };
+          wrapped.__synWrapped = true;
+          if (ch === 2) window.set3DStage = wrapped;
+          else window[`setCh${ch}Stage`] = wrapped;
+        }
+      }
+    }
   }
 
   function initMonographWorkbench() {

@@ -1136,7 +1136,13 @@ Slide 13 presents §13.8 and Appendix C: the enforced Lean 4 Module Import DAG w
 
 ::: {.column width="48%"}
 
-<div class="ch13-3d-Mount" style="margin-bottom:8px;"></div>
+::: {.deliverables-box .fragment .zoom-in}
+**Chapter 13 Deliverables: Qualia Geometry, Ego Fixed Points & $\Phi_{\mathrm{topos}}$ (Fig. 13.7)**
+* **6-Stage Deductive Flowchart:** $\mathbf{1.\;Bundle}\;\mathbf{A}=A_0+\sum a_k+a_{\mathrm{int}} \;\to\; \mathbf{2.\;Wilson\;Holonomy}\;\Hol_{\mathbf{A}}(\mathcal{C})=\mathcal{P}\exp(-\oint\mathbf{A}) \;\to\; \mathbf{3.\;Topos\;IIT}\;\Phi_{\mathrm{topos}}(\mathcal{U},\mathbf{P}) \;\to\; \mathbf{4.\;Zeitkorn}\;\delta t_n \;\to\; \mathbf{5.\;Lawvere\;Ego}\;e^*\colon\mathbf{1}\to A \;\to\; \mathbf{6.\;Active\;Inference}\;\dot{V}\le-\gamma V$.
+* **Qualia, $\Phi_{\mathrm{topos}}$ & Self-Reference:** Subjective qualia are formalized via non-Abelian Wilson-loop holonomy; $\Phi_{\mathrm{topos}}$ combines $\mathcal{O}(N^2)$ Lie interaction curvature with the Čech descent defect; and the Lawvere diagonal $e^* \colon \mathbf{1} \to A$ supplies a fixed-point account of self-consciousness without homuncular regress.
+:::
+
+<div class="ch13-3d-Mount" style="margin-bottom:8px; margin-top:6px;"></div>
 
 <div class="video-container fragment fade-left" style="margin-top:6px;">
   <video autoplay data-autoplay loop muted playsinline src="media/Ch13_Act12_Cognitive_Synthesis_Zombie.mp4" style="max-height:165px;"></video>

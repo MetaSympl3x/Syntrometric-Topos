@@ -1200,6 +1200,7 @@ const canvas = document.getElementById('ch5-3d-canvas');
       drawLine3D(pR2, pR1, "#DC143C", 3.2, [4, 2]);
 
       drawNode3D("Diab_Loop", 1.05, 0, 0.0, 7, "#DC143C", "#FFD700", "↻ Rückkoppelung", "Closed Metroplexdiabatik Feedback Loop T_m ⇄ T_{m-1} (SM p. 103)", w, h);
+      drawNode3D("Cohes_Quad", 0.0, 1.15, 0.65, 8, "#FFD700", "#20B2AA", "Π_disc ⊣ Disc ⊣ Γ_glob ⊣ Codisc", "Lawvere–Schreiber Cohesive (∞,1)-Topos Adjoint Quadruple governing Syntrokline Bridges!", w, h);
 
     }
 
@@ -1406,6 +1407,7 @@ const canvas = document.getElementById('ch5-3d-canvas');
       drawLine3D(grid[3][0], grid[0][2], "#FFA500", 3.2, [4, 2]);
 
       drawNode3D("Spec_d2", grid[1][1].sx ? 0 : 0, -0.6, 0.95, 8.5, "#DC143C", "#FFD700", "d² : E²_{p,q} → E²_{p−2,q+1}", "Thm. 5.15 Spectral Differential d^r ≠ 0: Homological Metroplexdiabatik & Downward Constraint!", w, h);
+      drawNode3D("Hol_Obst", 0, 0.85, 0.95, 8.5, "#FFD700", "#DC143C", "[F_∇] ≠ 0 ∈ H²_dR (g^(t+1))", "Non-Trivial Curvature Obstruction & Metric Feedback Loop g^(t+1) = g^(t) + η Sym(d^r* ∘ d^r)!", w, h);
 
     }
 

@@ -572,7 +572,7 @@ Slide 10 presents the interactive search tool for the 35 canonical terms in the 
 :::: {.columns}
 
 ::: {.column width="52%"}
-### Universal Concordance Functor Summary
+<h4 style="color:#FFD700; margin-top:0;">Universal Concordance Functor Summary</h4>
 * Every single one of the **100 equations of Syntrometrische Maximentelezentrik** has now been grounded in a validated mathematical stratum:
   - **Cluster I (1–4):** Sheaf Topos $\mathcal{E}_{\mathrm{syn}} = \mathbf{Sh}(\mathbf{Ctx}, J_{\mathrm{syn}})$.
   - **Cluster II (5–9a):** Colored Operads $\mathcal{O}_{\mathrm{syn}}$ and Beck Distributive Laws.
@@ -582,6 +582,13 @@ Slide 10 presents the interactive search tool for the 35 canonical terms in the 
   - **Cluster VI (28–62):** 36-Component Hermetry on $R_6$ and Metric Cascades.
   - **Cluster VII (63–83):** Metronic Discrete Exterior Calculus Complex.
   - **Cluster VIII (84–100a):** Resonant Mass Selector Operators.
+
+::: {.deliverables-box .fragment .zoom-in}
+**Chapter 14 Deliverables: The Complete Rosetta Stone (Fig. 14.5 Flowchart)**
+* **Translation Register ($\text{Clusters I}\to\text{VIII}$):** All 100 historical formulas (`SM Eqs. 1–100a`) are decoded and mapped to rigorous modern type signatures across 9 mathematical frameworks.
+* **Encyclopedic Lexicon:** All 35 specialized Heimian terms are paired with contemporary categorical, analytic, and gauge-geometric definitions.
+* **Firewall & Horizon Ascent:** Historical heuristics ($\mathbf{D}$) remain strictly segregated from Strata $\mathbf{A/B/C}$, motivating the open mathematical conjectures and Lean 4 roadmap in **Chapter 15**.
+:::
 
 ::: {.carnap-box .fragment .glow-pulse}
 **Final Epistemic Verdict**
@@ -619,7 +626,7 @@ Slide 11 synthesizes the master concordance functor, validating the complete tra
 :::: {.columns}
 
 ::: {.column width="50%"}
-### Asymptotic Limits & Degeneracy Reductions
+<h4 style="color:#FFD700; margin-top:0;">Asymptotic Limits &amp; Degeneracy Reductions</h4>
 1. **Classical Limit ($L_{\mathrm{Pl}} \to 0$):**
    Metronic area $\tau \to 0$; discrete difference operators $\nabla_i \to \partial_i$; DEC complex converges to smooth de Rham complex $\Omega^\bullet(M)$.
 2. **Boolean Limit ($\Delta P \to 0, \Delta D \to 0$):**
@@ -632,7 +639,7 @@ Slide 11 synthesizes the master concordance functor, validating the complete tra
 :::
 
 ::: {.column width="50%"}
-### Cross-Disciplinary Interpretation Matrix
+<h4 style="color:#5eead4; margin-top:0;">Cross-Disciplinary Interpretation Matrix</h4>
 
 | Domain | Syntrometric Concept | Standard Physics / Math Explicatum |
 |:---|:---|:---|

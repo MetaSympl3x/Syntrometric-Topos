@@ -1341,6 +1341,13 @@ const canvas = document.getElementById('ch13-3d-canvas');
     drawNode3D("Core_Inv", 0, 0, -0.9, 11, "#FFD700", "#20B2AA", isStage4 ? "²ḡ_∞ ∈ C^∞(ℳ) (k_M < 1)" : "H⁰_BRST = ker s / im s", isStage4 ? "Thm. 13.10 DeTurck Parabolic Smoothing Contraction onto Stationary Apex Metric!" : "Thm. 13.6 Observer-Invariant Phenomenal Cohomology (s_BRST² ≡ 0)", w, h);
 
     drawNode3D("Sing_A12", -1.15, 0.5, 0.75, 8, "#DC143C", "#fff", "⚠ A₁₂ / A₂₂ Singular", "Thm. 13.8 Dimension-Defect Topological Singularity (dim F(ℳ) ≠ dim ℳ)", w, h);
+    if (!isStage4) {
+      const pGh = drawNode3D("BRST_Gh", 1.10, -0.45, 0.65, 7.5, "#9370DB", "#FFD700", "s_BRST c = −½[c,c] (s²=0)", "Thm. 13.6 Faddeev–Popov Ghost/Antighost Quartet filtering subjective frame drift!", w, h);
+      drawLine3D(pGh, proj(0, 0, -0.9, w, h), "#9370DB", 2.2, [3, 2]);
+    } else {
+      const pLy = drawNode3D("DeT_Lyap", 1.10, 0.45, 0.35, 8, "#20B2AA", "#FFD700", "V(t) ≤ V₀ e^{−2γt} (Sobolev H^s)", "Thm. 13.9–13.10 Exponential Lyapunov Decay along DeTurck Parabolic Flow!", w, h);
+      drawLine3D(pLy, proj(0, 0, -0.9, w, h), "#20B2AA", 2.6);
+    }
 
   }
 
@@ -1429,6 +1436,13 @@ const canvas = document.getElementById('ch13-3d-canvas');
     drawNode3D("S2_Val", 1.15, 0, 0, 7.5, "#FFA500", "#fff", "x₅ Valence (Negentropy)", "Entelechial Valence Axis: ℒ_{X₅} S_therm ≤ −γV < 0", w, h);
 
     drawNode3D("S2_Aro", 0, 0, 1.15, 7.5, "#4169E1", "#fff", "x₆ Arousal (1/δt_n)", "Aeonic Arousal Axis & Intentional Agency Commutator [∂₅, ∂₆]", w, h);
+    if (isStage7) {
+      for (let m = 0; m < 6; m++) {
+        const ang = timeSec * 0.6 + (m / 6) * Math.PI * 2;
+        const pM = drawNode3D("K8_M" + m, 1.28 * Math.cos(ang), 1.28 * Math.sin(ang), 0.35 * Math.cos(ang * 2), 6, "#FFD700", "#fff", m === 0 ? "d_τ∘ℛ_τ = ℛ_τ∘d" : "", "Thm. 13.18–13.20 K₈ Eigenmode & Exact Stokes–Cartan DEC Coboundary Commutation!", w, h);
+        drawLine3D(pM, proj(0, 0, 0, w, h), "rgba(255,215,0,0.5)", 1.8);
+      }
+    }
 
   }
 

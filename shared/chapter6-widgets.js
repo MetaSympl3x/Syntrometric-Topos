@@ -1395,7 +1395,10 @@ const canvas = document.getElementById('ch6-3d-canvas');
 
       const ux = -1.16 + 0.45 * Math.sin(timeSec * 5);
 
-      drawNode3D("Kramers_Pt", ux, 0, zFn(ux, 0) + 0.12, 7, "#FFD700", "#DC143C", "R_resyn (τ_surv)", "Thm. 6.21 Wasserstein Free-Energy & Eyring–Kramers Resynkolation!", w, h);
+      drawNode3D("Kramers_Pt", ux, 0, zFn(ux, 0) + 0.12, 7, "#FFD700", "#DC143C", "R_resyn (τ_surv ~ e^{ΔE/ε})", "Thm. 6.21 Wasserstein W₂ Optimal Transport Geodesic & Eyring–Kramers Resynkolation!", w, h);
+      const pW2 = drawNode3D("Wass_Br", 0, 0.65, 0.65, 8.5, "#38bdf8", "#FFD700", "∂_t ρ = −grad_{W₂} ℱ_ε(ρ)", "Jordan–Kinderlehrer–Otto Wasserstein-2 Gradient Flow Bridge between Metastable Wells!", w, h);
+      drawLine3D(pTz1, pW2, "#38bdf8", 2.4, [4, 2]);
+      drawLine3D(pW2, pTz2, "#38bdf8", 2.4, [4, 2]);
 
     }
 

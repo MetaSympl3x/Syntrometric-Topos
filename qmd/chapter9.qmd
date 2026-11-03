@@ -898,6 +898,7 @@ Slide 11 presents the complete 13-row Stratum C Reconstruction Map $\mathcal{R}$
 
 ::: {.deliverables-box .fragment .zoom-in}
 **Chapter 9 Deliverables: Composite Non-Hermitian Metrics (Fig. 9.7 Flowchart)**
+* **6-Stage Synthesis Flowchart ($\text{Fig. 9.7}$):** $\mathbf{1.\;Kaskadenbasis}\;\{g_{(\gamma)}^{(1)}\}_{\gamma=1}^{L_1} \;\longrightarrow\; \mathbf{2.\;Connection}\;\{\begin{smallmatrix}i\\kl\end{smallmatrix}\}_{(\gamma)}^{(\mu)} \;\longrightarrow\; \mathbf{3.\;36\text{-Hermetry}}\;{}^2\bar{\mathbf{g}}_+ + {}^2\bar{\mathbf{g}}_- \;\longrightarrow\; \mathbf{4.\;Einstein}\;\operatorname{sp}\llcorner_{(-)}\mathbf{G}=0 \;\longrightarrow\; \mathbf{5.\;Apex}\;{}^2\bar{\mathbf{g}}_\infty \;\longrightarrow\; \mathbf{6.\;Crisis}\;\chi\sqrt{|g_{(p)}|}=1$.
 * **Hermetry Decomposition:** The 36-component metric on $R_6 = R_4 \times S_2$ cleanly separates $21$ symmetric potentials (${}^2\bar{\mathbf{g}}_+$) and $15$ skew-symmetric vorticity/torsion potentials (${}^2\bar{\mathbf{g}}_-$).
 * **Palatini Conservation:** Independent metric/connection variation fixes $\Gamma_{kl}^i = \{\begin{smallmatrix}i\\kl\end{smallmatrix}\}_+ + \mathbf{K}_{kl}^i$ and enforces $\operatorname{sp}\llcorner_{(-)}^{(6,6)}({}^2\bar{\mathbf{R}} - \frac{1}{2}{}^2\bar{\mathbf{g}}\mathrm{R}) = \mathbf{0}$ (SM-49).
 * **Apex Convergence:** DeTurck-regularized metric filtering projections form a strict Banach contraction on $H^s(\mathcal{M})$ converging uniquely to ${}^2\bar{\mathbf{g}}_\infty \in C^\infty(\mathcal{M})$.

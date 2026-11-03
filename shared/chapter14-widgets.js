@@ -1491,13 +1491,60 @@ const canvas = document.getElementById('ch14-3d-canvas');
 
 
     // Connect Octagonal Ring Perimeter
-
     for (let i = 0; i < 8; i++) {
-
       drawLine3D(ringPts[i].p, ringPts[(i + 1) % 8].p, "rgba(65,105,225,0.42)", 1.6);
-
     }
 
+    // Distinct 3D Holographic Centerpiece Sculpture for Spotlighted Cluster (Stages 2..9)
+    if (activeIdx === 0) {
+      // Cluster I (SM 1-4): 3D Aspect Compass (P_n, D_n, K_n) & Kripke-Joyal Sieve Tetrahedron
+      const pP = drawNode3D("C1_Pn", -0.52, -0.35, 0.95, 6.5, "#4169E1", "#fff", "P_n (Predicative)", "SM Eq. 1: Prädikatrix Feature Space P^U in Ban_<=1", w, h);
+      const pD = drawNode3D("C1_Dn",  0.52, -0.35, 0.95, 6.5, "#20B2AA", "#fff", "D_n (Dialectical)", "SM Eq. 1: Dialektik Operator Space D^U in Ban_<=1", w, h);
+      const pQ = drawNode3D("C1_Om",  0.00,  0.52, 1.05, 7.5, "#FFD700", "#fff", "U ⊩ φ(s) (Ω)", "SM Eqs. 3–4: Kripke–Joyal Forcing over Heyting Classifier Ω(U)", w, h);
+      drawLine3D(pP, pD, "#4169E1", 2.2); drawLine3D(pD, pQ, "#20B2AA", 2.2); drawLine3D(pQ, pP, "#FFD700", 2.2);
+    } else if (activeIdx === 1) {
+      // Cluster II (SM 5-9a): Operadic Tree Monad Pyramid & Grothendieck Aeondyne Helix
+      const l1 = drawNode3D("C2_L1", -0.55, 0, 1.05, 6, "#20B2AA", "#fff", "T_frag", "SM Eq. 5a: Fragmentation Monad T_frag (Spaltbarkeit)", w, h);
+      const l2 = drawNode3D("C2_L2",  0.55, 0, 1.05, 6, "#4169E1", "#fff", "T_pyr", "SM Eq. 5a: Pyramidal Grading Monad T_pyr via Beck Law λ̂", w, h);
+      drawLine3D(l1, pCore, "#20B2AA", 2.4); drawLine3D(l2, pCore, "#4169E1", 2.4); drawLine3D(l1, l2, "#FFD700", 2.0, [3, 2]);
+    } else if (activeIdx === 2) {
+      // Cluster III (SM 10-13a): 3D Exzenter Span Pushout Octahedron P_a boxplus_phi P_b
+      const pa = drawNode3D("C3_Pa", -0.58, 0, 0.55, 7, "#4169E1", "#fff", "P_a", "SM Eq. 10: Left Syntrix Carrier P_a", w, h);
+      const pb = drawNode3D("C3_Pb",  0.58, 0, 0.55, 7, "#20B2AA", "#fff", "P_b", "SM Eq. 10: Right Syntrix Carrier P_b", w, h);
+      const rPhi = drawNode3D("C3_R", 0, 0, 1.08, 7.5, "#FFA500", "#FFD700", "R_φ (dim p+q−λ)", "SM Eqs. 11–12: Exzenter Span Pushout Coupling Node R_φ (15 Classes)", w, h);
+      drawLine3D(rPhi, pa, "#FFA500", 2.4); drawLine3D(rPhi, pb, "#FFA500", 2.4);
+      drawLine3D(pa, pCore, "#4169E1", 2.2); drawLine3D(pb, pCore, "#20B2AA", 2.2);
+    } else if (activeIdx === 3) {
+      // Cluster IV (SM 14-19a): Non-Abelian Yang-Mills Flux Tube & Holoform Emergence Ring
+      ctx.beginPath(); ctx.strokeStyle = "#DC143C"; ctx.lineWidth = 2.6;
+      for (let i = 0; i <= 36; i++) {
+        const a = (i / 36) * Math.PI * 2;
+        const p = proj(0.52 * Math.cos(a), 0.52 * Math.sin(a), 0.85 + 0.12 * Math.sin(a * 3 + timeSec * 3), w, h);
+        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+      }
+      ctx.stroke();
+      drawNode3D("C4_Hol", 0, 0, 1.05, 8, "#DC143C", "#FFD700", "Δ_emerg^ℐ > 0 (Holoform)", "SM Eqs. 16–19a: Non-Abelian Enyphanie Curvature Ω_int^𝒟 stabilizing Holoform!", w, h);
+    } else if (activeIdx === 4) {
+      // Cluster V (SM 20-27): Postnikov / Metroplex Tower & Final Coalgebra nu T
+      const m1 = drawNode3D("C5_M1", 0, 0, 0.82, 6.5, "#9370DB", "#fff", "Met_n(𝒳_syn)", "SM Eqs. 20–25: Higher Metroplex Hierarchy in (∞,1)-Topos 𝒳_syn", w, h);
+      const nu = drawNode3D("C5_Nu", 0, 0, 1.12, 8, "#FFD700", "#9370DB", "ν𝒯 ≅ 𝒯(ν𝒯) (SM-27)", "SM Eq. 27: Final Telecentric Coalgebra Attractors in Area AR_q", w, h);
+      drawLine3D(pCore, m1, "#9370DB", 2.4); drawLine3D(m1, nu, "#FFD700", 2.6);
+    } else if (activeIdx === 5) {
+      // Cluster VI (SM 28-62): 36-Component Hermetry Tensor Ring (21 Sym + 15 Skew) on R_6
+      const gPlus  = drawNode3D("C6_Sym", -0.55, 0, 0.98, 7.5, "#4169E1", "#fff", "²ḡ₊ (21 Sym)", "SM Eqs. 42–49: 21 Symmetric Riemannian Metric Components on R₆", w, h);
+      const gMinus = drawNode3D("C6_Skw",  0.55, 0, 0.98, 7.5, "#FFA500", "#fff", "²ḡ₋ (15 Skew)", "SM Eqs. 42–62: 15 Anti-Hermitian Skew Torsion/EM Components on R₄ × S₂", w, h);
+      drawLine3D(gPlus, pCore, "#4169E1", 2.4); drawLine3D(gMinus, pCore, "#FFA500", 2.4); drawLine3D(gPlus, gMinus, "#FFD700", 2.2);
+    } else if (activeIdx === 6) {
+      // Cluster VII (SM 63-83): 3D Metronic DEC Primal-Dual Lattice Cell
+      const d1 = drawNode3D("C7_Nab", -0.52, 0, 0.98, 7, "#38bdf8", "#fff", "∇_i = I − E_i⁻¹", "SM Eqs. 63–72: Discrete Metronic Backward Difference Operator", w, h);
+      const d2 = drawNode3D("C7_DEC",  0.52, 0, 0.98, 7, "#20B2AA", "#FFD700", "d_τ² = 0 (DEC)", "SM Eqs. 73–83: Exact Discrete Exterior Calculus Cochain Complex on 𝕄_τ^n", w, h);
+      drawLine3D(d1, d2, "#38bdf8", 2.4); drawLine3D(d1, pCore, "#38bdf8", 2.0); drawLine3D(d2, pCore, "#20B2AA", 2.0);
+    } else if (activeIdx === 7) {
+      // Cluster VIII (SM 84-100a): K_8 Selector Polytope & Binomial Mass Spire L_p = binom(6,p)
+      const sKer = drawNode3D("C8_Ker", -0.52, 0, 0.95, 7.5, "#4ade80", "#fff", "ker(⁴F) ≠ {0}", "SM Eqs. 84–95: Null-Stability Kernel of 4th-Stage Metronic Compressor", w, h);
+      const sMas = drawNode3D("C8_Mas",  0.52, 0, 0.95, 8.0, "#FFD700", "#4ade80", "L_p = (6,15,20)", "SM Eqs. 96–100a: Closed Particle Mass Spectrum across 6D Subspace Tiers", w, h);
+      drawLine3D(sKer, sMas, "#4ade80", 2.6); drawLine3D(sKer, pCore, "#4ade80", 2.2); drawLine3D(sMas, pCore, "#FFD700", 2.2);
+    }
   }
 
 

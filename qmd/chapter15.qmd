@@ -1116,6 +1116,12 @@ Sections C.6 through C.10 complete Appendix C with Module 4 (scaled metronic Lei
   <div class="video-caption">Manim Act XII (App. D §D.1–D.2, Fig. 47): Interval Newton–Krawczyk Contraction &amp; Čech Descent Gluing</div>
 </div>
 
+::: {.deliverables-box .fragment .zoom-in}
+**Monograph Master Deliverables: The Completed 15-Chapter Syntrometric Edifice**
+* **Global Limiting Projections (§15.5):** $R_{12} \to R_6 \to R_4$ with $\tau \to 0^+$ and ${}^2\bar{\mathbf{g}}_- \to 0$ recovers Classical Einstein General Relativity ($\nabla^\mu G_{\mu\nu} = 0$) as an exact uncoupled reduct.
+* **Reflexive Epistemic Closure (§15.7):** $\mathbf{Ctx} \to \mathcal{E}_{\mathrm{syn}} \to \mathcal{O}_{\mathrm{syn}} \to \mathcal{X}_{\mathrm{syn}} \to \mathbb{M}_\tau^n \to \operatorname{ker}({}^4\mathbf{F}) \to \text{Embodied Observer}$.
+:::
+
 :::
 
 ::::

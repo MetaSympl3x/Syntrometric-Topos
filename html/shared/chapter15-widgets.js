@@ -1297,9 +1297,22 @@ const canvas = document.getElementById('ch15-3d-canvas');
 
       const pC = drawNode3D(cj.id, x, y, z, 8.5, cj.col, "#fff", cj.lbl, cj.info, w, h);
 
-      drawLine3D(pC, pHub, cj.col, 2.5, [4, 2]);
-
+      const isSpot = isStage4 ? (idx >= 2) : (idx <= 2);
+      drawLine3D(pC, pHub, cj.col, isSpot ? 3.2 : 1.5, isSpot ? null : [4, 2]);
     });
+    if (!isStage4) {
+      drawBox3D(0, 0, 0, 0.55, 0.55, 0.55, "rgba(32,178,170,0.55)", 1.8, [3, 2], w, h);
+    } else {
+      ctx.beginPath(); ctx.strokeStyle = "#4ade80"; ctx.lineWidth = 2.4;
+      for (let i = 0; i <= 36; i++) {
+        const u = i / 36;
+        const r = 0.85 * (1 - 0.65 * u);
+        const a = u * Math.PI * 4 + timeSec * 2;
+        const p = proj(r * Math.cos(a), r * Math.sin(a), -0.6 + 1.2 * u, w, h);
+        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+      }
+      ctx.stroke();
+    }
 
   }
 

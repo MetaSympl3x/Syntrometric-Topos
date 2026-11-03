@@ -601,484 +601,723 @@
   };
 
   // ==========================================================================
-  // 12-STAGE 3D MORPH ENGINE FOR CHAPTER 12 (MATCHING ALL 12 SLIDES)
+  // 10-STAGE 3D NEURO-TOPOS, PROTOSIMPLEX & AFFECTIVE TELECENTRICS ENGINE
   // ==========================================================================
-  const STAGE_META = [
-    {
-      title: "STAGE 01 // EPISTEMIC STRATIFICATION FIREWALL",
-      sub: "Def. 12.1 | Strata A → B → C | Quarantine of Stratum D",
-      caption: "Four-tier epistemic hierarchy with explicit premises and deductive firewall.",
-      telemetry: "Strata A–C ⊥ D"
-    },
-    {
-      title: "STAGE 02 // PHENOMENAL TOPOS & SUBOBJECT CLASSIFIER",
-      sub: "Def. 12.2 & Prop. 12.1 | E_Phenom = Sh(Ctx_Phenom, J_coh)",
-      caption: "Contextual truth sieves Ω_Phenom(U) and intuitionistic periphery ¬¬P ≇ P.",
-      telemetry: "Ω_Phenom(U) Sieves"
-    },
-    {
-      title: "STAGE 03 // CONSCIOUSNESS FUNCTOR & ZOMBIE EXCLUSION",
-      sub: "Thm. 12.3 | Ψ: Met → E_Phenom | H^0(U, F_M) ≠ ∅",
-      caption: "Non-collapsed metronic coalgebras map to non-empty global sections; Zombie = ⊥.",
-      telemetry: "Ψ(M') ≅ Ψ(M) ≠ ∅"
-    },
-    {
-      title: "STAGE 04 // MEREOLOGICAL ADJUNCTION & SYNERGY SURPLUS",
-      sub: "Thm. 12.4 | L_bind ⊣ R_part | ΔI_syn > 0",
-      caption: "Left-adjoint colimit binding generates super-additive synergy surplus.",
-      telemetry: "S(L_bind(P)) > ∑ S(P_i)"
-    },
-    {
-      title: "STAGE 05 // LANDAUER METABOLIC ERASURE FLOOR",
-      sub: "Prop. 12.5 | N_erase = D - r | ΔQ ≥ N_erase k_B T ln 2",
-      caption: "99.8% sensory compression funnels erased nullspace bits into thermodynamic heat.",
-      telemetry: "N_erase = D - r > 0"
-    },
-    {
-      title: "STAGE 06 // WORKING MEMORY 4 ± 1 COHOMOLOGICAL LIMIT",
-      sub: "Prop. 12.6 | binom(k,2) σ_0^2 ≤ C_max / λ_1 ⇒ k_max ≈ 4",
-      caption: "Quadratic pair-interaction growth saturates the metabolic capacity bound at k = 4 ± 1.",
-      telemetry: "k_max = 4 ± 1"
-    },
-    {
-      title: "STAGE 07 // HODGE DECOMPOSITION & 40 Hz GAMMA GLUING",
-      sub: "Thm. 12.7 | ω = dα ⊕ δβ ⊕ γ | H^1(G, R) ≅ H^1(G)",
-      caption: "Thalamocortical gamma phase-locking annihilates harmonic frustration γ → 0.",
-      telemetry: "‖ω‖² = ‖dα‖²+‖δβ‖²+‖γ‖²"
-    },
-    {
-      title: "STAGE 08 // AFFECTIVE TELECENTRICS & HOMEOSTATIC FLOW",
-      sub: "Thm. 12.8 | ẋ = -g_AR^{-1} dV + A(x) | dV/dt ≤ 0",
-      caption: "Riemannian gradient descent toward T_z determines valence; skew torsion drives cyclic exploration.",
-      telemetry: "dV/dt = -‖∇V‖² < 0"
-    },
-    {
-      title: "STAGE 09 // PREDATOR-IN-WOODS END-TO-END TRACE",
-      sub: "Ex. 12.1 | 20,000 → 40 bits/s | k=3 Patches | ΔV = +8.5",
-      caption: "Complete numerical trace from retinal erasure and 3-patch gamma gluing to evasive trajectory.",
-      telemetry: "ΔI_syn = +12.4 bits"
-    },
-    {
-      title: "STAGE 10 // OPERADIC NEURAL TOPOS 3-LAYER ARCHITECTURE",
-      sub: "§12.9 | 16×16 Retina → 9 Gabor Stalks → Čech Nerve → Gestalt",
-      caption: "Zero-dependency executable topos engine verifying sheaf gluing and Hodge relaxation.",
-      telemetry: "3-Layer Topos Engine"
-    },
-    {
-      title: "STAGE 11 // CROSS-DISCIPLINARY BRIDGE & FALSIFIABILITY",
-      sub: "§12.10 | Topos ↔ IIT 4.0 ↔ GNW ↔ FEP | Empirical Protocols",
-      caption: "Exact mathematical dictionary and empirical falsification criteria across neuroscience.",
-      telemetry: "Topos ↔ IIT / GNW / FEP"
-    },
-    {
-      title: "STAGE 12 // ASYMPTOTIC REDUCTIONS & GRAND SYNTHESIS",
-      sub: "§12.11 | Unary m=1 & Abelian φ=0 Limits | Ch. 12 → Ch. 13",
-      caption: "Classical feedforward and aggregative limits recover as exact boundary degeneracies.",
-      telemetry: "Ch. 12 → Ch. 13 Bridge"
+  const CH12_3D_STYLE = `
+  #ch12-3d-hud {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 390px;
+    background: rgba(11, 15, 25, 0.96);
+    border: 1.5px solid #20B2AA;
+    border-radius: 12px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85), 0 0 22px rgba(32, 178, 170, 0.22);
+    z-index: 9999;
+    font-family: "Inter", system-ui, sans-serif;
+    color: #e8ecf2;
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow: hidden;
+    user-select: none;
+  }
+  #ch12-3d-hud.spotlight {
+    width: min(800px, 84vw);
+    right: 8vw;
+    bottom: 7vh;
+    border-color: #FFD700;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 215, 0, 0.35);
+  }
+  #ch12-3d-hud.minimized .ch12-hud-body {
+    display: none;
+  }
+  .ch12-hud-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 11px;
+    background: linear-gradient(90deg, rgba(32, 178, 170, 0.28), rgba(65, 105, 225, 0.25));
+    border-bottom: 1px solid rgba(32, 178, 170, 0.45);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .ch12-hud-title {
+    color: #FFD700;
+    letter-spacing: 0.4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ch12-hud-controls {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .ch12-hud-btn {
+    background: #161f33;
+    color: #cbd5e1;
+    border: 1px solid #334155;
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .ch12-hud-btn:hover, .ch12-hud-btn.active {
+    background: #20B2AA;
+    color: #000;
+    border-color: #FFD700;
+  }
+  #ch12-canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 245px;
+    background: radial-gradient(circle at 50% 45%, #131c31 0%, #070a12 100%);
+    cursor: grab;
+  }
+  #ch12-3d-hud.spotlight #ch12-canvas-wrap {
+    height: 440px;
+  }
+  #ch12-canvas-wrap:active {
+    cursor: grabbing;
+  }
+  #ch12-3d-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .ch12-overlay-top {
+    position: absolute;
+    top: 7px;
+    left: 9px;
+    right: 9px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    font-size: 10px;
+  }
+  .ch12-badge {
+    background: rgba(8, 12, 22, 0.88);
+    border: 1px solid #4169E1;
+    border-radius: 5px;
+    padding: 2px 7px;
+    color: #93c5fd;
+    font-weight: 600;
+  }
+  #ch12-telemetry {
+    position: absolute;
+    bottom: 6px;
+    left: 9px;
+    right: 9px;
+    background: rgba(7, 10, 18, 0.90);
+    border: 1px solid rgba(255, 215, 0, 0.45);
+    border-radius: 5px;
+    padding: 3px 8px;
+    font-family: monospace;
+    font-size: 10px;
+    color: #FFD700;
+    pointer-events: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ch12-scrubber {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 10px;
+    background: #0d1322;
+    border-top: 1px solid #1e293b;
+    font-size: 10.5px;
+  }
+  .ch12-scrubber input[type="range"] {
+    flex: 1;
+    accent-color: #FFD700;
+    cursor: pointer;
+    height: 5px;
+  }
+  #ch12-caption {
+    padding: 5px 10px 7px 10px;
+    background: #090d18;
+    border-top: 1px solid #1e293b;
+    font-size: 10.5px;
+    color: #cbd5e1;
+    line-height: 1.35;
+  }
+  `;
+
+  const CH12_3D_HTML = `
+  <div class="ch12-hud-header">
+    <div class="ch12-hud-title">🧠 Ch. 12: 3D Neuro-Topos &amp; Protosimplex Engine</div>
+    <div class="ch12-hud-controls">
+      <button class="ch12-hud-btn active" id="ch12-btn-orbit" onclick="toggleCh12Orbit()">⟳ Orbit</button>
+      <button class="ch12-hud-btn" id="ch12-btn-spot" onclick="toggleCh12Spotlight()">⛶ Spotlight</button>
+      <button class="ch12-hud-btn" id="ch12-btn-min" onclick="toggleCh12Minimize()">+</button>
+    </div>
+  </div>
+  <div class="ch12-hud-body">
+    <div id="ch12-canvas-wrap">
+      <canvas id="ch12-3d-canvas"></canvas>
+      <div class="ch12-overlay-top">
+        <span class="ch12-badge" id="ch12-stage-pill">Stage 1.0 / 10</span>
+        <span class="ch12-badge" id="ch12-node-inspector" style="border-color:#20B2AA; color:#5eead4;">Drag to Orbit 3D · Click Node to Inspect</span>
+      </div>
+      <div id="ch12-telemetry">Strata A–C ⊥ Stratum D | Ω_Phenom(U) Sieves</div>
+    </div>
+    <div class="ch12-scrubber">
+      <span style="color:#94a3b8; font-weight:bold;">Morph Stage:</span>
+      <button class="ch12-hud-btn" title="Previous Stage" onclick="window.setCh12Stage(Math.round(parseFloat(document.getElementById('ch12-slider').value)) - 1, true)">◀</button>
+      <input type="range" id="ch12-slider" min="1" max="10" step="0.05" value="1" oninput="scrubCh12Stage(this.value)">
+      <button class="ch12-hud-btn" title="Next Stage" onclick="window.setCh12Stage(Math.round(parseFloat(document.getElementById('ch12-slider').value)) + 1, true)">▶</button>
+      <button class="ch12-hud-btn active" id="ch12-btn-sync" onclick="enableCh12Sync()">Auto-Sync</button>
+    </div>
+    <div id="ch12-caption">
+      <b>Stage 1 (§12.1 — Def. 12.1 Epistemic Stratification):</b> 4-Tier Firewall separating proven mathematics (Strata A–C) from speculative horizons (Stratum D).
+    </div>
+  </div>`;
+
+  function injectCh123DHUD() {
+    if (document.getElementById('ch12-3d-hud')) return;
+    const styleEl = document.createElement('style');
+    styleEl.id = 'ch12-3d-injected-style';
+    styleEl.textContent = CH12_3D_STYLE;
+    document.head.appendChild(styleEl);
+
+    const hudEl = document.createElement('div');
+    hudEl.id = 'ch12-3d-hud';
+    hudEl.className = 'minimized';
+    hudEl.innerHTML = CH12_3D_HTML;
+    document.body.appendChild(hudEl);
+  }
+
+  function runCh12Engine() {
+    injectCh123DHUD();
+    if (window.__ch12_3d_engine_initialized) return;
+    window.__ch12_3d_engine_initialized = true;
+
+    const canvas = document.getElementById('ch12-3d-canvas');
+    const wrap = document.getElementById('ch12-canvas-wrap');
+    if (!canvas || !wrap) return;
+    const ctx = canvas.getContext('2d');
+
+    let targetStage = 1.0;
+    let curStage = 1.0;
+    let autoSync = true;
+    let autoOrbit = true;
+    let camYaw = -0.48;
+    let camPitch = 0.35;
+    let camZoom = 1.65;
+    let isDragging = false;
+    let lastX = 0, lastY = 0;
+    let timeSec = 0;
+    let hitNodes = [];
+    let selectedId = null;
+
+    const STAGE_CAPTIONS = {
+      1: "<b>Stage 1 (§12.1 — Def. 12.1 Epistemic Stratification):</b> 4-Tier Firewall separating Strata A–C proofs/models from quarantined Stratum D.",
+      2: "<b>Stage 2 (§12.1.4 — Goodman Imperfect Community &amp; Sheaf Descent):</b> Triple pullback e₁×_U e₂×_U e₃ rejects phantom cliques; glues true holoforms.",
+      3: "<b>Stage 3 (§12.2 — Thm. 12.3 Chalmersian Zombie Refutation):</b> Non-Abelian curvature Ω_int^𝒟 ≠ 0 couples P-Conscious pushout to A-Conscious evaluation!",
+      4: "<b>Stage 4 (§12.3 — Thm. 12.4 Heyting Mereology &amp; Sublation):</b> Left-adjoint binding ℒ_bind ⊣ ℛ_part, t-norm parthood &amp; dialectical Aufhebung.",
+      5: "<b>Stage 5 (§12.4 — Thm. 12.6 Landauer Thermodynamic Erasure):</b> 10⁷ → 40 bits/s sensory funnel dissipating ΔQ ≥ N_erase k_B T ln 2.",
+      6: "<b>Stage 6 (§12.5 — Prop. 12.6 Working Memory 4±1 Limit):</b> Protosimplex encapsulation &amp; K_k pair-interaction saturation at k_max = 4 ± 1.",
+      7: "<b>Stage 7 (§12.6 — Thm. 12.7 Simplicial Hodge &amp; 40 Hz Gamma):</b> Orthogonal decomposition ω = dα ⊕ δβ ⊕ γ &amp; thalamocortical phase-locking.",
+      8: "<b>Stage 8 (§12.7 — Thm. 12.8 Affective Telecentrics):</b> Riemannian gradient descent ẋ = −g_AR⁻¹dV + A(x) spiralling into homeostatic attractor T_z.",
+      9: "<b>Stage 9 (§12.8–12.9 — Predator Trace &amp; 3-Layer Neural Topos):</b> Retinal erasure → 9 Gabor stalks → Čech 1-nerve → glued Gestalt colimit!",
+      10: "<b>Stage 10 (§12.10–12.11 — Neuro-Rosetta &amp; Asymptotic Limits):</b> Topos ↔ IIT 4.0 ↔ GNW ↔ FEP dictionary &amp; Unary/Abelian degeneracy limits!"
+    };
+
+    const STAGE_TELEMETRY = {
+      1: "Strata A → B → C ⊥ Stratum D (Strict Deductive Firewall)",
+      2: "e₁ ×_U e₂ ×_U e₃ ≠ 0_Ctx ⟺ Def_U(s) = 0",
+      3: "g_E > 0 ⟺ Def_U(s) = 0 ⟹ ⟦Zombie(𝒩)⟧ = ⊥_Ω",
+      4: "ℒ_bind ⊣ ℛ_part | χ(a_D, b_P) > θ_coord",
+      5: "N_erase = D − r > 0 | 𝒫_diss ≥ N_erase k_B T ln 2",
+      6: "binom(k,2) σ₀² ≤ C_max / λ₁ ⟹ k_max = 4 ± 1",
+      7: "C¹(𝒢) = im(d₀) ⊕ im(d₁*) ⊕ ker(Δ₁) | γ → 0 at 40 Hz",
+      8: "dV/dt = −g_AR⁻¹(dV, dV) ≤ 0 (Valence = −V̇)",
+      9: "16×16 Retina → 9 Gabor Stalks → Čech Nerve → Gestalt",
+      10: "ℰ_syn ↔ IIT 4.0 / GNW / FEP | m=1 & φ=0 Limits"
+    };
+
+    function resize() {
+      const r = wrap.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = r.width * dpr;
+      canvas.height = r.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
-  ];
 
-  function buildStageGeometry(stageIdx, t, spikeBoost) {
-    const pts = [];
-    const edges = [];
-    const s = ((stageIdx - 1) % 12) + 1;
+    function proj(x, y, z, w, h) {
+      const cy = Math.cos(camYaw), sy = Math.sin(camYaw);
+      const x1 = x * cy - y * sy;
+      const y1 = x * sy + y * cy;
+      const cp = Math.cos(camPitch), sp = Math.sin(camPitch);
+      const y2 = y1 * cp - z * sp;
+      const z2 = y1 * sp + z * cp;
+      const fov = Math.min(w, h) * 0.43 * camZoom;
+      const sc = fov / Math.max(0.85, 4.6 - y2 * 0.45);
+      return { sx: w * 0.5 + x1 * sc, sy: h * 0.53 - z2 * sc, depth: y2, sc: sc / 100 };
+    }
 
-    if (s === 1) {
-      // 4 horizontal epistemic tier rings + firewall plane
-      const cols = ["#20B2AA", "#4169E1", "#FFA500", "#9370DB"];
-      for (let tier = 0; tier < 4; tier++) {
-        const y = 1.05 - tier * 0.7;
-        const r = 1.0 - tier * 0.08;
-        const base = pts.length;
-        for (let k = 0; k < 12; k++) {
-          const a = (k / 12) * Math.PI * 2 + t * 0.4 * (tier % 2 === 0 ? 1 : -1);
-          pts.push({ x: r * Math.cos(a), y, z: r * Math.sin(a), c: cols[tier], r: 3.2 });
-          edges.push([base + k, base + ((k + 1) % 12), cols[tier], 0.45]);
+    function drawLine3D(p1, p2, col, lw, dash) {
+      ctx.save();
+      ctx.beginPath();
+      if (dash) ctx.setLineDash(dash);
+      ctx.strokeStyle = col;
+      ctx.lineWidth = lw || 2;
+      ctx.moveTo(p1.sx, p1.sy);
+      ctx.lineTo(p2.sx, p2.sy);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawNode3D(id, x, y, z, r, fill, stroke, label, info, w, h) {
+      const p = proj(x, y, z, w, h);
+      hitNodes.push({ id, p, r, info });
+      const isSel = (selectedId === id);
+      ctx.save();
+      ctx.beginPath();
+      ctx.fillStyle = isSel ? "#ffffff" : fill;
+      ctx.strokeStyle = isSel ? "#FFD700" : (stroke || "#ffffff");
+      ctx.lineWidth = isSel ? 3.0 : 1.6;
+      ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      if (label) {
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 9.5px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(label, p.sx, p.sy - r - 4);
+      }
+      ctx.restore();
+      return p;
+    }
+
+    // Stage 1: 4-Tier Epistemic Stratification & Deductive Firewall (Def. 12.1)
+    function renderStage1(w, h) {
+      const tiers = [
+        { z:  1.05, col: "#20B2AA", id: "Tier_A", lbl: "Stratum A: Pure Topos & Lean Proofs", info: "Stratum A: Unconditionally proven theorems (Ω_Phenom, Thm. 12.3, Hodge Decomposition)" },
+        { z:  0.40, col: "#4169E1", id: "Tier_B", lbl: "Stratum B: Conditional Neuro-Bridge", info: "Stratum B: Conditional mathematical physics (Landauer Floor, 4±1 Working Memory, Telecentrics)" },
+        { z: -0.25, col: "#FFA500", id: "Tier_C", lbl: "Stratum C: 40 Hz Biophysical Ansatz", info: "Stratum C: Falsifiable neurobiological realization (40 Hz gamma phase-locking, θ-γ coupling)" },
+        { z: -1.05, col: "#9370DB", id: "Tier_D", lbl: "Stratum D: Quarantined Horizon", info: "Stratum D: Speculative metaphysical extrapolations strictly barred from Strata A–C premises!" }
+      ];
+      let prev = null;
+      tiers.forEach((tr, idx) => {
+        const rad = 1.15 - idx * 0.08;
+        ctx.beginPath();
+        ctx.strokeStyle = tr.col;
+        ctx.lineWidth = 2.0;
+        ctx.setLineDash(idx === 3 ? [4, 3] : []);
+        for (let i = 0; i <= 36; i++) {
+          const a = (i / 36) * Math.PI * 2 + timeSec * (idx % 2 === 0 ? 0.3 : -0.3);
+          const p = proj(rad * Math.cos(a), rad * Math.sin(a), tr.z, w, h);
+          if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
         }
-      }
-    } else if (s === 2 || s === 3) {
-      // Base coalgebra loop + lifted sheaf sections above
-      const N = 16;
-      for (let i = 0; i < N; i++) {
-        const a = (i / N) * Math.PI * 2;
-        const x = 1.25 * Math.cos(a);
-        const z = 1.25 * Math.sin(a);
-        const yBase = -0.85;
-        const yTop = 0.55 + 0.28 * Math.sin(3 * a + t * 2.0) * (1 + 0.4 * spikeBoost);
-        pts.push({ x, y: yBase, z, c: "#38bdf8", r: 3.0 });
-        pts.push({ x: x * 0.85, y: yTop, z: z * 0.85, c: s === 2 ? "#FFD700" : "#10b981", r: 3.8 });
-        edges.push([2 * i, 2 * ((i + 1) % N), "#38bdf8", 0.35]);
-        edges.push([2 * i + 1, 2 * ((i + 1) % N) + 1, "#10b981", 0.65]);
-        edges.push([2 * i, 2 * i + 1, "#64748b", 0.3]);
-      }
-    } else if (s === 4 || s === 6) {
-      // K_4 / K_5 mereological / working memory tetrahedron + apex colimit
-      const kNodes = s === 4 ? 4 : 5;
-      for (let i = 0; i < kNodes; i++) {
-        const a = (i / kNodes) * Math.PI * 2 + t * 0.3;
-        pts.push({
-          x: 1.2 * Math.cos(a),
-          y: -0.55 + 0.15 * Math.sin(t + i),
-          z: 1.2 * Math.sin(a),
-          c: "#38bdf8",
-          r: 4.5
-        });
-      }
-      pts.push({ x: 0, y: 0.95, z: 0, c: "#FFD700", r: 5.5 });
-      for (let i = 0; i < kNodes; i++) {
-        edges.push([i, kNodes, "#FFD700", 0.6]);
-        for (let j = i + 1; j < kNodes; j++) {
-          edges.push([i, j, s === 6 ? "#ff6b81" : "#20B2AA", 0.5]);
-        }
-      }
-    } else if (s === 5) {
-      // Landauer compression funnel from wide sensory ring to narrow quota
+        ctx.stroke();
+        ctx.setLineDash([]);
+        const pN = drawNode3D(tr.id, 0, 0, tr.z, 8.5, tr.col, "#fff", tr.lbl, tr.info, w, h);
+        if (prev && idx < 3) drawLine3D(prev, pN, "#64748b", 2.2);
+        prev = pN;
+      });
+      // Crimson Firewall Plane at z = -0.65
+      const fw = [proj(-1.2, -0.9, -0.65, w, h), proj(1.2, -0.9, -0.65, w, h), proj(1.2, 0.9, -0.65, w, h), proj(-1.2, 0.9, -0.65, w, h)];
+      ctx.save();
+      ctx.fillStyle = "rgba(220, 20, 60, 0.20)";
+      ctx.strokeStyle = "#DC143C";
+      ctx.lineWidth = 2.2;
+      ctx.setLineDash([5, 3]);
+      ctx.beginPath();
+      ctx.moveTo(fw[0].sx, fw[0].sy);
+      fw.slice(1).forEach(p => ctx.lineTo(p.sx, p.sy));
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+      drawNode3D("FW_Shield", 1.1, 0, -0.65, 7.5, "#DC143C", "#FFD700", "⛔ Deductive Firewall", "Strict Import Firewall barring Stratum D from entering Strata A–C proofs!", w, h);
+    }
+
+    // Stage 2: Goodman Imperfect Community vs. Sheaf Descent Equalizer (§12.1.4)
+    function renderStage2(w, h) {
+      const e1 = drawNode3D("G_e1", -0.85, -0.55, -0.45, 8.5, "#ff6b81", "#fff", "e₁(R, G)", "Local Experience Patch e₁ carrying qualities {Red, Green}", w, h);
+      const e2 = drawNode3D("G_e2",  0.85, -0.55, -0.45, 8.5, "#20B2AA", "#fff", "e₂(R, B)", "Local Experience Patch e₂ carrying qualities {Red, Blue}", w, h);
+      const e3 = drawNode3D("G_e3",  0.00,  0.90, -0.45, 8.5, "#4169E1", "#fff", "e₃(R, Y)", "Local Experience Patch e₃ carrying qualities {Red, Yellow}", w, h);
+      drawLine3D(e1, e2, "#20B2AA", 2.4);
+      drawLine3D(e2, e3, "#20B2AA", 2.4);
+      drawLine3D(e3, e1, "#20B2AA", 2.4);
+
+      const pTriple = drawNode3D("G_Pull", 0, 0, 0.15, 9.5, "#20B2AA", "#FFD700", "e₁×_U e₂×_U e₃ ≠ 0_Ctx", "Non-Empty Triple Pullback Intersection (Def_U(s) = 0) refuting Goodman Imperfect Community!", w, h);
+      const pHol = drawNode3D("G_Hol", 0, 0, 0.95, 11.5, "#FFD700", "#20B2AA", "s ∈ Hol(U, P) (Glued Quale)", "Unique Glued Global Section in Sheaf Equalizer Hol(U, P) ≅ P(U)", w, h);
+      drawLine3D(e1, pTriple, "rgba(32,178,170,0.65)", 1.8, [3, 2]);
+      drawLine3D(e2, pTriple, "rgba(32,178,170,0.65)", 1.8, [3, 2]);
+      drawLine3D(e3, pTriple, "rgba(32,178,170,0.65)", 1.8, [3, 2]);
+      drawLine3D(pTriple, pHol, "#FFD700", 3.2);
+    }
+
+    // Stage 3: Chalmersian Zombie Refutation (Thm. 12.3)
+    function renderStage3(w, h) {
+      const p1 = drawNode3D("Z_P1", -1.10, -0.45, -0.55, 8.5, "#4169E1", "#fff", "Stream P₁ (a₁)", "Sensory Carrier Stream P₁ with non-Abelian operator a₁", w, h);
+      const p2 = drawNode3D("Z_P2",  1.10, -0.45, -0.55, 8.5, "#20B2AA", "#fff", "Stream P₂ (a₂)", "Sensory Carrier Stream P₂ with non-Abelian operator a₂", w, h);
+      const pPush = drawNode3D("Z_Push", 0, 0, 0.15, 10, "#FFA500", "#FFD700", "P₁ ⊞_φ P₂ (g_E > 0)", "Coupled Carrier Pushout with Interaction Curvature Ω_int^𝒟 = [a₁,a₂] ≠ 0 (P-Conscious!)", w, h);
+      const pAcc = drawNode3D("Z_Acc", 0, 0, 0.98, 11.5, "#FFD700", "#20B2AA", "ev(T_P) ≠ {0} (A-Conscious)", "Thm. 12.3: Non-Zero Global Access Evaluation — Zombie Hypothesis ⟦Zombie(𝒩)⟧ = ⊥_Ω!", w, h);
+      const pZom = drawNode3D("Z_Bot", 1.25, 0.75, -0.75, 7.5, "#DC143C", "#fff", "⚠ Zombie (g_E=0 ⇒ ev={0})", "Setting g_E = 0 collapses P₁ ⊕₁ P₂ and annihilates global access ev(T_P) = {0}!", w, h);
+
+      drawLine3D(p1, pPush, "#4169E1", 2.8);
+      drawLine3D(p2, pPush, "#20B2AA", 2.8);
+      drawLine3D(pPush, pAcc, "#FFD700", 3.4);
+      drawLine3D(p2, pZom, "#DC143C", 2.0, [4, 3]);
+    }
+
+    // Stage 4: Constructive Heyting Mereology & Dialectical Sublation (Thm. 12.4)
+    function renderStage4(w, h) {
+      const dNode = drawNode3D("M_Dr", -1.05, -0.5, -0.65, 8.5, "#4169E1", "#fff", "d_r ∈ D_U (Dialectical)", "Dialectical Operator Component d_r with norm a_D", w, h);
+      const pNode = drawNode3D("M_Fq",  1.05, -0.5, -0.65, 8.5, "#20B2AA", "#fff", "f_q ∈ P_U (Predicative)", "Predicative Feature Component f_q with norm b_P", w, h);
+      const mCone = drawNode3D("M_Asp", 0, 0, 0.10, 10, "#20B2AA", "#FFD700", "𝔐_asp(U): χ(a_D,b_P) > θ", "Archimedean t-Norm Coordination Subobject satisfying CEM Axioms MSL-M1 & MSL-M2", w, h);
+      const aufNode = drawNode3D("M_Auf", 0, 0, 0.98, 11.5, "#FFD700", "#FFA500", "Aufhebung C ∈ Prop_{k+1}", "Thm. 12.4 Left-Adjoint Binding ℒ_bind ⊣ ℛ_part & Dialectical Sublation Apex!", w, h);
+      drawLine3D(dNode, mCone, "#4169E1", 2.8);
+      drawLine3D(pNode, mCone, "#20B2AA", 2.8);
+      drawLine3D(mCone, aufNode, "#FFD700", 3.4);
+    }
+
+    // Stage 5: Landauer Thermodynamic Erasure Funnel (Thm. 12.6)
+    function renderStage5(w, h) {
       for (let ring = 0; ring < 5; ring++) {
         const frac = ring / 4;
-        const rad = 1.45 * (1 - 0.72 * frac);
-        const y = 1.0 - frac * 2.0;
-        const base = pts.length;
-        const M = 12;
-        for (let k = 0; k < M; k++) {
-          const a = (k / M) * Math.PI * 2 + t * (0.5 + frac);
-          const col = ring < 3 ? "#38bdf8" : ring === 3 ? "#ff6b81" : "#20B2AA";
-          pts.push({ x: rad * Math.cos(a), y, z: rad * Math.sin(a), c: col, r: 3.0 });
-          edges.push([base + k, base + ((k + 1) % M), col, 0.4]);
-          if (ring > 0) edges.push([base + k, base - M + k, col, 0.28]);
+        const rad = 1.35 * (1 - 0.72 * frac);
+        const z = 0.95 - frac * 1.9;
+        const col = ring < 2 ? "#38bdf8" : (ring < 4 ? "#ff6b81" : "#FFD700");
+        ctx.beginPath();
+        ctx.strokeStyle = col;
+        ctx.lineWidth = 2.0;
+        for (let k = 0; k <= 32; k++) {
+          const a = (k / 32) * Math.PI * 2 + timeSec * (0.4 + frac);
+          const p = proj(rad * Math.cos(a), rad * Math.sin(a), z, w, h);
+          if (k === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
+        }
+        ctx.stroke();
+      }
+      drawNode3D("L_In", 0, 0, 0.95, 9, "#38bdf8", "#fff", "Sensory Inflow H(X) = 10⁷ bits/s", "High-Dimensional Retinal/Sensory Micro-State Inflow D", w, h);
+      drawNode3D("L_Heat", 1.15, 0, 0.0, 8, "#ff6b81", "#FFD700", "ΔQ ≥ N_erase k_B T ln 2", "Erased Conditional Fibre Entropy H(X_n | Y_{n+1}) dissipated as metabolic heat (~20 W cortex)", w, h);
+      drawNode3D("L_Out", 0, 0, -0.95, 11, "#FFD700", "#20B2AA", "Macro Quota H(Y) ≈ 40 bits/s", "Compressed Conscious Protosimplex Pointer Stream (99.8% Dimension Reduction!)", w, h);
+    }
+
+    // Stage 6: Protosimplex Encapsulation & 4 ± 1 Working Memory Clique (Prop. 12.6)
+    function renderStage6(w, h) {
+      const kPts = [];
+      for (let i = 0; i < 4; i++) {
+        const a = (i / 4) * Math.PI * 2 + timeSec * 0.35;
+        const x = 1.12 * Math.cos(a), y = 1.12 * Math.sin(a), z = -0.45 + 0.15 * Math.sin(timeSec * 2 + i);
+        const p = drawNode3D("WM_" + (i + 1), x, y, z, 8.5, "#20B2AA", "#fff", `𝒫_${i + 1} (Chunk ${i + 1})`, `Encapsulated 0D Protosimplex Working Memory Chunk 𝒫_${i + 1}`, w, h);
+        kPts.push(p);
+      }
+      const pApex = drawNode3D("WM_Apex", 0, 0, 0.90, 11.5, "#FFD700", "#DC143C", "k_max = 4 ± 1 (binom(4,2)=6)", "Prop. 12.6 Working Memory Capacity Bound: Quadratic Čech pair-overlaps saturate C_max / λ₁!", w, h);
+      for (let i = 0; i < 4; i++) {
+        drawLine3D(kPts[i], pApex, "#FFD700", 2.4);
+        for (let j = i + 1; j < 4; j++) {
+          drawLine3D(kPts[i], kPts[j], "#ff6b81", 2.2);
         }
       }
-    } else if (s === 7 || s === 10) {
-      // 3x3 cortical patch nerve lattice with phase-locked harmonic wave
+    }
+
+    // Stage 7: Simplicial Hodge Decomposition & 40 Hz Thalamocortical Gamma Gluing (Thm. 12.7)
+    function renderStage7(w, h) {
+      const gPts = [];
       for (let r = 0; r < 3; r++) {
         for (let c = 0; c < 3; c++) {
-          const x = (c - 1) * 0.95;
-          const z = (r - 1) * 0.95;
-          const y = 0.25 * Math.sin(t * 2.5 + (r + c) * 0.6) * (1 + 0.5 * spikeBoost);
-          pts.push({ x, y, z, c: "#20B2AA", r: 4.5 });
+          const x = (c - 1) * 0.92;
+          const y = (r - 1) * 0.92;
+          const z = -0.45 + 0.18 * Math.sin(timeSec * 3.2 + (r + c) * 0.7);
+          const idx = r * 3 + c;
+          gPts.push(drawNode3D("Hdg_" + idx, x, y, z, 6.5, "#20B2AA", "#fff", idx === 4 ? "40 Hz Sync" : "", `Cortical Patch Stalk U_${idx + 1} in 3×3 Simplicial Nerve`, w, h));
         }
       }
-      pts.push({ x: 0, y: 1.05, z: 0, c: "#FFD700", r: 5.5 });
+      const pGest = drawNode3D("Hdg_Apex", 0, 0, 0.95, 11.5, "#FFD700", "#20B2AA", "ω = dα ⊕ δβ ⊕ γ (γ → 0)", "Thm. 12.7 Hodge Decomposition: 40 Hz Gamma Synchrony annihilates harmonic frustration γ → 0!", w, h);
       for (let r = 0; r < 3; r++) {
         for (let c = 0; c < 3; c++) {
           const idx = r * 3 + c;
-          if (c < 2) edges.push([idx, idx + 1, "#38bdf8", 0.55]);
-          if (r < 2) edges.push([idx, idx + 3, "#38bdf8", 0.55]);
-          edges.push([idx, 9, "#FFD700", 0.28]);
+          if (c < 2) drawLine3D(gPts[idx], gPts[idx + 1], "#38bdf8", 2.0);
+          if (r < 2) drawLine3D(gPts[idx], gPts[idx + 3], "#38bdf8", 2.0);
+          if (idx % 2 === 0) drawLine3D(gPts[idx], pGest, "rgba(255,215,0,0.45)", 1.6);
         }
       }
-    } else if (s === 8 || s === 9) {
-      // Affective parabolic basin with spiralling trajectory toward T_z
+    }
+
+    // Stage 8: Affective Telecentric Flow & Valence/Arousal Basin (Thm. 12.8)
+    function renderStage8(w, h) {
       for (let ring = 1; ring <= 3; ring++) {
-        const rad = ring * 0.45;
-        const y = -0.85 + 0.55 * rad * rad;
-        const base = pts.length;
-        for (let k = 0; k < 14; k++) {
-          const a = (k / 14) * Math.PI * 2;
-          pts.push({ x: rad * Math.cos(a), y, z: rad * Math.sin(a), c: "#334155", r: 2.2 });
-          edges.push([base + k, base + ((k + 1) % 14), "#475569", 0.3]);
+        const rad = ring * 0.42;
+        const z = -0.85 + 0.65 * rad * rad;
+        ctx.beginPath();
+        ctx.strokeStyle = "rgba(65,105,225,0.45)";
+        ctx.lineWidth = 1.6;
+        for (let k = 0; k <= 32; k++) {
+          const a = (k / 32) * Math.PI * 2;
+          const p = proj(rad * Math.cos(a), rad * Math.sin(a), z, w, h);
+          if (k === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
         }
+        ctx.stroke();
       }
-      // Spiral trajectory
-      const spiralBase = pts.length;
-      for (let i = 0; i < 18; i++) {
-        const u = i / 17;
-        const rad = 1.35 * (1 - u);
-        const a = u * Math.PI * 4 + t * 1.8;
-        const y = -0.85 + 0.55 * rad * rad;
-        pts.push({ x: rad * Math.cos(a), y, z: rad * Math.sin(a), c: i === 17 ? "#FFD700" : "#20B2AA", r: i === 17 ? 5.5 : 3.4 });
-        if (i > 0) edges.push([spiralBase + i - 1, spiralBase + i, "#20B2AA", 0.75]);
+      ctx.beginPath();
+      ctx.strokeStyle = "#20B2AA";
+      ctx.lineWidth = 3.0;
+      for (let i = 0; i <= 50; i++) {
+        const u = i / 50;
+        const rad = 1.25 * (1 - u);
+        const a = u * Math.PI * 4 + timeSec * 2.2;
+        const z = -0.85 + 0.65 * rad * rad;
+        const p = proj(rad * Math.cos(a), rad * Math.sin(a), z, w, h);
+        if (i === 0) ctx.moveTo(p.sx, p.sy); else ctx.lineTo(p.sx, p.sy);
       }
-    } else {
-      // Stages 11 & 12: Cross-disciplinary rosetta star / asymptotic synthesis torus
-      const N = 18;
-      for (let i = 0; i < N; i++) {
-        const a = (i / N) * Math.PI * 2;
-        const R = 1.05 + 0.3 * Math.cos(3 * a + t);
-        const x = R * Math.cos(a);
-        const z = R * Math.sin(a);
-        const y = 0.45 * Math.sin(3 * a + t);
-        pts.push({ x, y, z, c: i % 2 === 0 ? "#38bdf8" : "#FFD700", r: 3.8 });
-        edges.push([i, (i + 1) % N, "#38bdf8", 0.55]);
-        edges.push([i, (i + 3) % N, "#9370DB", 0.25]);
-      }
-    }
-    return { pts, edges };
-  }
+      ctx.stroke();
 
-  const CH12_3D_STYLE = `
-  .ch12-3d-wrapper {
-    position: relative; width: 100%; height: 100%; min-height: 275px;
-    border-radius: 12px; overflow: hidden;
-    background: radial-gradient(circle at 50% 50%, #0d1526 0%, #050811 100%);
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
-    display: flex; flex-direction: column;
-  }
-  .ch12-3d-canvas { width: 100%; flex: 1; min-height: 205px; cursor: grab; display: block; }
-  .ch12-3d-canvas:active { cursor: grabbing; }
-  .ch12-hud-top {
-    position: absolute; top: 8px; left: 10px; right: 10px;
-    display: flex; justify-content: space-between; align-items: flex-start;
-    pointer-events: none; z-index: 5;
-  }
-  .ch12-hud-badge {
-    background: rgba(10, 15, 30, 0.86); backdrop-filter: blur(6px);
-    border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 8px;
-    padding: 4px 9px; font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62em; color: #e2e8f0; pointer-events: auto;
-  }
-  .ch12-hud-controls { display: flex; gap: 4px; pointer-events: auto; }
-  .ch12-hud-btn {
-    background: rgba(15, 23, 42, 0.88); border: 1px solid rgba(148, 163, 184, 0.35);
-    color: #cbd5e1; border-radius: 5px; padding: 3px 7px;
-    font-size: 0.62em; font-family: 'JetBrains Mono', monospace;
-    cursor: pointer; transition: all 0.15s ease;
-  }
-  .ch12-hud-btn:hover, .ch12-hud-btn.active {
-    background: rgba(56, 189, 248, 0.22); border-color: #38bdf8; color: #38bdf8;
-  }
-  .ch12-scrubber {
-    background: rgba(10, 15, 28, 0.94); border-top: 1px solid rgba(56, 189, 248, 0.2);
-    padding: 5px 10px; display: flex; align-items: center; gap: 6px;
-    font-family: 'JetBrains Mono', monospace; font-size: 0.62em; color: #94a3b8; z-index: 5;
-  }
-  .ch12-scrubber input[type=range] { flex: 1; accent-color: #38bdf8; height: 4px; cursor: pointer; }
-  .ch12-stage-caption {
-    font-size: 0.60em; color: #cbd5e1; background: rgba(15, 23, 42, 0.92);
-    padding: 4px 10px; border-top: 1px solid rgba(255,255,255,0.05);
-    display: flex; justify-content: space-between; align-items: center; gap: 8px;
-  }
-  #ch12-floating-hud {
-    position: fixed; right: 20px; bottom: 20px; width: clamp(290px, 30vw, 480px);
-    z-index: 9999; background: rgba(7, 11, 22, 0.96);
-    border: 1.5px solid rgba(56, 189, 248, 0.6); border-radius: 12px;
-    padding: 7px 10px; box-shadow: 0 12px 40px rgba(0,0,0,0.85);
-  }
-  #ch12-floating-hud.minimized .ch12-float-body { display: none; }
-  `;
-
-  const CH12_WRAP_INNER = `
-    <div class="ch12-hud-top">
-      <div class="ch12-hud-badge">
-        <span style="color:#38bdf8; font-weight:700;" class="ch12-stage-title">STAGE 01 // EPISTEMIC STRATIFICATION</span>
-        <div style="font-size:0.88em; color:#94a3b8; margin-top:2px;" class="ch12-stage-sub">Ψ: Met → E_Phenom | Drag to Orbit · Scroll to Zoom</div>
-      </div>
-      <div class="ch12-hud-controls">
-        <button class="ch12-hud-btn active" data-action="rot">⟳ Orbit</button>
-        <button class="ch12-hud-btn" data-action="pulse">⚡ Spike</button>
-        <button class="ch12-hud-btn" data-action="reset">⌖ Reset</button>
-      </div>
-    </div>
-    <canvas class="ch12-3d-canvas" width="640" height="300"></canvas>
-    <div class="ch12-stage-caption">
-      <span class="ch12-caption-text">Consciousness Functor Ψ projects non-collapsed metronic coalgebras onto internal locales Ω_Phenom.</span>
-      <span class="ch12-telemetry" style="font-family:'JetBrains Mono',monospace; color:#10b981; white-space:nowrap;">H^0(U,F) ≠ ∅</span>
-    </div>
-    <div class="ch12-scrubber">
-      <button class="ch12-hud-btn" data-action="prev" title="Previous Stage" style="padding:2px 6px;">◀</button>
-      <span style="color:#38bdf8; font-weight:700;">STAGE</span>
-      <input type="range" class="ch12-stage-slider" min="1" max="12" step="0.02" value="1">
-      <span class="ch12-stage-num" style="color:#e2e8f0; min-width:44px; text-align:right;">01 / 12</span>
-      <button class="ch12-hud-btn" data-action="next" title="Next Stage" style="padding:2px 6px;">▶</button>
-    </div>
-  `;
-
-  function initMorphEngines() {
-    if (!document.getElementById("ch12-3d-injected-style")) {
-      const st = document.createElement("style");
-      st.id = "ch12-3d-injected-style";
-      st.textContent = CH12_3D_STYLE;
-      document.head.appendChild(st);
+      drawNode3D("Aff_Start", 1.15, 0, 0.05, 8, "#ff6b81", "#fff", "Perturbation ΔV = +8.5", "High-Dissonance Threat Perturbation triggering noradrenergic metric scaling g_AR", w, h);
+      drawNode3D("Aff_Tz", 0, 0, -0.85, 11.5, "#FFD700", "#20B2AA", "Telezentrum T_z (V̇ ≤ 0)", "Thm. 12.8 Homeostatic Attractor T_z: Positive Valence = −dV/dt = g_AR⁻¹(dV,dV) > 0!", w, h);
     }
 
-    const hosts = document.querySelectorAll(".ch12-3d-Mount, [data-ch12-morph]");
-    hosts.forEach((host) => {
-      if (host.dataset.mounted === "1") return;
-      host.dataset.mounted = "1";
-      const wrap = document.createElement("div");
-      wrap.className = "ch12-3d-wrapper";
-      wrap.innerHTML = CH12_WRAP_INNER;
-      host.appendChild(wrap);
-    });
-
-    const isMegaDeck = !!document.getElementById("syntrix-3d-hud") || document.querySelectorAll("h1").length > 5;
-    if (!isMegaDeck && !document.getElementById("ch12-floating-hud")) {
-      const fl = document.createElement("div");
-      fl.id = "ch12-floating-hud";
-      fl.className = "minimized";
-      fl.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-bottom:4px;">
-          <span style="font-size:10.5px; font-weight:800; color:#38bdf8; font-family:monospace;">🧠 CH 12 · 12-STAGE NEURO-TOPOS 3D ENGINE</span>
-          <button class="ch12-hud-btn" id="ch12-float-toggle" onclick="const h=document.getElementById('ch12-floating-hud'); h.classList.toggle('minimized'); this.textContent=h.classList.contains('minimized')?'+':'—';">+</button>
-        </div>
-        <div class="ch12-float-body">
-          <div class="ch12-3d-wrapper">${CH12_WRAP_INNER}</div>
-        </div>
-      `;
-      document.body.appendChild(fl);
+    // Stage 9: Predator-in-the-Woods Trace & 3-Layer Operadic Neural Topos (§12.8–12.9)
+    function renderStage9(w, h) {
+      const pRet = drawNode3D("NT_Ret", 0, 0, -0.95, 9.5, "#38bdf8", "#fff", "Layer 1: 16×16 Retinal Lattice", "Sensory Input Grid (20,000 bits/s compressed via Landauer erasure to 40 bits/s)", w, h);
+      const stalks = [];
+      for (let k = 0; k < 6; k++) {
+        const a = (k / 6) * Math.PI * 2 + timeSec * 0.4;
+        const pS = drawNode3D("NT_S" + k, 1.05 * Math.cos(a), 1.05 * Math.sin(a), 0.0, 7, "#20B2AA", "#fff", k === 0 ? "Layer 2: Gabor Stalks" : "", `V1 Orientation Stalk & Čech Nerve Overlap Patch ${k + 1}`, w, h);
+        stalks.push(pS);
+        drawLine3D(pRet, pS, "#38bdf8", 1.8);
+      }
+      const pGest = drawNode3D("NT_Gest", 0, 0, 0.95, 11.5, "#FFD700", "#DC143C", "Layer 3: Glued Predator Gestalt", "Global Colimit Section s ∈ Γ(U, F) triggering Telecentric Evasive Trajectory (ΔI_syn = +12.4 bits)!", w, h);
+      for (let k = 0; k < 6; k++) {
+        drawLine3D(stalks[k], stalks[(k + 1) % 6], "#20B2AA", 2.0);
+        drawLine3D(stalks[k], pGest, "#FFD700", 2.4);
+      }
     }
 
-    document.querySelectorAll(".ch12-3d-wrapper").forEach((wrap) => {
-      if (wrap.dataset.bound === "1") return;
-      wrap.dataset.bound = "1";
-
-      const canvas = wrap.querySelector(".ch12-3d-canvas");
-      const slider = wrap.querySelector(".ch12-stage-slider");
-      const titleEl = wrap.querySelector(".ch12-stage-title");
-      const subEl = wrap.querySelector(".ch12-stage-sub");
-      const capEl = wrap.querySelector(".ch12-caption-text");
-      const telEl = wrap.querySelector(".ch12-telemetry");
-      const numEl = wrap.querySelector(".ch12-stage-num");
-
-      let curStage = parseFloat(slider ? slider.value : "1") || 1;
-      let rotY = 0.4;
-      let rotX = 0.32;
-      let zoom = 1.0;
-      let autoRot = true;
-      let spikeBoost = 0.0;
-      let dragging = false;
-      let lastX = 0;
-      let lastY = 0;
-
-      function updateMeta(val) {
-        curStage = Math.max(1, Math.min(12, val));
-        if (slider) slider.value = String(curStage);
-        const idx = Math.round(curStage) - 1;
-        const m = STAGE_META[idx] || STAGE_META[0];
-        if (titleEl) titleEl.textContent = m.title;
-        if (subEl) subEl.textContent = m.sub;
-        if (capEl) capEl.textContent = m.caption;
-        if (telEl) telEl.textContent = m.telemetry;
-        if (numEl) {
-          const sStr = String(idx + 1).padStart(2, "0");
-          numEl.textContent = `${sStr} / 12`;
-        }
-      }
-
-      if (slider) {
-        slider.addEventListener("input", () => updateMeta(parseFloat(slider.value)));
-      }
-
-      wrap.querySelectorAll(".ch12-hud-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const act = btn.dataset.action;
-          if (act === "rot") {
-            autoRot = !autoRot;
-            btn.classList.toggle("active", autoRot);
-          } else if (act === "pulse") {
-            spikeBoost = 1.5;
-          } else if (act === "reset") {
-            rotY = 0.4;
-            rotX = 0.32;
-            zoom = 1.0;
-          } else if (act === "prev") {
-            updateMeta(Math.max(1, Math.round(curStage) - 1));
-          } else if (act === "next") {
-            updateMeta(Math.min(12, Math.round(curStage) + 1));
-          }
-        });
+    // Stage 10: Cross-Disciplinary Neuro-Rosetta Star & Asymptotic Reductions (§12.10–12.11)
+    function renderStage10(w, h) {
+      const pHub = drawNode3D("Ros_Hub", 0, 0, 0, 11.5, "#FFD700", "#20B2AA", "Syntrometric Neuro-Topos ℰ_syn", "Unified Categorical Framework bridging IIT 4.0, GNW, FEP, and Classical Limits", w, h);
+      const arms = [
+        { id: "R_IIT",  x: -1.15, y: -0.65, z:  0.55, col: "#20B2AA", lbl: "IIT 4.0 (Φ ↔ ΔI_syn & Ω_int)", info: "Maps Integrated Information Φ to Mereological Synergy Surplus ΔI_syn & Gauge Curvature" },
+        { id: "R_GNW",  x:  1.15, y: -0.65, z:  0.55, col: "#4169E1", lbl: "Dehaene GNW (Ignition ↔ Γ(U,P))", info: "Maps Global Workspace Broadcast to Non-Empty Sheaf Equalizer Hol(U, P) ≠ ∅" },
+        { id: "R_FEP",  x: -1.15, y:  0.65, z: -0.55, col: "#FFA500", lbl: "Friston FEP (F_VFE ↔ V(x) → T_z)", info: "Maps Variational Free Energy Minimization to Affective Telecentric Flow dV/dt ≤ 0" },
+        { id: "R_Lim",  x:  1.15, y:  0.65, z: -0.55, col: "#9370DB", lbl: "Unary m=1 & Abelian φ=0 Limits", info: "Recovers Classical Feedforward Reflex Chains & Unbound Aggregate Models as exact degeneracies!" }
+      ];
+      arms.forEach(ar => {
+        const pA = drawNode3D(ar.id, ar.x, ar.y, ar.z, 8.5, ar.col, "#fff", ar.lbl, ar.info, w, h);
+        drawLine3D(pHub, pA, ar.col, 2.8);
       });
+    }
 
-      if (canvas) {
-        canvas.addEventListener("mousedown", (e) => {
-          dragging = true;
-          lastX = e.clientX;
-          lastY = e.clientY;
-        });
-        window.addEventListener("mouseup", () => {
-          dragging = false;
-        });
-        window.addEventListener("mousemove", (e) => {
-          if (!dragging) return;
-          rotY += (e.clientX - lastX) * 0.008;
-          rotX = Math.max(-1.2, Math.min(1.2, rotX + (e.clientY - lastY) * 0.008));
-          lastX = e.clientX;
-          lastY = e.clientY;
-        });
-        canvas.addEventListener(
-          "wheel",
-          (e) => {
-            e.preventDefault();
-            zoom = Math.max(0.55, Math.min(2.0, zoom - e.deltaY * 0.001));
-          },
-          { passive: false }
-        );
+    function renderLoop() {
+      timeSec += 0.016;
+      curStage += (targetStage - curStage) * 0.14;
+      if (autoOrbit && !isDragging) camYaw += 0.0055;
+
+      const w = wrap.clientWidth, h = wrap.clientHeight;
+      if (w <= 0 || h <= 0) {
+        requestAnimationFrame(renderLoop);
+        return;
+      }
+      if (canvas.width === 0 || Math.abs(canvas.width / Math.min(window.devicePixelRatio || 1, 2) - w) > 2) {
+        resize();
+      }
+      ctx.clearRect(0, 0, w, h);
+      hitNodes = [];
+
+      function dispatchStageCrossFade(stInt) {
+        if (stInt === 1) renderStage1(w, h);
+        else if (stInt === 2) renderStage2(w, h);
+        else if (stInt === 3) renderStage3(w, h);
+        else if (stInt === 4) renderStage4(w, h);
+        else if (stInt === 5) renderStage5(w, h);
+        else if (stInt === 6) renderStage6(w, h);
+        else if (stInt === 7) renderStage7(w, h);
+        else if (stInt === 8) renderStage8(w, h);
+        else if (stInt === 9) renderStage9(w, h);
+        else renderStage10(w, h);
       }
 
-      function project(p, W, H) {
-        const cy = Math.cos(rotY),
-          sy = Math.sin(rotY);
-        const cx = Math.cos(rotX),
-          sx = Math.sin(rotX);
-        const x1 = p.x * cy - p.z * sy;
-        const z1 = p.x * sy + p.z * cy;
-        const y2 = p.y * cx - z1 * sx;
-        const z2 = p.y * sx + z1 * cx;
-        const scale = (Math.min(W, H) * 0.34 * zoom) / (3.2 + z2 * 0.45);
-        return { x: W * 0.5 + x1 * scale, y: H * 0.52 - y2 * scale, z: z2, s: scale };
-      }
-
-      function drawGeom(ctx, geom, W, H, alpha) {
-        if (alpha <= 0.01) return;
+      const stLow = Math.max(1, Math.min(10, Math.floor(curStage)));
+      const stHigh = Math.max(1, Math.min(10, Math.ceil(curStage)));
+      const frac = curStage - stLow;
+      if (stLow === stHigh || frac < 0.02) {
         ctx.save();
-        ctx.globalAlpha = alpha;
-        const proj = geom.pts.map((p) => ({ ...project(p, W, H), c: p.c, r: p.r }));
-        geom.edges.forEach((e) => {
-          const a = proj[e[0]],
-            b = proj[e[1]];
-          if (!a || !b) return;
-          ctx.strokeStyle = e[2] || "#38bdf8";
-          ctx.globalAlpha = alpha * (e[3] || 0.45);
-          ctx.lineWidth = 1.3;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        });
-        proj.forEach((p) => {
-          ctx.globalAlpha = alpha;
-          ctx.fillStyle = p.c || "#38bdf8";
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r || 3.2, 0, Math.PI * 2);
-          ctx.fill();
-        });
+        ctx.globalAlpha = 1.0;
+        dispatchStageCrossFade(Math.round(curStage));
+        ctx.restore();
+      } else {
+        ctx.save();
+        ctx.globalAlpha = 1.0 - frac * 0.82;
+        dispatchStageCrossFade(stLow);
+        ctx.restore();
+        ctx.save();
+        ctx.globalAlpha = frac;
+        dispatchStageCrossFade(stHigh);
         ctx.restore();
       }
-
-      function renderLoop(ts) {
-        const t = (ts || 0) * 0.001;
-        if (autoRot && !dragging) rotY += 0.0045;
-        if (spikeBoost > 0) spikeBoost = Math.max(0, spikeBoost - 0.03);
-
-        if (canvas) {
-          const ctx = canvas.getContext("2d");
-          const W = canvas.width;
-          const H = canvas.height;
-          ctx.clearRect(0, 0, W, H);
-
-          const sLow = Math.floor(curStage);
-          const sHigh = Math.min(12, Math.ceil(curStage));
-          const frac = curStage - sLow;
-
-          const gLow = buildStageGeometry(sLow, t, spikeBoost);
-          drawGeom(ctx, gLow, W, H, 1.0 - frac * 0.85);
-          if (sHigh !== sLow && frac > 0.02) {
-            const gHigh = buildStageGeometry(sHigh, t, spikeBoost);
-            drawGeom(ctx, gHigh, W, H, frac);
-          }
-        }
-        requestAnimationFrame(renderLoop);
-      }
-
-      updateMeta(curStage);
       requestAnimationFrame(renderLoop);
+    }
 
-      if (window.Reveal) {
-        window.Reveal.on("slidechanged", (ev) => {
-          const h = ev.indexh || 0;
-          updateMeta(Math.min(12, Math.max(1, h + 1)));
-        });
+    window.setCh12Stage = function(val, manual) {
+      targetStage = Math.max(1.0, Math.min(10.0, parseFloat(val)));
+      const stInt = Math.round(targetStage);
+      const sl = document.getElementById('ch12-slider');
+      if (sl && Math.abs(parseFloat(sl.value) - targetStage) > 0.02) sl.value = targetStage;
+      const pill = document.getElementById('ch12-stage-pill');
+      if (pill) pill.innerText = `Stage ${targetStage.toFixed(1)} / 10`;
+      const cap = document.getElementById('ch12-caption');
+      if (cap) cap.innerHTML = STAGE_CAPTIONS[stInt] || STAGE_CAPTIONS[1];
+      const tel = document.getElementById('ch12-telemetry');
+      if (tel) tel.innerText = STAGE_TELEMETRY[stInt] || STAGE_TELEMETRY[1];
+      if (manual) {
+        autoSync = false;
+        const b = document.getElementById('ch12-btn-sync');
+        if (b) { b.classList.remove('active'); b.innerText = "Manual"; }
       }
+    };
+
+    window.scrubCh12Stage = function(val) { window.setCh12Stage(val, true); };
+
+    window.enableCh12Sync = function() {
+      autoSync = true;
+      const b = document.getElementById('ch12-btn-sync');
+      if (b) { b.classList.add('active'); b.innerText = "Auto-Sync"; }
+      syncCh12WithDeck();
+    };
+
+    window.toggleCh12Orbit = function() {
+      autoOrbit = !autoOrbit;
+      const b = document.getElementById('ch12-btn-orbit');
+      if (b) b.classList.toggle('active', autoOrbit);
+    };
+
+    window.toggleCh12Spotlight = function() {
+      const hud = document.getElementById('ch12-3d-hud');
+      if (hud) {
+        hud.classList.remove('minimized');
+        hud.classList.toggle('spotlight');
+        setTimeout(resize, 360);
+      }
+    };
+
+    window.toggleCh12Minimize = function() {
+      const hud = document.getElementById('ch12-3d-hud');
+      const b = document.getElementById('ch12-btn-min');
+      if (hud) {
+        hud.classList.remove('spotlight');
+        hud.classList.toggle('minimized');
+        if (b) b.innerText = hud.classList.contains('minimized') ? "+" : "—";
+        setTimeout(resize, 360);
+      }
+    };
+
+    function syncCh12WithDeck() {
+      if (!autoSync) return;
+      const isMegaDeck = !!document.getElementById('syntrix-3d-hud') || document.querySelectorAll('h1').length > 5;
+      const chHud = document.getElementById('ch12-3d-hud');
+      if (isMegaDeck && chHud && window.Reveal && window.Reveal.getCurrentSlide) {
+        const currentSlide = window.Reveal.getCurrentSlide();
+        const inCh = currentSlide ? !!currentSlide.closest('#chapter-12, section[data-chapter="12"]') : true;
+        chHud.style.display = inCh ? '' : 'none';
+        if (!inCh) return;
+      }
+
+      const rev = document.querySelector('.reveal');
+      const vp = document.querySelector('.reveal-viewport');
+      const isScroll = (window.Reveal && typeof window.Reveal.isScrollView === 'function' && window.Reveal.isScrollView())
+        || (vp && vp.classList.contains('reveal-scroll'))
+        || (rev && rev.classList.contains('reveal-scroll'))
+        || (rev && rev.scrollHeight > rev.clientHeight + 100)
+        || window.innerWidth <= 768;
+
+      let stageVal = null;
+      if (isScroll) {
+        const top = (rev && typeof rev.scrollTop === 'number' && rev.scrollTop > 0) ? rev.scrollTop
+          : ((vp && typeof vp.scrollTop === 'number' && vp.scrollTop > 0) ? vp.scrollTop
+          : (window.scrollY || document.documentElement.scrollTop || 0));
+        let max = 1;
+        if (rev && rev.scrollHeight > rev.clientHeight + 10) max = rev.scrollHeight - rev.clientHeight;
+        else if (vp && vp.scrollHeight > vp.clientHeight + 10) max = vp.scrollHeight - vp.clientHeight;
+        else max = Math.max(1, Math.max(document.body.scrollHeight, document.documentElement.scrollHeight) - window.innerHeight);
+        const frac = Math.min(1.0, Math.max(0.0, top / max));
+        stageVal = 1.0 + frac * 9.0;
+      }
+
+      if (stageVal === null && window.Reveal && typeof window.Reveal.getIndices === 'function') {
+        const idx = window.Reveal.getIndices();
+        const tot = Math.max(1, window.Reveal.getTotalSlides ? window.Reveal.getTotalSlides() : 13);
+        const hIdx = (idx && typeof idx.h === 'number') ? idx.h : 0;
+        const fOff = (idx && typeof idx.f === 'number' && idx.f >= 0) ? Math.min(0.45, (idx.f + 1) * 0.2) : 0;
+        stageVal = 1.0 + ((hIdx + fOff) / Math.max(1, tot - 1)) * 9.0;
+      }
+
+      if (typeof stageVal === 'number' && !isNaN(stageVal)) {
+        window.setCh12Stage(stageVal, false);
+      }
+    }
+
+    window.syncCh12WithDeck = syncCh12WithDeck;
+
+    wrap.addEventListener('mousedown', e => {
+      e.stopPropagation();
+      isDragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+    });
+    window.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      camYaw += (e.clientX - lastX) * 0.012;
+      camPitch = Math.max(-0.85, Math.min(1.15, camPitch + (e.clientY - lastY) * 0.012));
+      lastX = e.clientX;
+      lastY = e.clientY;
+    });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    wrap.addEventListener('click', e => {
+      e.stopPropagation();
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+      let hit = null;
+      for (let i = hitNodes.length - 1; i >= 0; i--) {
+        const n = hitNodes[i];
+        if (Math.hypot(mx - n.p.sx, my - n.p.sy) <= n.r + 6) { hit = n; break; }
+      }
+      const insp = document.getElementById('ch12-node-inspector');
+      if (hit && insp) {
+        selectedId = hit.id;
+        insp.innerText = hit.info;
+      } else if (insp) {
+        selectedId = null;
+        insp.innerText = "Drag to Orbit 3D · Click Node to Inspect";
+      }
+    });
+
+    wrap.addEventListener('wheel', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      camZoom = Math.max(0.65, Math.min(2.0, camZoom - e.deltaY * 0.001));
+    }, { passive: false });
+
+    resize();
+    syncCh12WithDeck();
+    requestAnimationFrame(renderLoop);
+    window.addEventListener('resize', resize);
+    if (window.Reveal) {
+      window.Reveal.on('ready', syncCh12WithDeck);
+      window.Reveal.on('slidechanged', syncCh12WithDeck);
+      window.Reveal.on('fragmentshown', syncCh12WithDeck);
+      window.Reveal.on('fragmenthidden', syncCh12WithDeck);
+    }
+  }
+
+  function initCh12InlineMount() {
+    document.querySelectorAll('.ch12-3d-Mount, [data-ch12-morph]').forEach(el => {
+      if (el.dataset.mounted === '1') return;
+      el.dataset.mounted = '1';
+      el.innerHTML = `<div style="background:rgba(10,15,28,0.92); border:1px solid rgba(32,178,170,0.45); border-radius:10px; padding:10px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+        <div style="font-size:0.66em; color:#cbd5e1;">
+          <b style="color:#FFD700;">🧠 Interactive 10-Stage 3D Neuro-Topos &amp; Protosimplex Engine</b><br>
+          <span>Synchronized across all 13 slides — inspect Goodman sheaf descent, Zombie refutation, Landauer funnel, and 40 Hz Hodge gluing in 3D.</span>
+        </div>
+        <button class="syn-btn" style="background:#FFD700; color:#000; font-weight:bold; white-space:nowrap;" onclick="if(window.toggleCh12Spotlight) window.toggleCh12Spotlight();">⛶ Launch 3D Spotlight</button>
+      </div>`;
     });
   }
 
@@ -1094,7 +1333,8 @@
     window.ch12_setPredatorStep(1);
     initRetinaCanvasEvents();
     renderRetinaCanvas();
-    initMorphEngines();
+    runCh12Engine();
+    initCh12InlineMount();
   }
 
   if (document.readyState === "loading") {
