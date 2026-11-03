@@ -26,6 +26,7 @@ format:
       text: |
         <script src="shared/chapter13-widgets.js"></script>
         <script src="shared/monograph-workbench.js"></script>
+
 ---
 
 ## §13.1.1: Metric-Affine Qualia Geometry &amp; Non-Abelian Stokes–Wilson Holonomy {.smaller transition="convex"}
@@ -119,13 +120,13 @@ Slide 1 introduces §13.1.1: Definition 13.1 (Metric-Affine Manifold Structure $
 
 ---
 
-## §13.1.2–13.1.4: Functorial *Zeitkorn*, Object Constancy &amp; Intersubjectivity {.smaller transition="slide"}
+## §13.1.2–13.1.3: Functorial *Zeitkorn* ($\delta t_n$) &amp; Saccadic Object Constancy {.smaller transition="slide"}
 
-<div class="stratum-badge badge-b">STRATA B &amp; C: CHRONOMETRIC QUANTIZATION, SACCADIC CONSTANCY &amp; THEORY OF MIND (THMS. 13.3 – 13.5)</div>
+<div class="stratum-badge badge-b">STRATA B &amp; C: CHRONOMETRIC QUANTIZATION (THM. 13.3) &amp; PERCEPTUAL OBJECT CONSTANCY (THM. 13.4, FIG. 13.2)</div>
 
 :::: {.columns}
 
-::: {.column width="49%"}
+::: {.column width="50%"}
 
 ::: {.thm-box}
 **Theorem 13.3 (Functorial Chronometric Quantization — *Zeitkorn* $\delta t_n$):**
@@ -133,24 +134,66 @@ Let $\mathbb{T} \coloneqq \mathbb{N}_0$ act on the sheaf category $\Sh(\mathcal{
 $$
 \mathfrak{f}_n \in \Sh \;\xrightarrow{\;YF_{\mathrm{model}}\;}\; \mathfrak{f}_{n+1} = YF(\mathfrak{f}_n), \qquad \delta t_n \;\coloneqq\; \tau(n+1) - \tau(n) > 0
 $$
-Subjective conscious duration is not a background continuum, but the discrete difference metric between functorial pushout updates (e.g., visual alpha gating and gamma binding cycles).
+Subjective conscious duration is not a passive background continuum, but the discrete difference metric between functorial pushout updates (e.g., visual alpha gating at $\sim 10\,\text{Hz}$ and gamma binding cycles at $\sim 40\,\text{Hz}$, $\delta t_n \approx 25\,\text{ms}$).
 :::
 
 ::: {.thm-box .fragment .fade-up}
-**Theorem 13.4 (Perceptual Object Constancy Theorem):**
-Let $\mathcal{C} = (B_1 \xrightarrow{\alpha_1} B_2 \xrightarrow{\alpha_2} \dots \xrightarrow{\alpha_Z} B_1)$ be a closed exploratory sensorimotor loop (saccades). A perceptual feature $\mathbf{a}$ represents an objective invariant entity iff its transport holonomy in the total fibration $\pi \colon \int_{\Ctx} \mathbf{Syn} \to \Ctx$ is an isometric identity:
+**Theorem 13.4 (Perceptual Object Constancy Theorem, Fig. 13.2):**
+Let $\mathcal{C} = (B_1 \xrightarrow{\alpha_1} B_2 \xrightarrow{\alpha_2} \dots \xrightarrow{\alpha_Z} B_1)$ be a closed exploratory sensorimotor loop (e.g., ocular saccades or manual palpation). A perceptual feature $\mathbf{a} \in P^{B_1}$ represents an objective invariant entity iff its transport holonomy in the total fibration $\pi \colon \int_{\Ctx} \mathbf{Syn} \to \Ctx$ is an isometric identity:
 $$
 \Hol_{\mathbf{Syn}}(\mathcal{C})(\mathbf{a}) = \mathbf{a} \;\iff\; \oint_{\mathcal{C}} \mathbf{A} = \mathbf{0}
 $$
 :::
 
-::: {.thm-box .fragment .fade-right}
+:::
+
+::: {.column width="50%"}
+
+<div class="video-container">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch13_Act2_Zeitkorn_Object_Constancy.mp4" style="max-height:215px;"></video>
+  <div class="video-caption">Manim Act II: Functorial Zeitkorn Pushout Steps &amp; Saccadic Loop Constancy (∮ A = 0)</div>
+</div>
+
+::: {.intuition-box .fragment .fade-left style="margin-top:8px;"}
+**Why the World Does Not Spin When Your Eyes Move (Theorem 13.4):**
+During a rapid ocular saccade $B_1 \xrightarrow{\alpha_1} B_2 \xrightarrow{\alpha_2} B_3 \xrightarrow{\alpha_3} B_1$, retinal coordinates shift violently, but corollary discharge (efference copy) supplies the exact compensatory connection 1-form $\mathbf{A}$ along $\mathcal{C}$ so that $\oint_{\mathcal{C}} \mathbf{A} = \mathbf{0}$. External object motion violates $\oint_{\mathcal{C}} \mathbf{A} = \mathbf{0}$, cleanly separating self-generated retinal slip from external physical movement.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Slide 2A covers Theorem 13.3 (Functorial Chronometric Quantization of the subjective Zeitkorn $\delta t_n$) and Theorem 13.4 (Perceptual Object Constancy under active sensorimotor loops $B_1 \to B_2 \to B_3 \to B_1$).
+:::
+
+---
+
+## §13.1.4: Intersubjective Faithfulness, Affinity Interfaces &amp; Theory of Mind {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATA B &amp; C: TWO-SIDED NON-DEGENERATE AFFINITY INTERFACES &amp; INTERSUBJECTIVE FAITHFULNESS (THM. 13.5)</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.thm-box}
 **Theorem 13.5 (Intersubjective Faithfulness &amp; Theory of Mind):**
-Let $\mathcal{E}_A, \mathcal{E}_B$ be independent autopsychological toposes mediated by stabilized affinity interface $\beta^\infty \in \prod \Bil_{\le 1}(F_\gamma^A, F_0^B; \mathbb{R})$. Mutual understanding is faithful and non-solipsistic iff the induced operators $T_\beta \colon F_0^A \to (F_0^B)^*$ and $S_\beta \colon F_0^B \to (F_0^A)^*$ are strictly two-sided non-degenerate:
+Let $\mathcal{E}_A, \mathcal{E}_B$ be independent autopsychological toposes representing distinct observers mediated by a stabilized affinity interface $\beta^\infty \in \prod \Bil_{\le 1}(F_\gamma^A, F_0^B; \mathbb{R})$. Mutual intersubjective understanding is faithful and non-solipsistic iff the induced linear operators:
+$$
+T_\beta \colon F_0^A \longrightarrow (F_0^B)^*, \qquad S_\beta \colon F_0^B \longrightarrow (F_0^A)^*
+$$
+are strictly **two-sided non-degenerate**:
 $$
 \ker(T_\beta) = \{0\} \quad \text{and} \quad \ker(S_\beta) = \{0\}
 $$
-guaranteeing injective, lossless embedding of subjective context frames without requiring identical physical substrate states.
+guaranteeing an injective, lossless embedding of subjective context frames without requiring identical physical substrate states.
+:::
+
+::: {.proof-box .fragment .fade-up}
+**Structural Resolution of Philosophical Solipsism:**
+* Suppose observer $A$'s internal quale carrier $F_0^A$ has a non-trivial radical $\ker(T_\beta) \ne \{0\}$. Any internal state difference $v_1 - v_2 \in \ker(T_\beta)$ induces zero bilinear coupling $\beta^\infty(v_1 - v_2, w) = 0$ for all $w \in F_0^B$, rendering that aspect of $A$'s experience permanently incommunicable to $B$.
+* Conversely, when $\ker(T_\beta) = \{0\}$ and $\ker(S_\beta) = \{0\}$, the curried transpose embeds $F_0^A \hookrightarrow (F_0^B)^*$ isomorphically onto its image: relational structure is faithfully transmitted across distinct biological or synthetic brains!
 :::
 
 :::
@@ -187,33 +230,28 @@ guaranteeing injective, lossless embedding of subjective context frames without 
   <div id="ch13-const-readout" class="matrix-readout" style="margin-top:6px; font-size:0.64em;"></div>
 </div>
 
-<div class="video-container fragment fade-left" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch13_Act2_Zeitkorn_Object_Constancy.mp4" style="max-height:200px;"></video>
-  <div class="video-caption">Manim Act II: Functorial Zeitkorn Pushout Steps, Saccadic Loop Constancy &amp; Two-Sided Affinity Interface</div>
-</div>
-
 :::
 
 ::::
 
 ::: {.notes}
-Slide 2 covers §13.1.2 (Theorem 13.3: Functorial Chronometric Quantization of the subjective Zeitkorn $\delta t_n$), §13.1.3 (Theorem 13.4: Perceptual Object Constancy under active sensorimotor loops $B_1 \to B_2 \to B_3 \to B_1$), and §13.1.4 (Theorem 13.5: Intersubjective Faithfulness via two-sided non-degenerate bilinear affinity operators $\ker T_\beta = \ker S_\beta = \{0\}$).
+Slide 2B covers §13.1.4 (Theorem 13.5: Intersubjective Faithfulness via two-sided non-degenerate bilinear affinity operators $\ker T_\beta = \ker S_\beta = \{0\}$) and the interactive constancy/intersubjectivity laboratory.
 :::
 
 ---
 
-## §13.1.5–13.1.6: BRST Cohomology, Grothendieck Fibration &amp; $3 \times 3$ Grid $\hat{A}$ {.smaller transition="convex"}
+## §13.1.5: BRST Cohomology &amp; Grothendieck Fibration $\int_{\Ctx}\mathbf{Syn}$ {.smaller transition="convex"}
 
-<div class="stratum-badge badge-a">STRATUM A &amp; B: BRST GAUGE INVARIANCE, GROTHENDIECK FIBRATION &amp; SINGULARITY CLASSIFICATION (THM. 13.6 – THM. 13.8)</div>
+<div class="stratum-badge badge-a">STRATA A &amp; B: BRST GAUGE INVARIANCE &amp; GROTHENDIECK FIBRATION (THM. 13.6)</div>
 
 :::: {.columns}
 
-::: {.column width="48%"}
+::: {.column width="50%"}
 
 ::: {.thm-box}
 **Theorem 13.6 (BRST Redundancy Elimination &amp; Grothendieck Fibration):**
 
-1. **BRST Ghost-Number-Zero Cohomology:** The BRST differential $s_{\mathrm{BRST}}$ on the graded context configuration algebra $\mathcal{F}_{\mathrm{ext}}$ satisfies exact nilpotency $s_{\mathrm{BRST}}^2 \equiv 0$. The true, observer-invariant phenomenal state space is the cohomology:
+1. **BRST Ghost-Number-Zero Cohomology:** The BRST differential $s_{\mathrm{BRST}}$ on the graded context configuration algebra $\mathcal{F}_{\mathrm{ext}}$ satisfies exact nilpotency $s_{\mathrm{BRST}}^2 \equiv 0$. The true, observer-invariant phenomenal state space is the ghost-number-zero cohomology:
 $$
 \mathcal{H}_{\mathrm{phenom}} \;\coloneqq\; H^0_{\mathrm{BRST}}(\mathcal{F}_{\mathrm{ext}}) \;=\; \frac{\ker s_{\mathrm{BRST}}|_{\mathrm{gh}=0}}{\operatorname{im} s_{\mathrm{BRST}}|_{\mathrm{gh}=-1}}
 $$
@@ -221,13 +259,62 @@ which quotients out all arbitrary coordinate framing redundancies.
 2. **Grothendieck Fibration:** The canonical projection $\pi \colon \int_{\Ctx}\mathbf{Syn} \to \Ctx$ from the total category of parameterized Syntrix algebras over parameter manifolds $M_U$ is a **Grothendieck Fibration**, ensuring every context transition $h \colon V \to U$ admits a universal Cartesian pullback lift $h^*(\underline{\mathbf{S}})$.
 :::
 
-::: {.def-box .fragment .fade-up}
-**Definition 13.7 &amp; Theorem 13.8 ($3 \times 3$ Taxonomic Property Grid $\hat{A} = (A_{ik})$ &amp; Singularities):**
+::: {.proof-box .fragment .fade-up}
+**Why Phenomenology Requires Gauge Cohomology ($s_{\mathrm{BRST}}^2 = 0$):**
+* Local cortical micro-columns constantly rotate their internal coordinate gauges without altering subjective perception (drift in single-neuron tuning curves despite stable population coding).
+* Passing to $H^0_{\mathrm{BRST}}(\mathcal{F}_{\mathrm{ext}})$ mathematically eliminates unphysical gauge-ghost degrees of freedom ($\operatorname{im} s_{\mathrm{BRST}}|_{\mathrm{gh}=-1}$) while retaining physical gauge-invariant observables ($\ker s_{\mathrm{BRST}}|_{\mathrm{gh}=0}$).
+:::
+
+:::
+
+::: {.column width="50%"}
+
+<div class="video-container">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch13_Act3_BRST_Taxonomic_Grid.mp4" style="max-height:220px;"></video>
+  <div class="video-caption">Manim Act III: BRST Cohomology H⁰_BRST(ℱ_ext) &amp; Grothendieck Pullback Lift h*(S)</div>
+</div>
+
+::: {.intuition-box .fragment .fade-left style="margin-top:8px;"}
+**Universal Cartesian Lift in $\int_{\Ctx}\mathbf{Syn}$:**
+When an observer shifts attentional context via $h \colon V \to U$, the Grothendieck fibration property guarantees a unique universal pullback $h^*(\underline{\mathbf{S}}) \to \underline{\mathbf{S}}$ through which any compatible cognitive state factorizes uniquely.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Slide 3A covers §13.1.5 (Theorem 13.6: BRST Ghost-Number-Zero Cohomology $H^0_{\mathrm{BRST}}(\mathcal{F}_{\mathrm{ext}})$ eliminating representational gauge redundancies and the Grothendieck Fibration $\pi \colon \int_{\Ctx}\mathbf{Syn} \to \Ctx$).
+:::
+
+---
+
+## §13.1.6: The $3 \times 3$ Taxonomic Property Grid $\hat{A} = (A_{ik})$ &amp; Singularities {.smaller transition="slide"}
+
+<div class="stratum-badge badge-b">STRATUM A &amp; B: 3×3 TAXONOMIC PROPERTY GRID (DEF. 13.7) &amp; SINGULARITY CLASSIFICATION (THM. 13.8)</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.def-box}
+**Definition 13.7 ($3 \times 3$ Taxonomic Property Grid $\hat{A} = (A_{ik})$):**
 The $3 \times 3$ matrix $\hat{A} = (A_{ik})_{i,k=1}^3$ classifies cognitive transformation endofunctors $F \in \operatorname{End}(\Sh(\mathbf{Man}_{\mathrm{param}}))$ by:
 
-* **Action Property ($i \in \{1,2,3\}$):** (1) colimit-preserving, (2) limit-preserving, (3) isogonal equivalence.
-* **Effect Target ($k \in \{1,2,3\}$):** (1) conflexive pushout nodes, (2) tensor rank alterations, (3) field-intrinsic connections.
-* **Singularity Classification (Thm. 13.8):** Classes $A_{12}$ ($\dim F(\mathcal{M}) < \dim \mathcal{M}$) and $A_{22}$ ($\dim F(\mathcal{M}) > \dim \mathcal{M}$) produce **Class $A_{12}$ Dimension-Defect Singularities** (topological tearing of state space), whereas isogonal equivalences $A_{31}, A_{32}, A_{33}$ and connection modulations $A_{13}, A_{23}$ preserve geodesic completeness.
+* **Action Property ($i \in \{1,2,3\}$):**
+  - $i=1$: Colimit-preserving (inductive synthesis / pushout).
+  - $i=2$: Limit-preserving (projective constraint / pullback).
+  - $i=3$: Isogonal equivalence (angle/metric-preserving gauge).
+* **Effect Target ($k \in \{1,2,3\}$):**
+  - $k=1$: Conflexive pushout nodes.
+  - $k=2$: Tensor rank / manifold dimension alterations.
+  - $k=3$: Field-intrinsic affine connections.
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Theorem 13.8 (Topological Singularity Classification of $\hat{A}$):**
+* **Singular Classes ($A_{12}, A_{22}$):** Strict dimensional compression ($A_{12}$: $\dim F(\mathcal{M}) < \dim \mathcal{M}$) and strict dimensional expansion ($A_{22}$: $\dim F(\mathcal{M}) > \dim \mathcal{M}$) produce **Class $A_{12}/A_{22}$ Dimension-Defect Singularities** (topological tearing of state space).
+* **Geodesically Complete Classes:** Isogonal equivalences ($A_{31}, A_{32}, A_{33}$) and connection modulations ($A_{13}, A_{23}$) preserve smooth geodesic completeness across all parameter manifolds.
 :::
 
 :::
@@ -272,17 +359,12 @@ The $3 \times 3$ matrix $\hat{A} = (A_{ik})_{i,k=1}^3$ classifies cognitive tran
   <div id="ch13-grid-readout" class="matrix-readout" style="margin-top:8px; font-size:0.64em;"></div>
 </div>
 
-<div class="video-container fragment fade-left" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch13_Act3_BRST_Taxonomic_Grid.mp4" style="max-height:195px;"></video>
-  <div class="video-caption">Manim Act III: BRST Cohomology H⁰_BRST(ℱ_ext), Grothendieck Pullback Lift &amp; 3×3 Grid Singularities</div>
-</div>
-
 :::
 
 ::::
 
 ::: {.notes}
-Slide 3 covers §13.1.5 (Theorem 13.6: BRST nilpotency $s_{\mathrm{BRST}}^2 = 0$ yielding observer-invariant cohomology $H^0_{\mathrm{BRST}}(\mathcal{F}_{\mathrm{ext}})$ and the Grothendieck fibration $\pi \colon \int_{\Ctx}\mathbf{Syn} \to \Ctx$) and §13.1.6 (Definition 13.7 and Theorem 13.8: the $3\times 3$ taxonomic matrix $\hat{A} = (A_{ik})$ and Class $A_{12}, A_{22}$ dimension-defect singularities).
+Slide 3B covers §13.1.6: Definition 13.7 and Theorem 13.8 classifying the 9 cognitive transformation classes in $\hat{A} = (A_{ik})$ and identifying the dimension-defect singularities $A_{12}$ and $A_{22}$.
 :::
 
 ---
@@ -521,9 +603,9 @@ Slide 6 covers §13.3.1 (Theorem 13.13: Phenomenal Dimensionality Condensation $
 
 ---
 
-## §13.3.3–13.3.5: Isoclines, Seeley Nuclearity &amp; Selector Harmonics on $K_8$ {.smaller transition="slide"}
+## §13.3.3–13.3.4: Isocline Foliations $\mathfrak{f}_A$, Morse–Bott Centers &amp; Seeley Nuclearity {.smaller transition="slide"}
 
-<div class="stratum-badge badge-a">STRATA A &amp; B: MORSE–BOTT CENTERS, NUCLEAR FRÉCHET SPACES &amp; COMPACT SELECTOR SPECTRA (DEF. 13.15 – THM. 13.18)</div>
+<div class="stratum-badge badge-a">STRATA A &amp; B: MORSE–BOTT CRITICAL SUBMANIFOLDS (DEF. 13.15) &amp; SEELEY NUCLEAR FRÉCHET TENSORS (THM. 13.16)</div>
 
 :::: {.columns}
 
@@ -531,29 +613,55 @@ Slide 6 covers §13.3.1 (Theorem 13.13: Phenomenal Dimensionality Condensation $
 
 ::: {.def-box}
 **Definition 13.15 (Isocline Submersion Foliation $\mathfrak{f}_A$ &amp; Morse–Bott Centers):**
-Let ${}^m\bar{A} \colon R_m \to \mathbb{R}^d$ ($d \le m$) be a smooth cognitive field. On the regular locus $R_m^{\mathrm{reg}} \coloneqq \{y \in R_m \mid \rk(d({}^m\bar{A})_y) = d\}$, level sets $\Sigma_c \coloneqq ({}^m\bar{A})^{-1}(c) \cap R_m^{\mathrm{reg}}$ form a smooth **regular foliation $\mathfrak{f}_A$ of codimension $d$** (perceptual contour maps). Under Morse–Bott regularity, the critical locus of $\Phi(A) = \|A\|_{g_m}^2$ decomposes into disjoint critical submanifolds:
+Let ${}^m\bar{A} \colon R_m \to \mathbb{R}^d$ ($d \le m$) be a smooth cognitive field. On the regular locus $R_m^{\mathrm{reg}} \coloneqq \{y \in R_m \mid \rk(d({}^m\bar{A})_y) = d\}$, the level sets $\Sigma_c \coloneqq ({}^m\bar{A})^{-1}(c) \cap R_m^{\mathrm{reg}}$ form a smooth **regular foliation $\mathfrak{f}_A$ of codimension $d$** (perceptual contour maps). Under Morse–Bott regularity, the critical locus of the intensity potential $\Phi(A) = \|A\|_{g_m}^2$ decomposes into disjoint smooth critical submanifolds:
 $$
 \Crit(\Phi \circ A) \;=\; \bigsqcup_\alpha Z_\alpha, \qquad \dim Z_\alpha = d_\alpha \le m
 $$
-forming the stable focal attention centers of the cognitive parameter space.
-:::
-
-::: {.thm-box .fragment .fade-up}
-**Theorem 13.16 (Seeley Extension &amp; Nuclear Tensor Isomorphism):**
-The Seeley extension operator $\mathcal{E}^{(n)} \colon \mathscr{S}((\mathbb{R}_{\ge 0})^n) \to \mathscr{S}(\mathbb{R}^n)$ with regularized $q$-Pochhammer coefficients ($q = 1/2$) converges uniformly on orthant corners, establishing that $\mathscr{S}((\mathbb{R}_{\ge 0})^m)$ is a **nuclear Fréchet space**:
-$$
-\mathscr{S}\!\left((\mathbb{R}_{\ge 0})^m\right) \;\cong\; \widehat{\bigotimes}_{i=1}^{m,\pi} \mathscr{S}(\mathbb{R}_{\ge 0}) \;\cong\; \widehat{\bigotimes}_{i=1}^{m,\varepsilon} \mathscr{S}(\mathbb{R}_{\ge 0})
-$$
-Furthermore, multilinear polarization uniquely reduces repeated homometral evaluations $v^m \in \Sym^m(V)$ to operations of lower effective arity $k < m$.
+where the Hessian $\nabla^2(\Phi \circ A)|_{N Z_\alpha}$ is non-degenerate on the normal bundle $N Z_\alpha$, forming stable focal attention centers.
 :::
 
 :::
 
 ::: {.column width="50%"}
 
-::: {.def-box .fragment .fade-left}
+::: {.thm-box}
+**Theorem 13.16 (Seeley Super-Exponential Extension &amp; Nuclear Tensor Isomorphism):**
+The Seeley extension operator $\mathcal{E}^{(n)} \colon \mathscr{S}((\mathbb{R}_{\ge 0})^n) \to \mathscr{S}(\mathbb{R}^n)$ with regularized $q$-Pochhammer coefficients ($q = 1/2$) converges uniformly on orthant corners, establishing that $\mathscr{S}((\mathbb{R}_{\ge 0})^m)$ is a **nuclear Fréchet space**:
+$$
+\mathscr{S}\!\left((\mathbb{R}_{\ge 0})^m\right) \;\cong\; \widehat{\bigotimes}_{i=1}^{m,\pi} \mathscr{S}(\mathbb{R}_{\ge 0}) \;\cong\; \widehat{\bigotimes}_{i=1}^{m,\varepsilon} \mathscr{S}(\mathbb{R}_{\ge 0})
+$$
+:::
+
+::: {.intuition-box .fragment .fade-up style="margin-top:8px;"}
+**Why Nuclearity ($\widehat{\bigotimes}_\pi \cong \widehat{\bigotimes}_\varepsilon$) Matters for Multi-Modal Binding:**
+Because biological firing rates are strictly non-negative ($x_i \in \mathbb{R}_{\ge 0}$), sensory fields live on orthant manifolds with corners $(\mathbb{R}_{\ge 0})^m$. Theorem 13.16 guarantees that the projective ($\pi$) and injective ($\varepsilon$) topological tensor products coincide canonically, eliminating ambiguity between joint multi-channel distributions and continuous operator kernels!
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Slide 7A covers §13.3.3 (Definition 13.15: Isocline Submersion Foliation $\mathfrak{f}_A$ and Morse-Bott critical focal centers) and §13.3.4 (Theorem 13.16: Seeley Super-Exponential Extension and Grothendieck Nuclear Tensor Isomorphism $\widehat{\bigotimes}_\pi \cong \widehat{\bigotimes}_\varepsilon$).
+:::
+
+---
+
+## §13.3.5: Spectral Geometry of Selector Operators on Compact Fiber $K_8$ {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATUM B: HILBERT STATE SPACE ON K_8 = S² × T⁶ (DEF. 13.17) &amp; DISCRETE SPECTRAL HARMONICS (THM. 13.18)</div>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.def-box}
 **Definition 13.17 (Hilbert State Space $\mathcal{H}_E$ on Compact Fiber $K_8$):**
-Let $P \to M$ be a fiber bundle with compact 8D boundaryless fiber $K_8 \coloneqq S^2 \times \mathbb{T}^6$, and $E \to K_8$ a Hermitian vector bundle. The **Hilbert State Space** is $\mathcal{H}_E \coloneqq L^2(K_8, E)$ under the positive-definite Riemannian volume measure.
+Let $P \to M$ be a fiber bundle with compact 8D smooth boundaryless fiber:
+$$
+K_8 \;\coloneqq\; S^2 \times \mathbb{T}^6, \qquad \partial K_8 = \emptyset
+$$
+and let $E \to K_8$ be a Hermitian vector bundle. The **Hilbert State Space** is $\mathcal{H}_E \coloneqq L^2(K_8, E)$ equipped with the positive-definite Riemannian volume measure $d\mu_{K_8}$.
 :::
 
 ::: {.thm-box .fragment .fade-up}
@@ -562,13 +670,26 @@ The strongly elliptic self-adjoint selector operator:
 $$
 \operatorname{Sel} \;\coloneqq\; \Delta_E + \mathrm{i}\rho\!\left(\iota_{K_8}^*\Omegaint\right) \;\colon\; H^2(K_8, E) \subset \mathcal{H}_E \longrightarrow \mathcal{H}_E
 $$
-has purely discrete real point spectrum $\Spec(\operatorname{Sel}) = \{\lambda_k\}_{k=1}^\infty \subset \mathbb{R}$ with $\lim_{k\to\infty}|\lambda_k| = \infty$, finite-dimensional eigenspaces, and a complete orthonormal eigenbasis $\operatorname{Sel}(\Psi_k) = \lambda_k \Psi_k$, $\langle\Psi_j, \Psi_k\rangle_{\mathcal{H}_E} = \delta_{jk}$.
+has purely discrete real point spectrum $\Spec(\operatorname{Sel}) = \{\lambda_k\}_{k=1}^\infty \subset \mathbb{R}$ with no finite accumulation point ($\lim_{k\to\infty}|\lambda_k| = \infty$), finite-dimensional eigenspaces, and a complete orthonormal eigenbasis:
+$$
+\operatorname{Sel}(\Psi_k) = \lambda_k \Psi_k, \qquad \langle\Psi_j, \Psi_k\rangle_{\mathcal{H}_E} = \delta_{jk}
+$$
+**Quantized cognitive attractors emerge as spectral harmonics of self-adjoint geometric selectors.**
+:::
 
-* **Proof:** Since $\partial K_8 = \emptyset$, $\Delta_E$ is self-adjoint, and $\mathrm{i}\rho(\iota_{K_8}^*\Omegaint)$ is pointwise self-adjoint by skew-Hermiticity of curvature. By Rellich's Theorem, $H^2(K_8, E) \hookrightarrow L^2(K_8, E)$ is compact, so $(\operatorname{Sel} - \lambda I)^{-1}$ is compact on $\mathcal{H}_E$, yielding a complete discrete real eigenbasis. $\blacksquare$
+:::
+
+::: {.column width="50%"}
+
+::: {.proof-box}
+**Proof of Theorem 13.18 (Rellich Compactness &amp; Spectral Resolution):**
+1. **Self-Adjointness:** Since $\partial K_8 = \emptyset$, the connection Laplacian $\Delta_E = \nabla^*\nabla$ is essentially self-adjoint on $H^2(K_8, E)$. Because $\Omegaint$ takes values in a skew-Hermitian Lie algebra $\mathfrak{g} \subset \mathfrak{u}(N)$, multiplication by $\mathrm{i}\rho(\iota_{K_8}^*\Omegaint)$ is a bounded pointwise self-adjoint 0th-order perturbation.
+2. **Compact Resolvent:** By **Rellich's Kondrachov Compactness Theorem** on the closed manifold $K_8$, the Sobolev embedding $H^2(K_8, E) \hookrightarrow L^2(K_8, E)$ is a compact operator.
+3. **Discrete Eigenbasis:** Elliptic regularity implies that the resolvent $(\operatorname{Sel} - \lambda I)^{-1} \colon L^2 \to H^2 \hookrightarrow L^2$ is compact for $\lambda \notin \mathbb{R}$. The spectral theorem for self-adjoint operators with compact resolvent yields a complete orthonormal basis of smooth eigenfunctions $\{\Psi_k\}_{k=1}^\infty$ with real eigenvalues $|\lambda_k| \to \infty$. $\blacksquare$
 :::
 
 <div class="video-container fragment fade-left" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch13_Act7_K8_Selector_Spectra.mp4" style="max-height:190px;"></video>
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch13_Act7_K8_Selector_Spectra.mp4" style="max-height:185px;"></video>
   <div class="video-caption">Manim Act VII: Morse–Bott Isocline Centers, Seeley Orthant Extension &amp; Discrete K₈ Selector Eigenmodes</div>
 </div>
 
@@ -577,7 +698,7 @@ has purely discrete real point spectrum $\Spec(\operatorname{Sel}) = \{\lambda_k
 ::::
 
 ::: {.notes}
-Slide 7 covers §13.3.3 (Definition 13.15: Isocline Submersion Foliation $\mathfrak{f}_A$ and Morse-Bott critical focal centers), §13.3.4 (Theorem 13.16: Seeley Super-Exponential Extension with $q=1/2$ Pochhammer weights and Grothendieck Nuclear Tensor Isomorphism $\widehat{\bigotimes}_\pi \cong \widehat{\bigotimes}_\varepsilon$), and §13.3.5 (Definition 13.17 and Theorem 13.18: Discrete Spectral Harmonics of the self-adjoint selector $\operatorname{Sel}$ on $K_8 = S^2 \times \mathbb{T}^6$).
+Slide 7B covers §13.3.5: Definition 13.17 and Theorem 13.18 (Discrete Spectral Harmonics of the self-adjoint selector $\operatorname{Sel}$ on the compact 8D internal fiber $K_8 = S^2 \times \mathbb{T}^6$), together with the full Rellich-Sobolev compact resolvent proof.
 :::
 
 ---
@@ -898,30 +1019,77 @@ Slide 11 covers §13.6.1: Theorem 13.24 (Curry-Howard Categorical Proof of the L
 
 ---
 
-## §13.6.2 &amp; §13.7: Active Inference Sheaf Descent &amp; Altered States (REBUS) {.smaller transition="slide"}
+## §13.6.2: Active Inference as Sheaf Descent Optimization (Thm. 13.25) {.smaller transition="slide"}
 
-<div class="stratum-badge badge-c">STRATUM C: ACTIVE INFERENCE DESCENT (THM. 13.25), PSYCHOPATHOLOGY (TABLE 13.2) &amp; REBUS (DEF. 13.26)</div>
+<div class="stratum-badge badge-c">STRATUM C: FRISTON'S ACTIVE INFERENCE AS ČECH DESCENT &amp; LYAPUNOV MINIMIZATION (THM. 13.25, FIG. 13.6)</div>
 
 :::: {.columns}
 
-::: {.column width="49%"}
+::: {.column width="50%"}
 
 ::: {.thm-box}
 **Theorem 13.25 (Active Inference Sheaf Descent Theorem — Friston Formalized):**
 Let $\mathcal{U} = \{V_i \to U\}$ be a sensory covering family in predictive processing:
 
-1. **Prediction Errors are Čech Descent Defects:** Discrepancy between generative priors ($s_{\mathrm{prior}}$) and sensory data ($s_{\mathrm{sens}}$) is the Čech 0-coboundary:
+1. **Prediction Errors are Čech Descent Defects:** The discrepancy between top-down generative priors ($s_{\mathrm{prior}} \in \mathbf{P}(U)$) and bottom-up sensory data ($s_{\mathrm{sens}} \in \check{C}^0(\mathcal{U}, \mathbf{P})$) is the Čech 0-coboundary:
 $$
 \varepsilon_{\mathrm{pred}} \;\coloneqq\; \Def_{\mathcal{U}}(s) \;=\; d^0(s) - d^1(s) \;\in\; \check{C}^1(\mathcal{U}, \mathbf{A})
 $$
-2. **Free-Energy Minimization is Lyapunov Descent:** Variational Free Energy $F$ equals the Lyapunov potential $V(x) \coloneqq \Psi(x) - \Psi(T_z)$ on $\MAR$:
+2. **Free-Energy Minimization is Lyapunov Descent:** Variational Free Energy $F$ is identical to the Lyapunov potential $V(x) \coloneqq \Psi(x) - \Psi(T_z)$ on $\MAR$:
 $$
-\dot{F} \le -\gamma F \;\iff\; \dot{V}(x) \le -\gamma V(x)
+\dot{F} \le -\gamma F \;\iff\; \dot{V}(x) \le -\gamma V(x) \quad (\text{Televariant Convergence to Prior } T_z)
 $$
-3. **Active Motor Action as Context Morphism:** When internal synaptic weights cannot eliminate $\Def_{\mathcal{U}}(s) \ne 0$, the agent executes an active motor action (saccade, locomotion) $\alpha \colon U \to U'$ shifting sensors to force $\Def_{\mathcal{U}'}(s') \to 0$.
+3. **Active Motor Action as Context Morphism:** When internal synaptic weight updates cannot eliminate $\Def_{\mathcal{U}}(s) \ne 0$, the agent executes an active motor action (saccade, locomotion) $\alpha \colon U \to U'$ shifting physical sensors to force $\Def_{\mathcal{U}'}(s') \to 0$.
 :::
 
-::: {.def-box .fragment .fade-up}
+:::
+
+::: {.column width="50%"}
+
+::: {.def-box}
+**Figure 13.6: The Reflexive Self-Consciousness &amp; Active Inference Loop**
+* **Top-Down Generative Prior ($U \in \Ctx$):** Representable sheaf $\mathbf{y}(U)$ projects prior expectation $s_{\mathrm{prior}} \in \mathbf{P}(U)$ onto sensory overlaps $V_{ij} = V_i \times_U V_j$.
+* **Two Dual Descent Pathways to Eliminate $\varepsilon_{\mathrm{pred}} = \Def_{\mathcal{U}}(s)$:**
+  1. **Perceptual Inference (Internal Synaptic Tuning):** Gradient descent $\dot{V} \le -\gamma V$ updates internal model parameters toward telecentre $T_z$.
+  2. **Active Inference (Motor Context Morphism):** Base morphism $\alpha \colon U \to U'$ re-orients sensory organs until pullback sections agree ($\Def_{\mathcal{U}'}(s') = 0$).
+* **Lawvere Closure:** Closed at the base by the invariant ego-token $e^* = \operatorname{Self}$ satisfying $\Phi_{\mathrm{ego}}(e^*, x) = f(\Phi_{\mathrm{ego}}(x, x))$.
+:::
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch13_Act11_Active_Inference_REBUS.mp4" style="max-height:190px;"></video>
+  <div class="video-caption">Manim Act XI: Reflexive Active Inference Loop (α : U → U') &amp; REBUS Protosimplex De-Encapsulation 𝔇_relax</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 12A covers §13.6.2 (Theorem 13.25 and Figure 13.6): unifying Friston's prediction error $\varepsilon_{\mathrm{pred}}$ with the Čech coboundary $\Def_{\mathcal{U}}(s)$, variational free energy $F$ with the Lyapunov potential $V(x)$, and motor action with context morphism $\alpha \colon U \to U'$.
+:::
+
+---
+
+## §13.7: Altered States of Consciousness, Psychopathology &amp; REBUS {.smaller transition="convex"}
+
+<div class="stratum-badge badge-c">STRATUM C: FORMAL CLASSIFICATION OF ALTERED STATES (TABLE 13.2) &amp; REBUS DE-ENCAPSULATION (DEF. 13.26)</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.def-box}
+**Table 13.2: Categorical Classification of Baseline &amp; Altered States**
+
+| Conscious State | Topos / Operadic Formalism | Phenomenological Signature |
+|:---|:---|:---|
+| **Baseline Wakefulness** | Balanced pushout ($\operatorname{ConfIndex}=2$), stable $\mathcal{P}$, $\Def = 0$. | Coherent bounded percepts with stable ego identity $e^*$. |
+| **Psychedelic State (REBUS)** | **Protosimplex De-encapsulation** ($\mathcal{P} \twoheadrightarrow F_1$) + $\operatorname{ConfIndex} \gg 5$. | Ego dissolution (loss of $e^*$), sensory synesthesia. |
+| **Schizophrenia** | **Holonomy Loop Breakdown** ($\oint_{\mathcal{C}} \mathbf{A} \ne \mathbf{0}$) + $\Def \ne 0$. | Loss of object constancy, hallucinations, agency defect. |
+| **Anesthesia / Coma** | **Commutator Collapse** ($\Omegaint \to \mathbf{0} \implies P_1 \oplus_1 P_2$). | Complete loss of phenomenal awareness ($P=0$). |
+:::
+
+::: {.thm-box .fragment .fade-up}
 **Definition 13.26 (The REBUS Model as Protosimplex De-Encapsulation):**
 Under Carhart-Harris's **REBUS Model** (*Relaxed Beliefs Under Psychedelics*), $5\text{-HT}_{2A}$ receptor agonism reduces top-down prior precision, formalized as the **De-Encapsulation Functor**:
 $$
@@ -967,17 +1135,12 @@ $$
   <div id="ch13-asc-readout" class="matrix-readout" style="margin-top:6px; font-size:0.62em;"></div>
 </div>
 
-<div class="video-container fragment fade-left" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch13_Act11_Active_Inference_REBUS.mp4" style="max-height:195px;"></video>
-  <div class="video-caption">Manim Act XI: Reflexive Active Inference Loop (α : U → U') &amp; REBUS Protosimplex De-Encapsulation 𝔇_relax</div>
-</div>
-
 :::
 
 ::::
 
 ::: {.notes}
-Slide 12 covers §13.6.2 (Theorem 13.25: Active Inference Sheaf Descent Theorem unifying Friston's prediction error $\varepsilon_{\mathrm{pred}}$ with Čech coboundary $\Def_{\mathcal{U}}(s)$, free energy $F$ with Lyapunov potential $V(x)$, and motor action with context morphism $\alpha \colon U \to U'$) and §13.7 (Table 13.2 and Definition 13.26: formalizing Baseline Wakefulness, Psychedelic REBUS De-Encapsulation $\mathfrak{D}_{\mathrm{relax}}$, Schizophrenia holonomy breakdown, and General Anesthesia commutator collapse).
+Slide 12B covers §13.7 (Table 13.2 and Definition 13.26: formalizing Baseline Wakefulness, Psychedelic REBUS De-Encapsulation $\mathfrak{D}_{\mathrm{relax}}$, Schizophrenia holonomy breakdown, and General Anesthesia commutator collapse) with the interactive clinical laboratory.
 :::
 
 ---

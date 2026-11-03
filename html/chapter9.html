@@ -2966,25 +2966,56 @@ V^k = g^{pq}\bigl(\Gamma_{pq}^k(g) - \Gamma_{pq}^k(\bar{g})\bigr)
 <p>Slide 9 covers §9.3.2: the DeTurck gauge-fixing box eliminating Ricci flow diffeomorphism degeneracy, Theorem 9.14 and its complete 4-step proof (ellipticity on Banach algebra <span class="math inline">\(H^{s-1}\)</span> for <span class="math inline">\(s > n/2+2\)</span>, parabolic heat semigroup smoothing <span class="math inline">\(H^{s-2} \to H^s\)</span>, tuning <span class="math inline">\(\tau_M \ge \tau_M^*\)</span> so <span class="math inline">\(k_M < 1\)</span>, and elliptic regularity bootstrapping to <span class="math inline">\(C^\infty(\mathcal{M})\)</span>).</p>
 </aside>
 </section>
-<section id="933-unsatisfiability-of-literal-sm-61-thm-915-metronic-transition-criterion-sm-64-10" class="slide level2 smaller" data-transition="slide">
-<h2>§9.3.3: Unsatisfiability of Literal SM-61 (Thm. 9.15) & Metronic Transition Criterion (SM-64)</h2>
-<div class="stratum-badge badge-b">STRATUM B &amp; STRATUM C HYPOTHESIS: UNSATISFIABILITY OF LITERAL SM-61 (THM. 9.15) &amp; SINGULARITY BREAKDOWN (DEF. 9.16, THM. 9.17)</div>
+<section id="933a-unsatisfiability-of-literal-sm-61-thm-915-amp-rank-filtered-explication-10" class="slide level2 smaller" data-transition="slide">
+<h2>§9.3.3a: Unsatisfiability of Literal SM-61 (Thm. 9.15) &amp; Rank-Filtered Explication</h2>
+<div class="stratum-badge badge-b">STRATUM B: FORMAL REFUTATION OF LITERAL SM-61 (THM. 9.15) &amp; CARNAP SCHOLIUM 9.2</div>
 <div class="columns">
-<div class="column" style="width:49%;">
-<div class="thm-box fragment fade-right">
-<p><strong>Theorem 9.15 (Unsatisfiability of Literal Formula 61) & Proof:</strong></p>
-<p>Heim's SM Eq. 61 specifies <span class="math inline">\(L_1 = \binom{n}{\omega_1}\)</span> (<span class="math inline">\(1 \le \omega_1 < n\)</span>), <span class="math inline">\(L_\alpha = \binom{L_{\alpha-1}}{\omega_\alpha}\)</span>, and apex order <span class="math inline">\(\omega_M = n/2\)</span>. <strong>Under the apex condition <span class="math inline">\(L_M = 1\)</span>, the literal cascade equalities are inconsistent for every <span class="math inline">\(n \ge 2\)</span>.</strong></p>
+<div class="column" style="width:52%;">
+<div class="thm-box">
+<p><strong>Theorem 9.15 (Unsatisfiability of Literal Formula 61) &amp; Proof:</strong></p>
+<p>Heim's SM Eq. 61 specifies the cascade multiplicity sequence:</p>
+<p><span class="math display">\[
+L_1 = \binom{n}{\omega_1} \quad (1 \le \omega_1 < n), \qquad L_\alpha = \binom{L_{\alpha-1}}{\omega_\alpha}, \qquad \omega_M = \frac{n}{2} \tag{SM-61}
+\]</span></p>
+<p><strong>Under the apex boundary condition <span class="math inline">\(L_M = 1\)</span>, the literal cascade equalities of SM Eq. 61 are algebraically inconsistent for every manifold dimension <span class="math inline">\(n \ge 2\)</span>.</strong></p>
 <ul>
-<li><em>Proof:</em> Since <span class="math inline">\(\binom{m}{k} \ge m\)</span> for <span class="math inline">\(1 \le k < m\)</span>, we have <span class="math inline">\(L_1 = \binom{n}{\omega_1} \ge n\)</span> and <span class="math inline">\(L_{M-1} \ge L_1 \ge n\)</span>. But <span class="math inline">\(L_M = \binom{L_{M-1}}{\omega_M} = 1\)</span> forces <span class="math inline">\(\omega_M = L_{M-1} \ge n\)</span>, contradicting <span class="math inline">\(\omega_M = n/2\)</span> for <span class="math inline">\(n \ge 2\)</span>. <span class="math inline">\(\blacksquare\)</span></li>
+<li><strong>Proof:</strong></li>
 </ul>
+<ol>
+<li>For any integers <span class="math inline">\(1 \le k < m\)</span>, the binomial coefficient satisfies the strict lower bound <span class="math inline">\(\binom{m}{k} \ge m\)</span>.</li>
+<li>Applying this inductively along non-trivial intermediate stages gives <span class="math inline">\(L_1 = \binom{n}{\omega_1} \ge n\)</span> and <span class="math inline">\(L_{M-1} \ge L_1 \ge n\)</span>.</li>
+<li>At the apex <span class="math inline">\(\alpha = M\)</span>, achieving <span class="math inline">\(L_M = \binom{L_{M-1}}{\omega_M} = 1\)</span> with <span class="math inline">\(\omega_M > 0\)</span> uniquely forces <span class="math inline">\(\omega_M = L_{M-1} \ge n\)</span>.</li>
+<li>However, SM Eq. 61 simultaneously stipulates <span class="math inline">\(\omega_M = n/2 < n\)</span> for all <span class="math inline">\(n \ge 2\)</span>. Contradiction! <span class="math inline">\(\blacksquare\)</span></li>
+</ol>
+</div>
+</div>
+<div class="column" style="width:48%;">
+<div class="carnap-box">
 <p><strong>Carnap Scholium 9.2 (Explication of Formula 61 via Rank-Filtered Upper Bound):</strong></p>
+<p>Rather than treating <span class="math inline">\(L_\alpha = \binom{L_{\alpha-1}}{\omega_\alpha}\)</span> as a literal equality on raw binomial combinations, the contractive projection operator <span class="math inline">\(\kappa_\alpha\)</span> filters out linearly dependent and zero-norm symmetric products. Replacing literal equality by the <strong>effective rank bound</strong>:</p>
 <p><span class="math display">\[
 L_\alpha \;\coloneqq\; \operatorname{rank}\!\left(\kappa_\alpha\!\left(\operatorname{Sym}^{\omega_\alpha}(F_{\alpha-1})\right)\right) \;\le\; \binom{L_{\alpha-1}}{\omega_\alpha}
 \]</span></p>
+<p>restores full mathematical consistency with <span class="math inline">\(L_M = 1\)</span> while preserving <span class="math inline">\(\omega_M = n/2\)</span>!</p>
 </div>
-<div class="thm-box fragment fade-up">
+<div class="video-container fragment fade-up" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch9_Act10_Transition_Criterion.mp4" style="max-height:175px;"></video>
+  <div class="video-caption">Manim Act X: Unsatisfiability of Literal SM-61 &amp; Rank-Filtered Contraction Bound</div>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Slide 10A presents Theorem 9.15 proving the algebraic unsatisfiability of literal SM Eq. 61 under L_M = 1 and Carnap Scholium 9.2 resolving it via the rank-filtered contraction upper bound.</p>
+</aside>
+</section>
+<section id="933b-metronic-transition-criterion-sm-64-def-916-amp-geodesic-fracture-thm-917-11" class="slide level2 smaller" data-transition="convex">
+<h2>§9.3.3b: Metronic Transition Criterion (SM-64, Def. 9.16) &amp; Geodesic Fracture (Thm. 9.17)</h2>
+<div class="stratum-badge badge-c">STRATUM B/C: GEOMETRIC CELL-VOLUME DERIVATION (DEF. 9.16) &amp; GEODESIC FRACTURE HYPOTHESIS (THM. 9.17)</div>
+<div class="columns">
+<div class="column" style="width:49%;">
+<div class="thm-box">
 <p><strong>Definition 9.16 (Geometric Cell-Volume Derivation of the Transition Criterion, SM Eq. 64):</strong></p>
-<p>On an active <span class="math inline">\(p\)</span>-dimensional sub-manifold <span class="math inline">\((\mathcal{M}_p, g_{(p)})\)</span>, the cell quantum <span class="math inline">\(\tau\)</span> satisfies <span class="math inline">\(\Delta V_p = \sqrt{|g_{(p)}|}\prod_{i=1}^p \Delta x^{\underline{i}} = \tau\)</span>. With <span class="math inline">\(\Delta x^{\underline{i}} = \chi_i\sqrt[p]{\tau}\)</span> and <span class="math inline">\(\chi \coloneqq \prod_{i=1}^p \chi_i\)</span>, <span class="math inline">\(\tau\)</span> cancels on both sides (<span class="math inline">\(\tau = \tau\chi\sqrt{|g_{(p)}|}\)</span>), yielding the <strong>Metronic Transition Criterion</strong>:</p>
+<p>On an active <span class="math inline">\(p\)</span>-dimensional sub-manifold <span class="math inline">\((\mathcal{M}_p, g_{(p)})\)</span>, the elementary cell quantum <span class="math inline">\(\tau\)</span> satisfies <span class="math inline">\(\Delta V_p = \sqrt{|g_{(p)}|}\prod_{i=1}^p \Delta x^{\underline{i}} = \tau\)</span>. Setting coordinate steps <span class="math inline">\(\Delta x^{\underline{i}} = \chi_i\sqrt[p]{\tau}\)</span> with scale product <span class="math inline">\(\chi \coloneqq \prod_{i=1}^p \chi_i\)</span>, <span class="math inline">\(\tau\)</span> cancels on both sides (<span class="math inline">\(\tau = \tau\chi\sqrt{|g_{(p)}|}\)</span>), yielding the <strong>Metronic Transition Criterion</strong>:</p>
 <p><span class="math display">\[
 \chi \sqrt{|g_{(p)}|} = 1, \qquad {}^2\bar{\mathbf{g}}_{(p)} = \text{const} \quad \left(\text{or }\frac{\chi}{\tau^{(p-2)/(2p)}}\sqrt{|g_{(p)}|} = 1\text{ for }[\tau]=L^2\right) \tag{SM-64}
 \]</span></p>
@@ -3019,21 +3050,15 @@ L_\alpha \;\coloneqq\; \operatorname{rank}\!\left(\kappa_\alpha\!\left(\operator
   </div>
   <div id="ch9-tr-readout" class="matrix-readout" style="margin-top:6px; font-size:0.61em; line-height:1.35;"></div>
 </div>
-<div class="video-container fragment fade-left" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch9_Act10_Transition_Criterion.mp4" style="max-height:190px;"></video>
-  <div class="video-caption">Manim Act X: Unsatisfiability of Literal SM-61, Übergangskriterium χ√|g_(p)| = 1 &amp; Lattice Fracture</div>
-</div>
 </div>
 </div>
 <aside class="notes">
-<p>Slide 10 presents §9.3.3: Theorem 9.15 proving the unsatisfiability of literal SM Eq. 61 under <span class="math inline">\(L_M=1\)</span>, Carnap Scholium 9.2 resolving it via rank-filtered upper bounds, Definition 9.16 deriving SM-64 (<span class="math inline">\(\chi\sqrt{|g_{(p)}|}=1\)</span>), and Theorem 9.17 (Stratum C Hypothesis) on geodesic breakdown into discrete metronic cells <span class="math inline">\(x_i = N_i\alpha_i\)</span>.</p>
+<p>Slide 10B covers Definition 9.16 deriving SM-64 (chi <em> sqrt(|g_(p)|) = 1), Theorem 9.17 (Stratum C Hypothesis) on geodesic breakdown into discrete metronic cells x_i = N_i </em> alpha_i, and the interactive Übergangskriterium simulator.</p>
 </aside>
 </section>
-<section id="9495-formal-reconstruction-map-sanity-checks-carnapian-explication-91-11" class="slide level2 smaller">
-<h2>§9.4–9.5: Formal Reconstruction Map  GTOK49 , Sanity Checks & Carnapian Explication 9.1</h2>
-<div class="stratum-badge badge-c">STRATUM C: COMPLETE 13-ROW RECONSTRUCTION MAP R, SANITY CHECKS (§9.5) &amp; CARNAPIAN EXPLICATION 9.1</div>
-<div class="columns">
-<div class="column" style="width:55%;">
+<section id="94-stratum-c-formal-heimian-reconstruction-map-13-row-register-12" class="slide level2 smaller" data-transition="slide">
+<h2>§9.4: Stratum C — Formal Heimian Reconstruction Map  GTOK25  (13-Row Register)</h2>
+<div class="stratum-badge badge-c">STRATUM C: COMPLETE 13-ROW RECONSTRUCTION MAP R FOR STRUKTURKASKADEN (§9.4)</div>
 <table class="caption-top"><thead><tr class="header">
 <th style="text-align: left;">Heimian Concept (<span class="math inline">\(\mathbf{D}\)</span>)</th>
 <th style="text-align: left;">Mathematical Reconstruction (<span class="math inline">\(\mathcal{R}\)</span>)</th>
@@ -3107,10 +3132,17 @@ L_\alpha \;\coloneqq\; \operatorname{rank}\!\left(\kappa_\alpha\!\left(\operator
 <td style="text-align: left;"><strong>Stratum C: Heuristic</strong></td>
 </tr>
 </tbody></table>
-</div>
-<div class="column" style="width:45%;">
-<div class="thm-box fragment fade-left">
-<p><strong>Physical & Epistemic Sanity Checks (§9.5):</strong></p>
+<aside class="notes">
+<p>Slide 11A presents the complete 13-row Stratum C Reconstruction Map R (§9.4) mapping every concept of Heim's Strukturkaskaden (SM Eqs. 37-64) to differential-geometric and functional-analytic invariants.</p>
+</aside>
+</section>
+<section id="95-physical-amp-epistemic-sanity-checks-amp-carnapian-explication-91-13" class="slide level2 smaller" data-transition="convex">
+<h2>§9.5: Physical &amp; Epistemic Sanity Checks &amp; Carnapian Explication 9.1</h2>
+<div class="stratum-badge badge-c">STRATUM C: GENERAL RELATIVITY LIMIT (§9.5) &amp; CARNAPIAN EXPLICATION 9.1</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="thm-box">
+<p><strong>Physical &amp; Epistemic Sanity Checks (§9.5):</strong></p>
 <ol>
 <li><strong>Classical General Relativity Limit (<span class="math inline">\({}^2\bar{\mathbf{g}}_- \to 0\)</span>):</strong></li>
 </ol>
@@ -3126,26 +3158,28 @@ L_\alpha \;\coloneqq\; \operatorname{rank}\!\left(\kappa_\alpha\!\left(\operator
 <li>With no higher cascade tiers, <span class="math inline">\(\Phi_1 = \kappa_1\mathcal{T}_1\)</span> and <span class="math inline">\({}^2\bar{\mathbf{g}} = \kappa_1(g^{(0)})\)</span>, verifying that single-level metrics require no recursive convergence.</li>
 </ul>
 </div>
-<div class="carnap-box fragment blur-in">
-<p>*<em>Carnapian Explication 9.1 (</em>Strukturkaskaden<em>, </em>Hermetrie<em> & </em>Übergangskriterium<em>):</em>*</p>
+<div class="video-container fragment fade-up" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch9_Act11_Reconstruction_Sanity.mp4" style="max-height:175px;"></video>
+  <div class="video-caption">Manim Act XI: Reconstruction Map R, General Relativity Limit (²ḡ₋ → 0) &amp; Carnapian Explication 9.1</div>
+</div>
+</div>
+<div class="column" style="width:50%;">
+<div class="carnap-box">
+<p>*<em>Carnapian Explication 9.1 (</em>Strukturkaskaden<em>, </em>Hermetrie<em> &amp; </em>Übergangskriterium<em>):</em>*</p>
 <ol>
 <li><strong>Explicandum (<span class="math inline">\(\mathbf{D}\)</span>):</strong> Hierarchical <em>Strukturkaskade</em> (<span class="math inline">\({}^2\bar{\mathbf{g}}_{(\gamma_\alpha)}^{(\alpha)}\)</span>, SM-60), 36-component <em>Hermetrie-Matrix</em> on <span class="math inline">\(R_6\)</span> (SM-37), cross-metric connections (SM-53), Einstein conservation (SM-49), and <em>Übergangskriterium</em> <span class="math inline">\(\chi\sqrt{|g_{(p)}|}=1\)</span> (SM-64).</li>
 <li><strong>Explicatum (<span class="math inline">\(\mathbf{A}/\mathbf{B}\)</span>):</strong> Fréchet bundle <span class="math inline">\(\operatorname{Met}(\mathcal{M})\)</span>, Palatini decomposition (Thm. 9.6), conservation identity (Thm. 9.8), DeTurck Sobolev contraction fixed point <span class="math inline">\({}^2\bar{\mathbf{g}}_\infty \in H^s\)</span> (Thm. 9.14), and gradient breakdown <span class="math inline">\(\|\nabla {}^2\bar{\mathbf{g}}\|_{\text{crit}} \ge \tau^{-1/2}\)</span> (Thm. 9.17).</li>
-<li><strong>Exactness & Simplicity:</strong> Eliminates literal SM-61 inconsistency (Thm. 9.15), cleanly isolates <span class="math inline">\(21\)</span> symmetric vs. <span class="math inline">\(15\)</span> skew potentials, and derives <span class="math inline">\(\mathbf{Q}_{(\mu\gamma)}\)</span> algebraically.</li>
+<li><strong>Exactness &amp; Simplicity:</strong> Eliminates literal SM-61 inconsistency (Thm. 9.15), cleanly isolates <span class="math inline">\(21\)</span> symmetric vs. <span class="math inline">\(15\)</span> skew potentials, and derives <span class="math inline">\(\mathbf{Q}_{(\mu\gamma)}\)</span> algebraically.</li>
 <li><strong>Fruitfulness:</strong> Implements French's OSR and van Fraassen's representation, proving smooth convergence under moderate gradients and forced fracture into <span class="math inline">\(\mathbb{M}_\tau^n\)</span> at <span class="math inline">\(\tau^{-1/2}\)</span>.</li>
 </ol>
-</div>
-<div class="video-container fragment fade-up" style="margin-top:6px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch9_Act11_Reconstruction_Sanity.mp4" style="max-height:145px;"></video>
-  <div class="video-caption">Manim Act XI: Reconstruction Map R, General Relativity Limit (²ḡ₋ → 0) &amp; Carnapian Explication 9.1</div>
 </div>
 </div>
 </div>
 <aside class="notes">
-<p>Slide 11 presents the complete 13-row Stratum C Reconstruction Map <span class="math inline">\(\mathcal{R}\)</span> (§9.4), the two Physical & Epistemic Sanity Checks (§9.5: Classical GR limit <span class="math inline">\({}^2\bar{\mathbf{g}}_- \to 0\)</span> and single-level triviality <span class="math inline">\(M=1\)</span>), and Carnapian Explication 9.1.</p>
+<p>Slide 11B presents the two Physical & Epistemic Sanity Checks (§9.5: Classical GR limit ²ḡ₋ -> 0 and single-level triviality M=1) and Carnapian Explication 9.1.</p>
 </aside>
 </section>
-<section id="96-chapter-9-synthesis-lean-4-blueprint-bridge-to-chapter-10-12" class="slide level2 smaller" data-transition="zoom">
+<section id="96-chapter-9-synthesis-lean-4-blueprint-bridge-to-chapter-10-14" class="slide level2 smaller" data-transition="zoom">
 <h2>§9.6: Chapter 9 Synthesis, Lean 4 Blueprint & Bridge to Chapter 10</h2>
 <div class="stratum-badge badge-c">CHAPTER 9 SYNTHESIS: DELIVERABLES, LEAN 4 FORMALIZATION SCAFFOLD &amp; DIALECTICAL ASCENT TO CHAPTER 10</div>
 <div class="columns">

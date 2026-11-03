@@ -26,6 +26,7 @@ format:
       text: |
         <script src="shared/chapter7-widgets.js"></script>
         <script src="shared/monograph-workbench.js"></script>
+
 ---
 
 ## §7.1.1: The Anthropomorphic Pivot &amp; Cognitive Pluralism {.smaller transition="convex"}
@@ -346,31 +347,75 @@ Slide 4 details Definitions 7.3 and 7.4 and Proposition 7.5 with its complete pr
 
 ---
 
-## §7.2.1: Quantitative Topos $\Equant$, Geometric Morphism &amp; Dedekind Reals {.smaller auto-animate=true}
+## §7.2.1c: Quantitative Grothendieck Topology $\Jquant$ &amp; Geometric Morphism $\pi_{\mathrm{quant}}$ {.smaller auto-animate=true}
 
-<div class="stratum-badge badge-b">STRATUM A/B: DEFS. 7.6, 7.8 &amp; THEOREMS 7.7, 7.9 PROOFS | CLAIM CEILING: (B, M, Derivation, S₁b, E₃)</div>
+<div class="stratum-badge badge-b">STRATUM A/B: DEFINITION 7.6 &amp; THEOREM 7.7 PROOF | CLAIM CEILING: (B, M, Derivation, S₁b, E₃)</div>
 
 :::: {.columns}
 
-::: {.column width="48%"}
+::: {.column width="50%"}
 
 ::: {.thm-box}
-**Def. 7.6 &amp; Theorem 7.7 (Topology $\Jquant$ &amp; Geometric Morphism $\pi_{\mathrm{quant}} \colon \Equant \to \Esyn$):**
+**Definition 7.6 &amp; Theorem 7.7 (Topology $\Jquant$ &amp; Geometric Morphism $\pi_{\mathrm{quant}} \colon \Equant \to \Esyn$):**
 Let $I \colon \Ctxquant \to \mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}$ be the pullback-preserving forgetful functor. Define $S \in \Jquant(U_Q) \iff \langle I(S)\rangle \in \Jsyn(I(U_Q))$ and $\Equant \coloneqq \mathbf{Sh}(\Ctxquant, \Jquant)$.
 1. $\Jquant$ unconditionally satisfies the three Grothendieck topology axioms (maximality, pullback stability, transitivity; Mac Lane &amp; Moerdijk 1994).
 2. Since $I$ is a morphism of sites, it induces a canonical **Geometric Morphism of Toposes**:
    $$
    \pi_{\mathrm{quant}} = \left(\pi_{\mathrm{quant}}^* \dashv \pi_{\mathrm{quant}*}\right) \colon \Equant \longrightarrow \Esyn
    $$
-   where $(\pi_{\mathrm{quant}*}\mathbf{F})(U) = \lim_{I(U_Q)\to U}\mathbf{F}(U_Q)$ and $\pi_{\mathrm{quant}}^* = \mathbf{a}_{\Jquant}(-\circ I^{\mathrm{op}})$ is exact.
+   where $(\pi_{\mathrm{quant}*}\mathbf{F})(U) = \lim_{I(U_Q)\to U}\mathbf{F}(U_Q)$ and $\pi_{\mathrm{quant}}^* = \mathbf{a}_{\Jquant}(-\circ I^{\mathrm{op}})$ is finite-limit preserving (left exact).
+:::
 
-**Proof:** (1) $\operatorname{id}_{I(U_Q)} \in I(\operatorname{Max}(U_Q)) \implies \langle I(\operatorname{Max}(U_Q))\rangle \in \Jsyn$. (2) By Prop. 7.5, $I$ preserves pullbacks, so $\langle I(h^*S)\rangle = I(h)^*\langle I(S)\rangle \in \Jsyn$. (3) Transitivity follows from $\Jsyn$, and Grothendieck's site theorem (Ch. VII.10) yields $\pi_{\mathrm{quant}}^* \dashv \pi_{\mathrm{quant}*}$. $\blacksquare$
+:::
+
+::: {.column width="50%"}
+
+::: {.proof-box}
+**Proof of Theorem 7.7:**
+1. **Maximality:** Since $\operatorname{id}_{I(U_Q)} \in I(\operatorname{Max}(U_Q))$, the generated sieve satisfies $\langle I(\operatorname{Max}(U_Q))\rangle = \operatorname{Max}(I(U_Q)) \in \Jsyn(I(U_Q))$.
+2. **Pullback Stability:** By Proposition 7.5, $I$ strictly preserves finite pullbacks, so for any $h \colon V_Q \to U_Q$ and $S \in \Jquant(U_Q)$, $\langle I(h^*S)\rangle = I(h)^*\langle I(S)\rangle \in \Jsyn(I(V_Q))$.
+3. **Transitivity &amp; Adjoint Pair:** Transitivity follows directly from transitivity of $\Jsyn$ on $\mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}$. By Grothendieck's Morphism of Sites Theorem (SGA 4 / Mac Lane &amp; Moerdijk Ch. VII.10), a pullback-preserving functor that sends coverings to coverings induces the adjoint geometric morphism $\pi_{\mathrm{quant}}^* \dashv \pi_{\mathrm{quant}*}$. $\blacksquare$
+:::
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch7_Act5_Quantitative_Topos_Dedekind.mp4" style="max-height:190px;"></video>
+  <div class="video-caption">Manim Act V: Quantitative Sheaf Topos E_quant &amp; Geometric Morphism π_quant : E_quant → E_syn</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 5A covers Definition 7.6 and Theorem 7.7 with its complete 3-step proof establishing the Grothendieck topology J_quant and the canonical geometric morphism pi_quant : E_quant -> E_syn.
+:::
+
+---
+
+## §7.2.1d: Internal Dedekind vs. Cauchy Reals ($\mathbb{R}_{\mathcal{E}}$ vs. $\mathbb{R}_{\mathrm{Cauchy}}$) in $\Equant$ {.smaller transition="slide"}
+
+<div class="stratum-badge badge-b">STRATUM B: DEFINITION 7.8 &amp; THEOREM 7.9 CONSTRUCTIVE ANALYSIS IN TOPOS E_quant</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.def-box}
+**Definition 7.8 (The Internal Dedekind Real Object $\mathbb{R}_{\mathcal{E}}$ in $\Equant$):**
+In the intuitionistic internal logic of $\Equant$, the Dedekind reals $\mathbb{R}_{\mathcal{E}}$ are the subobject of pairs $(L, U) \in \Omega^{\mathbb{Q}_{\mathcal{E}}} \times \Omega^{\mathbb{Q}_{\mathcal{E}}}$ satisfying:
+1. **Inhabitedness &amp; Disjointness:** $\exists q\, L(q)$, $\exists r\, U(r)$, and $\forall q\, \neg(L(q) \wedge U(q))$.
+2. **Openness (Roundedness):** $L(q) \iff \exists q' > q,\, L(q')$ and $U(r) \iff \exists r' < r,\, U(r')$.
+3. **Heyting Locatedness:**
+   $$
+   \forall q, r \in \mathbb{Q}_{\mathcal{E}} \;\big(q < r \implies L(q) \vee U(r)\big)
+   $$
 :::
 
 ::: {.thm-box .fragment .fade-up}
-**Def. 7.8 &amp; Theorem 7.9 (Internal Dedekind vs. Cauchy Reals in $\Equant$):**
-* **Def. 7.8 ($\mathbb{R}_{\mathcal{E}}$):** Subobject pairs $(L, U)$ of $\mathbb{Q}_{\mathcal{E}}$ that are inhabited, downward/upward closed, rounded, disjoint ($L \cap U = \emptyset$), and **located** in Heyting logic: $\forall q < r \in \mathbb{Q}_{\mathcal{E}},\; L(q) \vee U(r)$.
-* **Thm. 7.9 &amp; Proof:** $\mathbb{R}_{\mathcal{E}}$ is an internal ordered ring. Each Cauchy name defines a cut via lower/upper bounds, giving a canonical monomorphism $\mathbb{R}_{\mathrm{Cauchy}} \hookrightarrow \mathbb{R}_{\mathcal{E}}$. Reversing this map requires selecting arbitrarily small rational intervals around a located cut, so isomorphism holds under internal countable choice (or local compactness/completeness), and $\mathbb{R}_{\mathcal{E}}(U) \cong C^0(\mathcal{S}_P^U, \mathbb{R})$ requires additional site hypotheses rather than being automatic. $\blacksquare$
+**Theorem 7.9 &amp; Proof (Internal Dedekind vs. Cauchy Reals in $\Equant$):**
+* $\mathbb{R}_{\mathcal{E}}$ is an internal ordered Archimedean ring in $\Equant$.
+* Every Cauchy approximation name defines a located cut via its lower and upper rational bounds, inducing a canonical monomorphism $\mathbb{R}_{\mathrm{Cauchy}} \hookrightarrow \mathbb{R}_{\mathcal{E}}$.
+* **Constructive Distinction:** Reversing this inclusion requires choosing a sequence of rational intervals of width $2^{-n}$ straddling $(L,U)$, so $\mathbb{R}_{\mathrm{Cauchy}} \cong \mathbb{R}_{\mathcal{E}}$ holds iff $\Equant$ satisfies internal Countable Choice ($\mathrm{AC}_{\mathbb{N}}$) or local compactness. $\blacksquare$
 :::
 
 :::
@@ -390,13 +435,8 @@ Let $I \colon \Ctxquant \to \mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}$ be the pu
   <input type="range" id="ch7-ded-r" min="0.30" max="2.30" step="0.05" value="1.65" oninput="ch7_updateDedekindCut()">
   <span id="ch7-ded-r-val" style="font-family:monospace; width:38px;">1.65</span>
   </div>
-  <svg id="ch7-ded-svg" viewBox="0 0 420 88" style="width:100%; max-height:86px; background:#070a12; border-radius:8px; border:1px solid #334155;"></svg>
-  <div id="ch7-ded-readout" class="matrix-readout" style="margin-top:6px; font-size:0.62em;"></div>
-</div>
-
-<div class="video-container fragment fade-left" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch7_Act5_Quantitative_Topos_Dedekind.mp4" style="max-height:200px;"></video>
-  <div class="video-caption">Manim Act V: Quantitative Sheaf Topos E_quant, Geometric Morphism π_quant &amp; Internal Dedekind Reals R_E</div>
+  <svg id="ch7-ded-svg" viewBox="0 0 420 88" style="width:100%; max-height:92px; background:#070a12; border-radius:8px; border:1px solid #334155;"></svg>
+  <div id="ch7-ded-readout" class="matrix-readout" style="margin-top:6px; font-size:0.64em;"></div>
 </div>
 
 :::
@@ -404,7 +444,7 @@ Let $I \colon \Ctxquant \to \mathbf{Ctx}_{\mathrm{adm}}^{\mathrm{sk}}$ be the pu
 ::::
 
 ::: {.notes}
-Slide 5 covers Definition 7.6, Theorem 7.7 and its proof on the Grothendieck topology J_quant and geometric morphism pi_quant, plus Definition 7.8 and Theorem 7.9 on the internal Dedekind real object R_E and the exact constructive distinction between Cauchy and Dedekind reals in a general sheaf topos.
+Slide 5B covers Definition 7.8 and Theorem 7.9 on the internal Dedekind real object R_E in E_quant and the exact constructive distinction between Cauchy and Dedekind reals in a general sheaf topos.
 :::
 
 ---
@@ -786,13 +826,9 @@ Slide 10 presents Scholium 7.18, Theorem 7.19, its complete three-step mathemati
 
 ---
 
-## §7.4–7.5: Complete Reconstruction Map $\mathcal{R}$, Sanity Checks &amp; Explication 7.1 {.smaller transition="convex"}
+## §7.4: Stratum C — Formal Heimian Reconstruction Map $\mathcal{R}$ (14-Row Register) {.smaller transition="convex"}
 
-<div class="stratum-badge badge-c">STRATUM C: COMPLETE 14-ROW RECONSTRUCTION MAP R, THREE SANITY CHECKS (§7.5) &amp; CARNAP EXPLICATION 7.1</div>
-
-:::: {.columns}
-
-::: {.column width="55%"}
+<div class="stratum-badge badge-c">STRATUM C: COMPLETE 14-ROW RECONSTRUCTION MAP R FOR ANTHROPOMORPHIC SYNTROMETRY (§7.4)</div>
 
 | Heimian Concept ($\mathbf{D}$) | Mathematical Reconstruction ($\mathcal{R}$) | Epistemic Status |
 |:---|:---|:---:|
@@ -811,9 +847,19 @@ Slide 10 presents Scholium 7.18, Theorem 7.19, its complete three-step mathemati
 | **Isokline ($\Sigma_c$)** | Regular level submanifold of codimension $d$ on $R_m^{\mathrm{reg}}$ | **Stratum C: Model** (Def. 7.15) |
 | **Cascade Norm Estimate** | Monomial power bound $\|A_M\|_{C_b^0} \le \Gamma_M \|A_0\|_{C_b^0}^{D_M}$ | **Stratum B: Thm** (Thm. 7.19) |
 
+::: {.notes}
+Slide 11A presents the complete 14-row Formal Heimian Reconstruction Map R from §7.4, translating every concept of SM Chapter II.3 (pp. 122-130) into typed categorical and differential-geometric structures.
 :::
 
-::: {.column width="45%"}
+---
+
+## §7.5: Physical &amp; Epistemic Sanity Checks &amp; Carnapian Explication 7.1 {.smaller transition="slide"}
+
+<div class="stratum-badge badge-c">STRATUM C: THREE SANITY CHECKS (§7.5) &amp; CARNAPIAN EXPLICATION 7.1</div>
+
+:::: {.columns}
+
+::: {.column width="50%"}
 
 ::: {.thm-box}
 **Physical &amp; Epistemic Sanity Checks (§7.5):**
@@ -822,7 +868,16 @@ Slide 10 presents Scholium 7.18, Theorem 7.19, its complete three-step mathemati
 3. **Zero-Field Vacuum Stability:** If $A_0 \equiv 0$, then $A_M = f_M(\dots f_1(0)\dots) \equiv 0$ by multilinearity: empty parameter spaces cannot spontaneously generate unphysical field energy.
 :::
 
-::: {.carnap-box .fragment .fade-up}
+<div class="video-container fragment fade-up" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch7_Act11_Reconstruction_Sanity.mp4" style="max-height:175px;"></video>
+  <div class="video-caption">Manim Act XI: 14-Row Reconstruction Map R, Three Sanity Checks &amp; Carnap Explication 7.1</div>
+</div>
+
+:::
+
+::: {.column width="50%"}
+
+::: {.carnap-box}
 **Carnapian Explication 7.1: *Quantitätsaspekt*, Iterators &amp; *Synkolationsfelder***
 * **1. Explicandum ($\mathbf{D}$):** Transition from *Apodiktische Pluralitäten* to $\quantitaetsaspekt$, $S_n ; \widetilde{a} = R_n$, *Synkolatorraum* ($m+m^k$), *Feldzentren*, *Isoklinen*, and *Strukturkaskaden* (SM, pp. 122–130).
 * **2. Explicatum ($\mathbf{A}/\mathbf{B}$):** Site $(\Ctxquant, \Jquant)$ over $\Coeff$, $\pi_{\mathrm{quant}} \colon \Equant \to \Esyn$, $S_n \colon \DimField \to \mathbf{Ban}_{\le 1}$, $\Msyn = T^{\otimes k}R_m$, foliations $\mathfrak{f}_A$, Morse–Bott loci $Z_\alpha$, and bound $\|A_M\|_{C_b^0} \le \Gamma_M\|A_0\|_{C_b^0}^{D_M}$.
@@ -830,17 +885,12 @@ Slide 10 presents Scholium 7.18, Theorem 7.19, its complete three-step mathemati
 * **4. Fruitfulness:** Operationalizes Friedman (2001) &amp; van Fraassen (2008) coordination, guaranteeing finite-depth cascades remain uniformly bounded without blow-up (Thm. 7.19).
 :::
 
-<div class="video-container fragment fade-left" style="margin-top:6px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch7_Act11_Reconstruction_Sanity.mp4" style="max-height:140px;"></video>
-  <div class="video-caption">Manim Act XI: 14-Row Reconstruction Map R, Three Sanity Checks &amp; Carnap Explication 7.1</div>
-</div>
-
 :::
 
 ::::
 
 ::: {.notes}
-Slide 11 presents the complete 14-row Formal Heimian Reconstruction Map R from §7.4, the three Physical and Epistemic Sanity Checks from §7.5 (Linear Unary Cascade Reduction, Realification Dimension Consistency, and Zero-Field Vacuum Stability), and Carnapian Explication 7.1.
+Slide 11B presents the three Physical and Epistemic Sanity Checks from §7.5 (Linear Unary Cascade Reduction, Realification Dimension Consistency, and Zero-Field Vacuum Stability) and Carnapian Explication 7.1.
 :::
 
 ---

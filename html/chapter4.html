@@ -2927,38 +2927,30 @@ theorem brst_nilpotent_ghost (c : g)
 </div>
 </div>
 </section>
-<section id="436437-taxonomic-grid-singularity-affinity-11" class="slide level2 smaller">
-<h2>§4.3.6–4.3.7  GTOK34  Taxonomic Grid  GTOK35 , Singularity & Affinity  GTOK36 </h2>
+<section id="436-taxonomic-grid-singularity-classification-def-424-thm-425-11" class="slide level2 smaller">
+<h2>§4.3.6  GTOK38  Taxonomic Grid  GTOK39  & Singularity Classification (Def. 4.24, Thm. 4.25)</h2>
 <div style="margin-bottom:6px;">
-<span class="tag-b">DEFINITION 4.24 & THEOREM 4.25: 3×3 GRID Â = (A_ik) & SINGULARITY CLASSES</span>
-<span class="tag-c">DEFINITION 4.26: AFFINITY BILINEAR INTERFACE β^∞</span>
+<span class="tag-b">DEFINITION 4.24: 3×3 TAXONOMIC PROPERTY GRID Â = (A_ik)</span>
+<span class="tag-a">THEOREM 4.25: CONFORMAL REGULARITY &amp; DIMENSION-DEFECT SINGULARITY</span>
 </div>
 <div class="grid-2">
 <div>
-<div class="def-box" style="margin-bottom:5px; font-size:0.58em;">
-<div class="box-title">Def. 4.24 & Thm. 4.25: <span class="math inline">\(3\times 3\)</span> Taxonomic Grid <span class="math inline">\(\hat{A} = (A_{ik})\)</span> & Singularity</div>
-<p>On <span class="math inline">\(\operatorname{End}(\mathbf{Sh}(\mathcal{M}))\)</span>, <span class="math inline">\(A_{ik} = \{F \mid \operatorname{ActionProp}_i(F) \wedge \operatorname{EffectTarget}_k(F)\}\)</span> crosses:</p>
+<div class="def-box" style="margin-bottom:6px; font-size:0.60em;">
+<div class="box-title">Definition 4.24: The Taxonomic Property Grid <span class="math inline">\(\hat{A} = (A_{ik})\)</span> over <span class="math inline">\(\mathbf{Sh}(\mathbf{Man}_{\mathrm{param}})\)</span></div>
+<p>On <span class="math inline">\(\operatorname{End}(\mathbf{Sh}(\mathcal{M}))\)</span>, the modernized <span class="math inline">\(3\times 3\)</span> classification matrix is defined by:</p>
+<p><span class="math display">\[A_{ik} \coloneqq \{ F \in \operatorname{End}(\mathbf{Sh}(\mathcal{M})) \mid \operatorname{ActionProp}_i(F) \;\wedge\; \operatorname{EffectTarget}_k(F) \}\]</span></p>
 <ul>
-<li><b>Action Rows (<span class="math inline">\(i\)</span>):</b> <span class="math inline">\(i=1\)</span> Colimit-Preserving (<i>Synthesizing</i>); <span class="math inline">\(i=2\)</span> Limit-Preserving (<i>Analyzing</i>); <span class="math inline">\(i=3\)</span> Categorical Equivalence (<i>Isogonal</i>).</li>
-<li><b>Target Columns (<span class="math inline">\(k\)</span>):</b> <span class="math inline">\(k=1\)</span> <i>Conflexive</i> (pushout incidence); <span class="math inline">\(k=2\)</span> <i>Tensorial</i> (bundle rank/dimension); <span class="math inline">\(k=3\)</span> <i>Field-Intrinsic</i> (<span class="math inline">\(g^{\mathrm{syn}}, \mathbf{X}_{\mathrm{kor}}\)</span>).</li>
-<li><b>Thm. 4.25 (Singularity Classification, SM pp. 78–79):</b>
-  <ul>
-  <li><b style="color:#ff6b81;">Singular Dimension-Defective Classes:</b> <span class="math inline">\(A_{12}\)</span> (Synthesizing Tensorial: <span class="math inline">\(\dim F(\mathcal{M}_{\mathrm{syn}}) < \dim \mathcal{M}_{\mathrm{syn}}\)</span>) and <span class="math inline">\(A_{22}\)</span> (Analyzing Tensorial: <span class="math inline">\(\dim F(\mathcal{M}_{\mathrm{syn}}) > \dim \mathcal{M}_{\mathrm{syn}}\)</span>).</li>
-  <li><b style="color:#20B2AA;">Conditionally / Unconditionally Regular Classes:</b> <span class="math inline">\(A_{11}, A_{21}\)</span> (regular when Syntropodenzahl is invariant), <span class="math inline">\(A_{13}, A_{23}\)</span> (dimension-preserving metric/connection modulations), and <span class="math inline">\(A_{31}, A_{32}, A_{33}\)</span> (unconditionally regular via network isomorphism, Morita equivalence, and conformal diffeomorphism).</li>
-  </ul>
-</li>
+<li><b>Action Rows (<span class="math inline">\(i \in \{1,2,3\}\)</span>):</b> <span class="math inline">\(i=1\)</span> Finite Colimit Preserving <span class="math inline">\(F(\varinjlim D) \cong \varinjlim(F\circ D)\)</span> (<i>Synthesizing</i>); <span class="math inline">\(i=2\)</span> Finite Limit Preserving <span class="math inline">\(F(\varprojlim D) \cong \varprojlim(F\circ D)\)</span> (<i>Analyzing</i>); <span class="math inline">\(i=3\)</span> Categorical Equivalence (<i>Isogonal</i>).</li>
+<li><b>Effect Targets (<span class="math inline">\(k \in \{1,2,3\}\)</span>):</b> <span class="math inline">\(k=1\)</span> <i>Conflexive</i> (acts on span pushout incidence nodes <span class="math inline">\(\phi_l\)</span>); <span class="math inline">\(k=2\)</span> <i>Tensorial</i> (alters tensor rank or graded carrier bundle dimension); <span class="math inline">\(k=3\)</span> <i>Field-Intrinsic</i> (modulates <span class="math inline">\(g^{\mathrm{syn}}\)</span> or <span class="math inline">\(\mathbf{X}_{\mathrm{kor}}\)</span>).</li>
 </ul>
 </div>
-<div class="def-box" style="font-size:0.58em;">
-<div class="box-title">Definition 4.26: Affinity Bilinear Systems & Two-Sided Non-Degeneracy (<span class="math inline">\(\beta^\infty\)</span>)</div>
-<p>Let <span class="math inline">\(\mathcal{S} \in \mathbf{Syn}\)</span> with syndrome spaces <span class="math inline">\(\{F_\gamma\}_{\gamma=0}^K\)</span> and let <span class="math inline">\(\mathcal{B} \in \mathbf{Ban}_{\le 1}\)</span> be an external context space.</p>
-<ol>
-<li><b>Bounded Bilinear Family:</b> <span class="math inline">\(\beta \in \prod_{\gamma=0}^K \prod_{\lambda=1}^L \operatorname{Bil}_{\le 1}(F_\gamma(\mathcal{S}), \mathcal{B}; \mathbb{R})\)</span> with <span class="math inline">\(\|\beta\|_\infty < \infty\)</span>.</li>
-<li><b>Componentwise Stabilization:</b> <span class="math inline">\(\lim_{n\to\infty} \|\beta_{\gamma,\lambda}^{(n)} - \beta_{\gamma,\lambda}^\infty\|_{\mathrm{op}} = 0\)</span>.</li>
-<li><b>Two-Sided Non-Degenerate Affinitätssyntrix Interface (<span class="math inline">\(\mathcal{S}_{\mathrm{aff}}\)</span>):</b> On the Metrophor base <span class="math inline">\(F_0 \cong P^U\)</span> at <span class="math inline">\((\gamma_0=0, \lambda_0)\)</span>, the induced adjoint maps <span class="math inline">\(T_\beta \colon F_0 \to \mathcal{B}^*\)</span> and <span class="math inline">\(S_\beta \colon \mathcal{B} \to F_0^*\)</span> satisfy:
-<p><span class="math display">\[\ker T_\beta = \{0\} \qquad\text{and}\qquad \ker S_\beta = \{0\}\]</span></p>
-<p>ensuring zero-loss information transduction between internal states and external environment.</li></p>
-</ol>
+<div class="thm-box" style="font-size:0.60em;">
+<div class="box-title">Theorem 4.25: Conformal Regularity &amp; Singularity Classification (SM pp. 78–79)</div>
+<ul>
+<li><b style="color:#ff6b81;">1. Singular Dimension-Defective Classes (<span class="math inline">\(k=2, i \ne 3\)</span>):</b> <span class="math inline">\(A_{12}\)</span> (Synthesizing Tensorial: <span class="math inline">\(\dim F(\mathcal{M}_{\mathrm{syn}}) < \dim \mathcal{M}_{\mathrm{syn}}\)</span>) and <span class="math inline">\(A_{22}\)</span> (Analyzing Tensorial: <span class="math inline">\(\dim F(\mathcal{M}_{\mathrm{syn}}) > \dim \mathcal{M}_{\mathrm{syn}}\)</span>) induce topological dimension defects.</li>
+<li><b style="color:#20B2AA;">2. Conditionally Regular Conflexive Classes (<span class="math inline">\(k=1\)</span>):</b> <span class="math inline">\(A_{11}, A_{21}\)</span> are regular whenever the Syntropodenzahl carrier dimension is preserved across the span colimit or pullback (<span class="math inline">\(\lambda_{\mathrm{eff}} = 0\)</span>).</li>
+<li><b style="color:#4169E1;">3. Unconditionally Regular Classes:</b> <span class="math inline">\(A_{31}, A_{32}, A_{33}\)</span> (Isogonal Equivalences: network isomorphism, Morita bundle equivalence, conformal diffeomorphism) and <span class="math inline">\(A_{13}, A_{23}\)</span> (Field-Intrinsic connection/derivation modulations).</li>
+</ul>
 </div>
 </div>
 <div>
@@ -2979,14 +2971,49 @@ theorem brst_nilpotent_ghost (c : g)
 <b style="color:#DC143C;">⚠ Class A₁₂ (Synthesizing Tensorial — SINGULAR):</b><br>Preserves colimits but strictly compresses state-space tensor dimension: dim F(M_syn) &lt; dim M_syn (Dimension-Defect Singularity!).
 </div>
 </div>
-<div class="video-card">
-<video autoplay data-autoplay loop muted playsinline src="media/Act11_Secs_437438_3x3_Grid.mp4" style="max-height:155px; min-width:0;"></video>
-<div class="video-label">Act XI: 3×3 Matrix Â = (A_ik), Singular Classes A₁₂/A₂₂ & Affinity β^∞</div>
+<div class="def-box" style="font-size:0.58em;">
+<div class="box-title">Heim's Historical Nine Transformation Classes <span class="math inline">\(\hat{a} = (a_{ik})_3\)</span> (SM pp. 78–79)</div>
+<p>Crosses synthesizing (<span class="math inline">\(i=1\)</span>), analyzing (<span class="math inline">\(i=2\)</span>), and isogonal (<span class="math inline">\(i=3\)</span>) actions with conflexive (<span class="math inline">\(k=1\)</span>), tensorial (<span class="math inline">\(k=2\)</span>), and field-intrinsic (<span class="math inline">\(k=3\)</span>) targets, isolating <span class="math inline">\(A_{12}\)</span> and <span class="math inline">\(A_{22}\)</span> as the sole dimension-altering singular entries.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="44-complete-reconstruction-map-carnapian-explication-41-12" class="slide level2 smaller">
+<section id="437-affinity-bilinear-systems-two-sided-non-degeneracy-def-426-12" class="slide level2 smaller">
+<h2>§4.3.7 Affinity Bilinear Systems & Two-Sided Non-Degeneracy  GTOK23  (Def. 4.26)</h2>
+<div style="margin-bottom:6px;">
+<span class="tag-c">DEFINITION 4.26: AFFINITY BILINEAR INTERFACE β^∞</span>
+<span class="tag-b">STRATUM B2: ZERO-LOSS ENVIRONMENTAL COUPLING S_aff</span>
+</div>
+<div class="grid-2">
+<div>
+<div class="def-box" style="margin-bottom:6px; font-size:0.60em;">
+<div class="box-title">Definition 4.26: Affinity Bilinear Systems &amp; Two-Sided Non-Degeneracy (<span class="math inline">\(\beta^\infty\)</span>)</div>
+<p>Let <span class="math inline">\(\mathcal{S} \in \mathbf{Syn}\)</span> with syndrome spaces <span class="math inline">\(\{F_\gamma\}_{\gamma=0}^K\)</span> and let <span class="math inline">\(\mathcal{B} \in \operatorname{Obj}(\mathbf{Ban}_{\le 1})\)</span> be an external context Banach space.</p>
+<ol>
+<li><b>Bounded Bilinear Family:</b> An <i>Affinity System</i> is an element of the finite product space of bounded bilinear forms:
+<p><span class="math display">\[\beta \in \prod_{\gamma=0}^K \prod_{\lambda=1}^L \operatorname{Bil}_{\le 1}\!\left(F_\gamma(\mathcal{S}),\; \mathcal{B};\; \mathbb{R}\right), \qquad \|\beta\|_\infty \coloneqq \max_{\gamma,\lambda} \|\beta_{\gamma,\lambda}\|_{\mathrm{op}} < \infty\]</span></li></p>
+<li><b>Componentwise Stabilization:</b> Under an evolutionary sequence <span class="math inline">\((\beta^{(n)})_{n\ge 0}\)</span>, the system stabilizes componentwise if <span class="math inline">\(\lim_{n\to\infty} \|\beta_{\gamma,\lambda}^{(n)} - \beta_{\gamma,\lambda}^\infty\|_{\mathrm{op}} = 0\)</span> for all <span class="math inline">\((\gamma,\lambda)\)</span>.</li>
+<li><b>Two-Sided Non-Degenerate Affinitätssyntrix Interface (<span class="math inline">\(\mathcal{S}_{\mathrm{aff}}\)</span>):</b> On the Metrophor base <span class="math inline">\(F_0 \cong P^U\)</span> at designated index <span class="math inline">\((\gamma_0=0, \lambda_0)\)</span>, the limiting system <span class="math inline">\(\beta^\infty\)</span> induces adjoint operators <span class="math inline">\(T_\beta \colon F_0 \to \mathcal{B}^*\)</span> and <span class="math inline">\(S_\beta \colon \mathcal{B} \to F_0^*\)</span> satisfying:
+<p><span class="math display">\[\ker T_\beta = \{0\} \qquad\text{and}\qquad \ker S_\beta = \{0\}\]</span></li></p>
+</ol>
+</div>
+</div>
+<div>
+<div class="thm-box fragment fade-up" style="margin-bottom:6px; font-size:0.60em;">
+<div class="box-title">Physical &amp; Information-Theoretic Meaning of <span class="math inline">\(\ker T_\beta = \{0\} = \ker S_\beta\)</span></div>
+<ul>
+<li><b>Left Non-Degeneracy (<span class="math inline">\(\ker T_\beta = \{0\}\)</span>):</b> Every distinct internal Metrophor state <span class="math inline">\(f_0 \in F_0 \setminus \{0\}\)</span> produces a non-zero linear functional on the external context <span class="math inline">\(\mathcal{B}\)</span> (no silent internal modes).</li>
+<li><b>Right Non-Degeneracy (<span class="math inline">\(\ker S_\beta = \{0\}\)</span>):</b> Every non-zero environmental perturbation <span class="math inline">\(b \in \mathcal{B} \setminus \{0\}\)</span> registers non-trivially on <span class="math inline">\(F_0^*\)</span> (zero-loss transduction across the boundary <span class="math inline">\(\mathcal{S}_{\mathrm{aff}}\)</span>).</li>
+</ul>
+</div>
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Act11_Secs_437438_3x3_Grid.mp4" style="max-height:175px; min-width:0;"></video>
+<div class="video-label">Act XI: 3×3 Matrix Â = (A_ik), Singular Classes A₁₂/A₂₂ &amp; Affinity β^∞</div>
+</div>
+</div>
+</div>
+</section>
+<section id="44-complete-reconstruction-map-carnapian-explication-41-13" class="slide level2 smaller">
 <h2>§4.4 Complete Reconstruction Map  GTOK58  & Carnapian Explication 4.1</h2>
 <div style="margin-bottom:6px;">
 <span class="tag-c">STRATUM C: COMPLETE 20-ROW RECONSTRUCTION MAP ℛ (§4.4)</span>
@@ -3049,7 +3076,7 @@ theorem brst_nilpotent_ghost (c : g)
 </ol>
 </div>
 </section>
-<section id="4546-sanity-checks-chapter-4-synthesis-bridge-to-chapter-5-13" class="slide level2 smaller" data-transition="zoom">
+<section id="4546-sanity-checks-chapter-4-synthesis-bridge-to-chapter-5-14" class="slide level2 smaller" data-transition="zoom">
 <h2>§4.5–4.6 Sanity Checks, Chapter 4 Synthesis & Bridge to Chapter 5</h2>
 <div style="margin-bottom:6px;">
 <span class="tag-a">§4.5 PHYSICAL & EPISTEMIC SANITY CHECKS</span>

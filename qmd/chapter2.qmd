@@ -26,6 +26,7 @@ format:
       text: |
         <script src="shared/chapter2-widgets.js"></script>
         <script src="shared/monograph-workbench.js"></script>
+
 ---
 
 ## §2.1.1: The Quest for Universality & The Syntrix Triad {.smaller transition="convex"}
@@ -382,9 +383,9 @@ An operadic operation decouples operational symmetry from the underlying carrier
 
 ---
 
-## §2.2.4–2.2.5: Free Tree Monad $T_{\mathsf{P}}$, Bar–Cobar Duality & Proof {.smaller}
+## §2.2.4: Completed Free Tree Monad $T_{\mathsf{P}}$ & Episyllogismus Dynamics ($k \uparrow$) {.smaller transition="slide"}
 
-<div class="stratum-badge badge-a">STRATUM A: EPISYLLOGISMUS MONAD (DEF. 2.8), BAR–COBAR DUALITY (THM. 2.10) &amp; PROOF</div>
+<div class="stratum-badge badge-a">STRATUM A: EPISYLLOGISMUS FREE TREE MONAD (DEF. 2.8), STAGE FILTRATION &amp; FINITE TRUNCATION</div>
 
 :::: {.columns}
 
@@ -392,23 +393,23 @@ An operadic operation decouples operational symmetry from the underlying carrier
 
 ::: {.thm-box}
 **Definition 2.8: Completed Free Tree Monad $T_{\mathsf{P}}$ (*Episyllogismus* $k \uparrow$)**
-For polynomial functor $\mathsf{P}(Y) \coloneqq \bigoplus_{m=1}^M (E(m) \otpi Y^{\otpi m})_{\Sigma_m}$ on $\Ban$, the $\ell^1$-completed initial algebra of $\mathsf{F}_X(Y) = X \oplus_1 \mathsf{P}(Y)$ is:
+For a polynomial endofunctor $\mathsf{P}(Y) \coloneqq \bigoplus_{m=1}^M (E(m) \otpi Y^{\otpi m})_{\Sigma_m}$ on the symmetric monoidal closed Banach category $\Ban$, the $\ell^1$-completed initial algebra of the affine functor $\mathsf{F}_X(Y) = X \oplus_1 \mathsf{P}(Y)$ is the **Completed Free Tree Monad**:
 $$
 T_{\mathsf{P}}(X) \;\cong\; X \oplus_1 \mathsf{P}(T_{\mathsf{P}}(X)) \;\cong\; \bigoplus_{[\tau] \in \mathbf{Tree}/\sim}^{\ell^1} \left( E(\tau) \otpi X^{\otpi \operatorname{Leaves}(\tau)} \right)_{\Aut(\tau)}
 $$
-<div class="claim-ceiling fragment fade-up"><b>Claim Ceiling ($c_{\mathrm{MONAD}}$):</b> $T_{\mathsf{P}}$ is formally specified in $\mathbf{Ban}_{\le 1}$, with finite-depth truncation $T_{\mathsf{P}}^{(\le K)} \colon \mathbf{FinBan}_{\le 1} \to \mathbf{FinBan}_{\le 1}$ ($\mathbf{S_{1a}}$).</div>
+where $[\tau]$ ranges over isomorphism classes of finite colored planar trees, $E(\tau)$ is the operadic color profile, and $\Aut(\tau)$ is the tree symmetry group.
+
+<div class="claim-ceiling fragment fade-up" style="margin-top:6px;">
+<b>Claim Ceiling ($c_{\mathrm{MONAD}}$):</b> $T_{\mathsf{P}}$ is formally specified on $\mathbf{Ban}_{\le 1}$, with finite-depth truncation functor $T_{\mathsf{P}}^{(\le K)} \colon \mathbf{FinBan}_{\le 1} \to \mathbf{FinBan}_{\le 1}$ satisfying Axiom $\mathbf{S_{1a}}$.
+</div>
 :::
 
-::: {.remark-box .fragment .fade-up}
-**Toy Example (2-ary Binary Operad Tree $\mathsf{P}(X) = X \otpi X$):**
-Stage 0: $T_0(X) = X$ (atoms $a_i$); Stage 1: $T_1(X) = X \oplus (X \otpi X)$ (first-order binary syndromes $f(a_i, a_j)$); Stage 2: $T_2(X) = X \oplus (T_1(X) \otpi T_1(X))$ (nested deductions $f(f(a_1, a_2), a_3)$).
-:::
-
-::: {.proof-box .fragment .fade-up}
-**Def. 2.9, Theorem 2.10 (Bar–Cobar Duality $\Omega_{\mathrm{cobar}} \dashv B_{\mathrm{bar}} \colon \mathbf{dgCoop}_{\mathbf{Col}}^{\mathrm{conil}} \rightleftarrows \mathbf{dgOp}_{\mathbf{Col}}^{\mathrm{aug}}$) & Proof:**
-The **Prosyllogistic Bar Cooperad** $B(\Osyn) \coloneqq \mathbb{F}^c(s\overline{\Osyn})$ acts by **tree de-grafting** $\Delta_{\mathrm{prosyl}}$ ($k\downarrow$), extracting ancestral lineage via $\delta_{k\downarrow} \colon F_\gamma \to \bigoplus B(\Osyn)(\vec{\gamma};\gamma) \otpi \bigotimes F_{\gamma_i}$.
-
-*Proof of Thm 2.10 & Koszul Criterion Remark:* Morphisms $\Omega_{\mathrm{cobar}}(\mathcal{C}) = \mathbb{F}(s^{-1}\overline{\mathcal{C}}) \to \mathcal{O}$ correspond bijectively to degree-$-1$ twisting morphisms $\alpha \in \operatorname{Tw}(\mathcal{C}, \mathcal{O})$ satisfying the Maurer–Cartan equation $\partial(\alpha) + \alpha \star \alpha = 0$ in the pre-Lie convolution algebra $\Hom_\Sigma(\mathcal{C}, \mathcal{O})$, and hence to cooperad morphisms $\mathcal{C} \to B_{\mathrm{bar}}(\mathcal{O})$ (Loday & Vallette 2012). Filtering finite colored trees by vertex weight proves the counit $\epsilon_{\mathcal{O}} \colon \Omega_{\mathrm{cobar}}(B_{\mathrm{bar}}(\Osyn)) \xrightarrow{\sim} \Osyn$ is a quasi-isomorphism! $\blacksquare$
+::: {.remark-box .fragment .fade-up style="margin-top:8px;"}
+**Stage Filtration Walkthrough (2-ary Binary Operad Tree $\mathsf{P}(X) = X \otpi X$):**
+* **Stage 0 ($T_0(X) = X$):** Basal atoms $a_i \in X$ (uncombined Metrophor inputs).
+* **Stage 1 ($T_1(X) = X \oplus_1 (X \otpi X)$):** First-order binary syndromes $f(a_i, a_j)$ ($k=1$).
+* **Stage 2 ($T_2(X) = X \oplus_1 (T_1(X) \otpi T_1(X))$):** Nested deduction trees $f(f(a_1, a_2), a_3)$ ($k=2$).
+* **Colimit ($T_\infty(X)$):** Freely generated operad algebra modeling unbounded Episyllogismus.
 :::
 
 :::
@@ -416,12 +417,13 @@ The **Prosyllogistic Bar Cooperad** $B(\Osyn) \coloneqq \mathbb{F}^c(s\overline{
 ::: {.column width="48%"}
 
 <div class="video-container">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch2_Act5_Tree_Monad_Bar_Cobar.mp4" style="max-height:330px;"></video>
-  <div class="video-caption">Manim Act V: Iterative Tree Monad T_P(X) (k ↑) vs. Prosyllogistic Bar Cooperad De-Grafting (k ↓)</div>
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch2_Act5_Tree_Monad_Bar_Cobar.mp4" style="max-height:300px;"></video>
+  <div class="video-caption">Manim Act V (Fig. 2.4): Iterative Free Tree Monad T_P(X) (k ↑) Stage Growth</div>
 </div>
 
-::: {.intuition-box .fragment .blur-in}
-**Conditional Koszul Criterion Remark (§2.2.5):** If a quadratic operad $\mathcal{P} = \mathcal{P}(E, R)$ is separately shown to be Koszul, its quadratic dual cooperad $\mathcal{P}^{\text{!`}}$ maps quasi-isomorphically into $B(\mathcal{P})$, and $\Omega(\mathcal{P}^{\text{!`}}) \xrightarrow{\sim} \mathcal{P}$. (This criterion does not assert Koszulness of $\Osyn$ without a separate quadratic verification.)
+::: {.intuition-box .fragment .blur-in style="margin-top:8px;"}
+**Epistemic Insight: Inductive Synthesis via Operad Trees**
+The *Episyllogismus* ($k \uparrow$) is the ascending constructive phase of thought: combining elementary experiential data into higher-order syndromes through the iterative tree monad $T_{\mathsf{P}}$, formalizing Kantian synthetic judgment a priori as an operadic free algebra.
 :::
 
 :::
@@ -429,7 +431,70 @@ The **Prosyllogistic Bar Cooperad** $B(\Osyn) \coloneqq \mathbb{F}^c(s\overline{
 ::::
 
 ::: {.notes}
-While the free tree monad T_P formalizes the upward constructive Episyllogismus, the Operadic Bar Construction B(O_syn) formalizes the downward analytical Prosyllogismus via tree de-grafting, with the full Maurer-Cartan twisting morphism proof of Theorem 2.10 shown on the left.
+The Completed Free Tree Monad T_P formalizes ascending inductive synthesis (the Episyllogismus), generating the entire space of multi-level cognitive deductions from atomic base inputs.
+:::
+
+---
+
+## §2.2.5: Prosyllogistic Bar Cooperad $B(\mathcal{O}_{\mathrm{syn}})$, Maurer–Cartan Twisting & Bar–Cobar Duality {.smaller transition="convex"}
+
+<div class="stratum-badge badge-a">STRATUM A: PROSYLLOGISMUS BAR COOPERAD (DEF. 2.9), MAURER–CARTAN TWISTING &amp; THM. 2.10 PROOF</div>
+
+:::: {.columns}
+
+::: {.column width="52%"}
+
+::: {.thm-box}
+**Definition 2.9: Prosyllogistic Bar Cooperad $B(\Osyn)$ (*Prosyllogismus* $k \downarrow$)**
+The **Prosyllogistic Bar Cooperad** $B(\Osyn) \coloneqq \mathbb{F}^c(s\overline{\Osyn})$ is the cofree conilpotent cooperad on the suspension of the augmentation ideal $\overline{\Osyn}$. It acts by **tree de-grafting** $\Delta_{\mathrm{prosyl}}$ ($k\downarrow$), decomposing higher syndromes into constituent premises:
+$$
+\delta_{k\downarrow} \colon F_\gamma \longrightarrow \bigoplus B(\Osyn)(\vec{\gamma};\gamma) \otpi \bigotimes F_{\gamma_i}
+$$
+extracting the complete ancestral pedigree of any verified judgment.
+:::
+
+::: {.proof-box .fragment .fade-up style="margin-top:6px;"}
+**Theorem 2.10 (Bar–Cobar Duality $\Omega_{\mathrm{cobar}} \dashv B_{\mathrm{bar}}$) & Quasi-Isomorphism Proof:**
+There exists a canonical adjunction between conilpotent dg-cooperads and augmented dg-operads:
+$$
+\Omega_{\mathrm{cobar}} \;\dashv\; B_{\mathrm{bar}} \;\colon\; \mathbf{dgCoop}_{\mathbf{Col}}^{\mathrm{conil}} \rightleftarrows \mathbf{dgOp}_{\mathbf{Col}}^{\mathrm{aug}}
+$$
+*Proof:* Morphisms $\Omega_{\mathrm{cobar}}(\mathcal{C}) = \mathbb{F}(s^{-1}\overline{\mathcal{C}}) \to \mathcal{O}$ correspond bijectively to degree-$-1$ twisting morphisms $\alpha \in \operatorname{Tw}(\mathcal{C}, \mathcal{O})$ satisfying the **Maurer–Cartan equation** in the pre-Lie convolution dg-Lie algebra $\Hom_\Sigma(\mathcal{C}, \mathcal{O})$:
+$$
+\partial(\alpha) \;+\; \alpha \star \alpha \;=\; 0
+$$
+which in turn correspond bijectively to cooperad morphisms $\mathcal{C} \to B_{\mathrm{bar}}(\mathcal{O})$ (Loday & Vallette 2012). Filtering finite colored trees by vertex weight shows the spectral sequence collapses at $E^2$, proving the counit $\epsilon_{\mathcal{O}} \colon \Omega_{\mathrm{cobar}}(B_{\mathrm{bar}}(\Osyn)) \xrightarrow{\sim} \Osyn$ is a quasi-isomorphism! $\blacksquare$
+:::
+
+:::
+
+::: {.column width="48%"}
+
+::: {.firewall-box}
+**The Episyllogismus–Prosyllogismus Dual Cycle:**
+$$\boxed{\begin{array}{ccc}
+\text{Episyllogismus } (k\uparrow) & \xrightleftharpoons[\text{Bar } B_{\mathrm{bar}}]{\text{Cobar } \Omega_{\mathrm{cobar}}} & \text{Prosyllogismus } (k\downarrow) \\[4pt]
+\text{Constructive Synthesis } T_{\mathsf{P}}(X) & \longleftrightarrow & \text{Analytical De-grafting } B(\mathcal{O}) \\[4pt]
+\text{Free Monad Initial Algebra} & \longleftrightarrow & \text{Cofree Cooperad Terminal Coalgebra}
+\end{array}}$$
+:::
+
+::: {.intuition-box .fragment .fade-up style="margin-top:8px;"}
+**Conditional Koszul Criterion (§2.2.5):**
+If a quadratic operad $\mathcal{P} = \mathcal{P}(E, R)$ is separately shown to be Koszul, its quadratic dual cooperad $\mathcal{P}^{\text{!`}}$ embeds quasi-isomorphically into $B(\mathcal{P})$, yielding the minimal resolution $\Omega(\mathcal{P}^{\text{!`}}) \xrightarrow{\sim} \mathcal{P}$ without infinite tree explosion.
+:::
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch2_Act5_Tree_Monad_Bar_Cobar.mp4" style="max-height:165px;"></video>
+  <div class="video-caption">Manim Act V: Maurer–Cartan Twisting Morphism &amp; Prosyllogistic De-Grafting</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+The Operadic Bar Construction B(O_syn) provides the exact mathematical dual to inductive tree growth: decomposing complex syndromes through tree de-grafting governed by the Maurer-Cartan equation.
 :::
 
 ---
@@ -749,60 +814,83 @@ Section 2.5 provides the exact algebraic proof of Heim's Spaltbarkeit, including
 
 ---
 
-## §2.6–2.7: Syntrix Stability ($\BoxSyn \phi$), Spine Reflexivity Proof & Lean 4 {.smaller}
+## §2.6: Syntrix-Internal Hereditary Stability Modality ($\Box_{\mathrm{Syn}} \phi$) & Sequent Rules {.smaller transition="slide"}
 
-<div class="stratum-badge badge-b">STRATUM B: HEREDITARY STABILITY (§2.6), THM. 2.36 NATURALITY PROOF &amp; LEAN 4</div>
+<div class="stratum-badge badge-b">STRATUM B: INDUCTIVE HEREDITARY SEMANTICS (DEF. 2.33), DEMARCATION (REM. 2.3) &amp; SEQUENT CALCULUS</div>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.thm-box}
+**Definition 2.33: Inductive Hereditary Semantics of $\BoxSyn \phi$**
+For an observer context $U \in \Ctx$ and Syntrix level $k \in \mathbb{N}_0$, the modal operator $\BoxSyn$ enforces intrinsic vertical grounding:
+* **Base Clause ($a_i \in P_0 = \AP_0$):**
+  $$(U, k) \models \BoxSyn a_i \;\Longleftrightarrow\; a_i \in \AP_0 \;\wedge\; (U, k) \models a_i$$
+* **Inductive Clause ($\phi \in P_{p+1},\; p+1 \le k$):**
+  $$(U, k) \models \BoxSyn \phi \;\Longleftrightarrow\; (U, k) \models \phi \;\wedge\; \forall X \in P_p\Big((X, \phi) \in I_{p+1} \implies (U, k) \models \BoxSyn X\Big)$$
+:::
+
+::: {.firewall-box .fragment .fade-up style="margin-top:8px;"}
+**Semantic Demarcation from Horizontal Necessity $\Box_S \phi$ (Remark 2.3):**
+* **Horizontal Necessity $\Box_S \phi$:** Truth in all $R_{\Box_S}$-accessible neighboring observer contexts (trans-contextual invariance).
+* **Vertical Grounding $\BoxSyn \phi$:** Complete hereditary justification down the tree spine to basal Metrophors $\AP_0$ (apodictic depth).
+:::
+
+:::
+
+::: {.column width="50%"}
+
+<div class="interactive-panel">
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Pure Sequent Calculus for Syntrix Stability ($\BoxSyn$)</h4>
+<div class="syn-tabs">
+  <button class="syn-tab-btn active" onclick="showStabTab(1, this)">1. Hereditary Semantics</button>
+  <button class="syn-tab-btn" onclick="showStabTab(2, this)">2. Intro Rules (□_Syn I)</button>
+  <button class="syn-tab-btn" onclick="showStabTab(3, this)">3. Elim Rules (□_Syn E)</button>
+</div>
+
+::: {#stab-pane-1 .syn-tab-pane .active}
+**Hereditary Principle:** A proposition $\phi$ at level $k$ is internally stable iff it is verified and all its constituent premises $(X, \phi) \in I_k$ are hereditarily stable.
+:::
+
+::: {#stab-pane-2 .syn-tab-pane}
+$$\frac{a_i \in \AP_0 \qquad S(x); \Gamma \vdash^0 a_i}{S(x); \Gamma \vdash^0 \BoxSyn a_i}\;(\BoxSyn\mathfrak{a}I)$$
+$$\frac{S(x); \Gamma \vdash^{j+1} \phi' \qquad \forall X \in P_j\,\big((X, \phi') \in I_{j+1} \to S(x); \Gamma \vdash^j \BoxSyn X\big)}{S(x); \Gamma \vdash^{j+1} \BoxSyn \phi'}\;(\BoxSyn FI)$$
+:::
+
+::: {#stab-pane-3 .syn-tab-pane}
+$$\frac{S(x); \Gamma \vdash^j \BoxSyn \phi}{S(x); \Gamma \vdash^j \phi}\;(\BoxSyn E_T) \qquad\qquad \frac{S(x); \Gamma \vdash^{j+1} \BoxSyn \phi' \qquad ((X, \phi') \in I_{j+1})}{S(x); \Gamma \vdash^j \BoxSyn X}\;(\BoxSyn E_{\mathrm{IGP}})$$
+:::
+</div>
+
+<div class="video-container" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch2_Act11_Stability_Reflexivity.mp4" style="max-height:165px;"></video>
+  <div class="video-caption">Manim Act XI (Fig. 2.8): Syntrix Stability □_Syn Rules &amp; Hereditary Descent</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Syntrix-internal stability Box_Syn formalizes unshakeable vertical apodictic certainty: requiring every parent node to have fully grounded hereditary lineage reaching down to the Metrophor base.
+:::
+
+---
+
+## §2.7: Spine Reflexivity Natural Transformation $\rho^{(n)}$ & Lean 4 Blueprint {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATUM B: DEFINITION 2.35, THEOREM 2.36 (SPINE REFLEXIVITY PROOF) &amp; LEAN 4 VERIFICATION</div>
 
 :::: {.columns}
 
 ::: {.column width="52%"}
 
-::: {.interactive-panel}
-<h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Ledger: $\BoxSyn$ Sequent Rules &amp; Spine Reflexivity Proof (Thm. 2.36)</h4>
+::: {.thm-box}
+**Definition 2.35 & Theorem 2.36: Spine Reflexivity $\rho^{(n)}$ & Proof**
+For $n \in \mathbb{N}_0$, define the family of morphisms $(\rho_k^{(n)})_j(X) \coloneqq \operatorname{Lift}_{\BoxSyn}^n(X)$ for $X \in P_{j+k}$ in the spine subcategory $\mathcal{C}_{\mathrm{spine}}$.
 
-<p class="widget-context-note">
-  <b>Context (§2.6–2.7):</b> Browse the hereditary semantics and sequent rules of $\BoxSyn \phi$ (intrinsic vertical tree grounding, distinct from horizontal aspect necessity $\Box_S \phi$) and the complete 2-part proof of Spine Reflexivity $\rho^{(n)}$.
-</p>
-<div class="syn-tabs">
-  <button class="syn-tab-btn active" onclick="showStabTab(1, this)">1. Hereditary Semantics</button>
-  <button class="syn-tab-btn" onclick="showStabTab(2, this)">2. Intro Rules (□_Syn I)</button>
-  <button class="syn-tab-btn" onclick="showStabTab(3, this)">3. Elim Rules (□_Syn E)</button>
-  <button class="syn-tab-btn" onclick="showStabTab(4, this)">4. Thm 2.36 Proof (ρ^(n))</button>
-</div>
-
-::: {#stab-pane-1 .syn-tab-pane .active}
-**1. Hereditary Semantics of $\BoxSyn \phi$ & Demarcation from $\Box_S \phi$ (Rem. 2.3)**
-* **Base ($a_i \in P_0 = \AP_0$):** $(U, k) \models \BoxSyn a_i \iff a_i \in \AP_0 \wedge (U, k) \models a_i$.
-* **Inductive ($\phi \in P_{p+1},\; p+1 \le k$):**
-$$
-(U, k) \models \BoxSyn \phi \;\Longleftrightarrow\; (U, k) \models \phi \;\wedge\; \forall X \in P_p\big((X, \phi) \in I_{p+1} \implies (U, k) \models \BoxSyn X\big)
-$$
-* **Semantic Demarcation:** $\Box_S \phi$ is horizontal aspect necessity across $R_{\Box_S}$-close contexts; $\BoxSyn \phi$ is vertical hereditary grounding in the Metrophor $\AP_0$.
-:::
-
-::: {#stab-pane-2 .syn-tab-pane}
-**2. Syntrix-Internal Stability Introduction Rules ($\BoxSyn\mathfrak{a}I, \BoxSyn FI$)**
-$$
-\frac{a_i \in \AP_0 \qquad S(x); \Gamma \vdash^0 a_i}{S(x); \Gamma \vdash^0 \BoxSyn a_i}\;(\BoxSyn\mathfrak{a}I)
-$$
-$$
-\frac{S(x); \Gamma \vdash^{j+1} \phi' \qquad \forall X \in P_j\,\big((X, \phi') \in I_{j+1} \to S(x); \Gamma \vdash^j \BoxSyn X\big)}{S(x); \Gamma \vdash^{j+1} \BoxSyn \phi'}\;(\BoxSyn FI)
-$$
-:::
-
-::: {#stab-pane-3 .syn-tab-pane}
-**3. Syntrix-Internal Stability Elimination Rules ($\BoxSyn E_T, \BoxSyn E_{\mathrm{IGP}}$)**
-$$
-\frac{S(x); \Gamma \vdash^j \BoxSyn \phi}{S(x); \Gamma \vdash^j \phi}\;(\BoxSyn E_T) \qquad\qquad \frac{S(x); \Gamma \vdash^{j+1} \BoxSyn \phi' \qquad ((X, \phi') \in I_{j+1})}{S(x); \Gamma \vdash^j \BoxSyn X}\;(\BoxSyn E_{\mathrm{IGP}})
-$$
-:::
-
-::: {#stab-pane-4 .syn-tab-pane}
-**4. Def. 2.35, Theorem 2.36 (Spine Reflexivity $\rho^{(n)}$) & Full Proof (Fig. 2.8)**
-Define $(\rho_k^{(n)})_j(X) \coloneqq \operatorname{Lift}_{\BoxSyn}^n(X)$ for $X \in P_{j+k}$.
-
-*Proof of Naturality & $(\mathbb{N}_0,+)$-Coherence:*
-
+*Proof of Naturality & $(\mathbb{N}_0,+)$-Coherence (Fig. 2.8):*
 1. **Naturality Square:** Evaluating both paths on $X \in P_{j+k}$ in the free term algebra $\mathfrak{f}_{\mathrm{ops}}$:
 $$
 \begin{aligned}
@@ -811,18 +899,22 @@ $$
 \end{aligned}
 $$
 By Lemma 2.16, stability $S_{j+k}(X)=1$ and origin $O_{j+k}(X)$ are preserved.
-2. **Graded Reflection Law:** $(\rho_{k+n}^{(m)} \circ \rho_k^{(n)})_j(X) = \operatorname{Lift}_{\BoxSyn}^m(\operatorname{Lift}_{\BoxSyn}^n(X)) = \operatorname{Lift}_{\BoxSyn}^{n+m}(X) = (\rho_k^{(n+m)})_j(X)$. $\blacksquare$
+2. **Graded Reflection Law:**
+$$(\rho_{k+n}^{(m)} \circ \rho_k^{(n)})_j(X) = \operatorname{Lift}_{\BoxSyn}^m(\operatorname{Lift}_{\BoxSyn}^n(X)) = \operatorname{Lift}_{\BoxSyn}^{n+m}(X) = (\rho_k^{(n+m)})_j(X) \quad \blacksquare$$
 :::
 
+::: {.intuition-box .fragment .fade-up style="margin-top:6px;"}
+**Coherence of the Spine:**
+Reflexivity $\rho^{(n)}$ asserts that lifting a stable deduction $n$ levels higher and then syncolating yields exactly the same apodictic outcome as syncolating first and lifting after.
 :::
 
 :::
 
 ::: {.column width="48%"}
-### Compile-Ready Lean 4 Blueprint (`StratumA.Operads`, App. C)
 
 <div class="lean-code-card">
-<pre style="margin:0;"><code>import Mathlib
+<div class="card-title" style="color:#38bdf8; font-weight:bold; font-size:0.7em; margin-bottom:4px;">Compile-Ready Lean 4 Blueprint (`StratumA.Operads`, App. C)</div>
+<pre style="margin:0; font-size:0.68em; line-height:1.22;"><code>import Mathlib
 open CategoryTheory
 namespace Syntrometrie.StratumA.Operads
 
@@ -845,8 +937,8 @@ theorem equisyndromatic_fixed_point (m : ℕ) :
 </div>
 
 <div class="video-container" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch2_Act11_Stability_Reflexivity.mp4" style="max-height:175px;"></video>
-  <div class="video-caption">Manim Act XI (Fig. 2.8): Syntrix Stability □_Syn Rules &amp; Spine Reflexivity Naturality Square</div>
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch2_Act11_Stability_Reflexivity.mp4" style="max-height:165px;"></video>
+  <div class="video-caption">Manim Act XI (Fig. 2.8): Spine Reflexivity Commuting Square &amp; Lean 4 Verification</div>
 </div>
 
 :::
@@ -854,14 +946,14 @@ theorem equisyndromatic_fixed_point (m : ℕ) :
 ::::
 
 ::: {.notes}
-Sections 2.6 and 2.7 formalize hereditary apodictic grounding via the inductive modality Box_Syn and Spine Reflexivity rho^(n), including the complete term-algebra proof of Theorem 2.36 in Tab 4.
+The Spine Reflexivity theorem guarantees that the upward shift of stable structures forms a strictly natural transformation that commutes with all level-shift operations across the spine.
 :::
 
 ---
 
-## §2.8: The *Äondyne* Fibration, Holonomy Circles & Quasi-Analysis {.smaller}
+## §2.8.1: The *Äondyne* Grothendieck Fibration & Metrophoric Holonomy Transport {.smaller transition="slide"}
 
-<div class="stratum-badge badge-a">STRATUM A/B: SCHOLIUM 2.37, GROTHENDIECK FIBRATION (THM. 2.39) &amp; QUASI-ANALYSIS (THM. 2.42)</div>
+<div class="stratum-badge badge-a">STRATUM A: SCHOLIUM 2.37, THEOREM 2.39 (GROTHENDIECK FIBRATION) &amp; METROPHORIC HOLONOMY</div>
 
 :::: {.columns}
 
@@ -869,35 +961,29 @@ Sections 2.6 and 2.7 formalize hereditary apodictic grounding via the inductive 
 
 ::: {.scholium-box}
 **Scholium 2.37 & Def. 2.38 / Thm. 2.39: Grothendieck Fibration for *Äondynen* (Zalamea 2012)**
-A parameterized *Äondyne* over $U \in \Ctx$ is $\underline{\mathbf{S}} = (\metrophor, f, \vec{\gamma}, \gamma, \mathsf{Sel}_m)$ with $\metrophor \in C^0(M_U, (P^U)^n)$ and $f \in C^0(M'_U, \Osyn(\vec{\gamma}; \gamma))$ satisfying $h_P \circ \metrophor_V = \metrophor_U \circ h_M$ and $h_P \circ f_V = f_U \circ h'_M$. The Grothendieck construction:
+A parameterized *Äondyne* over $U \in \Ctx$ is a tuple $\underline{\mathbf{S}} = (\metrophor, f, \vec{\gamma}, \gamma, \mathsf{Sel}_m)$ with Metrophor section $\metrophor \in C^0(M_U, (P^U)^n)$ and gate field $f \in C^0(M'_U, \Osyn(\vec{\gamma}; \gamma))$ satisfying canonical context pullbacks. The Grothendieck construction:
 $$
 \pi \colon \int_{\Ctx} \mathbf{Syn} \longrightarrow \Ctx, \qquad (U, \underline{\mathbf{S}}) \longmapsto U
 $$
-is a **Grothendieck fibration** whose Cartesian lifts $h^*(\underline{\mathbf{S}})$ transport entire Syntrix hierarchies across context manifolds, while closed loops act as holonomy operators $\operatorname{Hol}_{\mathcal{M}}(\mathcal{C})(\metrophor) \cong \metrophor$.
+is a **Grothendieck fibration** whose Cartesian lifts $h^*(\underline{\mathbf{S}})$ transport entire Syntrix hierarchies across context manifolds, while closed loops act as holonomy operators selecting invariant apodictic cores:
+$$
+\operatorname{Hol}_{\mathcal{M}}(\mathcal{C})(\metrophor) \;\cong\; \metrophor
+$$
 :::
 
-::: {.thm-box}
-**Def. 2.40 & Thm. 2.41: Boundary Topology & Dimension Convergence**
-* **Boundary Forms (SM, pp. 38–39):** Closed $[\alpha, \beta]$, Half-open / Radial (*Radialformen*) $[\alpha, \beta)$ or $(\alpha, \beta]$, Open $(\alpha, \beta)$.
-* **Syndrome Dimension Limit:** For component parameter dimensions $n_i$ ($N \coloneqq \sum_i n_i$) and arity $m > 1$, $\mu(\gamma) \ge n_i$ and $\lim_{\gamma \to \infty} \mu(\gamma) = N$.
-:::
-
-::: {.carnap-box .fragment .fade-right}
-**Theorem 2.42 ($c_{\mathrm{QUASI}}$): Carnapian Quasi-Analysis via Tree Monads**
-$$
-\operatorname{QuasiAnalyse}(X) \;\coloneqq\; T_{\mathsf{P}}(X) \in \operatorname{Alg}_{\Osyn}(\Ban)
-$$
-Higher concepts are coinvariant trees of operadic relations, not reified substances (French 2014; van Fraassen 2008).
-:::
+<div class="video-container fragment fade-up" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch2_Act12_Aeondyne_Fibration.mp4" style="max-height:180px;"></video>
+  <div class="video-caption">Manim Act XII (Fig. 2.9): Grothendieck Fibration ∫_Ctx Syn → Ctx &amp; Cartesian Lifts</div>
+</div>
 
 :::
 
 ::: {.column width="52%"}
 
 <div class="interactive-panel">
-  <h4>Interactive Polycyclic Metrophorischer Zirkel &amp; Holonomy Lab</h4>
+  <h4>Interactive Polycyclic Metrophoric Circle &amp; Holonomy Lab</h4>
   <p class="widget-context-note">
-  <b>Context (§2.1.5, Thm. 2.23(5) &amp; §2.8):</b> A closed loop of aspect transformations ($B_1 \to B_2 \to \dots \to B_Z \to B_1$) acts as a holonomy selection principle ($\operatorname{Hol}_{\mathcal{M}}(\mathcal{C})(\metrophor) \cong \metrophor$). Slide the number of independent aspect systems $Z \ge 2$ and average cycle length $\bar{N}_j > 2$ to compute the mono-cyclic partial circles $L = \binom{Z}{2}$ and bounded Universalquantor truth degree (Eq. 2.22).
+  <b>Context (§2.1.5, Thm. 2.23(5) &amp; §2.8):</b> Slide aspect systems $Z \ge 2$ and cycle length $\bar{N}_j > 2$ to compute partial circles $L = \binom{Z}{2}$ and bounded Universalquantor truth degree.
   </p>
   <div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:10px; align-items:center;">
   <div>
@@ -926,9 +1012,62 @@ Higher concepts are coinvariant trees of operadic relations, not reified substan
   </div>
 </div>
 
-<div class="video-container" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch2_Act12_Aeondyne_Fibration.mp4" style="max-height:175px;"></video>
-  <div class="video-caption">Manim Act XII (Fig. 2.9): 3D Grothendieck Fibration ∫_Ctx Syn → Ctx &amp; Metrophoric Holonomy</div>
+::: {.intuition-box .fragment .fade-right style="margin-top:8px;"}
+**Holonomy Invariance as Apodictic Truth:**
+When an observer traverses closed cycles across diverse aspect contexts, any concept that returns isomorphic to itself under Cartesian transport is an apodictic invariant, elevated above arbitrary perspective bias.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+The Grothendieck fibration provides the rigorous geometric substrate for continuous parameter variation: closed loops in context space induce holonomy transformations that extract perspective-invariant concepts.
+:::
+
+---
+
+## §2.8.2: Boundary Forms, Syndrome Dimension Bounds & Carnapian Quasi-Analysis {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATUM B: BOUNDARY TOPOLOGY (DEF. 2.40), DIMENSION CONVERGENCE (THM. 2.41) &amp; CARNAP 2.1 (THM. 2.42)</div>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.thm-box}
+**Definition 2.40: Boundary Topology of *Äondynen* (Heim SM, pp. 38–39)**
+An *Äondyne* supports three topological boundary regimes across its parameter spectrum:
+* **Closed Forms ($[\alpha, \beta]$):** Compact manifolds with boundary where syncolative operators possess full internal and boundary support.
+* **Radial / Half-Open Forms ($[\alpha, \beta)$ or $(\alpha, \beta]$):** Asymmetric boundary structures modeling asymptotic syncolation channels with open infinite horizons.
+* **Open Forms ($(\alpha, \beta)$):** Interior manifolds without boundary representing unconstrained continuous deformation fields.
+:::
+
+::: {.thm-box .fragment .fade-up style="margin-top:8px;"}
+**Theorem 2.41: Dimensional Bounds of Syndrome Tensors in an *Äondyne***
+Let $\underline{\mathbf{S}}$ be an *Äondyne* whose $m$ constituent inputs possess finite dimensions $n_1, \dots, n_m$, with total input dimension $N \coloneqq \sum_{i=1}^m n_i$. For any operational arity $m > 1$ and syndrome grade $\gamma$:
+$$
+\mu(\gamma) \;\ge\; n_i \quad (\forall i \in \{1,\dots,m\}) \qquad\text{and}\qquad \lim_{\gamma \to \infty} \mu(\gamma) \;=\; N
+$$
+The syndrome tensor dimension is bounded below by each individual constituent dimension and converges strictly to the total input dimension as syncolation order $\gamma$ approaches infinity.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.carnap-box}
+**Theorem 2.42 ($c_{\mathrm{QUASI}}$): Formalization of Carnapian Quasi-Analysis via Tree Monads**
+In Carnap's *Der logische Aufbau der Welt* (1928), higher concepts are constructed from elementary experiences (*Elementarerlebnisse*) via quasi-analysis of similarity relations. In the Syntrometric framework, this construction is rigorously modeled as the completed free tree monad:
+$$
+\operatorname{QuasiAnalyse}(X) \;\coloneqq\; T_{\mathsf{P}}(X) \;\in\; \operatorname{Alg}_{\Osyn}(\Ban)
+$$
+Higher concepts are **coinvariant trees of operadic relations**, not reified Cartesian substances (French 2014; van Fraassen 2008; Ladyman & Ross 2007).
+:::
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch2_Act12_Aeondyne_Fibration.mp4" style="max-height:180px;"></video>
+  <div class="video-caption">Manim Act XII (Fig. 2.9): Dimensional Convergence &amp; Carnapian Quasi-Analysis</div>
 </div>
 
 :::
@@ -936,7 +1075,7 @@ Higher concepts are coinvariant trees of operadic relations, not reified substan
 ::::
 
 ::: {.notes}
-When the Metrophor and Synkolator vary continuously over parameter manifolds M_U and M'_U, the Grothendieck construction int_{Ctx} Syn -> Ctx forms a Grothendieck fibration. Closed loops in the base category act as holonomy operators selecting invariant apodictic cores across L = C(Z, 2) partial circles.
+Theorem 2.41 proves that the syndrome dimension converges to the total sum of input dimensions, while Theorem 2.42 formalizes Carnap's foundational dream of constructing all scientific concepts from elementary experiences through operadic tree algebras.
 :::
 
 ---

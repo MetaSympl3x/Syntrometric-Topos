@@ -26,6 +26,7 @@ format:
       text: |
         <script src="shared/chapter5-widgets.js"></script>
         <script src="shared/monograph-workbench.js"></script>
+
 ---
 
 ## §5.1.1: The *Hypersyntrix* ($\overset{\scriptscriptstyle 1}{\mathbf{M}}$) & Multi-Scale Encapsulation {.smaller transition="convex"}
@@ -484,20 +485,36 @@ unifying vertical gradual and horizontal syndromatic architectures into a single
 
 ---
 
-## §5.3.5: Lawvere–Schreiber Cohesion & The Tectonic Spectral Sequence {.smaller transition="convex"}
+## §5.3.5: Lawvere–Schreiber Axiomatic Cohesion on $\mathcal{X}_{\mathrm{syn}}$ {.smaller transition="slide"}
 
-<div class="stratum-badge badge-b">STRATUM B: COHESIVE MODALITIES (DEF. 5.14), SPECTRAL SEQUENCE PROOF (THM. 5.15) &amp; CARNAP 5.1</div>
+<div class="stratum-badge badge-b">STRATUM B: COHESIVE $(\infty,1)$-TOPOS (DEF. 5.14), ADJOINT QUADRUPLE &amp; MODALITIES (∫ ⊣ ♭ ⊣ ♯)</div>
 
 :::: {.columns}
 
-::: {.column width="48%"}
+::: {.column width="50%"}
 
-::: {.interactive-panel}
-<h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive 4-Tab Inspector: Cohesive $(\infty,1)$-Topos Modalities ($\int \dashv \flat \dashv \sharp$)</h4>
+::: {.thm-box}
+**Definition 5.14: Cohesive $(\infty,1)$-Topos Structure on $\mathcal{X}_{\mathrm{syn}}$**
+The ambient $(\infty,1)$-topos $\mathcal{X}_{\mathrm{syn}}$ is equipped with a Lawvere–Schreiber **Axiomatic Cohesion** over the base $\infty$-groupoid topos $\mathcal{S}$, defined by an adjoint quadruple of functors:
+$$
+\Pi \;\dashv\; \operatorname{Disc} \;\dashv\; \Gamma \;\dashv\; \operatorname{coDisc} \qquad \left(\mathcal{X}_{\mathrm{syn}} \underset{\operatorname{Disc},\, \operatorname{coDisc}}{\overset{\Pi,\, \Gamma}{\rightleftarrows}} \mathcal{S}\right)
+$$
+where $\operatorname{Disc}$ is fully faithful and preserves finite products ($\Pi(X \times Y) \simeq \Pi(X) \times \Pi(Y)$).
+:::
 
-<p class="widget-context-note">
-  <b>Context (§5.3.5, Def. 5.14):</b> Inspect Lawvere–Schreiber cohesion ($\Pi \dashv \Disc \dashv \Gamma \dashv \Codisc$) uniting discrete combinatorial *Enyphanmetroplexe* with smooth *Äondynen*.
-</p>
+::: {.def-box .fragment .fade-up style="margin-top:6px;"}
+**The Three Fundamental Cohesive Modalities ($\int \dashv \flat \dashv \sharp$):**
+* **Shape Modality $\int \coloneqq \operatorname{Disc} \circ \Pi$ (*Äondyne*):** Extracts the smooth path-homotopy type of a Metroplex, collapsing micro-geometric fluctuations into continuous manifolds.
+* **Flat Modality $\flat \coloneqq \operatorname{Disc} \circ \Gamma$ (*Diskreter Enyphanmetroplex*):** Extracts the discrete combinatorial skeleton of point-like evaluation states.
+* **Sharp Modality $\sharp \coloneqq \operatorname{coDisc} \circ \Gamma$ (*Totalitäts-Hülle*):** Embeds the system into the codiscrete chaotic envelope.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+<div class="interactive-panel">
+<h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Interactive 4-Tab Inspector: Cohesive Modalities ($\int \dashv \flat \dashv \sharp$)</h4>
 <div class="syn-tabs">
   <button class="syn-tab-btn active" onclick="showCohesionTab(1, this)">1. Dold–Kan R_Ban</button>
   <button class="syn-tab-btn" onclick="showCohesionTab(2, this)">2. Cohesive Quadruple</button>
@@ -512,41 +529,74 @@ Applies Dold–Kan normalization in both simplicial directions of $\Tect_{\mathb
 
 ::: {#coh-pane-2 .syn-tab-pane}
 **2. Lawvere–Schreiber Cohesive Quadruple (Def. 5.14)**
-Global sections $\Gamma \colon \Xsyn \to \mathcal{S}$ extends to an adjoint quadruple where $\Disc$ preserves finite products and $\Pi(X \times Y) \simeq \Pi(X) \times \Pi(Y)$:
-$$
-\Pi \;\dashv\; \Disc \;\dashv\; \Gamma \;\dashv\; \Codisc \qquad \left(\Xsyn \underset{\Disc,\, \Codisc}{\overset{\Pi,\, \Gamma}{\rightleftarrows}} \mathcal{S}\right)
-$$
+Global sections $\Gamma \colon \Xsyn \to \mathcal{S}$ extends to an adjoint quadruple uniting smooth geometric and discrete combinatorial dynamics.
 :::
 
 ::: {#coh-pane-3 .syn-tab-pane}
 **3. Shape Modality $\int \coloneqq \Disc \circ \Pi$ (Smooth *Äondyne*)**
-For any Metroplex $\mathcal{S} \in \Xsyn$, $\int(\mathcal{S})$ extracts its **smooth path-homotopy type** (*Äondyne*).
+For any Metroplex $\mathcal{S} \in \Xsyn$, $\int(\mathcal{S})$ extracts its smooth path-homotopy type (*Äondyne*).
 :::
 
 ::: {#coh-pane-4 .syn-tab-pane}
 **4. Flat ($\flat \coloneqq \Disc \circ \Gamma$) & Sharp ($\sharp \coloneqq \Codisc \circ \Gamma$) Modalities**
-$\int \dashv \flat \dashv \sharp \colon \Xsyn \to \Xsyn$. Here $\flat(\mathcal{S})$ extracts the **underlying discrete combinatorial skeleton** (*Diskreter Enyphanmetroplex*), while $\sharp(\mathcal{S})$ embeds into the codiscrete envelope.
+$\int \dashv \flat \dashv \sharp \colon \Xsyn \to \Xsyn$, extracting discrete skeletons and embedding into chaotic co-discrete envelopes.
 :::
+</div>
 
-:::
-
-<div class="video-container fragment fade-right" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Act9_Sec_535_Cohesive_Topos.mp4" style="max-height:195px;"></video>
+<div class="video-container" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Act9_Sec_535_Cohesive_Topos.mp4" style="max-height:165px;"></video>
   <div class="video-caption">Manim Act IX: Lawvere–Schreiber Cohesive Modalities (Shape ∫, Flat ♭, Sharp ♯) on X_syn</div>
 </div>
 
 :::
 
-::: {.column width="52%"}
+::::
+
+::: {.notes}
+Axiomatic cohesion formalizes the bridge between continuous geometry (smooth Äondynen extracted by the shape modality) and discrete combinatorics (Enyphanen extracted by the flat modality).
+:::
+
+---
+
+## §5.3.5: The Tectonic Spectral Sequence & Homological Metroplexdiabatik {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATUM B: THEOREM 5.15 (TECTONIC SPECTRAL SEQUENCE PROOF), TRANSGRESSION &amp; CARNAP 5.1</div>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.thm-box}
+**Theorem 5.15: The Tectonic Spectral Sequence of Homological Metroplexdiabatik**
+Filtering the total normalized bicomplex $C_{\bullet,\bullet}(\mathcal{S})$ by vertical grade $p$ induces a first-quadrant homological spectral sequence converging to total homology:
+$$
+E^2_{p,q} \;=\; H_p^{\mathrm{grad}}\!\left( H_q^{\mathrm{syn}}(C_{\bullet,\bullet}) \right) \;\Longrightarrow\; H_{p+q}\big( |\Tect_{\mathbf{Ban}}(\mathcal{S})|_{\mathbf{\Delta}} \big)
+$$
+with higher differentials $d^r \colon E^r_{p,q} \to E^r_{p-r, q+r-1}$ for $r \ge 2$.
+:::
+
+::: {.proof-box .fragment .fade-up style="margin-top:6px; font-size:0.56em;"}
+<div class="proof-title">Proof of Theorem 5.15 (Eilenberg–Zilber & Bounded Convergence)</div>
+By the Eilenberg–Zilber–Cartier Theorem, $N_\bullet(\operatorname{diag}^*\Tect_{\mathbf{Ban}}(\mathcal{S})) \simeq \operatorname{Tot}(C_{\bullet,\bullet}(\mathcal{S}))$ with $D = \partial^{\mathrm{grad}} + (-1)^p \partial^{\mathrm{syn}}$. Since $C_{p,q} = 0$ for $p < 0$ or $q < 0$, the column filtration $F_p\operatorname{Tot}_m = \bigoplus_{i \le p} C_{i, m-i}$ is bounded below and exhaustive, guaranteeing finite-stage convergence $E^\infty_{p,q} \cong \operatorname{Gr}_p H_{p+q}(\operatorname{Tot})$ (Mac Lane 1998). A non-vanishing differential $d^r \ne 0$ is the exact homological obstruction to lifting a gradual cycle across $r$ vertical grades without shifting syndrome level by $r-1$ (**Metroplexdiabatik**, SM p. 103). $\blacksquare$
+:::
+
+::: {.carnap-box .fragment .fade-up style="margin-top:6px; font-size:0.57em;"}
+<div class="carnap-title">Carnap 5.1: Scale-Relativity & Resolving Kim's Causal Exclusion</div>
+Theorem 5.15 and the adjunction $(\phi_{n,n+N})_! \dashv (\phi_{n,n+N})^*$ dissolve Jaegwon Kim's causal exclusion paradox: macro-scale constraint is not an anomalous force, but the transgression differential $d^r$ selecting globally compatible cohomology classes in $\operatorname{Tot}(C_{\bullet,\bullet})$.
+:::
+
+:::
+
+::: {.column width="50%"}
 
 <div class="interactive-panel">
   <h4>Interactive Tectonic Spectral Sequence E^r_{p,q} &amp; Metroplexdiabatik (Thm. 5.15)</h4>
   <p class="widget-context-note">
-  <b>Context (§5.3.5, Thm. 5.15):</b> Filtering $C_{p,q}(\mathcal{S})$ by vertical grade $p$ yields $E^2_{p,q} = H_p^{\mathrm{grad}}(H_q^{\mathrm{syn}}(C_{\bullet,\bullet})) \Rightarrow H_{p+q}(|\Tect_{\mathbf{Ban}}(\mathcal{S})|_{\mathbf{\Delta}})$ with differentials $d^r \colon E^r_{p,q} \to E^r_{p-r, q+r-1}$.
+  <b>Context:</b> Toggle pages to observe how differentials $d^r$ eliminate unstable cycles across grades.
   </p>
   <div style="display:flex; gap:6px; justify-content:center; margin-bottom:6px;">
-  <button class="syn-btn" onclick="setSpecPage(2)">E²-Page (d² : (p,q) → (p-2, q+1))</button>
-  <button class="syn-btn" onclick="setSpecPage(3)">E³-Page (d³ : (3,0) → (0,2))</button>
+  <button class="syn-btn" onclick="setSpecPage(2)">E²-Page (d²)</button>
+  <button class="syn-btn" onclick="setSpecPage(3)">E³-Page (d³)</button>
   <button class="syn-btn" onclick="setSpecPage(0)">Adiabatic Limit (d^r ≡ 0)</button>
   </div>
   <svg viewBox="0 0 420 120" style="width:100%; max-height:110px; background:#070a12; border-radius:8px; border:1px solid #334155;">
@@ -576,19 +626,18 @@ $\int \dashv \flat \dashv \sharp \colon \Xsyn \to \Xsyn$. Here $\flat(\mathcal{S
   <div id="ss-readout" class="matrix-readout" style="margin-top:4px; font-size:0.62em;"></div>
 </div>
 
-::: {.proof-box .fragment .fade-up}
-**Proof of Theorem 5.15 (Eilenberg–Zilber & Spectral Convergence):**
-By the Eilenberg–Zilber–Cartier Theorem, $N_\bullet(\operatorname{diag}^*\Tect_{\mathbf{Ban}}(\mathcal{S})) \simeq \operatorname{Tot}(C_{\bullet,\bullet}(\mathcal{S}))$ with $D = \partial^{\mathrm{grad}} + (-1)^p \partial^{\mathrm{syn}}$. Since $C_{p,q} = 0$ for $p < 0$ or $q < 0$, the column filtration $F_p\operatorname{Tot}_m = \bigoplus_{i \le p} C_{i, m-i}$ is bounded below and exhaustive, guaranteeing finite-stage convergence $E^\infty_{p,q} \cong \operatorname{Gr}_p H_{p+q}(\operatorname{Tot})$ (Mac Lane 1998). A non-vanishing differential $d^r \ne 0$ ($r \ge 2$) is the exact homological obstruction to lifting a gradual $p$-cycle across $r$ vertical grades without modifying syndrome level by $r-1$ (**Metroplexdiabatik**, SM p. 103). $\blacksquare$
-:::
-
-::: {.carnap-box .fragment .fade-left}
-**Carnap 5.1 (Scale-Relativity & Resolving Kim's Downward Causation):**
-Within Ontic Structural Realism (Ladyman & Ross 2007; French 2014), Theorem 5.15 and $(\phi_{n,n+N})_! \dashv (\phi_{n,n+N})^*$ dissolve Jaegwon Kim's causal exclusion paradox: macro-scale constraint is not an anomalous force violating grade-$0$ dynamics, but the transgression differential $d^r$ and right-adjoint restriction $(\phi_{n,n+N})^*$ selecting globally compatible cohomology classes in $\operatorname{Tot}(C_{\bullet,\bullet})$.
-:::
+<div class="video-container" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Act10_Sec_535_Tectonic_Spectral.mp4" style="max-height:165px;"></video>
+  <div class="video-caption">Manim Act X: Tectonic Spectral Sequence &amp; Homological Metroplexdiabatik</div>
+</div>
 
 :::
 
 ::::
+
+::: {.notes}
+Theorem 5.15 proves the convergence of the tectonic spectral sequence, showing that cross-scale information transport is governed by homological differentials d^r.
+:::
 
 ---
 
@@ -687,13 +736,13 @@ end Syntrometrie.StratumA.Metroplex</code></pre>
 
 ---
 
-## §5.4–5.5: Complete Reconstruction Map $\mathcal{R}$ & Sanity Checks {.smaller}
+## §5.4: Stratum C — Complete Heimian Reconstruction Map $\mathcal{R}$ (15-Row Register) {.smaller}
 
-<div class="stratum-badge badge-c">STRATUM C: COMPLETE 15-ROW RECONSTRUCTION MAP R, EXPLICATION 5.1 &amp; SANITY CHECKS</div>
+<div class="stratum-badge badge-c">STRATUM C: COMPLETE 15-ROW FORMAL RECONSTRUCTION MAP R (§5.4)</div>
 
-:::: {.columns}
-
-::: {.column width="56%"}
+$$
+\boxed{\mathcal{R} \colon \mathsf{HeimVocabulary}_{\text{Ch. 5}} \rightsquigarrow \mathsf{HigherToposStructures}\big(\Xsyn,\; \dCSeg(\Xsyn),\; \Met_n(\Xsyn)\big)}
+$$
 
 | Heimian Concept ($\mathbf{D}$) | Mathematical Reconstruction ($\mathcal{R}$) | Epistemic Status |
 |:---|:---|:---:|
@@ -713,11 +762,17 @@ end Syntrometrie.StratumA.Metroplex</code></pre>
 | **Endogene Kombination ($\operatorname{EN}$)** | Admissible operators $\SynEN_{p,q}^n, \AbsEN_n^{p+q}$ ($p+q \le n, q > 0$) | **A (Axiom)** (Def. 5.18) |
 | **Nullmetroplex (${}^n\mathbf{M}_0$)** | Initial slice object $(0_n \to G_n)$ modeling structural exhaustion | **C-Model** (Def. 5.16) |
 
-:::
+---
 
-::: {.column width="44%"}
+## §5.5: Physical & Epistemic Sanity Checks & Carnapian Explication 5.1 {.smaller}
 
-::: {.thm-box .fragment .fade-left}
+<div class="stratum-badge badge-c">STRATUM C: PHYSICAL &amp; EPISTEMIC SANITY CHECKS (§5.5) &amp; CARNAPIAN EXPLICATION 5.1</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.thm-box}
 **Physical & Epistemic Sanity Checks (§5.5):**
 1. **Grade-0 Base Syntrix Recovery ($n = 0$):**
 $$
@@ -726,7 +781,13 @@ $$
 recovering the base single-syntrix category of Chapter 2 without higher-categorical nesting.
 2. **0-Truncation Connected Components Collapse ($m = 0$):**
 Evaluating 0-th Postnikov truncation $\tau_{\le 0}X \simeq \underline{\pi}_0(X)$ discards all higher homotopical self-reflections and returns the discrete sheaf of connected components, proving classical set-theoretic modeling is the 0-truncated approximation of $\Xsyn$.
+3. **Spectral Sequence Degeneration at Grade 0:**
+When vertical grade transitions are trivial ($d^v = 0$), the Tectonic Spectral Sequence $E_{p,q}^2 = H_p^v H_q^h(\operatorname{Tot})$ collapses at $E^2$, recovering standard chain homology of a single Syntrix.
 :::
+
+:::
+
+::: {.column width="52%"}
 
 ::: {.carnap-box .fragment .blur-in}
 **Carnapian Explication 5.1: Metroplex Hierarchy, Bridges & *Kontraktion***

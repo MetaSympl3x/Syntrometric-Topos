@@ -256,13 +256,13 @@ Section 8.1.3 presents SM Equations 30 through 36 (SM, pp. 136–144). Heim veri
 
 ---
 
-## §8.1.4 & §8.2: Algebraic Constraints & Grothendieck Nuclearity {.smaller}
+## §8.1.4: Three Algebraic Constraints on $R_n$ (*Fehlstelle 0*, *Einheit E* & Homometral Reduction) {.smaller}
 
-<div class="stratum-badge badge-a">STRATUM D/A: ALGEBRAIC CONSTRAINTS (SM, P. 133) &amp; GROTHENDIECK NUCLEARITY SCHOLIUM 8.2</div>
+<div class="stratum-badge badge-d">STRATUM D: THREE ALGEBRAIC CONSTRAINTS ON THE SEMANTIC METROPHOR R_n (SM, P. 133)</div>
 
 :::: {.columns}
 
-::: {.column width="48%"}
+::: {.column width="50%"}
 
 ::: {.thm-box}
 **§8.1.4 Three Algebraic Constraints on $R_n$ (SM, p. 133):**
@@ -275,7 +275,32 @@ $$
 3. **3-Class Corporate Collapse:** Functional operations over number fields cannot be composed without coupling, collapsing the $15$ general corporate classes to $3$ operative types.
 :::
 
-::: {.scholium-box .fragment .fade-up}
+:::
+
+::: {.column width="50%"}
+
+::: {.def-box .fragment .fade-up}
+**Structural Implications of Arithmetic Anchoring ($\{0,1\} \subset x_l$):**
+* **Origin Basepoint (*Fehlstelle 0*):** Anchors boundary conditions $f|_{x_l=0}$ and enables the fundamental theorem of calculus on $[0, x_l]$ via the definite Poincaré integral $\Izero$.
+* **Unit Calibration (*Einheit E*):** Fixes a canonical scale $1_{\mathbb{K}}$ along each axis $x_l$, turning qualitative incidence spans into metrically calibrated parameter continua.
+* **Preview of §8.3.2–8.3.3:** Constraint (2) is proved via multilinear polarization on $\Sym^m(V)$, while Constraint (3) is formalized as a surjective monoid homomorphism $\Pi_{\mathrm{quant}} \colon \mathcal{K}_{15} \twoheadrightarrow \mathcal{K}_3^{\mathrm{quant}}$ (verified in Lean 4).
+:::
+
+:::
+
+::::
+
+---
+
+## §8.2: Smooth Manifolds with Corners & Grothendieck Nuclearity (Scholium 8.2) {.smaller}
+
+<div class="stratum-badge badge-a">STRATUM A: CORNERED MANIFOLDS M_n &amp; GROTHENDIECK NUCLEARITY SCHOLIUM 8.2</div>
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+::: {.scholium-box}
 **Scholium 8.2 (Meta-Theoretic Justification: Cornered Manifolds & Nuclearity):**
 Why formalize $R_n$ as a smooth manifold with corners $\mathcal{M}_n = (\mathbb{R}_{\ge 0})^n$ and evaluate kernels in the nuclear Fréchet space $\mathscr{S}(\mathcal{M}_n)$?
 * **Physical Positivity & Origin Boundary:** Fundamental physical magnitudes (mass, radial distance, absolute temperature, energy density) satisfy $0 \le x_i < \infty$, with *Fehlstelle* $\mathbf{0} \in \mathcal{M}_n$ and boundary faces $\partial_i \mathcal{M}_n = \{x_i = 0\}$.
@@ -317,7 +342,7 @@ embedding densely into $C_b^\infty(\mathcal{M}_n)$ as the exact engine for *Sepa
 </div>
 
 <div class="video-container fragment fade-left" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act4_Algebraic_Constraints_Nuclear_Scholium.mp4" style="max-height:200px;"></video>
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch8_Act4_Algebraic_Constraints_Nuclear_Scholium.mp4" style="max-height:190px;"></video>
   <div class="video-caption">Manim Act IV: Fehlstelle 0, Einheit E, Cornered Octant M_n &amp; Grothendieck Nuclearity Scholium 8.2</div>
 </div>
 

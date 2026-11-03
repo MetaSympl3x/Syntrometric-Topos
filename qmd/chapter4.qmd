@@ -707,41 +707,33 @@ $$\delta t_n \;\coloneqq\; \tau(n+1) - \tau(n) > 0, \qquad t_N \;\coloneqq\; \su
 
 ---
 
-## §4.3.6–4.3.7 $3\times 3$ Taxonomic Grid $\hat{A} = (A_{ik})$, Singularity & Affinity $\beta^\infty$
+## §4.3.6 $3\times 3$ Taxonomic Grid $\hat{A} = (A_{ik})$ & Singularity Classification (Def. 4.24, Thm. 4.25)
 
 <div style="margin-bottom:6px;">
-<span class="tag-b">DEFINITION 4.24 & THEOREM 4.25: 3×3 GRID Â = (A_ik) & SINGULARITY CLASSES</span>
-<span class="tag-c">DEFINITION 4.26: AFFINITY BILINEAR INTERFACE β^∞</span>
+<span class="tag-b">DEFINITION 4.24: 3×3 TAXONOMIC PROPERTY GRID Â = (A_ik)</span>
+<span class="tag-a">THEOREM 4.25: CONFORMAL REGULARITY &amp; DIMENSION-DEFECT SINGULARITY</span>
 </div>
 
 <div class="grid-2">
 <div>
 
-<div class="def-box" style="margin-bottom:5px; font-size:0.58em;">
-<div class="box-title">Def. 4.24 & Thm. 4.25: $3\times 3$ Taxonomic Grid $\hat{A} = (A_{ik})$ & Singularity</div>
-On $\operatorname{End}(\mathbf{Sh}(\mathcal{M}))$, $A_{ik} = \{F \mid \operatorname{ActionProp}_i(F) \wedge \operatorname{EffectTarget}_k(F)\}$ crosses:
+<div class="def-box" style="margin-bottom:6px; font-size:0.60em;">
+<div class="box-title">Definition 4.24: The Taxonomic Property Grid $\hat{A} = (A_{ik})$ over $\mathbf{Sh}(\mathbf{Man}_{\mathrm{param}})$</div>
+On $\operatorname{End}(\mathbf{Sh}(\mathcal{M}))$, the modernized $3\times 3$ classification matrix is defined by:
+$$A_{ik} \coloneqq \{ F \in \operatorname{End}(\mathbf{Sh}(\mathcal{M})) \mid \operatorname{ActionProp}_i(F) \;\wedge\; \operatorname{EffectTarget}_k(F) \}$$
 <ul>
-<li><b>Action Rows ($i$):</b> $i=1$ Colimit-Preserving (<i>Synthesizing</i>); $i=2$ Limit-Preserving (<i>Analyzing</i>); $i=3$ Categorical Equivalence (<i>Isogonal</i>).</li>
-<li><b>Target Columns ($k$):</b> $k=1$ <i>Conflexive</i> (pushout incidence); $k=2$ <i>Tensorial</i> (bundle rank/dimension); $k=3$ <i>Field-Intrinsic</i> ($g^{\mathrm{syn}}, \mathbf{X}_{\mathrm{kor}}$).</li>
-<li><b>Thm. 4.25 (Singularity Classification, SM pp. 78–79):</b>
-  <ul>
-  <li><b style="color:#ff6b81;">Singular Dimension-Defective Classes:</b> $A_{12}$ (Synthesizing Tensorial: $\dim F(\mathcal{M}_{\mathrm{syn}}) < \dim \mathcal{M}_{\mathrm{syn}}$) and $A_{22}$ (Analyzing Tensorial: $\dim F(\mathcal{M}_{\mathrm{syn}}) > \dim \mathcal{M}_{\mathrm{syn}}$).</li>
-  <li><b style="color:#20B2AA;">Conditionally / Unconditionally Regular Classes:</b> $A_{11}, A_{21}$ (regular when Syntropodenzahl is invariant), $A_{13}, A_{23}$ (dimension-preserving metric/connection modulations), and $A_{31}, A_{32}, A_{33}$ (unconditionally regular via network isomorphism, Morita equivalence, and conformal diffeomorphism).</li>
-  </ul>
-</li>
+<li><b>Action Rows ($i \in \{1,2,3\}$):</b> $i=1$ Finite Colimit Preserving $F(\varinjlim D) \cong \varinjlim(F\circ D)$ (<i>Synthesizing</i>); $i=2$ Finite Limit Preserving $F(\varprojlim D) \cong \varprojlim(F\circ D)$ (<i>Analyzing</i>); $i=3$ Categorical Equivalence (<i>Isogonal</i>).</li>
+<li><b>Effect Targets ($k \in \{1,2,3\}$):</b> $k=1$ <i>Conflexive</i> (acts on span pushout incidence nodes $\phi_l$); $k=2$ <i>Tensorial</i> (alters tensor rank or graded carrier bundle dimension); $k=3$ <i>Field-Intrinsic</i> (modulates $g^{\mathrm{syn}}$ or $\mathbf{X}_{\mathrm{kor}}$).</li>
 </ul>
 </div>
 
-<div class="def-box" style="font-size:0.58em;">
-<div class="box-title">Definition 4.26: Affinity Bilinear Systems & Two-Sided Non-Degeneracy ($\beta^\infty$)</div>
-Let $\mathcal{S} \in \mathbf{Syn}$ with syndrome spaces $\{F_\gamma\}_{\gamma=0}^K$ and let $\mathcal{B} \in \mathbf{Ban}_{\le 1}$ be an external context space.
-<ol>
-<li><b>Bounded Bilinear Family:</b> $\beta \in \prod_{\gamma=0}^K \prod_{\lambda=1}^L \operatorname{Bil}_{\le 1}(F_\gamma(\mathcal{S}), \mathcal{B}; \mathbb{R})$ with $\|\beta\|_\infty < \infty$.</li>
-<li><b>Componentwise Stabilization:</b> $\lim_{n\to\infty} \|\beta_{\gamma,\lambda}^{(n)} - \beta_{\gamma,\lambda}^\infty\|_{\mathrm{op}} = 0$.</li>
-<li><b>Two-Sided Non-Degenerate Affinitätssyntrix Interface ($\mathcal{S}_{\mathrm{aff}}$):</b> On the Metrophor base $F_0 \cong P^U$ at $(\gamma_0=0, \lambda_0)$, the induced adjoint maps $T_\beta \colon F_0 \to \mathcal{B}^*$ and $S_\beta \colon \mathcal{B} \to F_0^*$ satisfy:
-$$\ker T_\beta = \{0\} \qquad\text{and}\qquad \ker S_\beta = \{0\}$$
-ensuring zero-loss information transduction between internal states and external environment.</li>
-</ol>
+<div class="thm-box" style="font-size:0.60em;">
+<div class="box-title">Theorem 4.25: Conformal Regularity &amp; Singularity Classification (SM pp. 78–79)</div>
+<ul>
+<li><b style="color:#ff6b81;">1. Singular Dimension-Defective Classes ($k=2, i \ne 3$):</b> $A_{12}$ (Synthesizing Tensorial: $\dim F(\mathcal{M}_{\mathrm{syn}}) < \dim \mathcal{M}_{\mathrm{syn}}$) and $A_{22}$ (Analyzing Tensorial: $\dim F(\mathcal{M}_{\mathrm{syn}}) > \dim \mathcal{M}_{\mathrm{syn}}$) induce topological dimension defects.</li>
+<li><b style="color:#20B2AA;">2. Conditionally Regular Conflexive Classes ($k=1$):</b> $A_{11}, A_{21}$ are regular whenever the Syntropodenzahl carrier dimension is preserved across the span colimit or pullback ($\lambda_{\mathrm{eff}} = 0$).</li>
+<li><b style="color:#4169E1;">3. Unconditionally Regular Classes:</b> $A_{31}, A_{32}, A_{33}$ (Isogonal Equivalences: network isomorphism, Morita bundle equivalence, conformal diffeomorphism) and $A_{13}, A_{23}$ (Field-Intrinsic connection/derivation modulations).</li>
+</ul>
 </div>
 
 </div>
@@ -765,9 +757,52 @@ ensuring zero-loss information transduction between internal states and external
 </div>
 </div>
 
+<div class="def-box" style="font-size:0.58em;">
+<div class="box-title">Heim's Historical Nine Transformation Classes $\hat{a} = (a_{ik})_3$ (SM pp. 78–79)</div>
+Crosses synthesizing ($i=1$), analyzing ($i=2$), and isogonal ($i=3$) actions with conflexive ($k=1$), tensorial ($k=2$), and field-intrinsic ($k=3$) targets, isolating $A_{12}$ and $A_{22}$ as the sole dimension-altering singular entries.
+</div>
+
+</div>
+</div>
+
+---
+
+## §4.3.7 Affinity Bilinear Systems & Two-Sided Non-Degeneracy $\beta^\infty$ (Def. 4.26)
+
+<div style="margin-bottom:6px;">
+<span class="tag-c">DEFINITION 4.26: AFFINITY BILINEAR INTERFACE β^∞</span>
+<span class="tag-b">STRATUM B2: ZERO-LOSS ENVIRONMENTAL COUPLING S_aff</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="def-box" style="margin-bottom:6px; font-size:0.60em;">
+<div class="box-title">Definition 4.26: Affinity Bilinear Systems &amp; Two-Sided Non-Degeneracy ($\beta^\infty$)</div>
+Let $\mathcal{S} \in \mathbf{Syn}$ with syndrome spaces $\{F_\gamma\}_{\gamma=0}^K$ and let $\mathcal{B} \in \operatorname{Obj}(\mathbf{Ban}_{\le 1})$ be an external context Banach space.
+<ol>
+<li><b>Bounded Bilinear Family:</b> An <i>Affinity System</i> is an element of the finite product space of bounded bilinear forms:
+$$\beta \in \prod_{\gamma=0}^K \prod_{\lambda=1}^L \operatorname{Bil}_{\le 1}\!\left(F_\gamma(\mathcal{S}),\; \mathcal{B};\; \mathbb{R}\right), \qquad \|\beta\|_\infty \coloneqq \max_{\gamma,\lambda} \|\beta_{\gamma,\lambda}\|_{\mathrm{op}} < \infty$$</li>
+<li><b>Componentwise Stabilization:</b> Under an evolutionary sequence $(\beta^{(n)})_{n\ge 0}$, the system stabilizes componentwise if $\lim_{n\to\infty} \|\beta_{\gamma,\lambda}^{(n)} - \beta_{\gamma,\lambda}^\infty\|_{\mathrm{op}} = 0$ for all $(\gamma,\lambda)$.</li>
+<li><b>Two-Sided Non-Degenerate Affinitätssyntrix Interface ($\mathcal{S}_{\mathrm{aff}}$):</b> On the Metrophor base $F_0 \cong P^U$ at designated index $(\gamma_0=0, \lambda_0)$, the limiting system $\beta^\infty$ induces adjoint operators $T_\beta \colon F_0 \to \mathcal{B}^*$ and $S_\beta \colon \mathcal{B} \to F_0^*$ satisfying:
+$$\ker T_\beta = \{0\} \qquad\text{and}\qquad \ker S_\beta = \{0\}$$</li>
+</ol>
+</div>
+
+</div>
+<div>
+
+<div class="thm-box fragment fade-up" style="margin-bottom:6px; font-size:0.60em;">
+<div class="box-title">Physical &amp; Information-Theoretic Meaning of $\ker T_\beta = \{0\} = \ker S_\beta$</div>
+<ul>
+<li><b>Left Non-Degeneracy ($\ker T_\beta = \{0\}$):</b> Every distinct internal Metrophor state $f_0 \in F_0 \setminus \{0\}$ produces a non-zero linear functional on the external context $\mathcal{B}$ (no silent internal modes).</li>
+<li><b>Right Non-Degeneracy ($\ker S_\beta = \{0\}$):</b> Every non-zero environmental perturbation $b \in \mathcal{B} \setminus \{0\}$ registers non-trivially on $F_0^*$ (zero-loss transduction across the boundary $\mathcal{S}_{\mathrm{aff}}$).</li>
+</ul>
+</div>
+
 <div class="video-card">
-<video autoplay data-autoplay loop muted playsinline src="media/Act11_Secs_437438_3x3_Grid.mp4" style="max-height:155px; min-width:0;"></video>
-<div class="video-label">Act XI: 3×3 Matrix Â = (A_ik), Singular Classes A₁₂/A₂₂ & Affinity β^∞</div>
+<video autoplay data-autoplay loop muted playsinline src="media/Act11_Secs_437438_3x3_Grid.mp4" style="max-height:175px; min-width:0;"></video>
+<div class="video-label">Act XI: 3×3 Matrix Â = (A_ik), Singular Classes A₁₂/A₂₂ &amp; Affinity β^∞</div>
 </div>
 
 </div>
