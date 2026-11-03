@@ -380,29 +380,25 @@
     finish(false);
   }
 
-  /* ── 7. Badge fetch — ONE-SHOT counting hit ─────────────────────────── */
-  function fetchBadgeOnce(isIncog) {
-    var url = BADGE_URL + (isIncog ? ('&_t=' + Date.now()) : '');
-    fetch(url, { mode: 'cors', cache: isIncog ? 'no-store' : 'default' })
+  /* ── 7. Badge fetch — one-time counting hit (normal browsing only) ───── */
+  function fetchBadgeOnce() {
+    fetch(BADGE_URL, { mode: 'cors' })
       .then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(function(svg) {
         var m = svg.match(/aria-label=["'][^:"]*:\s*([0-9,kK\.+]+)["']/)
              || svg.match(/<title>[^:<]*:\s*([0-9,kK\.+]+)<\/title>/);
         var count = m ? m[1] : '1';
-        if (!isIncog) {
-          // ── Mark this browser as permanently counted ──────────────────
-          ls('browser_registered', Date.now()); // permanent one-shot flag
-          ls('cached_svg',   svg);
-          ls('cached_count', count);
-          ls('last_global',  count);
-          ls('fetch_inflight', null);           // release inflight lock
-        }
+        // ── Mark this browser as permanently counted ──────────────────────
+        ls('browser_registered', Date.now());
+        ls('cached_svg',   svg);
+        ls('cached_count', count);
+        ls('last_global',  count);
+        ls('fetch_inflight', null);
         updateAllBadgeImages(svg, count);
       })
       .catch(function() {
-        if (!isIncog) ls('fetch_inflight', null);
-        var fb = (!isIncog && ls('last_global')) || '1';
-        updateAllBadgeImages(null, fb);
+        ls('fetch_inflight', null);
+        updateAllBadgeImages(null, ls('last_global') || '1');
       });
   }
 
@@ -437,10 +433,22 @@
     isIncognito = incog;
 
     if (incog) {
-      // ── Incognito: always a fresh live hit, never persisted ───────────
+      // ── Incognito / Private mode ──────────────────────────────────────
+      // visitorbadge.io's /api/visitors endpoint increments on EVERY request,
+      // regardless of cache-busting parameters. Calling it in incognito would
+      // silently inflate the global count. We therefore make ZERO API calls
+      // in private mode. The pill renders a neutral "🔒 PRIVATE" indicator.
       deviceVisits = 1;
       updateDeviceVisitsDisplay(1);
-      fetchBadgeOnce(true);
+      // Show a static private-mode indicator — no network request, no count.
+      document.querySelectorAll('.syn-counter-fallback').forEach(function(fb) {
+        fb.style.display = 'inline-block';
+        var cd = fb.querySelector('.syn-visit-count-display');
+        if (cd) cd.textContent = '🔒';
+      });
+      document.querySelectorAll('.syn-counter-badge-img').forEach(function(img) {
+        img.style.display = 'none';
+      });
       return;
     }
 
@@ -474,13 +482,13 @@
       setTimeout(function() {
         var svg = ls('cached_svg');
         if (svg) updateAllBadgeImages(svg, ls('cached_count') || '1');
-        else     fetchBadgeOnce(false); // fallback if inflight tab crashed
+        else     fetchBadgeOnce(); // fallback if inflight tab crashed
       }, 3000);
       return;
     }
 
     ls('fetch_inflight', now); // acquire inflight lock
-    fetchBadgeOnce(false);
+    fetchBadgeOnce();
   });
 
   /* ── 10. Cross-tab real-time sync via storage events ───────────────── */
