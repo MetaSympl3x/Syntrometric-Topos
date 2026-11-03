@@ -3,6 +3,7 @@
  * SYNTROMETRIE SITE TELEMETRY & LIVE VISITOR COUNTER
  * Privacy-Preserving Global Hit Badge (visitorbadge.io) + Local Session Ledger
  * Tracks: Global Visits, Device Visits, Session Time & Chapter Exploration Progress
+ * Deduplicated Session Caching: Zero duplicate counts on page refresh / multi-elements
  * Zero Cookies · Zero PII · GDPR & Privacy-by-Design Compliant
  * =========================================================================
  */
@@ -10,32 +11,40 @@
   if (window.__SYN_SITE_TELEMETRY_LOADED__) return;
   window.__SYN_SITE_TELEMETRY_LOADED__ = true;
 
-  const BADGE_BASE = "https://api.visitorbadge.io/api/visitors?path=MetaSympl3x.Syntrometric-Topos";
-  const BADGE_URL_HEADER = BADGE_BASE + "&label=VISITS&labelColor=%230a101d&countColor=%234169E1&style=flat-square";
-  const BADGE_URL_MODAL  = BADGE_BASE + "&label=TOTAL%20VISITORS&labelColor=%230a101d&countColor=%234169E1&style=for-the-badge";
+  // Fresh reset path starting at 1
+  const BADGE_API_URL = "https://api.visitorbadge.io/api/visitors?path=MetaSympl3x-SyntrometricTopos-v2&label=VISITS&labelColor=%230a101d&countColor=%234169E1&style=flat-square";
 
-  // 1. Initialize Local Storage & Session Telemetry
-  let visitCount = 1;
-  let isNewSession = false;
+  // 1. Reset old inflated telemetry keys & Initialize clean V2 session
   try {
-    const storedVisits = parseInt(localStorage.getItem('syn_local_visits') || '0', 10);
-    const activeSession = sessionStorage.getItem('syn_session_active');
-    if (!activeSession) {
-      isNewSession = true;
-      visitCount = storedVisits + 1;
-      localStorage.setItem('syn_local_visits', visitCount.toString());
-      sessionStorage.setItem('syn_session_active', Date.now().toString());
+    if (localStorage.getItem('syn_local_visits') && !localStorage.getItem('syn_v2_reset_done')) {
+      localStorage.removeItem('syn_local_visits');
+      localStorage.removeItem('syn_last_known_global_visits');
+      sessionStorage.removeItem('syn_cached_visitor_badge_svg');
+      sessionStorage.removeItem('syn_cached_visitor_count');
+      sessionStorage.removeItem('syn_session_active');
+      localStorage.setItem('syn_v2_reset_done', 'true');
+    }
+  } catch (e) {}
+
+  let deviceVisits = 1;
+  try {
+    const stored = parseInt(localStorage.getItem('syn_v2_local_visits') || '0', 10);
+    const hasActiveSession = sessionStorage.getItem('syn_v2_session_active');
+    if (!hasActiveSession) {
+      deviceVisits = stored + 1;
+      localStorage.setItem('syn_v2_local_visits', deviceVisits.toString());
+      sessionStorage.setItem('syn_v2_session_active', Date.now().toString());
     } else {
-      visitCount = Math.max(1, storedVisits);
+      deviceVisits = Math.max(1, stored);
     }
   } catch (e) {
-    visitCount = 1;
+    deviceVisits = 1;
   }
 
   // Session start time
   let sessionStart = Date.now();
   try {
-    const st = sessionStorage.getItem('syn_session_active');
+    const st = sessionStorage.getItem('syn_v2_session_active');
     if (st) sessionStart = parseInt(st, 10);
   } catch (e) {}
 
@@ -43,21 +52,23 @@
   function recordChapterVisit(chNum) {
     if (!chNum) return;
     try {
-      let visited = JSON.parse(sessionStorage.getItem('syn_visited_chapters') || '[]');
+      let visited = JSON.parse(sessionStorage.getItem('syn_v2_visited_chapters') || '[]');
       if (!visited.includes(chNum)) {
         visited.push(chNum);
-        sessionStorage.setItem('syn_visited_chapters', JSON.stringify(visited));
+        sessionStorage.setItem('syn_v2_visited_chapters', JSON.stringify(visited));
       }
-      let allVisited = JSON.parse(localStorage.getItem('syn_all_visited_chapters') || '[]');
+      let allVisited = JSON.parse(localStorage.getItem('syn_v2_all_visited_chapters') || '[]');
       if (!allVisited.includes(chNum)) {
         allVisited.push(chNum);
-        localStorage.setItem('syn_all_visited_chapters', JSON.stringify(allVisited));
+        localStorage.setItem('syn_v2_all_visited_chapters', JSON.stringify(allVisited));
       }
     } catch (e) {}
   }
 
   // Detect current chapter from URL
-  const pathMatch = window.location.pathname.match(/chapter(\d+)/i) || window.location.hash.match(/chapter(\d+)/i) || window.location.search.match(/ch=(\d+)/i);
+  const pathMatch = window.location.pathname.match(/chapter(\d+)/i) || 
+                    window.location.hash.match(/chapter(\d+)/i) || 
+                    window.location.search.match(/ch=(\d+)/i);
   if (pathMatch) {
     recordChapterVisit(parseInt(pathMatch[1], 10));
   } else if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/')) {
@@ -80,11 +91,13 @@
       background: rgba(10, 16, 29, 0.85);
       border: 1px solid rgba(65, 105, 225, 0.45);
       border-radius: 9999px;
-      padding: 2px 7px 2px 6px;
+      padding: 0 8px 0 6px;
       height: 24px;
+      line-height: 24px;
       box-sizing: border-box;
       cursor: pointer;
       user-select: none;
+      overflow: hidden;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
@@ -111,11 +124,14 @@
       50% { opacity: 0.4; transform: scale(0.85); box-shadow: 0 0 2px #10b981; }
     }
     .syn-counter-badge-img {
-      height: 17px;
+      height: 17px !important;
+      max-height: 17px !important;
+      width: auto !important;
       border-radius: 3px;
       vertical-align: middle;
       display: inline-block;
       pointer-events: none;
+      object-fit: contain;
     }
     .syn-counter-fallback {
       font-size: 11px;
@@ -123,7 +139,9 @@
       color: #60a5fa;
       letter-spacing: 0.3px;
       font-family: monospace;
-      display: none;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 17px;
     }
 
     /* Telemetry Modal */
@@ -205,6 +223,14 @@
       align-items: center;
       gap: 10px;
       margin: 10px 0;
+      min-height: 26px;
+    }
+    .syn-hero-badge-wrap img {
+      height: 24px !important;
+      max-height: 24px !important;
+      width: auto !important;
+      border-radius: 4px;
+      object-fit: contain;
     }
     .syn-telemetry-grid {
       display: grid;
@@ -312,15 +338,16 @@
       <div class="syn-telemetry-hero">
         <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.8px;">Global Monograph Readership Counter</div>
         <div class="syn-hero-badge-wrap">
-          <img src="${BADGE_URL_MODAL}" alt="Live Global Visitors" style="border-radius:4px; max-width:100%; height:26px;" onerror="this.style.display='none';" />
+          <img class="syn-counter-badge-img" id="modal-hero-badge-img" alt="Global Visits" height="24" style="display:none;" />
+          <span class="syn-counter-fallback" id="modal-hero-fallback" style="font-size:1.1rem;">VISITS: <span class="syn-visit-count-display">1</span></span>
         </div>
-        <div style="font-size:0.75rem; color:#60a5fa;">Verified live hit tracker via privacy-focused distributed badge API</div>
+        <div style="font-size:0.75rem; color:#60a5fa;">Verified live hit tracker with deduplicated session caching</div>
       </div>
 
       <div class="syn-telemetry-grid">
         <div class="syn-stat-card">
           <div class="syn-stat-label">Your Device Visits</div>
-          <div class="syn-stat-value" id="syn-stat-local-visits">#${visitCount}</div>
+          <div class="syn-stat-value" id="syn-stat-local-visits">#${deviceVisits}</div>
           <div class="syn-stat-sub">Persistent across browser restarts</div>
         </div>
 
@@ -363,9 +390,106 @@
       </div>
     </div>
   `;
-  document.body.appendChild(modal);
 
-  // 4. Session Stopwatch & Telemetry Updating
+  if (document.body) {
+    document.body.appendChild(modal);
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.appendChild(modal);
+    });
+  }
+
+  // 4. Update all badge <img> elements with data URL (renders cleanly, never clips!)
+  function updateAllBadgeImages(svgText, countStr) {
+    let dataUrl = null;
+    if (svgText) {
+      dataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgText);
+    }
+
+    document.querySelectorAll('.syn-counter-badge-img').forEach(function(img) {
+      if (dataUrl) {
+        img.src = dataUrl;
+        img.style.display = 'inline-block';
+      }
+    });
+
+    const modalHeroImg = document.getElementById('modal-hero-badge-img');
+    const modalHeroFb = document.getElementById('modal-hero-fallback');
+    if (modalHeroImg && dataUrl) {
+      modalHeroImg.src = dataUrl;
+      modalHeroImg.style.display = 'inline-block';
+      if (modalHeroFb) modalHeroFb.style.display = 'none';
+    }
+
+    const portalFb = document.getElementById('portal-counter-fallback');
+    if (portalFb && dataUrl) {
+      portalFb.style.display = 'none';
+    }
+
+    if (countStr) {
+      document.querySelectorAll('.syn-visit-count-display').forEach(function(el) {
+        el.textContent = countStr;
+      });
+    }
+  }
+
+  // 5. Deduplicated Fetch Logic: Exactly ONE Network Request per Session!
+  // If the user refreshes, sessionStorage returns the cached SVG with 0 extra hits.
+  var cachedSvg = null;
+  var cachedCount = null;
+  try {
+    cachedSvg = sessionStorage.getItem('syn_v2_cached_svg');
+    cachedCount = sessionStorage.getItem('syn_v2_cached_count');
+  } catch (e) {}
+
+  if (cachedSvg) {
+    // Session already recorded: render from memory without hitting the network
+    updateAllBadgeImages(cachedSvg, cachedCount || '1');
+  } else {
+    // Genuine new session: 1 single fetch
+    fetch(BADGE_API_URL, { mode: 'cors' })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Status ' + res.status);
+        return res.text();
+      })
+      .then(function(svgText) {
+        var count = '1';
+        var match = svgText.match(/aria-label=["'][^:"]*:\s*([0-9,kK\.\+]+)["']/) ||
+                    svgText.match(/<title>[^:<]*:\s*([0-9,kK\.\+]+)<\/title>/);
+        if (match) count = match[1];
+
+        try {
+          sessionStorage.setItem('syn_v2_cached_svg', svgText);
+          sessionStorage.setItem('syn_v2_cached_count', count);
+          localStorage.setItem('syn_v2_last_global', count);
+        } catch (e) {}
+
+        updateAllBadgeImages(svgText, count);
+      })
+      .catch(function(err) {
+        var fb = '1';
+        try {
+          fb = localStorage.getItem('syn_v2_last_global') || 
+               localStorage.getItem('syn_v2_local_visits') || '1';
+        } catch (e) {}
+        updateAllBadgeImages(null, fb);
+      });
+  }
+
+  function syncExistingElements() {
+    var svg = null;
+    var count = null;
+    try {
+      svg = sessionStorage.getItem('syn_v2_cached_svg');
+      count = sessionStorage.getItem('syn_v2_cached_count');
+    } catch (e) {}
+    if (svg) updateAllBadgeImages(svg, count);
+  }
+
+  document.addEventListener('DOMContentLoaded', syncExistingElements);
+  window.addEventListener('load', syncExistingElements);
+
+  // 6. Session Stopwatch & Telemetry Updating
   let timerInterval = null;
   function updateTelemetryStats() {
     const elapsedSec = Math.floor((Date.now() - sessionStart) / 1000);
@@ -376,7 +500,7 @@
     if (timeEl) timeEl.textContent = timeStr;
 
     try {
-      const visited = JSON.parse(sessionStorage.getItem('syn_visited_chapters') || '[]');
+      const visited = JSON.parse(sessionStorage.getItem('syn_v2_visited_chapters') || '[]');
       const count = Math.min(15, visited.length);
       const ratioEl = document.getElementById('syn-stat-ch-ratio');
       const progEl = document.getElementById('syn-stat-ch-progress');
@@ -389,6 +513,7 @@
 
   window.openVisitTelemetryModal = function(e) {
     if (e && e.stopPropagation) e.stopPropagation();
+    syncExistingElements();
     updateTelemetryStats();
     if (!timerInterval) {
       timerInterval = setInterval(updateTelemetryStats, 1000);
@@ -406,10 +531,6 @@
     }
   };
 
-  // 5. Update any fallback badges on the page
-  const fallbackNum = document.getElementById('syn-local-num');
-  if (fallbackNum) fallbackNum.textContent = visitCount.toString();
-
-  // Export functions
+  window.updateAllTelemetryBadgeImages = updateAllBadgeImages;
   window.recordChapterVisit = recordChapterVisit;
 })();

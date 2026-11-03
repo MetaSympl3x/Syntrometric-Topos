@@ -1598,7 +1598,8 @@ body.mdrawer-open #syn-stratum-radar {
         Ch. 1–15 + App. A–E
       </span>
       <a href="javascript:void(0)" onclick="window.openVisitTelemetryModal ? window.openVisitTelemetryModal(event) : null" style="display:inline-flex; align-items:center; text-decoration:none; margin-left:6px;" title="Site Visit Telemetry Ledger">
-        <img src="https://api.visitorbadge.io/api/visitors?path=MetaSympl3x.Syntrometric-Topos&amp;label=VISITS&amp;labelColor=%230a101d&amp;countColor=%234169E1&amp;style=flat-square" height="16" alt="Visits"/>
+        <img class="syn-counter-badge-img" alt="Visits" height="16" style="display:none;" />
+        <span class="syn-counter-fallback" style="font-size:11px; color:#60a5fa; font-weight:700;">VISITS <span class="syn-visit-count-display">1</span></span>
       </a>
     </div>
     <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
@@ -2720,7 +2721,8 @@ body.mdrawer-open #syn-stratum-radar {
           <span><kbd class="cmd-kbd">↑</kbd> <kbd class="cmd-kbd">↓</kbd> Navigate &nbsp;·&nbsp; <kbd class="cmd-kbd">Enter</kbd> Jump / Open &nbsp;·&nbsp; <kbd class="cmd-kbd">Ctrl+K</kbd> Toggle</span>
           <span style="display:flex; align-items:center; gap:8px;">
             <a href="javascript:void(0)" onclick="window.openVisitTelemetryModal ? window.openVisitTelemetryModal(event) : null" style="display:inline-flex; align-items:center; text-decoration:none;" title="Site Visit Telemetry Ledger">
-              <img src="https://api.visitorbadge.io/api/visitors?path=MetaSympl3x.Syntrometric-Topos&amp;label=VISITS&amp;labelColor=%230a101d&amp;countColor=%234169E1&amp;style=flat-square" height="15" alt="Visits"/>
+              <img class="syn-counter-badge-img" alt="Visits" height="14" style="display:none;" />
+              <span class="syn-counter-fallback" style="font-size:11px; color:#60a5fa; font-weight:700;">VISITS <span class="syn-visit-count-display">1</span></span>
             </a>
             <span id="syn-cmd-count">Ready</span>
           </span>

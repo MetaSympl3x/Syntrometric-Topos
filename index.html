@@ -848,8 +848,8 @@ window.MathJax = {
       <span class="brand-title"><span class="brand-long">Syntrometrische Maximentelezentrik</span><span class="brand-short">Syntrometrie</span></span>
       <div class="syn-visit-counter-pill" id="portal-visit-counter" onclick="event.stopPropagation(); window.openVisitTelemetryModal ? window.openVisitTelemetryModal(event) : null;" title="Live Site Visits & Global Telemetry Ledger (Click for Details)">
         <span class="syn-pulse-dot" title="Live Counter Active"></span>
-        <img class="syn-counter-badge-img" id="portal-visitor-badge-img" src="https://api.visitorbadge.io/api/visitors?path=MetaSympl3x.Syntrometric-Topos&amp;label=VISITS&amp;labelColor=%230a101d&amp;countColor=%234169E1&amp;style=flat-square" alt="Visits" width="56" height="17" loading="eager" onerror="this.style.display='none'; document.getElementById('portal-counter-fallback').style.display='inline-flex';" />
-        <span class="syn-counter-fallback" id="portal-counter-fallback">VISITS <span id="syn-local-num">1</span></span>
+        <img class="syn-counter-badge-img" id="portal-visitor-badge-img" alt="Visits" height="17" style="display:none;" />
+        <span class="syn-counter-fallback" id="portal-counter-fallback">VISITS <span class="syn-visit-count-display">1</span></span>
       </div>
     </div>
 
@@ -931,7 +931,8 @@ window.MathJax = {
           <div class="overview-stats-ribbon">
             <span class="stat-pill" onclick="event.stopPropagation(); window.openVisitTelemetryModal ? window.openVisitTelemetryModal(event) : null;" style="cursor:pointer;" title="Click for Detailed Telemetry Ledger">
               <span class="syn-pulse-dot" style="margin-right:4px;"></span>
-              <img src="https://api.visitorbadge.io/api/visitors?path=MetaSympl3x.Syntrometric-Topos&amp;label=VISITS&amp;labelColor=%230a101d&amp;countColor=%234169E1&amp;style=flat-square" height="16" alt="Visits"/>
+              <img class="syn-counter-badge-img" alt="Visits" height="15" style="display:none;" />
+              <span class="syn-counter-fallback" style="font-size:10px;">VISITS <span class="syn-visit-count-display">1</span></span>
             </span>
             <span class="stat-pill">📖 15 Chapters</span>
             <span class="stat-pill" style="color:#60a5fa; font-weight:600;">📑 244 Slides</span>
