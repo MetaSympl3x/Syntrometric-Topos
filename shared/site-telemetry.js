@@ -1,10 +1,11 @@
 /**
  * =========================================================================
  * SYNTROMETRIE SITE TELEMETRY & LIVE VISITOR COUNTER
- * Privacy-Preserving Global Hit Badge (visitorbadge.io) + Local Session Ledger
+ * Privacy-Preserving Global Hit Badge (visitorbadge.io) + Cross-Tab Device Session Ledger
  * Tracks: Global Visits, Device Visits, Session Time & Chapter Exploration Progress
- * Deduplicated Session Caching for Regular Browsing (Zero extra counts on refresh)
- * Incognito/Private Mode Bypass: Incognito attempts are NEVER cached (always fresh)
+ * Cross-Tab Device Caching: Synchronizes across all open & newly opened Chrome/device tabs
+ * Inactive Session Lease: 30 minutes of inactivity before counting a new device visit
+ * Incognito/Private Mode Bypass: Incognito attempts are NEVER cached (always fresh live hit)
  * Zero Cookies · Zero PII · GDPR & Privacy-by-Design Compliant
  * =========================================================================
  */
@@ -12,60 +13,62 @@
   if (window.__SYN_SITE_TELEMETRY_LOADED__) return;
   window.__SYN_SITE_TELEMETRY_LOADED__ = true;
 
-  // Fresh reset path starting at 1
-  const BADGE_API_URL = "https://api.visitorbadge.io/api/visitors?path=MetaSympl3x-SyntrometricTopos-v3&label=VISITS&labelColor=%230a101d&countColor=%234169E1&style=flat-square";
+  // Fresh reset path starting clean at 1
+  const BADGE_API_URL = "https://api.visitorbadge.io/api/visitors?path=MetaSympl3x-SyntrometricTopos-v6&label=VISITS&labelColor=%230a101d&countColor=%234169E1&style=flat-square";
+  const SESSION_LEASE_MS = 30 * 60 * 1000; // 30 minutes inactivity timeout
 
-  // 1. Reset old inflated telemetry keys & Initialize clean V3 session
+  let isIncognitoMode = false;
+  let deviceVisits = 1;
+  let sessionStart = Date.now();
+
+  // 1. Reset old inflated telemetry keys & Initialize clean V6 session
   try {
-    if (!localStorage.getItem('syn_v3_reset_done')) {
+    if (!localStorage.getItem('syn_v6_reset_done')) {
       [
         'syn_local_visits', 'syn_last_known_global_visits',
         'syn_v2_reset_done', 'syn_v2_local_visits', 'syn_v2_session_active',
         'syn_v2_cached_svg', 'syn_v2_cached_count', 'syn_v2_last_global',
-        'syn_visited_chapters', 'syn_all_visited_chapters'
+        'syn_visited_chapters', 'syn_all_visited_chapters',
+        'syn_v3_reset_done', 'syn_v3_local_visits', 'syn_v3_session_active',
+        'syn_v3_cached_svg', 'syn_v3_cached_count', 'syn_v3_last_global',
+        'syn_v3_visited_chapters', 'syn_v3_all_visited_chapters',
+        'syn_v4_reset_done', 'syn_v4_local_visits', 'syn_v4_session_active',
+        'syn_v4_cached_svg', 'syn_v4_cached_count', 'syn_v4_last_global',
+        'syn_v4_session_expires', 'syn_v4_session_start', 'syn_v4_fetch_inflight',
+        'syn_v4_visited_chapters', 'syn_v4_all_visited_chapters',
+        'syn_v5_reset_done', 'syn_v5_local_visits', 'syn_v5_session_active',
+        'syn_v5_cached_svg', 'syn_v5_cached_count', 'syn_v5_last_global',
+        'syn_v5_session_expires', 'syn_v5_session_start', 'syn_v5_fetch_inflight',
+        'syn_v5_visited_chapters', 'syn_v5_all_visited_chapters'
       ].forEach(function(k) {
         try { localStorage.removeItem(k); } catch (e) {}
         try { sessionStorage.removeItem(k); } catch (e) {}
       });
-      localStorage.setItem('syn_v3_reset_done', 'true');
+      localStorage.setItem('syn_v6_reset_done', 'true');
     }
   } catch (e) {}
 
-  let deviceVisits = 1;
-  try {
-    const stored = parseInt(localStorage.getItem('syn_v3_local_visits') || '0', 10);
-    const hasActiveSession = sessionStorage.getItem('syn_v3_session_active');
-    if (!hasActiveSession) {
-      deviceVisits = stored + 1;
-      localStorage.setItem('syn_v3_local_visits', deviceVisits.toString());
-      sessionStorage.setItem('syn_v3_session_active', Date.now().toString());
-    } else {
-      deviceVisits = Math.max(1, stored);
-    }
-  } catch (e) {
-    deviceVisits = 1;
-  }
-
-  // Session start time
-  let sessionStart = Date.now();
-  try {
-    const st = sessionStorage.getItem('syn_v3_session_active');
-    if (st) sessionStart = parseInt(st, 10);
-  } catch (e) {}
-
-  // Visited chapters tracking
+  // 2. Visited chapters tracking (stored in localStorage for cross-tab sync)
   function recordChapterVisit(chNum) {
     if (!chNum) return;
     try {
-      let visited = JSON.parse(sessionStorage.getItem('syn_v3_visited_chapters') || '[]');
+      let visited = JSON.parse(localStorage.getItem('syn_v6_visited_chapters') || '[]');
       if (!visited.includes(chNum)) {
         visited.push(chNum);
-        sessionStorage.setItem('syn_v3_visited_chapters', JSON.stringify(visited));
+        localStorage.setItem('syn_v6_visited_chapters', JSON.stringify(visited));
       }
-      let allVisited = JSON.parse(localStorage.getItem('syn_v3_all_visited_chapters') || '[]');
+      let allVisited = JSON.parse(localStorage.getItem('syn_v6_all_visited_chapters') || '[]');
       if (!allVisited.includes(chNum)) {
         allVisited.push(chNum);
-        localStorage.setItem('syn_v3_all_visited_chapters', JSON.stringify(allVisited));
+        localStorage.setItem('syn_v6_all_visited_chapters', JSON.stringify(allVisited));
+      }
+      // Touch session lease on navigation
+      if (!isIncognitoMode) {
+        const now = Date.now();
+        const exp = parseInt(localStorage.getItem('syn_v6_session_expires') || '0', 10);
+        if (exp && now < exp) {
+          localStorage.setItem('syn_v6_session_expires', (now + SESSION_LEASE_MS).toString());
+        }
       }
     } catch (e) {}
   }
@@ -87,7 +90,7 @@
     }
   });
 
-  // 2. Inject Telemetry & Counter CSS
+  // 3. Inject Telemetry & Counter CSS
   const styles = `
     .syn-visit-counter-pill {
       display: inline-flex;
@@ -322,7 +325,7 @@
   styleEl.textContent = styles;
   document.head.appendChild(styleEl);
 
-  // 3. Create Telemetry Modal DOM
+  // 4. Create Telemetry Modal DOM
   const modal = document.createElement('div');
   modal.className = 'syn-telemetry-modal';
   modal.id = 'syn-telemetry-modal';
@@ -346,14 +349,14 @@
           <img class="syn-counter-badge-img" id="modal-hero-badge-img" alt="Global Visits" height="24" style="display:none;" />
           <span class="syn-counter-fallback" id="modal-hero-fallback" style="font-size:1.1rem;">VISITS: <span class="syn-visit-count-display">1</span></span>
         </div>
-        <div style="font-size:0.75rem; color:#60a5fa;">Verified live hit tracker with deduplicated session caching</div>
+        <div style="font-size:0.75rem; color:#60a5fa;">Verified live hit tracker with cross-tab device session caching</div>
       </div>
 
       <div class="syn-telemetry-grid">
         <div class="syn-stat-card">
           <div class="syn-stat-label">Your Device Visits</div>
-          <div class="syn-stat-value" id="syn-stat-local-visits">#${deviceVisits}</div>
-          <div class="syn-stat-sub">Persistent across browser restarts</div>
+          <div class="syn-stat-value" id="syn-stat-local-visits">#1</div>
+          <div class="syn-stat-sub">Persistent across browser restarts &amp; tabs</div>
         </div>
 
         <div class="syn-stat-card">
@@ -404,8 +407,21 @@
     });
   }
 
-  // 4. Update all badge <img> elements with data URL (renders cleanly, never clips!)
+  // 5. Update all badge <img> elements with data URL (renders cleanly, never clips!)
   function updateAllBadgeImages(svgText, countStr) {
+    if (!svgText && !isIncognitoMode) {
+      try {
+        svgText = localStorage.getItem('syn_v6_cached_svg');
+        countStr = countStr || localStorage.getItem('syn_v6_cached_count');
+      } catch (e) {}
+    }
+
+    if (!countStr && svgText) {
+      const match = svgText.match(/aria-label=["'][^:"]*:\s*([0-9,kK\.\+]+)["']/) ||
+                    svgText.match(/<title>[^:<]*:\s*([0-9,kK\.\+]+)<\/title>/);
+      if (match) countStr = match[1];
+    }
+
     let dataUrl = null;
     if (svgText) {
       dataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgText);
@@ -444,34 +460,51 @@
     }
   }
 
-  // 5. Incognito / Private Mode Detection
+  function updateDeviceVisitsDisplay(val) {
+    const el = document.getElementById('syn-stat-local-visits');
+    if (el) el.textContent = '#' + val;
+  }
+
+  // 6. Incognito / Private Mode Detection
   function checkIncognito(callback) {
+    let finished = false;
+    function done(isIncog) {
+      if (finished) return;
+      finished = true;
+      callback(isIncog);
+    }
+
     // Explicit bypass via query parameter
     if (window.location.search.indexOf('incognito') !== -1 || window.location.search.indexOf('nocache') !== -1) {
-      callback(true);
+      done(true);
       return;
     }
+
+    // Safety fallback timeout (350ms)
+    setTimeout(function() {
+      done(false);
+    }, 350);
 
     // 1. Chromium check (Chrome, Edge, Opera, Brave)
     if ('storage' in navigator && 'estimate' in navigator.storage) {
       navigator.storage.estimate().then(function(est) {
         var isLowQuota = est.quota && est.quota < 4000000000;
         if (isLowQuota) {
-          callback(true);
+          done(true);
           return;
         }
         var fs = window.RequestFileSystem || window.webkitRequestFileSystem;
         if (fs) {
           fs(window.TEMPORARY, 100, function() {
-            callback(false);
+            done(false);
           }, function() {
-            callback(true);
+            done(true);
           });
           return;
         }
-        callback(false);
+        done(false);
       }).catch(function() {
-        callback(true);
+        done(true);
       });
       return;
     }
@@ -483,7 +516,7 @@
           window.openDatabase(null, null, null, null);
         }
       } catch (e) {
-        callback(true);
+        done(true);
         return;
       }
     }
@@ -491,24 +524,24 @@
     // 3. Firefox check
     if ('MozAppearance' in document.documentElement.style) {
       if (!window.indexedDB) {
-        callback(true);
+        done(true);
         return;
       }
       try {
         var db = window.indexedDB.open('test_incog');
-        db.onerror = function() { callback(true); };
-        db.onsuccess = function() { callback(false); };
+        db.onerror = function() { done(true); };
+        db.onsuccess = function() { done(false); };
         return;
       } catch (e) {
-        callback(true);
+        done(true);
         return;
       }
     }
 
-    callback(false);
+    done(false);
   }
 
-  // 6. Fetch Logic with Incognito Bypass
+  // 7. Fetch Logic with Incognito Bypass
   function fetchBadge(isIncognito) {
     var url = BADGE_API_URL;
     if (isIncognito) {
@@ -526,69 +559,155 @@
                     svgText.match(/<title>[^:<]*:\s*([0-9,kK\.\+]+)<\/title>/);
         if (match) count = match[1];
 
-        // ONLY cache in session/local storage if NOT in incognito mode
+        // ONLY cache in persistent device storage if NOT in incognito mode
         if (!isIncognito) {
           try {
-            sessionStorage.setItem('syn_v3_cached_svg', svgText);
-            sessionStorage.setItem('syn_v3_cached_count', count);
-            localStorage.setItem('syn_v3_last_global', count);
+            localStorage.setItem('syn_v6_cached_svg', svgText);
+            localStorage.setItem('syn_v6_cached_count', count);
+            localStorage.setItem('syn_v6_last_global', count);
+            localStorage.removeItem('syn_v6_fetch_inflight');
           } catch (e) {}
         }
 
         updateAllBadgeImages(svgText, count);
       })
       .catch(function(err) {
+        if (!isIncognito) {
+          try { localStorage.removeItem('syn_v6_fetch_inflight'); } catch (e) {}
+        }
         var fb = '1';
         if (!isIncognito) {
           try {
-            fb = localStorage.getItem('syn_v3_last_global') || 
-                 localStorage.getItem('syn_v3_local_visits') || '1';
+            fb = localStorage.getItem('syn_v6_last_global') || 
+                 localStorage.getItem('syn_v6_device_visits') || '1';
           } catch (e) {}
         }
         updateAllBadgeImages(null, fb);
       });
   }
 
+  // 8. Device Session Initialization & Cross-Tab Deduplication
+  function initDeviceSession() {
+    const now = Date.now();
+
+    try {
+      const storedVisits = parseInt(localStorage.getItem('syn_v6_device_visits') || '0', 10);
+      const sessionExpires = parseInt(localStorage.getItem('syn_v6_session_expires') || '0', 10);
+      const storedStart = parseInt(localStorage.getItem('syn_v6_session_start') || '0', 10);
+
+      if (sessionExpires && now < sessionExpires) {
+        // Active device session exists across Chrome/device tabs!
+        deviceVisits = Math.max(1, storedVisits);
+        sessionStart = storedStart || now;
+        // Extend session expiration lease (sliding window)
+        localStorage.setItem('syn_v6_session_expires', (now + SESSION_LEASE_MS).toString());
+      } else {
+        // New distinct device session (first visit or after 30+ min of inactivity)
+        deviceVisits = storedVisits + 1;
+        sessionStart = now;
+        localStorage.setItem('syn_v6_device_visits', deviceVisits.toString());
+        localStorage.setItem('syn_v6_session_start', sessionStart.toString());
+        localStorage.setItem('syn_v6_session_expires', (now + SESSION_LEASE_MS).toString());
+        // Expire previous cached badge so fresh session queries the latest count
+        localStorage.removeItem('syn_v6_cached_svg');
+        localStorage.removeItem('syn_v6_cached_count');
+      }
+    } catch (e) {
+      deviceVisits = 1;
+    }
+
+    updateDeviceVisitsDisplay(deviceVisits);
+
+    // Check if we already have a valid cached SVG in localStorage
+    let cachedSvg = null;
+    let cachedCount = null;
+    try {
+      cachedSvg = localStorage.getItem('syn_v6_cached_svg');
+      cachedCount = localStorage.getItem('syn_v6_cached_count');
+    } catch (e) {}
+
+    if (cachedSvg) {
+      // Reused across tabs! Zero network requests, zero extra count!
+      updateAllBadgeImages(cachedSvg, cachedCount || '1');
+      return;
+    }
+
+    // No cached SVG yet. Check if another tab is currently fetching it (inflight lock):
+    let inflightTime = 0;
+    try {
+      inflightTime = parseInt(localStorage.getItem('syn_v6_fetch_inflight') || '0', 10);
+    } catch (e) {}
+
+    if (inflightTime && (now - inflightTime) < 8000) {
+      // Another tab in this browser is currently fetching the badge!
+      // Wait for it to finish; it will broadcast via the 'storage' event.
+      setTimeout(function() {
+        let svg = null;
+        try { svg = localStorage.getItem('syn_v6_cached_svg'); } catch (e) {}
+        if (svg) {
+          updateAllBadgeImages(svg, localStorage.getItem('syn_v6_cached_count') || '1');
+        } else {
+          fetchBadge(false);
+        }
+      }, 2500);
+      return;
+    }
+
+    // We are the leader tab to perform the fetch:
+    try {
+      localStorage.setItem('syn_v6_fetch_inflight', now.toString());
+    } catch (e) {}
+
+    fetchBadge(false);
+  }
+
+  // Cross-tab real-time sync across Chrome/device tabs
+  window.addEventListener('storage', function(e) {
+    if (!e) return;
+    if (e.key === 'syn_v6_cached_svg' && e.newValue) {
+      let count = '1';
+      try { count = localStorage.getItem('syn_v6_cached_count') || '1'; } catch (err) {}
+      updateAllBadgeImages(e.newValue, count);
+    }
+    if (e.key === 'syn_v6_device_visits' && e.newValue) {
+      updateDeviceVisitsDisplay(e.newValue);
+    }
+    if (e.key === 'syn_v6_visited_chapters' || e.key === 'syn_v6_all_visited_chapters') {
+      updateTelemetryStats();
+    }
+  });
+
   // Execute with incognito awareness
   checkIncognito(function(isIncog) {
+    isIncognitoMode = isIncog;
+
     if (isIncog) {
-      // In Incognito mode: NEVER use or read from cache, perform fresh live fetch
-      try {
-        sessionStorage.removeItem('syn_v3_cached_svg');
-        sessionStorage.removeItem('syn_v3_cached_count');
-      } catch (e) {}
+      // In Incognito mode: NEVER use or write to persistent device cache, perform fresh live fetch
+      deviceVisits = 1;
+      updateDeviceVisitsDisplay(1);
       fetchBadge(true);
     } else {
-      // Regular mode: use session cache to deduplicate reloads
-      var cachedSvg = null;
-      var cachedCount = null;
-      try {
-        cachedSvg = sessionStorage.getItem('syn_v3_cached_svg');
-        cachedCount = sessionStorage.getItem('syn_v3_cached_count');
-      } catch (e) {}
-
-      if (cachedSvg) {
-        updateAllBadgeImages(cachedSvg, cachedCount || '1');
-      } else {
-        fetchBadge(false);
-      }
+      // Regular mode: use persistent cross-tab device session cache
+      initDeviceSession();
     }
   });
 
   function syncExistingElements() {
     var svg = null;
     var count = null;
-    try {
-      svg = sessionStorage.getItem('syn_v3_cached_svg');
-      count = sessionStorage.getItem('syn_v3_cached_count');
-    } catch (e) {}
+    if (!isIncognitoMode) {
+      try {
+        svg = localStorage.getItem('syn_v6_cached_svg');
+        count = localStorage.getItem('syn_v6_cached_count');
+      } catch (e) {}
+    }
     if (svg) updateAllBadgeImages(svg, count);
   }
 
   document.addEventListener('DOMContentLoaded', syncExistingElements);
   window.addEventListener('load', syncExistingElements);
 
-  // 7. Session Stopwatch & Telemetry Updating
+  // 9. Session Stopwatch & Telemetry Updating
   let timerInterval = null;
   function updateTelemetryStats() {
     const elapsedSec = Math.floor((Date.now() - sessionStart) / 1000);
@@ -599,7 +718,7 @@
     if (timeEl) timeEl.textContent = timeStr;
 
     try {
-      const visited = JSON.parse(sessionStorage.getItem('syn_v3_visited_chapters') || '[]');
+      const visited = JSON.parse(localStorage.getItem('syn_v6_visited_chapters') || '[]');
       const count = Math.min(15, visited.length);
       const ratioEl = document.getElementById('syn-stat-ch-ratio');
       const progEl = document.getElementById('syn-stat-ch-progress');
@@ -614,6 +733,7 @@
     if (e && e.stopPropagation) e.stopPropagation();
     syncExistingElements();
     updateTelemetryStats();
+    updateDeviceVisitsDisplay(deviceVisits);
     if (!timerInterval) {
       timerInterval = setInterval(updateTelemetryStats, 1000);
     }

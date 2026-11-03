@@ -2025,9 +2025,7 @@ body.mdrawer-open #syn-stratum-radar {
     document.body.appendChild(container);
     try {
       if (typeof window.updateAllTelemetryBadgeImages === 'function') {
-        var _s = sessionStorage.getItem('syn_v2_cached_svg');
-        var _c = sessionStorage.getItem('syn_v2_cached_count');
-        window.updateAllTelemetryBadgeImages(_s, _c);
+        window.updateAllTelemetryBadgeImages();
       }
     } catch(e) {}
 
