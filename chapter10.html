@@ -1492,7 +1492,7 @@ input[type="range"] {
           right: 8px !important;
           bottom: calc(var(--syn-bottom-offset, 8px) + env(safe-area-inset-bottom, 0px)) !important;
           flex-direction: column !important;
-          align-items: flex-start !important;
+          align-items: flex-end !important;
           gap: 6px !important;
           max-width: calc(100vw - 16px) !important;
         }
@@ -1514,9 +1514,11 @@ input[type="range"] {
           left: auto !important;
           right: auto !important;
           bottom: auto !important;
-          width: 100% !important;
-          max-width: 100% !important;
-        }
+          width: auto !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    align-self: flex-end !important;
+  }
       }
       @media (min-width: 901px) {
         #syn-bottom-dock {
@@ -1524,7 +1526,8 @@ input[type="range"] {
           right: 20px !important;
           bottom: var(--syn-bottom-offset, 64px) !important;
           flex-direction: row !important;
-          justify-content: space-between !important;
+          flex-wrap: wrap !important;
+    justify-content: space-between !important;
           align-items: flex-end !important;
           gap: 20px !important;
           transition: bottom 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
@@ -1543,7 +1546,9 @@ input[type="range"] {
           bottom: auto !important;
           width: auto !important;
           max-width: min(480px, 45vw) !important;
-        }
+        margin-left: auto !important;
+    align-self: flex-end !important;
+  }
       }
       body.mdrawer-open #syn-bottom-dock [id$="-3d-hud"],
       body.mdrawer-open #syn-bottom-dock #syntrix-3d-hud,

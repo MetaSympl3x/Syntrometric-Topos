@@ -426,7 +426,7 @@
     right: 8px !important;
     bottom: calc(var(--syn-bottom-offset, 8px) + env(safe-area-inset-bottom, 0px)) !important;
     flex-direction: column !important;
-    align-items: flex-start !important;
+    align-items: flex-end !important;
     gap: 6px !important;
     max-width: calc(100vw - 16px) !important;
   }
@@ -450,8 +450,10 @@
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
-    width: 100% !important;
+    width: auto !important;
     max-width: 100% !important;
+    margin-left: auto !important;
+    align-self: flex-end !important;
   }
 }
 
@@ -462,6 +464,7 @@
     right: 20px !important;
     bottom: var(--syn-bottom-offset, 64px) !important;
     flex-direction: row !important;
+    flex-wrap: wrap !important;
     justify-content: space-between !important;
     align-items: flex-end !important;
     gap: 20px !important;
@@ -483,6 +486,8 @@
     bottom: auto !important;
     width: auto !important;
     max-width: min(480px, 45vw) !important;
+    margin-left: auto !important;
+    align-self: flex-end !important;
   }
 }
 
@@ -495,6 +500,7 @@
   transform: translate(-50%, -50%) !important;
   bottom: auto !important;
   right: auto !important;
+  margin: 0 !important;
   z-index: 100005 !important;
 }
 
