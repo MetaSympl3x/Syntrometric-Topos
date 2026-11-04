@@ -24,21 +24,7 @@ format:
     include-in-header: shared/all-headers.html
     include-after-body:
       text: |
-        <script src="shared/chapter1-widgets.js"></script>
-        <script src="shared/chapter2-widgets.js"></script>
-        <script src="shared/chapter3-widgets.js"></script>
-        <script src="shared/chapter4-widgets.js"></script>
-        <script src="shared/chapter5-widgets.js"></script>
-        <script src="shared/chapter6-widgets.js"></script>
-        <script src="shared/chapter7-widgets.js"></script>
-        <script src="shared/chapter8-widgets.js"></script>
-        <script src="shared/chapter9-widgets.js"></script>
-        <script src="shared/chapter10-widgets.js"></script>
-        <script src="shared/chapter11-widgets.js"></script>
-        <script src="shared/chapter12-widgets.js"></script>
-        <script src="shared/chapter13-widgets.js"></script>
-        <script src="shared/chapter14-widgets.js"></script>
-        <script src="shared/chapter15-widgets.js"></script>
+        <script src="shared/syntrometrie-master-widgets.js"></script>
         <script src="shared/monograph-workbench.js"></script>
 ---
 
