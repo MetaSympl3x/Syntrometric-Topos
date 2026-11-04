@@ -219,13 +219,13 @@ Slide 3 presents §10.1.3 (SM pp. 217–220): the indefinite and definite Metron
 
 ---
 
-## §10.1.4: Partielle/Totale Differentiale, Transzendente Funktionen & Wronskian {.smaller}
+## §10.1.4a: Multi-Variable Partial/Total Metrondifferentials & Euler Homogeneity (SM-73–77) {.smaller transition="slide"}
 
-<div class="stratum-badge badge-d">STRATUM D: MULTI-VARIABLE DIFFERENCES, EULER HOMOGENEITY, TRANSCENDENTAL DIFFS &amp; WRONSKIAN (SM, PP. 220–252, EQS. 73–82, THM. 10.2)</div>
+<div class="stratum-badge badge-d">STRATUM D: PARTIAL DIFFERENCES (SM-73), NEAREST-NEIGHBOR LATTICE AVERAGE (SM-74a) &amp; EULER HOMOGENEITY (SM-77)</div>
 
 :::: {.columns}
 
-::: {.column width="48%"}
+::: {.column width="52%"}
 
 ::: {.thm-box}
 **Multi-Variable Partial & Total Metrondifferentials (SM §8.1.4, pp. 220–231):**
@@ -241,18 +241,51 @@ $$
 $$
 L\phi(\mathbf{n}) - \nabla_{\mathrm{tot}}\phi(\mathbf{n}) = \sum_{i=1}^L \phi(\mathbf{n} - \mathbf{e}_i) \iff \frac{1}{L}\sum_{i=1}^L \phi(\mathbf{n}-\mathbf{e}_i) = \phi(\mathbf{n}) - \frac{1}{L}\nabla_{\mathrm{tot}}\phi(\mathbf{n}) \tag{SM-74a}
 $$
-4. **Discrete Euler Homogeneity Identity (SM Eq. 77, p. 231):** For degree $h$ and $n=\pm 1$:
+:::
+
+::: {.thm-box .fragment .fade-up style="margin-top:6px;"}
+**4. Discrete Euler Homogeneity Identity (SM Eq. 77, p. 231):**
+For a homogeneous metronic polynomial of degree $h$ and unit lattice evaluations $n = \pm 1$:
 $$
-\pm \sum_{i=1}^L n_i\nabla_i\phi(\mathbf{n}) = (-1)^{h+1}\phi(\mathbf{n})\sum_{\gamma=0}^{h-1}\binom{h}{\gamma}(\mp 1)^\gamma \quad (n=\pm 1) \tag{SM-77}
+\pm \sum_{i=1}^L n_i\nabla_i\phi(\mathbf{n}) \;=\; (-1)^{h+1}\phi(\mathbf{n})\sum_{\gamma=0}^{h-1}\binom{h}{\gamma}(\mp 1)^\gamma \quad (n=\pm 1) \tag{SM-77}
 $$
-Upper signs ($n=+1, x=-1$) yield RHS $\phi(\mathbf{n})$; lower signs ($n=-1, x=+1$) yield $(-1)^{h+1}(2^h-1)\phi(\mathbf{n})$.
+* **Upper signs ($n=+1, x=-1$):** $\sum_{\gamma=0}^{h-1}\binom{h}{\gamma}(-1)^\gamma = -(-1)^h \implies \text{RHS} = \phi(\mathbf{n})$.
+* **Lower signs ($n=-1, x=+1$):** $\sum_{\gamma=0}^{h-1}\binom{h}{\gamma}(+1)^\gamma = 2^h - 1 \implies \text{RHS} = (-1)^{h+1}(2^h-1)\phi(\mathbf{n})$.
 :::
 
 :::
 
-::: {.column width="52%"}
+::: {.column width="48%"}
 
-::: {.interactive-panel}
+<div class="video-container">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act4_Partial_Euler_Wronskian.mp4" style="max-height:220px;"></video>
+  <div class="video-caption">Manim Act IV: Commuting Partial Shifts F_k F_l = F_l F_k &amp; Discrete Euler Homogeneity (SM-77)</div>
+</div>
+
+::: {.intuition-box .fragment .fade-left style="margin-top:8px;"}
+**Geometric Meaning of SM-74a & SM-77:**
+Equation (SM-74a) shows that the backward total difference measures the exact deviation of a lattice point from the arithmetic mean of its $L$ backward nearest neighbors—the discrete precursor to the graph Laplacian.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Slide 4A establishes multi-variable metronic difference operators, the nearest-neighbor average theorem SM-74a, and the discrete Euler homogeneity identity SM-77.
+:::
+
+---
+
+## §10.1.4b: Transcendental Metrondifferences & Discrete Wronskian (SM-81–82, Thm. 10.2) {.smaller transition="convex"}
+
+<div class="stratum-badge badge-b">STRATUM B: TRANSCENDENTAL DIFFERENCES (SM-81) &amp; DISCRETE WRONSKIAN DETERMINANT (SM-82, THM. 10.2)</div>
+
+:::: {.columns}
+
+::: {.column width="54%"}
+
+<div class="interactive-panel">
 <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">4-Tab Inspector: Transcendental Differences (SM-81) &amp; Discrete Wronskian (Thm. 10.2)</h4>
 
 <div class="syn-tabs">
@@ -307,11 +340,24 @@ D(\mathbf{n}) \coloneqq \det\!\left[\nabla^{\gamma-1} y_k(\mathbf{n})\right]_{N\
 $$
 :::
 
+</div>
+
 :::
 
-<div class="video-container fragment fade-left" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act4_Partial_Euler_Wronskian.mp4" style="max-height:195px;"></video>
-  <div class="video-caption">Manim Act IV: Commuting Partial Shifts F_k F_l = F_l F_k, Euler Homogeneity (SM-77) &amp; Discrete Wronskian D(n) ≠ 0 (SM-82, Thm. 10.2)</div>
+::: {.column width="46%"}
+
+::: {.thm-box}
+**Casorati–Wronskian Equivalence on $\mathbb{M}_\tau^1$ (Theorem 10.2 Proof):**
+By multilinearity of the determinant and $\nabla^\gamma y_k(n) = \sum_{j=0}^\gamma (-1)^j \binom{\gamma}{j} y_k(n-j)$, column/row elimination reduces the difference Wronskian $D(n) = \det[\nabla^{\gamma-1} y_k(n)]$ identically to the **Casorati determinant**:
+$$
+D(n) \;=\; \det\!\left[y_k(n - \gamma + 1)\right]_{1 \le \gamma, k \le N}
+$$
+Therefore, $D(n) \ne 0$ for all $n \in \mathbb{M}_\tau^1$ is the exact necessary and sufficient condition for unique solvability of initial-value problems on the metronic lattice! $\blacksquare$
+:::
+
+<div class="video-container fragment fade-up" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch10_Act4_Partial_Euler_Wronskian.mp4" style="max-height:160px;"></video>
+  <div class="video-caption">Manim Act IV: Discrete Wronskian D(n) ≠ 0 &amp; Casorati Fundamental Basis (SM-82)</div>
 </div>
 
 :::
@@ -319,7 +365,7 @@ $$
 ::::
 
 ::: {.notes}
-Slide 4 covers §10.1.4 (SM pp. 220–252): partial differences (SM-73), the Vertauschbarkeitssatz (SM-73a), total differential (SM-74), Nearest-Neighbor Lattice Theorem (SM-74a), discrete Euler homogeneity (SM-77), transcendental/trig/hyperbolic/inverse-trig selector differences (SM-81, SM-81a), and Theorem 10.2 on the discrete Wronskian determinant (SM-82).
+Slide 4B presents the transcendental difference identities (SM-81) and the full Casorati-Wronskian determinant proof of Theorem 10.2 (SM-82).
 :::
 
 ---
@@ -842,51 +888,61 @@ Slide 11 covers Theorem 10.18 (Cubical FEEC convergence and Claim Ceiling $c_{\m
 
 ---
 
-## §10.4–10.5: Rekonstruktionsabbildung $\mathcal{R}$, Sanity Checks & Carnap 10.1 {.smaller}
+## §10.4: Stratum C — Formal Heimian Reconstruction Map $\mathcal{R}$ (SM Eqs. 63–83) {.smaller transition="slide"}
 
-<div class="stratum-badge badge-c">STRATUM C: COMPLETE 13-ROW RECONSTRUCTION MAP R, PHYSICAL SANITY CHECKS (§10.5) &amp; CARNAPIAN EXPLICATION 10.1</div>
-
-:::: {.columns}
-
-::: {.column width="55%"}
+<div class="stratum-badge badge-c">STRATUM C: COMPLETE 13-ROW RECONSTRUCTION MAP R FOR METRONISCHE ELEMENTAROPERATIONEN</div>
 
 | Heimian Concept ($\mathbf{D}$) | Mathematical Reconstruction ($\mathcal{R}$) | Epistemic Status |
 |:---|:---|:---:|
-| **Metron ($\tau$)** | Fundamental lattice spacing parameter $\tau > 0$ | **Stratum C: Model** (Def. 10.4) |
-| **Metronische Gitter** | Discrete subgroup manifold $\mathbb{M}_\tau^n \coloneqq \bigoplus \tau_i\mathbb{Z} \subset \mathbb{R}^n$ | **Stratum A: Def** (Def. 10.4) |
-| **Metronenfunktion ($\phi(n)$)** | Sequence function $\phi \in \ell^\infty(\mathbb{M}_\tau^n)$ | **Stratum A: Def** (Def. 10.4) |
-| **Metrondifferential ($F\phi \equiv \bar{\delta}\phi$)** | Backward finite difference $\nabla\phi(n) = \phi(n) - \phi(n-1)$ | **Stratum A: Def** (Def. 10.4) |
-| **Höhere Differentiale ($F^k\phi$)** | Iterated difference operator $\nabla^k = (I - E^{-1})^k$ | **Stratum B: Thm** (Thm. 10.7) |
-| **Produktregel ($F(uv)$)** | Discrete Leibniz rule $\nabla(uv) = u\nabla v + (E^{-1}v)\nabla u$ | **Stratum B: Thm** (Thm. 10.12) |
-| **Metronintegral ($\mathrm{S}\phi$)** | Indefinite/definite summation operator $\mathcal{S}\phi$ | **Stratum A: Def** (Def. 10.13) |
-| **Hauptsatz der Metronik** | Fundamental theorem $\nabla \circ \mathcal{S} = \operatorname{id}$ | **Stratum B: Thm** (Thm. 10.14) |
-| **Partielles Differential ($F_k$)** | Partial difference operator $\nabla_k \coloneqq I - E_k^{-1}$ | **Stratum A: Def** (Def. 10.4) |
-| **Totales Differential ($F$)** | Total lattice difference $\nabla_{\mathrm{tot}} \coloneqq \sum_{i=1}^n \nabla_i$ | **Stratum B: Constr** (SM-74) |
-| **Vektorkalkül ($\mathrm{GRAD},\mathrm{DIV}$)** | Discrete vector operators $\operatorname{GRAD}_n, \operatorname{DIV}_n, \operatorname{ROT}_n$ | **Stratum B: Constr** (Def. 10.16) |
-| **Integralsätze (SM Eq. 80)** | Discrete Gauss–Stokes divergence/flux theorems | **Stratum B: Thm** (Thm. 10.17) |
+| **Metron ($\tau$)** | Fundamental lattice area/spacing parameter $\tau > 0$ (SM-63) | **Stratum C: Model** (Def. 10.4) |
+| **Metronische Gitter** | Discrete lattice manifold $\mathbb{M}_\tau^n \coloneqq \bigoplus_{i=1}^n \tau_i\mathbb{Z} \subset \mathbb{R}^n$ | **Stratum A: Def** (Def. 10.4) |
+| **Metronenfunktion ($\phi(n)$)** | Bounded sequence field $\phi \in \ell^\infty(\mathbb{M}_\tau^n)$ | **Stratum A: Def** (Def. 10.4) |
+| **Metrondifferential ($F\phi \equiv \bar{\delta}\phi$)** | Backward finite difference $\nabla\phi(n) = \phi(n) - \phi(n-1)$ (SM-67) | **Stratum A: Def** (Def. 10.4) |
+| **Höhere Differentiale ($F^k\phi$)** | Iterated binomial difference operator $\nabla^k = (I - E^{-1})^k$ (SM-68) | **Stratum B: Thm** (Thm. 10.7) |
+| **Produktregel ($F(uv)$)** | Discrete Leibniz rule $\nabla(uv) = u\nabla v + (E^{-1}v)\nabla u$ (SM-68a) | **Stratum B: Thm** (Thm. 10.12) |
+| **Metronintegral ($\mathrm{S}\phi$)** | Indefinite/definite summation operator $\mathcal{S}\phi$ (SM-70) | **Stratum A: Def** (Def. 10.13) |
+| **Hauptsatz der Metronik** | Fundamental theorem $\nabla \circ \mathcal{S} = \operatorname{id}$ (SM-71) | **Stratum B: Thm** (Thm. 10.14) |
+| **Partielles Differential ($F_k$)** | Partial difference operator $\nabla_k \coloneqq I - E_k^{-1}$ (SM-73) | **Stratum A: Def** (Def. 10.4) |
+| **Totales Differential ($F$)** | Total lattice difference $\nabla_{\mathrm{tot}} \coloneqq \sum_{i=1}^n \nabla_i$ (SM-74) | **Stratum B: Constr** (SM-74) |
+| **Vektorkalkül ($\mathrm{GRAD},\mathrm{DIV}$)** | Discrete vector operators $\operatorname{GRAD}_n, \operatorname{DIV}_n, \operatorname{ROT}_n$ (SM-78–79) | **Stratum B: Constr** (Def. 10.16) |
+| **Integralsätze (SM Eq. 80)** | Discrete Gauss–Stokes divergence and circulation theorems | **Stratum B: Thm** (Thm. 10.17) |
 | **Korrespondenzprinzip** | Asymptotic continuum limit $\lim_{\tau\to 0}\frac{\nabla\phi}{\tau} = f'(x)$ | **Stratum B: Thm** (Thm. 10.15) |
 
+::: {.notes}
+Slide 12A provides the complete 13-row formal Reconstruction Map R anchoring every concept of Heim's Chapter III.2 in modern Discrete Exterior Calculus and finite difference algebra.
 :::
 
-::: {.column width="45%"}
+---
 
-::: {.thm-box .fragment .fade-left}
+## §10.5: Physical & Epistemic Sanity Checks & Carnapian Explication 10.1 {.smaller transition="convex"}
+
+<div class="stratum-badge badge-c">STRATUM C: CONTINUUM CONVERGENCE, SUMMATION BY PARTS &amp; CARNAPIAN EXPLICATION 10.1</div>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.thm-box}
 **Physical & Epistemic Sanity Checks (§10.5):**
-1. **Asymptotic Continuum Derivative Limit:** By Thm. 10.15, for any $f \in C^2(\mathbb{R})$, $\lim_{\tau\to 0^+}\frac{\nabla\phi_\tau(n)}{\tau} = f'(x)$ with uniform error bound $\le \frac{\tau}{2}\|f''\|_\infty$, confirming exact convergence to Newtonian/Leibnizian calculus.
+1. **Asymptotic Continuum Derivative Limit:** By Theorem 10.15, for any $f \in C^2(\mathbb{R})$, $\lim_{\tau\to 0^+}\frac{\nabla\phi_\tau(n)}{\tau} = f'(x)$ with uniform error bound $\le \frac{\tau}{2}\|f''\|_\infty$, confirming exact convergence to classical Newtonian/Leibnizian calculus at macroscopic scales ($L \gg \sqrt{\tau}$).
 2. **Summation by Parts Conservation:** Over a closed periodic lattice $\mathbb{Z}/N\mathbb{Z}$:
 $$
-\sum_{n=1}^N \nabla(uv)(n) = \sum_{n=1}^N \big(u(n)\nabla v(n) + v(n-1)\nabla u(n)\big) = 0
+\sum_{n=1}^N \nabla(uv)(n) \;=\; \sum_{n=1}^N \big(u(n)\nabla v(n) + v(n-1)\nabla u(n)\big) \;=\; 0
 $$
-recovering exact energy and charge conservation on closed discrete manifolds.
-3. **Discrete Exterior Derivative Nilpotency:** $d_\tau \circ d_\tau \equiv 0$ identically on all discrete forms, excluding unphysical magnetic monopoles and topological anomalies on the lattice.
+recovering exact energy, probability, and charge conservation on closed discrete manifolds without discretization drift.
+3. **Discrete Exterior Derivative Nilpotency:** $d_\tau \circ d_\tau \equiv 0$ identically on all discrete cochains at finite lattice spacing $\tau > 0$, excluding unphysical magnetic monopoles and topological lattice anomalies.
 :::
 
-::: {.carnap-box .fragment .blur-in}
+:::
+
+::: {.column width="50%"}
+
+::: {.carnap-box}
 **Carnapian Explication 10.1: *Metronische Elementaroperationen* as DEC**
-1. **Explicandum ($\mathbf{D}$):** Coordinate quantization $\tau \approx 10^{-70}\,\text{m}^2$ (*Televarianzbedingung*, SM-63), backward differences ($F\phi \equiv \nabla\phi$, SM-67), discrete product cross-terms (SM-68a), discrete integration ($\mathcal{S}\phi$, SM-70), and vector calculus ($\operatorname{GRAD}_n, \operatorname{DIV}_n, \operatorname{ROT}_n$, SM-78–80).
-2. **Explicatum ($\mathbf{A}/\mathbf{B}$):** DEC cochain complex $(\Omega_d^\bullet(\mathbb{M}_\tau^n), d_\tau)$, backward difference $\nabla_i = I - E_i^{-1}$ on $\ell^\infty(\mathbb{M}_\tau^n)$, FEEC projection $\Pi_\tau^k$, and circumcentric dual Hodge star $*_\tau$.
-3. **Exactness & Simplicity:** Strict nilpotency $d_\tau^2 \equiv 0$, $\delta_\tau^2 \equiv 0$, Fundamental Theorem $\nabla \circ \mathcal{S} = \operatorname{id}$, and de Rham isomorphism $H^k(\Omega_d^\bullet) \cong H_{\mathrm{dR}}^k$.
-4. **Fruitfulness:** Intrinsic UV cutoff $\Lambda_{\mathrm{UV}} = 4/\sqrt{\tau}$ (Thm. 10.21), exact Gauss–Stokes flux conservation (Thm. 10.17), and uniform convergence as $\tau \to 0$ (Thm. 10.15).
+1. **Explicandum ($\mathbf{D}$):** Coordinate area quantization $\tau \approx 10^{-70}\,\text{m}^2$ (*Televarianzbedingung*, SM-63), backward differences ($F\phi \equiv \nabla\phi$, SM-67), discrete product cross-terms (SM-68a), discrete summation ($\mathcal{S}\phi$, SM-70), and vector calculus ($\operatorname{GRAD}_n, \operatorname{DIV}_n, \operatorname{ROT}_n$, SM-78–80).
+2. **Explicatum ($\mathbf{A}/\mathbf{B}$):** DEC cochain complex $(\Omega_d^\bullet(\mathbb{M}_\tau^n), d_\tau)$, backward difference $\nabla_i = I - E_i^{-1}$ on $\ell^\infty(\mathbb{M}_\tau^n)$, Cubical FEEC Whitney projection $\Pi_\tau^k$, and circumcentric dual Hodge star $*_\tau$.
+3. **Exactness & Simplicity:** Strict nilpotency $d_\tau^2 \equiv 0$, $\delta_\tau^2 \equiv 0$, Fundamental Theorem $\nabla \circ \mathcal{S} = \operatorname{id}$, and de Rham cohomology isomorphism $H^k(\Omega_d^\bullet) \cong H_{\mathrm{dR}}^k(\mathcal{M})$ (resolving Weyl's tile paradox).
+4. **Fruitfulness:** Intrinsic UV cutoff $\Lambda_{\mathrm{UV}} = 4/\sqrt{\tau}$ (Thm. 10.21), exact Gauss–Stokes flux conservation (Thm. 10.17), and uniform convergence as $\tau \to 0^+$ (Thm. 10.15).
 :::
 
 :::
@@ -894,7 +950,7 @@ recovering exact energy and charge conservation on closed discrete manifolds.
 ::::
 
 ::: {.notes}
-Slide 12 summarizes Stratum C (§10.4–10.5): the 13-row formal Reconstruction Map $\mathcal{R}$, the three Physical & Epistemic Sanity Checks, and Carnapian Explication 10.1 translating Heim's Metronic Calculus into Discrete Exterior Calculus.
+Slide 12B details the three Physical & Epistemic Sanity Checks and Carnapian Explication 10.1, showing how Cubical FEEC Whitney forms resolve Hermann Weyl's discrete tile objection while enforcing a natural Planck-scale UV cutoff.
 :::
 
 ---

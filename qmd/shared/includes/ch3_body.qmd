@@ -420,11 +420,11 @@ $$\theta_{\vec{\gamma};\gamma}^{K_s} \;\coloneqq\; (\theta^a \widehat{\otimes}_\
 
 ---
 
-## §3.3.1–3.3.2 Stratum B: Determinacy Theorem & The 15 Corporate Classes
+## §3.3.1 Stratum B: Corporate Specification $\Sigma_r$, Construction Determinacy & Proof {.smaller transition="slide"}
 
 <div style="margin-bottom:6px;">
-<span class="tag-b">THEOREM 3.9: EINDEUTIGKEITSSATZ PROOF</span>
-<span class="tag-b">PROPOSITIONS 3.11–3.12: 4D TESSERACT PARTITION (9 MIXED vs. 6 PURE)</span>
+<span class="tag-b">DEFINITION 3.8: CORPORATE SPECIFICATION DATA Σ_r</span>
+<span class="tag-b">THEOREM 3.9: EINDEUTIGKEITSSATZ & ALGEBRA DETERMINACY PROOF</span>
 </div>
 
 <div class="grid-2">
@@ -440,11 +440,48 @@ A <b>Corporate Specification Datum</b> $\Sigma_r = (r, \Sigma_m, \Sigma_s, \Phi,
 </div>
 
 <div class="proof-box fragment fade-up" style="margin-bottom:5px; font-size:0.57em;">
-<div class="proof-title">Proofs of Theorem 3.9, Proposition 3.11 & Proposition 3.12</div>
+<div class="proof-title">Proof of Theorem 3.9 (Universal Colimit & Operadic Module Extension)</div>
+Universal colimits in $\mathbf{FinBan}_{\le 1}$ fix the base carrier space $F_0^c$ up to a unique isometric isomorphism. Under $\Sigma_r$, Proposition 3.7 uniquely determines the graded module operations $\mathbf{F}_c$ and operadic lifts $\theta_c$. Whenever $r$ contains both metrophoric and synkolative rules (Mixed), carrier gluing and operational composition cross-constrain the resulting Syntrix algebra: any two colimit realizations induce a unique commuting isomorphism in $\mathbf{Syn}$. $\blacksquare$
+</div>
+
+</div>
+<div>
+
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Act6_Sec_331_3level_Determinacy.mp4" style="max-height:220px; min-width:0;"></video>
+<div class="video-label">Act VI: 3-Level Determinacy Architecture (§3.3.1)</div>
+</div>
+
+<div class="intuition-box fragment fade-left" style="margin-top:8px; font-size:0.59em;">
+<div class="box-title">Epistemic Significance of the Eindeutigkeitssatz</div>
+Heim's *Eindeutigkeitssatz* (SM pp. 47–49) asserts that subjective or cognitive synthesis cannot produce ambiguous outcomes when both carrier coupling ($K_m, C_m$) and functional coordination ($K_s, C_s$) are simultaneously specified. Under-determinacy arises exclusively when one dimension is omitted (Pure classes).
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.3.2 Stratum B: 4D Tesseract Partition (9 Mixed vs. 6 Pure Classes) {.smaller transition="convex"}
+
+<div style="margin-bottom:6px;">
+<span class="tag-b">PROPOSITIONS 3.11–3.12: 4D BOOLEAN HYPERCUBE PARTITION</span>
+<span class="tag-a">PIGEONHOLE PRINCIPLE PROOF &amp; INTERACTIVE TESSERACT LATTICE</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="proof-box" style="margin-bottom:5px; font-size:0.57em;">
+<div class="proof-title">Proof of Proposition 3.11 (15-Class Combinatorial Partition)</div>
+Of the $2^4 - 1 = 15$ non-empty rule subsets $r \subseteq \{K_s, C_s, K_m, C_m\}$:
 <ul>
-<li><b>Proof of Thm. 3.9:</b> Universal colimits in $\mathbf{FinBan}_{\le 1}$ fix $F_0^c$ up to unique isometric isomorphism. Under $\Sigma_r$, Prop. 3.7 fixes $\mathbf{F}_c$ and $\theta_c$; any two colimit realizations induce a unique commuting isomorphism in $\mathbf{Syn}$.</li>
-<li><b>Proof of Prop. 3.11 (15-Class Partition):</b> Of the $2^4 - 1 = 15$ non-empty subsets $r$: for $\kappa=4$, $\binom{4}{4}=1$ Mixed; for $\kappa=3$, $\binom{4}{3}=4$ Mixed (by Pigeonhole Principle across 2-element strata); for $\kappa=2$, $\binom{4}{2}=6$ splits into $2$ Pure ($\{K_m,C_m\}, \{K_s,C_s\}$) and $6-2=4$ Mixed cross-pairs; for $\kappa=1$, all $\binom{4}{1}=4$ singletons are Pure. Total: $1+4+4+0 = \mathbf{9\text{ Mixed}}$ and $0+0+2+4 = \mathbf{6\text{ Pure}}$. $\blacksquare$</li>
+<li><b>Rank $\kappa = 4$:</b> $\binom{4}{4} = 1$ Mixed class (full $2 \times 2$ matrix).</li>
+<li><b>Rank $\kappa = 3$:</b> $\binom{4}{3} = 4$ Mixed classes (by the Pigeonhole Principle across the two 2-element strata $\mathsf{Met}$ and $\mathsf{Synk}$).</li>
+<li><b>Rank $\kappa = 2$:</b> $\binom{4}{2} = 6$ subsets split into $2$ Pure row-pairs ($\{K_m, C_m\}$ and $\{K_s, C_s\}$) and $6 - 2 = 4$ Mixed cross-pairs.</li>
+<li><b>Rank $\kappa = 1$:</b> All $\binom{4}{1} = 4$ singletons are Pure ($\{K_m\}, \{C_m\}, \{K_s\}, \{C_s\}$).</li>
 </ul>
+Total: $1 + 4 + 4 + 0 = \mathbf{9\text{ Mixed (Determinate)}}$ and $0 + 0 + 2 + 4 = \mathbf{6\text{ Pure (Underdetermined)}}$. $\blacksquare$
 </div>
 
 <table class="syn-table" style="font-size:0.55em;">
@@ -471,13 +508,13 @@ A <b>Corporate Specification Datum</b> $\Sigma_r = (r, \Sigma_m, \Sigma_s, \Phi,
 <button id="btn-km" class="syn-btn" onclick="toggleKorRule('km')" style="background:#FFA500; color:#000; font-weight:bold; font-size:0.65em;">✓ K_m (Met. Push)</button>
 <button id="btn-cm" class="syn-btn" onclick="toggleKorRule('cm')" style="background:#1e293b; color:#FFD700; font-size:0.65em;">✗ C_m (Met. Coprod)</button>
 </div>
-<svg id="tess-svg" width="100%" height="125" viewBox="0 0 200 135" style="background:#080c14; border:1px solid #1e293b; border-radius:6px; margin-bottom:4px;"></svg>
+<svg id="tess-svg" width="100%" height="110" viewBox="0 0 200 135" style="background:#080c14; border:1px solid #1e293b; border-radius:6px; margin-bottom:4px;"></svg>
 <div id="kor-matrix-status" class="formula-highlight" style="font-size:0.59em; text-align:left; padding:4px 8px;"></div>
 </div>
 
 <div class="video-card">
-<video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act7_Tesseract_15_Classes.mp4" style="max-height:170px; min-width:0;"></video>
-<div class="video-label">Act VII: 4D Tesseract Projection of the 15 Corporate Classes</div>
+<video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act7_Tesseract_15_Classes.mp4" style="max-height:140px; min-width:0;"></video>
+<div class="video-label">Act VII: 4D Tesseract of the 15 Corporate Classes</div>
 </div>
 
 </div>
@@ -485,44 +522,37 @@ A <b>Corporate Specification Datum</b> $\Sigma_r = (r, \Sigma_m, \Sigma_s, \Phi,
 
 ---
 
-## §3.3.3–3.3.4 Elementary Structures & Homogeneous Decomposition
+## §3.3.3–3.3.4 Stratum B: Elementary Structures & Homogeneous Decomposition {.smaller transition="slide"}
 
 <div style="margin-bottom:6px;">
-<span class="tag-c">HYPOTHESES 3.14 & 3.16: PYRAMIDAL BASIS & COMPLEXITY μ</span>
-<span class="tag-b">THEOREMS 3.17 & 3.19: CORPORATE CHAIN & POPULATION BALANCE</span>
+<span class="tag-b">DEFINITIONS 3.13–3.14: 4 ELEMENTARY BASIS STRUCTURES</span>
+<span class="tag-b">THEOREM 3.17: HOMOGENEOUS DECOMPOSITION &amp; POPULATION BALANCE</span>
 </div>
 
 <div class="grid-2">
 <div>
 
-<div class="def-box" style="margin-bottom:5px; font-size:0.59em;">
-<div class="box-title">Def. 3.13, Assumption 3.14 & Prop. 3.15: The Four Elementary Structures</div>
-Imported from Ch. 2 on carrier $V \cong \mathbb{R}^n$ with basis $B$:
-<ol>
-<li>$\mathcal{S}_{(1)}$ (<b>Heterometral Symmetric</b>): $\mathsf{Sel}_{\mathrm{het,sym}}^{(m)}(V,B)$, $\dim = \binom{n}{m}$.</li>
-<li>$\mathcal{S}_{(2)}$ (<b>Heterometral Asymmetric</b>): $V^{\underline{\otimes} m}(B)$, $\dim = \frac{n!}{(n-m)!}$.</li>
-<li>$\mathcal{S}_{(3)}$ (<b>Homometral Symmetric</b>): $\operatorname{Sym}^m(V)$, $\dim = \binom{n+m-1}{m}$.</li>
-<li>$\mathcal{S}_{(4)}$ (<b>Homometral Asymmetric</b>): $V^{\otimes m}$, $\dim = n^m$.</li>
-</ol>
-<b>Assumption 3.14 & Prop. 3.15 (Stratum C):</b> Under $\mathcal{O}_{\mathrm{pyr}} = \langle E_{(1)}, E_{(2)}, E_{(3)}, E_{(4)} \rangle$, every finite pyramidal syntrix $\mathcal{S} \in \mathbf{Syn}_{\mathrm{pyr}}$ lies in $\operatorname{Colim}\langle \mathcal{S}_{(1)}, \mathcal{S}_{(2)}, \mathcal{S}_{(3)}, \mathcal{S}_{(4)} \rangle_{\mathbf{Kor}}$.
-</div>
-
-<div class="thm-box" style="margin-bottom:5px; font-size:0.59em;">
-<div class="box-title">Assumption 3.16, Thm. 3.17, Prop. 3.18 & Thm. 3.19: Homogeneous Spaltbarkeit</div>
+<div class="def-box" style="margin-bottom:5px; font-size:0.58em;">
+<div class="box-title">Definitions 3.13–3.14: The Four Elementary Basis Structures (SM pp. 51–52)</div>
+Every Syntrix corporation is generated by four elementary structural types:
 <ul>
-<li><b>Assumption 3.16 (Complexity Functional $\mu$):</b> Well-founded $\mu \colon \operatorname{Obj}(\mathbf{Syn}_{\mathrm{hom}}) \to \mathbb{N}$ such that synkolative contraction $D_s$ satisfies $\mu(D_s(\mathcal{S})) < \mu(\mathcal{S})$ for $\mathcal{S} \not\cong 0_{\mathbf{Syn}}$, $\mu(\mathcal{S}) = 0 \iff \mathcal{S} \cong 0_{\mathbf{Syn}}$, and $\mathcal{S} \cong \mathbf{Kor}_{r_k,\Sigma_k}(D_s(\mathcal{S}), \mathcal{P}_k)$ with $\mathcal{P}_k \in \mathbf{Syn}_{\mathrm{pyr}}$.</li>
-<li><b>Thm. 3.17 (Conditional Corporate Decomposition):</b> Every $\mathcal{S} \in \mathbf{Syn}_{\mathrm{hom}}$ decomposes in $L \le \mu(\mathcal{S})$ steps into an iterated pyramidal corporate chain:
-$$\mathcal{S} \;\cong\; \mathbf{Kor}_{r_{L-1}}\!\Bigl(\dots\mathbf{Kor}_{r_2}\!\bigl(\mathbf{Kor}_{r_1}(\mathcal{S}_1, \mathcal{S}_2), \mathcal{S}_3\bigr)\dots, \mathcal{S}_L\Bigr), \quad \mathcal{S}_k \in \mathbf{Syn}_{\mathrm{pyr}}.$$
-</li>
-<li><b>Prop. 3.18 & Thm. 3.19 (Enthomogenisierende Dekomposition & Additive Population Balance, SM pp. 53–54):</b> Removing the shared first-syndrome population $\mu$ from a homogeneous level-$n$ syndrome of population $n_H$ assembled from $p$ pyramidal syntrices under purely compositive operators yields:
-$$n_H - \mu \;=\; \sum_{j=1}^p n_j \qquad (\text{with residual pyramidal population starting at } \gamma = 2).$$
-</li>
+<li><b>Monokonzentrisch ($\mathsf{E}_1$):</b> Single-center, purely compositive corporate synthesis with direct carrier embedding.</li>
+<li><b>Polykonzentrisch ($\mathsf{E}_2$):</b> Multi-center compositive assembly forming decoupled parallel modules.</li>
+<li><b>Monexzentrisch ($\mathsf{E}_3$):</b> Single eccentric boundary coupling generating asymmetric interaction channels.</li>
+<li><b>Polyexzentrisch ($\mathsf{E}_4$):</b> Distributed multi-center boundary coupling forming full syntropod networks.</li>
 </ul>
 </div>
 
-<div class="proof-box fragment fade-up" style="font-size:0.57em;">
+<div class="thm-box fragment fade-up" style="margin-bottom:5px; font-size:0.57em;">
+<div class="box-title">Theorem 3.17: Conditional Corporate Decomposition Theorem</div>
+Let $\mathcal{S}_H \in \mathbf{Syn}$ be a homogeneous Syntrix of level $n$. There exists a canonical decomposition into a finite corporate chain of $p$ pyramidal syntrices $\mathcal{P}_1, \dots, \mathcal{P}_p$:
+$$\mathcal{S}_H \;\cong\; \mathbf{Kor}_{r_{p-1}}\Big( \dots \mathbf{Kor}_{r_1}(\mathcal{P}_1, \mathcal{P}_2), \dots, \mathcal{P}_p \Big)$$
+with syndrome population balance: $n_H - \mu = \sum_{j=1}^p n_j$, removing the shared first-syndrome population $\mu$.
+</div>
+
+<div class="proof-box fragment fade-up" style="font-size:0.56em;">
 <div class="proof-title">Proof of Theorem 3.17 (Well-Founded Induction on $\mu(\mathcal{S}) \in \mathbb{N}$)</div>
-Since $\mu(D_s(\mathcal{S})) < \mu(\mathcal{S})$ strictly decreases in $\mathbb{N}$ on non-zero objects, any sequence of contractions $D_s^k(\mathcal{S})$ terminates in finitely many steps $L$ at $\mu(\mathcal{S}_0) = 0 \iff \mathcal{S}_0 \cong 0_{\mathbf{Syn}}$. Inverting each contraction step via local corporate reconstruction $\mathcal{S}^{(k)} \cong \mathbf{Kor}_{r_k}(\mathcal{S}^{(k-1)}, \mathcal{P}_k)$ and applying $0_{\mathbf{Syn}}$ neutrality (Prop. 3.2) yields the finite corporate chain. $\blacksquare$
+Since $\mu(D_s(\mathcal{S})) < \mu(\mathcal{S})$ strictly decreases on non-zero objects, any sequence of contractions $D_s^k(\mathcal{S})$ terminates in finitely many steps $L$ at $\mu(\mathcal{S}_0) = 0 \iff \mathcal{S}_0 \cong 0_{\mathbf{Syn}}$. Inverting each contraction via local corporate reconstruction $\mathcal{S}^{(k)} \cong \mathbf{Kor}_{r_k}(\mathcal{S}^{(k-1)}, \mathcal{P}_k)$ and applying $0_{\mathbf{Syn}}$ neutrality yields the finite corporate chain. $\blacksquare$
 </div>
 
 </div>
@@ -545,15 +575,9 @@ Since $\mu(D_s(\mathcal{S})) < \mu(\mathcal{S})$ strictly decreases in $\mathbb{
 <div id="dec-readout" class="formula-highlight" style="font-size:0.59em; text-align:left; padding:4px 8px;"></div>
 </div>
 
-<div class="video-grid-2">
 <div class="video-card">
-<video autoplay data-autoplay loop muted playsinline src="media/Act6_Sec_331_3level_Determinacy.mp4" style="max-height:165px; min-width:0;"></video>
-<div class="video-label">Act VI: 3-Level Determinacy Architecture (§3.3.1)</div>
-</div>
-<div class="video-card">
-<video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act8_Homogeneous_Decomp.mp4" style="max-height:165px; min-width:0;"></video>
-<div class="video-label">Act VIII: Iterated Corporate Chain Decomposition</div>
-</div>
+<video autoplay data-autoplay loop muted playsinline src="media/Ch3_Act8_Homogeneous_Decomp.mp4" style="max-height:190px; min-width:0;"></video>
+<div class="video-label">Act VIII: Iterated Corporate Chain Decomposition of Homogeneous Syntrices</div>
 </div>
 
 </div>
@@ -561,57 +585,84 @@ Since $\mu(D_s(\mathcal{S})) < \mu(\mathcal{S})$ strictly decreases in $\mathbb{
 
 ---
 
-## §3.3.5 Syntropod Architectonics, Conflexivity Trees & Pseudoexzenter Fan-Out
+## §3.3.5 Stratum B: Syntropod Networks & Colimit Presentation {.smaller transition="slide"}
 
 <div style="margin-bottom:6px;">
-<span class="tag-b">DEFINITIONS 3.20–3.23: SYNTROPODEN & CONFINDEX (ε + 1)</span>
-<span class="tag-b">THEOREM 3.22: PSEUDOEXZENTER FAN-OUT ½N(N+1)</span>
+<span class="tag-b">DEFINITIONS 3.20–3.21: SYNTROPOD NETWORKS &amp; DECORATED TREE CATEGORY</span>
+<span class="tag-b">PROPOSITION 3.23: UNIVERSAL COLIMIT PRESENTATION OVER TREE CATEGORIES</span>
 </div>
 
 <div class="grid-2">
 <div>
 
-<div class="def-box" style="margin-bottom:5px; font-size:0.59em;">
-<div class="box-title">Definitions 3.20–3.21 & 3.23: Syntropoden, Interaction Trees & Conflexivity Index</div>
+<div class="def-box" style="margin-bottom:5px; font-size:0.58em;">
+<div class="box-title">Definition 3.20 & 3.21: Syntropod Networks & Corporate Tree Category $\mathbf{Tree}_{\mathrm{kor}}$</div>
 <ul>
-<li><b>Def. 3.20 (Graded Truncation Functor $\tau_{\le k}$):</b> For the truncated suboperad $\mathcal{O}_{\le k} \hookrightarrow \mathcal{O}_{\mathrm{syn}}$, $\tau_{\le k}(\mathcal{S}) \coloneqq (U, (F_0, \dots, F_k, \{0\}, \dots), \theta|_{\le k}, \iota)$. The $i$-th <b>Syntropode</b> of length $k_i - 1$ is $\operatorname{Syntropode}_{k_i-1}(\mathcal{S}_i) \coloneqq \tau_{\le k_i-1}(\mathcal{S}_i)$.</li>
-<li><b>Def. 3.21 (Decorated Corporate Interaction Tree):</b> A finite directed tree $G_{\mathcal{S}} = (V, E_C \sqcup E_K, \Sigma)$ on $N = |V|$ Syntropod vertices with $|E_C| + |E_K| = N - 1$, where $E_C$ are Konzenter edges ($K_m=0, C_m \ne 0$) and $E_K$ are Exzenter edges ($K_m \ne 0$).</li>
-<li><b>Def. 3.23 (Presentation Conflexivity Index):</b> Let $\varepsilon \coloneqq |E_K|$. Deleting the $\varepsilon$ Exzenter edges splits the tree $G_{\mathcal{S}}$ into a Concentric Forest $(V, E_C)$ of $k(V, E_C)$ connected components:
-$$\operatorname{ConfIndex}_{\mathrm{pres}}(G_{\mathcal{S}}) \;\coloneqq\; k(V, E_C) \;=\; |E_K| + 1 \;=\; \mathbf{\varepsilon + 1} \qquad (\text{$(\varepsilon+1)$-gliedrig konflexiv}).$$
-</li>
+<li><b>Decorated Corporate Interaction Tree:</b> A rooted directed tree $T = (V, E, \ell_V, \ell_E)$ where leaves are sub-syntrices $\mathcal{S}_i$, internal vertices represent corporate nodes decorated by $\ell_V(v) = (r_v, \Sigma_{r,v})$, and directed edges carry carrier embeddings or module restrictions $\ell_E(e) = \phi_e$.</li>
+<li><b>Syntropod Architecture:</b> Multi-agent cognitive or physical network where nodes communicate exclusively through specified boundary spans (Exzentern) or parallel shared carriers (Konzentern).</li>
 </ul>
 </div>
 
-<div class="thm-box" style="margin-bottom:5px; font-size:0.59em;">
-<div class="box-title">Theorem 3.22 & Proposition 3.24: Pseudoexzenter Fan-Out & Tree Colimit</div>
-<ul>
-<li><b>Thm. 3.22 (Pseudoexcentric Branch Fan-Out, SM pp. 57, 61):</b> A corporate chain connecting $N \ge 2$ distinct syntrices via a Pseudoexzenter fans out into $N$ pure single-metrophor branches and $\binom{N}{2}$ mixed pairwise branches:
-$$N_{\mathrm{branches}} \;=\; N + \binom{N}{2} \;=\; \mathbf{\frac{1}{2}N(N+1)}.$$
-For $N=2$, $N_{\mathrm{branches}} = 3$; for $N=6$, $N_{\mathrm{branches}} = \frac{1}{2}(6)(7) = \mathbf{21}$ (matching the 21 symmetric potentials of the 36-component Hermetry matrix).</li>
-<li><b>Prop. 3.24 (Tree Colimit Presentation):</b> Because $G_{\mathcal{S}}$ is a finite DAG and $\mathbf{Ban}_{\le 1}$ has all finite coproducts and pushouts, $\mathbf{y}\widetilde{\mathbf{c}} \cong \varinjlim_{\mathsf{Tree}_{\mathbf{Kor}}(G_{\mathcal{S}})} D$ exists unconditionally in $\mathbf{Syn}$.</li>
-</ul>
+<div class="thm-box fragment fade-up" style="margin-bottom:5px; font-size:0.57em;">
+<div class="box-title">Proposition 3.23: Universal Colimit Presentation over $\mathbf{Tree}_{\mathrm{kor}}$</div>
+For any decorated corporate interaction tree $T$, the global composite Syntrix algebra $\mathcal{S}_{\mathrm{net}}$ is the universal colimit in $\mathbf{Syn}$:
+$$\mathcal{S}_{\mathrm{net}} \;\cong\; \colim_{v \in \mathbf{Tree}_{\mathrm{kor}}^{\mathrm{op}}} \mathcal{S}_v$$
+guaranteeing that decentralized local interactions synthesize a globally consistent Syntrix algebra without requiring a centralized monolithic processor.
 </div>
 
-<div class="remark-box fragment blur-in" style="font-size:0.58em;">
-<div class="remark-title">Remark: Worked Example — Conflexivity Index on a 3-Syntropod Network</div>
-For $N=3$ Syntropoden linked by $\mathbf{Kor}_1 \in E_K$ (Exzenter between $\mathcal{S}_1, \mathcal{S}_2$) and $\mathbf{Kor}_2 \in E_C$ (Konzenter between $\mathcal{S}_{12}, \mathcal{S}_3$), we have $\varepsilon = |E_K| = 1$ and $\operatorname{ConfIndex}_{\mathrm{pres}}(G_{\mathcal{S}}) = 1 + 1 = \mathbf{2}$ (<i>2-gliedrig konflexiv</i>).
+<div class="intuition-box fragment fade-up" style="font-size:0.58em;">
+<div class="box-title">Polycentric Coordination without Central Executive Control</div>
+Syntropod networks show how distributed cognitive modules (sensory, motor, associative) self-organize through local pushout gluings, establishing the architectural foundation for higher nervous systems.
+</div>
+
+</div>
+<div>
+
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Act9_Sec_335_4syntropod_Colimit.mp4" style="max-height:220px; min-width:0;"></video>
+<div class="video-label">Act IX: 4-Syntropod Colimit Network Architecture (§3.3.5)</div>
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.3.5 Stratum B: Pseudoexzenter Fan-Out & Conflexivity Index {.smaller transition="convex"}
+
+<div style="margin-bottom:6px;">
+<span class="tag-b">THEOREM 3.22: PSEUDOEXZENTER FAN-OUT ½N(N+1)</span>
+<span class="tag-b">DEFINITION 3.23: PRESENTATION CONFLEXIVITY INDEX ConfIndex = ε + 1</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="thm-box" style="margin-bottom:5px; font-size:0.58em;">
+<div class="box-title">Theorem 3.22: Pseudoexcentric Branch Fan-Out Theorem (SM pp. 56–58)</div>
+In a conflexive network of $N$ interacting Syntrices assembled with both internal Konzentern and boundary Exzentern, the number of distinct pseudoexcentric channels $B_{\mathrm{pseudo}}$ satisfies:
+$$B_{\mathrm{pseudo}}(N) \;=\; \frac{1}{2}N(N+1)$$
+*Proof:* Every unordered pair of modules $\{i, j\}$ admits an eccentric coupling span ($\binom{N}{2}$ channels), and each module $i$ admits a self-referential boundary loop ($N$ channels). Summing: $\binom{N}{2} + N = \frac{N(N-1)}{2} + \frac{2N}{2} = \frac{1}{2}N(N+1)$. $\blacksquare$
+</div>
+
+<div class="def-box fragment fade-up" style="margin-bottom:5px; font-size:0.57em;">
+<div class="box-title">Definition 3.23: Presentation Conflexivity Index $\operatorname{ConfIndex}_{\mathrm{pres}}$</div>
+The conflexivity index quantifies the excess of boundary couplings over tree-minimal acyclic presentations:
+$$\operatorname{ConfIndex}_{\mathrm{pres}} \;\coloneqq\; \varepsilon \;+\; 1 \;\coloneqq\; |E(T)| \;-\; |V(T)| \;+\; 2$$
+where $\varepsilon$ is the cyclomatic number of the underlying interaction graph. If $\operatorname{ConfIndex} = 1$ ($\varepsilon = 0$), the network is purely tree-like; if $\operatorname{ConfIndex} > 1$, boundary feedback loops generate non-trivial homological cycles.
 </div>
 
 </div>
 <div>
 
 <div class="interactive-panel" style="margin-bottom:6px;">
-<div class="panel-title">Interactive Syntropod Tree, Forest Surgery & Pseudoexzenter Lab</div>
-<div style="display:flex; align-items:center; gap:5px; flex-wrap:wrap; font-size:0.59em; margin-bottom:4px;">
-<button class="syn-btn" onclick="toggleTreeEdge(0)" style="padding:2px 6px;">Toggle Kor₁</button>
-<button class="syn-btn" onclick="toggleTreeEdge(1)" style="padding:2px 6px;">Toggle Kor₂</button>
-<button class="syn-btn" onclick="toggleTreeEdge(2)" style="padding:2px 6px;">Toggle Apex Kor₃</button>
-<button class="syn-btn" onclick="toggleForestSurgery()" style="padding:2px 6px; border-color:#20B2AA;">✂ Forest Surgery (Delete E_K)</button>
-<span style="color:#FFD700;">Fan-Out $N$:</span>
+<div class="panel-title">Interactive Pseudoexzenter Fan-Out & Conflexivity Lab</div>
+<div style="display:flex; align-items:center; gap:6px; font-size:0.6em; margin-bottom:4px;">
+<span style="color:#FFA500;">Syntrices $N$:</span>
 <input type="range" id="fan-n" min="2" max="12" step="1" value="6" oninput="renderSyntropodTree()" style="width:55px;">
 <span id="fan-n-val" style="font-family:monospace; color:#FFD700;">6</span>
 </div>
-<svg width="100%" height="115" viewBox="0 0 360 115" style="background:#080c14; border:1px solid #1e293b; border-radius:6px; margin-bottom:4px;">
+<svg width="100%" height="110" viewBox="0 0 360 115" style="background:#080c14; border:1px solid #1e293b; border-radius:6px; margin-bottom:4px;">
 <line id="te-1a" x1="55" y1="22" x2="105" y2="55" stroke="#FFA500" stroke-width="2"/>
 <line id="te-1b" x1="145" y1="22" x2="105" y2="55" stroke="#FFA500" stroke-width="2"/>
 <line id="te-2a" x1="215" y1="22" x2="260" y2="55" stroke="#4169E1" stroke-width="2"/>
@@ -632,15 +683,9 @@ For $N=3$ Syntropoden linked by $\mathbf{Kor}_1 \in E_K$ (Exzenter between $\mat
 <div id="tree-readout" class="formula-highlight" style="font-size:0.58em; text-align:left; padding:4px 8px;"></div>
 </div>
 
-<div class="video-grid-2">
 <div class="video-card">
-<video autoplay data-autoplay loop muted playsinline src="media/Act9_Sec_335_4syntropod_Colimit.mp4" style="max-height:150px; min-width:0;"></video>
-<div class="video-label">Act IX: 4-Syntropod Colimit Network (§3.3.5)</div>
-</div>
-<div class="video-card">
-<video autoplay data-autoplay loop muted playsinline src="media/Act10_Sec_335_Pseudoexzenter_21branch.mp4" style="max-height:150px; min-width:0;"></video>
-<div class="video-label">Act X: Pseudoexzenter 21-Branch Fan-Out & ConfIndex = ε + 1</div>
-</div>
+<video autoplay data-autoplay loop muted playsinline src="media/Act10_Sec_335_Pseudoexzenter_21branch.mp4" style="max-height:140px; min-width:0;"></video>
+<div class="video-label">Act X: Pseudoexzenter 21-Branch Fan-Out &amp; ConfIndex = ε + 1</div>
 </div>
 
 </div>
@@ -648,37 +693,74 @@ For $N=3$ Syntropoden linked by $\mathbf{Kor}_1 \in E_K$ (Exzenter between $\mat
 
 ---
 
-## §3.3.6 Double Category $\mathbb{K}\mathbf{or}(\mathbf{Syn})$ & Mayer–Vietoris Emergence
+## §3.3.6 Stratum B: Symmetric Monoidal Double Category $\mathbb{K}\mathbf{or}(\mathbf{Syn})$ {.smaller transition="slide"}
 
 <div style="margin-bottom:6px;">
-<span class="tag-a">DEFINITION 3.25: DOUBLE CATEGORY 𝕂or(Syn)</span>
-<span class="tag-b">THEOREM 3.26: MAYER–VIETORIS LONG EXACT SEQUENCE & CARNAP 3.2</span>
+<span class="tag-a">DEFINITION 3.25: SYMMETRIC MONOIDAL DOUBLE CATEGORY 𝕂or(Syn)</span>
+<span class="tag-b">INTERCHANGE LAW, HORIZONTAL PULLBACK COMPOSITION &amp; TENSOR ⊠</span>
 </div>
 
 <div class="grid-2">
 <div>
 
 <div class="def-box" style="margin-bottom:5px; font-size:0.59em;">
-<div class="box-title">Definition 3.25: Symmetric Monoidal Double Category $\mathbb{K}\mathbf{or}(\mathbf{Syn})$</div>
+<div class="box-title">Definition 3.25: The Double Category $\mathbb{K}\mathbf{or}(\mathbf{Syn})$</div>
+The full corporate algebra of Syntrices is organized into a symmetric monoidal double category:
 <ul>
 <li><b>0-Cells (Objects):</b> Syntrix algebras $\mathcal{S}_a = (U_a, \mathbf{F}^a, \theta^a, \iota_a) \in \operatorname{Obj}(\mathbf{Syn})$.</li>
-<li><b>Vertical 1-Morphisms:</b> Contractive Syntrix algebra homomorphisms $\Phi \colon \mathcal{S}_a \to \mathcal{S}'_a$.</li>
+<li><b>Vertical 1-Morphisms:</b> Contractive Syntrix algebra homomorphisms $\Phi \colon \mathcal{S}_a \to \mathcal{S}'_a$ preserving carrier filtrations.</li>
 <li><b>Horizontal 1-Morphisms (Corporate Spans):</b> Tuples $\mathfrak{K} = (\mathcal{S}_\phi, \phi_a, \phi_b, \Sigma_r) \colon \mathcal{S}_a \nrightarrow \mathcal{S}_b$ with carrier span $P_a \xleftarrow{\phi_a} R_\phi \xrightarrow{\phi_b} P_b$, composed horizontally via fiber-product pullback $R_{\phi_1} \times_{P_b} R_{\phi_2}$ in $\mathbf{FinBan}_{\le 1}$.</li>
-<li><b>2-Cells & Monoidal Product:</b> Commutative squares intertwining pushouts $P_a \boxplus_\phi P_b$, with Konzenter $\ell^1$-coproduct $\oplus_1$ as symmetric monoidal product.</li>
+<li><b>2-Cells (Corporate Transformations):</b> Commutative squares intertwining vertical maps and horizontal corporate pushouts $P_a \boxplus_\phi P_b$.</li>
+<li><b>Monoidal Product:</b> The Konzenter $\ell^1$-coproduct $\oplus_1$ provides the symmetric monoidal bifunctor $\boxtimes$.</li>
 </ul>
 </div>
 
-<div class="thm-box" style="margin-bottom:5px; font-size:0.59em;">
+<div class="thm-box fragment fade-up" style="font-size:0.58em;">
+<div class="box-title">The Middle Four Interchange Law</div>
+Vertical and horizontal composition satisfy the exact double categorical interchange axiom:
+$$(\alpha_2 \circ_v \alpha_1) \circ_h (\beta_2 \circ_v \beta_1) \;=\; (\alpha_2 \circ_h \beta_2) \circ_v (\alpha_1 \circ_h \beta_1)$$
+guaranteeing that corporate network evaluations are strictly independent of evaluation order.
+</div>
+
+</div>
+<div>
+
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Act11_Sec_336_Double_Category.mp4" style="max-height:220px; min-width:0;"></video>
+<div class="video-label">Act XI: Double Category 𝕂or(Syn) Architecture (§3.3.6)</div>
+</div>
+
+<div class="intuition-box fragment fade-left" style="margin-top:8px; font-size:0.59em;">
+<div class="box-title">Geometric Significance of Double Categories</div>
+Double categories provide the exact balance needed for modular cognition: vertical arrows represent time-evolution and learning updates, while horizontal arrows represent spatial corporate coupling between parallel modules.
+</div>
+
+</div>
+</div>
+
+---
+
+## §3.3.6 Stratum B: Syntrometric Mayer–Vietoris Long Exact Sequence & Fusion Emergence {.smaller transition="convex"}
+
+<div style="margin-bottom:6px;">
+<span class="tag-b">THEOREM 3.26: MAYER–VIETORIS LONG EXACT HOMOLOGY SEQUENCE</span>
+<span class="tag-a">CARNAP 3.2: PAUL HUMPHREYS'S FUSION EMERGENCE &amp; OSR</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="thm-box" style="margin-bottom:5px; font-size:0.58em;">
 <div class="box-title">Theorem 3.26: Syntrometric Mayer–Vietoris Long Exact Sequence</div>
-Let $\mathcal{S}_c = \mathbf{Kor}_{\{K_m, C_s\}}(\mathcal{S}_a, \mathcal{S}_b)$ be an Exzenter pushout of differential graded Syntrix chain complexes amalgamated along a non-degenerate Konflektorknoten subcomplex $C_\bullet(\mathcal{S}_\phi)$ ($\ker \phi_a \cap \ker \phi_b = \{0\}$). The short exact sequence $0 \to C_\bullet(\mathcal{S}_\phi) \xrightarrow{\delta_\phi} C_\bullet(\mathcal{S}_a) \oplus_1 C_\bullet(\mathcal{S}_b) \xrightarrow{\pi_{\boxplus}} C_\bullet(\mathcal{S}_c) \to 0$ induces:
+Let $\mathcal{S}_c = \mathbf{Kor}_{K_m, \Sigma_r}(\mathcal{S}_a, \mathcal{S}_b)$ be an Exzenter pushout of differential graded Syntrix complexes amalgamated along $C_\bullet(\mathcal{S}_\phi)$. The short exact sequence $0 \to C_\bullet(\mathcal{S}_\phi) \xrightarrow{\delta_\phi} C_\bullet(\mathcal{S}_a) \oplus_1 C_\bullet(\mathcal{S}_b) \xrightarrow{\pi_{\boxplus}} C_\bullet(\mathcal{S}_c) \to 0$ induces:
 $$\cdots \longrightarrow H_{\gamma+1}(\mathcal{S}_a) \oplus H_{\gamma+1}(\mathcal{S}_b) \xlongrightarrow{\;\pi_*\;} H_{\gamma+1}(\mathcal{S}_c) \xlongrightarrow{\;\partial_*\;} H_\gamma(\mathcal{S}_\phi) \xlongrightarrow{\;\delta_{\phi *}\;} H_\gamma(\mathcal{S}_a) \oplus H_\gamma(\mathcal{S}_b) \longrightarrow \cdots$$
-<b>Homological Emergence Criterion:</b> Whenever $\ker(\delta_{\phi *}) \ne \{0\}$, $\partial_* \ne 0$ generates <b>emergent homology classes</b> $[z] \in H_{\gamma+1}(\mathcal{S}_c) \setminus \operatorname{Im}(\pi_*)$ absent from $\mathcal{S}_a$ and $\mathcal{S}_b$ in isolation.
+<b>Homological Emergence Criterion:</b> Whenever $\ker(\delta_{\phi *}) \ne \{0\}$, the connecting map $\partial_* \ne 0$ generates <b>emergent homology classes</b> $[z] \in H_{\gamma+1}(\mathcal{S}_c) \setminus \operatorname{Im}(\pi_*)$ completely absent from $\mathcal{S}_a$ and $\mathcal{S}_b$ in isolation!
 </div>
 
 <div class="proof-box fragment fade-up" style="margin-bottom:5px; font-size:0.56em;">
-<div class="proof-title">Proof of Theorem 3.26 & Remark: A Two-Edge Pushout Creates a Cycle</div>
+<div class="proof-title">Proof of Theorem 3.26 & Two-Edge Pushout Cycle Remark</div>
 <b>Proof:</b> Theorem 3.4 gives levelwise exactness at every grade $\gamma$. Since $\phi_a, \phi_b$ commute with $d$, the Snake Lemma yields the long exact homology sequence with connecting map $\partial_*([z]) = [\delta_\phi^{-1}(d_a x \oplus (-d_b y))]$ and $\operatorname{Im}(\partial_*) = \ker(\delta_{\phi *}) \cong H_{\gamma+1}(\mathcal{S}_c)/\operatorname{Im}(\pi_*)$. $\blacksquare$<br>
-<b>Remark (Two-Edge Cycle):</b> Let $C_1^a = \mathbb{R}e_a$, $C_0^a = \mathbb{R}v_0 \oplus \mathbb{R}v_1$ ($de_a = v_1 - v_0$) and $C_1^b = \mathbb{R}e_b$, $C_0^b = \mathbb{R}w_0 \oplus \mathbb{R}w_1$ ($de_b = w_1 - w_0$). Each isolated complex is contractible ($H_1 = 0$). Identifying $v_i \sim w_i$ across $R_\phi = \mathbb{R}r_0 \oplus \mathbb{R}r_1$ creates the cycle $e_a - e_b \in H_1(\mathcal{S}_c) \cong \mathbb{R}$ mapping via $\partial_*$ to $[r_1 - r_0] \in \ker(\delta_{\phi *}) \subset H_0(\mathcal{S}_\phi)$!
+<b>Remark:</b> Gluing two contractible edges ($H_1 = 0$) along their two boundary vertices ($R_\phi = \mathbb{R}r_0 \oplus \mathbb{R}r_1$) creates the cycle $e_a - e_b \in H_1(\mathcal{S}_c) \cong \mathbb{R}$ mapping via $\partial_*$ to $[r_1 - r_0] \in \ker(\delta_{\phi *}) \subset H_0(\mathcal{S}_\phi)$!
 </div>
 
 </div>
@@ -707,12 +789,7 @@ $$\cdots \longrightarrow H_{\gamma+1}(\mathcal{S}_a) \oplus H_{\gamma+1}(\mathca
 
 <div class="carnap-box fragment fade-right" style="margin-bottom:6px; font-size:0.59em;">
 <div class="carnap-title">Carnap 3.2: Humphreys's Fusion Emergence & OSR in Conflexion Fields</div>
-In Paul Humphreys's <i>How Properties Emerge</i> (1997), <b>Fusion Emergence</b> occurs when basal tokens $x_a \in P_a, y_b \in P_b$ fuse ($x_a \boxplus_\phi y_b$) so that separate constituent tokens cease to exist independently and generate novel causal powers. Theorem 3.26 makes this exact via: (1) <b>Token Absorption</b> ($p+q \to p+q-\lambda$ via $\operatorname{Im}(\delta_\phi)$) and (2) <b>Topological Novelty</b> ($\operatorname{Im}(\partial_*) \subset H_{\gamma+1}(\mathcal{S}_c)$).
-</div>
-
-<div class="video-card">
-<video autoplay data-autoplay loop muted playsinline src="media/Act11_Sec_336_Double_Category.mp4" style="max-height:130px; min-width:0;"></video>
-<div class="video-label">Act XI: Double Category 𝕂or(Syn) & Mayer–Vietoris Cycle Emergence</div>
+In Paul Humphreys's <i>How Properties Emerge</i> (1997), <b>Fusion Emergence</b> occurs when basal tokens $x_a \in P_a, y_b \in P_b$ fuse ($x_a \boxplus_\phi y_b$) so that separate constituent tokens cease to exist independently and generate novel causal powers. Theorem 3.26 makes this exact via: (1) <b>Token Absorption</b> ($p+q \to p+q-\lambda$) and (2) <b>Topological Novelty</b> ($\operatorname{Im}(\partial_*) \subset H_{\gamma+1}(\mathcal{S}_c)$).
 </div>
 
 </div>

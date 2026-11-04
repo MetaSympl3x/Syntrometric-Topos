@@ -488,11 +488,11 @@ Endow the coupled polarimeter base $M_U = \mathbb{R}^2_{(x_1,x_2)}$ with $P_U = 
 
 ---
 
-## §4.3.1–4.3.3 Hodge–Laplacian Splitting, Atiyah Algebroid & Bogomolny Bound
+## §4.3.1–4.3.2 Non-Flat Hodge–Laplacian Fredholm Splitting & Holoform Emergence {.smaller transition="fade"}
 
 <div style="margin-bottom:6px;">
-<span class="tag-a">THEOREM 4.13: 2-WAY FREDHOLM LAPLACIAN SPLITTING & CLAIM CEILING c_LAPLACE</span>
-<span class="tag-b">THEOREMS 4.17 & 4.18: ATIYAH ALGEBROID & BOGOMOLNY TOPOLOGICAL BOUND</span>
+<span class="tag-a">THEOREM 4.13: NON-FLAT 2-WAY FREDHOLM SPLITTING & CLAIM CEILING c_LAPLACE</span>
+<span class="tag-b">DEFS. 4.15–4.16: MATCHING EQUALIZER & SUPER-ADDITIVE EMERGENCE FUNCTIONAL</span>
 </div>
 
 <div class="grid-2">
@@ -500,37 +500,90 @@ Endow the coupled polarimeter base $M_U = \mathbb{R}^2_{(x_1,x_2)}$ with $P_U = 
 
 <div class="thm-box" style="margin-bottom:5px; font-size:0.57em;">
 <div class="box-title">Theorem 4.13: Non-Flat 2-Way Fredholm Laplacian Splitting</div>
-On a compact oriented Riemannian manifold $(M_U, g_U)$, the strongly elliptic <b>Hodge-type Connection Laplacian</b> $\Delta_{A_0} \coloneqq D_{A_0}D_{A_0}^* + D_{A_0}^*D_{A_0}$ on $L^2\Omega^2(M_U, \operatorname{ad}P_U)$ induces the $L^2$-orthogonal Fredholm splitting:
-$$L^2\Omega^2(M_U, \operatorname{ad}P_U) \;=\; \operatorname{im}(\Delta_{A_0}) \;\oplus_{L^2}\; \mathcal{H}_{\Delta_{A_0}}^2, \qquad \mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}} \;=\; \Delta_{A_0}\Phi_{\mathrm{int}} \;+\; \gamma_{\mathrm{harm}}$$
-where $\Phi_{\mathrm{int}} = G_{A_0}(\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}})$ is the Green potential and $\gamma_{\mathrm{harm}} \in \ker(\Delta_{A_0})$, yielding exact <b>Energy Orthogonality</b>: $\mathcal{E}_{\mathrm{int}}^{\mathcal{D}} = \frac{1}{2}\bigl(\|\Delta_{A_0}\Phi_{\mathrm{int}}\|_{L^2}^2 + \|\gamma_{\mathrm{harm}}\|_{L^2}^2\bigr)$.
+On a compact oriented Riemannian manifold $(M_U, g_U)$ with smooth connection $A_0$ (possibly non-flat, $F_{A_0} \ne 0$), the strongly elliptic <b>Hodge-type Connection Laplacian</b> $\Delta_{A_0} \coloneqq D_{A_0}D_{A_0}^* + D_{A_0}^*D_{A_0}$ on $L^2\Omega^2(M_U, \operatorname{ad}P_U)$ induces the $L^2$-orthogonal Fredholm splitting:
+$$L^2\Omega^2(M_U, \operatorname{ad}P_U) \;=\; \operatorname{im}(\Delta_{A_0}) \;\oplus_{L^2}\; \mathcal{H}_{\Delta_{A_0}}^2(M_U, \operatorname{ad}P_U)$$
+where $\mathcal{H}_{\Delta_{A_0}}^2 \coloneqq \ker(\Delta_{A_0})$. The interaction curvature decomposes uniquely into:
+$$\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}} \;=\; \Delta_{A_0}\Phi_{\mathrm{int}} \;+\; \gamma_{\mathrm{harm}}$$
+with $\Phi_{\mathrm{int}} = G_{A_0}(\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}})$ the Green potential, yielding exact <b>Energy Orthogonality</b>:
+$$\mathcal{E}_{\mathrm{int}}^{\mathcal{D}} \;\coloneqq\; \frac{1}{2}\|\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}}\|_{L^2}^2 \;=\; \frac{1}{2}\left(\|\Delta_{A_0}\Phi_{\mathrm{int}}\|_{L^2}^2 \;+\; \|\gamma_{\mathrm{harm}}\|_{L^2}^2\right).$$
 </div>
 
 <div class="claim-ceiling fragment glow-pulse" style="margin-bottom:5px; font-size:0.56em;">
-<b>Claim Ceiling ($c_{\mathrm{LAPLACE}}$):</b> 2-way splitting $\operatorname{im}(\Delta_{A_0}) \oplus_{L^2} \ker(\Delta_{A_0})$ holds for all $A_0$; 3-way Hodge splitting $\operatorname{im}(D_{A_0}) \oplus \operatorname{im}(D_{A_0}^*) \oplus \mathcal{H}_{A_0}^2$ requires $D_{A_0}^2 = 0$ (e.g. flat $F_{A_0} = 0$).
+<b>Claim Ceiling ($c_{\mathrm{LAPLACE}}$):</b> The 2-way splitting $\operatorname{im}(\Delta_{A_0}) \oplus_{L^2} \ker(\Delta_{A_0})$ is mathematically proven in $L^2$ for all connections $A_0$; full 3-way Hodge splitting $\operatorname{im}(D_{A_0}) \oplus \operatorname{im}(D_{A_0}^*) \oplus \mathcal{H}_{A_0}^2$ requires $D_{A_0}^2 = 0$ (e.g. flat background $F_{A_0} = 0$).
 </div>
 
-<div class="def-box" style="margin-bottom:5px; font-size:0.57em;">
-<div class="box-title">Defs. 4.15–4.16 & Thm. 4.17: Matching Equalizer, $\Delta_{\mathrm{emerg}}^{\mathcal{I}}$ & Atiyah Algebroid</div>
+<div class="def-box fragment fade-up" style="margin-bottom:5px; font-size:0.57em;">
+<div class="box-title">Definitions 4.15–4.16: Matching Family Equalizer & Super-Additive Holoform Functional</div>
 <ul>
-<li><b>Defs. 4.15–4.16 (Holoform Emergence):</b> For $\Gamma \in \mathsf{Match}_{\mathcal{U}}(\mathbf{P}) \cong \mathbf{P}(U)$, the background-normalized emergence functional is $\Delta_{\mathrm{emerg}}^{\mathcal{I}}(\Gamma;\mathcal{D}) \coloneqq \mathcal{I}(\mathbf{A}) - \sum_{k=1}^N \mathcal{I}(A_0+a_k) + (N-1)\mathcal{I}(A_0)$. $\Gamma$ is a <b>Superadditive Holoform</b> iff $\Delta_{\mathrm{emerg}}^{\mathcal{I}} > 0$.</li>
-<li><b>Thm. 4.17 (Atiyah Lie Algebroid $\operatorname{At}(P_U) = TP_U/G$):</b> Fits into $0 \to \operatorname{ad}P_U \xrightarrow{\iota} \operatorname{At}(P_U) \xrightarrow{a=d\pi_U} TM_U \to 0$. A connection $\mathbf{A}$ is a splitting $\sigma_{\mathbf{A}} \colon TM_U \to \operatorname{At}(P_U)$, and $F_A$ is the exact Lie-bracket obstruction:
-$$\iota\!\left(F_A(X, Y)\right) \;=\; \bigl[\sigma_{\mathbf{A}}(X), \sigma_{\mathbf{A}}(Y)\bigr]_{\operatorname{At}(P_U)} - \sigma_{\mathbf{A}}\!\left([X, Y]_{TM_U}\right).$$
-</li>
+<li><b>Matching Equalizer:</b> For an open cover $\mathcal{U} = \{U_i\}$, the global section sheaf functor satisfies the equalizer $\mathsf{Match}_{\mathcal{U}}(\mathbf{P}) \cong \mathbf{P}(U)$ in $\mathbf{Sh}(\mathbf{Man}_{\mathrm{cnr}})$.</li>
+<li><b>Coupling Emergence Functional:</b> For global section $\Gamma = \{(\sigma_k, A_k)\} \in \mathsf{Match}_{\mathcal{U}}(\mathbf{P})$, the background-normalized functional is:
+$$\Delta_{\mathrm{emerg}}^{\mathcal{I}}(\Gamma;\mathcal{D}) \;\coloneqq\; \mathcal{I}(\mathbf{A}) \;-\; \sum_{k=1}^N \mathcal{I}(A_0 + a_k) \;+\; (N-1)\mathcal{I}(A_0).$$
+A composite configuration $\Gamma$ constitutes a <b>Super-Additive Holoform</b> if and only if $\mathbf{\Delta_{\mathrm{emerg}}^{\mathcal{I}}(\Gamma;\mathcal{D}) > 0}$.</li>
 </ul>
-</div>
-
-<div class="thm-box" style="font-size:0.57em;">
-<div class="box-title">Theorem 4.18 & Proof: Chern–Weil Bogomolny Stability Bound for Holoformen</div>
-On a compact oriented Riemannian 4-manifold $(M_4, g_4)$ with instanton charge $Q_{\mathrm{top}}(\mathbf{A}) \coloneqq \frac{1}{8\pi^2}\int_{M_4}\langle F_A \wedge F_A \rangle_{\mathfrak{g}} \in \mathbb{Z} \setminus \{0\}$, decomposing $F_A = F_A^+ + F_A^-$ ($*F_A^\pm = \pm F_A^\pm$) gives:
-$$0 \le \frac{1}{4}\int_{M_4}\|F_A \mp *F_A\|^2\,d\operatorname{vol} = \mathcal{I}(\mathbf{A}) \mp 4\pi^2 Q_{\mathrm{top}}(\mathbf{A}) \implies \mathbf{\mathcal{I}(\mathbf{A}) \ge 4\pi^2 |Q_{\mathrm{top}}(\mathbf{A})|}$$
-with saturation iff $*F_A = \pm F_A$. By Chern–Weil homotopy invariance, a Holoform with $|Q_{\mathrm{top}}| \ge 1$ cannot decay continuously to $Q_{\mathrm{top}} = 0$! $\blacksquare$
 </div>
 
 </div>
 <div>
 
 <div class="interactive-panel" style="margin-bottom:6px;">
-<div class="panel-title">Interactive Hodge–Laplacian Orthogonality & Bogomolny Instanton Lab</div>
+<div class="panel-title">Interactive Hodge–Laplacian Fredholm Energy Partition Lab (§4.3.1)</div>
+<div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-size:0.6em; margin-bottom:4px;">
+<span style="color:#20B2AA;">Green Potential $\|\Delta_{A_0}\Phi_{\mathrm{int}}\|$:</span>
+<input type="range" id="lap-gr" min="0" max="5" step="0.2" value="2.0" oninput="updateLaplacianLab()" style="width:75px;">
+<span id="lap-gr-val" style="font-family:monospace; color:#FFD700;">2.00</span>
+<span style="color:#FFA500;">Harmonic $\|\gamma_{\mathrm{harm}}\|$:</span>
+<input type="range" id="lap-ha" min="0" max="5" step="0.2" value="1.5" oninput="updateLaplacianLab()" style="width:75px;">
+<span id="lap-ha-val" style="font-family:monospace; color:#FFD700;">1.50</span>
+</div>
+<div id="lap-readout" class="formula-highlight" style="font-size:0.58em; text-align:left; padding:5px 8px;"></div>
+</div>
+
+<div class="video-card">
+<video autoplay data-autoplay loop muted playsinline src="media/Ch4_Act8_9_Laplacian_Bogomolny.mp4" style="max-height:190px; min-width:0;"></video>
+<div class="video-label">Act VIII: Fredholm L² Laplacian Splitting & Energy Orthogonality</div>
+</div>
+
+</div>
+</div>
+
+---
+
+## §4.3.3 Atiyah Lie Algebroid, Chern–Weil Instanton Charge & Bogomolny Bound {.smaller transition="fade"}
+
+<div style="margin-bottom:6px;">
+<span class="tag-a">THEOREM 4.17: ATIYAH LIE ALGEBROID At(P_U) & BRACKET OBSTRUCTION</span>
+<span class="tag-b">THEOREM 4.18: CHERN–WEIL BOGOMOLNY STABILITY BOUND & VACUUM BARRIER</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="thm-box" style="margin-bottom:5px; font-size:0.57em;">
+<div class="box-title">Theorem 4.17: Atiyah Lie Algebroid Unification of Enyphanen & Curvature</div>
+The bundle $\operatorname{At}(P_U) \coloneqq TP_U / G \to M_U$ of $G$-invariant vector fields on $P_U$ forms a transitive Lie algebroid over $M_U$ fitting into the canonical <b>Atiyah Short Exact Sequence</b>:
+$$0 \longlongrightarrow \operatorname{ad}(P_U) \xlongrightarrow{\;\;\iota\;\;} \operatorname{At}(P_U) \xlongrightarrow{\;\;a \coloneqq d\pi_U\;\;} TM_U \longlongrightarrow 0$$
+<ul>
+<li><b>Connection as Algebroid Splitting:</b> A principal gauge connection $\mathbf{A} \in \Omega^1(P_U, \mathfrak{g})$ is equivalent to a vector bundle splitting $\sigma_{\mathbf{A}} \colon TM_U \to \operatorname{At}(P_U)$ with $a \circ \sigma_{\mathbf{A}} = \operatorname{id}_{TM_U}$.</li>
+<li><b>Curvature as Lie Bracket Obstruction:</b> The field curvature $F_A \in \Omega^2(M_U, \operatorname{ad} P_U)$ is the exact obstruction to $\sigma_{\mathbf{A}}$ being a Lie algebroid homomorphism:
+$$\iota\!\left( F_A(X, Y) \right) \;=\; \left[ \sigma_{\mathbf{A}}(X), \, \sigma_{\mathbf{A}}(Y) \right]_{\operatorname{At}(P_U)} \;-\; \sigma_{\mathbf{A}}\!\left( [X, Y]_{TM_U} \right) \quad \forall X, Y \in \mathfrak{X}(M_U).$$
+</li>
+</ul>
+</div>
+
+<div class="thm-box fragment fade-up" style="margin-bottom:5px; font-size:0.57em;">
+<div class="box-title">Theorem 4.18: Chern–Weil Bogomolny Topological Stability Bound</div>
+Let $(M_4, g_4)$ be an oriented 4-manifold carrying second Chern (instanton) charge:
+$$Q_{\mathrm{top}}(\mathbf{A}) \;\coloneqq\; \frac{1}{8\pi^2}\int_{M_4}\langle F_A \wedge F_A \rangle_{\mathfrak{g}} \;\in\; \mathbb{Z} \setminus \{0\}.$$
+Decomposing $F_A = F_A^+ + F_A^-$ into self-dual and anti-self-dual components ($*F_A^\pm = \pm F_A^\pm$) yields:
+$$0 \le \frac{1}{4}\int_{M_4}\|F_A \mp *F_A\|^2\,d\operatorname{vol}_{g_4} = \mathcal{I}(\mathbf{A}) \mp 4\pi^2 Q_{\mathrm{top}}(\mathbf{A}) \implies \mathbf{\mathcal{I}(\mathbf{A}) \ge 4\pi^2 |Q_{\mathrm{top}}(\mathbf{A})|}$$
+with saturation iff $*F_A = \pm F_A$. By Chern–Weil homotopy invariance, any Holoform with $|Q_{\mathrm{top}}| \ge 1$ <b>cannot continuously decay to the vacuum</b> ($Q_{\mathrm{top}} = 0$)!
+</div>
+
+</div>
+<div>
+
+<div class="interactive-panel" style="margin-bottom:6px;">
+<div class="panel-title">Interactive Bogomolny Topological Charge & Stability Lab (§4.3.3)</div>
 <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-size:0.6em; margin-bottom:4px;">
 <span style="color:#FFD700;">Chern $Q_{\mathrm{top}} \in \mathbb{Z}$:</span>
 <input type="range" id="bog-q" min="-3" max="3" step="1" value="1" oninput="updateBogomolny()" style="width:65px;">
@@ -539,24 +592,12 @@ with saturation iff $*F_A = \pm F_A$. By Chern–Weil homotopy invariance, a Hol
 <input type="range" id="bog-fl" min="0" max="5" step="0.2" value="0.0" oninput="updateBogomolny()" style="width:65px;">
 <span id="bog-fl-val" style="font-family:monospace; color:#FFD700;">0.0</span>
 </div>
-<div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-size:0.6em; margin-bottom:4px;">
-<span style="color:#20B2AA;">Green $\|\Delta_{A_0}\Phi_{\mathrm{int}}\|$:</span>
-<input type="range" id="bog-gr" min="0" max="4" step="0.2" value="2.0" oninput="updateBogomolny()" style="width:70px;">
-<span style="color:#FFA500;">Harmonic $\|\gamma_{\mathrm{harm}}\|$:</span>
-<input type="range" id="bog-ha" min="0" max="4" step="0.2" value="1.5" oninput="updateBogomolny()" style="width:70px;">
-</div>
 <div id="bog-readout" class="formula-highlight" style="font-size:0.58em; text-align:left; padding:5px 8px;"></div>
 </div>
 
-<div class="video-grid-2">
 <div class="video-card">
-<video autoplay data-autoplay loop muted playsinline src="media/Ch4_Act8_9_Laplacian_Bogomolny.mp4" style="max-height:155px; min-width:0;"></video>
-<div class="video-label">Act VIII: Fredholm L² Laplacian Splitting & Bogomolny Bound</div>
-</div>
-<div class="video-card">
-<video autoplay data-autoplay loop muted playsinline src="media/Act9_Secs_432433_Atiyah_Algebroid.mp4" style="max-height:155px; min-width:0;"></video>
+<video autoplay data-autoplay loop muted playsinline src="media/Act9_Secs_432433_Atiyah_Algebroid.mp4" style="max-height:190px; min-width:0;"></video>
 <div class="video-label">Act IX: Atiyah Lie Algebroid At(P_U) & Holoform Stability</div>
-</div>
 </div>
 
 </div>
@@ -636,41 +677,33 @@ $$\delta t_n \;\coloneqq\; \tau(n+1) - \tau(n) > 0, \qquad t_N \;\coloneqq\; \su
 
 ---
 
-## §4.3.6–4.3.7 $3\times 3$ Taxonomic Grid $\hat{A} = (A_{ik})$, Singularity & Affinity $\beta^\infty$
+## §4.3.6 $3\times 3$ Taxonomic Grid $\hat{A} = (A_{ik})$ & Singularity Classification (Def. 4.24, Thm. 4.25)
 
 <div style="margin-bottom:6px;">
-<span class="tag-b">DEFINITION 4.24 & THEOREM 4.25: 3×3 GRID Â = (A_ik) & SINGULARITY CLASSES</span>
-<span class="tag-c">DEFINITION 4.26: AFFINITY BILINEAR INTERFACE β^∞</span>
+<span class="tag-b">DEFINITION 4.24: 3×3 TAXONOMIC PROPERTY GRID Â = (A_ik)</span>
+<span class="tag-a">THEOREM 4.25: CONFORMAL REGULARITY &amp; DIMENSION-DEFECT SINGULARITY</span>
 </div>
 
 <div class="grid-2">
 <div>
 
-<div class="def-box" style="margin-bottom:5px; font-size:0.58em;">
-<div class="box-title">Def. 4.24 & Thm. 4.25: $3\times 3$ Taxonomic Grid $\hat{A} = (A_{ik})$ & Singularity</div>
-On $\operatorname{End}(\mathbf{Sh}(\mathcal{M}))$, $A_{ik} = \{F \mid \operatorname{ActionProp}_i(F) \wedge \operatorname{EffectTarget}_k(F)\}$ crosses:
+<div class="def-box" style="margin-bottom:6px; font-size:0.60em;">
+<div class="box-title">Definition 4.24: The Taxonomic Property Grid $\hat{A} = (A_{ik})$ over $\mathbf{Sh}(\mathbf{Man}_{\mathrm{param}})$</div>
+On $\operatorname{End}(\mathbf{Sh}(\mathcal{M}))$, the modernized $3\times 3$ classification matrix is defined by:
+$$A_{ik} \coloneqq \{ F \in \operatorname{End}(\mathbf{Sh}(\mathcal{M})) \mid \operatorname{ActionProp}_i(F) \;\wedge\; \operatorname{EffectTarget}_k(F) \}$$
 <ul>
-<li><b>Action Rows ($i$):</b> $i=1$ Colimit-Preserving (<i>Synthesizing</i>); $i=2$ Limit-Preserving (<i>Analyzing</i>); $i=3$ Categorical Equivalence (<i>Isogonal</i>).</li>
-<li><b>Target Columns ($k$):</b> $k=1$ <i>Conflexive</i> (pushout incidence); $k=2$ <i>Tensorial</i> (bundle rank/dimension); $k=3$ <i>Field-Intrinsic</i> ($g^{\mathrm{syn}}, \mathbf{X}_{\mathrm{kor}}$).</li>
-<li><b>Thm. 4.25 (Singularity Classification, SM pp. 78–79):</b>
-  <ul>
-  <li><b style="color:#ff6b81;">Singular Dimension-Defective Classes:</b> $A_{12}$ (Synthesizing Tensorial: $\dim F(\mathcal{M}_{\mathrm{syn}}) < \dim \mathcal{M}_{\mathrm{syn}}$) and $A_{22}$ (Analyzing Tensorial: $\dim F(\mathcal{M}_{\mathrm{syn}}) > \dim \mathcal{M}_{\mathrm{syn}}$).</li>
-  <li><b style="color:#20B2AA;">Conditionally / Unconditionally Regular Classes:</b> $A_{11}, A_{21}$ (regular when Syntropodenzahl is invariant), $A_{13}, A_{23}$ (dimension-preserving metric/connection modulations), and $A_{31}, A_{32}, A_{33}$ (unconditionally regular via network isomorphism, Morita equivalence, and conformal diffeomorphism).</li>
-  </ul>
-</li>
+<li><b>Action Rows ($i \in \{1,2,3\}$):</b> $i=1$ Finite Colimit Preserving $F(\varinjlim D) \cong \varinjlim(F\circ D)$ (<i>Synthesizing</i>); $i=2$ Finite Limit Preserving $F(\varprojlim D) \cong \varprojlim(F\circ D)$ (<i>Analyzing</i>); $i=3$ Categorical Equivalence (<i>Isogonal</i>).</li>
+<li><b>Effect Targets ($k \in \{1,2,3\}$):</b> $k=1$ <i>Conflexive</i> (acts on span pushout incidence nodes $\phi_l$); $k=2$ <i>Tensorial</i> (alters tensor rank or graded carrier bundle dimension); $k=3$ <i>Field-Intrinsic</i> (modulates $g^{\mathrm{syn}}$ or $\mathbf{X}_{\mathrm{kor}}$).</li>
 </ul>
 </div>
 
-<div class="def-box" style="font-size:0.58em;">
-<div class="box-title">Definition 4.26: Affinity Bilinear Systems & Two-Sided Non-Degeneracy ($\beta^\infty$)</div>
-Let $\mathcal{S} \in \mathbf{Syn}$ with syndrome spaces $\{F_\gamma\}_{\gamma=0}^K$ and let $\mathcal{B} \in \mathbf{Ban}_{\le 1}$ be an external context space.
-<ol>
-<li><b>Bounded Bilinear Family:</b> $\beta \in \prod_{\gamma=0}^K \prod_{\lambda=1}^L \operatorname{Bil}_{\le 1}(F_\gamma(\mathcal{S}), \mathcal{B}; \mathbb{R})$ with $\|\beta\|_\infty < \infty$.</li>
-<li><b>Componentwise Stabilization:</b> $\lim_{n\to\infty} \|\beta_{\gamma,\lambda}^{(n)} - \beta_{\gamma,\lambda}^\infty\|_{\mathrm{op}} = 0$.</li>
-<li><b>Two-Sided Non-Degenerate Affinitätssyntrix Interface ($\mathcal{S}_{\mathrm{aff}}$):</b> On the Metrophor base $F_0 \cong P^U$ at $(\gamma_0=0, \lambda_0)$, the induced adjoint maps $T_\beta \colon F_0 \to \mathcal{B}^*$ and $S_\beta \colon \mathcal{B} \to F_0^*$ satisfy:
-$$\ker T_\beta = \{0\} \qquad\text{and}\qquad \ker S_\beta = \{0\}$$
-ensuring zero-loss information transduction between internal states and external environment.</li>
-</ol>
+<div class="thm-box" style="font-size:0.60em;">
+<div class="box-title">Theorem 4.25: Conformal Regularity &amp; Singularity Classification (SM pp. 78–79)</div>
+<ul>
+<li><b style="color:#ff6b81;">1. Singular Dimension-Defective Classes ($k=2, i \ne 3$):</b> $A_{12}$ (Synthesizing Tensorial: $\dim F(\mathcal{M}_{\mathrm{syn}}) < \dim \mathcal{M}_{\mathrm{syn}}$) and $A_{22}$ (Analyzing Tensorial: $\dim F(\mathcal{M}_{\mathrm{syn}}) > \dim \mathcal{M}_{\mathrm{syn}}$) induce topological dimension defects.</li>
+<li><b style="color:#20B2AA;">2. Conditionally Regular Conflexive Classes ($k=1$):</b> $A_{11}, A_{21}$ are regular whenever the Syntropodenzahl carrier dimension is preserved across the span colimit or pullback ($\lambda_{\mathrm{eff}} = 0$).</li>
+<li><b style="color:#4169E1;">3. Unconditionally Regular Classes:</b> $A_{31}, A_{32}, A_{33}$ (Isogonal Equivalences: network isomorphism, Morita bundle equivalence, conformal diffeomorphism) and $A_{13}, A_{23}$ (Field-Intrinsic connection/derivation modulations).</li>
+</ul>
 </div>
 
 </div>
@@ -694,9 +727,52 @@ ensuring zero-loss information transduction between internal states and external
 </div>
 </div>
 
+<div class="def-box" style="font-size:0.58em;">
+<div class="box-title">Heim's Historical Nine Transformation Classes $\hat{a} = (a_{ik})_3$ (SM pp. 78–79)</div>
+Crosses synthesizing ($i=1$), analyzing ($i=2$), and isogonal ($i=3$) actions with conflexive ($k=1$), tensorial ($k=2$), and field-intrinsic ($k=3$) targets, isolating $A_{12}$ and $A_{22}$ as the sole dimension-altering singular entries.
+</div>
+
+</div>
+</div>
+
+---
+
+## §4.3.7 Affinity Bilinear Systems & Two-Sided Non-Degeneracy $\beta^\infty$ (Def. 4.26)
+
+<div style="margin-bottom:6px;">
+<span class="tag-c">DEFINITION 4.26: AFFINITY BILINEAR INTERFACE β^∞</span>
+<span class="tag-b">STRATUM B2: ZERO-LOSS ENVIRONMENTAL COUPLING S_aff</span>
+</div>
+
+<div class="grid-2">
+<div>
+
+<div class="def-box" style="margin-bottom:6px; font-size:0.60em;">
+<div class="box-title">Definition 4.26: Affinity Bilinear Systems &amp; Two-Sided Non-Degeneracy ($\beta^\infty$)</div>
+Let $\mathcal{S} \in \mathbf{Syn}$ with syndrome spaces $\{F_\gamma\}_{\gamma=0}^K$ and let $\mathcal{B} \in \operatorname{Obj}(\mathbf{Ban}_{\le 1})$ be an external context Banach space.
+<ol>
+<li><b>Bounded Bilinear Family:</b> An <i>Affinity System</i> is an element of the finite product space of bounded bilinear forms:
+$$\beta \in \prod_{\gamma=0}^K \prod_{\lambda=1}^L \operatorname{Bil}_{\le 1}\!\left(F_\gamma(\mathcal{S}),\; \mathcal{B};\; \mathbb{R}\right), \qquad \|\beta\|_\infty \coloneqq \max_{\gamma,\lambda} \|\beta_{\gamma,\lambda}\|_{\mathrm{op}} < \infty$$</li>
+<li><b>Componentwise Stabilization:</b> Under an evolutionary sequence $(\beta^{(n)})_{n\ge 0}$, the system stabilizes componentwise if $\lim_{n\to\infty} \|\beta_{\gamma,\lambda}^{(n)} - \beta_{\gamma,\lambda}^\infty\|_{\mathrm{op}} = 0$ for all $(\gamma,\lambda)$.</li>
+<li><b>Two-Sided Non-Degenerate Affinitätssyntrix Interface ($\mathcal{S}_{\mathrm{aff}}$):</b> On the Metrophor base $F_0 \cong P^U$ at designated index $(\gamma_0=0, \lambda_0)$, the limiting system $\beta^\infty$ induces adjoint operators $T_\beta \colon F_0 \to \mathcal{B}^*$ and $S_\beta \colon \mathcal{B} \to F_0^*$ satisfying:
+$$\ker T_\beta = \{0\} \qquad\text{and}\qquad \ker S_\beta = \{0\}$$</li>
+</ol>
+</div>
+
+</div>
+<div>
+
+<div class="thm-box fragment fade-up" style="margin-bottom:6px; font-size:0.60em;">
+<div class="box-title">Physical &amp; Information-Theoretic Meaning of $\ker T_\beta = \{0\} = \ker S_\beta$</div>
+<ul>
+<li><b>Left Non-Degeneracy ($\ker T_\beta = \{0\}$):</b> Every distinct internal Metrophor state $f_0 \in F_0 \setminus \{0\}$ produces a non-zero linear functional on the external context $\mathcal{B}$ (no silent internal modes).</li>
+<li><b>Right Non-Degeneracy ($\ker S_\beta = \{0\}$):</b> Every non-zero environmental perturbation $b \in \mathcal{B} \setminus \{0\}$ registers non-trivially on $F_0^*$ (zero-loss transduction across the boundary $\mathcal{S}_{\mathrm{aff}}$).</li>
+</ul>
+</div>
+
 <div class="video-card">
-<video autoplay data-autoplay loop muted playsinline src="media/Act11_Secs_437438_3x3_Grid.mp4" style="max-height:155px; min-width:0;"></video>
-<div class="video-label">Act XI: 3×3 Matrix Â = (A_ik), Singular Classes A₁₂/A₂₂ & Affinity β^∞</div>
+<video autoplay data-autoplay loop muted playsinline src="media/Act11_Secs_437438_3x3_Grid.mp4" style="max-height:175px; min-width:0;"></video>
+<div class="video-label">Act XI: 3×3 Matrix Â = (A_ik), Singular Classes A₁₂/A₂₂ &amp; Affinity β^∞</div>
 </div>
 
 </div>

@@ -67,7 +67,6 @@ $$
 Introduce the Representational Discontinuity Paradox: early sensory cortices compute distributed vector arrays (Gabor wavelets in V1, tonotopy in A1, affine manifolds in IT), yet subjective consciousness presents a unified qualitative gestalt. Contrast the Cartesian Display Fallacy and Linear Pooling Reductionism with the four formal mechanisms of Syntrometrie.
 :::
 
-
 ---
 
 ## §12.1.3–12.1.4: Kantian Aesthetics, Carnap's *Aufbau* &amp; Goodman's Critique {.smaller transition="slide"}
@@ -137,12 +136,11 @@ The Čech descent defect diverges on the 2-simplex overlap, **rejecting the impe
 Explain how Heim's reflexive abstraction radicalizes Kant's transcendental aesthetics by moving from Boolean $\{0,1\}$ projections to structured contexts in a sheaf topos. Walk through Carnap's 1928 Quasi-Analysis, Goodman's 1951 Imperfect Community counterexample, and how the triple fiber product $e_1 \times_U e_2 \times_U e_3 \cong \mathbf{0}_{\Ctx}$ forces $\Def_{\mathcal{U}}(s)_{123} \ne 0$, blocking spurious qualia.
 :::
 
-
 ---
 
-## §12.1.5–12.1.7: Block's Split, Chalmers' Hard Problem &amp; Zombie Refutation {.smaller transition="convex"}
+## §12.1.5–12.1.6: Block's Split, Chalmers' Hard Problem &amp; The Category Mistake {.smaller transition="convex"}
 
-<div class="stratum-badge badge-b">STRATUM A/B: DEFS. 12.1–12.2, CLASS A_12 SINGULARITY (FIG. 12.5), SYNTHESIS (FIG. 12.6) &amp; ZOMBIE IMPOSSIBILITY (THM. 12.3)</div>
+<div class="stratum-badge badge-b">STRATUM A/B: BLOCK/CHALMERS SCHISM, CLASS A_12 SINGULARITY (FIG. 12.5) &amp; OPERADIC-SHEAF SYNTHESIS (FIG. 12.6, DEFS. 12.1–12.2)</div>
 
 :::: {.columns}
 
@@ -150,24 +148,81 @@ Explain how Heim's reflexive abstraction radicalizes Kant's transcendental aesth
 
 ::: {.thm-box}
 **Block's Split (1995), Chalmers' Hard Problem (1995) &amp; Categorical Mismatch (§12.1.5–12.1.6):**
-* **Block's Dichotomy:** *Access Consciousness* ($A$, functional/reportable) vs. *Phenomenal Consciousness* ($P$, qualitative "what it is like", Nagel 1974; Levine's 1983 Explanatory Gap; Jackson's 1982 Mary's Room).
-* **Category Mistake (Fig. 12.5):** Reductive physicalism projects a non-Abelian topos structure onto a scalar $q \in \mathbb{R}$, triggering a **Class $A_{12}$ Dimension-Defect Singularity**: $\dim(F(\mathcal{M}_{\mathrm{syn}})) < \dim(\mathcal{M}_{\mathrm{syn}})$.
+* **Block's Dichotomy:** *Access Consciousness* ($A$, functional, reportable, poised for reasoning/action) vs. *Phenomenal Consciousness* ($P$, qualitative "what it is like", Nagel 1974; Levine's 1983 Explanatory Gap; Jackson's 1982 Mary's Room).
+* **Representational Discontinuity as a Category Mistake (Fig. 12.5):** Reductive physicalism attempts $\mathbf{x} \in \mathbb{R}^N \xrightarrow{f_{\mathrm{reduct}}} q \in \mathbb{R}$, projecting a non-Abelian topos structure onto a 0D Boolean scalar space and triggering a **Class $A_{12}$ Dimension-Defect Singularity**:
+$$
+\dim\!\big(F(\mathcal{M}_{\mathrm{syn}})\big) < \dim(\mathcal{M}_{\mathrm{syn}}) \implies \text{Topological Tearing of State Space}
+$$
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Definitions 12.1 &amp; 12.2: The Operadic-Sheaf Synthesis:**
 * **Def. 12.1 ($A$-Consciousness as Free Tree Monad $T_{\mathsf{P}}$):** Typed by cortical levels $\gamma \in \mathbb{N}_0$ over $\Osyn$:
 $$
 T_{\mathsf{P}}(X) \;\cong\; X \;\oplus_1\; \widehat{\mathsf{P}}(T_{\mathsf{P}}(X)) \quad (\text{Episyllogismus } k\uparrow)
 $$
 * **Def. 12.2 ($P$-Consciousness as Sheaf Equalizer $\Hol$ &amp; Curvature $\Omegaint$):**
   1. **Holoform Gestalt:** $\Def_{\mathcal{U}}(s) = 0 \iff \Hol(\mathcal{U}, \mathbf{P}) \cong \mathbf{P}(U)$.
-  2. **Quale as Curvature:** $\Omegaint \coloneqq \sum_{1 \le i < j \le N} [a_i, a_j] + D_{A_0}a_{\mathrm{int}} + \sum_{k=1}^N [a_k, a_{\mathrm{int}}] + \frac{1}{2}[a_{\mathrm{int}}, a_{\mathrm{int}}]$ with Frobenius intensity $g_E = \frac{1}{2}\|\Omegaint\|^2$.
+  2. **Quale as Curvature:** $\Omegaint \coloneqq \sum_{1 \le i < j \le N} [a_i, a_j] + D_{A_0}a_{\mathrm{int}} + \sum_{k=1}^N [a_k, a_{\mathrm{int}}] + \frac{1}{2}[a_{\mathrm{int}}, a_{\mathrm{int}}]$ with gauge-invariant Frobenius intensity $g_E = \frac{1}{2}\|\Omegaint\|^2$.
 :::
 
-::: {.proof-box .fragment .fade-up}
-**Theorem 12.3 &amp; Proof (Formal Impossibility of Chalmersian Zombies):**
-Let $\mathcal{N} = (P_U \to M_U, \mathbf{A}, \Osyn)$ execute multi-modal binding across $N \ge 2$ channels. Define:
+:::
+
+::: {.column width="51%"}
+
+::: {.def-box}
+**Figure 12.6: Three-Tier Operadic-Sheaf Synthesis Bridge**
+
+| Tier | Philosophy of Mind | Category / Topos Theory | Cortical Neurobiology |
+|:---|:---|:---|:---|
+| **III (Top)** | **$P$-Consciousness** (Phenomenal Qualia) | **Sheaf Holoform** $\Hol(\mathcal{U},\mathbf{P})$ &amp; Curvature $\Omegaint$ | **Global Neuronal Workspace** Phase Sync &amp; Ignition |
+| **II (Mid)** | **$A$-Consciousness** (Functional Access) | **Free Tree Monad** $T_{\mathsf{P}}(X)$ over Operad $\Osyn$ | **High-Dim Embeddings** (Ventral Stream / IT Cortex) |
+| **I (Base)** | ***Eigenpsychische Basis*** (Raw Data) | **Autopsychological Site** $(\Ctx, \Jsyn)$ | **Local Receptive Fields** (V1 Gabor, A1 Tonotopy) |
+
+* **Vertical Ascent:** Quasi-Analysis / Contraction $K$ / Feedforward ($\text{I} \to \text{II}$) followed by Metroplex Lift / Adjoint Lift $(\phi)_!$ / Re-entrant Ignition ($\text{II} \to \text{III}$).
+:::
+
+::: {.intuition-box .fragment .fade-left style="margin-top:8px;"}
+**Why Mary Learns Something New Upon Leaving the Black-and-White Room:**
+Inside the room, Mary possesses complete syntactic access ($T_{\mathsf{P}}(X)$ propositions about wavelength $\lambda$), which reside in an Abelian symbolic subalgebra. Actual color perception engages non-commuting cross-modal visual channels ($[a_i, a_j] \ne 0$), instantiating a non-zero gauge curvature section $\Omegaint \in \Omega^2(M_U, \operatorname{ad} P_U)$ inaccessible by 0-form propositional deduction alone.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Introduce Block's Access/Phenomenal dichotomy, Chalmers' Hard Problem, and why reductive physicalism commits a Class A_12 Dimension-Defect Category Mistake (Fig. 12.5). Present Figure 12.6 and Definitions 12.1 and 12.2.
+:::
+
+---
+
+## §12.1.7: Conditional Impossibility of Philosophical Zombies (Thm. 12.3) {.smaller transition="slide"}
+
+<div class="stratum-badge badge-b">STRATUM B: FORMAL REFUTATION OF CHALMERSIAN PHILOSOPHICAL ZOMBIES (THM. 12.3 &amp; PROOF)</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.thm-box}
+**Theorem 12.3 (Conditional Structural Impossibility of Zombies):**
+Let $\mathcal{N} = (P_U \to M_U, \mathbf{A}, \Osyn)$ be an active cognitive agent executing multi-modal inferential binding across $N \ge 2$ channels under the **Non-Abelian Binding Postulate** (disambiguation on ambiguous sensory overlaps requires $[a_i,a_j]\ne 0$). Define:
 $$
 \mathsf{Zombie}(\mathcal{N}) \iff \big(A\text{-Conscious}(\mathcal{N}) = \text{True}\big) \wedge \big(P\text{-Conscious}(\mathcal{N}) = \text{False} \iff \Omegaint^{\mathcal{D}} \equiv \mathbf{0}\big)
 $$
-**Proof:** Assume $A\text{-Conscious}(\mathcal{N}) = \text{True}$ and $g_E = \frac{1}{2}\|\Omegaint^{\mathcal{D}}\|^2 = 0 \iff \Omegaint^{\mathcal{D}} \equiv \mathbf{0}$. For linearly independent channel 1-forms $a_1, a_2$ in a non-Abelian gauge algebra $\mathfrak{g} = \operatorname{Lie}(G)$, $\Omegaint^{\mathcal{D}} \equiv \mathbf{0}$ holds iff $[a_i, a_j] \equiv 0$ ($\forall i \ne j$) and $a_{\mathrm{int}} \equiv 0$, reducing $\mathbf{A}$ to an Abelian Cartan subalgebra $\mathfrak{h} \subset \mathfrak{g}$. Then the carrier pushout $P_1 \boxplusphi P_2$ collapses to the uncoupled $\ell^1$-coproduct $P_1 \oplus_1 P_2$. On overlap $W = V_1 \times_U V_2$, $s_1|_W \ne s_2|_W \implies \Def_{\mathcal{U}}(s)_{12} = \delta^0(s)_{12} \ne 0 \implies \Hol(\mathcal{U}, \mathbf{P}) \cong \emptyset$. Without a global section, $T_{\mathsf{P}}(X)$ cannot evaluate cross-color terms: $\ev_{\vec{\gamma};\gamma+1}(\Osyn \widehat{\otimes}_\pi \bigotimes F_{\gamma_i}) = \{0\}$, contradicting $A\text{-Conscious}(\mathcal{N}) = \text{True}$! Thus $\llbracket \mathsf{Zombie}(\mathcal{N}) \rrbracket = \bot_\Omega$. $\blacksquare$
+Then $\mathsf{Zombie}(\mathcal{N})$ is internally contradictory in $\Esyn$: $\llbracket \mathsf{Zombie}(\mathcal{N}) \rrbracket = \bot_\Omega$.
+:::
+
+::: {.proof-box .fragment .fade-up}
+**Proof of Theorem 12.3:**
+1. Assume $A\text{-Conscious}(\mathcal{N}) = \text{True}$ and $g_E = \frac{1}{2}\|\Omegaint^{\mathcal{D}}\|^2 = 0 \iff \Omegaint^{\mathcal{D}} \equiv \mathbf{0}$.
+2. For linearly independent channel 1-forms $a_1, a_2$ in a non-Abelian gauge algebra $\mathfrak{g} = \operatorname{Lie}(G)$, $\Omegaint^{\mathcal{D}} \equiv \mathbf{0}$ holds iff $[a_i, a_j] \equiv 0$ ($\forall i \ne j$) and $a_{\mathrm{int}} \equiv 0$, reducing $\mathbf{A}$ to an Abelian Cartan subalgebra $\mathfrak{h} \subset \mathfrak{g}$.
+3. Then the carrier pushout $P_1 \boxplusphi P_2$ collapses to the uncoupled $\ell^1$-coproduct $P_1 \oplus_1 P_2$. On overlap $W = V_1 \times_U V_2$, $s_1|_W \ne s_2|_W \implies \Def_{\mathcal{U}}(s)_{12} = \delta^0(s)_{12} \ne 0 \implies \Hol(\mathcal{U}, \mathbf{P}) \cong \emptyset$.
+4. Without a global section, $T_{\mathsf{P}}(X)$ cannot evaluate cross-color terms: $\ev_{\vec{\gamma};\gamma+1}(\Osyn \widehat{\otimes}_\pi \bigotimes F_{\gamma_i}) = \{0\}$, contradicting $A\text{-Conscious}(\mathcal{N}) = \text{True}$!
+$$
+\boxed{\Omegaint \equiv 0 \implies [a_i, a_j] = 0 \implies \Def_{\mathcal{U}}(s) \ne 0 \implies \text{Inferential Breakdown}} \quad \blacksquare
+$$
 :::
 
 :::
@@ -204,19 +259,18 @@ $$
 ::::
 
 ::: {.notes}
-Present Definitions 12.1 and 12.2 and Theorem 12.3 (Formal Impossibility of Chalmersian Philosophical Zombies). Emphasize the exact causal chain: $\Omegaint \equiv 0 \implies [a_i, a_j] = 0 \implies \Def_{\mathcal{U}}(s) \ne 0 \implies \Hol = \emptyset \implies \ev = \{0\}$, proving that multi-modal access consciousness requires non-Abelian phenomenal curvature.
+Walk through the four-step proof of Theorem 12.3 (Conditional Structural Impossibility of Chalmersian Philosophical Zombies): setting $\Omegaint \equiv 0$ forces $[a_i, a_j] = 0$, collapsing the pushout carrier to an uncoupled coproduct where $\Def_{\mathcal{U}}(s) \ne 0$ and $\Hol = \emptyset$, destroying multi-modal access reasoning.
 :::
-
 
 ---
 
-## §12.1.8–12.1.9: Dialectical Sublation ($\operatorname{Aufhebung}$) &amp; Heyting Mereology {.smaller transition="fade"}
+## §12.1.8–12.1.9a: Dialectical Sublation ($\operatorname{Aufhebung}$) &amp; Heyting Mereology {.smaller transition="fade"}
 
-<div class="stratum-badge badge-a">STRATUM A/B: DIALECTICAL SYNTHESIS (THM. 12.4), HEYTING MEREOLOGY (DEF. 12.5) &amp; SEQUENT CALCULUS L_iMSL</div>
+<div class="stratum-badge badge-a">STRATUM A/B: DIALECTICAL SYNTHESIS (THM. 12.4) &amp; INTERNAL HEYTING MEREOLOGY M_asp(U) (DEF. 12.5)</div>
 
 :::: {.columns}
 
-::: {.column width="48%"}
+::: {.column width="49%"}
 
 ::: {.thm-box}
 **Theorem 12.4: Dialectical Concept Synthesis Theorem ($\operatorname{Aufhebung}$, §12.1.8)**
@@ -243,6 +297,39 @@ A pair is actively coordinated iff $\operatorname{Strength}((d_r, f_q), U) > \th
 :::
 
 :::
+
+::: {.column width="51%"}
+
+::: {.carnap-box}
+**Why Constructive Heyting Mereology Replaces Extensional Set Union:**
+* In classical Boolean mereology, incompatible local percepts $A, B$ with $|\ev_P(A) - \ev_P(B)| > \theta_{\mathrm{tol}}$ either explode deductively ($\bot$) or coexist as unintegrated vectors.
+* In $\mathfrak{M}_{\mathrm{asp}}(U)$, the $t$-norm rule $(\chi\text{-I}_S)$ gates lower-level feature binding, while Theorem 12.4 lifts incompatible subobjects $A, B$ via *Aufhebung* to a conflict-free higher generator $C \in \Prop_{k+1}$.
+* **Three Canonical $t$-Norm Regimes:**
+  - **Product ($a \cdot b$):** Smooth multiplicative gain modulation across cortical columns.
+  - **Łukasiewicz ($\max(0, a+b-1)$):** Strict finite-threshold coincidence detector.
+  - **Gödel ($\min(a, b)$):** Canonical Heyting meet in the internal subobject lattice $\Omega(U)$.
+:::
+
+<div class="video-container fragment fade-up" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act4_Dialectical_Aufhebung_Mereology.mp4" style="max-height:195px;"></video>
+  <div class="video-caption">Manim Act IV (Thm. 12.4, Def. 12.5): Dialectical Sublation (Aufhebung) &amp; Archimedean t-Norm Coordination in M_asp(U)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Present Theorem 12.4 (Dialectical Concept Synthesis / Aufhebung) and Definition 12.5 (Internal Heyting Mereological Universe $\mathfrak{M}_{\mathrm{asp}}(U)$ with Archimedean $t$-norm coordination).
+:::
+
+---
+
+## §12.1.9b: Sequent Calculus $\mathcal{L}_{\mathrm{iMSL}}$ &amp; Four-Tier Resolution Architecture {.smaller transition="convex"}
+
+<div class="stratum-badge badge-a">STRATUM A/B: SINGLE-SUCCEDENT SEQUENT CALCULUS L_iMSL &amp; FOUR-TIER ARCHITECTURAL RESOLUTION (FIG. 12.7)</div>
+
+:::: {.columns}
 
 ::: {.column width="52%"}
 
@@ -288,25 +375,30 @@ A pair is actively coordinated iff $\operatorname{Strength}((d_r, f_q), U) > \th
   </div>
 </div>
 
-::: {.carnap-box .fragment .fade-left}
-**Why Constructive Heyting Mereology Replaces Extensional Set Union:**
-* In classical Boolean mereology, incompatible local percepts $A, B$ with $|\ev_P(A) - \ev_P(B)| > \theta_{\mathrm{tol}}$ either explode deductively ($\bot$) or coexist as unintegrated vectors.
-* In $\mathfrak{M}_{\mathrm{asp}}(U)$, the $t$-norm rule $(\chi\text{-I}_S)$ gates lower-level feature binding, while Theorem 12.4 lifts incompatible subobjects $A, B$ via *Aufhebung* to a conflict-free higher generator $C \in \Prop_{k+1}$.
 :::
 
-<div class="video-container fragment fade-up" style="margin-top:8px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch12_Act4_Dialectical_Aufhebung_Mereology.mp4" style="max-height:175px;"></video>
-  <div class="video-caption">Manim Act IV (Thm. 12.4, Def. 12.5): Dialectical Sublation (Aufhebung) &amp; Archimedean t-Norm Coordination in M_asp(U)</div>
-</div>
+::: {.column width="48%"}
+
+::: {.def-box}
+**Figure 12.7: The Four-Tiered Architecture Resolving Representational Discontinuity (§12.2)**
+1. **Tier IV — Phenomenal Quale Gestalt ($\Hol(\mathcal{U}, \mathbf{P})$ &amp; $\Omegaint$):** Global Workspace Ignition $\to$ Descent Equalizer ($\Def = 0$) + Non-Abelian Friction ($\Omegaint = \sum [a_i, a_j] \ne 0$).
+2. **Tier III — Protosimplex Encapsulation ($\mathcal{P} \in \operatorname{CSeg}(\mathcal{X}_{\mathrm{syn}})$):** High-dimensional IT attractor manifolds collapsed to 0D categorical pointers in Hypermetrophor ${}^{n+1}\mathbf{w}\widetilde{\mathbf{a}}$.
+3. **Tier II — Operadic Consumption ($F_{\gamma+1} \in \operatorname{Alg}_{\Osyn}$):** V1 Gabor / A1 pitch bands consumed as operands via $\ev_{\vec{\gamma};\gamma+1}$; lower syntax erased into coinvariant relations.
+4. **Tier I — Raw Sensory Receptive Continua ($R_n \in \mathbf{Man}_{\mathrm{param}}$):** Retinal/cochlear photon &amp; tonotopic coordinate streams $(x_1,\dots,x_n) \in (\mathbb{R}_{\ge 0})^n$.
+:::
+
+::: {.intuition-box .fragment .fade-up style="margin-top:8px;"}
+**Epistemic Firewall (§12.2):**
+Mathematical proofs ($\mathbf{A} \vdash \mathbf{B}$) certify internal structural consistency of the four-tier functorial architecture; they model neurocomputational invariants without claiming that subjective qualia reduce to epiphenomenal scalar coordinates.
+:::
 
 :::
 
 ::::
 
 ::: {.notes}
-Cover Theorem 12.4 (Dialectical Concept Synthesis / Aufhebung), Definition 12.5 (Internal Heyting Mereological Universe $\mathfrak{M}_{\mathrm{asp}}(U)$ with Archimedean $t$-norm coordination), and the full single-succedent sequent calculus $\mathcal{L}_{\mathrm{iMSL}}$.
+Explore the interactive t-norm coordination and L_iMSL sequent rules, and introduce the Four-Tiered Syntrometric Architecture (Fig. 12.7) that structures the four resolution mechanisms in Section 12.2.
 :::
-
 
 ---
 
@@ -372,7 +464,6 @@ $$
 ::: {.notes}
 Walk through Mechanism 1: Operadic Feature Consumption via the Episyllogismus $\ev_{\vec{\gamma};\gamma+1}$. Prove Theorem 12.6 showing that $\dim\ker(\ev) \ge n^m - \binom{n+m-1}{m} > 0$, which explains mathematically why conscious perception does not display raw V1 Gabor syntax.
 :::
-
 
 ---
 
@@ -445,7 +536,6 @@ $$
 Explain Mechanism 2: Protosimplex Encapsulation (Definition 12.7) and the Protosimplex Dimension-Collapse Theorem (Theorem 12.8). Highlight how subobject minimality in $T_n$ collapses internal trajectories into degenerate 1-simplices $s_0(\mathcal{P}) \in X_1$, turning an infinite-dimensional Fréchet attractor manifold into a 0-simplex point token in $\operatorname{CSeg}(\Xsyn)_0$.
 :::
 
-
 ---
 
 ## §12.2.3: Mechanism 3 — Non-Abelian Commutators &amp; Hodge Qualia Bipartition {.smaller transition="convex"}
@@ -510,7 +600,6 @@ $$
 ::: {.notes}
 Derive Theorem 12.9 (Relative Interaction Curvature Decomposition) and Theorem 12.10 (Hodge Bipartition of Qualia Energy). Emphasize the orthogonal Fredholm splitting into transient exact cognitive flows $\Delta_{A_0}\Phi_{\mathrm{int}}$ and persistent harmonic de Rham cohomology classes $\gamma_{\mathrm{harm}} \in H^2_{\mathrm{dR}}$.
 :::
-
 
 ---
 

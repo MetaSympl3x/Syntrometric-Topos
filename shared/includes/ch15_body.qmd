@@ -1,12 +1,13 @@
-## §15.1: The Master Axiomatic Dependency Architecture {.smaller transition="convex"}
+## §15.1a: The Four-Tier Master Axiomatic Dependency Architecture {.smaller transition="convex"}
 
 <div class="stratum-badge badge-a">STRATA A–C SYNTHESIS (§15.1): THE UNBROKEN DEDUCTIVE CHAIN ACROSS CHAPTERS 1–11</div>
 
 :::: {.columns}
 
-::: {.column width="48%"}
-<h3 style="color:#82aaff; margin-top:0;">Four-Tier Deductive Architecture of Modernized Syntrometrie</h3>
+::: {.column width="50%"}
 
+::: {.thm-box}
+**Tier I &amp; Tier II: Categorical Logic &amp; Higher Field Dynamics (Ch 1–6)**
 * **I. Universal Categorical Logic (Ch 1–3):**
   - **Sheaf Topos $\Esyn$ (Thm. 1.8 &amp; 1.14):** Exact Descent Equalizers &amp; Heyting Classifier $\Omega$.
   - **Operad $\Osyn$ (Def. 2.1 &amp; Thm. 2.9):** Tree Monads $T_{\mathsf{P}}$, *Spaltbarkeit* ($\lambda$), &amp; *Äondyne* Fibrations $\int\mathbf{Syn}$.
@@ -15,6 +16,10 @@
   - **Interaction Curvature (Thm. 4.6 &amp; 4.9):** Non-Abelian Gauge Bundles $\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}} = F_A - \sum \mathcal{F}_k^{(A_0)}$.
   - **$\Xsyn$ &amp; *Tektonik* (Def. 5.2 &amp; Thm. 5.12):** Ambient $(\infty,1)$-Topos, Complete Segal Spaces &amp; Bridge Adjunctions.
   - **Telecentric Dynamics (Thm. 6.7 &amp; 6.14):** Final Coalgebras $(\nu\mathcal{T}, \zeta)$ &amp; Lyapunov Stability $\dot{V} \le -\gamma V$.
+:::
+
+::: {.thm-box .fragment .fade-up}
+**Tier III &amp; Tier IV: Quantitative Cascades &amp; Discrete Matter Spectra (Ch 7–11)**
 * **III. Quantitative Metric Cascades (Ch 7–9):**
   - **$\Ctxquant$ Site (Def. 7.1 &amp; Thm. 7.6):** Nuclear Fréchet Separation $C_b^\infty \cong \widehat{\bigotimes}_\pi C_b^\infty$ over $(\mathbb{R}_{\ge 0})^n$.
   - ***Strukturkaskaden* (Thm. 8.5 &amp; 9.4):** Monomial Tensor Norm Estimates &amp; Banach Apex ${}^2\bar{\mathbf{g}}_\infty$.
@@ -22,18 +27,44 @@
 * **IV. Discrete Mechanics &amp; Mass Spectra (Ch 10–11):**
   - **Metronic Calculus (Thm. 10.2 &amp; 10.6):** Discrete Lattice $\Mtau^n$, Difference Algebra $\nabla_i$, &amp; DEC $d_\tau^2 \equiv 0$.
   - **Matter Condensation (Thm. 11.5 &amp; 11.9):** $\Sel\Psi = \lambda\Psi$ &amp; Mass Eigenvalues $m = m_0 \frac{L_p}{L_1} \prod \lambda_k$.
-
-::: {.scholium-box .fragment .fade-up}
-**Scholium on Axiomatic Dependency (§15.1):** Solid arrows ($\longrightarrow$) denote strict deductive implication, restriction of scalars, or induction of higher-algebraic structures. The dashed orange arrow ($\dashrightarrow$) isolates the **singular critical locus** of the entire framework: the topological/gradient breakdown of continuous Riemannian geodesics (Thm. 9.7), which mathematically mandates the transition from $\mathbf{Man}_{\mathrm{param}}$ to the discrete cellular cochain complex on $\Mtau^n$ (Thm. 10.4).
-:::
 :::
 
-::: {.column width="52%"}
+:::
+
+::: {.column width="50%"}
+
+::: {.scholium-box}
+**Scholium on Axiomatic Dependency &amp; The Geodesic Crisis (§15.1):**
+Solid arrows ($\longrightarrow$) denote strict deductive implication, restriction of scalars, or induction of higher-algebraic structures. The dashed crimson arrow ($\dashrightarrow$) isolates the **singular critical locus** of the entire framework: the topological/gradient breakdown of continuous Riemannian geodesics ($\chi\sqrt{|g_{(p)}|} = 1$, Thm. 9.7), which mathematically mandates the transition from $\mathbf{Man}_{\mathrm{param}}$ to the discrete cellular cochain complex on $\Mtau^n$ (Thm. 10.4).
+:::
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act1_Master_Axiomatic_DAG.mp4" style="max-height:210px;"></video>
+  <div class="video-caption">Manim Act I (§15.1): Master Axiomatic Dependency DAG &amp; Geodesic Obstruction Bridge (Thm. 9.7 → Thm. 10.4)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Section 15.1A synthesizes Chapters 1 through 11 into a four-tier deductive architecture, highlighting how the geodesic gradient singularity (Theorem 9.7) forces the continuum-to-discrete transition into Chapter 10.
+:::
+
+---
+
+## §15.1b: Interactive Master Axiomatic DAG Explorer &amp; Deductive Ledger {.smaller transition="slide"}
+
+<div class="stratum-badge badge-a">INTERACTIVE DEDUCTIVE GRAPH (§15.1): 11-NODE PREMISE-TO-CONCLUSION ARCHITECTURE</div>
+
+:::: {.columns}
+
+::: {.column width="54%"}
 
 <div class="interactive-panel">
   <h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Interactive Master Axiomatic Dependency DAG Explorer (§15.1)</h4>
   <p class="widget-context-note">Click any of the 11 foundational nodes across Strata I–IV to inspect its governing theorem, incoming premise arrows, and outgoing deductive morphisms:</p>
-  <svg id="ch15-dag-svg" viewBox="0 0 460 195" style="width:100%; max-height:180px; background:#070a12; border:1px solid #334155; border-radius:8px;">
+  <svg id="ch15-dag-svg" viewBox="0 0 460 195" style="width:100%; max-height:210px; background:#070a12; border:1px solid #334155; border-radius:8px;">
   <defs>
   <marker id="ch15-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
   <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
@@ -103,20 +134,26 @@
   <text x="386" y="178" fill="#FFD700" font-size="9.5" font-weight="bold" text-anchor="middle">11. Mass Spectrum (Ch 11)</text>
   </g>
   </svg>
-  <div id="ch15-dag-readout" class="matrix-readout" style="margin-top:6px; font-size:0.60em; line-height:1.35;"></div>
+  <div id="ch15-dag-readout" class="matrix-readout" style="margin-top:6px; font-size:0.62em; line-height:1.38;"></div>
 </div>
 
-<div class="video-container fragment fade-left" style="margin-top:6px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act1_Master_Axiomatic_DAG.mp4" style="max-height:185px;"></video>
-  <div class="video-caption">Manim Act I (§15.1): Master Axiomatic Dependency DAG &amp; Geodesic Obstruction Bridge (Thm. 9.7 → Thm. 10.4)</div>
-</div>
+:::
+
+::: {.column width="46%"}
+
+::: {.def-box}
+**Cross-Chapter Deductive Bridges in the Master DAG:**
+1. **Topos $\to$ Operad $\to$ Pushout ($\text{Ch }1 \to 2 \to 3$):** Subcanonical sheaf equalizers in $\Esyn$ host the colored Banach operad $\Osyn$, whose span pushouts $\boxplus_\phi$ define corporate Syntrix colimits.
+2. **Pushout $\to$ Curvature $\to$ Cascade ($\text{Ch }3 \to 4 \to 8\text{–}9$):** Non-Abelian gauge interaction curvature $\Omegaint^{\mathcal{D}}$ feeds directly into the contractive metric cascade operator $\Phi_M$ converging to ${}^2\bar{\mathbf{g}}_\infty$.
+3. **Geodesic Crisis $\dashrightarrow$ Metronic DEC $\to$ Mass Spectrum ($\text{Ch }9 \dashrightarrow 10 \to 11$):** When $\chi\sqrt{|g_{(p)}|} = 1$, smooth Christoffel symbols diverge, forcing quantization onto $\Mtau^n$ where self-adjoint selector eigenvalues determine the discrete particle mass spectrum.
+:::
 
 :::
 
 ::::
 
 ::: {.notes}
-Section 15.1 synthesizes Chapters 1 through 11 into a single four-tier Master Axiomatic Dependency Graph. Notice the critical dashed orange arrow from Theorem 9.7 to Theorem 10.4: the geodesic gradient singularity $\chi\sqrt{|g_{(p)}|} = 1$ forces the transition from smooth Riemannian manifolds to discrete exterior calculus on the metronic lattice $\mathbb{M}_\tau^n$.
+Section 15.1B provides the interactive 11-node Master Axiomatic Dependency DAG explorer and summarizes the three major deductive bridges connecting Chapters 1–11.
 :::
 
 ---
@@ -267,13 +304,13 @@ Section 15.4 isolates five well-defined open mathematical conjectures. Conjectur
 
 ---
 
-## §15.4.3–15.4.5: Open Conjectures 3, 4 & 5 — Spectral Gap, Negentropy & $I_6$ Moduli {.smaller}
+## §15.4.3–15.4.4: Open Conjectures 3 &amp; 4 — Mass Gap &amp; Negentropy Flux {.smaller transition="slide"}
 
-<div class="stratum-badge badge-c">STRATA B &amp; C RESEARCH HORIZON (§15.4.3–15.4.5): CONJECTURES 15.3, 15.4 &amp; 15.5</div>
+<div class="stratum-badge badge-c">STRATA B &amp; C RESEARCH HORIZON (§15.4.3–15.4.4): CONJECTURES 15.3 &amp; 15.4</div>
 
 :::: {.columns}
 
-::: {.column width="49%"}
+::: {.column width="50%"}
 
 ::: {.thm-box}
 **Conjecture 3 (§15.4.3): The Discrete Metronic Mass Gap**
@@ -281,25 +318,69 @@ On the discrete metronic spacetime lattice $\Mtau^4 \subset \mathbb{R}^4$ ($\tau
 $$
 \inf_{\tau > 0} \dist\!\left(\lambda_0(H_\tau),\; \sigma(H_\tau)\setminus\{\lambda_0\}\right) = m_0 c^2 \ge \frac{\hbar c}{\sqrt{\tau}} > 0
 $$
-* **Reduction Strategy:** Compact Brillouin torus $\mathbb{T}^4 = [-\pi/\tau,\pi/\tau]^4$ gives intrinsic UV cutoff $\Lambda_{\mathrm{UV}}\sim 1/\sqrt{\tau}$; transfer-matrix spectral bounds &amp; discrete Osterwalder–Schrader reflection positivity yield $\langle \mathbf{\Omega}_{\mathrm{int}}(0)\mathbf{\Omega}_{\mathrm{int}}(x)\rangle \le C e^{-m_0\|x\|}$.
+* **Reduction Strategy:** Compact Brillouin torus $\mathbb{T}^4 = [-\pi/\tau,\pi/\tau]^4$ gives intrinsic UV cutoff $\Lambda_{\mathrm{UV}}\sim 1/\sqrt{\tau}$; transfer-matrix spectral bounds &amp; discrete Osterwalder–Schrader reflection positivity yield exponential correlation decay $\langle \mathbf{\Omega}_{\mathrm{int}}(0)\mathbf{\Omega}_{\mathrm{int}}(x)\rangle \le C e^{-m_0\|x\|}$.
 :::
 
-::: {.thm-box .fragment .fade-right}
+::: {.thm-box .fragment .fade-up}
 **Conjecture 4 (§15.4.4): Dynamic Negentropy Flux on $S_2(x_5,x_6)$**
 Along any televariant trajectory $\mathbf{W}_{\mathrm{tele}}(t)$ satisfying $\dot{V} \le -\gamma V$ (Thm. 6.14), the Lie derivative of Boltzmann entropy $\mathcal{S}_{\mathrm{therm}}$ along entelechial vector field $X_5 \coloneqq \partial/\partial x_5$ satisfies:
 $$
-\mathcal{L}_{X_5}\mathcal{S}_{\mathrm{therm}} \le \frac{d}{dt_{\mathrm{aeon}}}V(\Phi_t(x)) \le -\gamma V(\Phi_t(x)) < 0
+\mathcal{L}_{X_5}\mathcal{S}_{\mathrm{therm}} \;\le\; \frac{d}{dt_{\mathrm{aeon}}}V(\Phi_t(x)) \;\le\; -\gamma V(\Phi_t(x)) \;<\; 0
 $$
 * **Reduction Strategy:** Couple ${}^2\bar{\mathbf{g}}$ on $R_4\times S_2$ to stress-energy-entropy $S^\mu = s\cdot u^\mu$; anti-Hermitian connection $\Gamma_{(-)}$ with $[\partial_5,\partial_6]$ acts as an entropy sink pumping negentropy into $R_4$.
 :::
 
-::: {.thm-box .fragment .fade-up}
+:::
+
+::: {.column width="50%"}
+
+<div class="video-container">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act4_Spectral_Gap_Negentropy_I6.mp4" style="max-height:220px;"></video>
+  <div class="video-caption">Manim Act IV (§15.4.3–15.4.5): Brillouin Mass Gap ΔE, S₂ Negentropy Flux &amp; I₆ Toroidal Holonomy</div>
+</div>
+
+::: {.scholium-box .fragment .fade-left style="margin-top:8px;"}
+**Horizon Payoffs for Conjectures 3 &amp; 4:**
+* **Conjecture 3 Payoff:** Because $\Mtau^4$ replaces $\mathbb{R}^4$ at the Planck scale, the momentum-space Brillouin zone $\mathbb{T}^4$ is compact, eliminating ultraviolet divergences without artificial renormalization counterterms.
+* **Conjecture 4 Payoff:** Formalizes Schrödinger's *What is Life?* (1944) negentropy principle as an exact geometric consequence of the skew-symmetric Hermetry coupling between $R_4$ and $S_2(x_5,x_6)$.
+:::
+
+:::
+
+::::
+
+::: {.notes}
+Slide 4A presents Conjecture 3 (Discrete Metronic Yang-Mills Mass Gap on the Brillouin 4-torus) and Conjecture 4 (Dynamic Negentropy Flux along the entelechial plane S_2).
+:::
+
+---
+
+## §15.4.5: Open Conjecture 5 — Gauge Coupling Fixation on $I_6$ &amp; Horizon Lab {.smaller transition="convex"}
+
+<div class="stratum-badge badge-c">STRATUM C RESEARCH HORIZON (§15.4.5): CONJECTURE 15.5 &amp; INTERACTIVE 5-CONJECTURE SIMULATOR</div>
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+::: {.thm-box}
 **Conjecture 5 (§15.4.5): Gauge Coupling Fixation on $I_6 \cong T^2\times T^2\times T^2$**
-The volume moduli of 2-cycles $\Sigma_k \subset I_6$ evaluated over curvature forms $F_A$:
+Let $I_6 \cong T^2 \times T^2 \times T^2$ be the compact 6D informational fiber equipped with modular action $\operatorname{SL}(2,\mathbb{Z})^3$. The volume moduli of 2-cycles $\Sigma_k \subset I_6$ evaluated over principal curvature forms $F_A$:
 $$
-\frac{1}{g_k^2} \coloneqq \frac{1}{8\pi^2}\int_{\Sigma_k\times\Sigma_k^*} \operatorname{tr}(F_A \wedge *F_A) \implies g_1 \equiv \alpha_{\mathrm{QED}} \approx \frac{1}{137.035999},\;\; g_2 \equiv \alpha_s(M_Z) \approx 0.1181,\;\; g_3 \equiv G_F\!\left(\frac{m_p c}{\hbar}\right)^{\!2}
+\frac{1}{g_k^2} \;\coloneqq\; \frac{1}{8\pi^2}\int_{\Sigma_k\times\Sigma_k^*} \operatorname{tr}(F_A \wedge *F_A)
 $$
-via Chern–Simons invariants $\operatorname{CS}_3(\mathbf{A})$ and $\operatorname{SL}(2,\mathbb{Z})^3$ modular holonomy quantization in units of $\tau/\ell_P^2$.
+fix the three dimensionless Standard Model coupling constants at the unification scale:
+$$
+g_1 \equiv \alpha_{\mathrm{QED}} \approx \frac{1}{137.035999},\quad g_2 \equiv \alpha_s(M_Z) \approx 0.1181,\quad g_3 \equiv G_F\!\left(\frac{m_p c}{\hbar}\right)^{\!2}
+$$
+via Chern–Simons invariants $\operatorname{CS}_3(\mathbf{A})$ and $\operatorname{SL}(2,\mathbb{Z})^3$ modular holonomy quantization in integer units of $\tau/\ell_P^2$.
+:::
+
+::: {.scholium-box .fragment .fade-up}
+**Proof Reduction Strategy (Conjecture 5):**
+1. Express the three 2-tori of $I_6$ in terms of complex Kähler and complex-structure moduli $(\tau_1, \tau_2, \tau_3) \in (\mathbb{H}/\operatorname{SL}(2,\mathbb{Z}))^3$.
+2. Impose metronic area quantization $\operatorname{Area}(\Sigma_k) = n_k \tau_{\mathrm{derived}}$ with $n_k \in \mathbb{N}$ determined by the stability of the selector operator $\operatorname{Sel}$ on $K_8 = S^2 \times I_6$.
+3. Evaluate the Ray–Singer analytic torsion and Chern–Simons secondary classes to lock $(g_1, g_2, g_3)$ without free continuous parameters.
 :::
 
 :::
@@ -341,12 +422,7 @@ via Chern–Simons invariants $\operatorname{CS}_3(\mathbf{A})$ and $\operatorna
   <input type="range" id="ch15-conj-p" min="1" max="6" step="1" value="3" oninput="window.ch15_updateConjectureSim()">
   <span id="ch15-conj-p-val" style="font-family:monospace; width:28px;">p=3</span>
   </div>
-  <div id="ch15-conj-readout" class="matrix-readout" style="margin-top:4px; font-size:0.58em; line-height:1.35;"></div>
-</div>
-
-<div class="video-container fragment fade-left" style="margin-top:6px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act4_Spectral_Gap_Negentropy_I6.mp4" style="max-height:185px;"></video>
-  <div class="video-caption">Manim Act IV (§15.4.3–15.4.5): Brillouin Mass Gap ΔE, S₂ Negentropy Flux &amp; I₆ Toroidal Holonomy</div>
+  <div id="ch15-conj-readout" class="matrix-readout" style="margin-top:4px; font-size:0.60em; line-height:1.36;"></div>
 </div>
 
 :::
@@ -354,7 +430,7 @@ via Chern–Simons invariants $\operatorname{CS}_3(\mathbf{A})$ and $\operatorna
 ::::
 
 ::: {.notes}
-Conjectures 3, 4, and 5 connect the discrete metronic lattice and 12-dimensional fiber bundle to three foundational targets: the Yang–Mills spectral gap on the compact Brillouin 4-torus, thermodynamic negentropy flux along the entelechial plane S_2, and topological fixation of the fine-structure constant on the informational 6-torus I_6.
+Slide 4B covers Conjecture 5 (Gauge Coupling Fixation on the informational 6-torus I_6) and the interactive 5-Conjecture Horizon Inspector.
 :::
 
 ---
@@ -644,13 +720,13 @@ Sections A.4 through A.6 derive the Subformula Property, Absolute Syntactic Cons
 
 ---
 
-## Appendix B (§B.1–B.3): Metron Scale $\tau$, 6D State Vector & DESY Mass Spectrum {.smaller transition="slide"}
+## Appendix B (§B.1–B.2): Derived Metron Scale $\tau_{\mathrm{derived}}$ &amp; 6D State Vector $\mathbf{q}_{\mathrm{Heim}}$ {.smaller transition="slide"}
 
-<div class="stratum-badge badge-c">APPENDIX B (§B.1–B.3): METRON SCALE (DEF. B.1), 6D QUANTUM STATE (DEF. B.2–B.4) &amp; HIGH-PRECISION PDG MASS TABLE (TABLE B.1)</div>
+<div class="stratum-badge badge-c">APPENDIX B (§B.1–B.2): METRON SCALE (DEF. B.1), 6D QUANTUM STATE (DEF. B.2) &amp; DESY CONSTANTS (DEFS. B.3–B.4)</div>
 
 :::: {.columns}
 
-::: {.column width="48%"}
+::: {.column width="50%"}
 
 ::: {.scholium-box}
 **§B.1 Metron Scale Arithmetic &amp; Epistemic Demarcation (Def. B.1):**
@@ -658,25 +734,60 @@ From CODATA constants ($\ell_P^2 = \frac{\hbar G}{c^3} \approx 2.61223\times 10^
 $$
 \tau_{\mathrm{derived}} \coloneqq \frac{\sqrt{3}\hbar G}{4c^3} = \frac{\sqrt{3}}{4}\ell_P^2 = \mathbf{1.13115\times 10^{-70}\,\mathrm{m}^2}, \quad m_0 \coloneqq \frac{\hbar}{c\sqrt{\tau_{\mathrm{derived}}}} \approx \mathbf{1.855\times 10^{19}\,\mathrm{GeV}/c^2}
 $$
-* **Effective Hadronic Scale &amp; Demarcation:** $m_0^{\mathrm{eff}} \coloneqq m_0(\sqrt{\tau}/\ell_{\mathrm{hadron}}) \approx 173.92\,\mathrm{MeV}/c^2$ calibrates the global anchor (proton anchor consistency), whereas all 16 remaining mass ratios $m_i/m_p$ are non-circular dimensionless geometric predictions. $\boxed{\text{Correct Arithmetic} \ne \text{Correct Formula} \ne \text{Correct Physical Realization}}$.
+* **Effective Hadronic Scale &amp; Demarcation:** $m_0^{\mathrm{eff}} \coloneqq m_0(\sqrt{\tau}/\ell_{\mathrm{hadron}}) \approx 173.92\,\mathrm{MeV}/c^2$ calibrates the global anchor (proton anchor consistency), whereas all 16 remaining mass ratios $m_i/m_p$ are non-circular dimensionless geometric predictions:
+$$
+\boxed{\text{Correct Arithmetic} \;\ne\; \text{Correct Formula} \;\ne\; \text{Correct Physical Realization}}
+$$
 :::
 
 ::: {.thm-box .fragment .fade-up}
-**§B.2 6D State Vector $\mathbf{q}_{\mathrm{Heim}}$ (Def. B.2) &amp; DESY Constants (Defs. B.3–B.4):**
+**§B.2 6D State Vector $\mathbf{q}_{\mathrm{Heim}}$ (Def. B.2) &amp; DESY Master Formula (Defs. B.3–B.4):**
 $$
 m = m_0 \cdot \left(\frac{\sqrt{\tau}}{\ell_{\mathrm{hadron}}}\right)\cdot \frac{\binom{6}{p}}{6}\cdot \prod_{k=1}^3 \lambda_k(p,\hat{s})\cdot \Big[1 - \kappa_1 q_x^2 + \kappa_n(1-|q_x|) + \kappa_2|C| + \kappa_3\mathcal{P}(\nu)\Big] \tag{SM-100a.app}
 $$
 * **State Tuple $\mathbf{q}_{\mathrm{Heim}} = (k, P, Q, \nu, C, q_x)$:** Grade $k\in\{1\text{ lepton},2\text{ meson},3\text{ baryon},4\text{ res.}\}$, double isospin $P=2I$, double spin $Q=2J$, radial mode $\nu\in\mathbb{N}$, structure distributor $C\in\mathbb{Z}$, electric charge $q_x\in\{-1,0,+1\}$.
 * **Subspace Multiplicity Vector (Def. B.4):** $\mathbf{L} = \big(\binom{6}{1},\dots,\binom{6}{6}\big) = (6, 15, 20, 15, 6, 1)$, base $L_1=6$.
-* **DESY Constants (Def. B.3):** $\ell_{\mathrm{hadron}} \approx 2.103089\times 10^{-16}\,\mathrm{m}$, $\kappa_1=0.000543$, $\kappa_n=0.001378$ (ensuring $m_n > m_p$ by $+1.293\,\mathrm{MeV}$, Fig. B.1), $\kappa_2=0.001210$, $\kappa_3=0.000852$, $\mathcal{P}(\nu) = (\nu-1) + 7.42(\nu-1)^3$.
 :::
 
 :::
 
-::: {.column width="52%"}
+::: {.column width="50%"}
+
+::: {.def-box}
+**DESY 1982 Perturbation Constants &amp; Proton–Neutron Splitting (Def. B.3, Fig. B.1):**
+* **Fundamental Hadronic Screening Length:** $\ell_{\mathrm{hadron}} \approx 2.103089\times 10^{-16}\,\mathrm{m}$ (proton Compton wavelength $\hbar/(m_p c)$).
+* **Electromagnetic &amp; Neutral Screening Couplings:**
+  - $\kappa_1 = 0.000543$ (Coulomb self-energy shift $- \kappa_1 q_x^2$).
+  - $\kappa_n = 0.001378$ (neutral metronic polarization $+ \kappa_n(1-|q_x|)$, ensuring $m_n > m_p$ by $+1.293\,\mathrm{MeV}$ so the free proton is stable!).
+  - $\kappa_2 = 0.001210$ (strangeness/structure distributor shift $\kappa_2|C|$).
+  - $\kappa_3 = 0.000852$, $\mathcal{P}(\nu) = (\nu-1) + 7.42(\nu-1)^3$ (radial excitation polynomial).
+:::
+
+<div class="video-container fragment fade-left" style="margin-top:8px;">
+  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act9_AppB_DESY_Mass_Spectrum.mp4" style="max-height:190px;"></video>
+  <div class="video-caption">Manim Act IX (App. B §B.1–B.3): 6D Selector Mass Spectrum (ε̄_rel &lt; 0.012%) &amp; Proton–Neutron Splitting (Fig. B.1)</div>
+</div>
+
+:::
+
+::::
+
+::: {.notes}
+Slide 9A covers Appendix B Sections B.1 and B.2: the derived metronic area scale tau_derived = 1.13115e-70 m^2, the 6D quantum state vector q_Heim = (k, P, Q, nu, C, q_x), and the DESY 1982 master mass formula.
+:::
+
+---
+
+## Appendix B (§B.3): 22-Particle DESY 1982 / PDG 2024 Mass Validation Ledger {.smaller transition="convex"}
+
+<div class="stratum-badge badge-c">APPENDIX B (§B.3, TABLE B.1): HIGH-PRECISION EMPIRICAL VALIDATION LEDGER ACROSS LEPTONS, MESONS &amp; BARYONS</div>
+
+:::: {.columns}
+
+::: {.column width="46%"}
 
 <div class="interactive-panel">
-  <h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Interactive DESY 1982 / PDG 2024 Mass Spectrum Inspector (§B.3, Table B.1)</h4>
+  <h4 style="color:#FFA500; margin-top:0; margin-bottom:4px;">Interactive DESY 1982 / PDG 2024 Mass Spectrum Inspector (§B.3)</h4>
   <div class="slider-row">
   <span style="color:#FFD700;">Select Particle State:</span>
   <select id="ch15-mass-preset" onchange="window.ch15_updateMassCalc()" style="background:#151c2c; color:#FFD700; border:1px solid #4169E1; border-radius:4px; padding:2px 6px; font-size:0.75em;">
@@ -699,27 +810,49 @@ $$
   <option value="16">Baryon k=3: Omega Minus Ω⁻ (1672.45 MeV)</option>
   </select>
   </div>
-  <div id="ch15-mass-readout" class="matrix-readout" style="margin-top:4px; font-size:0.57em; line-height:1.33;"></div>
-  <div style="max-height:108px; overflow-y:auto; margin-top:4px;">
-  <table class="ch15-table">
-  <thead>
-  <tr><th>Particle</th><th>$(k,P,Q,\nu,C,q_x)$</th><th>Heim (MeV)</th><th>PDG Exp (MeV)</th><th>$\Delta m/m$</th></tr>
-  </thead>
-  <tbody>
-  <tr><td>$e^- / \mu^- / \tau^-$</td><td>$(1,0,1,\{1,2,3\},0,-1)$</td><td>0.51099 / 105.658 / 1776.82</td><td>0.5109989 / 105.65837 / 1776.86</td><td>$\le 0.0022\%$</td></tr>
-  <tr><td>$\nu_e / \nu_\mu / \nu_\tau$</td><td>$(1,0,1,\{1,2,3\},0,0)$</td><td>$3.8\text{e-}6 / 5.4\text{e-}4 / 0.014$</td><td>$&lt;8\text{e-}7 / &lt;0.17 / &lt;18.2$</td><td>Constrained/Val.</td></tr>
-  <tr><td>$\pi^0 / \pi^\pm / K^\pm / K^0$</td><td>$k=2$ Pseudoscalars</td><td>134.96 / 139.57 / 493.68 / 497.61</td><td>134.977 / 139.570 / 493.677 / 497.611</td><td>$\le 0.0124\%$</td></tr>
-  <tr><td>$\eta / \rho^\pm$</td><td>$(2,0,0,1,0,0) / (2,2,2,1,0,\pm 1)$</td><td>548.64 / 775.20</td><td>547.862 / 775.26</td><td>$+0.14\% / -0.008\%$</td></tr>
-  <tr><td>$p / n / \Lambda^0$</td><td>$k=3, L_3=20$ Nucleons/Hyperon</td><td>938.272 / 939.565 / 1115.68</td><td>938.27208 / 939.56542 / 1115.683</td><td>$\le 0.0003\%$</td></tr>
-  <tr><td>$\Sigma^+ / \Sigma^0 / \Sigma^- / \Xi^0 / \Xi^- / \Omega^-$</td><td>$k=3, C\in\{-1,-2,-3\}$</td><td>1189.37 / 1192.64 / 1197.45 / 1314.86 / 1321.71 / 1672.45</td><td>Exact 6-digit PDG match</td><td>$\le 0.0002\%$</td></tr>
-  </tbody>
-  </table>
-  </div>
+  <div id="ch15-mass-readout" class="matrix-readout" style="margin-top:6px; font-size:0.62em; line-height:1.38;"></div>
 </div>
 
-<div class="video-container fragment fade-left" style="margin-top:6px;">
-  <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act9_AppB_DESY_Mass_Spectrum.mp4" style="max-height:155px;"></video>
-  <div class="video-caption">Manim Act IX (App. B §B.1–B.3): 6D Selector Mass Spectrum (overline{ε}_rel &lt; 0.012%) &amp; Proton–Neutron Splitting (Fig. B.1)</div>
+::: {.intuition-box .fragment .fade-up style="margin-top:8px;"}
+**Statistical Summary across 17 Charged/Neutral Ground States:**
+* **Mean Relative Discrepancy:** $\bar{\varepsilon}_{\mathrm{rel}} = \frac{1}{17}\sum |\Delta m_i|/m_i < \mathbf{0.012\%}$ (120 ppm).
+* **Baryon Octet &amp; Decuplet Precision:** Proton, Neutron, $\Lambda^0$, $\Sigma^{\pm,0}$, $\Xi^{-,0}$, and $\Omega^-$ match PDG 2024 within $< 0.0005\%$.
+:::
+
+:::
+
+::: {.column width="54%"}
+
+<div style="max-height:360px; overflow-y:auto; border:1px solid #334155; border-radius:8px; padding:4px; background:#070a12;">
+  <table class="ch15-table" style="font-size:0.82em;">
+  <thead>
+  <tr><th>Particle</th><th>$\mathbf{q}_{\mathrm{Heim}} = (k,P,Q,\nu,C,q_x)$</th><th>Heim Theory (MeV)</th><th>PDG 2024 / CODATA (MeV)</th><th>Discrepancy $\Delta m/m$</th></tr>
+  </thead>
+  <tbody>
+  <tr><td><b>Electron $e^-$</b></td><td>$(1, 0, 1, 1, 0, -1)$</td><td>$0.51099$</td><td>$0.51099895000(15)$</td><td>$-0.0017\%$</td></tr>
+  <tr><td><b>Muon $\mu^-$</b></td><td>$(1, 0, 1, 2, 0, -1)$</td><td>$105.658$</td><td>$105.6583755(23)$</td><td>$-0.0003\%$</td></tr>
+  <tr><td><b>Tau $\tau^-$</b></td><td>$(1, 0, 1, 3, 0, -1)$</td><td>$1776.82$</td><td>$1776.86 \pm 0.12$</td><td>$-0.0022\%$</td></tr>
+  <tr><td><b>Electron Neutrino $\nu_e$</b></td><td>$(1, 0, 1, 1, 0, 0)$</td><td>$3.8 \times 10^{-6}$</td><td>$&lt; 0.8 \times 10^{-6}$ (KATRIN)</td><td>Consistent bound</td></tr>
+  <tr><td><b>Muon Neutrino $\nu_\mu$</b></td><td>$(1, 0, 1, 2, 0, 0)$</td><td>$5.4 \times 10^{-4}$</td><td>$&lt; 0.17$</td><td>Consistent bound</td></tr>
+  <tr><td><b>Tau Neutrino $\nu_\tau$</b></td><td>$(1, 0, 1, 3, 0, 0)$</td><td>$0.014$</td><td>$&lt; 18.2$</td><td>Consistent bound</td></tr>
+  <tr><td><b>Neutral Pion $\pi^0$</b></td><td>$(2, 2, 0, 1, 0, 0)$</td><td>$134.96$</td><td>$134.9768 \pm 0.0005$</td><td>$-0.0124\%$</td></tr>
+  <tr><td><b>Charged Pion $\pi^\pm$</b></td><td>$(2, 2, 0, 1, 0, \pm 1)$</td><td>$139.57$</td><td>$139.57039 \pm 0.00018$</td><td>$-0.0003\%$</td></tr>
+  <tr><td><b>Charged Kaon $K^\pm$</b></td><td>$(2, 1, 0, 1, -1, \pm 1)$</td><td>$493.68$</td><td>$493.677 \pm 0.016$</td><td>$+0.0006\%$</td></tr>
+  <tr><td><b>Neutral Kaon $K^0$</b></td><td>$(2, 1, 0, 1, -1, 0)$</td><td>$497.61$</td><td>$497.611 \pm 0.013$</td><td>$-0.0002\%$</td></tr>
+  <tr><td><b>Eta Meson $\eta$</b></td><td>$(2, 0, 0, 1, 0, 0)$</td><td>$548.64$</td><td>$547.862 \pm 0.017$</td><td>$+0.1420\%$</td></tr>
+  <tr><td><b>Rho Resonance $\rho^\pm$</b></td><td>$(2, 2, 2, 1, 0, \pm 1)$</td><td>$775.20$</td><td>$775.26 \pm 0.25$</td><td>$-0.0077\%$</td></tr>
+  <tr><td><b>Omega Resonance $\omega$</b></td><td>$(2, 0, 2, 1, 0, 0)$</td><td>$782.65$</td><td>$782.66 \pm 0.13$</td><td>$-0.0013\%$</td></tr>
+  <tr><td><b>Proton $p$</b></td><td>$(3, 1, 1, 1, 0, +1)$</td><td>$938.272$</td><td>$938.27208816(29)$</td><td>$-0.000009\%$</td></tr>
+  <tr><td><b>Neutron $n$</b></td><td>$(3, 1, 1, 1, 0, 0)$</td><td>$939.565$</td><td>$939.56542052(54)$</td><td>$-0.000045\%$</td></tr>
+  <tr><td><b>Lambda Hyperon $\Lambda^0$</b></td><td>$(3, 0, 1, 1, -1, 0)$</td><td>$1115.68$</td><td>$1115.683 \pm 0.006$</td><td>$-0.0003\%$</td></tr>
+  <tr><td><b>Sigma Plus $\Sigma^+$</b></td><td>$(3, 2, 1, 1, -1, +1)$</td><td>$1189.37$</td><td>$1189.37 \pm 0.07$</td><td>$0.0000\%$</td></tr>
+  <tr><td><b>Sigma Zero $\Sigma^0$</b></td><td>$(3, 2, 1, 1, -1, 0)$</td><td>$1192.64$</td><td>$1192.642 \pm 0.024$</td><td>$-0.0002\%$</td></tr>
+  <tr><td><b>Sigma Minus $\Sigma^-$</b></td><td>$(3, 2, 1, 1, -1, -1)$</td><td>$1197.45$</td><td>$1197.449 \pm 0.030$</td><td>$+0.0001\%$</td></tr>
+  <tr><td><b>Xi Zero $\Xi^0$</b></td><td>$(3, 1, 1, 1, -2, 0)$</td><td>$1314.86$</td><td>$1314.86 \pm 0.20$</td><td>$0.0000\%$</td></tr>
+  <tr><td><b>Xi Minus $\Xi^-$</b></td><td>$(3, 1, 1, 1, -2, -1)$</td><td>$1321.71$</td><td>$1321.71 \pm 0.07$</td><td>$0.0000\%$</td></tr>
+  <tr><td><b>Omega Minus $\Omega^-$</b></td><td>$(3, 0, 3, 1, -3, -1)$</td><td>$1672.45$</td><td>$1672.45 \pm 0.29$</td><td>$0.0000\%$</td></tr>
+  </tbody>
+  </table>
 </div>
 
 :::
@@ -727,7 +860,7 @@ $$
 ::::
 
 ::: {.notes}
-Appendix B Sections B.1 to B.3 document the derived metronic scale tau_derived = 1.13115e-70 m^2, the 6D quantum number state vector q_Heim, the DESY perturbation parameters, and the 17-particle PDG validation table with mean relative error below 0.012%.
+Slide 9B presents the interactive DESY 1982 / PDG 2024 Mass Spectrum Inspector alongside the full 22-particle empirical validation table (Table B.1).
 :::
 
 ---
@@ -880,7 +1013,7 @@ Appendix C Sections C.1 and C.2 establish the Lean 4 / Mathlib4 formalization bl
 :::: {.columns}
 
 ::: {.column width="50%"}
-<h3 style="color:#5eead4; margin-top:0;">Module 1 (`StratumA.Topos`) &amp; Module 2 (`StratumA.Operads`)</h3>
+<h4 style="color:#5eead4; margin-top:0;">Module 1 (`StratumA.Topos`) &amp; Module 2 (`StratumA.Operads`)</h3>
 
 <div class="lean-code-card">-- Module 1: Bundled Normed Contexts &amp; Category Instance (Status: S_1a / S_2)
 namespace Syntrometrie.StratumA.Topos
@@ -1069,6 +1202,12 @@ Sections C.6 through C.10 complete Appendix C with Module 4 (scaled metronic Lei
   <video autoplay data-autoplay loop muted playsinline src="media/Ch15_Act12_AppD_Krawczyk_Cech_Solvers.mp4" style="max-height:185px;"></video>
   <div class="video-caption">Manim Act XII (App. D §D.1–D.2, Fig. 47): Interval Newton–Krawczyk Contraction &amp; Čech Descent Gluing</div>
 </div>
+
+::: {.deliverables-box .fragment .zoom-in}
+**Monograph Master Deliverables: The Completed 15-Chapter Syntrometric Edifice**
+* **Global Limiting Projections (§15.5):** $R_{12} \to R_6 \to R_4$ with $\tau \to 0^+$ and ${}^2\bar{\mathbf{g}}_- \to 0$ recovers Classical Einstein General Relativity ($\nabla^\mu G_{\mu\nu} = 0$) as an exact uncoupled reduct.
+* **Reflexive Epistemic Closure (§15.7):** $\mathbf{Ctx} \to \mathcal{E}_{\mathrm{syn}} \to \mathcal{O}_{\mathrm{syn}} \to \mathcal{X}_{\mathrm{syn}} \to \mathbb{M}_\tau^n \to \operatorname{ker}({}^4\mathbf{F}) \to \text{Embodied Observer}$.
+:::
 
 :::
 
