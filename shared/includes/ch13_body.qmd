@@ -1202,30 +1202,34 @@ instance : Category ContextObject where
     cipher_zeta := fun d =&gt; by dsimp; rw [f.cipher_zeta, g.cipher_zeta]
   }</pre>
   </div>
-  <div id="ch13-lean-pane-3" class="syn-tab-pane">
-<pre class="lean-code-card">partial def constantsInExpr (e : Expr) : List Name :=
-  match e with
-  | .const n _ =&gt; [n]
-  | .app f a =&gt; constantsInExpr f ++ constantsInExpr a
-  | .lam _ t b _ =&gt; constantsInExpr t ++ constantsInExpr b
-  | .forallE _ t b _ =&gt; constantsInExpr t ++ constantsInExpr b
-  | .letE _ t v b _ =&gt; constantsInExpr t ++ constantsInExpr v ++ constantsInExpr b
-  | .mdata _ b =&gt; constantsInExpr b
-  | .proj _ _ b =&gt; constantsInExpr b
-  | _ =&gt; []
-def isForbiddenConstant (n : Name) : Bool :=
-  let s := n.toString
-  s == "sorryAx" || s.startsWith "StratumC" || s.startsWith "StratumD"
-partial def checkTransitiveFirewall (env : Environment) (root : Name) : MetaM Unit := do
-  let mut visited : NameSet := {}
-  let mut queue : List Name := [root]
-  while !queue.isEmpty do
-    let curr := queue.head!
-    queue := queue.tail!
-    if !visited.contains curr then
-      visited := visited.insert curr
-      if isForbiddenConstant curr then
-        throwError s!"EPISTEMIC FIREWALL VIOLATION: {root} depends on {curr}"</pre>
+    <div id="ch13-lean-pane-3" class="syn-tab-pane">
+<pre class="lean-code-card">/-- Collect constants occurring in an expression via AST fold (App. C, Module 6) -/
+def constantsInExpr (e : Expr) : NameSet :=
+  e.foldConsts NameSet.empty (fun n acc => acc.insert n)
+
+partial def getTransitiveConstants (env : Environment) (root : Name) : NameSet :=
+  let rec visit (curr : Name) (visited : NameSet) : NameSet :=
+    if visited.contains curr then visited else
+      let visited' := visited.insert curr
+      match env.find? curr with
+      | some info =>
+          let visited1 := (constantsInExpr info.type).fold (fun acc c => visit c acc) visited'
+          match info.value? with
+          | some val => (constantsInExpr val).fold (fun acc c => visit c acc) visited1
+          | none => visited1
+      | none => visited'
+  visit root NameSet.empty
+
+def checkTransitiveFirewall (declName : Name) (tag : ProvenanceTag) : CoreM Unit := do
+  let env &lt;- getEnv
+  let deps := getTransitiveConstants env declName
+  if tag.stratum == Stratum.StratumA || tag.stratum == Stratum.StratumB then
+    if tag.type == EpistemicType.PhysicalHypothesis then
+      throwError "EPISTEMIC FIREWALL BREACH: Stratum A/B declaration tagged [P]."
+    for depName in deps do
+      if let some depTag := provenanceMap.getState env |&gt;.find? depName then
+        if depTag.type == EpistemicType.PhysicalHypothesis || depTag.stratum == Stratum.StratumD then
+          throwError "EPISTEMIC FIREWALL BREACH: forbidden transitive dependency."</pre>
   </div>
 </div>
 

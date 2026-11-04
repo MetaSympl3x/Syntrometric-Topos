@@ -831,7 +831,7 @@ Slide 10 presents Definition 10.16 (GRAD, DIV, ROT, and DEC vs. finite-differenc
 **Theorem 10.18 (Cubical Finite Element Exterior Calculus (FEEC) Convergence):**
 On a uniform cubical mesh $\mathbb{M}_\tau^n \subset \mathbb{R}^n$ with trimmed-polynomial subcomplex $\mathcal{W}_\tau^k(K) \coloneqq \mathcal{P}_{1,\dots,1}^-\Omega^k(K)$ (Arnold et al. 2006; Boffi et al. 2013), smoothed commuting projections $\Pi_\tau^k \colon L^2\Omega^k \to \mathcal{W}_\tau^k(K)$ satisfy:
 $$
-d \circ \Pi_\tau^k = \Pi_\tau^{k+1} \circ d, \qquad \|\Pi_\tau^k\alpha\|_{L^2} \le C_{\mathrm{proj}}\|\alpha\|_{L^2}, \qquad \|\Pi_\tau^k\alpha - \alpha\|_{L^2} \le C_{\mathrm{approx}}\,\tau^{s/2}\|\alpha\|_{H^s} \quad (0 < s \le 1, \text{ mesh spacing } h = \sqrt{\tau}).
+d \circ \Pi_\tau^k = \Pi_\tau^{k+1} \circ d, \qquad \|\Pi_\tau^k\alpha\|_{L^2} \le C_{\mathrm{proj}}\|\alpha\|_{L^2}, \qquad \|\Pi_\tau^k\alpha - \alpha\|_{L^2} \le C_{\mathrm{approx}}\,\tau^s\|\alpha\|_{H^s} \quad (\text{or } h^s = \tau^{s/2} \text{ for linear mesh step } h = \sqrt{\tau}).
 $$
 * **Claim Ceiling ($c_{\mathrm{FEEC}}$):** *The cubical FEEC construction is a valid mathematical approximation theorem in $L^2$; it does not by itself prove that physical spacetime is discrete.*
 :::
@@ -856,7 +856,7 @@ This isomorphism is **metric-independent**, preserving topological quantum numbe
 $$
 \lambda(\mathbf{k}) = \sum_{i=1}^n \frac{1}{\tau_i^2}(2 - 2\cos(k_i\tau_i)) = \sum_{i=1}^n \frac{4}{\tau_i^2}\sin^2\!\left(\frac{k_i\tau_i}{2}\right) \ge 0.
 $$
-3. **UV Cutoff & Torus Spectral Gap:** On $\mathbb{Z}^4$, $\sigma(\Delta_\tau) = [0, 16/\tau^2]$, giving ultraviolet scale $\Lambda_{\mathrm{UV}} = 4/\sqrt{\tau}$; on a periodic $N$-torus, $\Delta E_{\min} = \frac{4}{\tau_1^2}\sin^2(\pi/N) > 0$ (whereas an intrinsic mass gap requires a mass term in $V_{\mathrm{gauge}}$ or compact holonomy). $\blacksquare$
+3. **UV Cutoff & Torus Spectral Gap:** On $\mathbb{Z}^4$, $\sigma(\Delta_\tau) = [0, 16/\tau] \text{ (since } \tau_i^2 = \tau\text{)}$, giving ultraviolet scale $\Lambda_{\mathrm{UV}} = 4/\sqrt{\tau}$; on a periodic $N$-torus, $\Delta E_{\min} = \frac{4}{\tau_1^2}\sin^2(\pi/N) > 0$ (whereas an intrinsic mass gap requires a mass term in $V_{\mathrm{gauge}}$ or compact holonomy). $\blacksquare$
 :::
 
 <div class="interactive-panel" style="margin-top:6px;">

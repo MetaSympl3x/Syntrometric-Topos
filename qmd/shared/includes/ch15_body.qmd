@@ -876,15 +876,15 @@ Slide 9B presents the interactive DESY 1982 / PDG 2024 Mass Spectrum Inspector a
 ::: {.thm-box}
 **§B.4 Discrete Fine-Structure Constant with Sphere Packing (Thm. B.5):**
 On the spatial metronic lattice $\Mtau^3$ with cell area $\tau \approx 1.13115\times 10^{-70}\,\mathrm{m}^2$, electron reduced Compton wavelength $\lambda_C = \frac{\hbar}{m_e c} \approx 3.86159\times 10^{-13}\,\mathrm{m}$, and maximal face-centered cubic (FCC) sphere-packing fraction $f_{\mathrm{pack}} \coloneqq \frac{\pi}{3\sqrt{2}} \approx 0.74048$:
-1. **Discrete Geometric Coulomb Rotor Packing Correction Factor:**
+1. **Discrete Geometric Coulomb Rotor Packing Correction ($\gamma_{\text{hex}} = 4/9$, $\alpha_0 = 1/137$):**
    $$
-   \eta_{\mathrm{cell}} \coloneqq 1 + f_{\mathrm{pack}}\frac{\sqrt{3}}{8\pi}\!\left(\sqrt{\frac{8}{\pi}}\,\alpha\right) = 1 + \left(\frac{\sqrt{6}}{48}\sqrt{\frac{8}{\pi}}\right)\alpha \approx 1 + 2.63036\times 10^{-4}
+   \eta_{\text{cell}} \coloneqq 1 + \gamma_{\text{hex}}\,f_{\text{pack}}\frac{\sqrt{3}}{8\pi}\!\left(\sqrt{\frac{8}{\pi}}\,\alpha_0\right)\!\left(1 - \frac{\alpha_0}{\sqrt{\pi}}\right) = 1 + \frac{\sqrt{3/\pi}}{27}\,\alpha_0\!\left(1 - \frac{\alpha_0}{\sqrt{\pi}}\right) \approx 1 + 2.63095\times 10^{-4}
    $$
-2. **Exact Theoretical Fine-Structure Value ($\mathsf{Stratum}=\mathbf{C}, \mathsf{Type}=\mathbf{P}$):**
+2. **Exact FCC Metronic Evaluation:**
    $$
-   \alpha_{\mathrm{met}}^{-1} \coloneqq 137.000 \cdot \eta_{\mathrm{cell}} = \mathbf{137.036036}
+   \alpha_{\text{met}}^{-1} \coloneqq 137.000 \cdot \eta_{\text{cell}} \approx \mathbf{137.036044}
    $$
-   matching $\alpha_{\mathrm{CODATA}}^{-1} = 137.035999084(21)$ to within $2.7\times 10^{-7}$ relative precision!
+   matching $\alpha_{\text{CODATA}}^{-1} = 137.035999084(21)$ to within $3.3\times 10^{-7}$ relative precision ($\mathsf{Stratum}=\mathbf{C}, \mathsf{Type}=\mathbf{P}, \mathsf{Role}=\text{Bridge}$).
 :::
 
 ::: {.firewall-box .fragment .fade-up}
@@ -1172,6 +1172,7 @@ Sections C.6 through C.10 complete Appendix C with Module 4 (scaled metronic Lei
 
 ::: {.scholium-box .fragment .fade-up}
 **§D.2 Executable Python / SymPy Verification Sandbox:**
+* *(1) Proton anchor check verifies scale invertibility; (2) Relative mass ratios $m_i / m_p$ are non-circular.*
 1. **`metronic_mass_scale(3, 0.30013404, q_x=1, C=0, nu=1)`:** Reproduces proton mass $938.2721\,\mathrm{MeV}/c^2$ directly from $\hbar, G, c$ and $\tau = \frac{\sqrt{3}}{4}\frac{\hbar G}{c^3}$.
 2. **SymPy Discrete Leibniz Check:** Verifies $\nabla(u_n v_n) - [(\nabla u_n)v_n + u_n(\nabla v_n) - (\nabla u_n)(\nabla v_n)] \equiv 0$.
 3. **`compute_phi_topos` ($SU(2)$ Curvature &amp; Čech Descent):** Evaluates $\Phi_{\mathrm{topos}} = \|\mathbf{\Omega}_{\mathrm{int}}\|\cdot\exp(-D^2/(2\sigma_{\mathrm{tol}}^2))$ across bound triad ($\Phi_{\mathrm{topos}}=0.903$), Abelian split ($0.000$), and overlap rivalry ($0.003$).
@@ -1215,4 +1216,63 @@ Sections C.6 through C.10 complete Appendix C with Module 4 (scaled metronic Lei
 
 ::: {.notes}
 Appendix D concludes the technical appendices with Algorithms D.1 through D.4—highlighting the Interval Newton–Krawczyk mass enclosure solver (Figure 47) and the Čech Descent Equalizer—alongside the three executable Python and SymPy verification scripts.
+:::
+
+---
+
+## Appendix E & Backmatter: Master Concordance, Chronology (1952–2026) & Indices {.smaller transition="zoom"}
+
+<div class="stratum-badge badge-c">APPENDIX E (FIG. 48), HISTORICAL CHRONOLOGY (1952–2026) &amp; THREE-TIER INDEX ARCHITECTURE</div>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.thm-box}
+**Appendix E: The Master Reconstruction Functor Graph (Fig. 48)**
+The 100 numbered equations of *Syntrometrische Maximentelezentrik* ($\mathbf{D}$, Clusters I–VIII) map via $\mathcal{R} \colon \mathsf{HeimCorpus} \rightsquigarrow \mathsf{ModernMathematics}$ into nine rigorous 21st-century frameworks ($\mathbf{A, B, C}$):
+
+1. **Topos Logic $\Esyn = \mathbf{Sh}(\Ctx, \Jsyn)$** (Ch. 1, App. A — Eqs. 1–4)
+2. **Colored Banach Operads $\Osyn$ & Beck Law $\widehat{\lambda}$** (Ch. 2 — Eqs. 5–9a)
+3. **Corporate Span Pushouts $\mathbf{Syn}$ & $\mathbb{K}\mathbf{or}$** (Ch. 3 — Eqs. 10–13a)
+4. **Non-Abelian Gauge Curvature $\Omegaint^{\mathcal{D}}$ & BRST** (Ch. 4 — Eqs. 14–19a)
+5. **Ambient $(\infty,1)$-Topos $\Xsyn$ & $\dCSeg$** (Ch. 5–6 — Eqs. 20–27)
+6. **Non-Hermitian Metric Bundles ${}^2\bar{\mathbf{g}}$ ($36=21+15$)** (Ch. 7–9 — Eqs. 28–62)
+7. **Metronic DEC Lattices $\mathbb{M}_\tau^n$ ($d_\tau^2 \equiv 0$)** (Ch. 10 — Eqs. 63–83)
+8. **Selector Matter Spectrum $m(p,\hat{s})$ on $K_8$** (Ch. 11, App. B — Eqs. 84–100a)
+9. **Qualia Holonomy, $\Phi_{\mathrm{topos}}$ & Lawvere Ego $e^*$** (Ch. 12–15, App. C–E)
+:::
+
+::: {.scholium-box .fragment .fade-up}
+**Three-Tier Index & Archival Colophon Architecture:**
+* **Three Populated Indices:** (1) *Subject Index* (`\sidx`), (2) *Index of Heimian Terminology* (`\hidx`), and (3) *Index of Mathematical Symbols* (`\nidx`).
+* **Formalization Status:** Pinned Lean 4 / Mathlib4 toolchain with $\mathbf{S_2}$ kernel-checked proofs for discrete calculus, telescoping sums, Heyting Glivenko, cascade bounds, literal SM-61 refutation, $N=6$ capacity balance, DEC $d_1(d_0 f)=0$, and Palatini $\mathbf{Q}$-decomposition.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+### Historical Chronology of Syntrometrie (1952–2026)
+
+| Year / Era | Milestone & Source Context |
+|:---|:---|
+| **1952** | Heim presents *"Die dynamische Kontrabarie als Lösung des astronautischen Problems"* at the 3rd IAF Congress in Stuttgart. |
+| **1958–1980** | Development of the manuscripts later assembled as *Syntrometrische Maximentelezentrik* (Teil A: *Syntrometrie*; Teil B: *Anthropomorphe ästhetische Empirik*). |
+| **1977** | Publication of *"Vorschlag eines Weges zur einheitlichen Beschreibung der Elementarteilchen"* in *Zeitschrift für Naturforschung A* (32a, 233–243). |
+| **1980–1984** | Publication of *Elementarstrukturen der Materie* (Vols. 1–2, Resch Verlag; 2nd rev. ed. of Vol. 1 in 1989) & 1982 DESY mass spectrum computations. |
+| **2000** | Archival typescript of *Syntrometrische Maximentelezentrik* (transcribed and edited by S. Klemenz) issued by Forschungskreis Heimsche Theorie. |
+| **August 2026** | **Present Monograph & Interactive Treatise:** First complete mathematical reconstruction under the 4-Stratum Epistemic Firewall and Lean 4 Blueprint. |
+
+::: {.firewall-box .fragment .glow-pulse}
+**End of Treatise — The Enduring Syntrometric Horizon**
+*"Reality is neither an unmediated mechanical substance independent of observation, nor a solipsistic illusion of consciousness. It is an invariant relational topology whose local perspectives glue into objective existence."*
+:::
+
+:::
+
+::::
+
+::: {.notes}
+The treatise concludes with Appendix E (The Master Concordance Map, Fig. 48), the Historical Chronology from 1952 to 2026, the Three-Tier Index Architecture, and the enduring syntrometric horizon.
 :::

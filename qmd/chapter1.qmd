@@ -75,17 +75,19 @@ Formal derivability ($\Gamma_A \vdash_{\mathcal{F}} c$) certifies internal consi
 :::
 
 ::: {#fw-pane-2 .syn-tab-pane}
-* **Claim Nature $T(c) \in \{\mathbf{M}, \mathbf{R}, \mathbf{H}, \mathbf{E}\}$:**
-  - $\mathbf{M}$ (Mathematical Definition/Theorem), $\mathbf{R}$ (Interpretive Reconstruction), $\mathbf{H}$ (Physical Model Hypothesis), $\mathbf{E}$ (Historical Exegesis).
-* **Logical Role $R(c)$:** Axiom, Convention, Hypothesis, Derivation, or Conjecture.
+* **Epistemic Type $T(c) \in \{\mathbf{M}, \mathbf{R}, \mathbf{P}, \mathbf{E}\}$:**
+  - $\mathbf{M}$ (Formal Derivability $\Gamma_A dash_{\mathcal{F}} c$), $\mathbf{R}$ (Rational Explication $\mathbf{D} 
+ightsquigarrow \mathbf{C}$), $\mathbf{P}$ (Physical Hypothesis $\mathbf{C} 	o \mathcal{W}$), $\mathbf{E}$ (Empirical Assessment $\mathcal{W} 	o \mathcal{D}_{	ext{emp}}$).
+* **Logical Role $R(c)$:** $	ext{Foundation}, 	ext{Derivation}, 	ext{Explicatum}, 	ext{Bridge}, 	ext{Hypothesis}, 	ext{EmpiricalComparison}$.
 :::
 
 ::: {#fw-pane-3 .syn-tab-pane}
-* $\mathbf{E_0}(\mathsf{Mode})$: Unverified ($\mathsf{Spec}$ = Speculative, $\mathsf{Open}$ = Open Problem).
-* $\mathbf{E_1}(\mathsf{Mode})$: Calibrated/Fitted ($\mathsf{Calib}$ = Anchor, $\mathsf{Fit}$ = Phenomenological).
-* $\mathbf{E_2}(\mathsf{Mode})$: Postdiction ($\mathsf{Post}$ = Out-of-Sample, $\mathsf{ Toy}$ = Toy Model).
-* $\mathbf{E_3}(\mathsf{Mode})$: Formal Verification ($\mathsf{Math}$ = Paper Proof, $\mathsf{Lean}$ = Kernel-Checked).
-* $\mathbf{E_4}(\mathsf{Mode})$: Empirical Confirmation ($\mathsf{Pred}$ = Novel Prediction, $\mathsf{Repl}$ = Replicated).
+* $\mathbf{E_0}$ (**Unverified**): Conjectural note ($\mathbf{E_0} 
+eq 	ext{false}$).
+* $\mathbf{E_1}$ (**Located**): Bibliographically located in the corpus.
+* $\mathbf{E_2}$ (**Source-Verified**): Primary archival text verified.
+* $\mathbf{E_3}$ (**Cross-Verified**): Reconstructed & mathematically cross-verified.
+* $\mathbf{E_4}(\mathsf{Mode})$ (**Multi-Modal Verified**): $\mathsf{Mode} \in \{	ext{Proof}, 	ext{Computational}, 	ext{Textual}, 	ext{Empirical}\}$.
 :::
 
 :::
@@ -114,10 +116,10 @@ Welcome everyone. We begin with our foundational rule: the Master Epistemic Fire
 ::: {.column width="42%"}
 
 ::: {.vignette-box}
-**Epigraph I — Burkhard Heim (SM, 2000, p. 5)**
-*"Da eine solche universelle Strukturbeschreibung aber niemals im Rahmen einer zweideutigen Logik möglich sein kann, muß zunächst versucht werden, den Begriff der Struktur überhaupt in einer mehrwertigen und aspektbezogenen Form zu fassen..."*
+**Epigraph I — Burkhard Heim (*Syntrometrische Maximentelezentrik*, 2000)**
+*"Die Urerfahrung der Existenz zwingt das menschliche Denken zur methodischen Reflexiven Abstraktion—zur Überwindung anthropomorpher Schranken hin zu einer universalen Strukturwissenschaft der Relationen."*
 
-("Since such a universal description of structure can never be possible within the framework of an ambiguous two-valued logic, an attempt must first be made to grasp the concept of structure itself in a many-valued and aspect-related form...")
+("The primordial experience of existence compels human thought toward methodical Reflexive Abstraction—toward overcoming anthropomorphic bounds in favor of a universal structural science of relations.")
 :::
 
 ::: {.scholium-box .fragment .blur-in}
@@ -285,7 +287,7 @@ When a continuous contextual phenomenon is forced through a classical {0,1} siev
 
 ## §1.1.1–1.1.2: Prädikatrix ($P_n$) & Dialektik ($D_n$) {.smaller}
 
-<div class="stratum-badge badge-d">STRATUM D: HISTORICAL EXEGESIS (SM, PP. 8–9, EQS. SM-1 &amp; SM-2)</div>
+<div class="stratum-badge badge-d">STRATUM D: HISTORICAL EXEGESIS (SM, PP. 8–9, EQS. SM-1a &amp; SM-1b)</div>
 
 :::: {.columns}
 
@@ -295,7 +297,7 @@ When a continuous contextual phenomenon is forced through a classical {0,1} siev
 **1. Die Prädikatrix ($P_n$) — Continuous Semantic Ranges**
 Replaces binary predicates $\{0,1\}$ with $n$ continuous **Prädikatbänder** ($a_q$: lower threshold, $b_q$: saturation limit, $f_q \in [a_q, b_q]$: focal evaluation):
 $$
-f_q \equiv \begin{pmatrix} a \\ f \\ b \end{pmatrix}_q, \quad P_{nn} \equiv z_n ; \begin{bmatrix} \begin{pmatrix} a \\ f \\ b \end{pmatrix}_q \end{bmatrix}_n, \quad C' = c ; C \tag{SM-1}
+f_q \equiv \begin{pmatrix} a \\ f \\ b \end{pmatrix}_q, \quad P_{nn} \equiv z_n ; \begin{bmatrix} \begin{pmatrix} a \\ f \\ b \end{pmatrix}_q \end{bmatrix}_n, \quad C' = c ; C \tag{SM-1a}
 $$
 Evaluated via the **prädikative Basischiffre** $z_n$: $P_{nn} \equiv z_n ; P_n$.
 :::
@@ -304,7 +306,7 @@ Evaluated via the **prädikative Basischiffre** $z_n$: $P_{nn} \equiv z_n ; P_n$
 **2. Die Dialektik ($D_n$) — Subjective Nuance & Valence**
 Every statement is colored by certainty, emotional valence, and intentional stance across $n$ **Diatropenbänder** ($\alpha_q \le d_q \le \beta_q$):
 $$
-d_q \equiv \begin{pmatrix} \alpha \\ d \\ \beta \end{pmatrix}_q, \quad D_{nn} \equiv \zeta_n ; \begin{bmatrix} \begin{pmatrix} \alpha \\ d \\ \beta \end{pmatrix}_q \end{bmatrix}_n \tag{SM-2}
+d_q \equiv \begin{pmatrix} \alpha \\ d \\ \beta \end{pmatrix}_q, \quad D_{nn} \equiv \zeta_n ; \begin{bmatrix} \begin{pmatrix} \alpha \\ d \\ \beta \end{pmatrix}_q \end{bmatrix}_n \tag{SM-1b}
 $$
 Evaluated via the **dialektische Basischiffre** $\zeta_n$: $D_{nn} \equiv \zeta_n ; D_n$.
 :::
@@ -385,21 +387,21 @@ In Stratum D, we examine Heim's historical notation from pages 8 and 9 of Syntro
 
 ## §1.1.3: Die Koordination ($K_n$) & The Aspect Compass {.smaller}
 
-<div class="stratum-badge badge-d">STRATUM D: COMPLETE ASPECT SCHEMA (SM-3, SM-4 / SM EQ. 1)</div>
+<div class="stratum-badge badge-d">STRATUM D: COMPLETE ASPECT SCHEMA (SM-1c, SM-1 / SM EQ. 1)</div>
 
 > *"Weder die Diatropen noch die Prädikate besitzen für sich allein Aussagewert, sondern müssen derart koordiniert werden, daß jedes Diatrop ein Prädikat prägt."* (SM, p. 10)
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-### Two-Tier Synthesis of $K_n \equiv E_n F(\zeta_n, z_n)$ (SM-3)
+### Two-Tier Synthesis of $K_n \equiv E_n F(\zeta_n, z_n)$ (SM-1c)
 1. **Chiffrenkoordination $F(\zeta_n, z_n)$:** Functional alignment correlating the evaluative priority of qualifiers ($\zeta_n$) with descriptive properties ($z_n$).
 2. **Koordinationsbänder $E_n \equiv [\chi_q]_n \equiv [(y\,\chi\,r)_q^T]_n$:** Channel coupling rules (*Prägung*) binding the $q$-th diatrope to the $q$-th predicate.
 
 ::: {.thm-box}
 **Complete Subjektiver Aspekt ($S$) (SM, p. 10, Eq. 1):**
 $$
-S \equiv \left\lceil D_{nn} \times K_n \times P_{nn} \right\rceil \equiv \left\lceil \zeta_n ; \begin{bmatrix} \begin{pmatrix} \alpha \\ d \\ \beta \end{pmatrix}_q \end{bmatrix}_n \times \begin{bmatrix} \begin{pmatrix} y \\ \chi \\ r \end{pmatrix}_q \end{bmatrix}_n F(\zeta_n, z_n) \times z_n ; \begin{bmatrix} \begin{pmatrix} a \\ f \\ b \end{pmatrix}_q \end{bmatrix}_n \right\rceil \tag{SM-4}
+S \equiv \left\lceil D_{nn} \times K_n \times P_{nn} \right\rceil \equiv \left\lceil \zeta_n ; \begin{bmatrix} \begin{pmatrix} \alpha \\ d \\ \beta \end{pmatrix}_q \end{bmatrix}_n \times \begin{bmatrix} \begin{pmatrix} y \\ \chi \\ r \end{pmatrix}_q \end{bmatrix}_n F(\zeta_n, z_n) \times z_n ; \begin{bmatrix} \begin{pmatrix} a \\ f \\ b \end{pmatrix}_q \end{bmatrix}_n \right\rceil \tag{SM-1}
 $$
 :::
 
@@ -1305,14 +1307,18 @@ $$
 ::: {#rule-pane-6 .syn-tab-pane}
 **6. Deterministic Dynamic Modality Rules ($[\pi_F], \langle\pi_F\rangle, K_{\pi_F}, \text{MP}_{\pi_F}, \Box_{\mathrm{Syn}}$ Lift)**
 $$
-\frac{S(x);\Gamma\vdash^k\bigwedge_{i=1}^m\phi_i\quad (\psi=F_{\mathrm{ops}}(\vec\phi)\in\Prop_{k+1})}{S(x);\Gamma\vdash^k\langle\pi_F\rangle\psi}\,(\langle\pi_F\rangle FI)\qquad
-\frac{S(x);\Gamma\vdash^k[\pi_F]\phi}{S(x);\Gamma\vdash^k\langle\pi_F\rangle\phi}\,([\pi_F]\leftrightarrow\langle\pi_F\rangle)\qquad
-\frac{S(x);\Gamma\vdash^k[\pi_F](\phi\to\psi)}{S(x);\Gamma\vdash^k[\pi_F]\phi\to[\pi_F]\psi}\,(K_{\pi_F})
+\frac{}{S(x);\Gamma\vdash^k[\pi_F](\phi\to\psi)\to([\pi_F]\phi\to[\pi_F]\psi)}\,(K_{\pi_F})\qquad
+\frac{S(x);\Gamma\vdash^k[\pi_F](\phi\to\psi)\quad S(x);\Gamma\vdash^k[\pi_F]\phi}{S(x);\Gamma\vdash^k[\pi_F]\psi}\,(\text{MP}_{\pi_F})
 $$
 $$
-\frac{S(x);\Gamma\vdash^k[\pi_F](\phi\to\psi)\quad S(x);\Delta\vdash^k[\pi_F]\phi}{S(x);\Gamma,\Delta\vdash^k[\pi_F]\psi}\,(\text{MP}_{\pi_F})\qquad
-\frac{S(x);\Gamma\vdash^k\Box_{\mathrm{Syn}}P}{S(x);\Gamma\vdash^k[\pi_F]\Box_{\mathrm{Syn}}P}\,([\pi_F]\Box_{\mathrm{Syn}})\qquad
-\frac{S(x);[\pi_F]\Gamma\vdash^k[\pi_F]\theta}{k+1;\Gamma\vdash\theta}\,([\pi_F]\text{-Step/Unstep})
+\frac{S(x);\Gamma\vdash^k\bigwedge_{i=1}^m\phi_i\quad (\psi=F_{\mathrm{ops}}(\vec\phi)\in\mathbf{Prop}_{k+1})}{S(x);\Gamma\vdash^k\langle\pi_F\rangle\psi}\,(\langle\pi_F\rangle FI)\qquad
+\frac{S(x);\Gamma\vdash^k\bigwedge_{i=1}^m(\Box_{\mathrm{Syn}}X_i\wedge X_i)\quad (\psi=F_{\mathrm{ops}}(\vec X))}{S(x);\Gamma\vdash^k[\pi_F]\Box_{\mathrm{Syn}}\psi}\,([\pi_F]\Box_{\mathrm{Syn}}P)
+$$
+$$
+\frac{S(x);\Gamma\vdash^k[\pi_F]\phi}{S(x);\Gamma\vdash^k\langle\pi_F\rangle\phi}\,([\pi_F]\leftrightarrow\langle\pi_F\rangle)\quad
+\frac{S(x);\Gamma\vdash^k[\pi_F]\phi}{S(x);\operatorname{Cons}(\Gamma,\pi_F)\vdash^{k+1}\phi}\,([\pi_F]\text{-App})\quad
+\frac{S(x);\Gamma\vdash^{k+1}\theta}{S(x);[\pi_F]\Gamma\vdash^k[\pi_F]\theta}\,([\pi_F]\text{-Unstep})\quad
+\frac{S(x);\Gamma,\theta\vdash^{k+1}\phi}{S(x);[\pi_F]\Gamma,[\pi_F]\theta\vdash^k[\pi_F]\phi}\,([\pi_F]\text{-Step})
 $$
 :::
 

@@ -365,7 +365,7 @@ Slide 4 covers Scholium 9.4, Definition 9.5, Figures 9.2 & 9.4, and the 4D Maxwe
 Let $\{g_{(\gamma)}\}_{\gamma=1}^\omega \subset \operatorname{Met}(\mathcal{M})$ be $\omega$ smooth non-Hermitian partial metrics on $\mathcal{M}$, and $g \coloneqq \sum_{\gamma=1}^\omega g_{(\gamma)}$ their composite sum metric with right-inverse $g^{is}$ ($g_{sa}g^{ak} = \delta_s^k$). Let $[s\,k\,l]_{(\gamma)} \coloneqq \frac{1}{2}(\partial_k g_{(\gamma)sl} + \partial_l g_{(\gamma)ks} - \partial_s g_{(\gamma)kl})$.
 1. **Exact Algebraic Decomposition (SM Eq. 53):** The composite second-kind Christoffel symbols $\Gamma_{kl}^i = \left\{\begin{smallmatrix}i\\kl\end{smallmatrix}\right\} \coloneqq g^{is}[s\,k\,l]$ decompose identically as:
    $$
-   \left\{ \begin{smallmatrix} i \\ k \, l \end{smallmatrix} \right\} \;=\; \sum_{\mu=1}^\omega \sum_{\gamma=1}^\omega \left( \begin{Bmatrix} i \\ k \; l \end{Bmatrix}^{(\mu)}_{(\gamma)} + \mathbf{Q}_{(\mu\gamma)m}^i \begin{Bmatrix} m \\ k \; l \end{Bmatrix}^{(\mu)}_{(\gamma)} \right) \tag{SM-53}
+   \left\{ \begin{smallmatrix} i \\ k \, l \end{smallmatrix} \right\} \;=\; \sum_{\mu=1}^\omega \sum_{\gamma=1}^\omega \left( \frac{1}{\omega}\begin{Bmatrix} i \\ k \; l \end{Bmatrix}^{(\mu)}_{(\gamma)} + \mathbf{Q}_{(\mu\gamma)m}^i \begin{Bmatrix} m \\ k \; l \end{Bmatrix}^{(\mu)}_{(\gamma)} \right) \tag{SM-53}
    $$
    where $\begin{Bmatrix}i\\kl\end{Bmatrix}_{(\gamma)}^{(\mu)} \coloneqq g_{(\mu)}^{\dagger,is}[s\,k\,l]_{(\gamma)}$ is the cross-metric connection (*Korrelationstensor*) and the **Koppelungstensor** is the exact algebraic difference tensor:
    $$
@@ -774,6 +774,16 @@ $$
   3. At the apex $\alpha = M$, achieving $L_M = \binom{L_{M-1}}{\omega_M} = 1$ with $\omega_M > 0$ uniquely forces $\omega_M = L_{M-1} \ge n$.
   4. However, SM Eq. 61 simultaneously stipulates $\omega_M = n/2 < n$ for all $n \ge 2$. Contradiction! $\blacksquare$
 :::
+
+<div class="lean-code-card fragment fade-up" style="margin-top:6px; font-size:0.55em;">
+<b>Lean 4 Kernel-Checked Proof (<code>Syntrometrie.StratumB.Strukturkaskade</code>, Status S₂):</b>
+<pre style="margin:0;"><code>theorem literal_sm61_unsatisfiable (n w1 : ℕ) (hn : 2 ≤ n)
+    (hw1_pos : 1 ≤ w1) (hw1_lt : w1 < n) : ¬ (Nat.choose n w1 = n / 2) := by
+  intro h_eq
+  have h_ge : n ≤ Nat.choose n w1 := choose_ge_self_of_pos n w1 hw1_pos hw1_lt
+  have h_half : n / 2 < n := Nat.div_lt_self (by omega) (by decide)
+  omega</code></pre>
+</div>
 
 :::
 

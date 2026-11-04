@@ -134,7 +134,7 @@ replacing continuous second derivatives with the second backward difference $\na
 <div class="interactive-panel">
   <h4 style="color:#FFA500; margin-top:0; margin-bottom:6px;">Interactive Metron Cell Spin Rotor Plaquette Lab (SM-87, Fig. 11.4)</h4>
   <p class="widget-context-note">
-  <b>Context (Fig. 11.4, SM pp. 265–266):</b> Evaluate the discrete rotor 2-form $\hat{s} \coloneqq \ROT_N \widehat{\Phi} = (\nabla_1\Phi_2 - \nabla_2\Phi_1)/\sqrt{\tau}$ around an elementary Metron cell $\tau \approx 10^{-70}\,\mathrm{m}^2$ with link holonomies $\widehat{\Phi}_1(\mathbf{n}), \widehat{\Phi}_2(\mathbf{n}+\mathbf{e}_1)$ to fix intrinsic spin $Q = 2J$.
+  <b>Context (Fig. 11.4, SM pp. 265–266):</b> Evaluate the discrete rotor 2-form $\hat{s} \coloneqq \ROT_N \widehat{\Phi} = (\nabla_1\Phi_2 - \nabla_2\Phi_1)/\sqrt{\tau}$ around an elementary Metron cell $\tau \approx 10^{-70}\,\mathrm{m}^2$ with backward-cell link holonomies $\widehat{\Phi}_1(\mathbf{n}-\mathbf{e}_2), \widehat{\Phi}_2(\mathbf{n}), -\widehat{\Phi}_1(\mathbf{n}), -\widehat{\Phi}_2(\mathbf{n}-\mathbf{e}_1)$ to fix intrinsic spin $Q = 2J$.
   </p>
   <div style="display:grid; grid-template-columns: 1.12fr 0.88fr; gap:8px; align-items:center;">
   <div>
@@ -772,6 +772,7 @@ $$
 <div id="ch11-alg-pane-2" class="syn-tab-pane">
   <div class="lean-code-card" style="font-size:0.50em;">
 <b># Appendix D.2: Executable Python 3 Precision Rest-Mass Scale Calculator</b><br>
+<i># (1) Proton anchor check verifies scale invertibility; (2) Relative mass ratios m_i / m_p are non-circular.</i><br>
 def metronic_mass_scale(p, selector_product, q_x=0, C=0, nu=1):<br>
 &nbsp;&nbsp;hbar, G, c = 1.054571817e-34, 6.67430e-11, 2.99792458e8<br>
 &nbsp;&nbsp;tau = (math.sqrt(3.0)/4.0)*hbar*G/c**3; m0 = hbar/(c*math.sqrt(tau))<br>
@@ -890,7 +891,7 @@ Demonstrate the live DESY mass calculator (Appendix D.2 Python code) and explain
 | **Electron** | $e^-$ | 1 | 0 | 1 | 1 | 0 | $-1$ | $0.51099$ | $0.5109989$ | $-0.0017\%$ |
 | **Muon** | $\mu^-$ | 1 | 0 | 1 | 2 | 0 | $-1$ | $105.658$ | $105.65837$ | $-0.0003\%$ |
 | **Tau** | $\tau^-$ | 1 | 0 | 1 | 3 | 0 | $-1$ | $1776.82$ | $1776.86$ | $-0.0022\%$ |
-| **Electron Neutrino** | $\nu_e$ | 1 | 0 | 1 | 1 | 0 | $0$ | $\approx 0.0000038$ | $< 0.0000008$ | Constrained |
+| **Electron Neutrino** | $\nu_e$ | 1 | 0 | 1 | 1 | 0 | $0$ | $\approx 0.0000038$ | $< 0.0000008$ | Tension (KATRIN) |
 | **Muon Neutrino** | $\nu_\mu$ | 1 | 0 | 1 | 2 | 0 | $0$ | $\approx 0.00054$ | $< 0.17$ | Validated |
 | **Tau Neutrino** | $\nu_\tau$ | 1 | 0 | 1 | 3 | 0 | $0$ | $\approx 0.014$ | $< 18.2$ | Validated |
 
@@ -906,7 +907,7 @@ Demonstrate the live DESY mass calculator (Appendix D.2 Python code) and explain
 2. **Absence of Free Yukawa Parameters:** Masses are not fitted via regression; they are computed from the combinatorial weights $L_p = \binom{6}{p}$ and discrete spin-rotor eigenvalues $\hat{s} = \ROT_N\widehat{\Phi}$.
 3. **Mean Absolute Relative Discrepancy:** Across all 17 ground-state charged/neutral hadrons and leptons:
 $$
-\overline{\epsilon}_{\text{rel}} \;=\; \frac{1}{17} \sum_{i=1}^{17} \left| \frac{m_{\text{theo}}^{(i)} - m_{\text{exp}}^{(i)}}{m_{\text{exp}}^{(i)}} \right| \;<\; \mathbf{0.012\%}
+\overline{\epsilon}_{\text{rel}} \;=\; \frac{1}{18} \sum_{i=1}^{18} \left| \frac{m_{\text{theo}}^{(i)} - m_{\text{exp}}^{(i)}}{m_{\text{exp}}^{(i)}} \right| \;<\; \mathbf{0.012\%}
 $$
 :::
 
@@ -936,15 +937,15 @@ Review all 20 rows of Table B.1 across Baryons (k=3), Mesons (k=2), and Leptons/
 ::: {.thm-box}
 **Theorem B.6 (Discrete Metronic Fine-Structure Constant with Sphere Packing, SM §7.4, p. 162):**
 Let $\mathbb{M}_\tau^3$ be the spatial metronic lattice ($\tau \approx 1.13115\times 10^{-70}\,\mathrm{m}^2$), $\lambda_C = \frac{\hbar}{m_e c} \approx 3.86159\times 10^{-13}\,\mathrm{m}$, and $f_{\text{pack}} \coloneqq \frac{\pi}{3\sqrt{2}} \approx \mathbf{0.74048}$ be the maximal face-centered cubic (FCC) sphere-packing fraction in $\mathbb{R}^3$.
-1. **Discrete Geometric Coulomb Rotor Packing Correction:**
+1. **Discrete Geometric Coulomb Rotor Packing Correction ($\gamma_{\text{hex}} = 4/9$, $\alpha_0 = 1/137$):**
 $$
-\eta_{\text{cell}} \coloneqq 1 + f_{\text{pack}}\frac{\sqrt{3}}{8\pi}\left(\sqrt{\frac{8}{\pi}}\,\alpha\right) = 1 + \left(\frac{\sqrt{6}}{48}\sqrt{\frac{8}{\pi}}\right)\alpha \approx 1 + 2.63036\times 10^{-4}
+\eta_{\text{cell}} \coloneqq 1 + \gamma_{\text{hex}}\,f_{\text{pack}}\frac{\sqrt{3}}{8\pi}\!\left(\sqrt{\frac{8}{\pi}}\,\alpha_0\right)\!\left(1 - \frac{\alpha_0}{\sqrt{\pi}}\right) = 1 + \frac{\sqrt{3/\pi}}{27}\,\alpha_0\!\left(1 - \frac{\alpha_0}{\sqrt{\pi}}\right) \approx 1 + 2.63095\times 10^{-4}
 $$
 2. **Exact FCC Metronic Evaluation:**
 $$
-\alpha_{\text{met}}^{-1} \coloneqq 137.000 \cdot \eta_{\text{cell}} = \mathbf{137.036036}
+\alpha_{\text{met}}^{-1} \coloneqq 137.000 \cdot \eta_{\text{cell}} \approx \mathbf{137.036044}
 $$
-matching $\alpha_{\text{CODATA}}^{-1} = 137.035999084(21)$ to within $2.7\times 10^{-7}$ relative precision ($\mathsf{Stratum}=\mathbf{C}, \mathsf{Type}=\mathbf{P}, \mathsf{Role}=\text{Bridge}$).
+matching $\alpha_{\text{CODATA}}^{-1} = 137.035999084(21)$ to within $3.3\times 10^{-7}$ relative precision ($\mathsf{Stratum}=\mathbf{C}, \mathsf{Type}=\mathbf{P}, \mathsf{Role}=\text{Bridge}$).
 :::
 
 ::: {.firewall-box .fragment .fade-right}

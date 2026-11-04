@@ -920,16 +920,21 @@ namespace Syntrometrie.StratumA.Operads
 
 class BeckDistributiveLaw {C : Type*} [Category C]
     (T_pyr T_frag : Monad C) where
-  dist : (T_pyr.toFunctor ⋙ T_frag.toFunctor) ⟶
-         (T_frag.toFunctor ⋙ T_pyr.toFunctor)
-  unit_pyr : (myWhiskerRight T_pyr.η T_frag.toFunctor) ≫ dist =
-             myWhiskerLeft T_frag.toFunctor T_pyr.η
-  unit_frag : (myWhiskerLeft T_pyr.toFunctor T_frag.η) ≫ dist =
-              myWhiskerRight T_frag.η T_pyr.toFunctor
-  mult_pyr : (myWhiskerRight T_pyr.μ T_frag.toFunctor) ≫ dist =
-             (myWhiskerLeft T_pyr.toFunctor dist) ≫
+  /-- Formulates λ : T_pyr ∘ T_frag ⟹ T_frag ∘ T_pyr in diagrammatic order (T_frag ⋙ T_pyr) -/
+  dist : (T_frag.toFunctor ⋙ T_pyr.toFunctor) ⟶
+         (T_pyr.toFunctor ⋙ T_frag.toFunctor)
+  unit_pyr : (myWhiskerLeft T_frag.toFunctor T_pyr.η) ≫ dist =
+             myWhiskerRight T_pyr.η T_frag.toFunctor
+  unit_frag : (myWhiskerRight T_frag.η T_pyr.toFunctor) ≫ dist =
+              myWhiskerLeft T_pyr.toFunctor T_frag.η
+  mult_pyr : (myWhiskerLeft T_frag.toFunctor T_pyr.μ) ≫ dist =
              (myWhiskerRight dist T_pyr.toFunctor) ≫
-             (myWhiskerLeft T_frag.toFunctor T_pyr.μ)
+             (myWhiskerLeft T_pyr.toFunctor dist) ≫
+             (myWhiskerRight T_frag.μ T_pyr.toFunctor)
+  mult_frag : (myWhiskerRight T_frag.μ T_pyr.toFunctor) ≫ dist =
+              (myWhiskerLeft T_frag.toFunctor dist) ≫
+              (myWhiskerRight dist T_frag.toFunctor) ≫
+              (myWhiskerLeft T_frag.toFunctor T_pyr.μ)
 
 theorem equisyndromatic_fixed_point (m : ℕ) :
     Nat.choose (m + 1) m = m + 1 :=

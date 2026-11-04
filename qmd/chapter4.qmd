@@ -114,11 +114,10 @@ In the post-war German physics community where Burkhard Heim developed his early
 <div class="def-box" style="margin-bottom:6px; font-size:0.6em;">
 <div class="box-title">Symbolic Reconstruction of Generative & Enyphane Equations (SM pp. 66–74)</div>
 <ul>
-<li><b>Generative Blueprint (SM-14):</b> $\mathsf{G}_{\mathrm{gen}} \colon T0 \rightsquigarrow \mathbf{y}\widetilde{\mathbf{a}}$ selects an active context and corporate wiring from the Syntrixtotalität $T0$.</li>
-<li><b>Discrete vs. Continuous Enyphansyntrix (SM-15, SM-16, SM-16a):</b>
-$$\text{Discrete: } \mathbf{y}\widetilde{\mathbf{a}} \quad\text{vs.}\quad \text{Continuous: } YC \;=\; \mathcal{E}(\mathbf{y}\widetilde{\mathbf{a}}), \qquad \mathcal{E}^{-1}\!\bigl(\mathcal{E}(\mathbf{y}\widetilde{\mathbf{a}})\bigr) \;=\; \mathbf{y}\widetilde{\mathbf{a}}$$
-where the <b>Enyphane</b> $\mathcal{E}$ is a continuous parameter flow with exact group inverse $\mathcal{E}^{-1}$.</li>
-<li><b>Gebilde & Emergent Holoform (SM-17):</b> When $N$ Gebilde couple into a higher whole $\mathbf{H}$ whose dynamic action exceeds the sum of its uncoupled parts, $\mathbf{H}$ is an emergent <b>Holoform</b> ($\Delta_{\mathrm{emerg}}^{\mathcal{I}} > 0$) inhabiting an autonomous <b>Syntrixfeld</b> $(\mathcal{M}_{\mathrm{syn}}, g^{\mathrm{syn}}, \mathbf{X}_{\mathrm{kor}})$.</li>
+<li><b>Generative Presentation Blueprint (SM-14):</b> $\mathsf{G}_{\mathrm{gen}} \colon T_0 \rightsquigarrow \mathbf{y}\widetilde{\mathbf{a}}$ selects active context objects and corporate wiring from the Syntrixtotalität $T_0$.</li>
+<li><b>Diskrete Enyphansyntrix (SM-15):</b> Discrete sequential corporate selection program $\mathbf{y}\widetilde{\mathbf{a}} \;\overline{||}\; \mathbf{y}\widetilde{\mathbf{c}}(\lceil_j (\,)\rceil)_1^n$ in the slice topos $\mathbf{Sh}(\mathbf{Ctx}_{/U_\mathsf{G}})$.</li>
+<li><b>Enyphane & Inverse Flow (SM-16, SM-16a):</b> 1-parameter automorphism flow $\Phi_t^X$ and exact group inverse $E^{-1}E\mathbf{y}\widetilde{\mathbf{f}} \;\overline{||}\; \mathbf{y}\widetilde{\mathbf{f}}$ (diffeomorphism $(\Phi_t^X)^{-1} = \Phi_{-t}^X$).</li>
+<li><b>Continuous Enyphansyntrix & Holoformen (SM-17, SM-17a):</b> $YC \equiv \mathcal{E}(\mathbf{y}\widetilde{\mathbf{a}})$, Non-Abelian interaction curvature $\mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}}$, and emergent Holoform ($\Delta_{\mathrm{emerg}}^{\mathcal{I}} > 0$) in autonomous Syntrixfeld $(\mathcal{M}_{\mathrm{syn}}, g^{\mathrm{syn}}, \mathbf{X}_{\mathrm{kor}})$.</li>
 </ul>
 </div>
 
@@ -133,15 +132,15 @@ In Steven French's <i>The Structure of the World</i> (2014), Ontic Structural Re
 <div class="def-box" style="margin-bottom:6px; font-size:0.6em;">
 <div class="box-title">Syntrixfunktoren, Zeitkorn, $3\times 3$ Matrix $\hat{A}$ & Affinity (SM pp. 75–81)</div>
 <ul>
-<li><b>Syntrixfunktor & Zeitkorn (SM-18):</b> Higher-order operator $YF$ iterating across sheaves $\mathfrak{f}_{n+1} = YF(\mathfrak{f}_n)$, where each discrete structural update defines an indivisible <b>Zeitkorn</b> (time granule) $\delta t_i = t_{i+1} - t_i > 0$.</li>
-<li><b>Transformation Matrix $\hat{A} = (A_{ik})$ (SM pp. 78–79):</b> $3 \times 3$ classification of field transformations by synthesizing ($i=1$), analyzing ($i=2$), and isogonal ($i=3$) action vs. conflexive ($k=1$), tensorial ($k=2$), and field-intrinsic ($k=3$) targets.</li>
-<li><b>Affinitätssyndrom (SM-19):</b> External coupling interface $\mathfrak{A} = \{\beta_{(\lambda)\gamma}\}$ pairing internal syndrome levels $F_\gamma(\mathcal{S})$ with an external environment space $\mathcal{B}$.</li>
+<li><b>Syntrixfunktor & Zeitkorn (SM-18, SM-18a):</b> Higher-order pushout endofunctor $YF_{\mathrm{model}}$ iterating across sheaves $\mathfrak{f}_{n+1} = YF(\mathfrak{f}_n)$, where each discrete update defines an indivisible <b>Zeitkorn</b> $\delta t_i = t_{i+1} - t_i > 0$.</li>
+<li><b>Transformation Matrix $\hat{A} = (A_{ik})_3$ (SM pp. 78–79):</b> $3 \times 3$ property grid classifying field operations (synthesizing, analyzing, isogonal vs. conflexive, tensorial, field-intrinsic).</li>
+<li><b>Affinitätssyndrom (SM-19, SM-19a):</b> Bilinear interface $\mathfrak{A} = \beta^\infty$ pairing internal syndrome levels $F_\gamma(\mathcal{S})$ with external environmental state space $\mathcal{B}$.</li>
 </ul>
 </div>
 
 <div class="remark-box fragment blur-in" style="font-size:0.6em;">
-<div class="remark-title">Archival & Textual Note on SM p. 77 (Klemenz Edition)</div>
-In Heim's original manuscript (SM, p. 77), immediately after the discussion of Syntrixfunktor iteration and the Zeitkorn $\delta t_i$ (Eq. 18), editor Olaf Klemenz notes a local manuscript lacuna where the transition to the $3\times 3$ transformation matrix $\hat{a} = (a_{ik})_3$ begins abruptly without a section heading. Our reconstruction supplies the explicit categorical bridge between sheaf endofunctors $YF_{\mathrm{model}}$ and the taxonomic property grid $\hat{A} = (A_{ik})$ (§4.3.6).
+<div class="remark-title">Archival & Textual Note on SM pp. 75 &amp; 77 (Klemenz Edition)</div>
+In Heim's original manuscript, editor Olaf Klemenz records two explicit textual notes: on <b>p. 75</b>, an unfilled space occurs after the word <i>"gemäß"</i> immediately preceding Syntrixfunktor Eq. (18); on <b>p. 77</b>, the transition to the $3\times 3$ transformation matrix $\hat{a} = (a_{ik})_3$ begins abruptly without a section heading. Our reconstruction bridges both via sheaf endofunctor pushouts $YF_{\mathrm{model}}$ (§4.3.6).
 </div>
 
 </div>

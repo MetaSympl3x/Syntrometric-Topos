@@ -143,7 +143,7 @@ format:
 # Chapter 15: Conclusion & The Syntrometric Horizon {transition="zoom"}
 
 <div style="font-size:0.75em; color:#a0aec0; margin-top:-10px; margin-bottom:20px;">
-<i>Master Axiomatic Architecture, Five Open Conjectures & Appendices A–D</i>
+<i>Master Axiomatic Architecture, Five Open Conjectures & Appendices A–E</i>
 </div>
 
 {{< include shared/includes/ch15_body.qmd >}}

@@ -450,6 +450,11 @@ $$\MAR \setminus \operatorname{Crit}(\Psi) \;\cong\; \Sigma_c \times \mathbb{R}$
 <div class="video-label">Act VIII: Morse–Smale Separatrix D_ext &amp; Stable Manifolds W^s(p)</div>
 </div>
 
+::: {.thm-box .fragment .fade-up style="margin-top:6px; font-size:0.57em;"}
+**Theorem 6.16: Branching Types of the Extinction Boundary (SM pp. 113–115)**
+Heim distinguishes **initial and final dysvariance** (characterized by a single extinction-boundary branch $\mathcal{D}_{\mathrm{ext}}$) from **intermittent dysvariance** (characterized by two branches enclosing an intermediate metastable region), where recovery and repopulation of syndrome states occurs via **Resynkolation**.
+:::
+
 <div class="intuition-box fragment fade-left" style="margin-top:8px; font-size:0.58em;">
 <div class="box-title">The Razor's Edge of Extinction</div>
 Because $\operatorname{vol}(\Dext) = 0$, almost every initial state is captured by a stable telecentre. States lying precisely on $\Dext$ represent critical bifurcations: infinitesimal noise triggers descent into one of the adjacent basins.
