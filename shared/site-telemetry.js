@@ -156,7 +156,11 @@
     }
     .syn-counter-fallback {
       font-size: 11px; font-weight: 700; color: #60a5fa; letter-spacing: .3px;
-      font-family: monospace; display: inline-block; vertical-align: middle; line-height: 17px;
+      font-family: monospace; display: none; vertical-align: middle; line-height: 17px;
+    }
+    .syn-counter-badge-img[src] ~ .syn-counter-fallback,
+    .syn-counter-badge-img[src] + .syn-counter-fallback {
+      display: none !important;
     }
     .syn-telemetry-modal {
       position: fixed; inset: 0; background: rgba(4,8,18,0.88);
@@ -254,7 +258,7 @@
         <div style="font-size:.75rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.8px;">Global Monograph Readership Counter</div>
         <div class="syn-hero-badge-wrap">
           <img class="syn-counter-badge-img" id="modal-hero-badge-img" alt="Global Visits" height="24" style="display:none;"/>
-          <span class="syn-counter-fallback" id="modal-hero-fallback" style="font-size:1.1rem;">VISITS: <span class="syn-visit-count-display">1</span></span>
+          <span class="syn-counter-fallback" id="modal-hero-fallback" style="display:none; font-size:1.1rem;">VISITS: <span class="syn-visit-count-display">1</span></span>
         </div>
         <div style="font-size:.75rem;color:#60a5fa;">One counted hit per unique reader · zero refresh inflation · cross-tab synchronized</div>
       </div>
@@ -304,35 +308,64 @@
   else document.addEventListener('DOMContentLoaded', function() { document.body.appendChild(modal); });
 
   /* ── 6. Badge Display Helpers ───────────────────────────────────────── */
+  let currentBadgeSvg = null;
+  let currentBadgeCount = '1';
+
   function updateAllBadgeImages(svgText, countStr) {
-    if (!svgText && !isIncognito) {
-      svgText = ls('cached_svg');
-      countStr = countStr || ls('cached_count');
+    if (svgText) {
+      currentBadgeSvg = svgText;
+    } else if (!currentBadgeSvg) {
+      currentBadgeSvg = ls('cached_svg') || renderBadgeSvg(ls('cached_count') || '1');
     }
-    if (!countStr && svgText) {
-      var m = svgText.match(/aria-label=["'][^:"]*:\s*([0-9,kK\.+]+)["']/)
-           || svgText.match(/<title>[^:<]*:\s*([0-9,kK\.+]+)<\/title>/);
-      if (m) countStr = m[1];
+
+    if (countStr) {
+      currentBadgeCount = countStr;
+    } else if (!countStr && currentBadgeSvg) {
+      var m = currentBadgeSvg.match(/aria-label=["'][^:"]*:\s*([0-9,kK\.+]+)["']/)
+           || currentBadgeSvg.match(/<title>[^:<]*:\s*([0-9,kK\.+]+)<\/title>/);
+      if (m) currentBadgeCount = m[1];
+    } else if (!currentBadgeCount) {
+      currentBadgeCount = ls('cached_count') || '1';
     }
-    var dataUrl = svgText
-      ? ('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgText))
+
+    var dataUrl = currentBadgeSvg
+      ? ('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(currentBadgeSvg))
       : null;
 
     document.querySelectorAll('.syn-counter-badge-img').forEach(function(img) {
-      if (dataUrl) { img.src = dataUrl; img.style.display = 'inline-block'; }
+      if (dataUrl) {
+        img.src = dataUrl;
+        img.style.display = 'inline-block';
+      } else {
+        img.style.display = 'none';
+      }
     });
+
     var heroImg = document.getElementById('modal-hero-badge-img');
     var heroFb  = document.getElementById('modal-hero-fallback');
-    if (heroImg && dataUrl) {
-      heroImg.src = dataUrl; heroImg.style.display = 'inline-block';
-      if (heroFb) heroFb.style.display = 'none';
+    if (heroImg) {
+      if (dataUrl) {
+        heroImg.src = dataUrl;
+        heroImg.style.display = 'inline-block';
+        if (heroFb) heroFb.style.display = 'none';
+      } else {
+        heroImg.style.display = 'none';
+        if (heroFb) heroFb.style.display = 'inline-block';
+      }
     }
+
+    // STRICT MUTUAL EXCLUSION: If badge image is displayed, hide ALL fallback texts to eliminate duplicates
     document.querySelectorAll('.syn-counter-fallback').forEach(function(fb) {
-      fb.style.display = dataUrl ? 'none' : 'inline-block';
+      if (dataUrl) {
+        fb.style.display = 'none';
+      } else {
+        fb.style.display = 'inline-block';
+      }
     });
-    if (countStr) {
+
+    if (currentBadgeCount) {
       document.querySelectorAll('.syn-visit-count-display').forEach(function(el) {
-        el.textContent = countStr;
+        el.textContent = currentBadgeCount;
       });
     }
   }
@@ -503,6 +536,7 @@
   /* ── 8. One-Time Production Counter Hit ─────────────────────────────── */
   // ONLY called for verified normal production browsing on its very first visit.
   function fetchProductionBadgeOnce() {
+    if (isIncognito || isLocalEnv) return;
     fetch(BADGE_COUNTER_URL, { mode: 'cors' })
       .then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(function(svg) {

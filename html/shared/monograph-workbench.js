@@ -2708,6 +2708,7 @@ body.mdrawer-open #syn-stratum-radar {
         </div>
       </div>`;
     document.body.appendChild(bd);
+    try { if (typeof window.updateAllTelemetryBadgeImages === 'function') window.updateAllTelemetryBadgeImages(); } catch(e) {}
 
     const inp = document.getElementById('syn-cmd-input');
     if (inp) {
