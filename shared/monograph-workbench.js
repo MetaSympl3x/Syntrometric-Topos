@@ -330,8 +330,6 @@
   "joinrel": "\\mathrel{\\mkern-3mu}",
   "relbar": "\\mathrel{-}",
   "Relbar": "\\mathrel{=}",
-  "lhook": "\\hookleftarrow",
-  "rhook": "\\hookrightarrow",
   "longhookrightarrow": "\\lhook\\joinrel\\longrightarrow",
   "longhookleftarrow": "\\longleftarrow\\joinrel\\rhook",
   "sidx": [

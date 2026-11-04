@@ -74,8 +74,6 @@
   "joinrel": "\\mathrel{\\mkern-3mu}",
   "relbar": "\\mathrel{-}",
   "Relbar": "\\mathrel{=}",
-  "lhook": "\\hookleftarrow",
-  "rhook": "\\hookrightarrow",
   "longhookrightarrow": "\\lhook\\joinrel\\longrightarrow",
   "longhookleftarrow": "\\longleftarrow\\joinrel\\rhook",
   "longlongrightarrow": "\\longrightarrow",
@@ -386,8 +384,6 @@
   "stab": "\\operatorname{Stab}",
   "stable": "\\operatorname{Stable}",
   "kor": "\\mathbf{Kor}",
-  "Box": "\\Box",
-  "Diamond": "\\Diamond",
   "SyntrometricSequentCalculus": "\\mathbf{SSC}",
   "dynboxgen": "\\Box"
 };
