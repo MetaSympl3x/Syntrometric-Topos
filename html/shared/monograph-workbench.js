@@ -316,6 +316,7 @@
     1
   ],
   "llbracket": "\\mathopen{[\\mkern-3mu[}",
+  "xlongrightarrow": "\\xrightarrow",
   "rrbracket": "\\mathclose{]\\mkern-3mu]}",
   "joinrel": "\\mathrel{\\mkern-3mu}",
   "relbar": "\\mathrel{-}",

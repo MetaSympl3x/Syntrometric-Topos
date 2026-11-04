@@ -247,7 +247,7 @@ $$P_a \boxplus_\phi P_b \;\coloneqq\; \frac{P_a \oplus_1 P_b}{\operatorname{Im}(
 <div class="thm-box" style="margin-bottom:6px; font-size:0.61em;">
 <div class="box-title">Theorem 3.4: Exact Pushout Sequence & Dimension Subtraction Formula</div>
 Let $\lambda_{\mathrm{eff}} \coloneqq \operatorname{rank}(\delta_\phi) = \dim R_\phi - \dim(\ker \phi_a \cap \ker \phi_b)$. There is a canonical short exact sequence in $\mathbf{FinBan}_{\le 1}$:
-$$0 \longlongrightarrow \frac{R_\phi}{\ker(\delta_\phi)} \xlongrightarrow{\;\bar{\delta}_\phi\;} P_a \oplus_1 P_b \xlongrightarrow{\;\pi_{\boxplus}\;} P_a \boxplus_\phi P_b \longlongrightarrow 0$$
+$$0 \longlongrightarrow \frac{R_\phi}{\ker(\delta_\phi)} \xrightarrow{\;\bar{\delta}_\phi\;} P_a \oplus_1 P_b \xrightarrow{\;\pi_{\boxplus}\;} P_a \boxplus_\phi P_b \longlongrightarrow 0$$
 Consequently, $\dim(P_a \boxplus_\phi P_b) = p + q - \lambda_{\mathrm{eff}}$. When $\phi_a, \phi_b$ are jointly injective ($\ker \phi_a \cap \ker \phi_b = \{0\}$), $\lambda_{\mathrm{eff}} = \lambda$ and $\dim(P_a \boxplus_\phi P_b) = \mathbf{p + q - \lambda}$.
 </div>
 
@@ -766,7 +766,7 @@ Double categories provide the exact balance needed for modular cognition: vertic
 <div class="thm-box" style="margin-bottom:5px; font-size:0.58em;">
 <div class="box-title">Theorem 3.26: Syntrometric Mayer–Vietoris Long Exact Sequence</div>
 Let $\mathcal{S}_c = \mathbf{Kor}_{K_m, \Sigma_r}(\mathcal{S}_a, \mathcal{S}_b)$ be an Exzenter pushout of differential graded Syntrix complexes amalgamated along $C_\bullet(\mathcal{S}_\phi)$. The short exact sequence $0 \to C_\bullet(\mathcal{S}_\phi) \xrightarrow{\delta_\phi} C_\bullet(\mathcal{S}_a) \oplus_1 C_\bullet(\mathcal{S}_b) \xrightarrow{\pi_{\boxplus}} C_\bullet(\mathcal{S}_c) \to 0$ induces:
-$$\cdots \longrightarrow H_{\gamma+1}(\mathcal{S}_a) \oplus H_{\gamma+1}(\mathcal{S}_b) \xlongrightarrow{\;\pi_*\;} H_{\gamma+1}(\mathcal{S}_c) \xlongrightarrow{\;\partial_*\;} H_\gamma(\mathcal{S}_\phi) \xlongrightarrow{\;\delta_{\phi *}\;} H_\gamma(\mathcal{S}_a) \oplus H_\gamma(\mathcal{S}_b) \longrightarrow \cdots$$
+$$\cdots \longrightarrow H_{\gamma+1}(\mathcal{S}_a) \oplus H_{\gamma+1}(\mathcal{S}_b) \xrightarrow{\;\pi_*\;} H_{\gamma+1}(\mathcal{S}_c) \xrightarrow{\;\partial_*\;} H_\gamma(\mathcal{S}_\phi) \xrightarrow{\;\delta_{\phi *}\;} H_\gamma(\mathcal{S}_a) \oplus H_\gamma(\mathcal{S}_b) \longrightarrow \cdots$$
 <b>Homological Emergence Criterion:</b> Whenever $\ker(\delta_{\phi *}) \ne \{0\}$, the connecting map $\partial_* \ne 0$ generates <b>emergent homology classes</b> $[z] \in H_{\gamma+1}(\mathcal{S}_c) \setminus \operatorname{Im}(\pi_*)$ completely absent from $\mathcal{S}_a$ and $\mathcal{S}_b$ in isolation!
 </div>
 

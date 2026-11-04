@@ -28,6 +28,7 @@
   "AdditionalSynthesisChapterFourteen": "\\FloatBarrier",
   "AdditionalSynthesisChapterFifteen": "\\FloatBarrier",
   "llbracket": "\\mathopen{[\\mkern-3mu[}",
+  "xlongrightarrow": "\\xrightarrow",
   "rrbracket": "\\mathclose{]\\mkern-3mu]}",
   "arraystretch": "1.3",
   "ggg": "\\mathrel{>\\!\\!>\\!\\!>}",

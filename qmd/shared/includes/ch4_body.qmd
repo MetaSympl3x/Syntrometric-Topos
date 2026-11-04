@@ -309,7 +309,7 @@ Then $s_{\mathrm{BRST}}^2 \equiv 0$ identically, and gauge-invariant observables
 <button class="tab-btn" onclick="showBRSTTab(4, this)">Tab 4: Physical H⁰_BRST</button>
 </div>
 <div id="brst-pane-1" class="tab-pane active" style="font-size:0.62em;">
-$$\mathcal{F}^{-1}\;(\bar{c}) \xlongrightarrow{s_{\mathrm{BRST}}\bar{c} = b} \mathcal{F}^0\;(\mathbf{A}, b) \xlongrightarrow{s_{\mathrm{BRST}}\mathbf{A} = D_A c} \mathcal{F}^1\;(c) \xlongrightarrow{s_{\mathrm{BRST}}c = -\frac{1}{2}[c,c]} \mathcal{F}^2\;([c,c])$$
+$$\mathcal{F}^{-1}\;(\bar{c}) \xrightarrow{s_{\mathrm{BRST}}\bar{c} = b} \mathcal{F}^0\;(\mathbf{A}, b) \xrightarrow{s_{\mathrm{BRST}}\mathbf{A} = D_A c} \mathcal{F}^1\;(c) \xrightarrow{s_{\mathrm{BRST}}c = -\frac{1}{2}[c,c]} \mathcal{F}^2\;([c,c])$$
 Because $\deg_\Omega(c)=0$ and $\operatorname{gh}(c)=1$, $c$ has odd total degree $|c|=1$, so the graded commutator $[c,c]$ is symmetric rather than vanishing!
 </div>
 <div id="brst-pane-2" class="tab-pane" style="font-size:0.62em;">
@@ -560,7 +560,7 @@ A composite configuration $\Gamma$ constitutes a <b>Super-Additive Holoform</b> 
 <div class="thm-box" style="margin-bottom:5px; font-size:0.57em;">
 <div class="box-title">Theorem 4.17: Atiyah Lie Algebroid Unification of Enyphanen & Curvature</div>
 The bundle $\operatorname{At}(P_U) \coloneqq TP_U / G \to M_U$ of $G$-invariant vector fields on $P_U$ forms a transitive Lie algebroid over $M_U$ fitting into the canonical <b>Atiyah Short Exact Sequence</b>:
-$$0 \longlongrightarrow \operatorname{ad}(P_U) \xlongrightarrow{\;\;\iota\;\;} \operatorname{At}(P_U) \xlongrightarrow{\;\;a \coloneqq d\pi_U\;\;} TM_U \longlongrightarrow 0$$
+$$0 \longlongrightarrow \operatorname{ad}(P_U) \xrightarrow{\;\;\iota\;\;} \operatorname{At}(P_U) \xrightarrow{\;\;a \coloneqq d\pi_U\;\;} TM_U \longlongrightarrow 0$$
 <ul>
 <li><b>Connection as Algebroid Splitting:</b> A principal gauge connection $\mathbf{A} \in \Omega^1(P_U, \mathfrak{g})$ is equivalent to a vector bundle splitting $\sigma_{\mathbf{A}} \colon TM_U \to \operatorname{At}(P_U)$ with $a \circ \sigma_{\mathbf{A}} = \operatorname{id}_{TM_U}$.</li>
 <li><b>Curvature as Lie Bracket Obstruction:</b> The field curvature $F_A \in \Omega^2(M_U, \operatorname{ad} P_U)$ is the exact obstruction to $\sigma_{\mathbf{A}}$ being a Lie algebroid homomorphism:

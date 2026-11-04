@@ -276,7 +276,7 @@ Walk through the four-step proof of Theorem 12.3 (Conditional Structural Impossi
 **Theorem 12.4: Dialectical Concept Synthesis Theorem ($\operatorname{Aufhebung}$, §12.1.8)**
 Let $A, B \le \mathfrak{M}_{\mathrm{asp}}(W)$ be two internal subobjects exhibiting an evaluative antagonism:
 $$
-\operatorname{Incomp}_{\mathcal{E}}(A, B) \;\coloneqq\; \big\llbracket |\ev_P(A) - \ev_P(B)| > \theta_{\mathrm{tol}} \big\rrbracket \;=\; \top_{\Omega(W)}
+\operatorname{Incomp}_{\mathcal{E}}(A, B) \;\coloneqq\; \llbracket |\ev_P(A) - \ev_P(B)| > \theta_{\mathrm{tol}} \rrbracket \;=\; \top_{\Omega(W)}
 $$
 Reflexive abstraction models dialectical sublation ($\operatorname{Aufhebung}$) as a functor mapping contradictory context $S_{\mathrm{mod}}(x)$ to successor context $S'_{\mathrm{mod}}(x')$ containing a synthesized composite whole $C \coloneqq \operatorname{Synthesize}(A, B)$ such that:
 1. **Internal Consistency:** $\neg \exists A', B' \big(\operatorname{Part}(A', C) \wedge \operatorname{Part}(B', C) \wedge \operatorname{Incomp}_{\mathcal{E}}(A', B')\big)$.
@@ -855,10 +855,10 @@ Review the foundational cross-reference ledger: remind the audience that the sit
 ::: {.synth-box}
 **The 6-Stage Resolution Flowchart (TeX Eq. 12610, Fig. 12.17):**
 $$\begin{matrix}
-\mathbf{Receptor\;Continua} & \xlongrightarrow{\quad\operatorname{ev}\quad} & \mathbf{Operadic\;Consumption} & \xlongrightarrow{\quad\mathcal{P}\quad} & \mathbf{Protosimplex\;Lift} \\
+\mathbf{Receptor\;Continua} & \xrightarrow{\quad\operatorname{ev}\quad} & \mathbf{Operadic\;Consumption} & \xrightarrow{\quad\mathcal{P}\quad} & \mathbf{Protosimplex\;Lift} \\
 R_n \in \mathbf{Man}_{\mathrm{param}} & & (F_\gamma)^{\widehat\otimes_\pi m} \twoheadrightarrow F_{\gamma+1} & & \mathcal{P} \in \mathbf{CSeg}(\mathcal{X}_{\mathrm{syn}})_0 \\
 \Downarrow & & \Downarrow & & \Downarrow \\
-\mathbf{Coinvariant\;Erasure} & \xlongrightarrow{\quad\boxplus_\phi\quad} & \mathbf{Span\;Pushout\;Binding} & \xlongrightarrow{\quad\mathbf{\Omega}_{\mathrm{int}}\quad} & \mathbf{Quale\;Holonomy} \\
+\mathbf{Coinvariant\;Erasure} & \xrightarrow{\quad\boxplus_\phi\quad} & \mathbf{Span\;Pushout\;Binding} & \xrightarrow{\quad\mathbf{\Omega}_{\mathrm{int}}\quad} & \mathbf{Quale\;Holonomy} \\
 \dim\ker(\operatorname{ev}) > 0 & & P_a \boxplus_\phi P_b & & \mathbf{\Omega}_{\mathrm{int}}^{\mathcal{D}} \ne \mathbf{0},\; \operatorname{Def}_{\mathcal{U}} = 0
 \end{matrix}$$
 :::
