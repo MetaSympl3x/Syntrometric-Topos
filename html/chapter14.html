@@ -219,9 +219,9 @@
 
         homogenesyntrix: ["\\mathbf{x}#1", 1],
 
-        predicatesymbol: "\\mathrel{\\models}",
+        predicatesymbol: "\\mathrel{\\overline{||}}",
 
-        vspacing: ["\\vphantom{\\sum}", 1],
+        vspacing: ["\\rule{0pt}{#1}", 1],
 
         widemetroplex: ["\\mathsf{M}_{#2}\\!\\left(#1\\right)", 2],
 
@@ -239,15 +239,15 @@
 
         supmedsubscript: ["{}^{#2}_{#1,#3}", 3],
 
-        syntrix: ["\\mathbf{y}\\widetilde{#1}", 1],
+        syntrix: "\\mathbf{y}\\widetilde{\\mathbf{a}}",
 
-        metrophor: ["\\widetilde{#1}", 1],
+        metrophor: "\\widetilde{\\mathbf{a}}",
 
-        hypermetrophor: ["\\mathbf{w}\\widetilde{#1}", 1],
+        hypermetrophor: ["{}^{#1}\\mathbf{w}\\widetilde{\\mathbf{a}}", 1],
 
         korporatorkette: "\\mathord{\\llcorner}",
 
-        metroplex: ["\\overset{\\scriptscriptstyle #2}{\\mathbf{M}}\\!\\left(#1\\right)", 2],
+        metroplex: ["\\overset{\\scriptscriptstyle #1}{\\mathbf{M}}", 1],
 
         nullsyntrix: "\\mathbf{y}\\widetilde{\\overline{\\mathbf{c}}}",
 
@@ -2385,10 +2385,10 @@ input[type="range"] {
   .reveal-viewport.reveal-scroll .ch1-hud-btn,
   .reveal-viewport.reveal-scroll .m3d-btn,
   .reveal-viewport.reveal-scroll button {
-    min-height: 44px !important;
-    padding: 9px 16px !important;
-    font-size: 0.88em !important;
-    border-radius: 8px !important;
+    min-height: 24px !important;
+    padding: 3px 7px !important;
+    font-size: 0.65em !important;
+    border-radius: 5px !important;
     touch-action: manipulation !important;
     user-select: none !important;
     -webkit-tap-highlight-color: rgba(255, 215, 0, 0.25) !important;
@@ -2587,25 +2587,25 @@ input[type="range"] {
 </tr></thead><tbody>
 <tr class="odd">
 <td style="text-align: left;"><strong>SM-5</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\syntrix{\metrophor{a}} \equiv \langle \mathfrak{f}, \metrophor{a}, m \rangle\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf{y}\widetilde{\mathbf{a}} \equiv \langle \mathfrak{f}, \widetilde{\mathbf{a}}, m \rangle\)</span></td>
 <td style="text-align: left;">Syntrix operation tuple <span class="math inline">\((\mathfrak{f}, \mathbf{a}, m)\)</span></td>
 <td style="text-align: left;">Generating operation in <span class="math inline">\(\mathcal{O}_{\mathrm{syn}}(m)\)</span> (Stratum A)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>SM-5a</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\homogenesyntrix{\syntrix{\metrophor{a}}} = \langle (\mathfrak{f}, \metrophor{a})_m \rangle\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf{x}\mathbf{y}\widetilde{\mathbf{a}} = \langle (\mathfrak{f}, \widetilde{\mathbf{a}})_m \rangle\)</span></td>
 <td style="text-align: left;">Homogeneous syntrix algebra generator</td>
 <td style="text-align: left;">Free Monad algebra <span class="math inline">\(T_{\mathsf{P}}(X)\)</span> (Stratum A)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>SM-6</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\metrophor{a} \equiv (a_i)_n \lor n \ge 1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\widetilde{\mathbf{a}} \equiv (a_i)_n \lor n \ge 1\)</span></td>
 <td style="text-align: left;">State vector in finite-dimensional Banach space</td>
 <td style="text-align: left;"><span class="math inline">\(P^U \in \operatorname{Obj}(\mathbf{FinBan}_{\le 1})\)</span> (Stratum A)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>SM-7</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\metrophor{a} \equiv (A_i, a_i, B_i)_n\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\widetilde{\mathbf{a}} \equiv (A_i, a_i, B_i)_n\)</span></td>
 <td style="text-align: left;">Graded syntrix profile with metric boundaries</td>
 <td style="text-align: left;">Stratified colored operad profile (Stratum A)</td>
 </tr>
@@ -2656,13 +2656,13 @@ input[type="range"] {
 </tr></thead><tbody>
 <tr class="odd">
 <td style="text-align: left;"><strong>SM-10</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\metrophor{a} \begin{Bmatrix} K_s & C_s \\ K_m & C_m \end{Bmatrix} \metrophor{b}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\widetilde{\mathbf{a}} \begin{Bmatrix} K_s & C_s \\ K_m & C_m \end{Bmatrix} \widetilde{\mathbf{b}}\)</span></td>
 <td style="text-align: left;">Universal Korporator <span class="math inline">\(2 \times 2\)</span> rule matrix <span class="math inline">\(r\)</span></td>
 <td style="text-align: left;">Specification data <span class="math inline">\(\Sigma_r\)</span> (Stratum C)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>SM-11</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\langle (\underline{\mathfrak{f}}\,\metrophor{a}) \rangle \mathbf{Kor} \langle (\underline{\mathfrak{f}}\,\metrophor{b}) \rangle\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\langle (\underline{\mathfrak{f}}\,\widetilde{\mathbf{a}}) \rangle \mathbf{Kor} \langle (\underline{\mathfrak{f}}\,\widetilde{\mathbf{b}}) \rangle\)</span></td>
 <td style="text-align: left;">Coupled span pushout <span class="math inline">\(P_a \boxplus_\phi P_b\)</span></td>
 <td style="text-align: left;">Colimit in <span class="math inline">\(\mathbf{FinBan}_{\le 1}\)</span> (Stratum A)</td>
 </tr>
@@ -2686,7 +2686,7 @@ input[type="range"] {
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>SM-13a</strong></td>
-<td style="text-align: left;"><span class="math inline">\((\syntrix{\metrophor{a}}\,\mathbf{Kor}\,\mathbf{z}\metrophor{b})_{ab} \equiv \homogenesyntrix{\metrophor{c}}_c\)</span></td>
+<td style="text-align: left;"><span class="math inline">\((\mathbf{y}\widetilde{\mathbf{a}}\,\mathbf{Kor}\,\mathbf{z}\widetilde{\mathbf{b}})_{ab} \equiv \mathbf{x}\widetilde{\mathbf{c}}_c\)</span></td>
 <td style="text-align: left;">Eindeutigkeitssatz (Construction Determinacy)</td>
 <td style="text-align: left;">Universal Factorization (Stratum B)</td>
 </tr>
@@ -2740,31 +2740,31 @@ input[type="range"] {
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>SM-15</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\syntrix{\metrophor{\beta}}, \predicatesymbol, \syntrix{\metrophor{a}}, \syntrix{\metrophor{b}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf{y}\widetilde{\mathbf{\beta}}, \predicatesymbol, \mathbf{y}\widetilde{\mathbf{a}}, \mathbf{y}\widetilde{\mathbf{b}}\)</span></td>
 <td style="text-align: left;">Non-Abelian interaction curvature <span class="math inline">\(\Omegaint^{\mathcal{D}}\)</span></td>
 <td style="text-align: left;">2-Form in <span class="math inline">\(\Omega^2(M_U, \operatorname{ad}P_U)\)</span> (Stratum B)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>SM-16</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\syntrix{\metrophor{f}}, \predicatesymbol, (\syntrix{\metrophor{a}}_i \mathbf{Kor}_i \syntrix{\metrophor{a}}_{i+1})\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf{y}\widetilde{\mathbf{f}}, \predicatesymbol, (\mathbf{y}\widetilde{\mathbf{a}}_i \mathbf{Kor}_i \mathbf{y}\widetilde{\mathbf{a}}_{i+1})\)</span></td>
 <td style="text-align: left;">Normalized Yang–Mills emergence <span class="math inline">\(\mathcal{I}(\mathbf{A})\)</span></td>
 <td style="text-align: left;">Variational Action (Stratum B)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>SM-17</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\syntrix{\metrophor{C}} \equiv \syntrix{\metrophor{c}}, \underline{\mathbf{Kor}}\,E\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf{y}\widetilde{\mathbf{C}} \equiv \mathbf{y}\widetilde{\mathbf{c}}, \underline{\mathbf{Kor}}\,E\)</span></td>
 <td style="text-align: left;">Atiyah Lie algebroid bracket obstruction</td>
 <td style="text-align: left;"><span class="math inline">\(0 \to \operatorname{ad}P \to \operatorname{At}(P) \to TM \to 0\)</span> (Stratum A)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>SM-18</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\syntrix{\metrophor{f}}, (\syntrix{\metrophor{a}}_\varsigma)_1^r, \predicatesymbol, \syntrix{\metrophor{A}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf{y}\widetilde{\mathbf{f}}, (\mathbf{y}\widetilde{\mathbf{a}}_\varsigma)_1^r, \predicatesymbol, \mathbf{y}\widetilde{\mathbf{A}}\)</span></td>
 <td style="text-align: left;">Graded BRST differential <span class="math inline">\(s_{\mathrm{BRST}}^2 \equiv 0\)</span></td>
 <td style="text-align: left;">Ghost Cohomology <span class="math inline">\(H_{\mathrm{BRST}}^0\)</span> (Stratum B)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>SM-19a</strong></td>
-<td style="text-align: left;"><span class="math inline">\(S \equiv (\mathop{}^{\syntrix{\metrophor{a}}_i}_{m_{(\lambda)\gamma_i}})^L_{\lambda=1}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(S \equiv (\mathop{}^{\mathbf{y}\widetilde{\mathbf{a}}_i}_{m_{(\lambda)\gamma_i}})^L_{\lambda=1}\)</span></td>
 <td style="text-align: left;">Discrete chronometric time slices <span class="math inline">\(\delta t_i\)</span></td>
 <td style="text-align: left;">Foliation <span class="math inline">\(\mathfrak{f}_A\)</span> & Flow <span class="math inline">\(\Phi_t\)</span> (Stratum C)</td>
 </tr>
@@ -2803,31 +2803,31 @@ input[type="range"] {
 </tr></thead><tbody>
 <tr class="odd">
 <td style="text-align: left;"><strong>SM-20</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\metroplex{a}{1} \equiv \langle (\underline{F}, \syntrix{\hypermetrophor{a}})\,\underline{r} \rangle\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\overset{\scriptscriptstyle 1}{\mathbf{M}}\,\widetilde{a} \equiv \langle (\underline{F}, \mathbf{y}\mathbf{w}\widetilde{\mathbf{a}})\,\underline{r} \rangle\)</span></td>
 <td style="text-align: left;">Hypersyntrix as dendroidal Segal object</td>
 <td style="text-align: left;">Object in <span class="math inline">\(\dCSeg(\mathcal{X}_{\mathrm{syn}})\)</span> (Stratum A)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>SM-21</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\syntrix{\metrophor{a}} \equiv \metroplex{a}{0}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf{y}\widetilde{\mathbf{a}} \equiv \overset{\scriptscriptstyle 0}{\mathbf{M}}\,\widetilde{a}\)</span></td>
 <td style="text-align: left;">Grade-<span class="math inline">\(0\)</span> base single syntrix embedding</td>
 <td style="text-align: left;"><span class="math inline">\(\operatorname{Met}_0(\mathcal{X}_{\mathrm{syn}}) \cong \mathbf{Syn}\)</span> (Stratum A)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>SM-23</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\metroplex{a}{n+N} \prescript{(l)}{}{\mathbf{B}_N^{(m)}} \metroplex{b}{n}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\overset{\scriptscriptstyle n+N}{\mathbf{M}}\,\widetilde{a} \prescript{(l)}{}{\mathbf{B}_N^{(m)}} \overset{\scriptscriptstyle n}{\mathbf{M}}\,\widetilde{b}\)</span></td>
 <td style="text-align: left;">Syntroclinic bridge change-of-operad adjunction</td>
 <td style="text-align: left;"><span class="math inline">\((\phi_{n,n+N})_! \dashv (\phi_{n,n+N})^*\)</span> (Stratum B)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>SM-24</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\metroplex{a}{n}, \predicatesymbol, \metroplex{b}{n}(\kappa) \lor \kappa \not\equiv n\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\overset{\scriptscriptstyle n}{\mathbf{M}}\,\widetilde{a}, \predicatesymbol, \overset{\scriptscriptstyle n}{\mathbf{M}}\,\widetilde{b}(\kappa) \lor \kappa \not\equiv n\)</span></td>
 <td style="text-align: left;">Postnikov <span class="math inline">\(m\)</span>-truncation <span class="math inline">\(\tau_{\le m}\)</span> (Kontraktion)</td>
 <td style="text-align: left;">Homotopy Truncation in <span class="math inline">\(\mathcal{X}_{\mathrm{syn}}\)</span> (Stratum B)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>SM-26</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\metroplex{a}{n} \mathop{\mathbf{K}}\limits_1^k \metroplex{b}{n}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\overset{\scriptscriptstyle n}{\mathbf{M}}\,\widetilde{a} \mathop{\mathbf{K}}\limits_1^k \overset{\scriptscriptstyle n}{\mathbf{M}}\,\widetilde{b}\)</span></td>
 <td style="text-align: left;">Bisimplicial tectonic combination <span class="math inline">\(\operatorname{diag}^*\Tect(\mathcal{S})\)</span></td>
 <td style="text-align: left;">Total Tectonic Object (Stratum B)</td>
 </tr>
@@ -3184,7 +3184,7 @@ input[type="range"] {
 <td style="text-align: left;">Global sheaf section <span class="math inline">\(\Gamma \in \Hol(\mathcal{U}, \mathbf{P})\)</span> in descent equalizer with <span class="math inline">\(\Delta_{\mathrm{emerg}}^{\mathcal{I}}(\Gamma) > 0\)</span> (Thm. 1.8, Def. 4.10)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Hypersyntrix (<span class="math inline">\(\metroplex{1}{a}\)</span>)</strong></td>
+<td style="text-align: left;"><strong>Hypersyntrix (<span class="math inline">\(\overset{\scriptscriptstyle 1}{\mathbf{M}}\,\widetilde{a}\)</span>)</strong></td>
 <td style="text-align: left;">Metroplex of 1st Grade treating base syntrices as Hypermetrophor (p. 81)</td>
 <td style="text-align: left;">Internal category object in <span class="math inline">\(\operatorname{Cat}_\infty(\Xsyn) \coloneqq \CSeg(\Xsyn)\)</span> modeled as complete Segal space (Def. 5.2)</td>
 </tr>

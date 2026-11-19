@@ -46,15 +46,30 @@
   "themytheoremcounter": "\\thechapter.\\arabic{mytheoremcounter}",
   "themyexplicationcounter": "\\thechapter.\\arabic{myexplicationcounter}",
   "themycarnapscholiumcounter": "\\thechapter.\\arabic{mycarnapscholiumcounter}",
-  "claimceiling": "",
+  "claimceiling": [
+    "#2",
+    2
+  ],
   "crefrangeconjunction": "--",
   "pr": "\\operatorname{pr}",
   "pb": "\\operatorname{pb}",
   "extwedge": "\\mathbin{\\wedge}",
-  "sidx": "",
-  "hidx": "",
-  "nidx": "",
-  "xrightsquigarrow": "\\rightsquigarrow",
+  "sidx": [
+    "",
+    1
+  ],
+  "hidx": [
+    "",
+    2
+  ],
+  "nidx": [
+    "",
+    2
+  ],
+  "xrightsquigarrow": [
+    "\\overset{#1}{\\rightsquigarrow}",
+    1
+  ],
   "Hol": "\\operatorname{Hol}",
   "Omegaint": "\\mathbf{\\Omega}_{\\mathrm{int}}",
   "Ctx": "\\mathbf{Ctx}",
@@ -78,18 +93,32 @@
   "longhookrightarrow": "\\lhook\\joinrel\\longrightarrow",
   "longhookleftarrow": "\\longleftarrow\\joinrel\\rhook",
   "longlongrightarrow": "\\longrightarrow",
-  "q": "q",
   "Im": "\\operatorname{Im}",
   "LMSL": "\\mathcal{L}_{\\text{MSL}}",
   "WFFMSL": "\\text{WFF}_{\\mathcal{L}_{\\text{MSL}}}",
   "Smodx": "S_{\\text{mod}}(x)",
-  "Smodarg": "S_{\\mathrm{mod}}",
+  "Smodarg": [
+    "S_{\\text{mod}}(#1)",
+    1
+  ],
   "BoxS": "\\Box_S",
   "BoxSyn": "\\Box_{\\mathrm{Syn}}",
-  "Propk": "\\mathbf{Prop}",
-  "Stabk": "\\operatorname{Stab}",
-  "IGPk": "\\operatorname{IGP}",
-  "Origink": "\\operatorname{Origin}",
+  "Propk": [
+    "\\text{Prop}_{#1}",
+    1
+  ],
+  "Stabk": [
+    "\\text{Stab}_{#1}",
+    1
+  ],
+  "IGPk": [
+    "\\text{IGP}_{#1}",
+    1
+  ],
+  "Origink": [
+    "\\text{Origin}_{#1}",
+    1
+  ],
   "fops": "F_{\\text{ops}}",
   "APS": "\\mathbf{AP}_S",
   "APZero": "\\mathbf{AP}_0",
@@ -104,32 +133,41 @@
   "advancedfigure": "",
   "quantor": [
     "\\overline{\\left|#1\\right|}",
-    1,
-    ""
+    1
   ],
   "polyquantor": [
     "\\left.{}^{#2}_{|}\\overline{\\left|#1\\right|}\\right.^{#4}_{#3}",
-    4,
-    ""
+    4
   ],
   "homogenesyntrix": [
     "\\mathbf{x}#1",
-    1,
-    "\\widetilde{\\mathbf{a}}"
+    1
   ],
   "predicatesymbol": "\\mathrel{\\overline{||}}",
   "vspacing": [
     "\\rule{0pt}{#1}",
     1
   ],
-  "widemetroplex": "\\mathsf{M}",
-  "syntroklinemetroplex": "\\mathsf{B}",
+  "widemetroplex": [
+    "\\mathsf{M}_{#2}\\!\\left(#1\\right)",
+    2
+  ],
+  "syntroklinemetroplex": [
+    "\\mathsf{B}_{#2}\\!\\left(#1\\right)",
+    2
+  ],
   "syntroklinekettenkoppelung": "\\mathsf{K}",
   "infinitesimalchainoperatorI": "\\mathop{\\mathrm{I}}",
   "metrondelta": "\\nabla",
   "metrondifferential": "\\bar{\\delta}",
-  "supmedsubscript": "",
-  "smformula": "",
+  "supmedsubscript": [
+    "{}^{#2}_{#1,#3}",
+    3
+  ],
+  "smformula": [
+    "#1",
+    1
+  ],
   "Sp": "\\operatorname{sp}",
   "tr": "\\operatorname{tr}",
   "Hom": "\\operatorname{Hom}",
@@ -162,19 +200,12 @@
   "Pro": "\\operatorname{Pro}",
   "hypersyntrix": "\\overset{\\scriptscriptstyle 1}{\\mathbf{M}}",
   "korporatorkette": "\\mathord{\\llcorner}",
-  "tau": "tau",
-  "phi": "phi",
-  "zeta": "zeta",
-  "Gamma": "Gamma",
-  "Omega": "Omega",
-  "infty": "infinity",
   "boxplusphi": "\\mathbin{\\boxplus_\\phi}",
   "syntrix": "\\mathbf{y}\\widetilde{\\mathbf{a}}",
   "metrophor": "\\widetilde{\\mathbf{a}}",
   "fundamentalkondensor": "{}^3\\mathbf{\\Gamma}",
   "strukturkompressor": "{}^4\\mathbf{\\zeta}",
   "metroplexaeondyne": "\\text{Metroplexäondyne}",
-  "r": "1.4",
   "homogeneoussyntrix": "\\mathbf{x}\\widetilde{\\mathbf{a}}",
   "synkolator": "\\mathfrak{f}",
   "synkolationsstufe": "m",
@@ -249,36 +280,90 @@
   "coloneqq": "\\mathrel{:=}",
   "Coloneqq": "\\mathrel{::=}",
   "ab": "\\mathrm{ab}",
-  "metroplexfont": "\\mathbf",
-  "metroplex": "\\mathbf{M}",
-  "hypermetrophor": "\\mathbf{w}\\widetilde{\\mathbf{a}}",
-  "metroplexsynkolator": "\\mathfrak{f}",
-  "nullmetroplex": "\\mathbf{M}_0",
-  "metroplextotalitaet": "T",
-  "metroplextotalitaetarg": "T",
-  "syntroklinebruecke": "\\alpha",
-  "transzendenzstufe": "C",
-  "transcendenzstufe": "C",
-  "partialstruktur": "{}^2\\mathbf{g}",
-  "metronisiertekondensor": "\\mathbf{F}",
-  "turnstilek": "\\vdash",
-  "modelsk": "\\models",
-  "dyndiamondgen": "\\Diamond",
-  "prescript": "",
-  "underrightarrow": "\\overrightarrow",
+  "metroplexfont": [
+    "\\mathbf{#1}",
+    1
+  ],
+  "metroplex": [
+    "\\overset{\\scriptscriptstyle #1}{\\mathbf{M}}",
+    1
+  ],
+  "hypermetrophor": [
+    "{}^{#1}\\mathbf{w}\\widetilde{\\mathbf{a}}",
+    1
+  ],
+  "metroplexsynkolator": [
+    "{}^{#1}\\mathfrak{f}",
+    1
+  ],
+  "nullmetroplex": [
+    "{}^{#1}\\mathbf{M}_0",
+    1
+  ],
+  "metroplextotalitaet": [
+    "T_{#1}",
+    1
+  ],
+  "metroplextotalitaetarg": [
+    "T_{#1}",
+    1
+  ],
+  "syntroklinebruecke": [
+    "{}^{#1}\\alpha",
+    1
+  ],
+  "transzendenzstufe": [
+    "C(#1)",
+    1
+  ],
+  "transcendenzstufe": [
+    "C(#1)",
+    1
+  ],
+  "partialstruktur": [
+    "{}^2\\mathbf{g}_{(#1)}",
+    1
+  ],
+  "metronisiertekondensor": [
+    "{}^{#1}\\mathbf{F}",
+    1
+  ],
+  "turnstilek": [
+    "\\vdash^{#1}",
+    1
+  ],
+  "modelsk": [
+    "\\models^{#1}",
+    1
+  ],
+  "dyndiamondgen": [
+    "\\langle #1 \\rangle",
+    1
+  ],
+  "prescript": [
+    "{}^{#1}_{#2}{#3}",
+    3
+  ],
+  "underrightarrow": [
+    "\\overrightarrow{#1}",
+    1
+  ],
   "dbinom": [
     "\\binom{#1}{#2}",
-    2,
-    ""
+    2
   ],
   "dfrac": [
     "\\frac{#1}{#2}",
-    2,
-    ""
+    2
   ],
-  "centernot": "\\not",
-  "carnapexplication": "",
-  "width": "container",
+  "centernot": [
+    "\\not#1",
+    1
+  ],
+  "carnapexplication": [
+    "#5",
+    5
+  ],
   "AbsEN": "\\operatorname{AbsEN}",
   "Ad": "\\operatorname{Ad}",
   "Ahat": "\\widehat{A}",
@@ -378,7 +463,6 @@
   "sBRST": "s_{\\mathrm{BRST}}",
   "sp": "\\operatorname{sp}",
   "vol": "\\operatorname{vol}",
-  "family": "Libertinus Mono",
   "shift": "\\mathsf{Shift}",
   "cspine": "\\mathcal{C}_{\\mathrm{spine}}",
   "ap": "\\mathbf{AP}",
@@ -386,7 +470,10 @@
   "stable": "\\operatorname{Stable}",
   "kor": "\\mathbf{Kor}",
   "SyntrometricSequentCalculus": "\\mathbf{SSC}",
-  "dynboxgen": "\\Box",
+  "dynboxgen": [
+    "[#1]",
+    1
+  ],
   "smtag": [
     "\\tag{\\text{SM-#1}#2}",
     2

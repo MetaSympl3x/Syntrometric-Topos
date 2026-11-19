@@ -369,10 +369,10 @@
   const FALLBACK_ROSETTA = [
     { eq: "SM Eq. 1 / SM-4", ch: "Ch 1", page: 25, tex: "eq:sm_4", d: "S \\equiv \\left\\lceil D_{nn} \\times K_n \\times P_{nn} \\right\\rceil \\equiv \\left\\lceil \\zeta_n,\\; \\left[\\begin{pmatrix} \\alpha \\\\ d \\\\ \\beta \\end{pmatrix}_{q}\\right]_n \\times \\dots \\right\\rceil", r: "Context \\(U = (D^U, P^U, C^U, K^U, z^U, \\zeta^U) \\in \\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}\\) with contraction \\(K^U : D^U \\widehat{\\otimes}_\\pi P^U \\to C^U\\)" },
     { eq: "SM Eq. 4", ch: "Ch 1", page: 29, tex: "prop:quantor_degeneration_hierarchy", d: "(\\cdot)_{\\rho}, \\polyquantor{A_\\rho}{\\underrightarrow{f_\\rho}}{1}{r}, (\\cdot)_\\rho \\quad (\\text{Polyquantor-Hierarchie})", r: "Product-slice Kripke–Joyal forcing \\(\\prod V_i \\Vdash \\phi\\) and right-adjoint universal quantifier \\(\\forall_f\\)" },
-    { eq: "SM Eq. 5", ch: "Ch 2", page: 66, tex: "eq:heim_syntrix_eq5", d: "\\syntrix{\\metrophor{a}} \\equiv \\langle f, \\metrophor{a}, m\\rangle \\lor F_1 \\equiv f(a_k)_1^m \\quad (\\text{Syntrix Triad})", r: "Free algebra over completed colored Banach operad \\(\\mathcal{O}_{\\mathrm{syn}}\\) on profile \\((\\gamma,\\dots,\\gamma; \\gamma+1)\\)" },
-    { eq: "SM Eq. 5a", ch: "Ch 2", page: 67, tex: "eq:heim_homogeneous_eq5a", d: "\\mathbf{x}\\syntrix{\\metrophor{a}} \\equiv \\langle\\langle f, \\metrophor{a}\\rangle m\\rangle \\quad (\\text{Homogeneous Syntrix & Spaltbarkeit})", r: "Boardman–Vogt tensor \\(\\mathcal{O}_{\\mathrm{pyr}} \\otimes_{\\mathrm{BV}} \\mathcal{O}_{\\mathrm{frag}}\\) and Beck Distributive Law \\(\\widehat{\\lambda} : \\overline{T}_{\\mathrm{pyr}} \\overline{T}_{\\mathrm{frag}} \\Rightarrow \\overline{T}_{\\mathrm{frag}} \\overline{T}_{\\mathrm{pyr}}\\)" },
+    { eq: "SM Eq. 5", ch: "Ch 2", page: 66, tex: "eq:heim_syntrix_eq5", d: "\\mathbf{y}\\widetilde{\\mathbf{a}} \\equiv \\langle f, \\widetilde{\\mathbf{a}}, m\\rangle \\lor \\widetilde{\\mathbf{a}} \\equiv (a_i)_n \\lor F_1 \\equiv f(a_k)_1^m \\quad (\\text{Syntrix Triad})", r: "Free algebra over completed colored Banach operad \\(\\mathcal{O}_{\\mathrm{syn}}\\) on profile \\((\\gamma,\\dots,\\gamma; \\gamma+1)\\)" },
+    { eq: "SM Eq. 5a", ch: "Ch 2", page: 67, tex: "eq:heim_homogeneous_eq5a", d: "\\mathbf{x}\\mathbf{y}\\widetilde{\\mathbf{a}} = \\langle (f, \\widetilde{\\mathbf{a}}) m\\rangle \\quad (\\text{Homogeneous Syntrix & Spaltbarkeit})", r: "Boardman–Vogt tensor \\(\\mathcal{O}_{\\mathrm{pyr}} \\otimes_{\\mathrm{BV}} \\mathcal{O}_{\\mathrm{frag}}\\) and Beck Distributive Law \\(\\widehat{\\lambda} : \\overline{T}_{\\mathrm{pyr}} \\overline{T}_{\\mathrm{frag}} \\Rightarrow \\overline{T}_{\\mathrm{frag}} \\overline{T}_{\\mathrm{pyr}}\\)" },
     { eq: "SM Eq. 8", ch: "Ch 2", page: 85, tex: "def:piecewise_colored_operad", d: "(\\underline{f}, \\underline{m}) \\equiv \\int (f_\\gamma, m_\\gamma) \\quad (\\text{Komplexsynkolator})", r: "Piecewise-color filtered operad algebra with \\(m_K > \\dim F \\implies C(\\dim F, m_K) = 0\\)" },
-    { eq: "SM Eqs. 9, 9a", ch: "Ch 2", page: 96, tex: "thm:aeondyne_fibration_strict", d: "\\underline{S} \\equiv \\langle f, (\\metrophor{a}), m\\rangle \\lor \\overline{S} \\equiv \\langle(f), \\metrophor{a}, m\\rangle", r: "Cartesian fiber section in Grothendieck fibration \\(\\pi : \\int_{\\mathbf{Ctx}} \\mathbf{Syn} \\to \\mathbf{Ctx}\\)" },
+    { eq: "SM Eqs. 9, 9a", ch: "Ch 2", page: 96, tex: "thm:aeondyne_fibration_strict", d: "\\underline{S} \\equiv \\langle f, (\\widetilde{\\mathbf{a}}), m\\rangle \\lor \\overline{S} \\equiv \\langle(f), \\widetilde{\\mathbf{a}}, m\\rangle", r: "Cartesian fiber section in Grothendieck fibration \\(\\pi : \\int_{\\mathbf{Ctx}} \\mathbf{Syn} \\to \\mathbf{Ctx}\\)" },
     { eq: "SM Eq. 11", ch: "Ch 3", page: 103, tex: "eq:original_universal_korporator_matrix_ch3", d: "\\begin{pmatrix} K_s & C_s \\\\ K_m & C_m \\end{pmatrix} \\quad (2 \\times 2 \\; \\text{Universal Korporator Matrix})", r: "Corporate pairing functor \\(\\mathbf{Kor}_{r,\\Sigma}\\): Span pushout \\(P_a \\boxplus_\\phi P_b\\) and 9 Mixed / 6 Pure classes" },
     { eq: "SM Eq. 11a", ch: "Ch 3", page: 108, tex: "prop:zero_object_syn", d: "\\mathbf{y}\\widetilde{\\overline{\\mathbf{c}}} \\equiv \\langle\\overline{f}\\,\\widetilde{c}\\,\\overline{m}\\rangle \\quad (\\text{Nullsyntrix})", r: "Initial & terminal zero object \\(0_{\\mathbf{Syn}} \\in \\mathrm{Obj}(\\mathbf{Syn})\\)" },
     { eq: "SM Eq. 13", ch: "Ch 3", page: 123, tex: "def:conflexivity_index", d: "\\mathbf{y}\\widetilde{a}_{\\mathrm{conf}} \\equiv \\prod_{i=1}^k \\mathbf{S}_i \\quad (\\text{Konflexivsyntrix})", r: "Tree colimit \\(\\varinjlim D\\) with Presentation Conflexivity Index \\(\\mathrm{ConfIndex}_{\\mathrm{pres}}(G_S) = |E_K| + 1\\)" },
@@ -450,9 +450,10 @@
     margin: 0 !important;
     align-self: flex-start !important;
     max-width: calc(100vw - 16px) !important;
-    padding: 6px 11px !important;
-    font-size: 11px !important;
-    border-radius: 8px !important;
+    padding: 4px 8px !important;
+    font-size: 9.5px !important;
+    gap: 5px !important;
+    border-radius: 6px !important;
   }
 
   #syn-bottom-dock [id$="-3d-hud"],
@@ -468,6 +469,27 @@
     max-width: 100% !important;
     margin-left: auto !important;
     align-self: flex-end !important;
+  }
+
+  [id$="-3d-hud"] [class$="-hud-btn"],
+  #syntrix-3d-hud .hud3d-btn {
+    min-height: 0 !important;
+    padding: 2px clamp(3.5px, 1vw, 5.5px) !important;
+    font-size: clamp(7.2px, 1.7vw, 8.8px) !important;
+    border-radius: 4px !important;
+    line-height: 1.15 !important;
+  }
+
+  .reveal .slide-menu-button {
+    transform: scale(0.72) !important;
+    transform-origin: bottom left !important;
+  }
+
+  .reveal .syn-micro-btn,
+  .reveal .syn-vid-btn {
+    min-height: 0 !important;
+    padding: 1.5px 5px !important;
+    font-size: 9px !important;
   }
 }
 
@@ -985,9 +1007,13 @@ body.mdrawer-open #syn-drawer-backdrop {
   #syn-monograph-fab {
     left: 10px;
     bottom: 10px;
-    padding: 6px 10px;
-    font-size: 11px;
+    padding: 4px 8px;
+    font-size: 9.5px;
     max-width: 48vw;
+  }
+  #fab-page-pill {
+    font-size: 8.5px !important;
+    padding: 1px 4px !important;
   }
   #syn-monograph-drawer {
     width: 100vw;
@@ -1008,8 +1034,15 @@ body.mdrawer-open #syn-drawer-backdrop {
   }
   .mdrawer-tab {
     flex-shrink: 0;
-    padding: 4px 9px;
-    font-size: 11px;
+    padding: 3px 7px;
+    font-size: 10px;
+  }
+  .mdrawer-header .m3d-btn,
+  .mdrawer-tabs .m3d-btn,
+  .tex-toolbar .m3d-btn {
+    padding: 2.5px 6px !important;
+    font-size: 9.5px !important;
+    min-height: 0 !important;
   }
   .chapter-jump-select {
     max-width: min(195px, 60vw);
@@ -1627,9 +1660,11 @@ body.mdrawer-open #syn-stratum-radar {
   }
   [id$="-3d-hud"] [class$="-hud-btn"],
   #syntrix-3d-hud .hud3d-btn {
-    padding: 2px clamp(4px, 1.3vw, 6px) !important;
-    font-size: clamp(7.5px, 2.2vw, 9px) !important;
-    line-height: 1.2 !important;
+    min-height: 0 !important;
+    padding: 1.5px clamp(3px, 1vw, 4.5px) !important;
+    font-size: clamp(6.5px, 1.8vw, 8px) !important;
+    line-height: 1.15 !important;
+    border-radius: 4px !important;
     max-width: 100% !important;
   }
   [id$="-3d-hud"] [class$="-scrubber"],
@@ -1642,20 +1677,22 @@ body.mdrawer-open #syn-stratum-radar {
     padding: 4px 6px;
   }
   .syn-morph-pill {
-    font-size: 8.5px;
-    min-width: 16px;
+    font-size: 7.8px;
+    min-width: 14px;
+    padding: 1.5px 0;
   }
   .syn-morph-slide-btn {
-    font-size: 8.5px;
-    padding: 2px 5px;
+    font-size: 7.8px;
+    padding: 1.5px 4px;
     margin-left: 0;
   }
 }
 @media (max-width: 400px) {
   [id$="-3d-hud"] [class$="-hud-btn"],
   #syntrix-3d-hud .hud3d-btn {
-    padding: 1.5px clamp(3px, 1.1vw, 5px) !important;
-    font-size: clamp(7px, 2.1vw, 8.5px) !important;
+    min-height: 0 !important;
+    padding: 1px clamp(2.5px, 0.9vw, 3.8px) !important;
+    font-size: clamp(6px, 1.7vw, 7.4px) !important;
   }
 }
 
@@ -1781,9 +1818,19 @@ body.mdrawer-open #syn-stratum-radar {
     display: none;
   }
   #syn-stratum-radar {
-    top: 6px;
-    right: 8px;
-    padding: 3px 8px;
+    top: 5px;
+    right: 6px;
+    padding: 2px 6px;
+    gap: 4px;
+  }
+  #syn-stratum-radar .radar-btn {
+    padding: 1.5px 5px !important;
+    font-size: 9px !important;
+    min-height: 0 !important;
+  }
+  #syn-radar-stratum-pill {
+    font-size: 8.5px !important;
+    padding: 1px 5px !important;
   }
 }
 
@@ -2467,6 +2514,88 @@ body.mdrawer-open #syn-stratum-radar {
     return Math.max(1, Math.min(TOTAL_PDF_PAGES, Math.round((texIndex / (texLength || 1)) * 455) + 8));
   }
 
+  // Balanced-brace macro expander for Chapter 14 \smformula local overrides
+  function isUnescapedChar(str, idx) {
+    let slashes = 0;
+    let j = idx - 1;
+    while (j >= 0 && str[j] === '\\') {
+      slashes++;
+      j--;
+    }
+    return (slashes % 2) === 0;
+  }
+
+  function extractBracedArg(str, pos) {
+    while (pos < str.length && /\s/.test(str[pos])) pos++;
+    if (pos >= str.length || str[pos] !== '{') return null;
+    let depth = 0;
+    const start = pos + 1;
+    for (let i = pos; i < str.length; i++) {
+      if (str[i] === '{' && isUnescapedChar(str, i)) {
+        depth++;
+      } else if (str[i] === '}' && isUnescapedChar(str, i)) {
+        depth--;
+        if (depth === 0) {
+          return { arg: str.slice(start, i), nextPos: i + 1 };
+        }
+      }
+    }
+    return null;
+  }
+
+  function replaceMacroWithArgs(str, cmd, numArgs, replFn) {
+    const token = '\\' + cmd;
+    const out = [];
+    let i = 0;
+    while (i < str.length) {
+      const idx = str.indexOf(token, i);
+      if (idx === -1) {
+        out.push(str.slice(i));
+        break;
+      }
+      const endCmd = idx + token.length;
+      if (endCmd < str.length && /[a-zA-Z]/.test(str[endCmd])) {
+        out.push(str.slice(i, endCmd));
+        i = endCmd;
+        continue;
+      }
+      out.push(str.slice(i, idx));
+      let cur = endCmd;
+      const args = [];
+      let ok = true;
+      for (let k = 0; k < numArgs; k++) {
+        const res = extractBracedArg(str, cur);
+        if (!res) {
+          ok = false;
+          break;
+        }
+        args.push(res.arg);
+        cur = res.nextPos;
+      }
+      if (ok) {
+        out.push(replFn.apply(null, args));
+        i = cur;
+      } else {
+        out.push(token);
+        i = endCmd;
+      }
+    }
+    return out.join('');
+  }
+
+  function expandSMFormulaMacros(formula) {
+    let f = formula || "";
+    for (let pass = 0; pass < 3; pass++) {
+      f = replaceMacroWithArgs(f, 'metrophor', 1, a => `\\widetilde{\\mathbf{${a}}}`);
+      f = replaceMacroWithArgs(f, 'hypermetrophor', 1, a => `\\mathbf{w}\\widetilde{\\mathbf{${a}}}`);
+      f = replaceMacroWithArgs(f, 'syntrix', 1, a => `\\mathbf{y}${a}`);
+      f = replaceMacroWithArgs(f, 'homogenesyntrix', 1, a => `\\mathbf{x}${a}`);
+      f = replaceMacroWithArgs(f, 'metroplex', 2, (a, b) => `\\overset{\\scriptscriptstyle ${b}}{\\mathbf{M}}\\,\\widetilde{${a}}`);
+    }
+    f = f.replace(/\\metrondifferential(?![a-zA-Z])/g, '\\prod');
+    return f;
+  }
+
   // Dynamically parses all Theorems, Definitions, Scholia, Lean 4 Boxes & SM Eqs. 1-100a
   function parseMonographTeX(tex) {
     parsedTheorems = [];
@@ -2512,7 +2641,7 @@ body.mdrawer-open #syn-stratum-radar {
     let sm;
     while ((sm = smRegex.exec(tex)) !== null) {
       const eqName = sm[2].replace("~", " ");
-      const rawFormula = sm[3].replace(/%.*$/gm, "").replace(/\s+/g, " ").trim();
+      const rawFormula = expandSMFormulaMacros(sm[3].replace(/%.*$/gm, "").replace(/\s+/g, " ").trim());
       parsedSMEquations.push({
         eq: eqName,
         ch: "Ch 14 Register",
