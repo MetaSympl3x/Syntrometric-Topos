@@ -8,6 +8,12 @@
 [![MathJax](https://img.shields.io/badge/Formulas-MathJax%20Container%20Wrapping-blueviolet?style=for-the-badge)](shared/)
 [![Visitors](https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Fapi.visitorbadge.io%2Fapi%2Fvisitors%3Fpath%3DMetaSympl3x-SyntrometricTopos-readme%26label%3D&query=%2F%2F%40aria-label&label=VISITORS&color=4169E1&style=for-the-badge&cacheSeconds=1800)](https://github.com/MetaSympl3x/Syntrometric-Topos)
 
+<p align="center">
+  <a href="https://metasympl3x.github.io/Syntrometric-Topos/">
+    <img src="preview.png" alt="Syntrometrische Maximentelezentrik" width="100%">
+  </a>
+</p>
+
 A modern, mathematically rigorous, interactive formalization and audiovisual exposition of Burkhard Heim's foundational 1982 treatise ***Syntrometrische Maximentelezentrik***. 
 
 This repository translates the theoretical architecture of the treatise (`Topos.tex`, ~17,600+ lines) into a unified digital ecosystem: **15 interactive Quarto Reveal.js decks**, **180 procedural Manim Community mathematical animations**, **interactive JavaScript laboratory widgets**, and a **master web portal** with a continuous 244-slide 2D grid mega-deck.
