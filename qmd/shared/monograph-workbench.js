@@ -24,32 +24,33 @@
   let rawTeXCache = null;
   let parsedTheorems = [];
   let parsedSMEquations = [];
-  let currentPDFPage = 11;
+  let currentPDFPage = 19;
   let activeTab = 'pdf';
+  const TOTAL_PDF_PAGES = 470;
 
-  // 15 Chapters + 5 Appendices Exact LaTeX Anchors and PDF Base Pages
+  // 15 Chapters + 5 Appendices Exact LaTeX Anchors and PDF Base Pages (470-page Monograph)
   const CHAPTER_PAGE_MAP = {
-    front: { basePage: 1,   texAnchor: "\\chapter*{Preface & Reader's Guide}" },
-    ch1:   { basePage: 11,  texAnchor: "\\label{chap:ch1}" },
-    ch2:   { basePage: 34,  texAnchor: "\\label{chap:ch2}" },
-    ch3:   { basePage: 56,  texAnchor: "\\label{chap:ch3}" },
-    ch4:   { basePage: 78,  texAnchor: "\\label{chap:ch4}" },
-    ch5:   { basePage: 102, texAnchor: "\\label{chap:ch5}" },
-    ch6:   { basePage: 122, texAnchor: "\\label{chap:ch6}" },
-    ch7:   { basePage: 142, texAnchor: "\\label{chap:ch7}" },
-    ch8:   { basePage: 158, texAnchor: "\\label{chap:ch8}" },
-    ch9:   { basePage: 174, texAnchor: "\\label{chap:ch9}" },
-    ch10:  { basePage: 196, texAnchor: "\\label{chap:ch10}" },
-    ch11:  { basePage: 216, texAnchor: "\\label{chap:ch11}" },
-    ch12:  { basePage: 236, texAnchor: "\\label{chap:ch12}" },
-    ch13:  { basePage: 262, texAnchor: "\\label{chap:ch13}" },
-    ch14:  { basePage: 282, texAnchor: "\\label{chap:ch14}" },
-    ch15:  { basePage: 308, texAnchor: "\\label{chap:ch15}" },
-    appA:  { basePage: 320, texAnchor: "\\label{app:proof_theory_imsl}" },
-    appB:  { basePage: 330, texAnchor: "\\label{app:mass_spectrum_validation}" },
-    appC:  { basePage: 338, texAnchor: "\\label{app:lean4_blueprint}" },
-    appD:  { basePage: 354, texAnchor: "\\label{app:computational_algorithms}" },
-    appE:  { basePage: 360, texAnchor: "\\label{app:master_concordance}" }
+    front: { basePage: 4,   texAnchor: "\\chapter*{Preface \\& Reader's Guide}" },
+    ch1:   { basePage: 19,  texAnchor: "\\label{chap:ch1}" },
+    ch2:   { basePage: 65,  texAnchor: "\\label{chap:ch2}" },
+    ch3:   { basePage: 101, texAnchor: "\\label{chap:ch3}" },
+    ch4:   { basePage: 130, texAnchor: "\\label{chap:ch4}" },
+    ch5:   { basePage: 162, texAnchor: "\\label{chap:ch5}" },
+    ch6:   { basePage: 182, texAnchor: "\\label{chap:ch6}" },
+    ch7:   { basePage: 204, texAnchor: "\\label{chap:ch7}" },
+    ch8:   { basePage: 225, texAnchor: "\\label{chap:ch8}" },
+    ch9:   { basePage: 240, texAnchor: "\\label{chap:ch9}" },
+    ch10:  { basePage: 264, texAnchor: "\\label{chap:ch10}" },
+    ch11:  { basePage: 288, texAnchor: "\\label{chap:ch11}" },
+    ch12:  { basePage: 309, texAnchor: "\\label{chap:ch12}" },
+    ch13:  { basePage: 330, texAnchor: "\\label{chap:ch13}" },
+    ch14:  { basePage: 351, texAnchor: "\\label{chap:ch14}" },
+    ch15:  { basePage: 381, texAnchor: "\\label{chap:ch15}" },
+    appA:  { basePage: 391, texAnchor: "\\label{app:proof_theory_imsl}" },
+    appB:  { basePage: 402, texAnchor: "\\label{app:mass_spectrum_validation}" },
+    appC:  { basePage: 411, texAnchor: "\\label{app:lean4_blueprint}" },
+    appD:  { basePage: 442, texAnchor: "\\label{app:computational_algorithms}" },
+    appE:  { basePage: 448, texAnchor: "\\label{app:master_concordance}" }
   };
 
   // Comprehensive Syntrometric & Heim Historical Math Macros for MathJax
@@ -357,29 +358,33 @@
     "\\rule{0pt}{#1}",
     1
   ],
-  "ab": "\\mathrm{ab}"
+  "ab": "\\mathrm{ab}",
+  "smtag": [
+    "\\tag{\\text{SM-#1}#2}",
+    2
+  ]
 });
 
   // Curated Highlights of the 100-Equation Master Register with exact LaTeX
   const FALLBACK_ROSETTA = [
-    { eq: "SM Eq. 1 / SM-4", ch: "Ch 1", page: 15, tex: "eq:sm_4", d: "S \\equiv \\left\\lceil D_{nn} \\times K_n \\times P_{nn} \\right\\rceil \\equiv \\left\\lceil \\zeta_n,\\; \\left[\\begin{pmatrix} \\alpha \\\\ d \\\\ \\beta \\end{pmatrix}_{q}\\right]_n \\times \\dots \\right\\rceil", r: "Context \\(U = (D^U, P^U, C^U, K^U, z^U, \\zeta^U) \\in \\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}\\) with contraction \\(K^U : D^U \\widehat{\\otimes}_\\pi P^U \\to C^U\\)" },
-    { eq: "SM Eq. 4", ch: "Ch 1", page: 17, tex: "prop:quantor_degeneration_hierarchy", d: "(\\cdot)_{\\rho}, \\polyquantor{A_\\rho}{\\underrightarrow{f_\\rho}}{1}{r}, (\\cdot)_\\rho \\quad (\\text{Polyquantor-Hierarchie})", r: "Product-slice Kripke–Joyal forcing \\(\\prod V_i \\Vdash \\phi\\) and right-adjoint universal quantifier \\(\\forall_f\\)" },
-    { eq: "SM Eq. 5", ch: "Ch 2", page: 35, tex: "eq:heim_syntrix_eq5", d: "\\syntrix{\\metrophor{a}} \\equiv \\langle f, \\metrophor{a}, m\\rangle \\lor F_1 \\equiv f(a_k)_1^m \\quad (\\text{Syntrix Triad})", r: "Free algebra over completed colored Banach operad \\(\\mathcal{O}_{\\mathrm{syn}}\\) on profile \\((\\gamma,\\dots,\\gamma; \\gamma+1)\\)" },
-    { eq: "SM Eq. 5a", ch: "Ch 2", page: 36, tex: "eq:heim_homogeneous_eq5a", d: "\\mathbf{x}\\syntrix{\\metrophor{a}} \\equiv \\langle\\langle f, \\metrophor{a}\\rangle m\\rangle \\quad (\\text{Homogeneous Syntrix & Spaltbarkeit})", r: "Boardman–Vogt tensor \\(\\mathcal{O}_{\\mathrm{pyr}} \\otimes_{\\mathrm{BV}} \\mathcal{O}_{\\mathrm{frag}}\\) and Beck Distributive Law \\(\\widehat{\\lambda} : \\overline{T}_{\\mathrm{pyr}} \\overline{T}_{\\mathrm{frag}} \\Rightarrow \\overline{T}_{\\mathrm{frag}} \\overline{T}_{\\mathrm{pyr}}\\)" },
-    { eq: "SM Eq. 8", ch: "Ch 2", page: 37, tex: "def:piecewise_colored_operad", d: "(\\underline{f}, \\underline{m}) \\equiv \\int (f_\\gamma, m_\\gamma) \\quad (\\text{Komplexsynkolator})", r: "Piecewise-color filtered operad algebra with \\(m_K > \\dim F \\implies C(\\dim F, m_K) = 0\\)" },
-    { eq: "SM Eqs. 9, 9a", ch: "Ch 2", page: 51, tex: "thm:aeondyne_fibration_strict", d: "\\underline{S} \\equiv \\langle f, (\\metrophor{a}), m\\rangle \\lor \\overline{S} \\equiv \\langle(f), \\metrophor{a}, m\\rangle", r: "Cartesian fiber section in Grothendieck fibration \\(\\pi : \\int_{\\mathbf{Ctx}} \\mathbf{Syn} \\to \\mathbf{Ctx}\\)" },
-    { eq: "SM Eq. 11", ch: "Ch 3", page: 58, tex: "eq:original_universal_korporator_matrix_ch3", d: "\\begin{pmatrix} K_s & C_s \\\\ K_m & C_m \\end{pmatrix} \\quad (2 \\times 2 \\; \\text{Universal Korporator Matrix})", r: "Corporate pairing functor \\(\\mathbf{Kor}_{r,\\Sigma}\\): Span pushout \\(P_a \\boxplus_\\phi P_b\\) and 9 Mixed / 6 Pure classes" },
-    { eq: "SM Eq. 11a", ch: "Ch 3", page: 59, tex: "prop:zero_object_syn", d: "\\mathbf{y}\\widetilde{\\overline{\\mathbf{c}}} \\equiv \\langle\\overline{f}\\,\\widetilde{c}\\,\\overline{m}\\rangle \\quad (\\text{Nullsyntrix})", r: "Initial & terminal zero object \\(0_{\\mathbf{Syn}} \\in \\mathrm{Obj}(\\mathbf{Syn})\\)" },
-    { eq: "SM Eq. 13", ch: "Ch 3", page: 60, tex: "def:conflexivity_index", d: "\\mathbf{y}\\widetilde{a}_{\\mathrm{conf}} \\equiv \\prod_{i=1}^k \\mathbf{S}_i \\quad (\\text{Konflexivsyntrix})", r: "Tree colimit \\(\\varinjlim D\\) with Presentation Conflexivity Index \\(\\mathrm{ConfIndex}_{\\mathrm{pres}}(G_S) = |E_K| + 1\\)" },
-    { eq: "SM Eq. 14", ch: "Ch 4", page: 79, tex: "thm:slice_site_equivalence_ch4", d: "G_{\\mathrm{gen}} \\equiv \\left[ P_i \\big\\vert_1^4 \\{\\dots\\}_{(j)} \\big\\vert_1^Q \\right] \\quad (\\text{Generative & 4D Syntrixtotalit\\\"at})", r: "Slice sheaf topos \\(\\mathrm{Sh}(\\mathbf{Ctx}_{/U_G}, J_{/U_G}) \\simeq \\mathcal{E}_{\\mathrm{syn}} / y(U_G)\\) over \\(P^{U_G} \\cong \\mathbb{R}^{12}\\)" },
-    { eq: "SM Eqs. 16a, 17", ch: "Ch 4", page: 80, tex: "thm:relative_interaction_curvature_decomp", d: "E, \\; E^{-1}, \\; E_\\nu \\quad (\\text{Continuous Enyphane & Enyphanie})", r: "Boundary-tangent corner flow \\(\\Phi_t^X\\) and Non-Abelian Interaction Curvature \\(\\Omega_{\\mathrm{int}}^D = \\sum [a_i, a_j] + \\dots\\)" },
-    { eq: "SM Eq. 18", ch: "Ch 4", page: 94, tex: "def:discrete_chronometry_clock_ch4", d: "\\mathrm{YF}(\\delta t_i) \\quad (\\text{Syntrixfunktor & Zeitkorn})", r: "Pushout endofunctor \\(\\mathrm{YF}_{\\mathrm{model}}(f) = B \\amalg_{C_0} f^{\\otimes r}\\) and discrete clock difference \\(\\delta t_n = \\tau(n+1) - \\tau(n)\\)" },
-    { eq: "SM Eqs. 20--25a", ch: "Ch 5", page: 103, tex: "def:complete_segal_objects_ch5", d: "\\mathsf{M}^1, \\; \\mathsf{M}^n, \\; {}^{n+N}\\alpha \\quad (\\text{Hypersyntrix & Metroplex})", r: "Dendroidal Complete Segal Spaces \\(\\mathrm{dCSeg}(\\mathcal{X}_{\\mathrm{syn}})\\) and change-of-operad adjunction \\((\\phi)_! \\dashv (\\phi)^*\\)" },
-    { eq: "SM Eq. 27", ch: "Ch 6", page: 123, tex: "thm:final_coalgebra_existence_ch6", d: "\\mathrm{AR}_q, \\; T_z \\quad (\\text{\\\"Aonische Area & Telezentrum})", r: "Final Telecentric Coalgebra \\((\\nu \\mathcal{T}, \\zeta \\cong)\\) via Lambek's Lemma and Lyapunov basin \\(\\dot{V} \\leq -\\gamma V\\)" },
-    { eq: "SM Eqs. 28--35a", ch: "Ch 7--8", page: 144, tex: "thm:nuclear_variable_separation", d: "\\mathbf{y}\\widetilde{\\mathbf{R}}_n \\equiv \\langle f, R_n, m\\rangle \\quad (\\text{Quantit\\\"atssyntrix})", r: "Quantitative Topos \\(\\mathcal{E}_{\\mathrm{quant}}\\), Seeley extension \\(E^{(n)}\\) and Grothendieck nuclearity \\(\\mathcal{S}((\\mathbb{R}_{\\geq 0})^m)\\)" },
-    { eq: "SM Eqs. 37, 53, 64", ch: "Ch 9", page: 182, tex: "def:hermetry_matrix_36", d: "{}^2\\bar{g} = {}^2\\bar{g}_+ + {}^2\\bar{g}_- \\quad (36\\text{-Component Hermetry})", r: "21 symmetric + 15 skew potentials on \\(R_6\\), Palatini \\(Q_{(\\mu\\gamma)}\\) and Sobolev fixed point \\({}^2\\bar{g}_\\infty\\)" },
-    { eq: "SM Eqs. 67--80", ch: "Ch 10", page: 205, tex: "thm:discrete_leibniz_rules", d: "\\metrondelta\\varphi = \\varphi(n) - \\varphi(n-1), \\quad \\nabla(uv) = u\\nabla v + v\\nabla u - (\\nabla u)(\\nabla v), \\quad \\mathrm{S}", r: "Backward difference \\(\\nabla_i = I - E_i^{-1}\\), DEC \\(d_\\tau^2 \\equiv 0\\) and Finite Element Exterior Calculus" },
-    { eq: "SM Eqs. 99, 100, 100a", ch: "Ch 11", page: 228, tex: "thm:mass_eigenvalue_formula_ch11", d: "{}^4\\zeta, \\quad {}^4F = 0, \\quad L_p = C(6,p) \\quad (\\text{Strukturkompressor & Masses})", r: "Self-adjoint selector spectrum on \\(K_8 = S^2 \\times \\mathbb{T}^6\\) across 63 channels fixing elementary particle masses" }
+    { eq: "SM Eq. 1 / SM-4", ch: "Ch 1", page: 25, tex: "eq:sm_4", d: "S \\equiv \\left\\lceil D_{nn} \\times K_n \\times P_{nn} \\right\\rceil \\equiv \\left\\lceil \\zeta_n,\\; \\left[\\begin{pmatrix} \\alpha \\\\ d \\\\ \\beta \\end{pmatrix}_{q}\\right]_n \\times \\dots \\right\\rceil", r: "Context \\(U = (D^U, P^U, C^U, K^U, z^U, \\zeta^U) \\in \\mathbf{Ctx}_{\\mathrm{adm}}^{\\mathrm{sk}}\\) with contraction \\(K^U : D^U \\widehat{\\otimes}_\\pi P^U \\to C^U\\)" },
+    { eq: "SM Eq. 4", ch: "Ch 1", page: 29, tex: "prop:quantor_degeneration_hierarchy", d: "(\\cdot)_{\\rho}, \\polyquantor{A_\\rho}{\\underrightarrow{f_\\rho}}{1}{r}, (\\cdot)_\\rho \\quad (\\text{Polyquantor-Hierarchie})", r: "Product-slice Kripke–Joyal forcing \\(\\prod V_i \\Vdash \\phi\\) and right-adjoint universal quantifier \\(\\forall_f\\)" },
+    { eq: "SM Eq. 5", ch: "Ch 2", page: 66, tex: "eq:heim_syntrix_eq5", d: "\\syntrix{\\metrophor{a}} \\equiv \\langle f, \\metrophor{a}, m\\rangle \\lor F_1 \\equiv f(a_k)_1^m \\quad (\\text{Syntrix Triad})", r: "Free algebra over completed colored Banach operad \\(\\mathcal{O}_{\\mathrm{syn}}\\) on profile \\((\\gamma,\\dots,\\gamma; \\gamma+1)\\)" },
+    { eq: "SM Eq. 5a", ch: "Ch 2", page: 67, tex: "eq:heim_homogeneous_eq5a", d: "\\mathbf{x}\\syntrix{\\metrophor{a}} \\equiv \\langle\\langle f, \\metrophor{a}\\rangle m\\rangle \\quad (\\text{Homogeneous Syntrix & Spaltbarkeit})", r: "Boardman–Vogt tensor \\(\\mathcal{O}_{\\mathrm{pyr}} \\otimes_{\\mathrm{BV}} \\mathcal{O}_{\\mathrm{frag}}\\) and Beck Distributive Law \\(\\widehat{\\lambda} : \\overline{T}_{\\mathrm{pyr}} \\overline{T}_{\\mathrm{frag}} \\Rightarrow \\overline{T}_{\\mathrm{frag}} \\overline{T}_{\\mathrm{pyr}}\\)" },
+    { eq: "SM Eq. 8", ch: "Ch 2", page: 85, tex: "def:piecewise_colored_operad", d: "(\\underline{f}, \\underline{m}) \\equiv \\int (f_\\gamma, m_\\gamma) \\quad (\\text{Komplexsynkolator})", r: "Piecewise-color filtered operad algebra with \\(m_K > \\dim F \\implies C(\\dim F, m_K) = 0\\)" },
+    { eq: "SM Eqs. 9, 9a", ch: "Ch 2", page: 96, tex: "thm:aeondyne_fibration_strict", d: "\\underline{S} \\equiv \\langle f, (\\metrophor{a}), m\\rangle \\lor \\overline{S} \\equiv \\langle(f), \\metrophor{a}, m\\rangle", r: "Cartesian fiber section in Grothendieck fibration \\(\\pi : \\int_{\\mathbf{Ctx}} \\mathbf{Syn} \\to \\mathbf{Ctx}\\)" },
+    { eq: "SM Eq. 11", ch: "Ch 3", page: 103, tex: "eq:original_universal_korporator_matrix_ch3", d: "\\begin{pmatrix} K_s & C_s \\\\ K_m & C_m \\end{pmatrix} \\quad (2 \\times 2 \\; \\text{Universal Korporator Matrix})", r: "Corporate pairing functor \\(\\mathbf{Kor}_{r,\\Sigma}\\): Span pushout \\(P_a \\boxplus_\\phi P_b\\) and 9 Mixed / 6 Pure classes" },
+    { eq: "SM Eq. 11a", ch: "Ch 3", page: 108, tex: "prop:zero_object_syn", d: "\\mathbf{y}\\widetilde{\\overline{\\mathbf{c}}} \\equiv \\langle\\overline{f}\\,\\widetilde{c}\\,\\overline{m}\\rangle \\quad (\\text{Nullsyntrix})", r: "Initial & terminal zero object \\(0_{\\mathbf{Syn}} \\in \\mathrm{Obj}(\\mathbf{Syn})\\)" },
+    { eq: "SM Eq. 13", ch: "Ch 3", page: 123, tex: "def:conflexivity_index", d: "\\mathbf{y}\\widetilde{a}_{\\mathrm{conf}} \\equiv \\prod_{i=1}^k \\mathbf{S}_i \\quad (\\text{Konflexivsyntrix})", r: "Tree colimit \\(\\varinjlim D\\) with Presentation Conflexivity Index \\(\\mathrm{ConfIndex}_{\\mathrm{pres}}(G_S) = |E_K| + 1\\)" },
+    { eq: "SM Eq. 14", ch: "Ch 4", page: 141, tex: "thm:slice_site_equivalence_ch4", d: "G_{\\mathrm{gen}} \\equiv \\left[ P_i \\big\\vert_1^4 \\{\\dots\\}_{(j)} \\big\\vert_1^Q \\right] \\quad (\\text{Generative & 4D Syntrixtotalit\\\"at})", r: "Slice sheaf topos \\(\\mathrm{Sh}(\\mathbf{Ctx}_{/U_G}, J_{/U_G}) \\simeq \\mathcal{E}_{\\mathrm{syn}} / y(U_G)\\) over \\(P^{U_G} \\cong \\mathbb{R}^{12}\\)" },
+    { eq: "SM Eqs. 16a, 17", ch: "Ch 4", page: 146, tex: "thm:relative_interaction_curvature_decomp", d: "E, \\; E^{-1}, \\; E_\\nu \\quad (\\text{Continuous Enyphane & Enyphanie})", r: "Boundary-tangent corner flow \\(\\Phi_t^X\\) and Non-Abelian Interaction Curvature \\(\\Omega_{\\mathrm{int}}^D = \\sum [a_i, a_j] + \\dots\\)" },
+    { eq: "SM Eq. 18", ch: "Ch 4", page: 155, tex: "def:discrete_chronometry_clock_ch4", d: "\\mathrm{YF}(\\delta t_i) \\quad (\\text{Syntrixfunktor & Zeitkorn})", r: "Pushout endofunctor \\(\\mathrm{YF}_{\\mathrm{model}}(f) = B \\amalg_{C_0} f^{\\otimes r}\\) and discrete clock difference \\(\\delta t_n = \\tau(n+1) - \\tau(n)\\)" },
+    { eq: "SM Eqs. 20--25a", ch: "Ch 5", page: 169, tex: "def:complete_segal_objects_ch5", d: "\\mathsf{M}^1, \\; \\mathsf{M}^n, \\; {}^{n+N}\\alpha \\quad (\\text{Hypersyntrix & Metroplex})", r: "Dendroidal Complete Segal Spaces \\(\\mathrm{dCSeg}(\\mathcal{X}_{\\mathrm{syn}})\\) and change-of-operad adjunction \\((\\phi)_! \\dashv (\\phi)^*\\)" },
+    { eq: "SM Eq. 27", ch: "Ch 6", page: 191, tex: "thm:final_coalgebra_existence_ch6", d: "\\mathrm{AR}_q, \\; T_z \\quad (\\text{\\\"Aonische Area & Telezentrum})", r: "Final Telecentric Coalgebra \\((\\nu \\mathcal{T}, \\zeta \\cong)\\) via Lambek's Lemma and Lyapunov basin \\(\\dot{V} \\leq -\\gamma V\\)" },
+    { eq: "SM Eqs. 28--35a", ch: "Ch 7--8", page: 231, tex: "thm:nuclear_variable_separation", d: "\\mathbf{y}\\widetilde{\\mathbf{R}}_n \\equiv \\langle f, R_n, m\\rangle \\quad (\\text{Quantit\\\"atssyntrix})", r: "Quantitative Topos \\(\\mathcal{E}_{\\mathrm{quant}}\\), Seeley extension \\(E^{(n)}\\) and Grothendieck nuclearity \\(\\mathcal{S}((\\mathbb{R}_{\\geq 0})^m)\\)" },
+    { eq: "SM Eqs. 37, 53, 64", ch: "Ch 9", page: 247, tex: "def:hermetry_matrix_36", d: "{}^2\\bar{g} = {}^2\\bar{g}_+ + {}^2\\bar{g}_- \\quad (36\\text{-Component Hermetry})", r: "21 symmetric + 15 skew potentials on \\(R_6\\), Palatini \\(Q_{(\\mu\\gamma)}\\) and Sobolev fixed point \\({}^2\\bar{g}_\\infty\\)" },
+    { eq: "SM Eqs. 67--80", ch: "Ch 10", page: 277, tex: "thm:discrete_leibniz_rules", d: "\\metrondelta\\varphi = \\varphi(n) - \\varphi(n-1), \\quad \\nabla(uv) = u\\nabla v + v\\nabla u - (\\nabla u)(\\nabla v), \\quad \\mathrm{S}", r: "Backward difference \\(\\nabla_i = I - E_i^{-1}\\), DEC \\(d_\\tau^2 \\equiv 0\\) and Finite Element Exterior Calculus" },
+    { eq: "SM Eqs. 99, 100, 100a", ch: "Ch 11", page: 302, tex: "thm:mass_eigenvalue_formula_ch11", d: "{}^4\\zeta, \\quad {}^4F = 0, \\quad L_p = C(6,p) \\quad (\\text{Strukturkompressor & Masses})", r: "Self-adjoint selector spectrum on \\(K_8 = S^2 \\times \\mathbb{T}^6\\) across 63 channels fixing elementary particle masses" }
   ];
 
   const STYLES = `
@@ -552,6 +557,23 @@ body.mdrawer-open .anim-hud-tray {
   color: #000;
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+}
+
+#syn-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 6, 14, 0.62);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 100000 !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+body.mdrawer-open #syn-drawer-backdrop {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 #syn-monograph-drawer {
@@ -897,6 +919,68 @@ body.mdrawer-open .anim-hud-tray {
   scrollbar-color: rgba(255, 215, 0, 0.4) transparent !important;
 }
 
+.thm-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  background: #0a101d;
+  border-bottom: 1px solid #1e293b;
+}
+
+.thm-filter-pill {
+  background: #151e32;
+  color: #94a3b8;
+  border: 1px solid #2d3748;
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 10.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.14s ease;
+  white-space: nowrap;
+}
+
+.thm-filter-pill:hover,
+.thm-filter-pill.active {
+  background: rgba(65, 105, 225, 0.34);
+  color: #FFD700;
+  border-color: #FFD700;
+}
+
+.thm-match-count {
+  margin-left: auto;
+  font-size: 10.5px;
+  color: #64748b;
+  font-family: "Libertinus Mono", monospace;
+  white-space: nowrap;
+}
+
+.rosetta-list::-webkit-scrollbar,
+#monograph-tex-viewer::-webkit-scrollbar,
+#syn-cmd-results::-webkit-scrollbar,
+.radar-pop-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rosetta-list::-webkit-scrollbar-thumb,
+#monograph-tex-viewer::-webkit-scrollbar-thumb,
+#syn-cmd-results::-webkit-scrollbar-thumb,
+.radar-pop-list::-webkit-scrollbar-thumb {
+  background: rgba(65, 105, 225, 0.45);
+  border-radius: 6px;
+}
+
+#syn-monograph-drawer button:focus-visible,
+#syn-monograph-drawer input:focus-visible,
+#syn-monograph-drawer select:focus-visible,
+#syn-cmd-modal button:focus-visible,
+#syn-cmd-modal input:focus-visible {
+  outline: 2px solid #FFD700;
+  outline-offset: 2px;
+}
+
 @media (max-width: 768px) {
   #syn-monograph-fab {
     left: 10px;
@@ -911,12 +995,38 @@ body.mdrawer-open .anim-hud-tray {
   .mdrawer-header {
     padding: 8px 10px;
   }
+  .mdrawer-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 7px 10px;
+    gap: 5px;
+  }
+  .mdrawer-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .mdrawer-tab {
+    flex-shrink: 0;
+    padding: 4px 9px;
+    font-size: 11px;
+  }
   .chapter-jump-select {
-    max-width: 190px;
+    max-width: min(195px, 60vw);
     font-size: 10.5px;
   }
   .tex-search-input {
     min-width: 130px;
+  }
+  .thm-filter-bar {
+    padding: 6px 10px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .thm-filter-bar::-webkit-scrollbar {
+    display: none;
   }
   .rosetta-formula-math {
     font-size: 12px;
@@ -930,6 +1040,30 @@ body.mdrawer-open .anim-hud-tray {
   .rosetta-list {
     padding: 8px 10px;
     gap: 8px;
+  }
+  #syn-cmd-modal {
+    width: 96vw;
+    max-height: 86dvh;
+  }
+  .cmd-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 7px 10px;
+  }
+  .cmd-filters::-webkit-scrollbar {
+    display: none;
+  }
+  .cmd-filter-pill {
+    flex-shrink: 0;
+    font-size: 10.5px;
+  }
+  .cmd-footer {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 7px 10px;
+    font-size: 10px;
   }
   .reveal .MathJax_Display,
   .reveal mjx-container[display="true"],
@@ -1456,21 +1590,34 @@ body.mdrawer-open #syn-stratum-radar {
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.55);
 }
 
+/* Touch-Device Visibility for Smart Toolbars & Video HUD */
+@media (hover: none), (pointer: coarse) {
+  .syn-box-toolbar,
+  .syn-video-hud {
+    opacity: 0.80;
+    pointer-events: auto;
+  }
+}
+
 /* Universal Mobile Safeguard for all 3D HUD Menu Panels & Injected Controls */
 @media (max-width: 600px) {
-  [id$="-3d-hud"] {
+  [id$="-3d-hud"],
+  #syntrix-3d-hud {
     box-sizing: border-box !important;
     overflow-x: hidden !important;
   }
-  [id$="-3d-hud"] [class$="-hud-header"] {
+  [id$="-3d-hud"] [class$="-hud-header"],
+  #syntrix-3d-hud .hud3d-header {
     flex-wrap: wrap !important;
     gap: 4px 6px !important;
   }
-  [id$="-3d-hud"] [class$="-hud-title"] {
+  [id$="-3d-hud"] [class$="-hud-title"],
+  #syntrix-3d-hud .hud3d-title {
     flex: 1 1 160px !important;
     min-width: 0 !important;
   }
-  [id$="-3d-hud"] [class$="-hud-controls"] {
+  [id$="-3d-hud"] [class$="-hud-controls"],
+  #syntrix-3d-hud .hud3d-controls {
     display: flex !important;
     flex-wrap: wrap !important;
     flex: 1 1 auto !important;
@@ -1478,13 +1625,15 @@ body.mdrawer-open #syn-stratum-radar {
     gap: 3px !important;
     max-width: 100% !important;
   }
-  [id$="-3d-hud"] [class$="-hud-btn"] {
+  [id$="-3d-hud"] [class$="-hud-btn"],
+  #syntrix-3d-hud .hud3d-btn {
     padding: 2px clamp(4px, 1.3vw, 6px) !important;
     font-size: clamp(7.5px, 2.2vw, 9px) !important;
     line-height: 1.2 !important;
     max-width: 100% !important;
   }
-  [id$="-3d-hud"] [class$="-scrubber"] {
+  [id$="-3d-hud"] [class$="-scrubber"],
+  #syntrix-3d-hud .hud3d-scrubber {
     flex-wrap: wrap !important;
     max-width: 100% !important;
   }
@@ -1503,7 +1652,8 @@ body.mdrawer-open #syn-stratum-radar {
   }
 }
 @media (max-width: 400px) {
-  [id$="-3d-hud"] [class$="-hud-btn"] {
+  [id$="-3d-hud"] [class$="-hud-btn"],
+  #syntrix-3d-hud .hud3d-btn {
     padding: 1.5px clamp(3px, 1.1vw, 5px) !important;
     font-size: clamp(7px, 2.1vw, 8.5px) !important;
   }
@@ -1643,8 +1793,11 @@ body.mdrawer-open #syn-stratum-radar {
 <!-- Floating Launcher Button (Bottom-Left) -->
 <button id="syn-monograph-fab" data-prevent-swipe="true" onclick="window.toggleMonographDrawer()" title="Open Synchronized Monograph PDF, Raw TeX & 100-Equation Rosetta Register (Shortcut: M)">
   <span>📖 Monograph PDF &amp; TeX</span>
-  <span id="fab-page-pill" style="background:#4169E1; color:#fff; padding:1px 6px; border-radius:4px; font-size:10.5px;">p. 11</span>
+  <span id="fab-page-pill" style="background:#4169E1; color:#fff; padding:1px 6px; border-radius:4px; font-size:10.5px;">p. 19</span>
 </button>
+
+<!-- Subtle Click-Outside Drawer Backdrop -->
+<div id="syn-drawer-backdrop" onclick="window.toggleMonographDrawer()"></div>
 
 <!-- Slide-Over Monograph & TeX Workbench Drawer -->
 <div id="syn-monograph-drawer" data-prevent-swipe="true" aria-label="Monograph Workbench Drawer">
@@ -1652,7 +1805,7 @@ body.mdrawer-open #syn-stratum-radar {
     <div class="mdrawer-title">
       <span>🏛️ Syntrometric Monograph Workbench</span>
       <span id="mdrawer-sync-badge" style="background:rgba(32,178,170,0.2); border:1px solid #20B2AA; color:#5eead4; padding:2px 8px; border-radius:4px; font-size:11px;">
-        Ch. 1–15 + App. A–E
+        Ch. 1–15 · App. A–E · 470 pp.
       </span>
       <a href="javascript:void(0)" onclick="window.openVisitTelemetryModal ? window.openVisitTelemetryModal(event) : null" style="display:inline-flex; align-items:center; text-decoration:none; margin-left:6px;" title="Site Visit Telemetry Ledger">
         <img class="syn-counter-badge-img" alt="Visits" height="16" style="display:none;" />
@@ -1661,27 +1814,27 @@ body.mdrawer-open #syn-stratum-radar {
     </div>
     <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
       <select id="monograph-chapter-select" class="chapter-jump-select" onchange="window.jumpToMonographChapter(this.value)">
-        <option value="front">Frontmatter &amp; Aufbau Tree (p. 1)</option>
-        <option value="ch1" selected>Ch. 1: Topos of Subjective Experience (p. 11)</option>
-        <option value="ch2">Ch. 2: The Syntrix Architecture (p. 34)</option>
-        <option value="ch3">Ch. 3: Syntrixkorporationen (p. 56)</option>
-        <option value="ch4">Ch. 4: Enyphansyntrizen &amp; Gauge Curvature (p. 78)</option>
-        <option value="ch5">Ch. 5: Metroplextheorie &amp; (∞,1)-Topos (p. 102)</option>
-        <option value="ch6">Ch. 6: Die televariante äonische Area (p. 122)</option>
-        <option value="ch7">Ch. 7: Anthropomorphic Syntrometry (p. 142)</option>
-        <option value="ch8">Ch. 8: Syntrometrie über dem Quantitätsaspekt (p. 158)</option>
-        <option value="ch9">Ch. 9: Strukturkaskaden &amp; 36-Hermetry (p. 174)</option>
-        <option value="ch10">Ch. 10: Metronische Elementaroperationen (p. 196)</option>
-        <option value="ch11">Ch. 11: Metrische Selektortheorie &amp; Masses (p. 216)</option>
-        <option value="ch12">Ch. 12: Representational Discontinuity (p. 236)</option>
-        <option value="ch13">Ch. 13: Qualia Geometry, Lawvere &amp; Φ_topos (p. 262)</option>
-        <option value="ch14">Ch. 14: Synthese &amp; 100-Eq. Register (p. 282)</option>
-        <option value="ch15">Ch. 15: Conclusion &amp; Conjectures (p. 308)</option>
-        <option value="appA">App. A: Proof Theory &amp; Cut Elimination (p. 320)</option>
-        <option value="appB">App. B: DESY Mass Validation &amp; Geodesics (p. 330)</option>
-        <option value="appC">App. C: Lean 4 Formalization Blueprint (p. 338)</option>
-        <option value="appD">App. D: Solvers &amp; Python/SymPy Sandbox (p. 354)</option>
-        <option value="appE">App. E: Master Equation Concordance (p. 360)</option>
+        <option value="front">Frontmatter &amp; Aufbau Tree (p. 4)</option>
+        <option value="ch1" selected>Ch. 1: Topos of Subjective Experience (p. 19)</option>
+        <option value="ch2">Ch. 2: The Syntrix Architecture (p. 65)</option>
+        <option value="ch3">Ch. 3: Syntrixkorporationen (p. 101)</option>
+        <option value="ch4">Ch. 4: Enyphansyntrizen &amp; Gauge Curvature (p. 130)</option>
+        <option value="ch5">Ch. 5: Metroplextheorie &amp; (∞,1)-Topos (p. 162)</option>
+        <option value="ch6">Ch. 6: Die televariante äonische Area (p. 182)</option>
+        <option value="ch7">Ch. 7: Anthropomorphic Syntrometry (p. 204)</option>
+        <option value="ch8">Ch. 8: Syntrometrie über dem Quantitätsaspekt (p. 225)</option>
+        <option value="ch9">Ch. 9: Strukturkaskaden &amp; 36-Hermetry (p. 240)</option>
+        <option value="ch10">Ch. 10: Metronische Elementaroperationen (p. 264)</option>
+        <option value="ch11">Ch. 11: Metrische Selektortheorie &amp; Masses (p. 288)</option>
+        <option value="ch12">Ch. 12: Representational Discontinuity (p. 309)</option>
+        <option value="ch13">Ch. 13: Qualia Geometry, Lawvere &amp; Φ_topos (p. 330)</option>
+        <option value="ch14">Ch. 14: Synthese &amp; 100-Eq. Register (p. 351)</option>
+        <option value="ch15">Ch. 15: Conclusion &amp; Conjectures (p. 381)</option>
+        <option value="appA">App. A: Proof Theory &amp; Cut Elimination (p. 391)</option>
+        <option value="appB">App. B: DESY Mass Validation &amp; Geodesics (p. 402)</option>
+        <option value="appC">App. C: Lean 4 Formalization Blueprint (p. 411)</option>
+        <option value="appD">App. D: Solvers &amp; Python/SymPy Sandbox (p. 442)</option>
+        <option value="appE">App. E: Master Equation Concordance (p. 448)</option>
       </select>
       <a id="monograph-pdf-link" href="Syntrometric-Topos.pdf" target="_blank" class="m3d-btn" style="text-decoration:none;">↗ PDF</a>
       <a id="monograph-tex-link" href="Syntrometric-Topos.tex" download class="m3d-btn" style="text-decoration:none;">⬇ .tex</a>
@@ -1695,9 +1848,12 @@ body.mdrawer-open #syn-stratum-radar {
     <button class="mdrawer-tab" id="mtab-thm" onclick="window.switchMonographTab('thm')">📐 Theorems &amp; Lean 4 Index</button>
     <button class="mdrawer-tab" id="mtab-rosetta" onclick="window.switchMonographTab('rosetta')">🔍 100-Eq. Rosetta Stone</button>
     <button class="mdrawer-tab" id="mtab-graph" onclick="window.switchMonographTab('graph')">🕸️ Architecture Graph</button>
-    <div style="margin-left:auto; display:flex; align-items:center; gap:5px; font-size:11.5px;">
-      <span>PDF Page:</span>
-      <input type="number" id="pdf-page-input" min="1" max="380" value="11" style="width:56px; background:#070a12; color:#FFD700; border:1px solid #4169E1; border-radius:4px; padding:2px 5px; font-weight:bold;" onchange="window.jumpToPDFPage(this.value)">
+    <div style="margin-left:auto; display:flex; align-items:center; gap:4px; font-size:11.5px; flex-shrink:0;">
+      <button class="m3d-btn" style="padding:2px 6px; font-size:10px;" onclick="window.stepPDFPage(-1)" title="Previous PDF Page">◀</button>
+      <input type="number" id="pdf-page-input" min="1" max="470" value="19" style="width:52px; background:#070a12; color:#FFD700; border:1px solid #4169E1; border-radius:4px; padding:2px 5px; font-weight:bold; text-align:center;" onchange="window.jumpToPDFPage(this.value)">
+      <span style="color:#64748b; white-space:nowrap;">/ 470</span>
+      <button class="m3d-btn" style="padding:2px 6px; font-size:10px;" onclick="window.stepPDFPage(1)" title="Next PDF Page">▶</button>
+      <button class="m3d-btn" style="padding:3px 7px; font-size:10.5px;" onclick="window.syncMonographToActiveSlide()" title="Sync PDF page to current slide">🎯 Sync</button>
     </div>
   </div>
 
@@ -1719,7 +1875,17 @@ body.mdrawer-open #syn-stratum-radar {
     <!-- PANE 3: Auto-Extracted Theorem, Definition & Lean 4 Index -->
     <div class="mdrawer-pane" id="mpane-thm">
       <div class="tex-toolbar">
-        <input type="text" id="thm-search" class="tex-search-input" placeholder="Filter 380+ Theorems, Definitions, Scholia & Lean 4 blocks (with rendered LaTeX math)..." oninput="window.debounceTheoremSearch(this.value)">
+        <input type="text" id="thm-search" class="tex-search-input" placeholder="Filter 367+ Theorems, Definitions, Scholia &amp; Lean 4 blocks (with rendered LaTeX math)..." oninput="window.debounceTheoremSearch(this.value)">
+        <span class="thm-match-count" id="thm-match-count">Loading...</span>
+      </div>
+      <div class="thm-filter-bar" id="thm-filter-bar">
+        <button class="thm-filter-pill active" data-type="all" onclick="window.setTheoremTypeFilter('all')">All</button>
+        <button class="thm-filter-pill" data-type="theorem" onclick="window.setTheoremTypeFilter('theorem')">Theorems</button>
+        <button class="thm-filter-pill" data-type="definition" onclick="window.setTheoremTypeFilter('definition')">Definitions</button>
+        <button class="thm-filter-pill" data-type="prop" onclick="window.setTheoremTypeFilter('prop')">Props &amp; Lemmas</button>
+        <button class="thm-filter-pill" data-type="scholium" onclick="window.setTheoremTypeFilter('scholium')">Scholia</button>
+        <button class="thm-filter-pill" data-type="lean" onclick="window.setTheoremTypeFilter('lean')">Lean 4</button>
+        <button class="thm-filter-pill" data-type="python" onclick="window.setTheoremTypeFilter('python')">Python</button>
       </div>
       <div class="rosetta-list" id="thm-cards-container"></div>
     </div>
@@ -1728,6 +1894,7 @@ body.mdrawer-open #syn-stratum-radar {
     <div class="mdrawer-pane" id="mpane-rosetta">
       <div class="tex-toolbar">
         <input type="text" id="rosetta-search" class="tex-search-input" placeholder="Filter all SM Equations 1–100a with live rendered math (e.g., SM Eq. 1, SM Eq. 11, Hermetry)..." oninput="window.debounceRosettaSearch(this.value)">
+        <span class="thm-match-count" id="rosetta-match-count">164 Eqs.</span>
       </div>
       <div class="rosetta-list" id="rosetta-cards-container"></div>
     </div>
@@ -1756,8 +1923,8 @@ body.mdrawer-open #syn-stratum-radar {
   // Pre-configure MathJax immediately with all 179 syntrometric macros before any script loads
   window.MathJax = window.MathJax || {};
   window.MathJax.tex = window.MathJax.tex || {};
-  window.MathJax.tex.inlineMath = window.MathJax.tex.inlineMath || [['$', '$'], ['\(', '\)']];
-  window.MathJax.tex.displayMath = window.MathJax.tex.displayMath || [['', ''], ['\[', '\]']];
+  window.MathJax.tex.inlineMath = window.MathJax.tex.inlineMath || [['$', '$'], ['\\(', '\\)']];
+  window.MathJax.tex.displayMath = window.MathJax.tex.displayMath || [['$$', '$$'], ['\\[', '\\]']];
   window.MathJax.tex.processEscapes = true;
   window.MathJax.tex.macros = Object.assign(window.MathJax.tex.macros || {}, SYN_MATH_MACROS);
   window.MathJax.chtml = window.MathJax.chtml || { scale: 0.95 };
@@ -1813,8 +1980,8 @@ body.mdrawer-open #syn-stratum-radar {
     if (!document.getElementById('syn-monograph-mathjax') && !document.getElementById('mathjax-script')) {
       window.MathJax = window.MathJax || {};
       window.MathJax.tex = window.MathJax.tex || {};
-      window.MathJax.tex.inlineMath = window.MathJax.tex.inlineMath || [['$', '$'], ['\(', '\)']];
-      window.MathJax.tex.displayMath = window.MathJax.tex.displayMath || [['', ''], ['\[', '\]']];
+      window.MathJax.tex.inlineMath = window.MathJax.tex.inlineMath || [['$', '$'], ['\\(', '\\)']];
+      window.MathJax.tex.displayMath = window.MathJax.tex.displayMath || [['$$', '$$'], ['\\[', '\\]']];
       window.MathJax.tex.processEscapes = true;
       window.MathJax.tex.macros = Object.assign(window.MathJax.tex.macros || {}, SYN_MATH_MACROS);
       window.MathJax.chtml = window.MathJax.chtml || { scale: 0.95 };
@@ -2176,12 +2343,16 @@ body.mdrawer-open #syn-stratum-radar {
   };
 
   window.jumpToPDFPage = function(pageNum) {
-    currentPDFPage = Math.max(1, parseInt(pageNum) || 1);
+    currentPDFPage = Math.max(1, Math.min(TOTAL_PDF_PAGES, parseInt(pageNum, 10) || 1));
     const inp = document.getElementById('pdf-page-input');
     if (inp) inp.value = currentPDFPage;
     const pill = document.getElementById('fab-page-pill');
     if (pill) pill.innerText = `p. ${currentPDFPage}`;
     syncPDFIfDrawerOpen();
+  };
+
+  window.stepPDFPage = function(delta) {
+    window.jumpToPDFPage(currentPDFPage + (parseInt(delta, 10) || 0));
   };
 
   window.jumpToMonographChapter = function(chKey) {
@@ -2280,7 +2451,7 @@ body.mdrawer-open #syn-stratum-radar {
         }
       }
       chapterOffsets.sort((a, b) => a.pos - b.pos);
-      chapterOffsets.push({ pos: rawTeXCache.length, page: 376, key: 'end' });
+      chapterOffsets.push({ pos: rawTeXCache.length, page: TOTAL_PDF_PAGES, key: 'end' });
     }
 
     if (chapterOffsets && chapterOffsets.length >= 2) {
@@ -2289,11 +2460,11 @@ body.mdrawer-open #syn-stratum-radar {
         const c2 = chapterOffsets[i + 1];
         if (texIndex >= c1.pos && texIndex < c2.pos && c2.pos > c1.pos) {
           const ratio = (texIndex - c1.pos) / (c2.pos - c1.pos);
-          return Math.max(1, Math.min(380, Math.round(c1.page + ratio * (c2.page - c1.page))));
+          return Math.max(1, Math.min(TOTAL_PDF_PAGES, Math.round(c1.page + ratio * (c2.page - c1.page))));
         }
       }
     }
-    return Math.max(1, Math.min(380, Math.round((texIndex / (texLength || 1)) * 365) + 8));
+    return Math.max(1, Math.min(TOTAL_PDF_PAGES, Math.round((texIndex / (texLength || 1)) * 455) + 8));
   }
 
   // Dynamically parses all Theorems, Definitions, Scholia, Lean 4 Boxes & SM Eqs. 1-100a
@@ -2345,13 +2516,23 @@ body.mdrawer-open #syn-stratum-radar {
       parsedSMEquations.push({
         eq: eqName,
         ch: "Ch 14 Register",
-        page: 284,
+        page: getInterpolatedPage(sm.index, tex.length),
         tex: `sm-source-eq-${sm[1]}`,
         d: rawFormula,
         r: `Canonical historical formula ${eqName} transcribed from Heim (2000). Click to view LaTeX and sync PDF.`
       });
     }
   }
+
+  let activeThmTypeFilter = 'all';
+  window.setTheoremTypeFilter = function(type) {
+    activeThmTypeFilter = type || 'all';
+    document.querySelectorAll('#thm-filter-bar .thm-filter-pill').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.type === activeThmTypeFilter);
+    });
+    const inp = document.getElementById('thm-search');
+    window.filterTheoremIndex(inp ? inp.value : '');
+  };
 
   // Debounced input handlers for ultra-responsive search on mobile devices
   let rosettaTimer = null;
@@ -2374,19 +2555,34 @@ body.mdrawer-open #syn-stratum-radar {
 
   window.filterTheoremIndex = function(q) {
     const cont = document.getElementById('thm-cards-container');
+    const countEl = document.getElementById('thm-match-count');
     if (!cont) return;
     if (!parsedTheorems.length) {
       cont.innerHTML = `<div class="rosetta-card">Loading theorem &amp; Lean 4 index from <code>Syntrometric-Topos.tex</code>...</div>`;
+      if (countEl) countEl.textContent = 'Loading...';
       return;
     }
     const filter = (q || "").toLowerCase();
-    const list = parsedTheorems.filter(t =>
-      !filter ||
-      t.title.toLowerCase().includes(filter) ||
-      t.label.toLowerCase().includes(filter) ||
-      t.env.toLowerCase().includes(filter) ||
-      t.preview.toLowerCase().includes(filter)
-    ).slice(0, 80);
+    const matched = parsedTheorems.filter(t => {
+      const env = t.env || '';
+      const typeOk = activeThmTypeFilter === 'all' ||
+        (activeThmTypeFilter === 'theorem' && env === 'mytheorem') ||
+        (activeThmTypeFilter === 'definition' && env === 'mydefinition') ||
+        (activeThmTypeFilter === 'prop' && (env === 'myproposition' || env === 'mylemma' || env === 'mycorollary')) ||
+        (activeThmTypeFilter === 'scholium' && (env === 'myscholium' || env === 'mycarnapscholium' || env === 'myexplication')) ||
+        (activeThmTypeFilter === 'lean' && env === 'leanbox') ||
+        (activeThmTypeFilter === 'python' && env === 'pythonbox');
+      if (!typeOk) return false;
+      return !filter ||
+        t.title.toLowerCase().includes(filter) ||
+        t.label.toLowerCase().includes(filter) ||
+        env.toLowerCase().includes(filter) ||
+        t.preview.toLowerCase().includes(filter);
+    });
+    if (countEl) {
+      countEl.textContent = `${matched.length} / ${parsedTheorems.length}`;
+    }
+    const list = matched.slice(0, 80);
 
     cont.innerHTML = list.map(t => {
       const cleanEnv = t.env.replace('my', '').toUpperCase();
@@ -2444,22 +2640,31 @@ body.mdrawer-open #syn-stratum-radar {
   window.copyCurrentTeXSnippet = function() {
     const viewer = document.getElementById('monograph-tex-viewer');
     if (viewer && navigator.clipboard) {
-      navigator.clipboard.writeText(viewer.textContent.slice(0, 5000));
+      navigator.clipboard.writeText(viewer.textContent.slice(0, 5000)).then(() => {
+        if (typeof window.showSynToast === 'function') {
+          window.showSynToast('📋 Copied LaTeX snippet to clipboard');
+        }
+      }).catch(() => {});
     }
   };
 
   window.filterRosettaRegister = function(q) {
     const cont = document.getElementById('rosetta-cards-container');
+    const countEl = document.getElementById('rosetta-match-count');
     if (!cont) return;
     const sourceList = parsedSMEquations.length ? [...FALLBACK_ROSETTA, ...parsedSMEquations] : FALLBACK_ROSETTA;
     const filter = (q || "").toLowerCase();
-    const items = sourceList.filter(item =>
+    const matched = sourceList.filter(item =>
       !filter ||
       item.eq.toLowerCase().includes(filter) ||
       item.ch.toLowerCase().includes(filter) ||
       item.d.toLowerCase().includes(filter) ||
       item.r.toLowerCase().includes(filter)
-    ).slice(0, 80);
+    );
+    if (countEl) {
+      countEl.textContent = `${matched.length} Eqs.`;
+    }
+    const items = matched.slice(0, 80);
 
     cont.innerHTML = items.map(it => {
       const escapedTex = it.tex.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
@@ -2516,17 +2721,39 @@ body.mdrawer-open #syn-stratum-radar {
   }
 
   function syncMonographPageWithSlide() {
-    const chKey = detectActiveChKey();
+    let chKey = detectActiveChKey();
+    let rev = window.Reveal;
+    if (!rev) {
+      try {
+        const frame = document.getElementById('chapter-frame');
+        if (frame && frame.contentWindow) {
+          if (frame.contentWindow.Reveal) rev = frame.contentWindow.Reveal;
+          const m = (frame.getAttribute('src') || '').match(/chapter(\d+)/i);
+          if (m) chKey = `ch${m[1]}`;
+        }
+      } catch (e) {}
+    }
     const sel = document.getElementById('monograph-chapter-select');
     if (sel) sel.value = chKey;
-    const base = CHAPTER_PAGE_MAP[chKey]?.basePage || 11;
+    const keys = Object.keys(CHAPTER_PAGE_MAP);
+    const pos = keys.indexOf(chKey);
+    const base = CHAPTER_PAGE_MAP[chKey]?.basePage || 19;
+    const nextBase = (pos >= 0 && pos + 1 < keys.length) ? CHAPTER_PAGE_MAP[keys[pos + 1]].basePage : TOTAL_PDF_PAGES;
+    const span = Math.max(1, nextBase - base - 1);
     let slideOffset = 0;
-    if (window.Reveal && typeof window.Reveal.getIndices === 'function') {
-      const idx = window.Reveal.getIndices();
-      slideOffset = (idx && typeof idx.h === 'number') ? Math.round(idx.h * 1.8) : 0;
+    if (rev && typeof rev.getIndices === 'function') {
+      const idx = rev.getIndices();
+      const h = (idx && typeof idx.h === 'number') ? idx.h : 0;
+      const tot = typeof rev.getTotalSlides === 'function' ? rev.getTotalSlides() : 0;
+      if (tot > 1 && tot < 100) {
+        slideOffset = Math.round((h / (tot - 1)) * span);
+      } else {
+        slideOffset = Math.round(h * 2);
+      }
     }
-    window.jumpToPDFPage(base + slideOffset);
+    window.jumpToPDFPage(Math.min(TOTAL_PDF_PAGES, base + slideOffset));
   }
+  window.syncMonographToActiveSlide = syncMonographPageWithSlide;
 
   // Keyboard shortcuts: 'Ctrl+K' / '/' Omni-Search, 'M' Monograph Drawer, 'T' Slide Map, 'Escape' Close Modals
   window.addEventListener('keydown', e => {
@@ -2623,21 +2850,21 @@ body.mdrawer-open #syn-stratum-radar {
   // MASTER ARCHITECTURE & CHAPTER METADATA FOR GRAPH & OMNI-SEARCH
   // =========================================================================
   const ARCH_NODES = [
-    { id: 'ch1',  num: 1,  part: 'A', x: 75,  y: 42,  color: '#4169E1', label: 'Ch 1: Subjective Topos',   page: 11,  polar: 'Stage I',   deps: [],               desc: 'Epistemic Firewall (Strata A–D), Admissible Site (Ctx, J_syn), Sheaf Topos E_syn, and Intuitionistic Modal Logic L_iMSL.' },
-    { id: 'ch2',  num: 2,  part: 'A', x: 205, y: 42,  color: '#20B2AA', label: 'Ch 2: Syntrix Operads',    page: 34,  polar: 'Stage II',  deps: ['ch1'],          desc: 'Colored Operad O_syn, Free Tree Monad T_O, Grothendieck Fibration ∫M, and 4 Elementary Selection Representations.' },
-    { id: 'ch3',  num: 3,  part: 'A', x: 335, y: 42,  color: '#FFA500', label: 'Ch 3: Korporationen',      page: 56,  polar: 'Stage III', deps: ['ch2'],          desc: '2×2 Korporator Matrix, Span Pushouts P_a ⊞_φ P_b, Rank-Nullity Dimension Subtraction, and Double Category Kor(Syn) with Mayer–Vietoris Homology.' },
-    { id: 'ch4',  num: 4,  part: 'A', x: 465, y: 42,  color: '#DC143C', label: 'Ch 4: Enyphansyntrizen',   page: 78,  polar: 'Stage IV',  deps: ['ch1', 'ch3'],   desc: 'Principal G-Bundles, Non-Abelian Interaction Curvature Ω_int^D, Fredholm Laplacian Splitting, Atiyah Lie Algebroid At(P_U), and Chern–Weil Bogomolny Bound.' },
-    { id: 'ch5',  num: 5,  part: 'A', x: 595, y: 42,  color: '#9370DB', label: 'Ch 5: Metroplextheorie',   page: 102, polar: null,        deps: ['ch2', 'ch4'],   desc: 'Ambient (∞,1)-Topos X_syn, Dendroidal Complete Segal Spaces, Syntroclinic Adjunctions, Lawvere–Schreiber Cohesion (∫ ⊣ ♭ ⊣ ♯), and Tectonic Spectral Sequence.' },
-    { id: 'ch6',  num: 6,  part: 'A', x: 725, y: 42,  color: '#FFD700', label: 'Ch 6: Televariante Area',  page: 122, polar: 'Stage V',   deps: ['ch4', 'ch5'],   desc: 'Final Telecentric Path Coalgebras (νT, ζ), Lambek Isomorphism, Polyak–Łojasiewicz Lyapunov Basins, Morse–Smale Separatrices, and 2-Wasserstein Resynkolation.' },
-    { id: 'ch7',  num: 7,  part: 'B', x: 110, y: 128, color: '#4169E1', label: 'Ch 7: Anthropomorphic',    page: 142, polar: 'Stage VI',  deps: ['ch1', 'ch6'],   desc: 'Quantitative Context Site Ctx_quant, Dedekind/Cauchy Internal Reals, Colored Tensor Operad O_quant, and Layered Field Cascades (SM Eq. 28).' },
-    { id: 'ch8',  num: 8,  part: 'B', x: 265, y: 128, color: '#20B2AA', label: 'Ch 8: Quantitätsaspekt',   page: 158, polar: null,        deps: ['ch3', 'ch7'],   desc: 'Cornered Parameter Manifolds M_n = (R_≥0)^n, Grothendieck Nuclear Fréchet Spaces S(M_n), Double Partial Sieve (Thm. 8.1), and 3-Class Collapse.' },
-    { id: 'ch9',  num: 9,  part: 'B', x: 420, y: 128, color: '#FFA500', label: 'Ch 9: Strukturkaskaden',   page: 174, polar: null,        deps: ['ch4', 'ch8'],   desc: 'Non-Hermitian 36-Component Hermetry Tensor, (n−2) Condensation Theorem, Palatini Contortion Decomposition, and DeTurck–Sobolev Parabolic Contraction.' },
-    { id: 'ch10', num: 10, part: 'B', x: 575, y: 128, color: '#DC143C', label: 'Ch 10: Metronik & DEC',    page: 196, polar: 'Stage VI+', deps: ['ch8', 'ch9'],   desc: 'Elementary Metron τ, Discrete Exterior Calculus (DEC), Discrete Leibniz/Gauss–Stokes, Wronskian Determinant, and Cubical FEEC Whitney–de Rham Isomorphism.' },
-    { id: 'ch11', num: 11, part: 'B', x: 725, y: 128, color: '#9370DB', label: 'Ch 11: Selektortheorie',   page: 216, polar: null,        deps: ['ch9', 'ch10'],  desc: '12D Fibration R_12 ≅ R_4 × K_8, Euclideanized Spectral Space H_E, Geometric Selector Eigenvalues, and 63-Channel Hyper-Lattice Mass Formula.' },
-    { id: 'ch12', num: 12, part: 'C', x: 150, y: 214, color: '#FFD700', label: 'Ch 12: Discontinuity',     page: 236, polar: null,        deps: ['ch4', 'ch5'],   desc: 'Representational Discontinuity, 4 Cortical Mechanisms (Operadic Erasure, Protosimplex Collapse, Non-Abelian Qualia Bipartition, 6D Affective Hermetry), Zombie Refutation.' },
-    { id: 'ch13', num: 13, part: 'C', x: 340, y: 214, color: '#4169E1', label: 'Ch 13: Qualia & Φ_topos',  page: 262, polar: null,        deps: ['ch6', 'ch12'],  desc: 'Topos Integrated Information Φ_topos vs IIT 4.0, Curry–Howard Lawvere Ego Fixed Point, Active Inference Sheaf Descent, and REBUS Protosimplex De-Encapsulation.' },
-    { id: 'ch14', num: 14, part: 'C', x: 530, y: 214, color: '#20B2AA', label: 'Ch 14: Master Register',   page: 282, polar: null,        deps: ['ch11', 'ch13'], desc: 'Complete 8-Cluster Master Translation Register (SM-1 through SM-100a) mapping historical Heimian transcriptions to modern categorical/geometric types.' },
-    { id: 'ch15', num: 15, part: 'C', x: 710, y: 214, color: '#FFD700', label: 'Ch 15: Horizon & Synthesis', page: 308, polar: null,      deps: ['ch11', 'ch13', 'ch14'], desc: 'Master Axiomatic Architecture, Five Open Conjectures, 21-Particle Empirical Mass Validation (Table B.1), Lean 4 Verification Suite, and Epistemic Closure.' }
+    { id: 'ch1',  num: 1,  part: 'A', x: 75,  y: 42,  color: '#4169E1', label: 'Ch 1: Subjective Topos',   page: 19,  polar: 'Stage I',   deps: [],               desc: 'Epistemic Firewall (Strata A–D), Admissible Site (Ctx, J_syn), Sheaf Topos E_syn, and Intuitionistic Modal Logic L_iMSL.' },
+    { id: 'ch2',  num: 2,  part: 'A', x: 205, y: 42,  color: '#20B2AA', label: 'Ch 2: Syntrix Operads',    page: 65,  polar: 'Stage II',  deps: ['ch1'],          desc: 'Colored Operad O_syn, Free Tree Monad T_O, Grothendieck Fibration ∫M, and 4 Elementary Selection Representations.' },
+    { id: 'ch3',  num: 3,  part: 'A', x: 335, y: 42,  color: '#FFA500', label: 'Ch 3: Korporationen',      page: 101, polar: 'Stage III', deps: ['ch2'],          desc: '2×2 Korporator Matrix, Span Pushouts P_a ⊞_φ P_b, Rank-Nullity Dimension Subtraction, and Double Category Kor(Syn) with Mayer–Vietoris Homology.' },
+    { id: 'ch4',  num: 4,  part: 'A', x: 465, y: 42,  color: '#DC143C', label: 'Ch 4: Enyphansyntrizen',   page: 130, polar: 'Stage IV',  deps: ['ch1', 'ch3'],   desc: 'Principal G-Bundles, Non-Abelian Interaction Curvature Ω_int^D, Fredholm Laplacian Splitting, Atiyah Lie Algebroid At(P_U), and Chern–Weil Bogomolny Bound.' },
+    { id: 'ch5',  num: 5,  part: 'A', x: 595, y: 42,  color: '#9370DB', label: 'Ch 5: Metroplextheorie',   page: 162, polar: null,        deps: ['ch2', 'ch4'],   desc: 'Ambient (∞,1)-Topos X_syn, Dendroidal Complete Segal Spaces, Syntroclinic Adjunctions, Lawvere–Schreiber Cohesion (∫ ⊣ ♭ ⊣ ♯), and Tectonic Spectral Sequence.' },
+    { id: 'ch6',  num: 6,  part: 'A', x: 725, y: 42,  color: '#FFD700', label: 'Ch 6: Televariante Area',  page: 182, polar: 'Stage V',   deps: ['ch4', 'ch5'],   desc: 'Final Telecentric Path Coalgebras (νT, ζ), Lambek Isomorphism, Polyak–Łojasiewicz Lyapunov Basins, Morse–Smale Separatrices, and 2-Wasserstein Resynkolation.' },
+    { id: 'ch7',  num: 7,  part: 'B', x: 110, y: 128, color: '#4169E1', label: 'Ch 7: Anthropomorphic',    page: 204, polar: 'Stage VI',  deps: ['ch1', 'ch6'],   desc: 'Quantitative Context Site Ctx_quant, Dedekind/Cauchy Internal Reals, Colored Tensor Operad O_quant, and Layered Field Cascades (SM Eq. 28).' },
+    { id: 'ch8',  num: 8,  part: 'B', x: 265, y: 128, color: '#20B2AA', label: 'Ch 8: Quantitätsaspekt',   page: 225, polar: null,        deps: ['ch3', 'ch7'],   desc: 'Cornered Parameter Manifolds M_n = (R_≥0)^n, Grothendieck Nuclear Fréchet Spaces S(M_n), Double Partial Sieve (Thm. 8.1), and 3-Class Collapse.' },
+    { id: 'ch9',  num: 9,  part: 'B', x: 420, y: 128, color: '#FFA500', label: 'Ch 9: Strukturkaskaden',   page: 240, polar: null,        deps: ['ch4', 'ch8'],   desc: 'Non-Hermitian 36-Component Hermetry Tensor, (n−2) Condensation Theorem, Palatini Contortion Decomposition, and DeTurck–Sobolev Parabolic Contraction.' },
+    { id: 'ch10', num: 10, part: 'B', x: 575, y: 128, color: '#DC143C', label: 'Ch 10: Metronik & DEC',    page: 264, polar: 'Stage VI+', deps: ['ch8', 'ch9'],   desc: 'Elementary Metron τ, Discrete Exterior Calculus (DEC), Discrete Leibniz/Gauss–Stokes, Wronskian Determinant, and Cubical FEEC Whitney–de Rham Isomorphism.' },
+    { id: 'ch11', num: 11, part: 'B', x: 725, y: 128, color: '#9370DB', label: 'Ch 11: Selektortheorie',   page: 288, polar: null,        deps: ['ch9', 'ch10'],  desc: '12D Fibration R_12 ≅ R_4 × K_8, Euclideanized Spectral Space H_E, Geometric Selector Eigenvalues, and 63-Channel Hyper-Lattice Mass Formula.' },
+    { id: 'ch12', num: 12, part: 'C', x: 150, y: 214, color: '#FFD700', label: 'Ch 12: Discontinuity',     page: 309, polar: null,        deps: ['ch4', 'ch5'],   desc: 'Representational Discontinuity, 4 Cortical Mechanisms (Operadic Erasure, Protosimplex Collapse, Non-Abelian Qualia Bipartition, 6D Affective Hermetry), Zombie Refutation.' },
+    { id: 'ch13', num: 13, part: 'C', x: 340, y: 214, color: '#4169E1', label: 'Ch 13: Qualia & Φ_topos',  page: 330, polar: null,        deps: ['ch6', 'ch12'],  desc: 'Topos Integrated Information Φ_topos vs IIT 4.0, Curry–Howard Lawvere Ego Fixed Point, Active Inference Sheaf Descent, and REBUS Protosimplex De-Encapsulation.' },
+    { id: 'ch14', num: 14, part: 'C', x: 530, y: 214, color: '#20B2AA', label: 'Ch 14: Master Register',   page: 351, polar: null,        deps: ['ch11', 'ch13'], desc: 'Complete 8-Cluster Master Translation Register (SM-1 through SM-100a) mapping historical Heimian transcriptions to modern categorical/geometric types.' },
+    { id: 'ch15', num: 15, part: 'C', x: 710, y: 214, color: '#FFD700', label: 'Ch 15: Horizon & Synthesis', page: 381, polar: null,      deps: ['ch11', 'ch13', 'ch14'], desc: 'Master Axiomatic Architecture, Five Open Conjectures, 21-Particle Empirical Mass Validation (Table B.1), Lean 4 Verification Suite, and Epistemic Closure.' }
   ];
 
   window.showSynToast = function(msg) {
@@ -2767,7 +2994,7 @@ body.mdrawer-open #syn-stratum-radar {
       <div id="syn-cmd-modal">
         <div class="cmd-header">
           <span class="cmd-search-icon">🔍</span>
-          <input type="text" id="syn-cmd-input" placeholder="Omni-Search 214 Slides, 15 Chapters, 380+ Theorems, Lean 4 &amp; SM Eqs. 1–100a..." autocomplete="off">
+          <input type="text" id="syn-cmd-input" placeholder="Omni-Search 245 Slides, 15 Chapters, 470-p. PDF, 367+ Theorems, Lean 4 &amp; SM Eqs. 1–100a..." autocomplete="off">
           <span class="cmd-kbd">ESC</span>
         </div>
         <div class="cmd-filters">
@@ -3229,7 +3456,7 @@ body.mdrawer-open #syn-stratum-radar {
         texBtn.onclick = e => {
           e.stopPropagation();
           const chKey = detectActiveChKey();
-          const basePage = CHAPTER_PAGE_MAP[chKey]?.basePage || 11;
+          const basePage = CHAPTER_PAGE_MAP[chKey]?.basePage || 19;
           const mSm = boxTitle.match(/SM[-\s]*(?:Eq\.?\s*)?(\d+[a-z]?)/i);
           const query = mSm ? `SM-${mSm[1]}` : boxTitle.replace(/^(?:Theorem|Definition|Proposition|Lemma|Corollary|Carnap|Scholium)\s*[\d.]+\s*[:(]?\s*/i, '').slice(0, 38);
           window.openMonographAtPage(basePage, query);
@@ -3384,9 +3611,9 @@ body.mdrawer-open #syn-stratum-radar {
       hud.dataset.synUpgraded = '1';
 
       const setStageFn = ch === 2 ? window.set3DStage : window[`setCh${ch}Stage`];
-      const sliderId = ch === 2 ? 'syntrix-slider' : `ch${ch}-slider`;
-      const controls = hud.querySelector('.ch' + ch + '-hud-controls, .syntrix-hud-controls, [class*="-hud-controls"]');
-      const scrubber = hud.querySelector('.ch' + ch + '-scrubber, .syntrix-scrubber, [class*="-scrubber"]');
+      const sliderId = ch === 2 ? 'hud3d-slider' : `ch${ch}-slider`;
+      const controls = hud.querySelector('.ch' + ch + '-hud-controls, .hud3d-controls, .syntrix-hud-controls, [class*="-hud-controls"]');
+      const scrubber = hud.querySelector('.ch' + ch + '-scrubber, .hud3d-scrubber, .syntrix-scrubber, [class*="-scrubber"]');
 
       let tourRaf = null;
       let tourPlaying = false;
@@ -3405,7 +3632,7 @@ body.mdrawer-open #syn-stratum-radar {
       // 1. Inject ▶ Tour (Continuous 60fps Auto-Morph) Button into HUD Header Controls
       if (controls && typeof setStageFn === 'function') {
         const tourBtn = document.createElement('button');
-        tourBtn.className = (controls.querySelector('button')?.className.replace(/active/g, '').trim() || 'ch1-hud-btn') + ' syn-morph-tour-btn';
+        tourBtn.className = (controls.querySelector('button')?.className.replace(/\bactive\b/g, '').trim() || 'ch1-hud-btn') + ' syn-morph-tour-btn';
         tourBtn.textContent = '▶ Tour';
         tourBtn.title = 'Play / Pause Continuous 60fps 10-Stage 3D Morph Cinema Tour';
         tourBtn.onclick = e => {
@@ -3416,7 +3643,7 @@ body.mdrawer-open #syn-stratum-radar {
           }
           tourPlaying = true;
           hud.classList.remove('minimized');
-          const minBtn = document.getElementById(ch === 2 ? 'syntrix-btn-min' : `ch${ch}-btn-min`);
+          const minBtn = document.getElementById(ch === 2 ? 'btn-min-3d' : `ch${ch}-btn-min`);
           if (minBtn) minBtn.textContent = '—';
           tourBtn.classList.add('playing');
           tourBtn.textContent = '⏸ Tour';

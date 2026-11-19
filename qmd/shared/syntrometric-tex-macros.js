@@ -386,7 +386,11 @@
   "stable": "\\operatorname{Stable}",
   "kor": "\\mathbf{Kor}",
   "SyntrometricSequentCalculus": "\\mathbf{SSC}",
-  "dynboxgen": "\\Box"
+  "dynboxgen": "\\Box",
+  "smtag": [
+    "\\tag{\\text{SM-#1}#2}",
+    2
+  ]
 };
 
   if (typeof window !== 'undefined') {

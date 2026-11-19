@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="dark">
   <meta name="description" content="Syntrometrische Maximentelezentrik — Interactive 15-Chapter Mathematical Physics & Topos-Theoretic Treatise with 60fps 3D Morph Engines, 180 Manim Scenes, Lean 4 Verification & Synchronized Monograph Workbench.">
   <meta property="og:title" content="Syntrometrische Maximentelezentrik — Interactive Treatise & 3D Topos Workbench">
-  <meta property="og:description" content="Explore 15 Chapters, 214 Interactive Slides, 180 Manim Animations, 60fps 3D Morph Engines, and Synchronized LaTeX/PDF Monograph.">
+  <meta property="og:description" content="Explore 15 Chapters, 245 Interactive Slides, 180 Manim Animations, 60fps 3D Morph Engines, and 470-Page Synchronized LaTeX/PDF Monograph.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
@@ -122,10 +122,12 @@
       align-items: center;
       gap: 4px;
       overflow-x: auto;
-      padding: 2px 4px;
+      padding: 2px 10px;
       scrollbar-width: thin;
       scrollbar-color: rgba(65, 105, 225, 0.3) transparent;
       margin: 0 8px;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
     }
 
     .chapter-tabs::-webkit-scrollbar {
@@ -166,6 +168,7 @@
       border-color: var(--royal);
       color: #fff;
       background: rgba(65, 105, 225, 0.18);
+      transform: translateY(-1px);
     }
 
     .ch-btn.active {
@@ -210,6 +213,21 @@
       border-color: var(--teal);
       color: var(--gold);
       background: rgba(32, 178, 170, 0.15);
+    }
+
+    .action-btn.active {
+      background: rgba(32, 178, 170, 0.22);
+      border-color: var(--teal);
+      color: var(--gold);
+      box-shadow: 0 0 8px rgba(32, 178, 170, 0.25);
+    }
+
+    .ch-btn:focus-visible,
+    .action-btn:focus-visible,
+    .atlas-part-pill:focus-visible,
+    #atlas-search-input:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
     }
 
     /* Floating Zen-Mode Restore Pill */
@@ -285,15 +303,22 @@
       inset: 0;
       background: rgba(5, 8, 15, 0.9);
       backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       z-index: 1200;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.22s ease, visibility 0.22s ease;
     }
 
     .overview-modal.open {
-      display: flex;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
 
     .overview-container {
@@ -307,6 +332,12 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
       display: flex;
       flex-direction: column;
+      transform: scale(0.97);
+      transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .overview-modal.open .overview-container {
+      transform: scale(1);
     }
 
     .overview-header {
@@ -315,13 +346,62 @@
       align-items: center;
       border-bottom: 1px solid rgba(65, 105, 225, 0.35);
       padding-bottom: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       flex-shrink: 0;
+      gap: 10px;
     }
 
     .overview-header h2 {
       color: var(--gold);
       font-size: 1.25rem;
+    }
+
+    .atlas-toolbar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-shrink: 0;
+    }
+
+    #atlas-search-input {
+      flex: 1 1 220px;
+      min-width: 160px;
+      background: #070a12;
+      color: #e8ecf2;
+      border: 1px solid #334155;
+      border-radius: 7px;
+      padding: 6px 11px;
+      font-size: 0.78rem;
+      font-family: inherit;
+    }
+
+    .atlas-part-pills {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .atlas-part-pill {
+      background: #151e32;
+      color: #94a3b8;
+      border: 1px solid #2d3748;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .atlas-part-pill:hover,
+    .atlas-part-pill.active {
+      background: rgba(65, 105, 225, 0.32);
+      color: var(--gold);
+      border-color: var(--gold);
     }
 
     .overview-grid {
@@ -346,6 +426,12 @@
       transform: translateY(-2px);
       border-color: var(--gold);
       background: rgba(65, 105, 225, 0.12);
+    }
+
+    .overview-card.active-ch {
+      border-color: var(--gold);
+      background: rgba(65, 105, 225, 0.14);
+      box-shadow: 0 0 14px rgba(255, 215, 0, 0.2);
     }
 
     .overview-card h3 {
@@ -408,14 +494,23 @@
         display: flex;
         align-items: center;
         flex-shrink: 0;
+        overflow-x: auto;
+        max-width: 100%;
+        scrollbar-width: none;
+      }
+      .portal-actions::-webkit-scrollbar {
+        display: none;
       }
 
       .action-btn {
         padding: 4px 7px;
         font-size: 0.72rem;
         min-height: 30px;
+        min-width: 30px;
+        justify-content: center;
         border-radius: 6px;
         touch-action: manipulation;
+        flex-shrink: 0;
         transition: transform 0.12s ease, background 0.18s ease;
       }
       .action-btn:active {
@@ -426,16 +521,11 @@
         display: none; /* Hide labels on mobile, keep sleek touch icons */
       }
 
-      /* On narrow phones, hide secondary links to keep header compact */
-      @media (max-width: 440px) {
-        #mega-btn, #standalone-link { display: none !important; }
-      }
-
       .chapter-tabs {
         grid-area: tabs;
         width: 100% !important;
         margin: 0 !important;
-        padding: 2px 0 2px 0 !important;
+        padding: 2px 6px !important;
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
@@ -500,6 +590,16 @@
         font-size: 1rem;
       }
 
+      .atlas-part-pills {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        max-width: 100%;
+        scrollbar-width: none;
+      }
+      .atlas-part-pills::-webkit-scrollbar {
+        display: none;
+      }
+
       .overview-grid {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -517,6 +617,14 @@
         font-size: 0.72rem;
         margin: 6px 0;
       }
+    }
+
+    @media (max-width: 520px) {
+      .portal-header .brand-badge { display: none; }
+    }
+
+    @media (max-width: 440px) {
+      #mega-btn, #standalone-link { display: none !important; }
     }
 </style>
   <link rel="manifest" href="manifest.json">
@@ -935,88 +1043,98 @@ window.MathJax = {
               <span class="syn-counter-fallback" style="display:none; font-size:10px;">VISITS <span class="syn-visit-count-display">1</span></span>
             </span>
             <span class="stat-pill">📖 15 Chapters</span>
-            <span class="stat-pill" style="color:#60a5fa; font-weight:600;">📑 244 Slides</span>
+            <span class="stat-pill" style="color:#60a5fa; font-weight:600;">📑 245 Slides</span>
+            <span class="stat-pill" style="color:#FFD700;">📄 470-Page PDF</span>
             <span class="stat-pill">🎬 180 Manim Scenes</span>
             <span class="stat-pill">⚡ Lean 4 Formalized</span>
           </div>
         </div>
         <button class="action-btn" onclick="toggleOverview()">✕ Close</button>
       </div>
+      <div class="atlas-toolbar">
+        <input type="text" id="atlas-search-input" placeholder="Filter chapters by topic, theorem, or number..." oninput="filterAtlasCards()">
+        <div class="atlas-part-pills">
+          <button class="atlas-part-pill active" onclick="setAtlasPart('all', this)">All (15)</button>
+          <button class="atlas-part-pill" onclick="setAtlasPart('A', this)">Teil A: Foundations</button>
+          <button class="atlas-part-pill" onclick="setAtlasPart('B', this)">Teil B: Physics &amp; Metronics</button>
+          <button class="atlas-part-pill" onclick="setAtlasPart('C', this)">Teil C: Consciousness &amp; Synthesis</button>
+        </div>
+      </div>
       <div class="overview-grid">
-        <div class="overview-card" style="border-left-color:#4169E1;" onclick="selectChapter(1); toggleOverview();">
+        <div class="overview-card active-ch" data-ch="1" data-part="A" style="border-left-color:#4169E1;" onclick="selectChapter(1); toggleOverview();">
           <h3><span>Ch 1: The Topos of Subjective Experience</span><span class="brand-badge">22 Slides</span></h3>
           <p>Epistemic Firewall (Strata A–D), Admissible Context Site (<b>Ctx</b>, <i>J</i><sub>syn</sub>), Predicatrix &amp; Dialectrix Valuation Bands, Grothendieck Sheaf Topos ℰ<sub>syn</sub>, and Intuitionistic Modal Logic ℒ<sub>iMSL</sub>.</p>
-          <div class="overview-meta">12 Manim Scenes · 30 Fragments · Stage I Polarimeter</div>
+          <div class="overview-meta">12 Manim Scenes · 30 Fragments · Stage I Polarimeter · PDF p. 19</div>
         </div>
-        <div class="overview-card" style="border-left-color:#20B2AA;" onclick="selectChapter(2); toggleOverview();">
+        <div class="overview-card" data-ch="2" data-part="A" style="border-left-color:#20B2AA;" onclick="selectChapter(2); toggleOverview();">
           <h3><span>Ch 2: The Syntrix Architecture</span><span class="brand-badge">18 Slides</span></h3>
           <p>Colored Operads 𝒪<sub>syn</sub>, Free Tree Monad <i>T</i><sub>𝒪</sub>, Grothendieck Fibrations ∫ℳ, 4 Elementary Selection Representations (Thms. 2.17–2.22), and Splittability (<i>Spaltbarkeit</i>).</p>
-          <div class="overview-meta">12 Manim Scenes · 16 Fragments · Stage II Polarimeter</div>
+          <div class="overview-meta">12 Manim Scenes · 16 Fragments · Stage II Polarimeter · PDF p. 65</div>
         </div>
-        <div class="overview-card" style="border-left-color:#FFA500;" onclick="selectChapter(3); toggleOverview();">
+        <div class="overview-card" data-ch="3" data-part="A" style="border-left-color:#FFA500;" onclick="selectChapter(3); toggleOverview();">
           <h3><span>Ch 3: Syntrixkorporationen</span><span class="brand-badge">16 Slides</span></h3>
           <p>2 × 2 Korporator Matrix, <i>Eindeutigkeitssatz</i> (Thm. 3.16), Span Pushouts <i>P<sub>a</sub></i> ⊞<sub>ϕ</sub> <i>P<sub>b</sub></i>, Projective Tensor Products ⊗̂<sub>π</sub>, and Cayley–Menger Determinants.</p>
-          <div class="overview-meta">12 Manim Scenes · 16 Fragments · Stage III Polarimeter</div>
+          <div class="overview-meta">12 Manim Scenes · 16 Fragments · Stage III Polarimeter · PDF p. 101</div>
         </div>
-        <div class="overview-card" style="border-left-color:#DC143C;" onclick="selectChapter(4); toggleOverview();">
+        <div class="overview-card" data-ch="4" data-part="A" style="border-left-color:#DC143C;" onclick="selectChapter(4); toggleOverview();">
           <h3><span>Ch 4: Enyphansyntrizen</span><span class="brand-badge">15 Slides</span></h3>
           <p>Non-Abelian Gauge Curvature <i>F<sub>A</sub> = dA + A ∧ A</i>, Yang–Mills Action &amp; BRST Cohomology (<i>s</i><sub>BRST</sub><sup>2</sup> = 0), Holoforms <i>H</i><sup>0</sup>, and Intrinsic Chronometry τ<sub>sys</sub>.</p>
-          <div class="overview-meta">12 Manim Scenes · 12 Fragments · Stage IV Polarimeter</div>
+          <div class="overview-meta">12 Manim Scenes · 12 Fragments · Stage IV Polarimeter · PDF p. 130</div>
         </div>
-        <div class="overview-card" style="border-left-color:#9370DB;" onclick="selectChapter(5); toggleOverview();">
+        <div class="overview-card" data-ch="5" data-part="A" style="border-left-color:#9370DB;" onclick="selectChapter(5); toggleOverview();">
           <h3><span>Ch 5: Metroplextheorie</span><span class="brand-badge">15 Slides</span></h3>
           <p>Ambient (∞,1)-Topos 𝒳<sub>syn</sub>, Dendroidal Complete Segal Spaces dCSeg(𝒳<sub>syn</sub>), Syntroclinic Bridge Adjunctions (ϕ)<sub>!</sub> ⊣ (ϕ)<sup>*</sup>, Postnikov τ<sub>≤m</sub>, and Tectonic Spectral Sequences.</p>
-          <div class="overview-meta">12 Manim Scenes · 31 Fragments · Lawvere–Schreiber Cohesion</div>
+          <div class="overview-meta">12 Manim Scenes · 31 Fragments · Lawvere–Schreiber Cohesion · PDF p. 162</div>
         </div>
-        <div class="overview-card" style="border-left-color:#FFD700;" onclick="selectChapter(6); toggleOverview();">
+        <div class="overview-card" data-ch="6" data-part="A" style="border-left-color:#FFD700;" onclick="selectChapter(6); toggleOverview();">
           <h3><span>Ch 6: Die televariante äonische Area</span><span class="brand-badge">15 Slides</span></h3>
           <p>Final Telecentric Coalgebras (ν𝒯, ζ), Lambek Isomorphism, Polyak–Łojasiewicz Lyapunov Basins, Morse–Smale Separatrices, Telezentralenrelativität, and Wasserstein Resynkolation.</p>
-          <div class="overview-meta">12 Manim Scenes · 23 Fragments · Stage V Polarimeter</div>
+          <div class="overview-meta">12 Manim Scenes · 23 Fragments · Stage V Polarimeter · PDF p. 182</div>
         </div>
-        <div class="overview-card" style="border-left-color:#4169E1;" onclick="selectChapter(7); toggleOverview();">
+        <div class="overview-card" data-ch="7" data-part="B" style="border-left-color:#4169E1;" onclick="selectChapter(7); toggleOverview();">
           <h3><span>Ch 7: Anthropomorphic Syntrometry</span><span class="brand-badge">15 Slides</span></h3>
           <p>Quantitative Sites (<b>Ctx</b><sub>quant</sub>), Realification, Tensor Operads, Layered Field Cascades (SM Eq. 28), and the Terminal Polarimeter Stage VI.</p>
-          <div class="overview-meta">12 Manim Scenes · 28 Fragments · Stage VI Polarimeter</div>
+          <div class="overview-meta">12 Manim Scenes · 28 Fragments · Stage VI Polarimeter · PDF p. 204</div>
         </div>
-        <div class="overview-card" style="border-left-color:#20B2AA;" onclick="selectChapter(8); toggleOverview();">
+        <div class="overview-card" data-ch="8" data-part="B" style="border-left-color:#20B2AA;" onclick="selectChapter(8); toggleOverview();">
           <h3><span>Ch 8: Syntrometrie über dem Quantitätsaspekt</span><span class="brand-badge">15 Slides</span></h3>
           <p>Cornered Parameter Manifolds, Grothendieck Nuclearity, Fréchet-Nuclear Carrier Spaces, and the 3-Class Structure-Collapse (Thm. 8.16).</p>
-          <div class="overview-meta">12 Manim Scenes · 26 Fragments · Fréchet-Nuclear Carrier</div>
+          <div class="overview-meta">12 Manim Scenes · 26 Fragments · Fréchet-Nuclear Carrier · PDF p. 225</div>
         </div>
-        <div class="overview-card" style="border-left-color:#FFA500;" onclick="selectChapter(9); toggleOverview();">
+        <div class="overview-card" data-ch="9" data-part="B" style="border-left-color:#FFA500;" onclick="selectChapter(9); toggleOverview();">
           <h3><span>Ch 9: Strukturkaskaden</span><span class="brand-badge">15 Slides</span></h3>
           <p>Non-Hermitian 36-Component Hermetry, Palatini Coupling, Sobolev Apex Convergence, and Tectonic Energy Extremization.</p>
-          <div class="overview-meta">12 Manim Scenes · 40 Fragments · 36-Component Hermetry</div>
+          <div class="overview-meta">12 Manim Scenes · 40 Fragments · 36-Component Hermetry · PDF p. 240</div>
         </div>
-        <div class="overview-card" style="border-left-color:#DC143C;" onclick="selectChapter(10); toggleOverview();">
+        <div class="overview-card" data-ch="10" data-part="B" style="border-left-color:#DC143C;" onclick="selectChapter(10); toggleOverview();">
           <h3><span>Ch 10: Metronische Elementaroperationen</span><span class="brand-badge">16 Slides</span></h3>
           <p>Discrete Lattice Modules, Finite-Difference Algebras, Discrete Exterior Calculus, and Elementary Metron Operators.</p>
-          <div class="overview-meta">12 Manim Scenes · 32 Fragments · Discrete Exterior Calculus</div>
+          <div class="overview-meta">12 Manim Scenes · 32 Fragments · Discrete Exterior Calculus · PDF p. 264</div>
         </div>
-        <div class="overview-card" style="border-left-color:#9370DB;" onclick="selectChapter(11); toggleOverview();">
+        <div class="overview-card" data-ch="11" data-part="B" style="border-left-color:#9370DB;" onclick="selectChapter(11); toggleOverview();">
           <h3><span>Ch 11: Metrische Selektortheorie &amp; Hyperstrukturen</span><span class="brand-badge">15 Slides</span></h3>
           <p>12D Fibrations, Spectral Matter Condensation, and High-Energy DESY Validation across the Particle Mass Spectrum.</p>
-          <div class="overview-meta">12 Manim Scenes · 37 Fragments · 12D Mass Spectrum Engine</div>
+          <div class="overview-meta">12 Manim Scenes · 37 Fragments · 12D Mass Spectrum Engine · PDF p. 288</div>
         </div>
-        <div class="overview-card" style="border-left-color:#FFD700;" onclick="selectChapter(12); toggleOverview();">
+        <div class="overview-card" data-ch="12" data-part="C" style="border-left-color:#FFD700;" onclick="selectChapter(12); toggleOverview();">
           <h3><span>Ch 12: Representational Discontinuity</span><span class="brand-badge">15 Slides</span></h3>
           <p>Operadic Consumption, Protosimplex Encapsulation, and Category-Theoretic Bridge to Representational Continuity.</p>
-          <div class="overview-meta">12 Manim Scenes · 32 Fragments · Protosimplex Dynamics</div>
+          <div class="overview-meta">12 Manim Scenes · 32 Fragments · Protosimplex Dynamics · PDF p. 309</div>
         </div>
-        <div class="overview-card" style="border-left-color:#4169E1;" onclick="selectChapter(13); toggleOverview();">
+        <div class="overview-card" data-ch="13" data-part="C" style="border-left-color:#4169E1;" onclick="selectChapter(13); toggleOverview();">
           <h3><span>Ch 13: Qualia &amp; Consciousness</span><span class="brand-badge">19 Slides</span></h3>
           <p>Postnikov Towers, Grothendieck Galois Groups, and IIT 4.0 Topos-Theoretic Integrated Information (Φ<sub>syn</sub>).</p>
-          <div class="overview-meta">12 Manim Scenes · 34 Fragments · IIT 4.0 Topos Φ-Engine</div>
+          <div class="overview-meta">12 Manim Scenes · 34 Fragments · IIT 4.0 Topos Φ-Engine · PDF p. 330</div>
         </div>
-        <div class="overview-card" style="border-left-color:#20B2AA;" onclick="selectChapter(14); toggleOverview();">
+        <div class="overview-card" data-ch="14" data-part="C" style="border-left-color:#20B2AA;" onclick="selectChapter(14); toggleOverview();">
           <h3><span>Ch 14: Synthese des Formalismus</span><span class="brand-badge">15 Slides</span></h3>
           <p>Master Translation Register (SM Eqs. 1–100a), Concordance Functor, and Complete Encyclopedic Lexicon across all 15 Chapters.</p>
-          <div class="overview-meta">12 Manim Scenes · 14 Fragments · Master Concordance Functor</div>
+          <div class="overview-meta">12 Manim Scenes · 14 Fragments · Master Concordance Functor · PDF p. 351</div>
         </div>
-        <div class="overview-card" style="border-left-color:#FFD700;" onclick="selectChapter(15); toggleOverview();">
+        <div class="overview-card" data-ch="15" data-part="C" style="border-left-color:#FFD700;" onclick="selectChapter(15); toggleOverview();">
           <h3><span>Ch 15: The Syntrometric Horizon</span><span class="brand-badge">18 Slides</span></h3>
           <p>Master Axiomatic Architecture, Five Open Conjectures, Complete Strata A–D Synthesis &amp; Appendices A–D.</p>
-          <div class="overview-meta">12 Manim Scenes · 30 Fragments · Complete Strata A–D Synthesis</div>
+          <div class="overview-meta">12 Manim Scenes · 30 Fragments · Complete Strata A–D Synthesis · PDF p. 381</div>
         </div>
       </div>
     </div>
@@ -1037,6 +1155,9 @@ window.MathJax = {
         if (isActive) {
           btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
+      });
+      document.querySelectorAll('.overview-card[data-ch]').forEach(card => {
+        card.classList.toggle('active-ch', parseInt(card.dataset.ch) === ch);
       });
       const megaBtn = document.getElementById('mega-btn');
       if (megaBtn) megaBtn.style.borderColor = '#334155';
@@ -1143,6 +1264,23 @@ window.MathJax = {
           runPrefetch();
         }
       }, 900);
+    }
+
+    let activeAtlasPart = 'all';
+    function setAtlasPart(part, btn) {
+      activeAtlasPart = part || 'all';
+      document.querySelectorAll('.atlas-part-pill').forEach(b => b.classList.toggle('active', b === btn));
+      filterAtlasCards();
+    }
+
+    function filterAtlasCards() {
+      const inp = document.getElementById('atlas-search-input');
+      const q = (inp ? inp.value : '').toLowerCase().trim();
+      document.querySelectorAll('.overview-card[data-ch]').forEach(card => {
+        const partOk = activeAtlasPart === 'all' || card.dataset.part === activeAtlasPart;
+        const textOk = !q || card.textContent.toLowerCase().includes(q);
+        card.style.display = (partOk && textOk) ? '' : 'none';
+      });
     }
 
     function toggleOverview() {
@@ -1284,7 +1422,7 @@ window.MathJax = {
           e.preventDefault();
           toggleScrollView();
         }
-      } else if (e.key === 'm' || e.key === 'M') {
+      } else if ((e.key === 'm' || e.key === 'M') && !window.__SYN_MONOGRAPH_WORKBENCH_LOADED__) {
         if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
           if (typeof window.toggleMonographDrawer === 'function') {
             window.toggleMonographDrawer();

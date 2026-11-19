@@ -283,8 +283,8 @@
         </div>
         <div class="syn-stat-card">
           <div class="syn-stat-label">Treatise Extent</div>
-          <div class="syn-stat-value" style="color:#20B2AA;">244 Slides</div>
-          <div class="syn-stat-sub">15 Chapters · 180 Manim Animations · 380+ Theorems</div>
+          <div class="syn-stat-value" style="color:#20B2AA;">245 Slides</div>
+          <div class="syn-stat-sub">15 Chapters · 470-Page PDF · 180 Manim Animations · 367+ Theorems</div>
         </div>
       </div>
       <div class="syn-privacy-note">
