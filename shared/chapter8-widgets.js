@@ -680,6 +680,7 @@ window.ch8_updateCorporateCollapseLab = function() {
 const CH8_3D_STYLE = `
 #ch8-3d-hud {
   box-sizing: border-box;
+  overflow-x: hidden;
   position: fixed;
   right: 20px;
   bottom: 20px;
@@ -730,6 +731,7 @@ const CH8_3D_STYLE = `
 .ch8-hud-header {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 6px;
@@ -749,7 +751,7 @@ const CH8_3D_STYLE = `
   align-items: center;
   gap: 2px 5px;
   min-width: 0;
-  flex: 1 1 auto;
+  flex: 1 1 170px;
   line-height: 1.15;
 }
 
@@ -769,7 +771,10 @@ const CH8_3D_STYLE = `
   display: flex;
   align-items: center;
   gap: clamp(2.5px, 0.35vw, 5px);
-  flex-shrink: 0;
+  flex-wrap: wrap;
+  flex: 0 1 auto;
+  justify-content: flex-end;
+  max-width: 100%;
 }
 
 .ch8-hud-btn {
@@ -965,10 +970,16 @@ const CH8_3D_STYLE = `
   }
   .ch8-hud-controls {
     gap: 3px;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    max-width: 100%;
   }
   .ch8-hud-btn {
-    padding: 2px 5px;
-    font-size: 8.5px;
+    padding: 2px clamp(4px, 1.3vw, 6px);
+    font-size: clamp(7.5px, 2.2vw, 9px);
+    line-height: 1.2;
+    max-width: 100%;
   }
   .ch8-hud-scrubber span {
     font-size: 8.5px;
@@ -1009,8 +1020,9 @@ const CH8_3D_STYLE = `
     padding: 0.5px 3px;
   }
   .ch8-hud-btn {
-    padding: 1.5px 4px;
-    font-size: 8px;
+    padding: 1.5px clamp(3px, 1.1vw, 5px);
+    font-size: clamp(7px, 2.1vw, 8.5px);
+    line-height: 1.2;
   }
 }
 `;

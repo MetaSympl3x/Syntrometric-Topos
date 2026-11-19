@@ -605,10 +605,12 @@
   // ==========================================================================
   const CH12_3D_STYLE = `
   #ch12-3d-hud {
+    box-sizing: border-box;
     position: fixed;
     right: 18px;
     bottom: 18px;
-    width: 390px;
+    width: clamp(280px, 30vw, 400px);
+    max-width: calc(100vw - 20px);
     background: rgba(11, 15, 25, 0.96);
     border: 1.5px solid #20B2AA;
     border-radius: 12px;
@@ -620,9 +622,13 @@
     overflow: hidden;
     user-select: none;
   }
+  #ch12-3d-hud *, #ch12-3d-hud *::before, #ch12-3d-hud *::after {
+    box-sizing: border-box;
+  }
   #ch12-3d-hud.spotlight {
-    width: min(800px, 84vw);
-    right: 8vw;
+    width: min(800px, 92vw);
+    max-width: 94vw;
+    right: 4vw;
     bottom: 7vh;
     border-color: #FFD700;
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 215, 0, 0.35);
@@ -632,8 +638,10 @@
   }
   .ch12-hud-header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 4px 6px;
     padding: 7px 11px;
     background: linear-gradient(90deg, rgba(32, 178, 170, 0.28), rgba(65, 105, 225, 0.25));
     border-bottom: 1px solid rgba(32, 178, 170, 0.45);
@@ -644,13 +652,20 @@
     color: #FFD700;
     letter-spacing: 0.4px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 6px;
+    gap: 3px 6px;
+    flex: 1 1 160px;
+    min-width: 0;
   }
   .ch12-hud-controls {
     display: flex;
+    flex-wrap: wrap;
     gap: 4px;
     align-items: center;
+    flex: 0 1 auto;
+    justify-content: flex-end;
+    max-width: 100%;
   }
   .ch12-hud-btn {
     background: #161f33;
@@ -661,6 +676,8 @@
     font-size: 10px;
     font-weight: 700;
     cursor: pointer;
+    white-space: nowrap;
+    max-width: 100%;
     transition: all 0.15s ease;
   }
   .ch12-hud-btn:hover, .ch12-hud-btn.active {
@@ -743,6 +760,56 @@
     font-size: 10.5px;
     color: #cbd5e1;
     line-height: 1.35;
+  }
+  @media (max-width: 600px) {
+    #ch12-3d-hud {
+      left: 6px;
+      right: 6px;
+      bottom: 6px;
+      width: auto;
+      max-width: calc(100vw - 12px);
+    }
+    #ch12-3d-hud.spotlight {
+      left: 6px;
+      right: 6px;
+      width: auto;
+      max-width: calc(100vw - 12px);
+    }
+    .ch12-hud-header {
+      padding: 6px 8px;
+      gap: 4px 6px;
+    }
+    .ch12-hud-title {
+      font-size: 9.5px;
+    }
+    .ch12-hud-controls {
+      gap: 3px;
+      flex: 1 1 auto;
+      justify-content: flex-end;
+    }
+    .ch12-hud-btn {
+      padding: 2px clamp(4px, 1.3vw, 6px);
+      font-size: clamp(7.5px, 2.2vw, 9px);
+      line-height: 1.2;
+    }
+    .ch12-scrubber {
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 5px 8px;
+      font-size: 9px;
+    }
+  }
+  @media (max-width: 400px) {
+    #ch12-3d-hud {
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      max-width: calc(100vw - 8px);
+    }
+    .ch12-hud-btn {
+      padding: 1.5px clamp(3px, 1.1vw, 5px);
+      font-size: clamp(7px, 2.1vw, 8.5px);
+    }
   }
   `;
 

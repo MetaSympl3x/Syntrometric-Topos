@@ -1389,6 +1389,7 @@ body.mdrawer-open #syn-stratum-radar {
    ========================================================================= */
 .syn-morph-pills {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 3px;
@@ -1396,10 +1397,13 @@ body.mdrawer-open #syn-stratum-radar {
   background: rgba(7, 11, 20, 0.96);
   border-top: 1px solid rgba(65, 105, 225, 0.25);
   font-family: "JetBrains Mono", monospace;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .syn-morph-pill {
-  flex: 1;
+  flex: 1 1 18px;
+  min-width: 16px;
   background: #131c31;
   color: #94a3b8;
   border: 1px solid #2d3b55;
@@ -1436,6 +1440,7 @@ body.mdrawer-open #syn-stratum-radar {
   cursor: pointer;
   margin-left: 3px;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.14s ease;
 }
 
@@ -1449,6 +1454,59 @@ body.mdrawer-open #syn-stratum-radar {
   color: #000 !important;
   border-color: #FFD700 !important;
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.55);
+}
+
+/* Universal Mobile Safeguard for all 3D HUD Menu Panels & Injected Controls */
+@media (max-width: 600px) {
+  [id$="-3d-hud"] {
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  [id$="-3d-hud"] [class$="-hud-header"] {
+    flex-wrap: wrap !important;
+    gap: 4px 6px !important;
+  }
+  [id$="-3d-hud"] [class$="-hud-title"] {
+    flex: 1 1 160px !important;
+    min-width: 0 !important;
+  }
+  [id$="-3d-hud"] [class$="-hud-controls"] {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex: 1 1 auto !important;
+    justify-content: flex-end !important;
+    gap: 3px !important;
+    max-width: 100% !important;
+  }
+  [id$="-3d-hud"] [class$="-hud-btn"] {
+    padding: 2px clamp(4px, 1.3vw, 6px) !important;
+    font-size: clamp(7.5px, 2.2vw, 9px) !important;
+    line-height: 1.2 !important;
+    max-width: 100% !important;
+  }
+  [id$="-3d-hud"] [class$="-scrubber"] {
+    flex-wrap: wrap !important;
+    max-width: 100% !important;
+  }
+  .syn-morph-pills {
+    gap: 2px;
+    padding: 4px 6px;
+  }
+  .syn-morph-pill {
+    font-size: 8.5px;
+    min-width: 16px;
+  }
+  .syn-morph-slide-btn {
+    font-size: 8.5px;
+    padding: 2px 5px;
+    margin-left: 0;
+  }
+}
+@media (max-width: 400px) {
+  [id$="-3d-hud"] [class$="-hud-btn"] {
+    padding: 1.5px clamp(3px, 1.1vw, 5px) !important;
+    font-size: clamp(7px, 2.1vw, 8.5px) !important;
+  }
 }
 
 /* --- Lecture Spotlight & Cinema Lightbox Modal (#syn-spotlight-modal) --- */
